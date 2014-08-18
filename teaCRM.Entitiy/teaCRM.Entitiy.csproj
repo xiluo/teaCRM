@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{55385CCF-C4FA-4A8B-A428-190A43B4B320}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>teaCRM.Entitiy</RootNamespace>
+    <AssemblyName>teaCRM.Entitiy</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ELinq">
+      <HintPath>..\packages\ELinq.0.6.1\lib\net40\ELinq.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MySql.Data.6.8.3\lib\net40\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="NLite">
+      <HintPath>..\packages\NLite.0.9.5.7\lib\net40\NLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DepartmentTree.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TConExpvalue.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TCusBase.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TCusCon.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TCusExpvalue.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TCusLog.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="teaCRMDBContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TFunApp.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TFunExpand.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TFunFilter.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TFunMyapp.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TFunOperating.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TFunTag.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tree.cs" />
+    <Compile Include="TSysDepartment.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TSysLog.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TSysPower.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TSysRole.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TSysUser.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MultipleOutputHelper.ttinclude" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="teaCRMDBContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>teaCRMDBContext.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

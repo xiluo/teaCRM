@@ -35,10 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -109,9 +105,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\IndexController.cs" />
-    <Compile Include="Controllers\SettingsController.cs" />
-    <Compile Include="Controllers\Settings\DepartmentController.cs" />
-    <Compile Include="Controllers\ShowController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -512,18 +505,6 @@
     <ProjectReference Include="..\teaCRM.Common\teaCRM.Common.csproj">
       <Project>{D03BBC00-649A-43B6-BB8D-65CB34AECC53}</Project>
       <Name>teaCRM.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\teaCRM.DataAccess\teaCRM.DataAccess.csproj">
-      <Project>{14916BB3-3CDF-4E85-BA43-8D1581566BBA}</Project>
-      <Name>teaCRM.DataAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\teaCRM.Model\teaCRM.Model.csproj">
-      <Project>{3A0B198F-1197-4661-BEC2-4DA646451894}</Project>
-      <Name>teaCRM.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\teaCRM.Plugin.Framework\teaCRM.Plugin.Framework.csproj">
-      <Project>{CADFF87F-C744-412F-B943-BED289159593}</Project>
-      <Name>teaCRM.Plugin.Framework</Name>
     </ProjectReference>
     <ProjectReference Include="..\teaCRM.Service\teaCRM.Service.csproj">
       <Project>{087A655B-AB00-4130-A1A5-7EFB707D60FB}</Project>

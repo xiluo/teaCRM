@@ -31,12 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
+    <Reference Include="ELinq">
+      <HintPath>..\packages\ELinq.0.6.1\lib\net40\ELinq.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLite">
+      <HintPath>..\packages\NLite.0.9.5.7\lib\net40\NLite.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,9 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TreeHelpers\DepartmentTreeHelper.cs" />
     <Compile Include="Impl\SysDepartmentDao.cs" />
-    <Compile Include="ISysDepartmentDao.cs" />
+    <Compile Include="ISysDepartmentDao.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -58,19 +62,17 @@
       <Project>{D03BBC00-649A-43B6-BB8D-65CB34AECC53}</Project>
       <Name>teaCRM.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\teaCRM.DataAccess\teaCRM.DataAccess.csproj">
-      <Project>{14916BB3-3CDF-4E85-BA43-8D1581566BBA}</Project>
-      <Name>teaCRM.DataAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\teaCRM.Model\teaCRM.Model.csproj">
-      <Project>{3A0B198F-1197-4661-BEC2-4DA646451894}</Project>
-      <Name>teaCRM.Model</Name>
+    <ProjectReference Include="..\teaCRM.Entitiy\teaCRM.Entitiy.csproj">
+      <Project>{55385CCF-C4FA-4A8B-A428-190A43B4B320}</Project>
+      <Name>teaCRM.Entitiy</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="TreeHelpers\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

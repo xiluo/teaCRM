@@ -8,10 +8,16 @@ namespace teaCRM.Service.Impl
 {
     public class SysDepartmentService : ISysDepartmentService
     {
-        public string GetTreeData()
+        public string Test()
         {
-            return new SysDepartmentDao().GetTreeData();
+            return new SysDepartmentDao().GetModel(2).DepName;
         }
+
+        public string GetTreeData()
+            {
+                return "";
+                // return new SysDepartmentDao().GetTreeData();
+            }
 
 
 

@@ -14,6 +14,7 @@ namespace teaCRM.Web.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.Test = new SysDepartmentService().Test();
               return View();
         }
 

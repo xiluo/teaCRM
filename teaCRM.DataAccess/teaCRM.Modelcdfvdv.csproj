@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{14916BB3-3CDF-4E85-BA43-8D1581566BBA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>teaCRM.DataAccess</RootNamespace>
+    <AssemblyName>teaCRM.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ELinq, Version=0.6.1.0, Culture=neutral, PublicKeyToken=de4bad8fb4637582, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ELinq.0.6.1\lib\net40\ELinq.dll</HintPath>
+    </Reference>
+    <Reference Include="NLite, Version=0.9.5.7, Culture=neutral, PublicKeyToken=f086dca6795b5aa4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLite.0.9.5.7\lib\net40\NLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DepartmentTree.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="teaCRMDBContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tree.cs" />
+    <Compile Include="WpComment.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WpCommentmetum.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WpDownload.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WpExportsreportsGroup.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WpExportsreportsLog.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WpExportsreportsReport.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WpLink.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WpOption.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WpPost.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WpPostmetum.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WpTerm.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WpTermRelationship.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WpTermTaxonomy.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WpUser.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WpUsermetum.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MultipleOutputHelper.ttinclude" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="teaCRMDBContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>teaCRMDBContext.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="..\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

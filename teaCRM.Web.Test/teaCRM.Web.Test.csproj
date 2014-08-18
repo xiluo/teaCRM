@@ -58,7 +58,6 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DepartmentTreeHelperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SysDepartmentDaoTest.cs" />
   </ItemGroup>
@@ -70,14 +69,6 @@
     <ProjectReference Include="..\teaCRM.Dao\teaCRM.Dao.csproj">
       <Project>{6887CE80-724B-4E77-9523-89FBEB753E6B}</Project>
       <Name>teaCRM.Dao</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\teaCRM.DataAccess\teaCRM.DataAccess.csproj">
-      <Project>{14916BB3-3CDF-4E85-BA43-8D1581566BBA}</Project>
-      <Name>teaCRM.DataAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\teaCRM.Model\teaCRM.Model.csproj">
-      <Project>{3A0B198F-1197-4661-BEC2-4DA646451894}</Project>
-      <Name>teaCRM.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

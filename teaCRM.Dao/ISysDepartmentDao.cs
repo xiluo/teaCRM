@@ -25,14 +25,14 @@ namespace teaCRM.Dao
         /// </summary>
         /// <param name="db">数据库操作上下文</param>
         /// <returns></returns>
-        IQueryable<T_sys_department> GetModelList(teaCRMEntities db);
-        List<T_sys_department> GetModelList(); 
+        //IQueryable<TSysDepartment> GetModelList(teaCRMEntities db);
+        List<TSysDepartment> GetModelList(); 
         //查询单个
-        IQueryable GetModel(int id, teaCRMEntities db);
-        T_sys_department GetModel(int id);
+        //IQueryable GetModel(int id, teaCRMEntities db);
+        TSysDepartment GetModel(int id);
 //      //查询分页
 //      List<T_cus_base> QueryByPage(int pageIndex, int pageSize, IQueryable<T_sys_department> queryWhere);
         //查询树形结果
-        string GetTreeData();
+        //string GetTreeData();
     }
 }

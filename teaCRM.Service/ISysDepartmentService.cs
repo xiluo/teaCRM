@@ -6,7 +6,9 @@ using System.Text;
 namespace teaCRM.Service
 {
    public interface ISysDepartmentService
-    {
+   {
+       string Test();
+
         string GetTreeData();
     }
 }
