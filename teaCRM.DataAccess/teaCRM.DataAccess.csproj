@@ -63,6 +63,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="dll\MySql.Data.dll" />
+    <Content Include="teaCRMDBContext.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="teaCRMDBContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>teaCRMDBContext.txt</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
