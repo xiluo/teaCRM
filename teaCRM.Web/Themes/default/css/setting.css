@@ -1,0 +1,34 @@
+﻿@charset "utf-8";
+body,div,dl,dt,dd,ul,ol,li,form,input,textarea,select,p,h1,h2,h3,h4,h5,h6{padding:0;margin:0}
+body,button,input,select,textarea{font:12px/1.5 "微软雅黑",Tahoma,Arial,"宋体"}img{border:none}ul,ol{list-style:none}
+i,em{font-style:normal}a,label,button{outline:none;hide-focus:expression(this.hideFocus=true)}a{color:#685dd6;text-decoration:none}
+body{background: #ECEDF3;}
+.layout-left{display:inline;float:left;width:190px;position:relative;z-index:102;*zoom:1;_height:705px; background-color:#ebf0f7;}
+.layout-right{display:inline;float:right;width:100%;margin-left:-190px;position:relative;z-index:101;*zoom:1;_height:705px}
+.layout-content{margin:10px 10px 0 190px;position:relative;z-index:102;*zoom:1}
+
+
+
+/**组织架构左侧及右侧详细页面部分----------------------------------------------------------------------------------------------**/
+.nav-side .ns-item{background:#f3f8fc;border-right:1px solid #a4b8d9;*zoom:1;min-height:500px; padding:0px 0px 10px 0px;}
+.ns-item .c_left{ width:100%; position:relative;zoom:1;background:url(/Themes/default/img/c_left_btn.png) no-repeat; margin-bottom:10px;}
+.ns-item .c_left ul{position:relative; height:38px; z-index:1}
+.ns-item .c_left ul li{width:92px; height:38px; font-size:15px; font-weight:700; line-height:36px; z-index:1; cursor:pointer;display: inline-block;}
+.ns-item .c_left ul li .oz0{margin-left:30px;text-shadow: white 0 1px 0;color: #3C6692;}
+.ns-item .c_left ul li a:hover{ color:#000;}
+
+#nobgmian{overflow:hidden;  margin:15px auto; width:100%;}
+.titbox{ margin-bottom:15px; margin-top:15px;}
+.titbox td{border-bottom:#E6E6E6 solid 2px;}
+.titbox td.tit{ font-size:14px; font-weight:bold; border-bottom:#1D88B3 solid 2px; height:20px;}
+/***表格详情**/
+.tableInfo{}
+.tableInfo td{ padding:8px 0px; line-height:22px;}
+.tableInfo td.blue{color:#016B96}
+.tableInfo td span.blue{color:#016B96}
+/***标题有底边**/
+.boxTitle{ border:#D2D2D2 solid 0px; background:#FFF; overflow:hidden;}
+.boxTitle h2{height:34px; line-height:34px; color:#2D2D2D; font-size:14px; font-weight:bold; padding-left:20px; border-bottom:#D2D2D2 solid 1px; margin-bottom:10px; background-color:#eef5fa;}
+.boxTitle h2 button{ float:right; margin-right:10px; margin-top:6px;font-size:12px;}
+/**其他小标签**/
+.linkico{ background:url(/Themes/default/Base/Images/ico/link.png) 0px 12px no-repeat;}

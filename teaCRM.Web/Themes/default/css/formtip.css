@@ -1,0 +1,98 @@
+﻿   div.tip-yellow
+        {
+            visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        div.tip-yellow table, div.tip-yellow td
+        {
+            margin: 0;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            font-style: inherit;
+            font-variant: inherit;
+        }
+        div.tip-yellow td.tip-bg-image span
+        {
+            display: block;
+            font: 1px/1px sans-serif;
+            height: 10px;
+            width: 10px;
+            overflow: hidden;
+        }
+        div.tip-yellow td.tip-right
+        {
+            background-position: 100% 0;
+        }
+        div.tip-yellow td.tip-bottom
+        {
+            background-position: 100% 100%;
+        }
+        div.tip-yellow td.tip-left
+        {
+            background-position: 0 100%;
+        }
+        div.tip-yellow div.tip-inner
+        {
+            background-position: -10px -10px;
+        }
+        div.tip-yellow div.tip-arrow
+        {
+            visibility: hidden;
+            position: absolute;
+            overflow: hidden;
+            font: 1px/1px sans-serif;
+        }
+        
+        
+        
+        
+         div.tip-yellowsimple
+        {
+            visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        div.tip-yellowsimple table, div.tip-yellowsimple td
+        {
+            margin: 0;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            font-style: inherit;
+            font-variant: inherit;
+        }
+        div.tip-yellowsimple td.tip-bg-image span
+        {
+            display: block;
+            font: 1px/1px sans-serif;
+            height: 10px;
+            width: 10px;
+            overflow: hidden;
+        }
+        div.tip-yellowsimple td.tip-right
+        {
+            background-position: 100% 0;
+        }
+        div.tip-yellowsimple td.tip-bottom
+        {
+            background-position: 100% 100%;
+        }
+        div.tip-yellowsimple td.tip-left
+        {
+            background-position: 0 100%;
+        }
+        div.tip-yellowsimple div.tip-inner
+        {
+            background-position: -10px -10px;
+        }
+        div.tip-yellowsimple div.tip-arrow
+        {
+            visibility: hidden;
+            position: absolute;
+            overflow: hidden;
+            font: 1px/1px sans-serif;
+        }

@@ -1,0 +1,82 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teaCRM.DataAccess", "teaCRM.DataAccess\teaCRM.DataAccess.csproj", "{14916BB3-3CDF-4E85-BA43-8D1581566BBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teaCRM.Model", "teaCRM.Model\teaCRM.Model.csproj", "{3A0B198F-1197-4661-BEC2-4DA646451894}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teaCRM.Dao", "teaCRM.Dao\teaCRM.Dao.csproj", "{6887CE80-724B-4E77-9523-89FBEB753E6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teaCRM.Service", "teaCRM.Service\teaCRM.Service.csproj", "{087A655B-AB00-4130-A1A5-7EFB707D60FB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{6182565A-D50D-4517-9ADE-7D54B575A994}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teaCRM.Common", "teaCRM.Common\teaCRM.Common.csproj", "{D03BBC00-649A-43B6-BB8D-65CB34AECC53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teaCRM.Plugin.Framework", "teaCRM.Plugin.Framework\teaCRM.Plugin.Framework.csproj", "{CADFF87F-C744-412F-B943-BED289159593}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "teaCRM.Docs", "teaCRM.Docs", "{5DAFA744-C9F2-44F6-B71B-F888B602099D}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\文档\CRM客户关系网站整体定位_0714.doc = ..\..\文档\CRM客户关系网站整体定位_0714.doc
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teaCRM.Web", "teaCRM.Web\teaCRM.Web.csproj", "{20C4980B-EE81-4C68-AA86-A5B7BCE3166B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teaCRM.Web.Test", "teaCRM.Web.Test\teaCRM.Web.Test.csproj", "{5D69E2D6-DFFD-4D87-8800-3A901DD9010D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9B26373D-311B-4DE2-82EE-C54EA0B50BD3}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		teaCRM.vsmdi = teaCRM.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = teaCRM.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14916BB3-3CDF-4E85-BA43-8D1581566BBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14916BB3-3CDF-4E85-BA43-8D1581566BBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14916BB3-3CDF-4E85-BA43-8D1581566BBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14916BB3-3CDF-4E85-BA43-8D1581566BBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A0B198F-1197-4661-BEC2-4DA646451894}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A0B198F-1197-4661-BEC2-4DA646451894}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A0B198F-1197-4661-BEC2-4DA646451894}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A0B198F-1197-4661-BEC2-4DA646451894}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{087A655B-AB00-4130-A1A5-7EFB707D60FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{087A655B-AB00-4130-A1A5-7EFB707D60FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{087A655B-AB00-4130-A1A5-7EFB707D60FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{087A655B-AB00-4130-A1A5-7EFB707D60FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D03BBC00-649A-43B6-BB8D-65CB34AECC53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D03BBC00-649A-43B6-BB8D-65CB34AECC53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D03BBC00-649A-43B6-BB8D-65CB34AECC53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D03BBC00-649A-43B6-BB8D-65CB34AECC53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CADFF87F-C744-412F-B943-BED289159593}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CADFF87F-C744-412F-B943-BED289159593}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CADFF87F-C744-412F-B943-BED289159593}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CADFF87F-C744-412F-B943-BED289159593}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20C4980B-EE81-4C68-AA86-A5B7BCE3166B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20C4980B-EE81-4C68-AA86-A5B7BCE3166B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20C4980B-EE81-4C68-AA86-A5B7BCE3166B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20C4980B-EE81-4C68-AA86-A5B7BCE3166B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D69E2D6-DFFD-4D87-8800-3A901DD9010D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D69E2D6-DFFD-4D87-8800-3A901DD9010D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D69E2D6-DFFD-4D87-8800-3A901DD9010D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D69E2D6-DFFD-4D87-8800-3A901DD9010D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

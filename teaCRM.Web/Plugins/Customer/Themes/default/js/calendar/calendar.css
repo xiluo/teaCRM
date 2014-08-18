@@ -1,0 +1,293 @@
+/* The main calendar widget.  DIV containing a table. */
+
+.calendar {
+  position: relative;
+  display: none;
+  border:2px solid #C9D7F1;
+  font-size: 11px;
+  color: #666;
+  cursor: default;
+ background:white;
+  font-family:arial;
+  margin-top:2px;
+  z-index:2000;
+  width:200px;
+  left:145px;
+  top:150px;
+}
+
+.calendar table {
+  font-size: 12px;
+  color: #666;
+  cursor: default;
+ background:white;
+  font-family: tahoma,verdana,sans-serif;
+}
+
+/* Header part -- contains navigation buttons and day names. */
+
+.calendar .button { /* "<<", "<", ">", ">>" buttons have this class */
+  text-align: center;
+  padding: 1px;
+}
+
+.calendar thead .title { /* This holds the current "month, year" */
+  padding: 1px;
+  background:;
+  color: #000;
+  text-align: center;
+}
+
+.calendar thead .headrow { /* Row <TR> containing navigation buttons */
+}
+
+.calendar thead .daynames { /* Row <TR> containing the day names */
+}
+
+.calendar thead .name { /* Cells <TD> containing the day names */
+ /* border-bottom: 1px solid #000;*/
+  padding:7px 2px;
+  text-align: center;
+  background: #E5ECF9;
+  font-size:12px;
+  /*background:white;*/
+}
+
+.calendar thead .weekend { /* How a weekend day name shows in header */
+  color: #f00;
+  color:#666;
+ 
+}
+
+.calendar thead .hilite { /* How do the buttons in header appear when hover */
+}
+
+.calendar thead .active { /* Active (pressed) buttons in header */
+  border-top: 1px solid #000;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  border-left: 1px solid #000;
+  background: #b8c0c4;
+}
+
+/* The body part -- contains all the days in month. */
+
+.calendar tbody .day { /* Cells <TD> containing month days dates */
+  width: 2em;
+  text-align: center;
+  padding: 4px 2px 4px 2px;
+  font-size:12px;
+}
+
+.calendar table .wn {
+  padding: 2px 3px 2px 2px;
+  border-right: 1px solid #000;
+  background: #e8f4f0;
+}
+
+.calendar tbody .rowhilite td {
+  /*background: #fff;*/
+  cursor:pointer;
+}
+
+.calendar tbody .rowhilite td.wn {
+  background: #c8d4d0;
+}
+
+.calendar tbody td.hilite { /* Hovered cells <TD> */
+}
+
+.calendar tbody td.active { /* Active (pressed) cells <TD> */
+  padding: 1px 1px 0px 1px;
+  border: 1px solid;
+  border-color: #000 #fff #fff #000;
+}
+
+.calendar tbody td.selected { /* Cell showing selected date */
+  /*font-weight: bold;*/
+  padding: 2px 2px 0px 2px;
+  border-color: #000 #fff #fff #000;
+ /* color:#000;*/
+}
+
+.calendar tbody td.weekend { /* Cells showing weekend days */
+}
+
+.calendar tbody td.today { /* Cell showing today date */
+  font-weight: bold;
+  color:#000;
+}
+
+.calendar tbody .disabled { color: #999; }
+
+.calendar tbody .emptycell { /* Empty cells (the best is to hide them) */
+  visibility: hidden;
+}
+
+.calendar tbody .emptyrow { /* Empty row (some months need less than 6 rows) */
+  display: none;
+}
+
+/* The footer part -- status bar and "Close" button */
+
+.calendar tfoot .footrow { /* The <TR> in footer (only one right now) */
+}
+
+.calendar tfoot .ttip { /* Tooltip (status bar) cell <TD> */
+  background:#fff;  
+  padding: 1px;
+  background: #788084;
+  background:#fff; 
+  /*color: #fff;*/color:#000;
+  text-align: center;
+}
+
+.calendar tfoot .hilite { /* Hover style for buttons in footer */
+  border-top: 1px solid #fff;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  border-left: 1px solid #fff;
+  padding: 1px;
+  background: #d8e0e4;
+}
+
+.calendar tfoot .active { /* Active (pressed) style for buttons in footer */
+  padding: 2px 0px 0px 2px;
+  border-top: 1px solid #000;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  border-left: 1px solid #000;
+}
+
+/* Combo boxes (menus that display months/years for direct selection) */
+
+.combo {
+  position: absolute;
+  display: none;
+  width: 4em;
+  top: 0px;
+  left: 0px;
+  cursor: default;
+  border-top: 1px solid #fff;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  border-left: 1px solid #fff;
+  background: #d8e0e4;
+  font-size: smaller;
+  padding: 1px;
+}
+
+.combo .label {
+  text-align: center;
+  padding: 1px;
+}
+
+.combo .active {
+ /* background: #c8d0d4;*/
+ background:white;
+  padding: 0px;
+  border-top: 1px solid #000;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  border-left: 1px solid #000;
+}
+
+.combo .hilite {
+  background: #048;
+  color: #aef;
+}
+#objyprev,#objynext,#objmprev,#objmnext,#objclose{ cursor:pointer;}
+#objynext,#objmnext{
+	margin-right:15px;
+	}
+#objyprev,#objmprev{
+	margin-left:15px;
+	}
+#objclose{
+	margin-right:5px;
+	}
+#shows{
+	height:230px;
+	}
+.show{display:none;}
+.tips {
+    height: 215px;
+    width: 120px;
+	float:left;
+}
+.tags_color{ margin: 20px 0 20px 45px;}
+.tags_colors{ margin-top: 40px;}
+/*满足不同条件时添加的底色*/
+.col1,.col2,.col3{
+	display: inline-block;
+    height: 15px;
+    line-height: 20px;
+    position: relative;
+    vertical-align: middle;
+    width: 15px;
+	color:#FFF;
+	margin-right:3px;
+	}
+.col-1,.col-2,.col-3{ color:#fff;}
+.col1,.col-1{
+	background-color:#09F551;}
+.col2,.col-2{
+	background-color:#39B141;
+	}
+.col3,.col-3{
+	background-color:#EF3450;
+	}
+.bg_img{
+	background:url(img/btn_bgs.png) no-repeat;}
+.state-person{ text-decoration:underline; margin-left:20px;}
+#tb-click{border-collapse: collapse;border-spacing: 0; margin-left:5px; margin-right:5px;}
+.hid{ display:none;}
+#add_contact{ width:490px;}
+.tip_message {
+    width: 120px;
+	color:#F00;
+	margin-top:40px;
+}
+.calendar tbody .day:hover{
+	background-color: #c7d7f0;}
+.tip_s {
+    float: right;
+    width: 130px;
+}
+.wait_name {
+    border: 1px solid #C9D7F1;
+    color: #2C4D79;
+    float: right;
+   /* height: 180px;*/
+    margin-right: 10px;
+    width: 120px;
+	display:none;
+}
+.wait_name span {
+    display: block;
+    text-align: center;
+	background: #E5ECF9;
+}
+.wait_name_list li {
+    height: 23px;
+    line-height: 23px;
+    padding-left: 15px;
+	border-bottom: 1px solid #E5ECF9;
+	overflow: hidden;
+	ext-overflow: ellipsis;
+	white-space: nowrap;
+	cursor:pointer;
+	color:#5778BC;
+}
+.wait_name_list li:hover{
+	background-color:#c7d7f0;}
+.wait_name_list {
+    /*height: 162px;
+    overflow-y:scroll;*/
+}
+.wait_name_list ul {
+    max-height: 177px;
+    overflow: auto;
+}
+.cust_numb{ display:inline-block; height: 22px;margin-top: 3px;}
+.checked_date{background-color: #c7d7f0;}

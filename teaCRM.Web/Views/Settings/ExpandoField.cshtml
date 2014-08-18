@@ -1,0 +1,873 @@
+@using teaCRM.Common
+@model dynamic
+
+@{
+var rootPath = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section head {
+    <title>自定义字段_系统设置_teaCRM</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+}
+
+
+<!-- liguerUI 模块管理管理页面需要导入的js、css -->
+<script id="stat_script" src="http://www5.53kf.com/stat.php?com_id=72000079&amp;referer=http%3A%2F%2Fcrm6.53kf.com%2Findex.php%3Fcontroller%3Dfield%26arg%3Dp10077740_10099123&amp;keyword=http%3A%2F%2Fsaas6.53kf.com%2Findex.php%3Fcontroller%3Dworker%26arg%3Dp10077740_10099123%26t%3D6838924740%26sign%3D556ed66820ff36625a2bae0797a4c4365e3f416f" charset="utf-8"></script>
+<script id="ivt_script" src="http://www5.53kf.com/kf_ivt.php?arg=10000079&amp;test_do=&amp;style=4&amp;isonline=1&amp;kfonline=1&amp;lang=zh-cn&amp;resize=yes&amp;charset=gbk&amp;kflist=off&amp;kf=0471,0139,0532,0067,0538,0427,0302&amp;zdkf_type=1&amp;referer=http%3A%2F%2Fcrm6.53kf.com%2Findex.php%3Fcontroller%3Dfield%26arg%3Dp10077740_10099123&amp;keyword=http%3A%2F%2Fsaas6.53kf.com%2Findex.php%3Fcontroller%3Dworker%26arg%3Dp10077740_10099123%26t%3D6838924740%26sign%3D556ed66820ff36625a2bae0797a4c4365e3f416f&amp;lytype=0&amp;tpl_name=crystal_blue&amp;tpl_width=703&amp;tpl_height=473&amp;0.9265585048124194" charset="utf-8"></script>
+<meta charset="UTF-8">
+<link href="http://jt.53kf.com/min/?g=crm.head.css&amp;crm2014070801" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+	//___ 全局变量 ___//
+	var page = 1;
+	var controller = "field";
+	var action = "index";
+	var arg = "p10077740_10099123";
+	var market_host = "www.53kf.com";
+	var static_host = "jt.53kf.com";
+	var call_host = "call.53kf.com";
+	var crm_host = "crm6.53kf.com";
+	var talk_host="www2.53kf.com";
+</script>
+<script type="text/javascript" src="http://jt.53kf.com/min/?g=jquery.js&amp;crm2014070801"></script>
+<link href="http://jt.53kf.com/css/poshytip.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="http://jt.53kf.com/js/artDialog/skins/default.css?4.1.3">
+<script type="text/javascript" src="http://jt.53kf.com/js/artDialog/jquery.artDialog.source.js?crm2014070801"></script>
+<script type="text/javascript" src="http://jt.53kf.com/js/artDialog/plugins/iframeTools.source.js?crm2014070801"></script>
+<script type="text/javascript">
+setInterval(function(){
+	$.get('?controller=global&action=sessionlife', {arg: arg});
+}, 300000);
+</script>
+<script type="text/javascript" src="http://jt.53kf.com/js/drag.js"></script>
+<script type="text/javascript">
+function set_ucust_id(value) {
+if (!value) return;
+var expires = new Date();
+expires.setTime(expires.getTime() + 315360000000);
+document.cookie = "ucust_id=" + window.encodeURIComponent(value) + "; path=/; expires=" + expires.toUTCString() + "; domain=" + location.hostname;
+}
+set_ucust_id('10077740');
+</script>
+<script type="text/javascript" src="http://jt.53kf.com/js/global.js?crm2014070801"></script>
+
+<script type="text/javascript" src="http://crm6.53kf.com/js/common.js?crm2014070801"></script>
+<script type="text/javascript">
+	$(function(){
+		menuAddFocus('menu-field');
+	});
+
+	var unloadLock = false;
+	window.onbeforeunload = function() {
+		if (unloadLock) {
+			if (window.event) {
+				window.event.returnValue = "您还没有保存，确定要离开此页面？";
+			}
+			else {
+				return false;
+			}
+		}
+	}; 
+	(function() {
+		
+		$('.xDragCell').live('mouseover', function() {
+			$(this).find('.btns').css('display', 'block');	
+		});
+		$('.xDragCell').live('mouseout', function() {
+			$(this).find('.btns').css('display', '');	
+		});
+
+		$('.xDragCell .cbox').live('click', function() {
+			var cell = $(this).parents('.xDragCell');
+			if (this.checked) {
+				this.parentNode.parentNode.setAttribute('required', '1');
+				cell.addClass('nece');
+				// cell.attr('required', '1');
+			}
+			else {
+				this.parentNode.parentNode.setAttribute('required', '0');
+				// $(this).parents('.xDragCell').removeClass('nece').attr('required', '0');
+				cell.removeClass('nece');
+				// cell.attr('required', '0');
+			}
+
+			unloadLock = true;
+
+		});
+		
+		filterBarFloat();
+	}) ();
+
+	function changeType(that,type) {
+		var value = !type ? that.options[that.selectedIndex].value : type;
+		if (value == 'choose' || value == 'checkbox' || value == 'radio') {
+			$("input[name='default']").val('');
+			document.getElementById('field-tr-option').style.display = '';
+			document.getElementById('field-tr-range').style.display = 'none';
+			document.getElementById('field-tr-default-val').style.display = '';
+			//document.getElementById('field-tr-link-val').style.display = '';
+			art.dialog.list['field_info'].size(450,250);
+		}
+		else if (value == 'number') {
+			$("input[name='default']").val('');
+			document.getElementById('field-tr-range').style.display = '';
+			document.getElementById('field-tr-option').style.display = 'none';
+			document.getElementById('field-tr-default-val').style.display = '';
+			//document.getElementById('field-tr-link-val').style.display = '';
+			art.dialog.list['field_info'].size(450,140);
+		}
+		else if (value == 'link') {
+			$("input[name='default']").val('http://');
+			$("input[name='link']").val('');
+			document.getElementById('field-tr-range').style.display = 'none';
+			document.getElementById('field-tr-option').style.display = 'none';
+			document.getElementById('field-tr-default-val').style.display = '';
+			//document.getElementById('field-tr-link-val').style.display = 'none';
+			art.dialog.list['field_info'].size(450,140);
+		}
+		else if (value == 'file') {
+			$("input[name='default']").val('');
+			$("input[name='link']").val('');
+			document.getElementById('field-tr-range').style.display = 'none';
+			document.getElementById('field-tr-option').style.display = 'none';
+			document.getElementById('field-tr-default-val').style.display = 'none';
+			//document.getElementById('field-tr-link-val').style.display = 'none';
+			art.dialog.list['field_info'].size(450,110);
+		}
+		else {
+			$("input[name='default']").val('');
+			document.getElementById('field-tr-range').style.display = 'none';
+			document.getElementById('field-tr-option').style.display = 'none';
+			document.getElementById('field-tr-default-val').style.display = '';
+			//document.getElementById('field-tr-link-val').style.display = '';
+			art.dialog.list['field_info'].size(450,140);
+		}
+		
+	}
+
+	CP = {
+		sort: 0,						// 添加操作的临时ID索引
+		property: 0,					// 添加操作的临时ID索引前缀
+		propertyFix: 'TEMP-P-',
+		sortFix: 'TEMP-S-',
+		trash: null,
+		createSortHtml: function(name) {
+			this.sort ++;
+			var id = this.sortFix + this.sort;
+			var html =	'<div class="blue-box-1">' + 
+							'<div class="title"><strong id="sort-name-' + id + '" class="tt">' + name + '</strong><div class="tr"><a title="添加属性" class="c-add" onclick="CP.addProperty(\'' + id + '\');"></a><a class="c-rename" title="重命名栏目" onclick="CP.renameSort(\'' + id + '\');"></a><a class="c-del" title="删除栏目" onclick="CP.delSort(\'' + id + '\');"></a></div></div>' + 
+							'<div class="xDragRow clearfix" id="sort-' + id + '">' + 
+							'</div>' + 
+						'</div>';
+			var node = this.stringParseObject(html);
+			return node[0];
+		},
+		createPropertyHtml: function(d) {
+			this.property ++;
+			var id = this.propertyFix + this.property;
+
+			var j = {
+				'name': '',
+				'required': '',
+				'type': '',
+				'option': '',
+				'min': '',
+				'max': '',
+				'default': '',
+				'link': ''
+			};
+
+			var cl = '', ch = '';
+
+			for (var i in d) {
+				(d[i] != undefined) && (j[i] = d[i]);
+			}
+
+			if (j.required == '1') {
+				cl = ' nece';
+				ch = ' checked';
+			}
+
+			var html = '<div id="property-' + id + '" operat="add" class="xDragCell' + cl + '" name="'+ j['name'] +'" required="'+ j['required'] +'" type="'+ j['type'] +'" option="' + j['option'] + '" min="' + j['min'] + '" max="' + j['max'] + '" default="' + j['default'] + '" link="' + j['link'] + '"><span class="pname" id="property-name-' + id + '">' + j['name'] + '</span><span class="btns" nomove="nomove"><a onclick="CP.editProperty(\'' + id + '\');" title="编辑属性" class="edit" nomove="nomove"></a><a onclick="CP.delProperty(\'' + id + '\');" title="删除属性" class="del" nomove="nomove"></a><input title="必填属性" nomove="nomove" class="cbox" type="checkbox"' + ch + '></span></div>';
+			var node = this.stringParseObject(html);
+			return node[0];
+		},
+		addSort: function() {
+			$.dialog({
+				title: '添加栏目',
+				padding: '10px 10px',
+				content: '<input id="createBox" type="text" onkeyup="inputCode(this);" class="comm-tbox-1" size="35">',
+				ok: function() {
+					var tbox = document.getElementById('createBox'),
+						exists = false;
+						name = tbox.value,
+						name = $.trim(name);
+					if (name == '') {
+						return false;
+					}
+					if (name.length > 10) {
+						box.tip('栏目名称字符数最多10个！');
+						document.getElementById('createBox').select();
+						return false;
+					}
+					$('.blue-box-1 .title .tt').each(function() {
+						if ($(this).text() == name) {
+							exists = true;
+						}
+					});
+					if (exists) {
+						box.alert('“' + name + '”已存在');
+						return false;
+					}
+					var node = CP.createSortHtml(name);
+					document.getElementById('sort-cols').appendChild(node);
+					CP.data[CP.sortFix + CP.sort.toString()] = {
+						name: name,
+						operat: 'add',
+						property: {
+
+						}
+					};
+					XD.objInit();
+					unloadLock = true;
+				},
+				cancel: true
+			});
+			document.getElementById('createBox').select();
+		},
+		stringParseObject: function(string) {
+			var node = document.createElement('div');
+			node.innerHTML = string;
+			return node.childNodes;
+		},
+		delSort: function(id) {
+			var C = this;
+			box.confirm("确定删除当前栏目?<br />栏目中所有元素将会放入垃圾箱", function() {
+				var e = new RegExp(C.sortFix, 'i');
+				var ob = document.getElementById('sort-' + id);
+				if (e.test(id)) {		// 临时ID 则 直接删除JSON
+					delete C.data[id];
+				}
+				else {					// 更改json中栏目的operat
+					if (ob.getAttribute('system')) {		// 系统栏目，无法删除
+						box.alert('系统栏目，无法删除');
+						return;
+					}
+					else {
+						C.data[id].operat = 'delete';
+					}
+				}
+
+				var nodes = ob.getElementsByTagName('div'), clone = null;
+				for (var i = 0, len = nodes.length, n = 0; i < len; i ++) {
+					if (nodes[n] && nodes[n].nodeType !== 3) {
+						C.trash.appendChild(nodes[n]);
+					}
+					else {
+						n ++;
+					}
+				}
+				
+				ob.parentNode.parentNode.removeChild(ob.parentNode);
+				if ($(document).scrollTop() > 77) {
+					if ($('.filter-bar-holder').size() == 0) {
+						var holder = document.createElement('div');
+						holder.className = 'filter-bar-holder';
+						holder.style.height = '47px';
+						$('.filter-bar').after(holder);
+					}
+					$('.filter-bar').css({'position': 'fixed', 'top': 0, 'left': 170});
+				}
+				else {
+					$('.filter-bar-holder').remove();
+					$('.filter-bar').css({'position': 'relative', 'top': 0, 'left': 0});
+				}
+				unloadLock = true;
+			});
+		},
+		delProperty: function(id) {
+			var e = new RegExp(this.propertyFix, 'i');
+			var ob = document.getElementById('property-' + id);
+			if (e.test(id)) {		// 临时ID，直接删除DOM	
+				ob.parentNode.removeChild(ob);
+			}
+			else {					// 非临时Id，添加deleted
+				ob.setAttribute('operat', 'delete');
+				ob.style.display = 'none';
+			}
+			unloadLock = true;
+		},
+		propertyTypes: {"text":"\u5b57\u7b26","longtext":"\u957f\u5b57\u7b26","link":"\u94fe\u63a5","number":"\u6570\u5b57","choose":"\u4e0b\u62c9\u6846","checkbox":"\u590d\u9009\u6846","radio":"\u5355\u9009\u6846","file":"\u9644\u4ef6","date":"\u65e5\u671f","datetime":"\u65f6\u95f4"},
+		typeOptions: function(v) {
+			var option = '';
+			for (var i in this.propertyTypes) {
+				option += (i !== v) ? '<option value="' + i + '">' + this.propertyTypes[i] + '</option>' : '<option value="' + i + '" selected>' + this.propertyTypes[i] + '</option>';
+			}
+			return option;
+		},
+		dialogPropertyHtml: function(d) {
+			var j = {
+				'name': '',
+				'required': '',
+				'type': '',
+				'option': '',
+				'min': '',
+				'max': '',
+				'default': '',
+				'link':''
+			};
+
+			var ch = '', trOption = 'none', trRange = 'none';
+			for (var i in d) {
+				(d[i] != undefined) && (j[i] = d[i]);
+			}
+			if (j.required == '1') {
+				ch = 'checked';
+			}
+
+			if (j.type == 'choose' || j.type == 'checkbox' || j.type == 'radio') {
+				trOption = '';
+			}
+			else if (j.type == 'number') {
+				trRange = '';
+			}
+			var code =	'<form name="propertyForm"><table class="dialog-add-form" style="width: 450px;" cellspacing="0">' +
+							'<tr>' +
+								'<td width="100" align="right">属性名称：</td>' +
+								'<td align="left"><input type="text" name="name" onkeyup="inputCode(this);" class="comm-tbox-1" size="25" value="' + j['name'] + '" autocomplete="off"></td>' +
+							'</tr>' +
+							'<tr id="field-tr-default">' +
+								'<td width="100" align="right">必填：</td>' +
+								'<td align="left"><input type="checkbox" name="required" ' + ch + '></td>' +
+							'</tr>' +
+							'<tr>' +
+								'<td width="100" align="right">属性类型：</td>' +
+								'<td align="left"><select name="type" onchange="changeType(this);">' +
+								this.typeOptions(j['type']) +
+								'</select></td>' +
+							'</tr>' +
+							'<tr id="field-tr-option" style="display: '+ trOption +';">' +
+								'<td width="100" align="right">属性选项：</td>' +
+								'<td align="left"><textarea type="text" name="option" class="comm-abox-1" style="width:300px; height:70px;">' + j['option'] + '</textarea><p style="color:#999;">每个选项使用"|"竖线分割，例：<b style="color:#c00;">张三|李四|王五</b></p></td>' +
+							'</tr>' +
+							'<tr id="field-tr-range" style="display: '+ trRange +';">' +
+								'<td width="100" align="right">数值范围：</td>' +
+								'<td align="left"><input type="text" name="min" class="comm-tbox-1" size="8" value="' + j.min + '"> - <input type="text" name="max" class="comm-tbox-1" size="8" value="' + j.max + '"></td>' +
+							'</tr>' +
+							'<tr id="field-tr-default-val">' +
+								'<td width="100" align="right">默认值：</td>' +
+								'<td align="left"><input type="text" name="default" class="comm-tbox-1" size="25" value="' + j['default'] + '"></td>' +
+							'</tr>' +
+							'<tr id="field-tr-link-val" style="display:none">' +
+							'<td width="100" align="right">链接：</td>' +
+							'<td align="left"><input type="text" name="link" class="comm-tbox-1" size="25" value="' + j['link'] + '"></td>' +
+							'</tr>' +
+						'</table></form>';
+			return code;
+		},
+		addProperty: function(id) {
+			var content = this.dialogPropertyHtml();
+			$.dialog({
+				id: 'field_info',
+				title: '添加属性',
+				padding: '0 10px',
+				content: content,
+				ok: function() {
+					var form = document.forms['propertyForm'],
+						exists = false;
+					var j = {
+						'name': form['name'].value,
+						'required': form['required'].checked ? '1' : '0',
+						'type': form['type'].options[form['type'].selectedIndex].value,
+						'default': form['default'].value,
+						'link': form['link'].value,
+						'option': form['option'].value,
+						'min': form['min'].value,
+						'max': form['max'].value
+					};
+					var name = $.trim(j['name']);
+					if (name == '') {
+						box.tip('属性名称不能为空！');
+						document.forms['propertyForm']['name'].select();
+						return false;
+					}
+					if (name.length > 10) {
+						box.tip('属性名称字符数最多10个！');
+						document.forms['propertyForm']['name'].select();
+						return false;
+					}
+					if(j['type'] == 'number'){
+						var num_reg = new RegExp(/^([+-]?)\d*\.?\d{0,}$/);	//浮点数
+						if((j['min'] && !num_reg.test(j['min'])) || (j['max'] && !num_reg.test(j['max']))){
+							box.tip('数值范围格式不正确！');
+							return false;
+						}
+						if(j['min'] && j['max'] && parseFloat(j['max']) < parseFloat(j['min'])){
+							box.tip('最大值不能小于最小值！');
+							document.forms['propertyForm']['max'].select();
+							return false;
+						}
+						if(j['default'] && !num_reg.test(j['default'])){
+							box.tip('默认值格式不正确！');
+							document.forms['propertyForm']['default'].select();
+							return false;
+						}
+						if(j['min'] && parseFloat(j['default']) < parseFloat(j['min'])){
+							box.tip('默认值不能小于最小值！');
+							document.forms['propertyForm']['default'].select();
+							return false;
+						}
+						if(j['max'] && parseFloat(j['default']) > parseFloat(j['max'])){
+							box.tip('默认值不能大于最大值！');
+							document.forms['propertyForm']['default'].select();
+							return false;
+						}
+					}
+					if(j['type'] == 'link'){
+						var link = $.trim(j['default']);
+						if(link == '') form['default'].value = 'http://';
+					}
+					if(j['link'].length>0){
+						if(!/^https?:\/\//.test(j['link'])){
+							box.tip('链接必须已http://或https://开头！');
+							document.forms['propertyForm']['link'].select();
+							return false;
+						}
+					}
+
+					$('.xDragCell .pname').each(function() {
+						if ($(this).text() == name) {
+							exists = true;
+						}
+					});
+					if (exists) {
+						box.alert('“' + name + '”已存在');
+						return false;
+					}
+					var node = CP.createPropertyHtml(j);
+					document.getElementById('sort-' + id).appendChild(node);
+					// CP.data[id].property[CP.propertyFix + CP.property.toString()] = {
+					// 	name: name,
+					// 	operat: 'add'
+					// };
+					unloadLock = true;
+				},
+				cancel: true
+			});
+			document.forms['propertyForm']['name'].select();
+		},
+		editProperty: function(id) {
+			var ob = document.getElementById('property-' + id),
+				nb = document.getElementById('property-name-' + id),
+				sname = nb.innerHTML;
+
+			var j = {
+				'name': ob.getAttribute('name'),
+				'required': ob.getAttribute('required'),
+				'default': ob.getAttribute('default'),
+				'link': ob.getAttribute('link'),
+				'min': ob.getAttribute('min'),
+				'max': ob.getAttribute('max'),
+				'type': ob.getAttribute('type'),
+				'option': ob.getAttribute('option')
+			};
+			var content = this.dialogPropertyHtml(j);
+			$.dialog({
+				id: 'field_info',
+				title: '编辑属性 - ' + j['name'],
+				padding: '10px 10px',
+				content: content,
+				ok: function() {
+					var form = document.forms['propertyForm'],
+						exists = false;
+					var j = {
+						'name': form['name'].value,
+						'required': form['required'].checked ? '1' : '0',
+						'type': form['type'].options[form['type'].selectedIndex].value,
+						'default': form['default'].value,
+						'link': form['link'].value,
+						'option': form['option'].value,
+						'min': form['min'].value,
+						'max': form['max'].value
+					};
+					var name = $.trim(j['name']);
+					if (name == '') {
+						box.tip('属性名称不能为空！');
+						document.forms['propertyForm']['name'].select();
+						return false;
+					}
+					if (name.length > 10) {
+						box.tip('属性名称字符数最多10个！');
+						document.forms['propertyForm']['name'].select();
+						return false;
+					}
+					if(j['type'] == 'number'){
+						var num_reg = new RegExp(/^([+-]?)\d*\.?\d{0,}$/);	//浮点数
+						if((j['min'] && !num_reg.test(j['min'])) || (j['max'] && !num_reg.test(j['max']))){
+							box.tip('数值范围格式不正确！');
+							return false;
+						}
+						if(j['min'] && j['max'] && parseFloat(j['max']) < parseFloat(j['min'])){
+							box.tip('最大值不能小于最小值！');
+							document.forms['propertyForm']['max'].select();
+							return false;
+						}
+						if(j['default'] && !num_reg.test(j['default'])){
+							box.tip('默认值格式不正确！');
+							document.forms['propertyForm']['default'].select();
+							return false;
+						}
+						if(j['min'] && parseFloat(j['default']) < parseFloat(j['min'])){
+							box.tip('默认值不能小于最小值！');
+							document.forms['propertyForm']['default'].select();
+							return false;
+						}
+						if(j['max'] && parseFloat(j['default']) > parseFloat(j['max'])){
+							box.tip('默认值不能大于最大值！');
+							document.forms['propertyForm']['default'].select();
+							return false;
+						}
+					}
+					if(j['type'] == 'link'){
+						var link = $.trim(j['default']);
+						if(link == '') form['default'].value = 'http://';
+					}
+					if(j['link'].length>0){
+						if(!/^https?:\/\//.test(j['link'])){
+							box.tip('链接必须已http://或https://开头！');
+							document.forms['propertyForm']['link'].select();
+							return false;
+						}
+					}
+
+					$('.xDragCell .pname').each(function() {
+						if ($(this).text() == name && sname != name) {
+							exists = true;
+						}
+					});
+					if (exists) {
+						box.alert('“' + name + '”已存在');
+						return false;
+					}
+
+					nb.innerHTML = j.name;
+					ob.setAttribute('operat', 'edit');
+
+					for (var i in j) {
+						ob.setAttribute(i, j[i]);
+					}
+					
+					if (j.required == '1') {
+						$(ob).addClass('nece');
+						$(ob).find('input').attr('checked', 'checked');
+					}
+					else {
+						$(ob).removeClass('nece');
+						$(ob).find('input').removeAttr('checked');
+					}
+					unloadLock = true;
+				},
+				cancel: true
+			});
+			changeType('',j['type']);	//隐藏不需要输入框
+			document.forms['propertyForm']['name'].select();
+		},
+		renameSort: function(id) {
+			var nb = document.getElementById('sort-name-' + id),
+				sname = nb.innerHTML;
+			if (nb === null) return;
+			$.dialog({
+				title: '重命名 - ' + nb.innerHTML,
+				padding: '10px 10px',
+				content: '<input id="renameBox" type="" onkeyup="inputCode(this);" class="comm-tbox-1" size="35">',
+				ok: function() {
+					var name = document.getElementById('renameBox').value,
+						exists = false;
+						name = $.trim(name);
+					if (name == '') {
+						return false;
+					}
+					if (name.length > 10) {
+						box.tip('栏目名称字符数最多10个！');
+						document.getElementById('renameBox').select();
+						return false;
+					}
+					$('.blue-box-1 .title .tt').each(function() {
+						if ($(this).text() == name && name != sname) {
+							exists = true;
+						}
+					});
+					if (exists) {
+						box.alert('“' + name + '”已存在');
+						return false;
+					}
+					nb.innerHTML = name;
+					CP.data[id].operat = 'rename';
+					CP.data[id].name = name;
+
+					unloadLock = true;
+				},
+				cancel: true
+			});
+			
+			document.getElementById('renameBox').select();
+		},
+		initalData: function() {
+			var C = this;
+			$.get("?controller=field&action=data&arg=p10077740_10099123&1111", function(data){
+				
+				$('#xDrag').html(data);
+				$('.xDragRow').each(function() {
+					var $this = $(this),
+						sid = this.id.replace('sort-', ''),
+						name = document.getElementById('sort-name-' + sid).innerHTML;
+					C.trash = document.getElementById('sort-trash');
+					C.data[sid] = {
+						name: name,
+						operat: '',
+						property: {}
+					};
+				});
+
+
+				XD = new FunXD();
+			});
+			
+		},
+		data: {},
+		saveLock: false,
+		save: function() {
+			if (this.saveLock) return;
+			this.saveLock = true;
+			var C = this,
+				i = 0;
+			$('.xDragRow').each(function() {
+				var $this = $(this),
+					sid = this.id.replace('sort-', ''),
+					ps = $this.find('.xDragCell');
+
+				ps.each(function() {
+					var pid = this.id.replace('property-', ''),
+						operat = this.getAttribute('operat');
+
+					C.data[sid].property[pid] = {
+						'name': this.getAttribute('name'),
+						'required': this.getAttribute('required'),
+						'default': this.getAttribute('default'),
+						'link': this.getAttribute('link'),
+						'min': this.getAttribute('min'),
+						'max': this.getAttribute('max'),
+						'type': this.getAttribute('type'),
+						'option': this.getAttribute('option'),
+						'operat': operat,
+						'index': ''
+					};
+
+					if (operat != 'delete') {
+						C.data[sid].property[pid].index = i;
+						i++;
+					}
+
+				});
+
+			});
+
+			// 保存数据
+			$.ajax({
+				type: "POST",
+				url: "?controller=field&action=save&arg=p10077740_10099123",
+				data: {'data':JSON.stringify(this.data)},
+				dataType: "json",
+				success: function(response){
+					C.data = {};
+					if(response.status=="success"){
+						box.tip(response.msg, response.status);
+						C.initalData();
+
+						unloadLock = false;
+					}else{
+						box.tip("保存失败", "error");
+					}
+
+					C.saveLock = false;
+				}
+			});
+		}
+	};
+	CP.initalData();
+	</script>
+
+
+<div id="settings"  style="margin-top: 90px;">
+  <!--左侧部门开始-->
+  <div class="layout-left">
+    <div id="nav-side" class="nav-side">
+      <div class="ns-item">
+        <div class="c_left">
+          <ul id="22">
+            <li id="221"><span class="om0"></span><a class="oz0">模块管理</a></li>
+          </ul>
+        </div>
+        <ul id="filter_tree" class="l-tree" ligeruiid="filter_tree" style="width: 156px;">
+          <li treedataindex="0" isexpand="undefined" outlinelevel="1" id="1" class="l-first ">
+            <div class="l-body">
+              <div class="l-box l-expandable-open"></div>
+              <div class="l-box l-tree-icon l-tree-icon-folder-open "></div>
+              <span>客户应用</span></div>
+            <ul class="l-children">
+              <li treedataindex="1" isexpand="undefined" outlinelevel="2" id="2" class="l-first ">
+                <div class="l-body">
+                  <div class="l-box l-line"></div>
+                  <div class="l-box l-note"></div>
+                  <div class="l-box l-tree-icon l-tree-icon-leaf "></div>
+                  <span>客户模块</span></div>
+              </li>
+              <li treedataindex="2" isexpand="undefined" outlinelevel="2" id="3" class="l-last ">
+                <div class="l-body">
+                  <div class="l-box l-line"></div>
+                  <div class="l-box l-note-last"></div>
+                  <div class="l-box l-tree-icon l-tree-icon-leaf "></div>
+                  <span>联系人模块</span></div>
+              </li>
+            </ul>
+          </li>
+          <li treedataindex="3" isexpand="undefined" outlinelevel="1" id="4" class="l-last ">
+            <div class="l-body">
+              <div class="l-box l-expandable-open"></div>
+              <div class="l-box l-tree-icon l-tree-icon-folder-open "></div>
+              <span>销售模块</span></div>
+            <ul class="l-children">
+              <li treedataindex="4" isexpand="undefined" outlinelevel="2" id="5" class="l-first l-last l-onlychild ">
+                <div class="l-body">
+                  <div class="l-box"></div>
+                  <div class="l-box l-note-last"></div>
+                  <div class="l-box l-tree-icon l-tree-icon-leaf "></div>
+                  <span>销售机会</span></div>
+              </li>
+              <li treedataindex="4" isexpand="undefined" outlinelevel="2" id="5" class="l-first l-last l-onlychild ">
+                <div class="l-body">
+                  <div class="l-box"></div>
+                  <div class="l-box l-note-last"></div>
+                  <div class="l-box l-tree-icon l-tree-icon-leaf "></div>
+                  <span>跟踪进度</span></div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <div class="l-tree-loading" style="display: none;"></div>
+      </div>
+    </div>
+  </div>
+  <div class="layout-right">
+    <div class="layout-content">
+      <div class="filter-bar" style="position: relative; top: 0px; left: 0px;">
+        <div class="filter-bar-bd"> <a onclick="CP.addSort();" class="btn-white-1" style="margin-left: 150px;"><b>新建栏目</b></a><a onclick="CP.save();" class="btn-blue-1" style="margin-left: 15px;"><b>保存</b></a><a onclick="CP.initalData()" class="btn-white-1" style="margin-left: 15px;"><b>取消</b></a> </div>
+      </div>
+      <div id="xDrag" class="p-custom clearfix">
+        <div id="sort-cols" class="cols">
+          <div class="blue-box-1">
+            <div class="title"> <strong id="sort-name-0" class="tt">基本属性</strong>
+              <div class="tr"> <a title="添加属性" class="c-add" onclick="CP.addProperty('0');"></a> </div>
+            </div>
+            <div id="sort-0" class="clearfix xDragRow" system="system">
+              <div id="property-603347" class="xDragCell nece" system="system" nomove="nomove" name="客户名称" type="text" required="1" default="" option=""> <span id="property-name-603347" class="pname">客户名称</span> <span class="btns" nomove="nomove" style=""> </span> </div>
+              <div id="property-603349" class="xDragCell" system="system" name="邮箱" type="text" required="0" default="" option=""> <span id="property-name-603349" class="pname">邮箱</span> <span class="btns" nomove="nomove" style="">
+                <input title="必填属性" nomove="nomove" class="cbox" type="checkbox">
+                </span> </div>
+              <div id="property-603351" class="xDragCell" system="system" name="城市" type="choose" required="0" default="" option=""> <span id="property-name-603351" class="pname">城市</span> <span class="btns" nomove="nomove">
+                <input title="必填属性" nomove="nomove" class="cbox" type="checkbox">
+                </span> </div>
+              <div id="property-603353" class="xDragCell" system="system" name="邮政编码" type="number" required="0" default="" min="" max=""> <span id="property-name-603353" class="pname">邮政编码</span> <span class="btns" nomove="nomove" style="">
+                <input title="必填属性" nomove="nomove" class="cbox" type="checkbox">
+                </span> </div>
+              <div id="property-603354" class="xDragCell" system="system" name="备注" type="longtext" required="0" default="" option=""> <span id="property-name-603354" class="pname">备注</span> <span class="btns" nomove="nomove" style="">
+                <input title="必填属性" nomove="nomove" class="cbox" type="checkbox">
+                </span> </div>
+            </div>
+          </div>
+          <div class="blue-box-1">
+            <div class="title"> <strong id="sort-name-139270" class="tt">联系记录</strong>
+              <div class="tr"> <a title="添加属性" class="c-add" onclick="CP.addProperty('139270');"></a> </div>
+            </div>
+            <div id="sort-139270" class="clearfix xDragRow">
+              <div id="property-603355" class="xDragCell" system="system" name="下次联系时间" type="text" required="0" default="" option=""> <span id="property-name-603355" class="pname">下次联系时间</span> <span class="btns" nomove="nomove" style="">
+                <input title="必填属性" nomove="nomove" class="cbox" type="checkbox">
+                </span> </div>
+              <div id="property-603356" class="xDragCell" system="system" name="上次联系时间" type="text" required="0" default="" option=""> <span id="property-name-603356" class="pname">上次联系时间</span> <span class="btns" nomove="nomove" style="">
+                <input title="必填属性" nomove="nomove" class="cbox" type="checkbox">
+                </span> </div>
+              <div id="property-603357" class="xDragCell" system="system" name="上次联系方式" type="text" required="0" default="" option=""> <span id="property-name-603357" class="pname">上次联系方式</span> <span class="btns" nomove="nomove" style="">
+                <input title="必填属性" nomove="nomove" class="cbox" type="checkbox">
+                </span> </div>
+              <div id="property-603358" class="xDragCell" system="system" name="本周联系次数" type="text" required="0" default="" option=""> <span id="property-name-603358" class="pname">本周联系次数</span> <span class="btns" nomove="nomove">
+                <input title="必填属性" nomove="nomove" class="cbox" type="checkbox">
+                </span> </div>
+              <div id="property-603359" class="xDragCell" system="system" name="联系总次数" type="text" required="0" default="" option=""> <span id="property-name-603359" class="pname">联系总次数</span> <span class="btns" nomove="nomove">
+                <input title="必填属性" nomove="nomove" class="cbox" type="checkbox">
+                </span> </div>
+            </div>
+          </div>
+          <div class="blue-box-1">
+            <div class="title"> <strong id="sort-name-139271" class="tt">消费记录</strong>
+              <div class="tr"> <a title="添加属性" class="c-add" onclick="CP.addProperty('139271');"></a> </div>
+            </div>
+            <div id="sort-139271" class="clearfix xDragRow">
+              <div id="property-603360" class="xDragCell" system="system" name="上次成交时间" type="text" required="0" default="" option=""> <span id="property-name-603360" class="pname">上次成交时间</span> <span class="btns" nomove="nomove">
+                <input title="必填属性" nomove="nomove" class="cbox" type="checkbox">
+                </span> </div>
+              <div id="property-603361" class="xDragCell" system="system" name="上次成交金额" type="text" required="0" default="" option=""> <span id="property-name-603361" class="pname">上次成交金额</span> <span class="btns" nomove="nomove">
+                <input title="必填属性" nomove="nomove" class="cbox" type="checkbox">
+                </span> </div>
+              <div id="property-603362" class="xDragCell" system="system" name="初次成交时间" type="text" required="0" default="" option=""> <span id="property-name-603362" class="pname">初次成交时间</span> <span class="btns" nomove="nomove">
+                <input title="必填属性" nomove="nomove" class="cbox" type="checkbox">
+                </span> </div>
+              <div id="property-603363" class="xDragCell" system="system" name="订单总数" type="text" required="0" default="" option=""> <span id="property-name-603363" class="pname">订单总数</span> <span class="btns" nomove="nomove">
+                <input title="必填属性" nomove="nomove" class="cbox" type="checkbox">
+                </span> </div>
+              <div id="property-603364" class="xDragCell" system="system" name="客单价" type="text" required="0" default="" option=""> <span id="property-name-603364" class="pname">客单价</span> <span class="btns" nomove="nomove">
+                <input title="必填属性" nomove="nomove" class="cbox" type="checkbox">
+                </span> </div>
+              <div id="property-603365" class="xDragCell" system="system" name="总销售额" type="text" required="0" default="" option=""> <span id="property-name-603365" class="pname">总销售额</span> <span class="btns" nomove="nomove">
+                <input title="必填属性" nomove="nomove" class="cbox" type="checkbox">
+                </span> </div>
+              <div id="property-603366" class="xDragCell" system="system" name="客户创建时间" type="text" required="0" default="" option="" style=""> <span id="property-name-603366" class="pname">客户创建时间</span> <span class="btns" nomove="nomove" style="">
+                <input title="必填属性" nomove="nomove" class="cbox" type="checkbox">
+                </span> </div>
+            </div>
+          </div>
+          <div class="blue-box-1">
+            <div class="title"> <strong id="sort-name-139272" class="tt">系统信息</strong>
+              <div class="tr"> <a title="添加属性" class="c-add" onclick="CP.addProperty('139272');"></a> </div>
+            </div>
+            <div id="sort-139272" class="clearfix xDragRow">
+              <div id="property-603367" class="xDragCell" system="system" name="客户废弃时间" type="text" required="0" default="" option=""> <span id="property-name-603367" class="pname">客户废弃时间</span> <span class="btns" nomove="nomove">
+                <input title="必填属性" nomove="nomove" class="cbox" type="checkbox">
+                </span> </div>
+              <div id="property-603368" class="xDragCell" system="system" name="客户流失时间" type="text" required="0" default="" option=""> <span id="property-name-603368" class="pname">客户流失时间</span> <span class="btns" nomove="nomove">
+                <input title="必填属性" nomove="nomove" class="cbox" type="checkbox">
+                </span> </div>
+            </div>
+          </div>
+        </div>
+        <div id="p-trash" class="cols">
+          <div class="blue-box-1">
+            <div class="title"><strong id="sort-name-trash" class="tt">垃圾箱</strong></div>
+            <div class="body">
+              <div id="sort-trash" class="xDragRow clearfix">
+                <div id="property-603348" class="xDragCell" system="system" name="手机" type="text" required="0" default="" option="" style=""> <span id="property-name-603348" class="pname">手机</span> <span class="btns" nomove="nomove" style="">
+                  <input title="必填属性" nomove="nomove" class="cbox" type="checkbox">
+                  </span> </div>
+                <div id="property-603350" class="xDragCell" system="system" name="省份" type="choose" required="0" default="" option=""> <span id="property-name-603350" class="pname">省份</span> <span class="btns" nomove="nomove" style="">
+                  <input title="必填属性" nomove="nomove" class="cbox" type="checkbox">
+                  </span> </div>
+                <div id="property-603352" class="xDragCell" system="system" name="地址" type="text" required="0" default="" option="" style=""> <span id="property-name-603352" class="pname">地址</span> <span class="btns" nomove="nomove" style="">
+                  <input title="必填属性" nomove="nomove" class="cbox" type="checkbox">
+                  </span> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
