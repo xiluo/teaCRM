@@ -10,6 +10,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "teaCRM.Docs", "teaCRM.Docs", "{5DAFA744-C9F2-44F6-B71B-F888B602099D}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\文档\CRM客户关系网站整体定位_0714.doc = ..\..\文档\CRM客户关系网站整体定位_0714.doc
+		LICENSE = LICENSE
+		README.md = README.md
 		项目架构.md = 项目架构.md
 	EndProjectSection
 EndProject
