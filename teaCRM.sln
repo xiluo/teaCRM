@@ -12,7 +12,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "teaCRM.Docs", "teaCRM.Docs"
 		..\..\文档\CRM客户关系网站整体定位_0714.doc = ..\..\文档\CRM客户关系网站整体定位_0714.doc
 		LICENSE = LICENSE
 		README.md = README.md
-		项目架构.md = 项目架构.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teaCRM.Web", "teaCRM.Web\teaCRM.Web.csproj", "{20C4980B-EE81-4C68-AA86-A5B7BCE3166B}"
