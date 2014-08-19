@@ -104,10 +104,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Apps\CRM\IndexController.cs" />
+    <Compile Include="Controllers\Apps\IndexController.cs" />
+    <Compile Include="Controllers\Apps\Product\IndexController.cs" />
+    <Compile Include="Controllers\Apps\Sale\IndexController.cs" />
+    <Compile Include="Controllers\Apps\Service\IndexController.cs" />
+    <Compile Include="Controllers\Apps\Settings\DepartmentController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\Apps\Settings\ExpandoFieldController.cs" />
+    <Compile Include="Controllers\Apps\Settings\ImportExportController.cs" />
+    <Compile Include="Controllers\Apps\Settings\RoleController.cs" />
+    <Compile Include="Controllers\Apps\Settings\UsersController.cs" />
+    <Compile Include="Controllers\WorkbenchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MyViewEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -483,6 +497,10 @@
     <Content Include="Themes\default\js\ligerui\lib\ligerUI\skins\Silvery\css\grid.css" />
     <Content Include="Themes\default\js\ligerui\lib\ligerUI\skins\Silvery\images\grid\gridheaderbg.jpg" />
     <Content Include="Themes\default\min\jquery.js" />
+    <Content Include="Views\Apps\CRM\Index\CustomerIndex.cshtml" />
+    <Content Include="Views\Apps\Settings\Department\Add.cshtml" />
+    <Content Include="Views\Apps\Settings\Department\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -496,7 +514,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Plugins\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -512,37 +529,49 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Show\Index.cshtml" />
+    <Content Include="Views\Workbench\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Index\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Show\Develop.cshtml" />
+    <Content Include="Views\Apps\Sale\Index\SaleIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Settings\Users.cshtml" />
+    <Content Include="Views\Apps\CRM\Index\CustomerAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Settings\DatabaseBackup.cshtml" />
+    <Content Include="Views\Apps\Sale\Index\SaleAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Settings\Permission.cshtml" />
+    <Content Include="Views\Apps\Index\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Settings\ExpandoField.cshtml" />
+    <Content Include="Views\Apps\Product\Index\ProducrAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Settings\Department\Index.cshtml" />
+    <Content Include="Views\Apps\Product\Index\ProductIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Settings\Department\Add.cshtml" />
+    <Content Include="Views\Apps\Service\Index\ServiceAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Show\Plugin.cshtml" />
+    <Content Include="Views\Apps\Service\Index\ServiceIndex.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Apps\Settings\Users\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Apps\Settings\ImportExport\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Apps\Settings\ExpandoField\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Apps\Settings\Role\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

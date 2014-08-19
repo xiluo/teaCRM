@@ -12,12 +12,12 @@ namespace teaCRM.Dao.TreeHelpers
 
         private static IList<DepartmentTree> returnParentTree()
         {
-            using (teaCRMEntities db = new teaCRMEntities())
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
                 List<DepartmentTree> trees;
                 trees = new SysDepartmentDao().GetModelList(db)
-                    .Where(d => d.parent_id == 0)
-                    .Select(d => new DepartmentTree() {ModuleID = d.id, ParentID = d.parent_id, ModuleName = d.dep_name})
+                    .Where(d => d.ParentId == 0)
+                    .Select(d => new DepartmentTree() {ModuleID = d.Id, ParentID = d.ParentId, ModuleName = d.DepName})
                     .ToList();
                 return trees;
             }
@@ -49,11 +49,11 @@ namespace teaCRM.Dao.TreeHelpers
         /// <returns></returns>
         private static IList<DepartmentTree> GetChild(int id)
         {
-            using (teaCRMEntities db = new teaCRMEntities())
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
                 var childTrees = new SysDepartmentDao().GetModelList(db)
-                    .Where(d => d.parent_id == id)
-                    .Select(d => new DepartmentTree() {ModuleID = d.id, ParentID = d.parent_id, ModuleName = d.dep_name})
+                    .Where(d => d.ParentId== id)
+                    .Select(d => new DepartmentTree() {ModuleID = d.Id, ParentID = d.ParentId, ModuleName = d.DepName})
                     .ToList();
                 return childTrees;
             }

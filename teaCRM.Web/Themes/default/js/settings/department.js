@@ -3,10 +3,10 @@
 //*时间：2014年07月231日
 
 //加载左侧树形
-var defaultTreeID = 10; //默认选中的节点ID
+var defaultTreeID = 1; //默认选中的节点ID
 $(function() {
     var menu = $("#department_tree").ligerTree({
-        url: '/Settings/Department/GetDepartmentTreeData',
+        url: '/Apps/Settings/Department/GetDepartmentTreeData',
         ajaxType: 'get',
         checkbox: false,
         onClick: function(data) {
@@ -32,7 +32,7 @@ $(function() {
 //编辑部门信息
 function edit() {
     $("#btn-edit").click(function () {
-        var flag = customer_validate();
+        var flag = form_validate();
         //alert(flag);
         //alert("edit");
     });

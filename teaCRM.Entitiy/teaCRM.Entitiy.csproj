@@ -91,6 +91,9 @@
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Tree.cs" />
+    <Compile Include="TSysCompany.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="TSysDepartment.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>

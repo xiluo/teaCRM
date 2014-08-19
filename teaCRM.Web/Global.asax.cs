@@ -20,9 +20,16 @@ namespace teaCRM.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
- 
+            RegisterView();//注册视图访问规则
         }
 
-
+        /// <summary>
+        /// 注册自定义视图
+        /// </summary>
+        protected void RegisterView()
+        {
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(new MyViewEngine());
+        }
     }
 }

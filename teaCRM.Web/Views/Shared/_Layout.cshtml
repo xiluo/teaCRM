@@ -1,5 +1,5 @@
 ﻿@{
-    var rootPath = "";
+   var rootPath = System.Configuration.ConfigurationManager.AppSettings["rootPath"].ToString();
 }
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -24,19 +24,18 @@
             <div class="header">
                 <h1 class="logo"></h1>	
                 <ul class="nav">
-                    <li id="nav-desktop" class="selected"><a href="/Index/Index">工作台</a></li>
-                    <li id="nav-customer"><a href="/Show/Index/1/">客户</a></li>
-                    <li id="nav-sale"><a href="/Show/Develop/2/">销售</a></li>
-                    <li id="nav-product"><a href="/Show/Develop/3/">产品</a></li>
-                    <li id="nav-service"><a href="/Show/Develop/4/">服务</a></li>
-                    <li id="nav-app"><a href="/Show/Develop/5/">应用</a></li>
-                    <li id="nav-settings"><a href="/Settings/Department">设置</a></li>
-                    <li id="nav-more"><a href="/Show/Develop/0/">更多</a></li>
+                    <li id="nav-desktop" class="selected"><a href="/Workbench/">工作台</a></li>
+                    <li id="nav-customer"><a href="/Apps/CRM/">客户</a></li>
+                    <li id="nav-sale"><a href="/Apps/Sale/">销售</a></li>
+                    <li id="nav-product"><a href="/Apps/Product/">产品</a></li>
+                    <li id="nav-service"><a href="/Apps/Service/">服务</a></li>
+                    <li id="nav-app"><a href="/Apps/">应用</a></li>
+                    <li id="nav-settings"><a href="/Apps/Settings/Department/">设置</a></li>
+                    <li id="nav-more"><a href="javascript:void(0);">更多</a></li>
                 </ul>
                 <div class="nav-right">
-                    @*<div class="icon-option"><a href="/Settings/Department">设置</a></div>*@
                     <div class="icon-option">
-                        <img alt="" src="/Themes/default/images/header.jpg" />
+                        <img alt="" src="@rootPath/Themes/default/images/header.jpg" />
                         <i></i>
                     </div>
                 </div>
@@ -63,20 +62,20 @@
                 <!--设置菜单-->
                 <div id="menu-settings" class="nav-header2 hide">
                     <ul class="nav2">
-                        <li class="selected"><a href="/Settings/Department" style="color: #fff;">组织架构</a></li>
-                        <li><a href="/Settings/Permission">角色管理</a></li>
-                        <li><a href="/Settings/Users">用户管理</a></li>
-                        <li><a href="/Settings/DatabaseBackup">数据库备份</a></li>
-                        <li><a href="/Settings/ExpandoField">自定义字段</a></li>
+                        <li class="selected"><a href="/Apps/Settings/Department/" style="color: #fff;">组织架构</a></li>
+                        <li><a href="/Apps/Settings/Role/">角色管理</a></li>
+                        <li><a href="/Apps/Settings/Users/">用户管理</a></li>
+                        <li><a href="/Apps/Settings/ImportExport/">数据导入导出</a></li>
+                        <li><a href="/Apps/Settings/ExpandoField/">自定义字段</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <!--公共头部结束-->
         
-        <!--插件区域开始-->
+        <!--内容区域开始-->
         @RenderBody()
-        <!--插件区域结束-->
+        <!--内容区域结束-->
         
 
 

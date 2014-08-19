@@ -33,15 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
+    <Reference Include="ELinq, Version=0.6.1.0, Culture=neutral, PublicKeyToken=de4bad8fb4637582, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
+    <Reference Include="NLite, Version=0.9.5.7, Culture=neutral, PublicKeyToken=f086dca6795b5aa4, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -58,8 +54,8 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DepartmentTreeHelperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SysDepartmentDaoTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\teaCRM.Common\teaCRM.Common.csproj">
@@ -69,6 +65,10 @@
     <ProjectReference Include="..\teaCRM.Dao\teaCRM.Dao.csproj">
       <Project>{6887CE80-724B-4E77-9523-89FBEB753E6B}</Project>
       <Name>teaCRM.Dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\teaCRM.Entitiy\teaCRM.Entitiy.csproj">
+      <Project>{55385CCF-C4FA-4A8B-A428-190A43B4B320}</Project>
+      <Name>teaCRM.Entitiy</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

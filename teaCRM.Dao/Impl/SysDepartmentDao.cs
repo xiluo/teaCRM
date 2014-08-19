@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using Newtonsoft.Json;
 using NLite.Collections;
+using teaCRM.Dao.TreeHelpers;
 using teaCRM.Model;
 
 namespace teaCRM.Dao.Impl
@@ -42,10 +43,10 @@ namespace teaCRM.Dao.Impl
 
         #region 查询所有部门
 
-//        public IQueryable<T_sys_department> GetModelList(teaCRMEntities db)
-//        {
-//            return db.T_sys_department;
-//        }
+        public IQueryable<TSysDepartment> GetModelList(teaCRMDBContext db)
+        {
+            return db.TSysDepartments;
+        }
 
         public List<TSysDepartment> GetModelList()
         {
@@ -56,10 +57,10 @@ namespace teaCRM.Dao.Impl
 
         #region 获取树形数据
 
-//        public string GetTreeData()
-//        {
-//            return DepartmentTreeHelper.GetJson();
-//        }
+        public string GetTreeData()
+        {
+            return DepartmentTreeHelper.GetJson();
+        }
 
         #endregion
     }

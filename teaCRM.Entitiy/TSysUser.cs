@@ -8,9 +8,11 @@ namespace teaCRM.Model
 	public partial class TSysUser 
 	{
 	
-		[Id("id",IsDbGenerated=true)]
+		[Id("id",IsDbGenerated=false)]
 		public Int32 Id { get;set; }
  
+		[Column("comp_id")]
+		public Int32? CompId { get;set; }
 		[Column("user_lname")]
 		public String UserLname { get;set; }
 		[Column("user_password")]
@@ -38,6 +40,8 @@ namespace teaCRM.Model
 		[Column("user_enable")]
 		public Int32 UserEnable { get;set; }
  
+		[ManyToOne(ThisKey="CompId",OtherKey="Id")]
+		public TSysCompany Comp { get;set; }
 		[ManyToOne(ThisKey="DepId",OtherKey="Id")]
 		public TSysDepartment Dep { get;set; }
 		[ManyToOne(ThisKey="RoleId",OtherKey="Id")]

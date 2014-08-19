@@ -25,7 +25,7 @@ namespace teaCRM.Dao
         /// </summary>
         /// <param name="db">数据库操作上下文</param>
         /// <returns></returns>
-        //IQueryable<TSysDepartment> GetModelList(teaCRMEntities db);
+        IQueryable<TSysDepartment> GetModelList(teaCRMDBContext db);
         List<TSysDepartment> GetModelList(); 
         //查询单个
         //IQueryable GetModel(int id, teaCRMEntities db);

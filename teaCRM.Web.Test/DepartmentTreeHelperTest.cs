@@ -1,11 +1,11 @@
 ﻿using teaCRM.Dao.TreeHelpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using teaCRM.Model;
-using System.Collections.Generic;
 
 namespace teaCRM.Web.Test
 {
+    
+    
     /// <summary>
     ///This is a test class for DepartmentTreeHelperTest and is intended
     ///to contain all DepartmentTreeHelperTest Unit Tests
@@ -13,6 +13,8 @@ namespace teaCRM.Web.Test
     [TestClass()]
     public class DepartmentTreeHelperTest
     {
+
+
         private TestContext testContextInstance;
 
         /// <summary>
@@ -21,12 +23,17 @@ namespace teaCRM.Web.Test
         ///</summary>
         public TestContext TestContext
         {
-            get { return testContextInstance; }
-            set { testContextInstance = value; }
+            get
+            {
+                return testContextInstance;
+            }
+            set
+            {
+                testContextInstance = value;
+            }
         }
 
         #region Additional test attributes
-
         // 
         //You can use the following additional attributes as you write your tests:
         //
@@ -54,9 +61,20 @@ namespace teaCRM.Web.Test
         //{
         //}
         //
-
         #endregion
 
-       
+
+        /// <summary>
+        ///A test for GetJson
+        ///</summary>
+        [TestMethod()]
+        public void GetJsonTest()
+        {
+            string expected = "aaa"; // TODO: Initialize to an appropriate value
+            string actual;
+            actual = DepartmentTreeHelper.GetJson();
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
     }
 }

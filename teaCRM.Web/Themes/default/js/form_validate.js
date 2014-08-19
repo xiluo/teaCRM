@@ -1,5 +1,5 @@
 // 添加或者编辑客户时的表单验证
-function customer_validate(){
+function form_validate(){
 	var validate_flag = true;
 	var field_type = ''; //属性类型
 	var field_cname = ''; //属性中文名

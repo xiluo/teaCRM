@@ -37,6 +37,7 @@ namespace teaCRM.Model
 		public IDbSet<TFunMyapp> TFunMyapps { get; private set; }
 		public IDbSet<TFunOperating> TFunOperatings { get; private set; }
 		public IDbSet<TFunTag> TFunTags { get; private set; }
+		public IDbSet<TSysCompany> TSysCompanies { get; private set; }
 		public IDbSet<TSysDepartment> TSysDepartments { get; private set; }
 		public IDbSet<TSysLog> TSysLogs { get; private set; }
 		public IDbSet<TSysPower> TSysPowers { get; private set; }

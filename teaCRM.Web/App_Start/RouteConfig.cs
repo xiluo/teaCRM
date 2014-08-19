@@ -14,19 +14,62 @@ namespace teaCRM.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            //系统设置路由
+
+            //设置路由
             routes.MapRoute(
                 name: "Settings",
-                url: "Settings/{controller}/{action}/{id}",
-                defaults: new {controller = "Index", action = "Index", id = UrlParameter.Optional}
+                url: "Apps/Settings/{controller}/{action}/{id}",
+                defaults: new { controller = "Department", action = "Index", id = UrlParameter.Optional },
+                namespaces: new string[] { "teaCRM.Web.Controllers.Apps.Settings" }
                 );
 
+            //服务路由
+            routes.MapRoute(
+                name: "Service",
+                url: "Apps/Service/{controller}/{action}/{id}",
+                defaults: new { controller = "Index", action = "Index", id = UrlParameter.Optional },
+                namespaces: new string[] { "teaCRM.Web.Controllers.Apps.Service" }
+                );
+
+            //产品路由
+            routes.MapRoute(
+                name: "Product",
+                url: "Apps/Product/{controller}/{action}/{id}",
+                defaults: new { controller = "Index", action = "Index", id = UrlParameter.Optional },
+                namespaces: new string[] { "teaCRM.Web.Controllers.Apps.Product" }
+                );
+
+            //销售路由
+            routes.MapRoute(
+                name: "Sale",
+                url: "Apps/Sale/{controller}/{action}/{id}",
+                defaults: new { controller = "Index", action = "Index", id = UrlParameter.Optional },
+                namespaces: new string[] { "teaCRM.Web.Controllers.Apps.Sale" }
+                );
+
+            //CRM路由
+            routes.MapRoute(
+                name: "CRM",
+                url: "Apps/CRM/{controller}/{action}/{id}",
+                defaults: new {controller = "Index", action = "Index", id = UrlParameter.Optional},
+                namespaces: new string[] {"teaCRM.Web.Controllers.Apps.CRM"}
+                );
+
+
+            //应用市场路由
+            routes.MapRoute(
+                name: "Apps",
+                url: "Apps/{controller}/{action}/{id}",
+                defaults: new { controller = "Index", action = "Index", id = UrlParameter.Optional },
+                namespaces: new string[] { "teaCRM.Web.Controllers.Apps" }
+                );
 
             //默认路由
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Index", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Workbench", action = "Index", id = UrlParameter.Optional },
+                namespaces: new string[] {"teaCRM.Web.Controllers"}
                 );
         }
     }
