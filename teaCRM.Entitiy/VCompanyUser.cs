@@ -1,20 +1,22 @@
-using System;
+
+	using System;
 using System.Collections.Generic;
 using System.Linq;
 using NLite.Data;
 namespace teaCRM.Model
 {
-	[Table("T_sys_user")]
-	public partial class TSysUser 
-	{
 	
-		[Id("id",IsDbGenerated=false)]
-		public Int32 Id { get;set; }
- 
-		[Column("comp_id")]
-		public Int32? CompId { get;set; }
+	[Table("V_company_user",Readonly=true)]
+	public partial class VCompanyUser 
+	{
+		[Column("user_id")]
+		public Int32 UserId { get;set; }
+		[Column("company_id")]
+		public Int32 CompanyId { get;set; }
 		[Column("user_lname")]
 		public String UserLname { get;set; }
+		[Column("comp_name")]
+		public String CompName { get;set; }
 		[Column("user_password")]
 		public String UserPassword { get;set; }
 		[Column("user_tname")]
@@ -34,20 +36,13 @@ namespace teaCRM.Model
 		[Column("user_position")]
 		public String UserPosition { get;set; }
 		[Column("user_jobstatus")]
-		public Int32? UserJobstatus { get;set; }
+		public Int32 UserJobstatus { get;set; }
 		[Column("role_id")]
 		public Int32 RoleId { get;set; }
 		[Column("user_enable")]
 		public Int32 UserEnable { get;set; }
  
-		[ManyToOne(ThisKey="CompId",OtherKey="Id")]
-		public TSysCompany Comp { get;set; }
-		[ManyToOne(ThisKey="DepId",OtherKey="Id")]
-		public TSysDepartment Dep { get;set; }
-		[ManyToOne(ThisKey="RoleId",OtherKey="Id")]
-		public TSysRole Role { get;set; }
- 
- 
+
 	}
 
 }

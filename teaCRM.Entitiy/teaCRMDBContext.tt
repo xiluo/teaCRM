@@ -8,7 +8,9 @@
 <#@ Import Namespace="NLite.Data.CodeGeneration" #>
 <#@ output extension=".cs" #>
 <#
-	var @namespace = "teaCRM.Model";
+	var @contextNamespace = "teaCRM.DBContext";
+	var @ModelNamespace = "teaCRM.Model";
+	var @DaoNamespace = "teaCRM.Dao";
 	var connectionStringName = "teaCRMSqlServer";
 	var dbType=GetAppSettings("databaseType");
 	switch(dbType){
@@ -30,19 +32,19 @@
 	var dbConfiguration = DbConfiguration.Configure(connectionString, dbProviderName);
 	var databaseSchema = dbConfiguration.Schema;
 	var manager = Manager.Create(Host, GenerationEnvironment);
-	manager.StartHeader();
+	//manager.StartHeader();
+#>
+<#
+//开始DbContext======================================================================================
 #>
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using NLite.Data;
-namespace <#= @namespace #>
+using teaCRM.Model;
+using NLite.Reflection;
+namespace <#= @contextNamespace #>
 {
-<#
-	manager.EndBlock();
-#>
-	using NLite.Reflection;
-
 	public partial class <#= dbContextName #>:DbContext
 	{
 		//连接字符串名称：基于Config文件中连接字符串的配置
@@ -67,10 +69,23 @@ namespace <#= @namespace #>
 <#}#>
 	}
 	<#
+//结束DbContext======================================================================================
+#>
 
-	#>
-<#foreach (var tb in databaseSchema.Tables){
-		manager.StartNewFile(NamingConversion.Default.ClassName(tb.TableName) + ".cs");#>
+
+<#
+  //开始Model======================================================================================
+    foreach (var tb in databaseSchema.Tables){
+  #>
+  <#
+manager.StartNewFile(NamingConversion.Default.ClassName(tb.TableName)+ ".cs");
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using NLite.Data;
+namespace <#= @ModelNamespace #>
+{
 	[Table("<#= tb.TableName #>")]
 	public partial class <#= NamingConversion.Default.ClassName( tb.TableName) #> 
 	{
@@ -93,7 +108,17 @@ namespace <#= @namespace #>
 	}
 <# } manager.EndBlock();
  foreach (var tb in databaseSchema.Views){
-	 manager.StartNewFile(NamingConversion.Default.ClassName(tb.TableName) + ".cs");#>
+	 manager.StartNewFile(NamingConversion.Default.ClassName(tb.TableName) + ".cs");
+	 //开始视图
+	 #>
+
+	using System;
+using System.Collections.Generic;
+using System.Linq;
+using NLite.Data;
+namespace <#= @ModelNamespace #>
+{
+	
 	[Table("<#= tb.TableName #>",Readonly=true)]
 	public partial class <#= NamingConversion.Default.ClassName( tb.TableName) #> 
 	{
@@ -101,13 +126,205 @@ namespace <#= @namespace #>
 		[Column("<#= col.ColumnName#>")]
 		public <#= col.Type.Name #> <#= NamingConversion.Default.PropertyName(col.ColumnName) #> { get;set; }
 <#}#> 
+
 	}
 <# 
-	} manager.EndBlock();
-	manager.StartFooter();
+	} 
+
+ manager.EndBlock();
+  manager.StartFooter();
 #>
+
 }
+
+ 
+<#foreach (var tb in databaseSchema.Tables){#>
+<#
+ //开始Dao===================================================================================
+var daoFilename= NamingConversion.Default.ClassName( tb.TableName)+ "LinqHelper";
+var daoModelName=NamingConversion.Default.ClassName( tb.TableName);
+var daoListName=NamingConversion.Default.QueryableName( tb.TableName);
+manager.StartNewFile(daoFilename+ ".cs");
+#>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using NLite.Data;
+using teaCRM.DBContext;
+using teaCRM.Model;
+
+namespace <#= @DaoNamespace #>
+{
+ public class <#=daoFilename#>
+    {
+	    /// <summary>
+        /// 获取所有的数据
+	    /// </summary>
+	    /// <returns>返回所有数据列表</returns>
+        public List<<#=daoModelName#>> GetList() 
+        {
+          using (<#=dbContextName#> db=new <#=dbContextName#>())
+            {
+             var models= db.<#=daoListName#>.ToList();
+			 return models;
+            }
+        }
+
+		/// <summary>
+        /// 获取指定的单个实体
+        /// 如果不存在则返回null
+        /// 如果存在多个则抛异常
+        /// </summary>
+        /// <param name="predicate">Lamda表达式</param>
+        /// <returns>Entity</returns>
+        public <#=daoModelName#> GetEntity(Expression<Func<<#=daoModelName#>, bool>> predicate) 
+        {
+            using (<#=dbContextName#> db=new <#=dbContextName#>())
+            {
+                var model =db.<#=daoListName#>.Where<<#=daoModelName#>>(predicate).SingleOrDefault();
+                return model;
+		    }
+        }
+
+		 /// <summary>
+        /// 用SQL语句查询
+        /// </summary>
+        /// <param name="sql">sql语句</param>
+        /// <param name="namedParameters">sql参数</param>
+        /// <returns>集合</returns>
+        public IEnumerable<<#=daoModelName#>> GetListBySql(string sql, dynamic namedParameters)
+        {
+          using (<#=dbContextName#> db=new <#=dbContextName#>())
+            {
+               return db.DbHelper.ExecuteDataTable(sql,namedParameters).ToList<<#=daoModelName#>>();
+            }
+          
+        }
+
+		  /// <summary>
+        /// 添加实体
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        public bool InsertEntity(<#=daoModelName#> entity)
+        {
+            using (<#=dbContextName#> db=new <#=dbContextName#>())
+            {
+              int rows=  db.<#=daoListName#>.Insert(entity);
+				 if (rows > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+       /// <summary>
+        /// 删除实体
+        /// </summary>
+         /// <param name="predicate">Lamda表达式</param>
+        public bool DeleteEntity(Expression<Func<<#=daoModelName#> , bool>> predicate) 
+        {
+            using (<#=dbContextName#> db=new <#=dbContextName#>())
+            {
+                <#=daoModelName#>  entity = db.<#=daoListName#>.Where(predicate).First();
+                int rows=db.<#=daoListName#>.Delete(entity);
+				 if (rows > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+		
+		/// <summary>
+        /// 批量删除
+        /// </summary>
+        /// <param name="list">实体集合</param>
+        public bool DeletesEntity(List<<#=daoModelName#>> list) 
+        {
+            using (<#=dbContextName#> db=new <#=dbContextName#>())
+            {
+                var tran = db.Connection.BeginTransaction();
+                try
+                {
+                    foreach (var item in list)
+                    {
+                        db.<#=daoListName#>.Delete(item);
+                    }
+                    tran.Commit();
+					return true;
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+					return false;
+                    throw new Exception(ex.Message);
+                }
+            }
+        }
+
+         /// <summary>
+        /// 修改实体
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        public bool UpadateEntity(<#=daoModelName#> entity)
+        {
+            using (<#=dbContextName#> db=new <#=dbContextName#>())
+            {
+               int rows= db.<#=daoListName#>.Update(entity);
+			   if (rows > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// 是否存在该记录
+        /// </summary>
+        /// <returns></returns>
+       public   bool ExistsEntity(Expression<Func<<#=daoModelName#> , bool>> predicate)
+	   {
+            using (<#=dbContextName#> db=new <#=dbContextName#>())
+            {
+               bool status= db.<#=daoListName#>.Any(predicate);
+               return status;
+            }
+        }
+
+		 //查询分页
+      List<<#=daoModelName#>> GetListByPage(int pageIndex, int pageSize, Expression<Func<<#=daoModelName#> , bool>> predicate)
+	  {
+	   using (<#=dbContextName#> db=new <#=dbContextName#>())
+            {
+             var models= db.<#=daoListName#>.Where(predicate).ToPagination(pageIndex,pageSize).ToList();
+			 return models;
+            }
+	  }
+	   }
+<#
+  }
+#>
+
 <#
  manager.EndBlock();
+ //结束Dao===================================================================================
+#>
+
+
+<#
+ //执行===================================================================================
  manager.Process(true);
 #>

@@ -55,16 +55,31 @@
     <Compile Include="TConExpvalue.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="TConExpvalueLinqHelper.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="TCusBase.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TCusBaseLinqHelper.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="TCusCon.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="TCusConLinqHelper.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="TCusExpvalue.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="TCusExpvalueLinqHelper.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="TCusLog.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TCusLogLinqHelper.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="teaCRMDBContext.cs">
@@ -75,38 +90,77 @@
     <Compile Include="TFunApp.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="TFunAppLinqHelper.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="TFunExpand.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TFunExpandLinqHelper.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="TFunFilter.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="TFunFilterLinqHelper.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="TFunMyapp.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TFunMyappLinqHelper.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="TFunOperating.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="TFunOperatingLinqHelper.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="TFunTag.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TFunTagLinqHelper.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Tree.cs" />
     <Compile Include="TSysCompany.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="TSysCompanyLinqHelper.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="TSysDepartment.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TSysDepartmentLinqHelper.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="TSysLog.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="TSysLogLinqHelper.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="TSysPower.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TSysPowerLinqHelper.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="TSysRole.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="TSysRoleLinqHelper.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="TSysUser.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TSysUserLinqHelper.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VCompanyUser.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -126,6 +180,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

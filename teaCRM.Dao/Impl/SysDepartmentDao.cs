@@ -6,6 +6,7 @@ using System.Text;
 using Newtonsoft.Json;
 using NLite.Collections;
 using teaCRM.Dao.TreeHelpers;
+using teaCRM.DBContext;
 using teaCRM.Model;
 
 namespace teaCRM.Dao.Impl

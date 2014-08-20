@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAccountDao.cs" />
     <Compile Include="Impl\SysDepartmentDao.cs" />
     <Compile Include="ISysDepartmentDao.cs">
       <SubType>Code</SubType>

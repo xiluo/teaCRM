@@ -16,11 +16,14 @@ namespace teaCRM.Model
 		[Column("power_nav")]
 		public String PowerNav { get;set; }
 		[Column("power_action")]
-		public Byte[] PowerAction { get;set; }
+		public String PowerAction { get;set; }
  
  
 		[OneToMany(ThisKey="Id",OtherKey="PowId")]
 		public IList<TSysRole> TSysRoles { get;set; }
  
 	}
+  
 }
+
+ 

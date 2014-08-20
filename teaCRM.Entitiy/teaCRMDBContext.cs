@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using NLite.Data;
-namespace teaCRM.Model
+using teaCRM.Model;
+using NLite.Reflection;
+namespace teaCRM.DBContext
 {
-	using NLite.Reflection;
-
 	public partial class teaCRMDBContext:DbContext
 	{
 		//连接字符串名称：基于Config文件中连接字符串的配置
@@ -43,5 +43,13 @@ namespace teaCRM.Model
 		public IDbSet<TSysPower> TSysPowers { get; private set; }
 		public IDbSet<TSysRole> TSysRoles { get; private set; }
 		public IDbSet<TSysUser> TSysUsers { get; private set; }
+		public IDbSet<VCompanyUser> VCompanyUsers { get; private set; }
 	}
-	}
+	
+
+  
+}
+
+ 
+
+
