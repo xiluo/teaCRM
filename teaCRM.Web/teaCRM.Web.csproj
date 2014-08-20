@@ -110,9 +110,6 @@
     <Compile Include="Controllers\Apps\Product\IndexController.cs" />
     <Compile Include="Controllers\Apps\Sale\IndexController.cs" />
     <Compile Include="Controllers\Apps\Service\IndexController.cs" />
-    <Compile Include="Controllers\Apps\Settings\DepartmentController.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Controllers\Apps\Settings\ExpandoFieldController.cs" />
     <Compile Include="Controllers\Apps\Settings\ImportExportController.cs" />
     <Compile Include="Controllers\Apps\Settings\RoleController.cs" />

@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "teaCRM.Setup", "teaCRM.Setu
 		..\..\..\..\..\..\..\..\项目\马腾军\参考资料\mysql-connector-net-6.8.3.msi = ..\..\..\..\..\..\..\..\项目\马腾军\参考资料\mysql-connector-net-6.8.3.msi
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teaCRM.Entitiy", "teaCRM.Entitiy\teaCRM.Entitiy.csproj", "{55385CCF-C4FA-4A8B-A428-190A43B4B320}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teaCRM.Entity", "teaCRM.Entity\teaCRM.Entity.csproj", "{0687C70A-0976-40D8-A069-56ED9E6FFF2D}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -54,10 +54,10 @@ Global
 		{5D69E2D6-DFFD-4D87-8800-3A901DD9010D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D69E2D6-DFFD-4D87-8800-3A901DD9010D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D69E2D6-DFFD-4D87-8800-3A901DD9010D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{55385CCF-C4FA-4A8B-A428-190A43B4B320}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{55385CCF-C4FA-4A8B-A428-190A43B4B320}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{55385CCF-C4FA-4A8B-A428-190A43B4B320}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{55385CCF-C4FA-4A8B-A428-190A43B4B320}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0687C70A-0976-40D8-A069-56ED9E6FFF2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0687C70A-0976-40D8-A069-56ED9E6FFF2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0687C70A-0976-40D8-A069-56ED9E6FFF2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0687C70A-0976-40D8-A069-56ED9E6FFF2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

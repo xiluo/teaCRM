@@ -66,10 +66,6 @@
       <Project>{6887CE80-724B-4E77-9523-89FBEB753E6B}</Project>
       <Name>teaCRM.Dao</Name>
     </ProjectReference>
-    <ProjectReference Include="..\teaCRM.Entitiy\teaCRM.Entitiy.csproj">
-      <Project>{55385CCF-C4FA-4A8B-A428-190A43B4B320}</Project>
-      <Name>teaCRM.Entitiy</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

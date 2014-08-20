@@ -51,26 +51,151 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IAccountDao.cs" />
-    <Compile Include="Impl\SysDepartmentDao.cs" />
-    <Compile Include="ISysDepartmentDao.cs">
+    <Compile Include="Impl\TConExpvalueDaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Impl\TCusBaseDaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Impl\TCusConDaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Impl\TCusExpvalueDaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Impl\TCusLogDaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Impl\teaCRMDaoImpl.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Impl\TFunAppDaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Impl\TFunExpandDaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Impl\TFunFilterDaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Impl\TFunMyappDaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Impl\TFunOperatingDaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Impl\TFunTagDaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Impl\TSysCompanyDaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Impl\TSysDepartmentDaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Impl\TSysLogDaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Impl\TSysPowerDaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Impl\TSysRoleDaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Impl\TSysUserDaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITConExpvalueDao.cs">
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITCusBaseDao.cs">
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITCusConDao.cs">
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITCusExpvalueDao.cs">
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITCusLogDao.cs">
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITFunAppDao.cs">
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITFunExpandDao.cs">
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITFunFilterDao.cs">
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITFunMyappDao.cs">
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITFunOperatingDao.cs">
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITFunTagDao.cs">
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITSysCompanyDao.cs">
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITSysDepartmentDao.cs">
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITSysLogDao.cs">
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITSysPowerDao.cs">
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITSysRoleDao.cs">
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITSysUserDao.cs">
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Manual\TreeHelpers\DepartmentTreeHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Manual\TSysDepartmentDao.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TreeHelpers\DepartmentTreeHelper.cs" />
+    <Compile Include="teaCRMIDao.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\teaCRM.Common\teaCRM.Common.csproj">
       <Project>{D03BBC00-649A-43B6-BB8D-65CB34AECC53}</Project>
       <Name>teaCRM.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\teaCRM.Entitiy\teaCRM.Entitiy.csproj">
-      <Project>{55385CCF-C4FA-4A8B-A428-190A43B4B320}</Project>
-      <Name>teaCRM.Entitiy</Name>
+    <ProjectReference Include="..\teaCRM.Entity\teaCRM.Entity.csproj">
+      <Project>{0687C70A-0976-40D8-A069-56ED9E6FFF2D}</Project>
+      <Name>teaCRM.Entity</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Impl\teaCRMDaoImpl.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>teaCRMDaoImpl.cs</LastGenOutput>
+    </None>
+    <None Include="teaCRMIDao.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>teaCRMIDao.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

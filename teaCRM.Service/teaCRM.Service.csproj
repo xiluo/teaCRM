@@ -40,19 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Impl\SysDepartmentService.cs" />
-    <Compile Include="ISysDepartmentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Impl\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\teaCRM.Dao\teaCRM.Dao.csproj">
       <Project>{6887CE80-724B-4E77-9523-89FBEB753E6B}</Project>
       <Name>teaCRM.Dao</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\teaCRM.Entitiy\teaCRM.Entitiy.csproj">
-      <Project>{55385CCF-C4FA-4A8B-A428-190A43B4B320}</Project>
-      <Name>teaCRM.Entitiy</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
