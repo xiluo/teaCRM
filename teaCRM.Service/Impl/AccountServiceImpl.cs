@@ -29,10 +29,10 @@ namespace teaCRM.Service.Impl
 {
     public class AccountServiceImpl : IAccountService
     {
-        #region 用户名验证
+        #region 账户验证
 
         /// <summary>
-        /// 用户名验证 2014/8/21 9:04:10   By 唐有炜
+        /// 账户验证 2014/8/21 9:04:10   By 唐有炜
         /// </summary>
         /// <param name="action">操作类型（login、register）</param>
         /// <param name="type">注册或登陆方式（normal,qrcode,usb,footprint）</param>
@@ -40,7 +40,7 @@ namespace teaCRM.Service.Impl
         /// <param name="userName">用户名</param>
         /// <param name="userPassword">密码</param>
         /// <returns>ResponseMessage</returns>
-        public ResponseMessage ValidateLogin(string action, string type, string accountType, string userName,
+        public ResponseMessage ValidateAccount(string action, string type, string accountType, string userName,
             string userPassword)
         {
             ResponseMessage rmsg = new ResponseMessage();
@@ -93,19 +93,10 @@ namespace teaCRM.Service.Impl
                     }
                     else
                     {
-                        rmsg.Status = false;
+                        rmsg.Status = true;
                         rmsg.Msg = "恭喜您，该用户名可以使用";
                     }
-                    if (UserPasswordExists(accountType, userName, userPassword))
-                    {
-                        rmsg.Status = false;
-                        rmsg.Msg = "密码输入正确";
-                    }
-                    else
-                    {
-                        rmsg.Status = false;
-                        rmsg.Msg = "密码错误";
-                    }
+
                     return rmsg;
                     break;
                 default:
@@ -368,7 +359,7 @@ namespace teaCRM.Service.Impl
         public ResponseMessage Login(string type, string accountType, string userName,
             string userPassword, string clientIp, string clientTime)
         {
-            ResponseMessage rmsg = ValidateLogin("login", type, accountType, userName, userPassword);
+            ResponseMessage rmsg = ValidateAccount("login", type, accountType, userName, userPassword);
             if (rmsg.Status) //登陆成功
             {
                 var compUser = GetVCompanyUserByAccountTypeAndUserName(accountType, userName);
@@ -403,38 +394,59 @@ namespace teaCRM.Service.Impl
         /// <returns>ResponseMessage</returns>
         public ResponseMessage Register(string accountType, string userName, string userPassword)
         {
-            ResponseMessage rmsg = new ResponseMessage();
-            VCompanyUserDao companyUserDao = new VCompanyUserDao();
-            //随机编号
-            Random rand = new Random(Guid.NewGuid().GetHashCode());
-            string compNum = rand.Next(100000, 1000000000).ToString();
-            TSysCompany sysCompany = new TSysCompany()
+            ResponseMessage rmsg = ValidateAccount("register", null, accountType, userName, userPassword);
+            if (rmsg.Status)
             {
-                CompNum = compNum
-            };
+//注册验证成功成功
+                VCompanyUserDao companyUserDao = new VCompanyUserDao();
+                //随机编号
+                Random rand = new Random(Guid.NewGuid().GetHashCode());
+                string compNum = rand.Next(100000, 1000000000).ToString();
+                TSysCompany sysCompany = new TSysCompany()
+                {
+                    CompNum = compNum
+                };
 
-            userPassword = DESEncrypt.Encrypt(userPassword);
-            TSysUser sysUser = new TSysUser()
-            {
-                CompNum = compNum,
-                UserLname = userName,
-                UserPassword = userPassword,
-                RoleId = 1,//默认角色
-                DepId = 1//默认部门
-            };
+                userPassword = DESEncrypt.Encrypt(userPassword);
+                string userEmail = null;
+                string userPhone = null;
+                switch (accountType)
+                {
+                    case "email":
+                        userEmail = userName;
+                        break;
+                    case "phone":
+                        userPhone = userName;
+                        break;
+                    default:
+                        break;
+                }
+                TSysUser sysUser = new TSysUser()
+                {
+                    CompNum = compNum,
+                    UserLname = "admin", //默认公司超级管理员用户名是admin
+                    UserPassword = userPassword,
+                    UserEmail = userEmail,
+                    UserPhone = userPhone,
+                    RoleId = 1, //默认角色
+                    DepId = 1 //默认部门
+                };
 
-            if (companyUserDao.InsertEntities(sysCompany, sysUser))
-            {
-                rmsg.Status = true;
-                rmsg.Msg = "注册成功";
+                if (companyUserDao.InsertEntities(sysCompany, sysUser))
+                {
+                    rmsg.Status = true;
+                    rmsg.Msg = "注册成功";
+                  }
+                else
+                {
+                    rmsg.Status = false;
+                    rmsg.Msg = "注册失败";
+                   }
+
             }
-            else
-            {
-                rmsg.Status = false;
-                rmsg.Msg = "注册失败";
-            }
-
-            return rmsg;
+             return rmsg;
+            
+           
         }
 
         #endregion

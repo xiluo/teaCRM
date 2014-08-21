@@ -10,7 +10,7 @@ namespace teaCRM.Service
  public   interface IAccountService
  {
      /// <summary>
-     /// 用户名验证  2014-08-21 07:58:50 By 唐有炜
+     /// 账户验证  2014-08-21 07:58:50 By 唐有炜
      /// </summary>
      /// <param name="action">操作类型（login、register）</param>
      /// <param name="type">注册或登陆方式（normal,qrcode,usb,footprint）</param>
@@ -18,7 +18,7 @@ namespace teaCRM.Service
      /// <param name="userName">用户名</param>
      /// <param name="userPassword">密码</param>
      /// <returns>ResponseMessage</returns>
-     ResponseMessage ValidateLogin(string action, string type, string accountType, string userName,
+     ResponseMessage ValidateAccount(string action, string type, string accountType, string userName,
          string userPassword);
 
 

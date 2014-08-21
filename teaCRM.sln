@@ -7,25 +7,32 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teaCRM.Service", "teaCRM.Se
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teaCRM.Common", "teaCRM.Common\teaCRM.Common.csproj", "{D03BBC00-649A-43B6-BB8D-65CB34AECC53}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "teaCRM.Docs", "teaCRM.Docs", "{5DAFA744-C9F2-44F6-B71B-F888B602099D}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\文档\CRM客户关系网站整体定位_0714.doc = ..\..\文档\CRM客户关系网站整体定位_0714.doc
-		LICENSE = LICENSE
-		README.md = README.md
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teaCRM.Web", "teaCRM.Web\teaCRM.Web.csproj", "{20C4980B-EE81-4C68-AA86-A5B7BCE3166B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teaCRM.Web.Test", "teaCRM.Web.Test\teaCRM.Web.Test.csproj", "{5D69E2D6-DFFD-4D87-8800-3A901DD9010D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "teaCRM.Setup", "teaCRM.Setup", "{46C18744-4889-4CA7-9F56-2197E568058C}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\..\..\..\..\项目\马腾军\参考资料\mysql-connector-net-6.8.3.msi = ..\..\..\..\..\..\..\..\项目\马腾军\参考资料\mysql-connector-net-6.8.3.msi
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teaCRM.Entity", "teaCRM.Entity\teaCRM.Entity.csproj", "{0687C70A-0976-40D8-A069-56ED9E6FFF2D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teaCRM.Console", "teaCRM.Console\teaCRM.Console.csproj", "{834DEA0D-F4E5-4853-9F22-E1A146230B87}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "teaCRM.DB", "teaCRM.DB", "{72A4788F-16F6-4778-9AB5-D942B11AF8DE}"
+	ProjectSection(SolutionItems) = preProject
+		teaCRM.DB\INIT_DATA.sql = teaCRM.DB\INIT_DATA.sql
+		teaCRM.DB\UCSoftware.pdm = teaCRM.DB\UCSoftware.pdm
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "teaCRM,Docs", "teaCRM,Docs", "{4A42847F-8E70-4E34-9502-3A81B2507207}"
+	ProjectSection(SolutionItems) = preProject
+		teaCRM.Docs\CRM客户关系网站整体定位_0714.doc = teaCRM.Docs\CRM客户关系网站整体定位_0714.doc
+		LICENSE = LICENSE
+		README.md = README.md
+		teaCRM.Docs\teaCRM详细设计说明书.doc = teaCRM.Docs\teaCRM详细设计说明书.doc
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "teaCRM.Setup", "teaCRM.Setup", "{2BF1CB06-640B-46AF-8FB7-67ADA7F73246}"
+	ProjectSection(SolutionItems) = preProject
+		teaCRM.Setup\mysql-connector-net-6.8.3.msi = teaCRM.Setup\mysql-connector-net-6.8.3.msi
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution

@@ -71,7 +71,7 @@ namespace teaCRM.Web.Test
         ///ValidateUserLName 的测试
         ///</summary>
         [TestMethod()]
-        public void ValidateLoginTest()
+        public void ValidateAccountTest()
         {
             AccountServiceImpl target = new AccountServiceImpl(); // TODO: 初始化为适当的值
           
@@ -94,7 +94,7 @@ namespace teaCRM.Web.Test
 
             string expected = "True 密码输入正确"; // TODO: 初始化为适当的值
             string actual;
-            ResponseMessage result = target.ValidateLogin(action, type, accountType, userName,userPassword);
+            ResponseMessage result = target.ValidateAccount(action, type, accountType, userName,userPassword);
             actual = result.Status + " " + result.Msg;
 
             Assert.AreEqual(expected, actual);
@@ -133,10 +133,16 @@ namespace teaCRM.Web.Test
         public void RegisterTest()
         {
             AccountServiceImpl target = new AccountServiceImpl(); // TODO: 初始化为适当的值
-           
+
+//            string accountType = "phone"; // TODO: 初始化为适当的值
+//            string userName = "15225062328"; // TODO: 初始化为适当的值
+//            string userPassword = "123456"; // TODO: 初始化为适当的值
+
             string accountType = "email"; // TODO: 初始化为适当的值
-            string userName = "terwer"; // TODO: 初始化为适当的值
+            string userName = "cyutyw@126.com"; // TODO: 初始化为适当的值
             string userPassword ="123456"; // TODO: 初始化为适当的值
+
+          
 
             string expected = "True 注册成功"; // TODO: 初始化为适当的值
             string actual;
