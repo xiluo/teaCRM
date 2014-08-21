@@ -11,16 +11,18 @@ namespace teaCRM.Entity
 	{
 		[Column("user_id")]
 		public Int32 UserId { get;set; }
-		[Column("company_id")]
-		public Int32 CompanyId { get;set; }
+		[Column("comp_id")]
+		public Int32 CompId { get;set; }
+		[Column("comp_num")]
+		public String CompNum { get;set; }
 		[Column("user_lname")]
 		public String UserLname { get;set; }
-		[Column("comp_name")]
-		public String CompName { get;set; }
 		[Column("user_password")]
 		public String UserPassword { get;set; }
 		[Column("user_tname")]
 		public String UserTname { get;set; }
+		[Column("comp_tname")]
+		public String CompTname { get;set; }
 		[Column("user_sex")]
 		public Int32 UserSex { get;set; }
 		[Column("user_phone")]

@@ -26,14 +26,6 @@ public  interface ITSysUserDao
         /// <returns>Entity</returns>
          TSysUser GetEntity(Expression<Func<TSysUser, bool>> predicate) ;
        
-		 /// <summary>
-        /// 用SQL语句查询
-        /// </summary>
-        /// <param name="sql">sql语句</param>
-        /// <param name="namedParameters">sql参数</param>
-        /// <returns>集合</returns>
-         IEnumerable<TSysUser> GetListBySql(string sql, dynamic namedParameters);
-       
 		  /// <summary>
         /// 添加实体
         /// </summary>
@@ -71,6 +63,25 @@ public  interface ITSysUserDao
 		 //查询分页
       List<TSysUser> GetListByPage(int pageIndex, int pageSize, Expression<Func<TSysUser , bool>> predicate);
 	 
+	 
+	  //以下是原生Sql方法==============================================================
+	  //===========================================================================
+	  /// <summary>
+        /// 用SQL语句查询
+        /// </summary>
+        /// <param name="sql">sql语句</param>
+        /// <param name="namedParameters">sql参数</param>
+        /// <returns>集合</returns>
+         IEnumerable<TSysUser> GetListBySql(string sql, dynamic namedParameters);
+       	
+		/// <summary>
+	     /// 执行Sql
+	     /// </summary>
+	     /// <param name="sql">Sql语句</param>
+	     /// <param name="namedParameters">查询字符串</param>
+	     /// <returns></returns>
+		 bool ExecuteSql(string sql, dynamic namedParameters = null);
+
 	   }
 	   }
 

@@ -45,6 +45,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
@@ -54,6 +55,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountServiceImplTest.cs" />
     <Compile Include="DepartmentTreeHelperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -65,6 +67,14 @@
     <ProjectReference Include="..\teaCRM.Dao\teaCRM.Dao.csproj">
       <Project>{6887CE80-724B-4E77-9523-89FBEB753E6B}</Project>
       <Name>teaCRM.Dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\teaCRM.Entity\teaCRM.Entity.csproj">
+      <Project>{0687C70A-0976-40D8-A069-56ED9E6FFF2D}</Project>
+      <Name>teaCRM.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\teaCRM.Service\teaCRM.Service.csproj">
+      <Project>{087A655B-AB00-4130-A1A5-7EFB707D60FB}</Project>
+      <Name>teaCRM.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

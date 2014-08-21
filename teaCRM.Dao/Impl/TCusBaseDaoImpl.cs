@@ -7,11 +7,11 @@ using NLite.Data;
 using teaCRM.DBContext;
 using teaCRM.Entity;
 
-namespace teaCRM.Dao
+namespace  teaCRM.Dao.Impl
 {
 
     /// <summary>
-    /// 自动生成的实现ITCusBaseDao接口的Dao类。 2014-08-20 07:58:50 By 唐有炜
+    /// 自动生成的实现ITCusBaseDao接口的Dao类。 2014-08-21 05:29:18 By 唐有炜
     /// </summary>
  public class TCusBaseDaoImpl:ITCusBaseDao
     {
@@ -44,21 +44,7 @@ namespace teaCRM.Dao
 		    }
         }
 
-		 /// <summary>
-        /// 用SQL语句查询
-        /// </summary>
-        /// <param name="sql">sql语句</param>
-        /// <param name="namedParameters">sql参数</param>
-        /// <returns>集合</returns>
-        public IEnumerable<TCusBase> GetListBySql(string sql, dynamic namedParameters)
-        {
-          using (teaCRMDBContext db=new teaCRMDBContext())
-            {
-               return db.DbHelper.ExecuteDataTable(sql,namedParameters).ToList<TCusBase>();
-            }
-          
-        }
-
+		
 		  /// <summary>
         /// 添加实体
         /// </summary>
@@ -107,19 +93,19 @@ namespace teaCRM.Dao
         {
             using (teaCRMDBContext db=new teaCRMDBContext())
             {
-                var tran = db.Connection.BeginTransaction();
+                //var tran = db.Connection.BeginTransaction();
                 try
                 {
                     foreach (var item in list)
                     {
                         db.TCusBases.Delete(item);
                     }
-                    tran.Commit();
+                    //tran.Commit();
 					return true;
                 }
                 catch (Exception ex)
                 {
-                    tran.Rollback();
+                    //tran.Rollback();
 					return false;
                     throw new Exception(ex.Message);
                 }
@@ -169,5 +155,51 @@ namespace teaCRM.Dao
 			 return models;
             }
 	  }
+
+
+	  
+
+	  //以下是原生Sql方法==============================================================
+	  //===========================================================================
+	   /// <summary>
+        /// 用SQL语句查询
+        /// </summary>
+        /// <param name="sql">sql语句</param>
+        /// <param name="namedParameters">sql参数</param>
+        /// <returns>集合</returns>
+        public IEnumerable<TCusBase> GetListBySql(string sql, dynamic namedParameters)
+        {
+          using (teaCRMDBContext db=new teaCRMDBContext())
+            {
+               return db.DbHelper.ExecuteDataTable(sql,namedParameters).ToList<TCusBase>();
+            }
+          
+        }
+		
+		/// <summary>
+	     /// 执行Sql
+	     /// </summary>
+	     /// <param name="sql">Sql语句</param>
+	     /// <param name="namedParameters">查询字符串</param>
+	     /// <returns></returns>
+		public bool ExecuteSql(string sql, dynamic namedParameters = null)
+		{
+	         using (teaCRMDBContext db = new teaCRMDBContext())
+	         {
+	             var rows = db.DbHelper.ExecuteNonQuery(sql, namedParameters);
+	             if (rows > 0)
+	             {
+	                 return true;
+	             }
+	             else
+	             {
+	                 return false;
+	             }
+	         }
+		}
+
+
+
+
 	   }
 	   }

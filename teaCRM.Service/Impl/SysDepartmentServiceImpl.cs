@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using teaCRM.Dao.Impl;
+using teaCRM.Dao.Manual;
 
 namespace teaCRM.Service.Impl
 {
-    public class SysDepartmentService : ISysDepartmentService
+    /// <summary>
+    /// 部门管理
+    /// </summary>
+    public class SysDepartmentServiceImpl : ISysDepartmentService
     {
-        public string Test()
-        {
-            return new SysDepartmentDao().GetModel(2).DepName;
-        }
 
+        /// <summary>
+        /// 获取部门树形数据
+        /// </summary>
+        /// <returns></returns>
         public string GetTreeData()
             {
                return new SysDepartmentDao().GetTreeData();

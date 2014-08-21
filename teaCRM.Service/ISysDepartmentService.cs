@@ -5,10 +5,15 @@ using System.Text;
 
 namespace teaCRM.Service
 {
+    /// <summary>
+    /// 部门管理
+    /// </summary>
    public interface ISysDepartmentService
    {
-       string Test();
-
+       /// <summary>
+       /// 获取部门树形数据
+       /// </summary>
+       /// <returns></returns>
         string GetTreeData();
     }
 }

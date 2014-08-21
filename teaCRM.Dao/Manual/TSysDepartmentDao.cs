@@ -1,4 +1,5 @@
-﻿using teaCRM.Dao.TreeHelpers;
+﻿using teaCRM.Dao.Impl;
+using teaCRM.Dao.TreeHelpers;
 
 namespace teaCRM.Dao.Manual
 {

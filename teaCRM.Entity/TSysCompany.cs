@@ -10,15 +10,14 @@ namespace teaCRM.Entity
 	
 		[Id("id",IsDbGenerated=true)]
 		public Int32 Id { get;set; }
+	
+		[Id("comp_num",IsDbGenerated=false)]
+		public String CompNum { get;set; }
  
-		[Column("comp_lname")]
-		public String CompLname { get;set; }
-		[Column("comp_nname")]
-		public String CompNname { get;set; }
+		[Column("comp_tname")]
+		public String CompTname { get;set; }
  
  
-		[OneToMany(ThisKey="Id",OtherKey="CompId")]
-		public IList<TSysUser> TSysUsers { get;set; }
  
 	}
   

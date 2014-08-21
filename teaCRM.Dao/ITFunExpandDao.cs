@@ -26,14 +26,6 @@ public  interface ITFunExpandDao
         /// <returns>Entity</returns>
          TFunExpand GetEntity(Expression<Func<TFunExpand, bool>> predicate) ;
        
-		 /// <summary>
-        /// 用SQL语句查询
-        /// </summary>
-        /// <param name="sql">sql语句</param>
-        /// <param name="namedParameters">sql参数</param>
-        /// <returns>集合</returns>
-         IEnumerable<TFunExpand> GetListBySql(string sql, dynamic namedParameters);
-       
 		  /// <summary>
         /// 添加实体
         /// </summary>
@@ -71,5 +63,24 @@ public  interface ITFunExpandDao
 		 //查询分页
       List<TFunExpand> GetListByPage(int pageIndex, int pageSize, Expression<Func<TFunExpand , bool>> predicate);
 	 
+	 
+	  //以下是原生Sql方法==============================================================
+	  //===========================================================================
+	  /// <summary>
+        /// 用SQL语句查询
+        /// </summary>
+        /// <param name="sql">sql语句</param>
+        /// <param name="namedParameters">sql参数</param>
+        /// <returns>集合</returns>
+         IEnumerable<TFunExpand> GetListBySql(string sql, dynamic namedParameters);
+       	
+		/// <summary>
+	     /// 执行Sql
+	     /// </summary>
+	     /// <param name="sql">Sql语句</param>
+	     /// <param name="namedParameters">查询字符串</param>
+	     /// <returns></returns>
+		 bool ExecuteSql(string sql, dynamic namedParameters = null);
+
 	   }
 	   }

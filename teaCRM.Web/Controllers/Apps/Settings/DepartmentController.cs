@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using teaCRM.Service;
 using teaCRM.Service.Impl;
 
 namespace teaCRM.Web.Controllers.Apps.Settings
@@ -54,10 +55,10 @@ namespace teaCRM.Web.Controllers.Apps.Settings
         #region 获取树形数据
 
         //
-        // GET: /Settings/Department/GetDepartmentTreeData
+        // GET: /Apps/Settings/Department/GetDepartmentTreeData
         public string GetDepartmentTreeData()
         {
-            SysDepartmentService service = new SysDepartmentService();
+            ISysDepartmentService service = new SysDepartmentServiceImpl();
             string treeData = service.GetTreeData();
             return treeData;
         }

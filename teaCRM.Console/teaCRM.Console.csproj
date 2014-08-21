@@ -2,18 +2,21 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{087A655B-AB00-4130-A1A5-7EFB707D60FB}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{834DEA0D-F4E5-4853-9F22-E1A146230B87}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>teaCRM.Service</RootNamespace>
-    <AssemblyName>teaCRM.Service</AssemblyName>
+    <RootNamespace>teaCRM.Console</RootNamespace>
+    <AssemblyName>teaCRM.Console</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,7 +25,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,7 +37,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,32 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IAccountService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Impl\AccountServiceImpl.cs" />
-    <Compile Include="Impl\SysDepartmentServiceImpl.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ISysDepartmentService.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\teaCRM.Common\teaCRM.Common.csproj">
       <Project>{D03BBC00-649A-43B6-BB8D-65CB34AECC53}</Project>
       <Name>teaCRM.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\teaCRM.Dao\teaCRM.Dao.csproj">
-      <Project>{6887CE80-724B-4E77-9523-89FBEB753E6B}</Project>
-      <Name>teaCRM.Dao</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\teaCRM.Entity\teaCRM.Entity.csproj">
-      <Project>{0687C70A-0976-40D8-A069-56ED9E6FFF2D}</Project>
-      <Name>teaCRM.Entity</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

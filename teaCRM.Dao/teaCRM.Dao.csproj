@@ -107,6 +107,9 @@
     <Compile Include="Impl\TSysUserDaoImpl.cs">
       <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
     </Compile>
+    <Compile Include="Impl\VCompanyUserDaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
     <Compile Include="ITConExpvalueDao.cs">
       <DependentUpon>teaCRMIDao.tt</DependentUpon>
     </Compile>
@@ -164,10 +167,14 @@
     <Compile Include="Manual\TSysDepartmentDao.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Manual\VCompanyUserDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="teaCRMIDao.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VCompanyUser.cs">
       <DependentUpon>teaCRMIDao.tt</DependentUpon>
     </Compile>
   </ItemGroup>

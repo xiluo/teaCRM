@@ -10,8 +10,9 @@
 <#
 	var @contextNamespace = "teaCRM.DBContext";
 	var @ModelNamespace = "teaCRM.Model";
-	var @DaoNamespace = "teaCRM.Dao";
+	var @DaoNamespace = " teaCRM.Dao.Impl";
 	var @Date=System.DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+	
 	var connectionStringName = "teaCRMSqlServer";
 	var dbType=GetAppSettings("databaseType");
 	switch(dbType){
@@ -91,21 +92,7 @@ namespace <#= @DaoNamespace #>
 		    }
         }
 
-		 /// <summary>
-        /// 用SQL语句查询
-        /// </summary>
-        /// <param name="sql">sql语句</param>
-        /// <param name="namedParameters">sql参数</param>
-        /// <returns>集合</returns>
-        public IEnumerable<<#=daoModelName#>> GetListBySql(string sql, dynamic namedParameters)
-        {
-          using (<#=dbContextName#> db=new <#=dbContextName#>())
-            {
-               return db.DbHelper.ExecuteDataTable(sql,namedParameters).ToList<<#=daoModelName#>>();
-            }
-          
-        }
-
+		
 		  /// <summary>
         /// 添加实体
         /// </summary>
@@ -154,19 +141,19 @@ namespace <#= @DaoNamespace #>
         {
             using (<#=dbContextName#> db=new <#=dbContextName#>())
             {
-                var tran = db.Connection.BeginTransaction();
+                //var tran = db.Connection.BeginTransaction();
                 try
                 {
                     foreach (var item in list)
                     {
                         db.<#=daoListName#>.Delete(item);
                     }
-                    tran.Commit();
+                    //tran.Commit();
 					return true;
                 }
                 catch (Exception ex)
                 {
-                    tran.Rollback();
+                    //tran.Rollback();
 					return false;
                     throw new Exception(ex.Message);
                 }
@@ -216,6 +203,52 @@ namespace <#= @DaoNamespace #>
 			 return models;
             }
 	  }
+
+
+	  
+
+	  //以下是原生Sql方法==============================================================
+	  //===========================================================================
+	   /// <summary>
+        /// 用SQL语句查询
+        /// </summary>
+        /// <param name="sql">sql语句</param>
+        /// <param name="namedParameters">sql参数</param>
+        /// <returns>集合</returns>
+        public IEnumerable<<#=daoModelName#>> GetListBySql(string sql, dynamic namedParameters)
+        {
+          using (<#=dbContextName#> db=new <#=dbContextName#>())
+            {
+               return db.DbHelper.ExecuteDataTable(sql,namedParameters).ToList<<#=daoModelName#>>();
+            }
+          
+        }
+		
+		/// <summary>
+	     /// 执行Sql
+	     /// </summary>
+	     /// <param name="sql">Sql语句</param>
+	     /// <param name="namedParameters">查询字符串</param>
+	     /// <returns></returns>
+		public bool ExecuteSql(string sql, dynamic namedParameters = null)
+		{
+	         using (teaCRMDBContext db = new teaCRMDBContext())
+	         {
+	             var rows = db.DbHelper.ExecuteNonQuery(sql, namedParameters);
+	             if (rows > 0)
+	             {
+	                 return true;
+	             }
+	             else
+	             {
+	                 return false;
+	             }
+	         }
+		}
+
+
+
+
 	   }
 	   }
 <#
@@ -229,6 +262,116 @@ namespace <#= @DaoNamespace #>
 
 
 
+
+<#foreach (var tb in databaseSchema.Views){#>
+<#
+ //开始ViewDao===================================================================================
+var daoFilename= NamingConversion.Default.ClassName( tb.TableName)+ "DaoImpl";
+var daoModelName=NamingConversion.Default.ClassName( tb.TableName);
+var daoListName=NamingConversion.Default.QueryableName( tb.TableName);
+manager.StartNewFile(daoFilename+ ".cs");
+#>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using NLite.Data;
+using teaCRM.DBContext;
+using teaCRM.Entity;
+
+namespace <#= @DaoNamespace #>
+{
+
+    /// <summary>
+    /// 自动生成的实现I<#=daoModelName#>Dao接口的Dao类。 <#=@Date#> By 唐有炜
+    /// </summary>
+ public class <#=daoFilename#>:I<#=daoModelName#>Dao
+    {
+	    /// <summary>
+        /// 获取所有的数据
+	    /// </summary>
+	    /// <returns>返回所有数据列表</returns>
+        public List<<#=daoModelName#>> GetList() 
+        {
+          using (<#=dbContextName#> db=new <#=dbContextName#>())
+            {
+             var models= db.<#=daoListName#>.ToList();
+			 return models;
+            }
+        }
+
+		/// <summary>
+        /// 获取指定的单个实体
+        /// 如果不存在则返回null
+        /// 如果存在多个则抛异常
+        /// </summary>
+        /// <param name="predicate">Lamda表达式</param>
+        /// <returns>Entity</returns>
+        public <#=daoModelName#> GetEntity(Expression<Func<<#=daoModelName#>, bool>> predicate) 
+        {
+            using (<#=dbContextName#> db=new <#=dbContextName#>())
+            {
+                var model =db.<#=daoListName#>.Where<<#=daoModelName#>>(predicate).SingleOrDefault();
+                return model;
+		    }
+        }
+
+		
+        /// <summary>
+        /// 是否存在该记录
+        /// </summary>
+        /// <returns></returns>
+       public   bool ExistsEntity(Expression<Func<<#=daoModelName#> , bool>> predicate)
+	   {
+            using (<#=dbContextName#> db=new <#=dbContextName#>())
+            {
+               bool status= db.<#=daoListName#>.Any(predicate);
+               return status;
+            }
+        }
+
+		 //查询分页
+    public  List<<#=daoModelName#>> GetListByPage(int pageIndex, int pageSize, Expression<Func<<#=daoModelName#> , bool>> predicate)
+	  {
+	   using (<#=dbContextName#> db=new <#=dbContextName#>())
+            {
+             var models= db.<#=daoListName#>.ToList();
+			 return models;
+            }
+	  }
+
+
+	  
+	  //以下是原生Sql方法==============================================================
+	  //===========================================================================
+	   /// <summary>
+        /// 用SQL语句查询
+        /// </summary>
+        /// <param name="sql">sql语句</param>
+        /// <param name="namedParameters">sql参数</param>
+        /// <returns>集合</returns>
+        public IEnumerable<<#=daoModelName#>> GetListBySql(string sql, dynamic namedParameters)
+        {
+          using (<#=dbContextName#> db=new <#=dbContextName#>())
+            {
+               return db.DbHelper.ExecuteDataTable(sql,namedParameters).ToList<<#=daoModelName#>>();
+            }
+          
+        }
+		
+		
+
+	   }
+	   }
+<#
+  }
+#>
+
+<#
+ manager.EndBlock();
+ //结束ViewDao===================================================================================
+#>
 
 
 <#

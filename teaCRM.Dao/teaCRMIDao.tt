@@ -72,14 +72,6 @@ public  interface <#=daoFilename#>
         /// <returns>Entity</returns>
          <#=daoModelName#> GetEntity(Expression<Func<<#=daoModelName#>, bool>> predicate) ;
        
-		 /// <summary>
-        /// 用SQL语句查询
-        /// </summary>
-        /// <param name="sql">sql语句</param>
-        /// <param name="namedParameters">sql参数</param>
-        /// <returns>集合</returns>
-         IEnumerable<<#=daoModelName#>> GetListBySql(string sql, dynamic namedParameters);
-       
 		  /// <summary>
         /// 添加实体
         /// </summary>
@@ -117,6 +109,25 @@ public  interface <#=daoFilename#>
 		 //查询分页
       List<<#=daoModelName#>> GetListByPage(int pageIndex, int pageSize, Expression<Func<<#=daoModelName#> , bool>> predicate);
 	 
+	 
+	  //以下是原生Sql方法==============================================================
+	  //===========================================================================
+	  /// <summary>
+        /// 用SQL语句查询
+        /// </summary>
+        /// <param name="sql">sql语句</param>
+        /// <param name="namedParameters">sql参数</param>
+        /// <returns>集合</returns>
+         IEnumerable<<#=daoModelName#>> GetListBySql(string sql, dynamic namedParameters);
+       	
+		/// <summary>
+	     /// 执行Sql
+	     /// </summary>
+	     /// <param name="sql">Sql语句</param>
+	     /// <param name="namedParameters">查询字符串</param>
+	     /// <returns></returns>
+		 bool ExecuteSql(string sql, dynamic namedParameters = null);
+
 	   }
 	   }
 <#
@@ -127,6 +138,75 @@ public  interface <#=daoFilename#>
  manager.EndBlock();
  //结束IDao===================================================================================
 #>
+
+<#
+
+foreach (var tb in databaseSchema.Views){
+	var daoFilename= "I"+NamingConversion.Default.ClassName( tb.TableName)+ "Dao";
+var daoModelName=NamingConversion.Default.ClassName( tb.TableName);
+var daoListName=NamingConversion.Default.QueryableName( tb.TableName);
+	 manager.StartNewFile(NamingConversion.Default.ClassName(tb.TableName) + ".cs");
+	 //开始视图
+	 #>
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using NLite.Data;
+using teaCRM.DBContext;
+using teaCRM.Entity;
+
+namespace <#= @DaoNamespace #>
+{
+public  interface <#=daoFilename#>
+    {
+	    /// <summary>
+        /// 获取所有的数据
+	    /// </summary>
+	    /// <returns>返回所有数据列表</returns>
+         List<<#=daoModelName#>> GetList() ;
+       
+		/// <summary>
+        /// 获取指定的单个实体
+        /// 如果不存在则返回null
+        /// 如果存在多个则抛异常
+        /// </summary>
+        /// <param name="predicate">Lamda表达式</param>
+        /// <returns>Entity</returns>
+         <#=daoModelName#> GetEntity(Expression<Func<<#=daoModelName#>, bool>> predicate) ;
+       
+		
+		
+        /// <summary>
+        /// 是否存在该记录
+        /// </summary>
+        /// <returns></returns>
+          bool ExistsEntity(Expression<Func<<#=daoModelName#> , bool>> predicate);
+	 
+		 //查询分页
+      List<<#=daoModelName#>> GetListByPage(int pageIndex, int pageSize, Expression<Func<<#=daoModelName#> , bool>> predicate);
+	 
+	 
+	  //以下是原生Sql方法==============================================================
+	  //===========================================================================
+	  /// <summary>
+        /// 用SQL语句查询
+        /// </summary>
+        /// <param name="sql">sql语句</param>
+        /// <param name="namedParameters">sql参数</param>
+        /// <returns>集合</returns>
+         IEnumerable<<#=daoModelName#>> GetListBySql(string sql, dynamic namedParameters);
+
+	   }
+	   }
+<# 
+	} 
+ manager.EndBlock();
+#>
+
+
 
 <#
  //执行===================================================================================
