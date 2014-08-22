@@ -8,7 +8,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>优创CRM软件平台_打造中国办公软件第一品牌</title>
+        <title>企业登陆_优创CRM软件平台_打造中国办公软件第一品牌</title>
         <meta name="keywords" content="免费CRM,优创CRM,客户管理系统">
         <meta name="description" content="免费CRM登录">
         <style type="text/css">
@@ -308,7 +308,6 @@
                 font-size: 0;
                 border-radius: 2px;
                 position: relative;
-                +
                 zoom: 1;
                 height: 46px;
                 border: 1px solid #BAC7D2;
@@ -319,7 +318,7 @@
             }
 
             .ipt-t input {
-                width: 211px;
+                width: 322px;
                 outline: none;
                 background: none;
                 border: none;
@@ -614,6 +613,15 @@
             }
             /***pop-up***/
 .pop-up {font-family: Microsoft Yahei;padding:20px 30px; text-align:center;width:200px; font-size:14px;word-break:break-all;}
+
+
+/*自动完成样式*/
+.autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+
+
         </style>
         <!--[if lte IE 8]>
             <style type='text/css'>
@@ -776,9 +784,27 @@
             </style>
         <![endif]-->
         <script src="@rootPath/Themes/default/js/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
+      
         <script src="@rootPath/Themes/default/js/artDialog/jquery.artDialog.source.js" type="text/javascript"></script>
         <!--获取ip地址-->
         <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script> 
+       
+        <!--自动完成-->
+        <!--
+            http://www.devbridge.com/sourcery/components/jquery-autocomplete/
+            https://github.com/devbridge/jQuery-Autocomplete
+
+//这是生成的html
+<div class="autocomplete-suggestions">
+    <div class="autocomplete-suggestion autocomplete-selected">...</div>
+    <div class="autocomplete-suggestion">...</div>
+    <div class="autocomplete-suggestion">...</div>
+</div>
+
+            -->
+        <script src="../../Themes/default/js/autoComplete/jquery.autocomplete.js" type="text/javascript"></script>
+
+        <!--本页面js-->
         <script src="@rootPath/Themes/default/js/account/login.js" type="text/javascript"></script>
     </head>
     <body>
@@ -846,7 +872,7 @@
                                         <a class="ext" href="#" title="" id="forGetPassword" target="_blank" style="">忘记密码?</a> </div>
                                     <div class="ft" id="loginFootTipsVer" style="display: block;"> <span class="ft-mailver-text">移动版本：</span> <a id="ftVerSelLink" class="ft-mailver-now" href="javascript:void(0);"> <span id="ftVerSelLinkTxt">安卓版下载&nbsp;</span> </a> <a id="ftVerSelLink" class="ft-mailver-now" href="javascript:void(0);"> <span id="ftVerSelLinkTxt">IOS版下载&nbsp;</span> </a> </div>
                                     <div class="ft-ext" id="loginFootTipsRight" style="display: block;"> 
-                                        <a href="#" target="_blank" tabindex="9">注册免费试用</a></div>
+                                        <a href="/Account/Register/" target="_blank" tabindex="9">注册免费试用</a></div>
                                 </form>
                                 <b class="ico ico-arr tab-panel-locat"></b>
                             </div>

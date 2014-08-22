@@ -50,6 +50,12 @@
     <Compile Include="teaCRMKeys.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\teaCRM.Entity\teaCRM.Entity.csproj">
+      <Project>{0687C70A-0976-40D8-A069-56ED9E6FFF2D}</Project>
+      <Name>teaCRM.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -5,12 +5,58 @@
 $(document).ready(function() {
     //记住密码
     remember();
+    //自动完成
+    auto_complete();
 });
 
 $(function() {
     //登陆
     do_login();
+
 });
+
+//自动完成
+function auto_complete() {
+    $('#userName').autocomplete({
+        serviceUrl: '/Account/UserNameAuto/',
+        onSelect: function(suggestion) {
+            //alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+        }
+    });
+
+//服务器返回结果
+//{
+//    "query": "Unit",
+//    "suggestions": [
+//        {
+//            "value": "United Arab Emirates",
+//            "data": "AE"
+//        },
+//        {
+//            "value": "United Kingdom",
+//            "data": "UK"
+//        },
+//        {
+//            "value": "United States",
+//            "data": "US"
+//        }
+//    ]
+//}
+
+//    var countries = [
+//   { value: 'Andorra', data: 'AD' },
+//        // ...
+//   {value: 'Zimbabwe', data: 'ZZ' }
+//];
+//
+//    $('#userName').autocomplete({
+//        lookup: countries,
+//        onSelect: function (suggestion) {
+//            alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+//        }
+//    });
+
+}
 
 //记住密码
 //$.cookie(‘the_cookie’); // 读取 cookie 
@@ -31,6 +77,13 @@ function remember() {
 
 //登陆提交
 function do_login() {
+    $("#userName").focus(function() {
+        $("#hdExtLink").removeClass("show-block").addClass("hide");
+    });
+    $("#userPassword").focus(function() {
+        $("#hdExtLink").removeClass("show-block").addClass("hide");
+    });
+
     $("#btnSubmit").click(function() {
         var userName = $.trim($("#userName").val());
         var userPassword = $.trim($("#userPassword").val());
@@ -64,24 +117,64 @@ function login_ajax(userName, userPassword) {
     var clientTime = get_client_time();
     var remember = $.trim($("#remember").prop("checked"));
     //alert(remember);
-    $.post(url, { type: type, accountType: accountType, userName: userName, userPassword: userPassword, remember: remember, clientIp: clientIp, clientPlace: clientPlace, clientTime: clientTime }, function(data) {
-        //alert(data.Status);
-        $("#hdExtLink").text(data.Msg).removeClass("hide").addClass("show-block");
-        if (data.Status) { //登陆成功
+//    $.post(url, { type: type, accountType: accountType, userName: userName, userPassword: userPassword, remember: remember, clientIp: clientIp, clientPlace: clientPlace, clientTime: clientTime }, function(data) {
+//        //alert(data.Status);
+//        $("#hdExtLink").text(data.Msg).removeClass("hide").addClass("show-block");
+//        if (data.Status) { //登陆成功
+//            $.dialog(
+//                {
+//                    id: 'loading',
+//                    lock: true,
+//                    title: '提示',
+//                    icon: 'face-smile',
+//                    content: '<div class="pop-up">正在登录中，请稍后...</div>',
+//                    time: '2'
+//                }
+//            );
+//            location.href = "/";
+//        }
+//
+//    });
+
+
+    $.ajax({
+        type: "post",
+        url: url,
+        data: { type: type, accountType: accountType, userName: userName, userPassword: userPassword, remember: remember, clientIp: clientIp, clientPlace: clientPlace, clientTime: clientTime },
+        dataType: "json",
+        beforeSend: function() {
             $.dialog(
                 {
                     id: 'loading',
                     lock: true,
-                    title: '提示',
+                    title: '温馨提示',
                     icon: 'face-smile',
-                    content: '<div class="pop-up">正在登录中，请稍后...</div>',
-                    time: '2'
+                    content: '<div class="pop-up">异步加载中，请稍后...</div>'
                 }
             );
-            location.href = "/";
-        }
+        },
+        complete: function() {
+            $.dialog.list['loading'].close();
 
+        },
+        success: function(data) {
+            $("#hdExtLink").text(data.Msg).removeClass("hide").addClass("show-block");
+            if (data.Status) { //登陆成功
+                $.dialog(
+                    {
+                        id: 'loading',
+                        lock: true,
+                        title: '温馨提示',
+                        icon: 'face-smile',
+                        content: '<div class="pop-up">正在登录中，请稍后...</div>',
+                        time: '2'
+                    }
+                );
+                location.href = "/";
+            }
+        }
     });
+
 }
 
 //根据用户名判断账号类型(username,email,phone)

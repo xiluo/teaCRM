@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DepartmentTree.cs" />
+    <Compile Include="KeyValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseMessage.cs" />
     <Compile Include="TConExpvalue.cs">

@@ -11,8 +11,6 @@ using teaCRM.Web.Filters;
 
 namespace teaCRM.Web.Controllers
 {
-
-
     public class AccountController : Controller
     {
         #region 登陆
@@ -33,8 +31,10 @@ namespace teaCRM.Web.Controllers
         {
             IAccountService accountService = new AccountServiceImpl();
             ResponseMessage rmsg = accountService.Login(fc["type"].ToString(),
-                fc["accountType"].ToString(), fc["userName"].ToString(), fc["userPassword"].ToString(), fc["remember"].ToString(),
-                fc["clientIp"].ToString(), HttpUtility.UrlDecode(fc["clientPlace"].ToString()), fc["clientTime"].ToString());
+                fc["accountType"].ToString(), fc["userName"].ToString(), fc["userPassword"].ToString(),
+                fc["remember"].ToString(),
+                fc["clientIp"].ToString(), HttpUtility.UrlDecode(fc["clientPlace"].ToString()),
+                fc["clientTime"].ToString());
             return Json(rmsg);
         }
 
@@ -49,6 +49,63 @@ namespace teaCRM.Web.Controllers
 //            return Json(rmsg);
 //        }
 
+        #region 自动提示
+
+        //
+        // GET: /Account/UserNameAuto/ 自动提示
+        public ActionResult UserNameAuto(string query)
+        {
+            string[] emails = new string[]
+            {
+                "126.com", "163.com", "yeah.net", "sina.com", "sina.cn", "qq.com", "vip.qq.com", "sohu.com",
+                "live.com", "msn.cn", "gmail.com"
+            };
+            List<KeyValue> results = new List<KeyValue>();
+            if (String.IsNullOrEmpty(query))
+            {
+                results.Add(new KeyValue() {value = "暂无结果", data = "0"});
+                return Json(results, JsonRequestBehavior.AllowGet);
+            }
+
+            for (int i = 0; i < emails.Length; i++)
+            {
+                var email = emails[i];
+                KeyValue item = new KeyValue();
+                if (query.Contains("@"))//有@才提示
+                {
+                    string query2 = query.Split('@')[1];
+                    if (email.StartsWith(query2))
+                    {
+                        item.value = query.Split('@')[0] + "@" + email.Trim();
+                        item.data = i.ToString();
+                    }
+                    results.Add(item);
+                }
+//                else
+//                {
+//                    item.value = query + "@" + email.Trim();
+//                    item.data = i.ToString();
+//                }
+            }
+            results = Utils.RemoveEmptyList(results);
+            AutoStruct autoStruct = new AutoStruct();
+            autoStruct.query = "Unit";
+            autoStruct.suggestions = results;
+            return Json(autoStruct, JsonRequestBehavior.AllowGet);
+
+        }
+
+        /// <summary>
+        /// 返回结果
+        /// </summary>
+        private class AutoStruct
+        {
+            public string query { set; get; }
+            public List<KeyValue> suggestions { set; get; }
+        }
+
+        #endregion
+
         #endregion
 
         #region 注册
@@ -58,7 +115,23 @@ namespace teaCRM.Web.Controllers
 
         public ActionResult Register()
         {
-            return View();
+            return View("Register");
+        }
+
+        //
+        // GET: /Account/EmailRegister
+
+        public ActionResult EmailRegister()
+        {
+            return View("EmailRegister");
+        }
+
+        //
+        // GET: /Account/PhoneRegister
+
+        public ActionResult PhoneRegister()
+        {
+            return View("PhoneRegister");
         }
 
         #endregion
@@ -72,6 +145,5 @@ namespace teaCRM.Web.Controllers
         }
 
         #endregion
-
     }
 }

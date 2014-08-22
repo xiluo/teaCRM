@@ -410,6 +410,7 @@ namespace teaCRM.Service.Impl
                     LogAction = teaCRMEnums.LogActionEnum.Login.ToString(),
                     LogRemark = loginUser + "登陆了系统。",
                     LogIp = clientIp,
+                    LogPlace = clientPlace,
                     LogTime = DateTime.Parse(clientTime)
                 };
                 sysLogDao.InsertEntity(sysLog);

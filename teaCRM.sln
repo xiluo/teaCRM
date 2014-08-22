@@ -24,6 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "teaCRM,Docs", "teaCRM,Docs"
 	ProjectSection(SolutionItems) = preProject
 		teaCRM.Docs\CRM客户关系网站整体定位_0714.doc = teaCRM.Docs\CRM客户关系网站整体定位_0714.doc
 		LICENSE = LICENSE
+		teaCRM.Docs\long_logo.psd = teaCRM.Docs\long_logo.psd
 		README.md = README.md
 		teaCRM.Docs\teaCRM详细设计说明书.doc = teaCRM.Docs\teaCRM详细设计说明书.doc
 	EndProjectSection

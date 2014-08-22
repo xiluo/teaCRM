@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
@@ -7,6 +8,7 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
+using teaCRM.Entity;
 
 namespace teaCRM.Common
 {
@@ -1497,6 +1499,72 @@ namespace teaCRM.Common
             return !regex.IsMatch(strNumber);
         }
 
+        #endregion
+
+        #region  删除list中所有为空的元素 
+
+        /// <summary> 
+        ///删除list中所有为空的元素 
+        ///删除为空的操作方式非常复杂，因为你每一次删除一个元素之后， 
+        ///当前的list的大小就会变化，但是反过来想，如果只是获取它不为 
+        ///空的元素则不需要考虑它的size大小的变化，而且比较简单。 
+        ///
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static List<string> RemoveEmptyList(List<string> list)
+        {
+            List<string> list1 = new List<string>();
+
+            if (list == null || list.Count <= 0)
+            {
+                return null;
+            }
+            //循环第一层  
+            for (int i = 0; i < list.Count; i++)
+            {
+                //进入每一个list  
+                string listi = list[i];
+                if (!String.IsNullOrEmpty(listi))
+                {
+                    list1.Add(listi);
+                }
+            }
+
+            return list1;
+        }
+
+
+        /// <summary> 
+        ///删除list中所有为空的元素 
+        ///删除为空的操作方式非常复杂，因为你每一次删除一个元素之后， 
+        ///当前的list的大小就会变化，但是反过来想，如果只是获取它不为 
+        ///空的元素则不需要考虑它的size大小的变化，而且比较简单。 
+        ///
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static List<KeyValue> RemoveEmptyList(List<KeyValue> list)
+        {
+            List<KeyValue> list1 = new List<KeyValue>();
+
+            if (list == null || list.Count <= 0)
+            {
+                return null;
+            }
+            //循环第一层  
+            for (int i = 0; i < list.Count; i++)
+            {
+                //进入每一个list  
+                KeyValue listi = list[i];
+                if (!String.IsNullOrEmpty(listi.value))
+                {
+                    list1.Add(listi);
+                }
+            }
+
+            return list1;
+        }
         #endregion
     }
 }

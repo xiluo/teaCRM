@@ -145,6 +145,7 @@
     <Content Include="Themes\default\images\logo.jpg" />
     <Content Include="Themes\default\images\logo_ie6_v2.png" />
     <Content Include="Themes\default\images\logo_v2.png" />
+    <Content Include="Themes\default\images\long_logo.png" />
     <Content Include="Themes\default\images\ntes_logo.png" />
     <Content Include="Themes\default\images\ntes_logo_ie6.png" />
     <Content Include="Themes\default\images\shadow_x.png" />
@@ -226,6 +227,7 @@
     <Content Include="Themes\default\js\artDialog\skins\icons\face-smile.png" />
     <Content Include="Themes\default\js\artDialog\skins\icons\loading.gif" />
     <Content Include="Themes\default\js\artDialog\skins\icons\question.png" />
+    <Content Include="Themes\default\js\autoComplete\jquery.autocomplete.js" />
     <Content Include="Themes\default\js\cookie\jquery.cookie.js" />
     <Content Include="Themes\default\js\form_validate.js" />
     <Content Include="Themes\default\js\ligerui\lib\ligerUI\js\ligerui.all.js" />
@@ -433,6 +435,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Apps\Settings\Role\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\EmailRegister.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\PhoneRegister.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

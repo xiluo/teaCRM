@@ -21,6 +21,8 @@ namespace teaCRM.Entity
 		public String LogRemark { get;set; }
 		[Column("log_ip")]
 		public String LogIp { get;set; }
+		[Column("log_place")]
+		public String LogPlace { get;set; }
 		[Column("log_time")]
 		public DateTime? LogTime { get;set; }
  
