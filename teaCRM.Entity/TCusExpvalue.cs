@@ -4,7 +4,7 @@ using System.Linq;
 using NLite.Data;
 namespace teaCRM.Entity
 {
-	[Table("T_cus_expvalue")]
+	[Table("t_cus_expvalue")]
 	public partial class TCusExpvalue 
 	{
 	

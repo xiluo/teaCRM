@@ -11,7 +11,7 @@ namespace  teaCRM.Dao.Impl
 {
 
     /// <summary>
-    /// 自动生成的实现ITCusBaseDao接口的Dao类。 2014-08-21 05:29:18 By 唐有炜
+    /// 自动生成的实现ITCusBaseDao接口的Dao类。 2014-08-22 09:49:50 By 唐有炜
     /// </summary>
  public class TCusBaseDaoImpl:ITCusBaseDao
     {

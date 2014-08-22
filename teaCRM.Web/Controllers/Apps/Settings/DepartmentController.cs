@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using teaCRM.Service;
 using teaCRM.Service.Impl;
+using teaCRM.Web.Filters;
 
 namespace teaCRM.Web.Controllers.Apps.Settings
 {
@@ -10,7 +11,7 @@ namespace teaCRM.Web.Controllers.Apps.Settings
 
         //
         // GET: /Settings/Department/
-
+         [UserAuthorize]
         public ActionResult Index()
         {
             return View("Index");
@@ -56,6 +57,7 @@ namespace teaCRM.Web.Controllers.Apps.Settings
 
         //
         // GET: /Apps/Settings/Department/GetDepartmentTreeData
+        
         public string GetDepartmentTreeData()
         {
             ISysDepartmentService service = new SysDepartmentServiceImpl();

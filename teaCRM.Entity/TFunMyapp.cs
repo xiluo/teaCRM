@@ -4,7 +4,7 @@ using System.Linq;
 using NLite.Data;
 namespace teaCRM.Entity
 {
-	[Table("T_fun_myapp")]
+	[Table("t_fun_myapp")]
 	public partial class TFunMyapp 
 	{
 	
@@ -16,7 +16,7 @@ namespace teaCRM.Entity
 		[Column("myapp_name")]
 		public String MyappName { get;set; }
 		[Column("myapp_link")]
-		public Byte[] MyappLink { get;set; }
+		public String MyappLink { get;set; }
 		[Column("myapp_note")]
 		public String MyappNote { get;set; }
 		[Column("myapp_action")]

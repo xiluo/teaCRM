@@ -73,13 +73,14 @@
         public const string SESSION_USER_COMPANY_INFO_ID = "teacrm_session_user_company_info_id";
         
         //Cookies=====================================================
+        public const string COOKIE_REMEMBER_USER_COMPANY_REMEMBER = "remember";
         /// <summary>
         /// 记住企业会员用户名
         /// </summary>
-        public const string COOKIE_USER_COMPANY_NAME_REMEMBER = "teacrm_cookie_user_company_name_remember";
+        public const string COOKIE_USER_COMPANY_NAME_REMEMBER = "userName";
         /// <summary>
         /// 记住企业会员密码
         /// </summary>
-        public const string COOKIE_USER_COMPANY_PWD_REMEMBER = "teacrm_cookie_user_company_pwd_remember";
+        public const string COOKIE_USER_COMPANY_PWD_REMEMBER = "userPassword";
     }
 }

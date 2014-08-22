@@ -4,7 +4,7 @@ using System.Linq;
 using NLite.Data;
 namespace teaCRM.Entity
 {
-	[Table("T_cus_base")]
+	[Table("t_cus_base")]
 	public partial class TCusBase 
 	{
 	
@@ -20,7 +20,7 @@ namespace teaCRM.Entity
 		[Column("cus_lastid")]
 		public Int32? CusLastid { get;set; }
 		[Column("cus_tel")]
-		public Byte[] CusTel { get;set; }
+		public String CusTel { get;set; }
 		[Column("cus_city")]
 		public String CusCity { get;set; }
 		[Column("cus_address")]

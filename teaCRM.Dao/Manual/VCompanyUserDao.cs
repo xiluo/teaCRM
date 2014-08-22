@@ -51,8 +51,9 @@ namespace teaCRM.Dao.Manual
                 catch (Exception ex)
                 {
                     tran.Rollback();
+                    //return false;
+                    throw new Exception(ex.Message);
                     return false;
-                    throw new Exception(ex.Message); 
                 }
                 finally
                 {

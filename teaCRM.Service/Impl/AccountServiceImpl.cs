@@ -51,7 +51,8 @@ namespace teaCRM.Service.Impl
                     switch (type)
                     {
                         case "normal": //正常
-                            if (UserNameExists(accountType, userName))
+                            //登陆时账户类型不分开
+                            if (UserNameExists("username", userName) || UserNameExists("email", userName) || UserNameExists("phone", userName))
                             {
                                 rmsg.Status = true;
                                 rmsg.Msg = "用户名输入正确";
@@ -63,7 +64,7 @@ namespace teaCRM.Service.Impl
                                 return rmsg;
                             }
 
-                            if (UserPasswordExists(accountType, userName, userPassword))
+                            if (UserPasswordExists("username", userName, userPassword) || UserPasswordExists("email", userName, userPassword) || UserPasswordExists("phone", userName, userPassword))
                             {
                                 rmsg.Status = true;
                                 rmsg.Msg = "密码输入正确";
@@ -246,6 +247,33 @@ namespace teaCRM.Service.Impl
 
 
         /// <summary>
+        /// 书写SesionCookie
+        /// </summary>
+        /// <param name="id">用户id</param>
+        /// <param name="userName">用户名</param>
+        /// <param name="userPassword">加密的密码</param>
+        /// <param name="remember">是否记住密码（默认记住）</param>
+        public void WriteSessionCookie(int id, string userName, string userPassword, string remember="true")
+        {
+            HttpContext.Current.Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID] = id;
+            HttpContext.Current.Session.Timeout = 45;
+            //记住登录状态下次自动登录
+           if (remember.ToLower() == "true")
+            {
+                Utils.WriteCookie(teaCRMKeys.COOKIE_REMEMBER_USER_COMPANY_REMEMBER, remember, 43200);
+                Utils.WriteCookie(teaCRMKeys.COOKIE_USER_COMPANY_NAME_REMEMBER,  userName, 43200);
+                Utils.WriteCookie(teaCRMKeys.COOKIE_USER_COMPANY_PWD_REMEMBER,userPassword, 43200);
+            }
+            else
+            {
+                //防止Session提前过期
+                Utils.WriteCookie(teaCRMKeys.COOKIE_REMEMBER_USER_COMPANY_REMEMBER, remember);
+                Utils.WriteCookie(teaCRMKeys.COOKIE_USER_COMPANY_NAME_REMEMBER, "");
+                Utils.WriteCookie(teaCRMKeys.COOKIE_USER_COMPANY_PWD_REMEMBER,  "");
+            }
+        }
+
+        /// <summary>
         /// 根据账户类型和用户名获取Model
         /// </summary>
         /// <param name="accountType">账号类型（username,email,phone）</param>
@@ -254,10 +282,11 @@ namespace teaCRM.Service.Impl
         public VCompanyUser GetVCompanyUserByAccountTypeAndUserName(string accountType, string userName)
         {
             IVCompanyUserDao companyUserDao = new VCompanyUserDaoImpl();
-            VCompanyUser model = null;
+            VCompanyUser model = null; 
             switch (accountType)
             {
                 case "username":
+
                     if (!userName.Contains("@"))
                     {
                         return null;
@@ -286,61 +315,61 @@ namespace teaCRM.Service.Impl
             }
         }
 
-        /// <summary>
-        /// 判断用户是否已经登录(解决Session超时问题) 2014/8/21 13:42:10   By 唐有炜
-        /// </summary>
-        /// <param name="accountType">账号类型（username,email,phone）</param>
-        /// <returns></returns>
-        public bool IsUserLogin(string accountType)
-        {
-            //如果Session为Null
-            if (HttpContext.Current.Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID] != null)
-            {
-                return true;
-            }
-            else
-            {
-                //检查Cookies
-                string userName = Utils.GetCookie(teaCRMKeys.COOKIE_USER_COMPANY_NAME_REMEMBER, "teaCRM");
-                //根据账户类型和用户名获取Model
-                var model = GetVCompanyUserByAccountTypeAndUserName(accountType, userName);
-                if (model != null)
-                {
-                    HttpContext.Current.Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID] = model.UserId;
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-        }
+//        /// <summary>
+//        /// 判断用户是否已经登录(解决Session超时问题) 2014/8/21 13:42:10   By 唐有炜
+//        /// </summary>
+//        /// <param name="accountType">账号类型（username,email,phone）</param>
+//        /// <returns></returns>
+//        public bool IsUserLogin(string accountType)
+//        {
+//            //如果Session为Null
+//            if (HttpContext.Current.Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID] != null)
+//            {
+//                return true;
+//            }
+//            else
+//            {
+//                //检查Cookies
+//                string userName = Utils.GetCookie(teaCRMKeys.COOKIE_USER_COMPANY_NAME_REMEMBER, "teaCRM");
+//                //根据账户类型和用户名获取Model
+//                var model = GetVCompanyUserByAccountTypeAndUserName(accountType, userName);
+//                if (model != null)
+//                {
+//                    HttpContext.Current.Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID] = model.UserId;
+//                    return true;
+//                }
+//                else
+//                {
+//                    return false;
+//                }
+//            }
+//        }
 
-        /// <summary>
-        /// 根据账户类型获取Model
-        /// </summary>
-        /// <param name="accountType">账号类型（username,email,phone）</param>
-        /// <returns></returns>
-        public VCompanyUser GetVCompanyUserByAccountType(string accountType)
-        {
-            IVCompanyUserDao companyUserDao = new VCompanyUserDaoImpl();
-            if (IsUserLogin(accountType))
-            {
-                int userId = (int) HttpContext.Current.Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID];
-
-                //为了能查询到最新的用户信息，必须查询最新的用户资料
-                var model = companyUserDao.GetEntity(cu => cu.UserId == userId);
-                if (model != null)
-                {
-                    return model;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            return null;
-        }
+//        /// <summary>
+//        /// 根据账户类型获取Model
+//        /// </summary>
+//        /// <param name="accountType">账号类型（username,email,phone）</param>
+//        /// <returns></returns>
+//        public VCompanyUser GetVCompanyUserByAccountType(string accountType)
+//        {
+//            IVCompanyUserDao companyUserDao = new VCompanyUserDaoImpl();
+//            if (IsUserLogin(accountType))
+//            {
+//                int userId = (int) HttpContext.Current.Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID];
+//
+//                //为了能查询到最新的用户信息，必须查询最新的用户资料
+//                var model = companyUserDao.GetEntity(cu => cu.UserId == userId);
+//                if (model != null)
+//                {
+//                    return model;
+//                }
+//                else
+//                {
+//                    return null;
+//                }
+//            }
+//            return null;
+//        }
 
         #endregion
 
@@ -353,25 +382,33 @@ namespace teaCRM.Service.Impl
         /// <param name="accountType">账号类型（username,email,phone）</param>
         /// <param name="userName">用户名</param>
         /// <param name="userPassword">密码</param>
+        /// <param name="remember">记住密码</param>
         /// <param name="clientIp">客户端ip地址</param>
+        ///   /// <param name="clientPlace">客户端地址</param>
         /// <param name="clientTime">客户端登陆时间</param>
         /// <returns>ResponseMessage</returns>
-        public ResponseMessage Login(string type, string accountType, string userName,
-            string userPassword, string clientIp, string clientTime)
+        public   ResponseMessage Login(string type, string accountType, string userName, string userPassword,string remember, string clientIp, string clientPlace,string clientTime)
         {
             ResponseMessage rmsg = ValidateAccount("login", type, accountType, userName, userPassword);
             if (rmsg.Status) //登陆成功
             {
+                //获取用户信息
                 var compUser = GetVCompanyUserByAccountTypeAndUserName(accountType, userName);
-
+                //书写SessionCookie
+                WriteSessionCookie(compUser.UserId, userName, userPassword, remember);
                 //写日志
                 ITSysLogDao sysLogDao = new TSysLogDaoImpl();
+                var loginUser = compUser.UserTname;
+                if (String.IsNullOrEmpty(loginUser))
+                {
+                    loginUser = clientPlace + "网友";
+                }
                 TSysLog sysLog = new TSysLog()
                 {
                     UserId = compUser.UserId,
                     UserLname = compUser.UserLname,
                     LogAction = teaCRMEnums.LogActionEnum.Login.ToString(),
-                    LogRemark = compUser.UserTname + "登陆了系统。",
+                    LogRemark = loginUser + "登陆了系统。",
                     LogIp = clientIp,
                     LogTime = DateTime.Parse(clientTime)
                 };
@@ -397,7 +434,7 @@ namespace teaCRM.Service.Impl
             ResponseMessage rmsg = ValidateAccount("register", null, accountType, userName, userPassword);
             if (rmsg.Status)
             {
-//注册验证成功成功
+                //注册验证成功成功
                 VCompanyUserDao companyUserDao = new VCompanyUserDao();
                 //随机编号
                 Random rand = new Random(Guid.NewGuid().GetHashCode());
@@ -444,6 +481,16 @@ namespace teaCRM.Service.Impl
                    }
 
             }
+
+            //注册成功
+            if (rmsg.Status)
+            {
+                //获取用户信息
+                var compUser = GetVCompanyUserByAccountTypeAndUserName(accountType, userName);
+                //书写SessionCookie
+                WriteSessionCookie(compUser.UserId, userName, userPassword);
+            }
+           
              return rmsg;
             
            

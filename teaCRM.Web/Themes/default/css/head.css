@@ -192,3 +192,15 @@ body {
 /*隐藏*/
 
 .hide { display: none; }
+
+/*退出*/ /*140822 By 唐有炜*/
+.exit {
+    float: right;margin-top: 20px;font-size: 18px;
+}
+.exit a {
+    color: white;
+    cursor: pointer;
+}
+.exit a:hover {
+    color: yellowgreen;
+}

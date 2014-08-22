@@ -112,15 +112,25 @@ namespace teaCRM.Web.Test
 
             string type = "normal"; // TODO: 初始化为适当的值
             string accountType = "username"; // TODO: 初始化为适当的值
-            string userName = "admin@32210500"; // TODO: 初始化为适当的值
+            string userName = "admin@11524760"; // TODO: 初始化为适当的值
             string userPassword = "123456"; // TODO: 初始化为适当的值
+            string remember = "true";
             string clientIp = "123.14.252.55"; // TODO: 初始化为适当的值
+            string clientPlace = "河南省郑州市"; // TODO: 初始化为适当的值
             string clientTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); // TODO: 初始化为适当的值
+
+//            string type = "normal"; // TODO: 初始化为适当的值
+//            string accountType = "email"; // TODO: 初始化为适当的值
+//            string userName = "cyutyw@126.com"; // TODO: 初始化为适当的值
+//            string userPassword = "123456"; // TODO: 初始化为适当的值
+//            string clientIp = "123.14.252.55"; // TODO: 初始化为适当的值
+//            string clientTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); // TODO: 初始化为适当的值
+            
 
 
             string expected = "True 密码输入正确"; // TODO: 初始化为适当的值
             string actual;
-            ResponseMessage result = target.Login(type, accountType, userName, userPassword, clientIp, clientTime);
+            ResponseMessage result = target.Login(type, accountType, userName, userPassword,remember, clientIp, clientPlace,clientTime);
             actual = result.Status + " " + result.Msg;
 
             Assert.AreEqual(expected, actual);
@@ -134,13 +144,13 @@ namespace teaCRM.Web.Test
         {
             AccountServiceImpl target = new AccountServiceImpl(); // TODO: 初始化为适当的值
 
-//            string accountType = "phone"; // TODO: 初始化为适当的值
-//            string userName = "15225062328"; // TODO: 初始化为适当的值
-//            string userPassword = "123456"; // TODO: 初始化为适当的值
+            string accountType = "phone"; // TODO: 初始化为适当的值
+            string userName = "15225062328"; // TODO: 初始化为适当的值
+            string userPassword = "123456"; // TODO: 初始化为适当的值
 
-            string accountType = "email"; // TODO: 初始化为适当的值
-            string userName = "cyutyw@126.com"; // TODO: 初始化为适当的值
-            string userPassword ="123456"; // TODO: 初始化为适当的值
+//            string accountType = "email"; // TODO: 初始化为适当的值
+//            string userName = "cyutyw@126.com"; // TODO: 初始化为适当的值
+//            string userPassword ="123456"; // TODO: 初始化为适当的值
 
           
 

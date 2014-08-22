@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using teaCRM.Web.Filters;
 
 namespace teaCRM.Web.Controllers.Apps.Product
 {
@@ -10,7 +11,7 @@ namespace teaCRM.Web.Controllers.Apps.Product
     {
         //
         // GET: /Index/
-
+         [UserAuthorize]
         public ActionResult Index()
         {
             return View("ProductIndex");

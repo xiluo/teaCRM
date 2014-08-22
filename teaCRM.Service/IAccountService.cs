@@ -29,10 +29,12 @@ namespace teaCRM.Service
      /// <param name="accountType">账号类型（username,email,phone）</param>
      /// <param name="userName">用户名</param>
      /// <param name="userPassword">密码</param>
+     /// <param name="remember">记住密码</param>
      /// <param name="clientIp">客户端ip地址</param>
+     /// <param name="clientPlace">客户端地址</param>
      /// <param name="clientTime">客户端登陆时间</param>
      /// <returns>ResponseMessage</returns>
-     ResponseMessage Login( string type, string accountType, string userName, string userPassword, string clientIp,string clientTime);
+     ResponseMessage Login(string type, string accountType, string userName, string userPassword,string remember, string clientIp, string clientPlace,string clientTime);
 
      /// <summary>
      /// 公司注册 2014-08-21 14:58:50 By 唐有炜

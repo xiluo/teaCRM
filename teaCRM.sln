@@ -18,7 +18,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "teaCRM.DB", "teaCRM.DB", "{72A4788F-16F6-4778-9AB5-D942B11AF8DE}"
 	ProjectSection(SolutionItems) = preProject
 		teaCRM.DB\INIT_DATA.sql = teaCRM.DB\INIT_DATA.sql
-		teaCRM.DB\UCSoftware.pdm = teaCRM.DB\UCSoftware.pdm
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "teaCRM,Docs", "teaCRM,Docs", "{4A42847F-8E70-4E34-9502-3A81B2507207}"
