@@ -1,0 +1,1 @@
+{Items:[{type: 'button',text: '新增跟进',icon: 'images/icon/11.png',disable: true,click: function () {addfollow(6)}},{type: 'button',text: '修改跟进',icon: 'images/icon/33.png',disable: true,click: function () {editfollow(6)}},{type: 'button',text: '删除跟进',icon: 'images/icon/12.png',disable: true,click: function () {delfollow(6)}}]}

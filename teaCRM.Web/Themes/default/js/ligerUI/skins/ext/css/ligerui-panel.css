@@ -1,0 +1,28 @@
+﻿
+
+/* --------------
+   *   panel  *
+* ------------ */
+.l-panel-header-drag { cursor:move;  }
+.l-panel {  position: relative; text-align: left; }
+.l-panel-dragging { z-index: 999; }
+.l-panel-content { background: white;border:1px solid #99bbe8;border-top:none;padding:2px; overflow-y:scroll; }
+/*.l-panel-loading { position: absolute; z-index: 91000; top: 0; left: 0; background: white url('../images/common/bigloading.gif') no-repeat center 40%; width: 100%; height: 100%; _height: 800px; display: none; }*/
+.l-panel-header { position: relative; padding-left: 10px; color: #183152; font-weight: bold; line-height: 23px; background: #E5EFFE /*url(../img/white-top-bottom.gif) repeat-x  0 -1px*/url("../images/grid/bg.gif"); overflow: hidden;border:1px solid #99bbe8; margin:0;}
+.l-panel-header-toggle { background: url(../images/panel/panel-tools-sprites.gif) 0 -75px; width: 15px; height: 15px; float: right; margin-top: 5px;margin-right:5px; cursor: pointer; }
+.l-panel-header-toggle-hide { background-position: 0 -60px; }
+.l-panel-header-close { height: 20px; width: 20px; overflow: hidden; background: url('../images/layout/togglebar.gif'); background-position: -40px -20px; cursor: pointer; float: right; }
+.l-panel-header .icons { width: 20px;margin-top:-7px; }
+.l-panel-content iframe { width: 100%; height: 100%; overflow: hidden; }
+
+/* --------------
+   *   Portal  *
+* ------------ */
+.l-portal .l-row-dragging { }
+.l-panel-place { width: 100%; height: 180px; border: 1px dashed #88B0E4; background: white; margin-bottom: 10px; }
+.l-column-place { height: 4px; width: 100%; }
+.l-portal .l-row-dragging .l-column-place { border: 1px dashed #C48AD7; }
+.l-column-empty .l-column-place { height: 80px; }
+.l-portal .l-row { clear: both;  }
+.l-portal .l-column { float: left;  }
+    .l-portal .l-column .l-panel { margin-bottom: 10px; }
