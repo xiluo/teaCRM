@@ -162,5 +162,44 @@ namespace teaCRM.Web.Test
             Assert.AreEqual(expected, actual);
     
         }
+
+        /// <summary>
+        ///A test for PublicRegister
+        ///</summary>
+        [TestMethod()]
+        public void PublicRegisterTest()
+        {
+            AccountServiceImpl target = new AccountServiceImpl(); // TODO: Initialize to an appropriate value
+            string userName = "hl5"; // TODO: Initialize to an appropriate value
+            string phone ="13243432378"; // TODO: Initialize to an appropriate value
+            string userPassword = "huang628901902"; // TODO: Initialize to an appropriate value
+            string userTname = string.Empty; // TODO: Initialize to an appropriate value
+          
+            string expected = null; // TODO: Initialize to an appropriate value
+            string actual;
+            ResponseMessage  result = target.PublicRegister(userName, phone, userPassword, userTname);
+            actual = result.Status + " " + result.Msg;
+
+            Assert.AreEqual(expected, actual);
+             }
+
+        /// <summary>
+        ///A test for UserNameExists
+        ///</summary>
+        [TestMethod()]
+        public void UserNameExistsTest()
+        {
+
+
+
+            AccountServiceImpl target = new AccountServiceImpl(); // TODO: Initialize to an appropriate value
+            string accountType = string.Empty; // TODO: Initialize to an appropriate value
+            string userName = string.Empty; // TODO: Initialize to an appropriate value
+            bool expected = false; // TODO: Initialize to an appropriate value
+            bool actual;
+            actual = target.UserNameExists(accountType, userName);
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
     }
 }

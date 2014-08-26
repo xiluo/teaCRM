@@ -29,7 +29,7 @@ namespace teaCRM.Web.Controllers
         [HttpPost]
         public ActionResult Login(FormCollection fc)
         {
-            IAccountService accountService = new AccountServiceImpl();
+            IAccountService accountService = new teaCRM.Service.Impl.AccountServiceImpl();
             ResponseMessage rmsg = accountService.Login(fc["type"].ToString(),
                 fc["accountType"].ToString(), fc["userName"].ToString(), fc["userPassword"].ToString(),
                 fc["remember"].ToString(),
@@ -57,7 +57,7 @@ namespace teaCRM.Web.Controllers
         {
             string[] emails = new string[]
             {
-                "126.com", "163.com", "yeah.net", "sina.com", "sina.cn", "qq.com", "vip.qq.com", "sohu.com",
+                "10000","126.com", "163.com", "yeah.net", "sina.com", "sina.cn", "qq.com", "vip.qq.com", "sohu.com",
                 "live.com", "msn.cn", "gmail.com"
             };
             List<KeyValue> results = new List<KeyValue>();
@@ -108,7 +108,7 @@ namespace teaCRM.Web.Controllers
 
         #endregion
 
-        #region 注册
+        #region 平台注册（开户）
 
         //
         // GET: /Account/Register
@@ -117,6 +117,8 @@ namespace teaCRM.Web.Controllers
         {
             return View("Register");
         }
+
+
 
         //
         // GET: /Account/EmailRegister
@@ -134,7 +136,31 @@ namespace teaCRM.Web.Controllers
             return View("PhoneRegister");
         }
 
+       
         #endregion
+
+        #region  公共注册
+        //
+        // GET: /Account/PublicRegister
+
+        public ActionResult PublicRegister()
+        {
+            return View("PublicRegister");
+        }
+
+        //
+        // Post: /Account/PublicRegister
+        [HttpPost]
+        public ActionResult PublicRegister(FormCollection fc)
+        {
+            IAccountService accountService = new teaCRM.Service.Impl.AccountServiceImpl();
+            ResponseMessage rmsg = accountService.PublicRegister(fc["userName"], fc["phone"], fc["userPassword"], HttpUtility.UrlDecode(fc["userTname"]));
+
+            return Json(rmsg);
+        }
+
+        #endregion
+
 
         #region 退出
 

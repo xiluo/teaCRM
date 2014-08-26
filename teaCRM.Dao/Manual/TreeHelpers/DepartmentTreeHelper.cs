@@ -17,7 +17,7 @@ namespace teaCRM.Dao.TreeHelpers
         private static IList<DepartmentTree> returnParentTree()
         {
                  List<DepartmentTree> trees;
-                trees = new SysDepartmentDao().GetList()
+                trees = new TSysDepartmentDao().GetList()
                     .Where(d => d.ParentId == 0)
                     .Select(d => new DepartmentTree() {ModuleID = d.Id, ParentID = d.ParentId, ModuleName = d.DepName})
                     .ToList();
@@ -35,7 +35,7 @@ namespace teaCRM.Dao.TreeHelpers
         /// <returns></returns>
         public static bool IsHaveChild(int id)
         {
-            bool flag = new SysDepartmentDao().ExistsEntity(d=>d.Id==id);
+            bool flag = new TSysDepartmentDao().ExistsEntity(d=>d.Id==id);
             return flag;
         }
 
@@ -51,7 +51,7 @@ namespace teaCRM.Dao.TreeHelpers
         private static IList<DepartmentTree> GetChild(int id)
         {
 
-                var childTrees = new SysDepartmentDao().GetList()
+                var childTrees = new TSysDepartmentDao().GetList()
                     .Where(d => d.ParentId== id)
                     .Select(d => new DepartmentTree() {ModuleID = d.Id, ParentID = d.ParentId, ModuleName = d.DepName})
                     .ToList();

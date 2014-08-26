@@ -1,10 +1,5 @@
 ﻿@charset "utf-8";
 
-body, div, select, p {
-    font-size: 12px;
-    color: #4D4D4D;
-    font: 12px microsoft yahei, "宋体", Arial, Helvetica, sans-serif;
-}
 
 :focus { outline: 0; }
 

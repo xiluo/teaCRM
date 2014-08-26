@@ -90,5 +90,46 @@ namespace teaCRM.Web.Test
 //            Assert.AreEqual(expected, actual);
          
         }
+
+        /// <summary>
+        ///PublicRegister 的测试
+        ///</summary>
+        // TODO: 确保 UrlToTest 特性指定一个指向 ASP.NET 页的 URL(例如，
+        // http://.../Default.aspx)。这对于在 Web 服务器上执行单元测试是必需的，
+        //无论要测试页、Web 服务还是 WCF 服务都是如此。
+        [TestMethod()]
+        [HostType("ASP.NET")]
+        [AspNetDevelopmentServerHost("D:\\学习资料\\开发参考资料\\优创科技\\项目\\工作项目\\优创CRM\\源码\\teaCRM\\teaCRM.Web", "/")]
+        [UrlToTest("http://localhost:20649/")]
+        public void PublicRegisterTest()
+        {
+            AccountController target = new AccountController(); // TODO: 初始化为适当的值
+            FormCollection fc = null; // TODO: 初始化为适当的值
+            ActionResult expected = null; // TODO: 初始化为适当的值
+            ActionResult actual;
+            actual = target.PublicRegister(fc);
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("验证此测试方法的正确性。");
+        }
+
+        /// <summary>
+        ///A test for PublicRegister
+        ///</summary>
+        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
+        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
+        // whether you are testing a page, web service, or a WCF service.
+        [TestMethod()]
+        [HostType("ASP.NET")]
+        [AspNetDevelopmentServerHost("D:\\学习资料\\开发参考资料\\优创科技\\项目\\工作项目\\优创CRM\\源码\\teaCRM\\teaCRM.Web", "/")]
+        [UrlToTest("http://localhost:20649/")]
+        public void PublicRegisterTest1()
+        {
+            AccountController target = new AccountController(); // TODO: Initialize to an appropriate value
+            FormCollection fc = null; // TODO: Initialize to an appropriate value
+            ActionResult expected = null; // TODO: Initialize to an appropriate value
+            ActionResult actual;
+            actual = target.PublicRegister(fc);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

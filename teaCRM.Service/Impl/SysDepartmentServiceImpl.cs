@@ -18,7 +18,7 @@ namespace teaCRM.Service.Impl
         /// <returns></returns>
         public string GetTreeData()
             {
-               return new SysDepartmentDao().GetTreeData();
+               return new TSysDepartmentDao().GetTreeData();
             }
 
 

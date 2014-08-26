@@ -56,6 +56,7 @@ body {
     font-size: 18px;
     display: block;
     padding: 0px 25px;
+    cursor: pointer;
 }
 
 .nav li:hover { background: #6199DB; }

@@ -161,12 +161,13 @@
     <Compile Include="ITSysUserDao.cs">
       <DependentUpon>teaCRMIDao.tt</DependentUpon>
     </Compile>
+    <Compile Include="Manual\TCusBaseDao.cs" />
+    <Compile Include="Manual\TFunFilterDao.cs" />
     <Compile Include="Manual\TreeHelpers\DepartmentTreeHelper.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Manual\TSysDepartmentDao.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Manual\TreeHelpers\FilterTreeHelper.cs" />
+    <Compile Include="Manual\TSysDepartmentDao.cs" />
     <Compile Include="Manual\VCompanyUserDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="teaCRMIDao.cs">

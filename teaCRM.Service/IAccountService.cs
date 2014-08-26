@@ -7,6 +7,9 @@ using teaCRM.Entity;
 
 namespace teaCRM.Service
 {
+    /// <summary>
+    /// 账户操作接口。
+    /// </summary>
  public   interface IAccountService
  {
      /// <summary>
@@ -44,5 +47,22 @@ namespace teaCRM.Service
      /// <param name="userPassword">密码</param>
      /// <returns>ResponseMessage</returns>
      ResponseMessage Register(string accountType, string userName, string userPassword);
+
+     /// <summary>
+     /// 公共注册 2014-08-24 14:58:50 By 唐有炜
+     /// </summary>
+     /// <param name="userName">用户名</param>
+     /// <param name="phone">手机号</param>
+     /// <param name="userPassword">密码</param>
+     /// <param name="userTname">真实姓名</param>
+     /// <returns>ResponseMessage</returns>
+     ResponseMessage PublicRegister(string userName, string phone, string userPassword,
+         string userTname = null);
+
+     /// <summary>
+     /// 获取当前登录的企业用户信息 2014-08-25 14:58:50 By 唐有炜
+     /// </summary>
+     /// <returns>VCompanyUser</returns>
+     VCompanyUser GetCurrentCompanyUser();
  }
 }

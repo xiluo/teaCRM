@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base64.cs" />
     <Compile Include="CacheHelper.cs" />
     <Compile Include="DESEncrypt.cs" />
     <Compile Include="MailHelper.cs" />

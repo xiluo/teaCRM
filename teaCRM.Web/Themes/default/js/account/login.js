@@ -17,13 +17,19 @@ $(function() {
 
 //自动完成
 function auto_complete() {
-    $('#userName').autocomplete({
-        serviceUrl: '/Account/UserNameAuto/',
-        onSelect: function(suggestion) {
-            //alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
-        }
-    });
-
+    var browser_not_supported = false;
+    if ($.browser.msie) {
+        browser_not_supported = true;
+    }
+    //IE不显示智能提示
+    if (!browser_not_supported) {
+        $('#userName').autocomplete({
+            serviceUrl: '/Account/UserNameAuto/',
+            onSelect: function(suggestion) {
+                //alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+            }
+        });
+    }
 //服务器返回结果
 //{
 //    "query": "Unit",
@@ -117,25 +123,12 @@ function login_ajax(userName, userPassword) {
     var clientTime = get_client_time();
     var remember = $.trim($("#remember").prop("checked"));
     //alert(remember);
-//    $.post(url, { type: type, accountType: accountType, userName: userName, userPassword: userPassword, remember: remember, clientIp: clientIp, clientPlace: clientPlace, clientTime: clientTime }, function(data) {
-//        //alert(data.Status);
-//        $("#hdExtLink").text(data.Msg).removeClass("hide").addClass("show-block");
-//        if (data.Status) { //登陆成功
-//            $.dialog(
-//                {
-//                    id: 'loading',
-//                    lock: true,
-//                    title: '提示',
-//                    icon: 'face-smile',
-//                    content: '<div class="pop-up">正在登录中，请稍后...</div>',
-//                    time: '2'
-//                }
-//            );
-//            location.href = "/";
-//        }
-//
-//    });
 
+    //初始化消息提示框 
+    var d = dialog({
+        title: '温馨提示',
+        content: '消息内容'
+    });
 
     $.ajax({
         type: "post",
@@ -143,35 +136,27 @@ function login_ajax(userName, userPassword) {
         data: { type: type, accountType: accountType, userName: userName, userPassword: userPassword, remember: remember, clientIp: clientIp, clientPlace: clientPlace, clientTime: clientTime },
         dataType: "json",
         beforeSend: function() {
-            $.dialog(
-                {
-                    id: 'loading',
-                    lock: true,
-                    title: '温馨提示',
-                    icon: 'face-smile',
-                    content: '<div class="pop-up">异步加载中，请稍后...</div>'
-                }
-            );
+            d.content("<div class=\"loading\">验证加载中，请稍后...</div>");
+            d.showModal();
         },
         complete: function() {
-            $.dialog.list['loading'].close();
-
+            //d.close().remove();
         },
         success: function(data) {
             $("#hdExtLink").text(data.Msg).removeClass("hide").addClass("show-block");
             if (data.Status) { //登陆成功
-                $.dialog(
-                    {
-                        id: 'loading',
-                        lock: true,
-                        title: '温馨提示',
-                        icon: 'face-smile',
-                        content: '<div class="pop-up">正在登录中，请稍后...</div>',
-                        time: '2'
-                    }
-                );
+                d.content("<div class=\"loading\">正在登录中，请稍后...</div>");
                 location.href = "/";
+            } else {
+                d.close();
             }
+        },
+        error: function() {
+            $("#hdExtLink").text("网络连接错误！").removeClass("hide").addClass("show-block");
+            d.content("<div class=\"loading\">网络连接错误！</div>");
+            setTimeout(function() {
+                d.close().remove();
+            }, 2000);
         }
     });
 

@@ -11,7 +11,7 @@ namespace  teaCRM.Dao.Impl
 {
 
     /// <summary>
-    /// 自动生成的实现ITFunAppDao接口的Dao类。 2014-08-22 07:47:51 By 唐有炜
+    /// 自动生成的实现ITFunAppDao接口的Dao类。 2014-08-25 05:54:27 By 唐有炜
     /// </summary>
  public class TFunAppDaoImpl:ITFunAppDao
     {

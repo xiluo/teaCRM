@@ -21,6 +21,7 @@ namespace teaCRM.Web.Filters
                 //跳转到登录页面
                 filterContext.HttpContext.Response.Redirect("/Account/Login/");
             }
+           
         }
     }
 }
