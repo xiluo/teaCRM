@@ -35,18 +35,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Common.Logging, Version=2.2.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
-      <HintPath>..\packages\Common.Logging.2.2.0\lib\net40\Common.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="Common.Logging.Core, Version=2.2.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
-      <HintPath>..\packages\Common.Logging.Core.2.2.0\lib\net40\Common.Logging.Core.dll</HintPath>
+    <Reference Include="Common.Logging, Version=2.1.2.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Spring.Core, Version=2.0.0.40000, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Spring.Core.2.0.0-RC1\lib\net40\Spring.Core.dll</HintPath>
     </Reference>
     <Reference Include="Spring.Web, Version=2.0.0.40000, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Spring.Web.2.0.0-RC1\lib\net40\Spring.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Web.Mvc4, Version=2.0.0.40000, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spring.Web.Mvc4.2.0.0-RC1\lib\net40\Spring.Web.Mvc4.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -130,7 +133,6 @@
     <Compile Include="Controllers\Apps\Settings\ImportExportController.cs" />
     <Compile Include="Controllers\Apps\Settings\RoleController.cs" />
     <Compile Include="Controllers\Apps\Settings\UsersController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\WorkbenchController.cs" />
     <Compile Include="Filters\AutoLoginAttribute.cs" />
     <Compile Include="Filters\UserAuthorizeAttribute.cs" />
@@ -147,7 +149,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Resource Include="Configs\Services.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Resource>
+    <Content Include="Configs\Daos.xml" />
+    <Content Include="Configs\Webs.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Themes\default\CRM\css\crm.list.css" />
     <Content Include="Themes\default\CRM\css\crm.layout.css" />

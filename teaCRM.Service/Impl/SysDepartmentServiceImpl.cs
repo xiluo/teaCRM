@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using teaCRM.Dao.Manual;
+using teaCRM.Dao.Manual.Impl;
 
 namespace teaCRM.Service.Impl
 {
@@ -18,7 +19,7 @@ namespace teaCRM.Service.Impl
         /// <returns></returns>
         public string GetTreeData()
             {
-               return new TSysDepartmentDao().GetTreeData();
+               return new TSysDepartmentDaoManualImpl().GetTreeData();
             }
 
 

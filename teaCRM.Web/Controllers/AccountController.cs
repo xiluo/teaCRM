@@ -13,6 +13,11 @@ namespace teaCRM.Web.Controllers
 {
     public class AccountController : Controller
     {
+        /// <summary>
+        /// 注入账户Service接口 2014-08-26 14:58:50 By 唐有炜
+        /// </summary>
+        public IAccountService AccountService { set; get; }
+
         #region 登陆
 
         //
@@ -29,8 +34,8 @@ namespace teaCRM.Web.Controllers
         [HttpPost]
         public ActionResult Login(FormCollection fc)
         {
-            IAccountService accountService = new teaCRM.Service.Impl.AccountServiceImpl();
-            ResponseMessage rmsg = accountService.Login(fc["type"].ToString(),
+            //IAccountService AccountService = new teaCRM.Service.Impl.AccountServiceImpl();
+            ResponseMessage rmsg = AccountService.Login(fc["type"].ToString(),
                 fc["accountType"].ToString(), fc["userName"].ToString(), fc["userPassword"].ToString(),
                 fc["remember"].ToString(),
                 fc["clientIp"].ToString(), HttpUtility.UrlDecode(fc["clientPlace"].ToString()),
@@ -43,8 +48,8 @@ namespace teaCRM.Web.Controllers
 //        [HttpPost]
 //        public ActionResult ValidateLogin(FormCollection fc)
 //        {
-//            IAccountService accountService = new AccountServiceImpl();
-//            ResponseMessage rmsg = accountService.ValidateAccount("login", fc["type"].ToString(),
+//            //IAccountService AccountService = new AccountServiceImpl();
+//            ResponseMessage rmsg = AccountService.ValidateAccount("login", fc["type"].ToString(),
 //                fc["accountType"].ToString(), fc["userName"].ToString(), fc["userPassword"].ToString());
 //            return Json(rmsg);
 //        }
@@ -57,7 +62,7 @@ namespace teaCRM.Web.Controllers
         {
             string[] emails = new string[]
             {
-                "10000","126.com", "163.com", "yeah.net", "sina.com", "sina.cn", "qq.com", "vip.qq.com", "sohu.com",
+                "10000", "126.com", "163.com", "yeah.net", "sina.com", "sina.cn", "qq.com", "vip.qq.com", "sohu.com",
                 "live.com", "msn.cn", "gmail.com"
             };
             List<KeyValue> results = new List<KeyValue>();
@@ -71,7 +76,7 @@ namespace teaCRM.Web.Controllers
             {
                 var email = emails[i];
                 KeyValue item = new KeyValue();
-                if (query.Contains("@"))//有@才提示
+                if (query.Contains("@")) //有@才提示
                 {
                     string query2 = query.Split('@')[1];
                     if (email.StartsWith(query2))
@@ -92,7 +97,6 @@ namespace teaCRM.Web.Controllers
             autoStruct.query = "Unit";
             autoStruct.suggestions = results;
             return Json(autoStruct, JsonRequestBehavior.AllowGet);
-
         }
 
         /// <summary>
@@ -119,7 +123,6 @@ namespace teaCRM.Web.Controllers
         }
 
 
-
         //
         // GET: /Account/EmailRegister
 
@@ -136,10 +139,10 @@ namespace teaCRM.Web.Controllers
             return View("PhoneRegister");
         }
 
-       
         #endregion
 
         #region  公共注册
+
         //
         // GET: /Account/PublicRegister
 
@@ -153,14 +156,13 @@ namespace teaCRM.Web.Controllers
         [HttpPost]
         public ActionResult PublicRegister(FormCollection fc)
         {
-            IAccountService accountService = new teaCRM.Service.Impl.AccountServiceImpl();
-            ResponseMessage rmsg = accountService.PublicRegister(fc["userName"], fc["phone"], fc["userPassword"], HttpUtility.UrlDecode(fc["userTname"]));
-
+            //IAccountService AccountService = new teaCRM.Service.Impl.AccountServiceImpl();
+            ResponseMessage rmsg = AccountService.PublicRegister(fc["userName"], fc["phone"], fc["userPassword"],
+                HttpUtility.UrlDecode(fc["userTname"]));
             return Json(rmsg);
         }
 
         #endregion
-
 
         #region 退出
 

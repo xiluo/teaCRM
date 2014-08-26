@@ -14,6 +14,7 @@
  * 修改说明：修改说明
  * ========================================================================
 */
+
 using System;
 using System.Linq;
 using System.Web;
@@ -21,13 +22,21 @@ using teaCRM.Common;
 using teaCRM.Dao;
 using teaCRM.Dao.Impl;
 using teaCRM.Dao.Manual;
+using teaCRM.Dao.Manual.Impl;
 using teaCRM.Entity;
 
 namespace teaCRM.Service.Impl
 {
     public class AccountServiceImpl : IAccountService
     {
-        //public ITSysUserDao SysUserDao { get; set; }
+        /// <summary>
+        /// 注入账户Dao接口 2014-08-26 14:58:50 By 唐有炜
+        /// </summary>
+      //public ITSysUserDaoManual SysUserDao { set; get; }
+        private ITSysUserDaoManual SysUserDao = new TSysUserDaoManualImpl();
+        private ITSysCompanyDaoManual sysCompanyDao = new TSysCompanyDaoManualImpl();
+        private IVCompanyUserDaoManual companyUserDao = new VCompanyUserDaoManualImpl();
+        private ITSysLogDaoManual sysLogDao = new TSysLogDaoManualImpl();
 
         #region 账户验证
 
@@ -117,9 +126,6 @@ namespace teaCRM.Service.Impl
         /// <returns></returns>
         public bool UserNameExists(string accountType, string userName)
         {
-            ITSysUserDao sysUserDao = new TSysUserDaoImpl();
-            ITSysCompanyDao sysCompanyDao = new TSysCompanyDaoImpl();
-
             switch (accountType)
             {
                 case "username":
@@ -135,7 +141,7 @@ namespace teaCRM.Service.Impl
                     string userLName = userComp[0];
                     string compNum = userComp[1];
 
-                    bool userExists = sysUserDao.ExistsEntity(u => u.UserLname == userLName);
+                    bool userExists = SysUserDao.ExistsEntity(u => u.UserLname == userLName);
                     bool compExists = sysCompanyDao.ExistsEntity(c => c.CompNum == compNum);
                     if (userExists && compExists)
                     {
@@ -147,7 +153,7 @@ namespace teaCRM.Service.Impl
                     }
                     break;
                 case "email":
-                    bool emailExists = sysUserDao.ExistsEntity(u => u.UserEmail == userName);
+                    bool emailExists = SysUserDao.ExistsEntity(u => u.UserEmail == userName);
                     if (emailExists)
                     {
                         return true;
@@ -158,7 +164,7 @@ namespace teaCRM.Service.Impl
                     }
                     break;
                 case "phone":
-                    bool phoneExists = sysUserDao.ExistsEntity(u => u.UserPhone == userName);
+                    bool phoneExists = SysUserDao.ExistsEntity(u => u.UserPhone == userName);
                     if (phoneExists)
                     {
                         return true;
@@ -184,7 +190,6 @@ namespace teaCRM.Service.Impl
         /// <returns></returns>
         public bool UserPasswordExists(string accountType, string userName, string userPassword)
         {
-            IVCompanyUserDao companyUserDao = new VCompanyUserDaoImpl();
             bool passwordExists = false;
             //解密
             userPassword = DESEncrypt.Encrypt(userPassword);
@@ -284,7 +289,6 @@ namespace teaCRM.Service.Impl
         /// <returns></returns>
         public VCompanyUser GetVCompanyUserByAccountTypeAndUserName(string accountType, string userName)
         {
-            IVCompanyUserDao companyUserDao = new VCompanyUserDaoImpl();
             VCompanyUser model = null;
             switch (accountType)
             {
@@ -401,7 +405,6 @@ namespace teaCRM.Service.Impl
                 //书写SessionCookie
                 WriteSessionCookie(compUser.UserId, userName, userPassword, remember);
                 //写日志
-                ITSysLogDao sysLogDao = new TSysLogDaoImpl();
                 var loginUser = compUser.UserTname;
                 if (String.IsNullOrEmpty(loginUser))
                 {
@@ -440,7 +443,6 @@ namespace teaCRM.Service.Impl
             if (rmsg.Status)
             {
                 //注册验证成功成功
-                VCompanyUserDao companyUserDao = new VCompanyUserDao();
                 //随机编号
                 Random rand = new Random(Guid.NewGuid().GetHashCode());
                 string compNum = rand.Next(100000, 1000000000).ToString();
@@ -528,7 +530,6 @@ namespace teaCRM.Service.Impl
             if (rmsg1.Status && rmsg2.Status)
             {
                 //注册验证成功成功
-                ITSysUserDao sysUserDao = new TSysUserDaoImpl();
                 var dbPassword = DESEncrypt.Encrypt(userPassword);
                 TSysUser sysUser = new TSysUser()
                 {
@@ -541,7 +542,7 @@ namespace teaCRM.Service.Impl
                     DepId = 1 //默认部门
                 };
 
-                if (sysUserDao.InsertEntity(sysUser))
+                if (SysUserDao.InsertEntity(sysUser))
                 {
                     rmsg.Status = true;
                     rmsg.Msg = "注册成功";
@@ -559,7 +560,7 @@ namespace teaCRM.Service.Impl
                 //获取用户信息
                 var compUser = GetVCompanyUserByAccountTypeAndUserName("phone", phone);
                 //书写SessionCookie
-                WriteSessionCookie(compUser.UserId, userName+"@10000", userPassword);
+                WriteSessionCookie(compUser.UserId, userName + "@10000", userPassword);
             }
 
             return rmsg;
@@ -574,7 +575,6 @@ namespace teaCRM.Service.Impl
         /// <returns>ResponseMessage</returns>
         public VCompanyUser GetCurrentCompanyUser()
         {
-            IVCompanyUserDao companyUserDao = new VCompanyUserDao();
             var sessionUserId = HttpContext.Current.Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID];
             if (sessionUserId != null)
             {

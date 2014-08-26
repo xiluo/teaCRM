@@ -1,23 +1,23 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
-using teaCRM.Dao.Manual;
-using teaCRM.DBContext;
 using teaCRM.Entity;
 
-namespace teaCRM.Dao.TreeHelpers
+namespace teaCRM.Dao.Manual.TreeHelpers
 {
     /// <summary>
     /// 部门树形帮助类。 2014-08-20 07:58:50 By 唐有炜
     /// </summary>
     public class DepartmentTreeHelper
     {
+
+        private static ITSysDepartmentDaoManual SysDepartmentDaoManual = SysDepartmentDaoManual;
+
         #region 获取父类集合
 
         private static IList<DepartmentTree> returnParentTree()
         {
                  List<DepartmentTree> trees;
-                trees = new TSysDepartmentDao().GetList()
+                trees = SysDepartmentDaoManual.GetList()
                     .Where(d => d.ParentId == 0)
                     .Select(d => new DepartmentTree() {ModuleID = d.Id, ParentID = d.ParentId, ModuleName = d.DepName})
                     .ToList();
@@ -35,7 +35,7 @@ namespace teaCRM.Dao.TreeHelpers
         /// <returns></returns>
         public static bool IsHaveChild(int id)
         {
-            bool flag = new TSysDepartmentDao().ExistsEntity(d=>d.Id==id);
+            bool flag = SysDepartmentDaoManual.ExistsEntity(d=>d.Id==id);
             return flag;
         }
 
@@ -51,7 +51,7 @@ namespace teaCRM.Dao.TreeHelpers
         private static IList<DepartmentTree> GetChild(int id)
         {
 
-                var childTrees = new TSysDepartmentDao().GetList()
+                var childTrees = SysDepartmentDaoManual.GetList()
                     .Where(d => d.ParentId== id)
                     .Select(d => new DepartmentTree() {ModuleID = d.Id, ParentID = d.ParentId, ModuleName = d.DepName})
                     .ToList();

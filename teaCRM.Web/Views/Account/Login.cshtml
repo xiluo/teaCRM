@@ -353,32 +353,29 @@
 
             /* 顶部 */
 
-            header {
+            .header {
                 position: relative;
                 z-index: 11;
                 height: 45px
             }
 
-            header .bg {
+            .header .bg {
                 position: absolute;
                 left: 0;
                 top: 0;
                 width: 100%;
                 height: 45px;
                 background-color: #000;
-                opacity: 0.5;
-                filter: alpha(opacity=50);
-                _filter: alpha(opacity=100);
-                _background-color: #1b1b1b
+
             }
 
-            header .inner {
+            .header .inner {
                 position: relative;
                 width: 680px;
                 margin: 0 auto
             }
 
-            header h1 {
+            .header h1 {
                 position: absolute;
                 top: 9px;
                 left: 1px;
@@ -387,16 +384,16 @@
                 _background-image: url(@rootPath/Themes/default/images/ntes_logo_ie6.png);
             }
 
-            header h1 img { _visibility: hidden }
+            .header h1 img { _visibility: hidden }
 
-            header .ext {
+            .header .ext {
                 position: absolute;
                 right: 0;
                 line-height: normal;
                 top: 15px;
             }
 
-            header .link {
+            .header .link {
                 margin-left: 20px;
                 color: #6B8798;
                 display: inline-block;
@@ -590,7 +587,7 @@
             .theme {
                 overflow: hidden;
                 position: absolute;
-                z-index: 5;
+                z-index: -1;
                 width: 100%;
                 height: 100%;
                 left: 0;
@@ -721,66 +718,7 @@
         <![endif]-->
         <!--[if IE 6]>
             <style type='text/css'>
-                .main h3 {
-                    line-height: normal;
-                    font-size: 26px;
-                    color: #fff;
-                    background: none;
-                    width: 400px;
-                    font-family: simhei;
-                    font-weight: normal
-                }
-
-                .tab-list .shadow-bottom {
-                    height: 1px;
-                    bottom: -1px;
-                    filter: alpha(opacity=10)
-                }
-
-                .tab-list .shadow-top {
-                    height: 1px;
-                    top: -1px;
-                    filter: alpha(opacity=10)
-                }
-
-                .tab-list .shadow-left {
-                    width: 1px;
-                    left: -1px;
-                    height: 309px;
-                    bottom: -1px;
-                    filter: alpha(opacity=10)
-                }
-
-                .tab-panel .shadow-bottom {
-                    width: 461px;
-                    height: 1px;
-                    bottom: -1px
-                }
-
-                .tab-panel .shadow-top {
-                    height: 1px;
-                    top: -1px
-                }
-
-                .tab-panel .shadow-left {
-                    width: 1px;
-                    left: -1px;
-                    filter: alpha(opacity=20)
-                }
-
-                .tab-panel .shadow-right {
-                    height: 310px;
-                    width: 1px;
-                    right: -1px;
-                    height: 309px;
-                    bottom: 0
-                }
-
-                .copyright, .copyright a { color: #7d7d7d }
-
-                .copy-item { filter: none }
-
-                .copy-item-img { filter: alpha(opacity=65) }
+             .page .header .inner h1{background-image: url(@rootPath/Themes/default/images/ntes_logo.jpg);}
             </style>
         <![endif]-->
         <script src="@rootPath/Themes/default/js/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
@@ -820,13 +758,13 @@
     </head>
     <body>
         <div class="page">
-            <header>
+            <div class="header">
                 <div class="bg"></div>
                 <div class="inner">
-                    <h1><a href="#" target="_blank"><img src="@rootPath/Themes/default/images/ntes_logo.png" alt="网易NetEase" width="87" height="27"></a></h1>
+                    <h1><a href="#" target="_blank"><img src="@rootPath/Themes/default/images/ntes_logo.png" title="" width="87" height="27" /> </a></h1>
                     <p class="ext"><a class="link" href="#" title="网站建设" target="_blank">网站建设</a> <a class="link" href="#" title="网络营销">网络营销</a> <a class="link" href="#" title="客户服务">客户服务</a> <a class="link" href="#">关于我们</a> <a class="link" href="#">手机版</a> <a class="link" href="#" title="">系统帮助</a></p>
                 </div>
-            </header>
+            </div>
             <div class="main" id="main" style="margin-top: 97.5px;">
                 <div class="inner">
                     <h3 style="top: -50px;">迄今为止最本质的CRM</h3>
@@ -901,7 +839,7 @@
                     </ul>
                 </div>
             </div>
-            <footer class="copyright">
+            <div class="copyright">
                 <div class="bg"></div>
                 <div class="inner">
                     <ul class="copy-list">
@@ -913,7 +851,7 @@
                         <li class="copy-item"><span class="sptln">|</span>优创科技版权所有 © 2013-2023</li>
                     </ul>
                 </div>
-            </footer>
+            </div>
             <!-- 背景 -->
             <div class="theme" id="theme"></div>
         </div>
