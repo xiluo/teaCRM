@@ -1,7 +1,28 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <objects xmlns="http://www.springframework.net" xmlns:db="http://www.springframework.net/database">
-  <!--账户逻辑-->
-  <object id="AccountService" type="teaCRM.Service.AccountServiceImpl, teaCRM.Service">
-  <!-- <property name="SysUserDao" ref="SysUserDao" />-->
+
+  <!--账户逻辑开始-->
+  <object id="accountService" type="teaCRM.Service.Impl.AccountServiceImpl, teaCRM.Service" singleton="false">
+    <property name="SysUserDaoManual" ref="sysUserDaoManual" />
+    <property name="SysCompanyDaoManual" ref="sysCompanyDaoManual" />
+    <property name="CompanyUserDaoManual" ref="companyUserDaoManual" />
+    <property name="SysLogDaoManual" ref="sysLogDaoManual" />
   </object>
+  <!--账户逻辑结束-->
+
+  <!--客户逻辑开始-->
+  <object id="customerService" type="teaCRM.Service.CRM.Impl.CustomerServiceImpl, teaCRM.Service" singleton="false">
+<property name="FunFilterDaoManual" ref="funFilterDaoManual" />
+  </object>
+  <!--客户逻辑结束-->
+
+  <!--设置逻辑开始-->
+  <!--组织架构逻辑开始-->
+  <object id="sysDepartmentService" type="teaCRM.Service.Settings.Impl.SysDepartmentServiceImpl, teaCRM.Service" singleton="false">
+    <property name="SysDepartmentDaoManual" ref="sysDepartmentDaoManual" />
+  </object>
+  <!--组织架构逻辑结束-->
+  <!--设置逻辑结束-->
+
 </objects>

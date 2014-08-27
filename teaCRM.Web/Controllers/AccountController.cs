@@ -14,7 +14,7 @@ namespace teaCRM.Web.Controllers
     public class AccountController : Controller
     {
         /// <summary>
-        /// 注入账户Service接口 2014-08-26 14:58:50 By 唐有炜
+        /// Web层注入账户Service接口 2014-08-26 14:58:50 By 唐有炜
         /// </summary>
         public IAccountService AccountService { set; get; }
 
@@ -35,12 +35,13 @@ namespace teaCRM.Web.Controllers
         public ActionResult Login(FormCollection fc)
         {
             //IAccountService AccountService = new teaCRM.Service.Impl.AccountServiceImpl();
-            ResponseMessage rmsg = AccountService.Login(fc["type"].ToString(),
+            ResponseMessage rmsg = AccountService.Login(System.Web.HttpContext.Current, fc["type"].ToString(),
                 fc["accountType"].ToString(), fc["userName"].ToString(), fc["userPassword"].ToString(),
                 fc["remember"].ToString(),
                 fc["clientIp"].ToString(), HttpUtility.UrlDecode(fc["clientPlace"].ToString()),
                 fc["clientTime"].ToString());
-            return Json(rmsg);
+
+           return Json(rmsg);
         }
 
 //        //
@@ -157,7 +158,7 @@ namespace teaCRM.Web.Controllers
         public ActionResult PublicRegister(FormCollection fc)
         {
             //IAccountService AccountService = new teaCRM.Service.Impl.AccountServiceImpl();
-            ResponseMessage rmsg = AccountService.PublicRegister(fc["userName"], fc["phone"], fc["userPassword"],
+            ResponseMessage rmsg = AccountService.PublicRegister(System.Web.HttpContext.Current,fc["userName"], fc["phone"], fc["userPassword"],
                 HttpUtility.UrlDecode(fc["userTname"]));
             return Json(rmsg);
         }

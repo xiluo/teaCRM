@@ -1,15 +1,18 @@
-﻿using teaCRM.Service.Impl;
+﻿using Spring.Context;
+using Spring.Context.Support;
+using teaCRM.Service;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using teaCRM.Entity;
+using AccountServiceImpl = teaCRM.Service.Impl.AccountServiceImpl;
 
 namespace teaCRM.Web.Test
 {
     
     
     /// <summary>
-    ///这是 AccountServiceImplTest 的测试类，旨在
-    ///包含所有 AccountServiceImplTest 单元测试
+    ///This is a test class for AccountServiceImplTest and is intended
+    ///to contain all AccountServiceImplTest Unit Tests
     ///</summary>
     [TestClass()]
     public class AccountServiceImplTest
@@ -19,8 +22,8 @@ namespace teaCRM.Web.Test
         private TestContext testContextInstance;
 
         /// <summary>
-        ///获取或设置测试上下文，上下文提供
-        ///有关当前测试运行及其功能的信息。
+        ///Gets or sets the test context which provides
+        ///information about and functionality for the current test run.
         ///</summary>
         public TestContext TestContext
         {
@@ -34,29 +37,29 @@ namespace teaCRM.Web.Test
             }
         }
 
-        #region 附加测试特性
+        #region Additional test attributes
         // 
-        //编写测试时，还可使用以下特性:
+        //You can use the following additional attributes as you write your tests:
         //
-        //使用 ClassInitialize 在运行类中的第一个测试前先运行代码
+        //Use ClassInitialize to run code before running the first test in the class
         //[ClassInitialize()]
         //public static void MyClassInitialize(TestContext testContext)
         //{
         //}
         //
-        //使用 ClassCleanup 在运行完类中的所有测试后再运行代码
+        //Use ClassCleanup to run code after all tests in a class have run
         //[ClassCleanup()]
         //public static void MyClassCleanup()
         //{
         //}
         //
-        //使用 TestInitialize 在运行每个测试前先运行代码
+        //Use TestInitialize to run code before running each test
         //[TestInitialize()]
         //public void MyTestInitialize()
         //{
         //}
         //
-        //使用 TestCleanup 在运行完每个测试后运行代码
+        //Use TestCleanup to run code after each test has run
         //[TestCleanup()]
         //public void MyTestCleanup()
         //{
@@ -65,141 +68,17 @@ namespace teaCRM.Web.Test
         #endregion
 
 
-
-
         /// <summary>
-        ///ValidateUserLName 的测试
+        ///AccountService注入测试
         ///</summary>
         [TestMethod()]
-        public void ValidateAccountTest()
+        public void AccountServiceContextTest()
         {
-            AccountServiceImpl target = new AccountServiceImpl(); // TODO: 初始化为适当的值
-          
-            string action ="login"; // TODO: 初始化为适当的值
-            string type = "normal"; // TODO: 初始"为适当的值
-            //string type = "usb"; // TODO: 初始"为适当的值
-            //string accountType = "username"; // TODO: 初始化为适当的值
-            //string userName = "admin@32210500"; // TODO: 初始化为适当的值
-            //string accountType = "phone"; // TODO: 初始化为适当的值
-            //string userName = "15225062328"; // TODO: 初始化为适当的值
-            string accountType = "email"; // TODO: 初始化为适当的值
-            string userName = "cyutyw@126.com"; // TODO: 初始化为适当的值
-            string userPassword = "123456"; // TODO: 初始化为适当的值
+            IApplicationContext ctx = ContextRegistry.GetContext();
+            IAccountService target = ctx.GetObject("accountService") as IAccountService;
 
-//               string action ="register"; // TODO: 初始化为适当的值
-//               string type = "normal"; // TODO: 初始"为适当的值
-//               string accountType = "username"; // TODO: 初始化为适当的值
-//               string userName = "admin@32210500"; // TODO: 初始化为适当的值
-//               string userPassword = "4A84124C9B60B3B9"; // TODO: 初始化为适当的值
-
-            string expected = "True 密码输入正确"; // TODO: 初始化为适当的值
-            string actual;
-            ResponseMessage result = target.ValidateAccount(action, type, accountType, userName,userPassword);
-            actual = result.Status + " " + result.Msg;
-
-            Assert.AreEqual(expected, actual);
-
-
-        }
-
-        /// <summary>
-        ///Login 的测试
-        ///</summary>
-        [TestMethod()]
-        public void LoginTest()
-        {
-            AccountServiceImpl target = new AccountServiceImpl(); // TODO: 初始化为适当的值
-
-            string type = "normal"; // TODO: 初始化为适当的值
-            string accountType = "username"; // TODO: 初始化为适当的值
-            string userName = "admin@11524760"; // TODO: 初始化为适当的值
-            string userPassword = "123456"; // TODO: 初始化为适当的值
-            string remember = "true";
-            string clientIp = "123.14.252.55"; // TODO: 初始化为适当的值
-            string clientPlace = "河南省郑州市"; // TODO: 初始化为适当的值
-            string clientTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); // TODO: 初始化为适当的值
-
-//            string type = "normal"; // TODO: 初始化为适当的值
-//            string accountType = "email"; // TODO: 初始化为适当的值
-//            string userName = "cyutyw@126.com"; // TODO: 初始化为适当的值
-//            string userPassword = "123456"; // TODO: 初始化为适当的值
-//            string clientIp = "123.14.252.55"; // TODO: 初始化为适当的值
-//            string clientTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); // TODO: 初始化为适当的值
-            
-
-
-            string expected = "True 密码输入正确"; // TODO: 初始化为适当的值
-            string actual;
-            ResponseMessage result = target.Login(type, accountType, userName, userPassword,remember, clientIp, clientPlace,clientTime);
-            actual = result.Status + " " + result.Msg;
-
-            Assert.AreEqual(expected, actual);
-        }
-
-        /// <summary>
-        ///Register 的测试
-        ///</summary>
-        [TestMethod()]
-        public void RegisterTest()
-        {
-            AccountServiceImpl target = new AccountServiceImpl(); // TODO: 初始化为适当的值
-
-            string accountType = "phone"; // TODO: 初始化为适当的值
-            string userName = "15225062328"; // TODO: 初始化为适当的值
-            string userPassword = "123456"; // TODO: 初始化为适当的值
-
-//            string accountType = "email"; // TODO: 初始化为适当的值
-//            string userName = "cyutyw@126.com"; // TODO: 初始化为适当的值
-//            string userPassword ="123456"; // TODO: 初始化为适当的值
-
-          
-
-            string expected = "True 注册成功"; // TODO: 初始化为适当的值
-            string actual;
-            ResponseMessage result = target.Register(accountType, userName, userPassword);
-            actual = result.Status + " " + result.Msg;
-          
-            Assert.AreEqual(expected, actual);
-    
-        }
-
-        /// <summary>
-        ///A test for PublicRegister
-        ///</summary>
-        [TestMethod()]
-        public void PublicRegisterTest()
-        {
-            AccountServiceImpl target = new AccountServiceImpl(); // TODO: Initialize to an appropriate value
-            string userName = "hl5"; // TODO: Initialize to an appropriate value
-            string phone ="13243432378"; // TODO: Initialize to an appropriate value
-            string userPassword = "huang628901902"; // TODO: Initialize to an appropriate value
-            string userTname = string.Empty; // TODO: Initialize to an appropriate value
-          
-            string expected = null; // TODO: Initialize to an appropriate value
-            string actual;
-            ResponseMessage  result = target.PublicRegister(userName, phone, userPassword, userTname);
-            actual = result.Status + " " + result.Msg;
-
-            Assert.AreEqual(expected, actual);
-             }
-
-        /// <summary>
-        ///A test for UserNameExists
-        ///</summary>
-        [TestMethod()]
-        public void UserNameExistsTest()
-        {
-
-
-
-            AccountServiceImpl target = new AccountServiceImpl(); // TODO: Initialize to an appropriate value
-            string accountType = string.Empty; // TODO: Initialize to an appropriate value
-            string userName = string.Empty; // TODO: Initialize to an appropriate value
-            bool expected = false; // TODO: Initialize to an appropriate value
-            bool actual;
-            actual = target.UserNameExists(accountType, userName);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            Assert.AreNotEqual(target,null);
+           
         }
     }
 }

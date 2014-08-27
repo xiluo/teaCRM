@@ -10,8 +10,11 @@ namespace teaCRM.Web.Controllers.Apps.CRM
 {
     public class LoadDataController : Controller
     {
-        ICustomerService customerService = new CustomerServiceImpl();
-         
+        //ICustomerService CustomerService = new CustomerServiceImpl();
+        /// <summary>
+        /// LoadDataController 注入Service依赖
+        /// </summary>
+        public ICustomerService CustomerService { set; get; }
 
         #region 获取筛选器树形数据
 
@@ -20,45 +23,50 @@ namespace teaCRM.Web.Controllers.Apps.CRM
 
         public string GetTreeData()
         {
-            var filterTreeData = customerService.GetFilterTreeData();
+            var filterTreeData = CustomerService.GetFilterTreeData();
             return filterTreeData;
         }
 
         #endregion
 
         #region 获取客户信息列表
+
         //
         // GET: /Apps/CRM/LoadData/GetCustomerLsit/
         public string GetCustomerLsit()
         {
-            return customerService.GetCustomerLsit();
+            return CustomerService.GetCustomerLsit();
         }
+
         #endregion
 
         #region 获取客户工具栏
+
         //
         // GET: /Apps/CRM/LoadData/GetCustomerMenu/
         public string GetCustomerMenu()
         {
-            return customerService.GetCustomerMenu();
+            return CustomerService.GetCustomerMenu();
         }
 
         #endregion
 
         #region 获取跟进记录列表
+
         //
         // GET: /Apps/CRM/LoadData/GetTraceList/
         public string GetTraceList()
         {
-            return customerService.GetTraceList();
+            return CustomerService.GetTraceList();
         }
 
         #region 获取跟进记录工具栏
+
         //
         // GET: /Apps/CRM/LoadData/GetTraceMenu/
         public string GetTraceMenu()
         {
-            return customerService.GetTraceMenu();
+            return CustomerService.GetTraceMenu();
         }
 
         #endregion

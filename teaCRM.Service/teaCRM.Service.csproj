@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Common.Logging">
+      <HintPath>..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -41,17 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountServiceImpl.cs" />
     <Compile Include="CRM\ICustomerService.cs" />
     <Compile Include="CRM\Impl\CustomerServiceImpl.cs" />
     <Compile Include="IAccountService.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Impl\AccountServiceImpl.cs" />
-    <Compile Include="Impl\SysDepartmentServiceImpl.cs">
+    <Compile Include="Settings\Impl\SysDepartmentServiceImpl.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ISysDepartmentService.cs">
+    <Compile Include="Settings\ISysDepartmentService.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,6 +77,10 @@
       <Project>{0687C70A-0976-40D8-A069-56ED9E6FFF2D}</Project>
       <Name>teaCRM.Entity</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

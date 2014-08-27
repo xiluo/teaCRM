@@ -1,7 +1,54 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <objects xmlns="http://www.springframework.net" xmlns:db="http://www.springframework.net/database">
-  <!---账户登陆控制器-->
-  <object type="teaCRM.Web.Controllers.AccountController, teaCRM.Web" singleton="false">
-    <property name="AccountService" ref="AccountService"/>
+  <!---账户登陆控制器开始-->
+  <object id="accountController" type="teaCRM.Web.Controllers.AccountController, teaCRM.Web" singleton="false">
+    <!---name是当前属性明显，ref是关键的object的id名称-->
+    <property name="AccountService" ref="accountService" />
   </object>
+  <!---账户登陆控制器结束-->
+
+  <!---工作台控制器开始-->
+  <object id="workbenchController" type="teaCRM.Web.Controllers.WorkbenchController, teaCRM.Web" singleton="false" />
+  <!---工作台控制器结束-->
+
+  <!---应用市场控制器开始-->
+  <object id="appsIndexController" type="teaCRM.Web.Controllers.Apps.IndexController, teaCRM.Web" singleton="false" />
+  <!---应用市场控制器结束-->
+
+  <!--CRM模块控制器开始-->
+  <object id="crmIndexController" type="teaCRM.Web.Controllers.Apps.CRM.IndexController, teaCRM.Web" singleton="false" />
+  <object id="loadDataController" type="teaCRM.Web.Controllers.Apps.CRM.LoadDataController, teaCRM.Web"
+          singleton="false">
+    <property name="CustomerService" ref="customerService" />
+  </object>
+  <!--CRM模块控制器结束-->
+
+  <!--产品模块控制器开始-->
+  <object id="productIndexController" type="teaCRM.Web.Controllers.Apps.Product.IndexController, teaCRM.Web"
+          singleton="false" />
+  <!--产品模块控制器结束-->
+
+  <!--销售模块控制器开始-->
+  <object id="saleIndexController" type="teaCRM.Web.Controllers.Apps.Sale.IndexController, teaCRM.Web"
+          singleton="false" />
+  <!--销售模块控制器结束-->
+
+  <!--服务模块控制器开始-->
+  <object id="serviceIndexController" type="teaCRM.Web.Controllers.Apps.Service.IndexController, teaCRM.Web"
+          singleton="false" />
+  <!--服务模块控制器结束-->
+
+
+  <!--设置模块控制器开始-->
+  <object id="departmentController" type="teaCRM.Web.Controllers.Apps.Settings.DepartmentController, teaCRM.Web"
+          singleton="false">
+    <property name="SysDepartmentService" ref="sysDepartmentService" />
+  </object>
+  <object id="expandoFieldController" type="teaCRM.Web.Controllers.Apps.Settings.ExpandoFieldController, teaCRM.Web"/>
+  <object id="importExportController" type="teaCRM.Web.Controllers.Apps.Settings.ImportExportController, teaCRM.Web"/>
+  <object id="roleController" type="teaCRM.Web.Controllers.Apps.Settings.RoleController, teaCRM.Web"/>
+  <object id="usersController" type="teaCRM.Web.Controllers.Apps.Settings.UsersController, teaCRM.Web"/>
+
+  <!--设置模块控制器结束-->
 </objects>

@@ -6,6 +6,8 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Spring.Context;
+using Spring.Context.Support;
 using teaCRM.Common;
 using teaCRM.Entity;
 using teaCRM.Service;
@@ -319,10 +321,13 @@ namespace UCsoft.Web
 
         #region 获取企业用户
 
-        public static VCompanyUser GetCurrentCompanyUser(this HtmlHelper htmlHelper)
+        public static VCompanyUser GetCurrentCompanyUser(this HtmlHelper htmlHelper,int userId)
         {
-            IAccountService accountService = new teaCRM.Service.Impl.AccountServiceImpl();
-            var compUser = accountService.GetCurrentCompanyUser();
+            //IAccountService accountService = new teaCRM.Service.Impl.AccountServiceImpl();
+            //使用Spring接管对象的创建
+            IApplicationContext ctx = ContextRegistry.GetContext();
+            IAccountService AccountService = ctx.GetObject("accountService") as IAccountService;
+            var compUser = AccountService.GetCurrentCompanyUser(userId);
             return compUser;
         }
 

@@ -32,11 +32,15 @@ namespace teaCRM.Service.Impl
         /// <summary>
         /// 注入账户Dao接口 2014-08-26 14:58:50 By 唐有炜
         /// </summary>
-      //public ITSysUserDaoManual SysUserDao { set; get; }
-        private ITSysUserDaoManual SysUserDao = new TSysUserDaoManualImpl();
-        private ITSysCompanyDaoManual sysCompanyDao = new TSysCompanyDaoManualImpl();
-        private IVCompanyUserDaoManual companyUserDao = new VCompanyUserDaoManualImpl();
-        private ITSysLogDaoManual sysLogDao = new TSysLogDaoManualImpl();
+        public ITSysUserDaoManual SysUserDaoManual { set; get; }
+
+        //private ITSysUserDaoManual SysUserDaoManual = new TSysUserDaoManualImpl();
+        public ITSysCompanyDaoManual SysCompanyDaoManual { set; get; }
+//        private ITSysCompanyDaoManual SysCompanyDaoManual = new TSysCompanyDaoManualImpl();
+        public IVCompanyUserDaoManual CompanyUserDaoManual { set; get; }
+//        private IVCompanyUserDaoManual CompanyUserDaoManual = new VCompanyUserDaoManualImpl();
+        public ITSysLogDaoManual SysLogDaoManual { set; get; }
+//        private ITSysLogDaoManual SysLogDaoManual = new TSysLogDaoManualImpl();
 
         #region 账户验证
 
@@ -141,8 +145,8 @@ namespace teaCRM.Service.Impl
                     string userLName = userComp[0];
                     string compNum = userComp[1];
 
-                    bool userExists = SysUserDao.ExistsEntity(u => u.UserLname == userLName);
-                    bool compExists = sysCompanyDao.ExistsEntity(c => c.CompNum == compNum);
+                    bool userExists = SysUserDaoManual.ExistsEntity(u => u.UserLname == userLName);
+                    bool compExists = SysCompanyDaoManual.ExistsEntity(c => c.CompNum == compNum);
                     if (userExists && compExists)
                     {
                         return true;
@@ -153,7 +157,7 @@ namespace teaCRM.Service.Impl
                     }
                     break;
                 case "email":
-                    bool emailExists = SysUserDao.ExistsEntity(u => u.UserEmail == userName);
+                    bool emailExists = SysUserDaoManual.ExistsEntity(u => u.UserEmail == userName);
                     if (emailExists)
                     {
                         return true;
@@ -164,7 +168,7 @@ namespace teaCRM.Service.Impl
                     }
                     break;
                 case "phone":
-                    bool phoneExists = SysUserDao.ExistsEntity(u => u.UserPhone == userName);
+                    bool phoneExists = SysUserDaoManual.ExistsEntity(u => u.UserPhone == userName);
                     if (phoneExists)
                     {
                         return true;
@@ -210,7 +214,7 @@ namespace teaCRM.Service.Impl
                     string compNum = userComp[1];
 
                     passwordExists =
-                        companyUserDao.ExistsEntity(
+                        CompanyUserDaoManual.ExistsEntity(
                             cu => cu.UserLname == userLName && cu.CompNum == compNum && cu.UserPassword == userPassword);
                     if (passwordExists)
                     {
@@ -223,7 +227,7 @@ namespace teaCRM.Service.Impl
                     break;
                 case "email":
                     passwordExists =
-                        companyUserDao.ExistsEntity(
+                        CompanyUserDaoManual.ExistsEntity(
                             cu => cu.UserEmail == userName && cu.UserPassword == userPassword);
                     if (passwordExists)
                     {
@@ -236,7 +240,7 @@ namespace teaCRM.Service.Impl
                     break;
                 case "phone":
                     passwordExists =
-                        companyUserDao.ExistsEntity(
+                        CompanyUserDaoManual.ExistsEntity(
                             cu => cu.UserPhone == userName && cu.UserPassword == userPassword);
                     if (passwordExists)
                     {
@@ -257,27 +261,29 @@ namespace teaCRM.Service.Impl
         /// <summary>
         /// 书写SesionCookie
         /// </summary>
+        /// <param name="sessionHttpContext">HttpContext</param>
         /// <param name="id">用户id</param>
         /// <param name="userName">用户名</param>
         /// <param name="userPassword">加密的密码</param>
         /// <param name="remember">是否记住密码（默认记住）</param>
-        public void WriteSessionCookie(int id, string userName, string userPassword, string remember = "true")
+        public void WriteSessionCookie(HttpContext sessionHttpContext, int id, string userName, string userPassword,
+            string remember = "true")
         {
-            HttpContext.Current.Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID] = id;
-            HttpContext.Current.Session.Timeout = 45;
+            sessionHttpContext.Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID] = id;
+            sessionHttpContext.Session.Timeout = 45;
             //记住登录状态下次自动登录
             if (remember.ToLower() == "true")
             {
-                Utils.WriteCookie(teaCRMKeys.COOKIE_REMEMBER_USER_COMPANY_REMEMBER, remember, 43200);
-                Utils.WriteCookie(teaCRMKeys.COOKIE_USER_COMPANY_NAME_REMEMBER, userName, 43200);
-                Utils.WriteCookie(teaCRMKeys.COOKIE_USER_COMPANY_PWD_REMEMBER, userPassword, 43200);
+                Utils.WriteCookie(sessionHttpContext, teaCRMKeys.COOKIE_REMEMBER_USER_COMPANY_REMEMBER, remember, 43200);
+                Utils.WriteCookie(sessionHttpContext, teaCRMKeys.COOKIE_USER_COMPANY_NAME_REMEMBER, userName, 43200);
+                Utils.WriteCookie(sessionHttpContext, teaCRMKeys.COOKIE_USER_COMPANY_PWD_REMEMBER, userPassword, 43200);
             }
             else
             {
                 //防止Session提前过期
-                Utils.WriteCookie(teaCRMKeys.COOKIE_REMEMBER_USER_COMPANY_REMEMBER, remember);
-                Utils.WriteCookie(teaCRMKeys.COOKIE_USER_COMPANY_NAME_REMEMBER, "");
-                Utils.WriteCookie(teaCRMKeys.COOKIE_USER_COMPANY_PWD_REMEMBER, "");
+                Utils.WriteCookie(sessionHttpContext, teaCRMKeys.COOKIE_REMEMBER_USER_COMPANY_REMEMBER, remember);
+                Utils.WriteCookie(sessionHttpContext, teaCRMKeys.COOKIE_USER_COMPANY_NAME_REMEMBER, "");
+                Utils.WriteCookie(sessionHttpContext, teaCRMKeys.COOKIE_USER_COMPANY_PWD_REMEMBER, "");
             }
         }
 
@@ -305,15 +311,15 @@ namespace teaCRM.Service.Impl
                     }
                     string userLName = userComp[0];
                     string compNum = userComp[1];
-                    model = companyUserDao.GetEntity(cu => cu.UserLname == userLName && cu.CompNum == compNum);
+                    model = CompanyUserDaoManual.GetEntity(cu => cu.UserLname == userLName && cu.CompNum == compNum);
                     return model;
                     break;
                 case "email":
-                    model = companyUserDao.GetEntity(cu => cu.UserEmail == userName);
+                    model = CompanyUserDaoManual.GetEntity(cu => cu.UserEmail == userName);
                     return model;
                     break;
                 case "phone":
-                    model = companyUserDao.GetEntity(cu => cu.UserPhone == userName);
+                    model = CompanyUserDaoManual.GetEntity(cu => cu.UserPhone == userName);
                     return model;
                     break;
                 default:
@@ -322,62 +328,6 @@ namespace teaCRM.Service.Impl
             }
         }
 
-//        /// <summary>
-//        /// 判断用户是否已经登录(解决Session超时问题) 2014/8/21 13:42:10   By 唐有炜
-//        /// </summary>
-//        /// <param name="accountType">账号类型（username,email,phone）</param>
-//        /// <returns></returns>
-//        public bool IsUserLogin(string accountType)
-//        {
-//            //如果Session为Null
-//            if (HttpContext.Current.Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID] != null)
-//            {
-//                return true;
-//            }
-//            else
-//            {
-//                //检查Cookies
-//                string userName = Utils.GetCookie(teaCRMKeys.COOKIE_USER_COMPANY_NAME_REMEMBER, "teaCRM");
-//                //根据账户类型和用户名获取Model
-//                var model = GetVCompanyUserByAccountTypeAndUserName(accountType, userName);
-//                if (model != null)
-//                {
-//                    HttpContext.Current.Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID] = model.UserId;
-//                    return true;
-//                }
-//                else
-//                {
-//                    return false;
-//                }
-//            }
-//        }
-
-//        /// <summary>
-//        /// 根据账户类型获取Model
-//        /// </summary>
-//        /// <param name="accountType">账号类型（username,email,phone）</param>
-//        /// <returns></returns>
-//        public VCompanyUser GetVCompanyUserByAccountType(string accountType)
-//        {
-//            IVCompanyUserDao companyUserDao = new VCompanyUserDaoImpl();
-//            if (IsUserLogin(accountType))
-//            {
-//                int userId = (int) HttpContext.Current.Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID];
-//
-//                //为了能查询到最新的用户信息，必须查询最新的用户资料
-//                var model = companyUserDao.GetEntity(cu => cu.UserId == userId);
-//                if (model != null)
-//                {
-//                    return model;
-//                }
-//                else
-//                {
-//                    return null;
-//                }
-//            }
-//            return null;
-//        }
-
         #endregion
 
         #region 登陆提交
@@ -385,6 +335,7 @@ namespace teaCRM.Service.Impl
         /// <summary>
         /// 登陆验证并写入登陆日志 2014-08-21 07:58:50 By 唐有炜
         /// </summary>
+        /// <param name="httpContext">HttpContext</param>
         /// <param name="type">注册或登陆方式（normal,qrcode,usb,footprint）</param>
         /// <param name="accountType">账号类型（username,email,phone）</param>
         /// <param name="userName">用户名</param>
@@ -394,7 +345,8 @@ namespace teaCRM.Service.Impl
         ///   /// <param name="clientPlace">客户端地址</param>
         /// <param name="clientTime">客户端登陆时间</param>
         /// <returns>ResponseMessage</returns>
-        public ResponseMessage Login(string type, string accountType, string userName, string userPassword,
+        public ResponseMessage Login(HttpContext httpContext, string type, string accountType, string userName,
+            string userPassword,
             string remember, string clientIp, string clientPlace, string clientTime)
         {
             ResponseMessage rmsg = ValidateAccount("login", type, accountType, userName, userPassword);
@@ -403,7 +355,7 @@ namespace teaCRM.Service.Impl
                 //获取用户信息
                 var compUser = GetVCompanyUserByAccountTypeAndUserName(accountType, userName);
                 //书写SessionCookie
-                WriteSessionCookie(compUser.UserId, userName, userPassword, remember);
+                WriteSessionCookie(httpContext, compUser.UserId, userName, userPassword, remember);
                 //写日志
                 var loginUser = compUser.UserTname;
                 if (String.IsNullOrEmpty(loginUser))
@@ -420,7 +372,7 @@ namespace teaCRM.Service.Impl
                     LogPlace = clientPlace,
                     LogTime = DateTime.Parse(clientTime)
                 };
-                sysLogDao.InsertEntity(sysLog);
+                SysLogDaoManual.InsertEntity(sysLog);
             }
 
             return rmsg;
@@ -433,11 +385,13 @@ namespace teaCRM.Service.Impl
         /// <summary>
         /// 公司注册 2014-08-21 14:58:50 By 唐有炜
         /// </summary>
+        /// <param name="httpContext">HttpContext</param>
         /// <param name="accountType">账号类型（email,phone）</param>
         /// <param name="userName">用户名</param>
         /// <param name="userPassword">密码</param>
         /// <returns>ResponseMessage</returns>
-        public ResponseMessage Register(string accountType, string userName, string userPassword)
+        public ResponseMessage Register(HttpContext httpContext, string accountType, string userName,
+            string userPassword)
         {
             ResponseMessage rmsg = ValidateAccount("register", null, accountType, userName, userPassword);
             if (rmsg.Status)
@@ -476,7 +430,7 @@ namespace teaCRM.Service.Impl
                     DepId = 1 //默认部门
                 };
 
-                if (companyUserDao.InsertEntities(sysCompany, sysUser))
+                if (CompanyUserDaoManual.InsertEntities(sysCompany, sysUser))
                 {
                     rmsg.Status = true;
                     rmsg.Msg = "注册成功";
@@ -494,7 +448,7 @@ namespace teaCRM.Service.Impl
                 //获取用户信息
                 var compUser = GetVCompanyUserByAccountTypeAndUserName(accountType, userName);
                 //书写SessionCookie
-                WriteSessionCookie(compUser.UserId, userName, userPassword);
+                //WriteSessionCookie(compUser.UserId, userName, userPassword);
             }
 
             return rmsg;
@@ -507,12 +461,14 @@ namespace teaCRM.Service.Impl
         /// <summary>
         /// 公共注册 2014-08-24 14:58:50 By 唐有炜
         /// </summary>
+        /// <param name="httpContext">HttpContext</param>
         /// <param name="userName">用户名</param>
         /// <param name="phone">手机号</param>
         /// <param name="userPassword">密码</param>
         /// <param name="userTname">真实姓名</param>
         /// <returns>ResponseMessage</returns>
-        public ResponseMessage PublicRegister(string userName, string phone, string userPassword,
+        public ResponseMessage PublicRegister(HttpContext httpContext, string userName, string phone,
+            string userPassword,
             string userTname = null)
         {
             ResponseMessage rmsg1 = ValidateAccount("register", null, "username", userName + "@10000", userPassword);
@@ -542,7 +498,7 @@ namespace teaCRM.Service.Impl
                     DepId = 1 //默认部门
                 };
 
-                if (SysUserDao.InsertEntity(sysUser))
+                if (SysUserDaoManual.InsertEntity(sysUser))
                 {
                     rmsg.Status = true;
                     rmsg.Msg = "注册成功";
@@ -560,7 +516,7 @@ namespace teaCRM.Service.Impl
                 //获取用户信息
                 var compUser = GetVCompanyUserByAccountTypeAndUserName("phone", phone);
                 //书写SessionCookie
-                WriteSessionCookie(compUser.UserId, userName + "@10000", userPassword);
+                WriteSessionCookie(httpContext, compUser.UserId, userName + "@10000", userPassword);
             }
 
             return rmsg;
@@ -572,20 +528,12 @@ namespace teaCRM.Service.Impl
         /// <summary>
         /// 获取当前登录的企业用户信息 2014-08-25 14:58:50 By 唐有炜
         /// </summary>
+        /// <param name="userId">userId</param>
         /// <returns>ResponseMessage</returns>
-        public VCompanyUser GetCurrentCompanyUser()
+        public VCompanyUser GetCurrentCompanyUser(int userId)
         {
-            var sessionUserId = HttpContext.Current.Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID];
-            if (sessionUserId != null)
-            {
-                var userId = int.Parse(sessionUserId.ToString());
-                var model = companyUserDao.GetEntity(cu => cu.UserId == userId);
-                return model;
-            }
-            else
-            {
-                return null;
-            }
+            var model = CompanyUserDaoManual.GetEntity(cu => cu.UserId == userId);
+            return model;
         }
 
         #endregion

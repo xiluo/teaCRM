@@ -1,5 +1,7 @@
 ﻿using teaCRM.Dao.Impl;
 using teaCRM.Dao.Manual.TreeHelpers;
+using teaCRM.Dao.Manual.TreeHelpers.Impl;
+using teaCRM.Entity;
 
 namespace teaCRM.Dao.Manual.Impl
 {
@@ -8,8 +10,14 @@ namespace teaCRM.Dao.Manual.Impl
     /// </summary>
     public class TSysDepartmentDaoManualImpl : TSysDepartmentDaoImpl, ITSysDepartmentDaoManual
     {
+        //public ITreeHelper<DepartmentTree> DepartmentTreeHelper = new DepartmentTreeHelperImpl();
+        /// <summary>
+        /// 依赖注入 2014-08-26 14:58:50 By 唐有炜
+        /// </summary>
+        public ITreeHelper<DepartmentTree> DepartmentTreeHelper { set; get; }
 
         #region 获取树形数据
+
         /// <summary>
         /// 获取树形数据
         /// </summary>

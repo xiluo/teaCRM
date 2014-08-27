@@ -25,6 +25,11 @@ namespace teaCRM.Service.CRM.Impl
 {
     public class CustomerServiceImpl : ICustomerService
     {
+        /// <summary>
+        /// CustomerServiceImpl注入dao依赖
+        /// </summary>
+        public ITFunFilterDaoManual FunFilterDaoManual { set; get; }
+
         #region 获取筛选器树形列表
 
         /// <summary>
@@ -33,8 +38,8 @@ namespace teaCRM.Service.CRM.Impl
         /// <returns></returns>
         public string GetFilterTreeData()
         {
-            TFunFilterDaoManualImpl filterDao = new TFunFilterDaoManualImpl();
-            var filterTreeData = filterDao.GetTreeData();
+           
+            var filterTreeData = FunFilterDaoManual.GetTreeData();
             return filterTreeData;
         }
 

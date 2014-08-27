@@ -1,5 +1,7 @@
 ﻿using teaCRM.Dao.Impl;
 using teaCRM.Dao.Manual.TreeHelpers;
+using teaCRM.Dao.Manual.TreeHelpers.Impl;
+using teaCRM.Entity;
 
 namespace teaCRM.Dao.Manual.Impl
 {
@@ -8,8 +10,10 @@ namespace teaCRM.Dao.Manual.Impl
     /// </summary>
     public class TFunFilterDaoManualImpl : TFunFilterDaoImpl, ITFunFilterDaoManual
     {
+        public ITreeHelper<FilterTree> FilterTreeHelper { set; get; }
 
         #region 获取树形数据
+
         /// <summary>
         /// 获取树形数据
         /// </summary>

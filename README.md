@@ -23,6 +23,12 @@ teaCRM
 更新历史
 =============================
 
+
+2014-08-26
+----------
+>1、继续客户模块        
+>2、完成依赖注入
+
 2014-08-26
 ----------
 >1、继续客户模块        
@@ -46,6 +52,8 @@ http://www.cnblogs.com/fly_dragon/archive/2010/09/06/1819422.html
 http://www.cnblogs.com/guyoung/archive/2011/10/17/2215109.html   
 >3、Spring .NET结合.NET MVC  
 http://www.cnblogs.com/steven9801/archive/2011/12/11/2283894.html
+>4、Spring.NET学习笔记——目录(原)     
+http://www.cnblogs.com/GoodHelper/archive/2009/11/20/SpringNet_Index.html
 
 
 

@@ -172,13 +172,14 @@
     <Compile Include="Manual\ITCusBaseDaoManual.cs" />
     <Compile Include="Manual\ITFunFilterDaoManual.cs" />
     <Compile Include="Manual\ITSysDepartmentDaoManual.cs" />
-    <Compile Include="Manual\TreeHelpers\DepartmentTreeHelper.cs">
+    <Compile Include="Manual\TreeHelpers\Impl\DepartmentTreeHelperImpl.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Manual\TreeHelpers\FilterTreeHelper.cs" />
+    <Compile Include="Manual\TreeHelpers\Impl\FilterTreeHelperImpl.cs" />
     <Compile Include="Manual\Impl\TSysDepartmentDaoManualImpl.cs" />
     <Compile Include="Manual\Impl\VCompanyUserDaoManualImpl.cs" />
     <Compile Include="Manual\IVCompanyUserDaoManual.cs" />
+    <Compile Include="Manual\TreeHelpers\ITreeHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="teaCRMIDao.cs">
       <AutoGen>True</AutoGen>

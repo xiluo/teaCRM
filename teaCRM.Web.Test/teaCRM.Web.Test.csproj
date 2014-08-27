@@ -47,6 +47,7 @@
     <Reference Include="Spring.Web">
       <HintPath>..\packages\Spring.Web.2.0.0-RC1\lib\net40\Spring.Web.dll</HintPath>
     </Reference>
+    <Reference Include="Spring.Web.Mvc4, Version=2.0.0.40000, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -100,10 +101,21 @@
   <ItemGroup>
     <Compile Include="AccountControllerTest.cs" />
     <Compile Include="AccountServiceImplTest.cs" />
-    <Compile Include="DepartmentTreeHelperTest.cs" />
+    <Compile Include="CustomerServiceImplTest.cs" />
+    <Compile Include="DepartmentControllerTest.cs" />
+    <Compile Include="DepartmentTreeHelperImplTest.cs" />
+    <Compile Include="FilterTreeHelperImplTest.cs" />
+    <Compile Include="IndexControllerTest.cs" />
+    <Compile Include="LoadDataControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SysDepartmentServiceImplTest.cs" />
-    <Compile Include="TestControllerTest.cs" />
+    <Compile Include="TFunFilterDaoManualImplTest.cs" />
+    <Compile Include="TSysCompanyDaoManualImplTest.cs" />
+    <Compile Include="TSysDepartmentDaoManualImplTest.cs" />
+    <Compile Include="TSysLogDaoManualImplTest.cs" />
+    <Compile Include="TSysUserDaoManualImplTest.cs" />
+    <Compile Include="VCompanyUserDaoManualImplTest.cs" />
+    <Compile Include="WorkbenchControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\teaCRM.Common\teaCRM.Common.csproj">
@@ -129,11 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Configs\Services.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

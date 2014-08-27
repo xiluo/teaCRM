@@ -147,11 +147,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Resource Include="Configs\Services.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Configs\Daos.xml">
       <SubType>Designer</SubType>
+    </Content>
+    <Resource Include="Configs\Services.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Content Include="Configs\Daos.xml" />
+    <Content Include="Configs\Objects.xml" />
     <Content Include="Configs\Webs.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -1312,7 +1315,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>20649</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

@@ -1,4 +1,5 @@
-﻿@using UCsoft.Web
+﻿@using teaCRM.Common
+@using UCsoft.Web
 @{
    var rootPath = System.Configuration.ConfigurationManager.AppSettings["rootPath"].ToString();
 }
@@ -44,7 +45,7 @@
                     <li id="nav-settings"><a href="/Apps/Settings/Department/">设置</a></li>
                     <li id="nav-more"><a href="javascript:void(0);">更多</a></li>
                 </ul>
-                <div class="exit"><span id="sayHello">欢迎您，</span>@Html.LoadDefaultValue(Html.GetCurrentCompanyUser().UserTname, Html.GetCurrentCompanyUser().UserLname)。<a href="/Account/Logout/">安全退出</a></div>
+                <div class="exit"><span id="sayHello">欢迎您，</span>@Html.LoadDefaultValue(Html.GetCurrentCompanyUser(int.Parse(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString())).UserTname, Html.GetCurrentCompanyUser(int.Parse(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString())).UserLname)。<a href="/Account/Logout/">安全退出</a></div>
                 <div class="nav-right">
                     <div class="icon-option" id="user-pic">
                         <img alt="" src="@rootPath/Themes/default/images/header.jpg" />
