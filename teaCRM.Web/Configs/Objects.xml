@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<objects xmlns="http://www.springframework.net" xmlns:db="http://www.springframework.net/database">
+  <!--filterTreeHelper start-->
+  <object id="filterTreeHelper" type="teaCRM.Dao.Manual.TreeHelpers.Impl.FilterTreeHelperImpl, teaCRM.Dao" singleton="false">
+ <property name="FunFilterDao" ref="funFilterDao" />
+  </object>
+  <!--自动生成的交由spring接管-->
+  <object id="funFilterDao" type="teaCRM.Dao.Impl.TFunFilterDaoImpl, teaCRM.Dao" singleton="false">
+  </object>
+  <!--filterTreeHelper end-->
+
+  <!--departmentTreeHelper start-->
+  <object id="departmentTreeHelper" type="teaCRM.Dao.Manual.TreeHelpers.Impl.DepartmentTreeHelperImpl, teaCRM.Dao" singleton="false">
+    <property name="SysDepartmentDao" ref="sysDepartmentDao" />
+  </object>
+  <!--自动生成的交由spring接管-->
+  <object id="sysDepartmentDao" type="teaCRM.Dao.Impl.TSysDepartmentDaoImpl, teaCRM.Dao" singleton="false">
+  </object>
+  <!--departmentTreeHelper end-->
+</objects>
