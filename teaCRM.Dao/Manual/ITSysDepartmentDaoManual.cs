@@ -14,6 +14,6 @@ namespace teaCRM.Dao.Manual
         /// 获取树形数据 2014-08-26 14:58:50 By 唐有炜
         /// </summary>
         /// <returns></returns>
-        string GetTreeData();
+        string GetTreeData(string compNum);
     }
 }

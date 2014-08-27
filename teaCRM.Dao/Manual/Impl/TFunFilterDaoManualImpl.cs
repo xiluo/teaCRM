@@ -14,13 +14,14 @@ namespace teaCRM.Dao.Manual.Impl
 
         #region 获取树形数据
 
-        /// <summary>
-        /// 获取树形数据
-        /// </summary>
-        /// <returns></returns>
-        public string GetTreeData()
+     /// <summary>
+        ///  获取树形数据
+     /// </summary>
+     /// <param name="compNum"></param>
+     /// <returns></returns>
+        public string GetTreeData(string compNum)
         {
-            return FilterTreeHelper.GetJson();
+            return FilterTreeHelper.GetJson(compNum);
         }
 
         #endregion

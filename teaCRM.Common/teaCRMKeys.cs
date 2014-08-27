@@ -70,8 +70,9 @@
            /// <summary>
         /// 企业会员用户
         /// </summary>
-        public const string SESSION_USER_COMPANY_INFO_ID = "teacrm_session_user_company_info_id";
-        
+        public const string SESSION_USER_COMPANY_INFO_ID = "teacrm_session_user_company_info_id";//会员用户ID
+        public const string SESSION_USER_COMPANY_INFO_NUM = "teacrm_session_user_company_info_num";//企业编号
+
         //Cookies=====================================================
         public const string COOKIE_REMEMBER_USER_COMPANY_REMEMBER = "remember";
         /// <summary>

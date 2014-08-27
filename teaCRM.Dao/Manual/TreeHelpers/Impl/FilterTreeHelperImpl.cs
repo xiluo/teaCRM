@@ -15,11 +15,11 @@ namespace teaCRM.Dao.Manual.TreeHelpers.Impl
 
         #region 获取父类集合
 
-        public IList<FilterTree> ReturnParentTree()
+        public IList<FilterTree> ReturnParentTree(string compNum)
         {
             List<FilterTree> trees;
             trees = FunFilterDao.GetList()
-                .Where(f => f.ParentId == 0)
+                .Where(f => f.ParentId == 0&&f.CompNum==compNum)
                 .Select(f => new FilterTree() {ModuleID = f.Id, ParentID = (int) f.ParentId, ModuleName = f.FilName})
                 .ToList();
             return trees;
@@ -33,10 +33,11 @@ namespace teaCRM.Dao.Manual.TreeHelpers.Impl
         /// 判断分类是否有子类
         /// </summary>
         /// <param name="id"></param>
+        /// <param name="compNum">公司编号</param>
         /// <returns></returns>
-        public bool IsHaveChild(int id)
+        public bool IsHaveChild(int id,string compNum)
         {
-            bool flag = FunFilterDao.ExistsEntity(f => f.Id == id);
+            bool flag = FunFilterDao.ExistsEntity(f => f.Id == id&&f.CompNum==compNum);
             return flag;
         }
 
@@ -48,11 +49,12 @@ namespace teaCRM.Dao.Manual.TreeHelpers.Impl
         /// 根据id获取子类
         /// </summary>
         /// <param name="id"></param>
+        /// <param name="compNum"></param>
         /// <returns></returns>
-        public IList<FilterTree> GetChild(int id)
+        public IList<FilterTree> GetChild(int id,string compNum)
         {
             var childTrees = FunFilterDao.GetList()
-                .Where(f => f.ParentId == id)
+                .Where(f => f.ParentId == id&&f.CompNum==compNum)
                 .Select(f => new FilterTree() {ModuleID = f.Id, ParentID = (int) f.ParentId, ModuleName = f.FilName})
                 .ToList();
             return childTrees;
@@ -66,19 +68,19 @@ namespace teaCRM.Dao.Manual.TreeHelpers.Impl
         /// 获取json
         /// </summary>
         /// <returns></returns>
-        public string GetJson()
+        public string GetJson(string compNum)
         {
             string json = "[";
-            IList<FilterTree> trees = ReturnParentTree();
+            IList<FilterTree> trees = ReturnParentTree(compNum);
             foreach (FilterTree tree in trees)
             {
                 if (tree != trees[trees.Count - 1])
                 {
-                    json += GetJsonByModel(tree) + ",";
+                    json += GetJsonByModel(tree,compNum) + ",";
                 }
                 else
                 {
-                    json += GetJsonByModel(tree);
+                    json += GetJsonByModel(tree,compNum);
                 }
             }
             json += "]";
@@ -95,11 +97,12 @@ namespace teaCRM.Dao.Manual.TreeHelpers.Impl
         /// 根据模型生成json
         /// </summary>
         /// <param name="tree"></param>
+        /// <param name="compNum"></param>
         /// <returns></returns>
-        public string GetJsonByModel(FilterTree tree)
+        public string GetJsonByModel(FilterTree tree,string compNum)
         {
             string json = "";
-            bool flag = IsHaveChild(tree.ModuleID);
+            bool flag = IsHaveChild(tree.ModuleID,compNum);
             json = "{"
                    + "\"id\":\"" + tree.ModuleID + "\","
                    + "\"pid\":\"" + tree.ParentID + "\","
@@ -109,18 +112,18 @@ namespace teaCRM.Dao.Manual.TreeHelpers.Impl
             if (flag)
             {
                 json += "\"children\":";
-                IList<FilterTree> childTrees = GetChild(tree.ModuleID);
+                IList<FilterTree> childTrees = GetChild(tree.ModuleID,compNum);
 
                 json += "[";
                 foreach (FilterTree childTree in childTrees)
                 {
                     if (tree != childTrees[childTrees.Count - 1])
                     {
-                        json += GetJsonByModel(childTree) + ",";
+                        json += GetJsonByModel(childTree,compNum) + ",";
                     }
                     else
                     {
-                        json += GetJsonByModel(childTree);
+                        json += GetJsonByModel(childTree,compNum);
                     }
                 }
                 if (json.EndsWith(","))

@@ -11,19 +11,19 @@ namespace  teaCRM.Dao.Impl
 {
 
     /// <summary>
-    /// 自动生成的实现ITCusExpvalueDao接口的Dao类。 2014-08-25 05:54:27 By 唐有炜
+    /// 自动生成的实现ITCusExpvalue10000Dao接口的Dao类。 2014-08-27 06:20:44 By 唐有炜
     /// </summary>
- public class TCusExpvalueDaoImpl:ITCusExpvalueDao
+ public class TCusExpvalue10000DaoImpl:ITCusExpvalue10000Dao
     {
 	    /// <summary>
         /// 获取所有的数据
 	    /// </summary>
 	    /// <returns>返回所有数据列表</returns>
-        public List<TCusExpvalue> GetList() 
+        public List<TCusExpvalue10000> GetList() 
         {
           using (teaCRMDBContext db=new teaCRMDBContext())
             {
-             var models= db.TCusExpvalues.ToList();
+             var models= db.TCusExpvalue10000s.ToList();
 			 return models;
             }
         }
@@ -35,11 +35,11 @@ namespace  teaCRM.Dao.Impl
         /// </summary>
         /// <param name="predicate">Lamda表达式</param>
         /// <returns>Entity</returns>
-        public TCusExpvalue GetEntity(Expression<Func<TCusExpvalue, bool>> predicate) 
+        public TCusExpvalue10000 GetEntity(Expression<Func<TCusExpvalue10000, bool>> predicate) 
         {
             using (teaCRMDBContext db=new teaCRMDBContext())
             {
-                var model =db.TCusExpvalues.Where<TCusExpvalue>(predicate).SingleOrDefault();
+                var model =db.TCusExpvalue10000s.Where<TCusExpvalue10000>(predicate).SingleOrDefault();
                 return model;
 		    }
         }
@@ -49,11 +49,11 @@ namespace  teaCRM.Dao.Impl
         /// 添加实体
         /// </summary>
         /// <param name="entity">实体对象</param>
-        public bool InsertEntity(TCusExpvalue entity)
+        public bool InsertEntity(TCusExpvalue10000 entity)
         {
             using (teaCRMDBContext db=new teaCRMDBContext())
             {
-              int rows=  db.TCusExpvalues.Insert(entity);
+              int rows=  db.TCusExpvalue10000s.Insert(entity);
 				 if (rows > 0)
                 {
                     return true;
@@ -68,12 +68,12 @@ namespace  teaCRM.Dao.Impl
         /// 删除实体
         /// </summary>
          /// <param name="predicate">Lamda表达式</param>
-        public bool DeleteEntity(Expression<Func<TCusExpvalue , bool>> predicate) 
+        public bool DeleteEntity(Expression<Func<TCusExpvalue10000 , bool>> predicate) 
         {
             using (teaCRMDBContext db=new teaCRMDBContext())
             {
-                TCusExpvalue  entity = db.TCusExpvalues.Where(predicate).First();
-                int rows=db.TCusExpvalues.Delete(entity);
+                TCusExpvalue10000  entity = db.TCusExpvalue10000s.Where(predicate).First();
+                int rows=db.TCusExpvalue10000s.Delete(entity);
 				 if (rows > 0)
                 {
                     return true;
@@ -89,7 +89,7 @@ namespace  teaCRM.Dao.Impl
         /// 批量删除
         /// </summary>
         /// <param name="list">实体集合</param>
-        public bool DeletesEntity(List<TCusExpvalue> list) 
+        public bool DeletesEntity(List<TCusExpvalue10000> list) 
         {
             using (teaCRMDBContext db=new teaCRMDBContext())
             {
@@ -98,7 +98,7 @@ namespace  teaCRM.Dao.Impl
                 {
                     foreach (var item in list)
                     {
-                        db.TCusExpvalues.Delete(item);
+                        db.TCusExpvalue10000s.Delete(item);
                     }
                     //tran.Commit();
 					return true;
@@ -116,11 +116,11 @@ namespace  teaCRM.Dao.Impl
         /// 修改实体
         /// </summary>
         /// <param name="entity">实体对象</param>
-        public bool UpadateEntity(TCusExpvalue entity)
+        public bool UpadateEntity(TCusExpvalue10000 entity)
         {
             using (teaCRMDBContext db=new teaCRMDBContext())
             {
-               int rows= db.TCusExpvalues.Update(entity);
+               int rows= db.TCusExpvalue10000s.Update(entity);
 			   if (rows > 0)
                 {
                     return true;
@@ -137,21 +137,21 @@ namespace  teaCRM.Dao.Impl
         /// 是否存在该记录
         /// </summary>
         /// <returns></returns>
-       public   bool ExistsEntity(Expression<Func<TCusExpvalue , bool>> predicate)
+       public   bool ExistsEntity(Expression<Func<TCusExpvalue10000 , bool>> predicate)
 	   {
             using (teaCRMDBContext db=new teaCRMDBContext())
             {
-               bool status= db.TCusExpvalues.Any(predicate);
+               bool status= db.TCusExpvalue10000s.Any(predicate);
                return status;
             }
         }
 
 		 //查询分页
-    public  List<TCusExpvalue> GetListByPage(int pageIndex, int pageSize, Expression<Func<TCusExpvalue , bool>> predicate)
+    public  List<TCusExpvalue10000> GetListByPage(int pageIndex, int pageSize, Expression<Func<TCusExpvalue10000 , bool>> predicate)
 	  {
 	   using (teaCRMDBContext db=new teaCRMDBContext())
             {
-             var models= db.TCusExpvalues.ToList();
+             var models= db.TCusExpvalue10000s.ToList();
 			 return models;
             }
 	  }
@@ -167,11 +167,11 @@ namespace  teaCRM.Dao.Impl
         /// <param name="sql">sql语句</param>
         /// <param name="namedParameters">sql参数</param>
         /// <returns>集合</returns>
-        public IEnumerable<TCusExpvalue> GetListBySql(string sql, dynamic namedParameters)
+        public IEnumerable<TCusExpvalue10000> GetListBySql(string sql, dynamic namedParameters)
         {
           using (teaCRMDBContext db=new teaCRMDBContext())
             {
-               return db.DbHelper.ExecuteDataTable(sql,namedParameters).ToList<TCusExpvalue>();
+               return db.DbHelper.ExecuteDataTable(sql,namedParameters).ToList<TCusExpvalue10000>();
             }
           
         }

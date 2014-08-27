@@ -9,6 +9,6 @@
        /// 获取部门树形数据
        /// </summary>
        /// <returns></returns>
-        string GetTreeData();
+        string GetTreeData(string compNum);
     }
 }

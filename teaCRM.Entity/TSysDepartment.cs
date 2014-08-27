@@ -13,6 +13,8 @@ namespace teaCRM.Entity
  
 		[Column("parent_id")]
 		public Int32 ParentId { get;set; }
+		[Column("comp_num")]
+		public String CompNum { get;set; }
 		[Column("dep_name")]
 		public String DepName { get;set; }
 		[Column("dep_num")]

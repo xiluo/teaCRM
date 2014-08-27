@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using teaCRM.Common;
 using teaCRM.Service;
 using teaCRM.Service.Impl;
 using teaCRM.Service.Settings;
@@ -65,10 +66,11 @@ namespace teaCRM.Web.Controllers.Apps.Settings
 
         //
         // GET: /Apps/Settings/Department/GetDepartmentTreeData
-        
+         [UserAuthorize]
         public string GetDepartmentTreeData()
         {
-              string treeData = SysDepartmentService.GetTreeData();
+            var compNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
+              string treeData = SysDepartmentService.GetTreeData(compNum);
             return treeData;
         }
 

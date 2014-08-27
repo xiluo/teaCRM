@@ -76,10 +76,8 @@ namespace teaCRM.Web.Test
         {
             IApplicationContext ctx = ContextRegistry.GetContext();
             CustomerServiceImpl target = ctx.GetObject("customerService") as CustomerServiceImpl;
-          string str=  target.GetFilterTreeData();
-            Assert.AreNotEqual(str, "");
-
-            //Assert.AreNotEqual(target, null);
+          
+            Assert.AreNotEqual(target, null);
         }
 
         /// <summary>
@@ -110,19 +108,7 @@ namespace teaCRM.Web.Test
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
-        /// <summary>
-        ///A test for GetFilterTreeData
-        ///</summary>
-        [TestMethod()]
-        public void GetFilterTreeDataTest()
-        {
-            CustomerServiceImpl target = new CustomerServiceImpl(); // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            actual = target.GetFilterTreeData();
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
+      
 
         /// <summary>
         ///A test for GetTraceList
@@ -190,19 +176,6 @@ namespace teaCRM.Web.Test
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
-        /// <summary>
-        ///A test for GetFilterTreeData
-        ///</summary>
-        [TestMethod()]
-        public void GetFilterTreeDataTest1()
-        {
-            CustomerServiceImpl target = new CustomerServiceImpl(); // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            actual = target.GetFilterTreeData();
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
 
         /// <summary>
         ///A test for GetTraceList
@@ -245,6 +218,27 @@ namespace teaCRM.Web.Test
             actual = target.FunFilterDaoManual;
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+
+        /// <summary>
+        ///A test for GetPagerData
+        ///</summary>
+        [TestMethod()]
+        public void GetPagerDataTest()
+        {
+            IApplicationContext ctx = ContextRegistry.GetContext();
+            CustomerServiceImpl target = ctx.GetObject("customerService") as CustomerServiceImpl;
+
+
+            int page = 0; // TODO: Initialize to an appropriate value
+            int pagesize = 0; // TODO: Initialize to an appropriate value
+            string searchs = string.Empty; // TODO: Initialize to an appropriate value
+            string tag_ids = string.Empty; // TODO: Initialize to an appropriate value
+            string search_owner = string.Empty; // TODO: Initialize to an appropriate value
+            string expected = string.Empty; // TODO: Initialize to an appropriate value
+            string actual;
+            actual = target.GetPagerData(page, pagesize, searchs, tag_ids, search_owner);
+            Assert.AreEqual(expected, actual);
         }
     }
 }

@@ -10,10 +10,11 @@ namespace teaCRM.Dao.Manual
     /// </summary>
   public  interface ITFunFilterDaoManual:ITFunFilterDao
   {
-      /// <summary>
+   /// <summary>
       /// 获取树形数据
-      /// </summary>
-      /// <returns></returns>
-      string GetTreeData();
+   /// </summary>
+   /// <param name="compNum">客户编号</param>
+   /// <returns></returns>
+      string GetTreeData(string compNum);
   }
 }

@@ -13,6 +13,8 @@ namespace teaCRM.Entity
  
 		[Column("myapp_id")]
 		public Int32 MyappId { get;set; }
+		[Column("comp_num")]
+		public String CompNum { get;set; }
 		[Column("exp_name")]
 		public String ExpName { get;set; }
 		[Column("exp_title")]

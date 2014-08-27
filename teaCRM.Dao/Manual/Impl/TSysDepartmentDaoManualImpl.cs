@@ -22,9 +22,10 @@ namespace teaCRM.Dao.Manual.Impl
         /// 获取树形数据
         /// </summary>
         /// <returns></returns>
-        public string GetTreeData()
+        public string GetTreeData(string compNum)
         {
-            return DepartmentTreeHelper.GetJson();
+
+            return DepartmentTreeHelper.GetJson(compNum);
         }
 
         #endregion

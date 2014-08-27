@@ -45,7 +45,7 @@ namespace teaCRM.DBContext
 		public IDbSet<TConExpvalue> TConExpvalues { get; private set; }
 		public IDbSet<TCusBase> TCusBases { get; private set; }
 		public IDbSet<TCusCon> TCusCons { get; private set; }
-		public IDbSet<TCusExpvalue> TCusExpvalues { get; private set; }
+		public IDbSet<TCusExpvalue10000> TCusExpvalue10000s { get; private set; }
 		public IDbSet<TCusLog> TCusLogs { get; private set; }
 		public IDbSet<TFunApp> TFunApps { get; private set; }
 		public IDbSet<TFunExpand> TFunExpands { get; private set; }

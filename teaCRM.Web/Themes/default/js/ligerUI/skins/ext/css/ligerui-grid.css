@@ -24,7 +24,7 @@
     .l-grid table { border-spacing: 0 0; }
 .l-grid-header-backup { border-bottom: 1px solid #A3C0E8; line-height: 22px; background: #E2F0FF url('../images/grid/header-bg.gif') repeat-x left bottom; overflow: hidden; width: 100%; }
 .l-grid-header1 { line-height:30px; background: #e3f7ff url(../image/flexigrid_blue/gridth.gif) repeat-x left bottom; overflow: hidden; border-top: solid 1px #C9C7DC; border-bottom: 0px solid #9C9C9C; width: 100%; height: 30px; }
-.l-grid-header { line-height:30px; background-color:#f4f2ee; overflow: hidden; border-top: solid 1px #C9C7DC; border-bottom: 0px solid #9C9C9C; width: 100%; height:30px; }
+.l-grid-header { line-height:32px; overflow: hidden;width: 100%; height:32px; }
 
 
 .ftitle { background: url("../image/flexigrid_blue/grid.png") no-repeat left; color: #15428b; margin-left: 10px; padding-left: 20px; padding-top: 22px; float: left; }
@@ -69,7 +69,7 @@
     .l-grid-hd-cell-btn span { border-left: 1px solid #F1F5FC; width: 14px; height: 22px; background: url('../images/icon/icon-down.gif') no-repeat 2px 8px; display: block; }
 .l-grid-hd-cell-drophandle { width: 5px; height: 22px; cursor: col-resize; float: right; position: absolute; top: 0px; right: -3px; }
 .l-grid-hd-cell-text { text-align: center; cursor: pointer; }
-.l-grid-hd-cell {padding: 4px 0px; overflow: hidden; border-right: 1px solid #ddd; text-align: center;line-height:23px; }
+.l-grid-hd-cell {padding: 6px 0px; overflow: hidden; border-bottom: 1px solid #ecebeb;background: #F3F3F3;line-height: 1.5em;font-weight: 500; border-right:1px solid #ecebeb; border-top: 1px solid #ecebeb;}
 .l-grid-hd-cell-last { }
 .l-grid-hd-cell-over, .l-grid-hd-cell-on { }
 .l-grid-hd-cell-mul { /*border-bottom:1px solid #ddd;*/border-top:1px solid #fff;line-height:24px;}
@@ -87,9 +87,9 @@
 .l-grid-row-alt { /*position:relative;*/ /*background: #F5FFEF;*/ background:#fbfaf8}
 
 
-    .l-selected .l-grid-row-cell { background: #d2e2f2; }
+    .l-selected .l-grid-row-cell { background: #6eabdb; color:#FFFFFF;}
 /*.l-grid-row-over { background: #aaa; }*/
-.l-grid-row-over,.l-grid-row-over .l-grid-row-alt  { background:#fad706; }
+.l-grid-row-over,.l-grid-row-over .l-grid-row-alt  { background:#F2F7FB; }
 
 .l-grid-row-cell-backup { border-bottom: 1px dotted #A3bae9; text-align: center; border-right: 1px solid #ddd; }
 .l-grid-row-cell {padding:4px 0px; border-bottom: 1px solid #f3f2f1; text-align: center; border-right: 0px solid #ddd; /*padding-left: 4px;*/ }

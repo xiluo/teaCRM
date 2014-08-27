@@ -59,22 +59,23 @@
 
              $("#maingrid4").ligerGrid({
                  columns: [
-                    { display: '序号', width: 50, render: function (rowData, rowindex, value, column, rowid, page, pagesize) { return (page - 1) * pagesize + rowindex + 1; } },
+                    { display: '选择', width: 50, render: function (rowData, rowindex, value, column, rowid, page, pagesize) { return (page - 1) * pagesize + rowindex + 1; } },
                     {
-                        display: '公司名称', "frozen": true, name: 'Customer', width: 200, align: 'left', render: function (item) {
-                            var html = "<div class='abc'>"
-                            if (item.Customer)
-                                html += item.Customer;
-                            html += "</div>";
-                            return html;
-                        }
+//                        display: '公司名称', "frozen": true, name: 'cus_sname', width: 200, align: 'left', render: function (item) {
+//                            var html = "<div class='abc'>"
+//                            if (item.cus_sname)
+//                                html += item.Customer;
+//                            html += "</div>";
+//                            return html;
+                        //                        }
+                        display: '公司名称', name: 'cus_sname', width: 200, align: 'left'
                     },
-                    { display: '电话', name: 'tel', width: 120, align: 'right' },
+                    { display: '电话', name: 'cus_tel', width: 120, align: 'right' },
                     { display: '客户类型', name: 'CustomerType', width: 80 },
                     { display: '客户类别', name: 'CustomerLevel', width: 80 },
                     { display: '客户来源', name: 'CustomerSource', width: 80 },
-                    { display: '省份', name: 'Provinces', width: 80 },
-                    { display: '城市', name: 'City', width: 80 },
+                    { display: '省市地址', name: 'cus_city', width: 80 },
+                    { display: '详细地址', name: 'cus_address', width: 80 },
                  //{
                  //    display: '省份', name: 'CustomerFrom', width: 80, render: function (item) {
                  //        return item.Provinces + "." + item.City;
@@ -569,7 +570,34 @@
     <!--右侧列表开始-->
     <div class="layout-right">
         <div class="layout-content">
-            <div class="filter-bar">
+		
+		<div class="toolbar-wrap">
+  <div id="floatHead" class="toolbar">
+    <div class="l-list">
+      <ul class="icon-list">
+        <li><a class="add" href="#"><i></i><span>新增</span></a></li>
+		<li><a class="del" id="btnDelete" href="#"><i></i><span>删除</span></a></li>
+        <li><a class="chi" id="btnSave" href="#"><i></i><span>客户池</span></a></li>
+        <li><a class="zhuan" id="btnAudit" href="#"><i></i><span>转移</span></a></li>
+		<li><a class="biao" id="btnAudit" href="#"><i></i><span>标签</span></a></li>
+		<li><a class="inport" id="btnAudit" href="#"><i></i><span>导入</span></a></li>
+		<li><a class="import" id="btnAudit" href="#"><i></i><span>导出</span></a></li>
+		<li><a class="sms" id="btnAudit" href="#"><i></i><span>短信</span></a></li>
+		<li><a class="email" id="btnAudit" href="#"><i></i><span>邮件</span></a></li>
+		<li><a class="hebing" id="btnAudit" href="#"><i></i><span>合并</span></a></li>
+		<li><a class="shuxing" id="btnAudit" href="#"><i></i><span>属性</span></a></li>
+        <li><a class="all" href="#" onclick="checkAll(this);"><i></i><span>全选</span></a></li>
+      </ul>
+    </div>
+    <div class="r-list">
+      <input name="txtKeywords" type="text" id="txtKeywords" class="keyword">
+      <a id="lbtnSearch" class="btn-search" href="javascript:__doPostBack('lbtnSearch','')">查询</a>
+    </div>
+  </div>
+</div>
+		
+		
+            <!--<div class="filter-bar">
                 <div class="filter-bar-bd">
 						
                     <div class="row hidden leftwidth">
@@ -585,6 +613,7 @@
                                 </div>
                             </li>
                         </ul>
+						<div id="toolbar"></div>
                     </div>
 							
                     <div id="adv_search" class="hidden rightwidth">
@@ -608,24 +637,22 @@
                             </span>
                                    
                                     
-                            <!--<a href="javascript:void(0);" class="filter_sele" onClick=" makeselect_show() ">筛选器</a>-->
+                            <a href="javascript:void(0);" class="filter_sele" onClick=" makeselect_show() ">筛选器</a>
                             <div class="row_s" style="position: relative; padding: 0 15px 0px 85px; line-height: 24px;"></div>
                         </form>
                     </div>
 							
                     <div class="clear" style="clear: both;"></div>
                     <a id="searchbtns" style="display: none;"></a>
-                    <!--                            <div class="btn-bar hidden">
+                                               <div class="btn-bar hidden">
                                                         <a href="javascript:void(0);" onclick="customer_add()" class="btn-white-1"><b>添加客户</b></a>
                                                         <a href="javascript:void(0);" onClick="export_customer(2) " class="btn-white-1"><b>导出Excel</b></a>
-                                                    </div>-->
+                                                    </div>
                     <a class="btn-hidden" href="javascript:;" onClick=" filterToggle(this); " title="隐藏"></a>
                 </div>
-            </div>
+            </div>-->
             <!--客户列表开始-->
          <form id="form1">
-        <div id="toolbar"></div>
-
         <div id="grid">
             <div id="maingrid4" style="margin: -1px; min-width: 800px;"></div>
             @*<div id="toolbar1"></div>*@

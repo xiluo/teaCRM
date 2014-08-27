@@ -34,13 +34,9 @@ namespace teaCRM.Service.Impl
         /// </summary>
         public ITSysUserDaoManual SysUserDaoManual { set; get; }
 
-        //private ITSysUserDaoManual SysUserDaoManual = new TSysUserDaoManualImpl();
         public ITSysCompanyDaoManual SysCompanyDaoManual { set; get; }
-//        private ITSysCompanyDaoManual SysCompanyDaoManual = new TSysCompanyDaoManualImpl();
         public IVCompanyUserDaoManual CompanyUserDaoManual { set; get; }
-//        private IVCompanyUserDaoManual CompanyUserDaoManual = new VCompanyUserDaoManualImpl();
         public ITSysLogDaoManual SysLogDaoManual { set; get; }
-//        private ITSysLogDaoManual SysLogDaoManual = new TSysLogDaoManualImpl();
 
         #region 账户验证
 
@@ -262,14 +258,15 @@ namespace teaCRM.Service.Impl
         /// 书写SesionCookie
         /// </summary>
         /// <param name="sessionHttpContext">HttpContext</param>
-        /// <param name="id">用户id</param>
+         /// <param name="compUser">用户信息</param>
         /// <param name="userName">用户名</param>
         /// <param name="userPassword">加密的密码</param>
         /// <param name="remember">是否记住密码（默认记住）</param>
-        public void WriteSessionCookie(HttpContext sessionHttpContext, int id, string userName, string userPassword,
+        public void WriteSessionCookie(HttpContext sessionHttpContext, VCompanyUser compUser, string userName, string userPassword,
             string remember = "true")
         {
-            sessionHttpContext.Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID] = id;
+            sessionHttpContext.Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID] = compUser.UserId;
+              sessionHttpContext.Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM] = compUser.CompNum;
             sessionHttpContext.Session.Timeout = 45;
             //记住登录状态下次自动登录
             if (remember.ToLower() == "true")
@@ -355,7 +352,7 @@ namespace teaCRM.Service.Impl
                 //获取用户信息
                 var compUser = GetVCompanyUserByAccountTypeAndUserName(accountType, userName);
                 //书写SessionCookie
-                WriteSessionCookie(httpContext, compUser.UserId, userName, userPassword, remember);
+                WriteSessionCookie(httpContext, compUser, userName, userPassword, remember);
                 //写日志
                 var loginUser = compUser.UserTname;
                 if (String.IsNullOrEmpty(loginUser))
@@ -448,7 +445,7 @@ namespace teaCRM.Service.Impl
                 //获取用户信息
                 var compUser = GetVCompanyUserByAccountTypeAndUserName(accountType, userName);
                 //书写SessionCookie
-                //WriteSessionCookie(compUser.UserId, userName, userPassword);
+                WriteSessionCookie(httpContext,compUser, userName, userPassword);
             }
 
             return rmsg;
@@ -516,13 +513,10 @@ namespace teaCRM.Service.Impl
                 //获取用户信息
                 var compUser = GetVCompanyUserByAccountTypeAndUserName("phone", phone);
                 //书写SessionCookie
-                WriteSessionCookie(httpContext, compUser.UserId, userName + "@10000", userPassword);
+                WriteSessionCookie(httpContext, compUser, userName + "@10000", userPassword);
             }
 
             return rmsg;
-
-
-            return null;
         }
 
         /// <summary>

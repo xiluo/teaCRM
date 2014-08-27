@@ -25,4 +25,8 @@
   <object id="sysDepartmentDaoManual" type="teaCRM.Dao.Manual.Impl.TSysDepartmentDaoManualImpl, teaCRM.Dao" singleton="false">
     <property name="DepartmentTreeHelper" ref="departmentTreeHelper" />
   </object>
+  <!---自定义客户dao -->
+  <object id="cusInfoDaoManual" type="teaCRM.Dao.Manual.Impl.ZCusInfoDaoManualImpl, teaCRM.Dao" singleton="false">
+    <!--<property name="aaa" ref="bbb" />-->
+  </object>
 </objects>

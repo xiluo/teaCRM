@@ -14,6 +14,7 @@
   <!--客户逻辑开始-->
   <object id="customerService" type="teaCRM.Service.CRM.Impl.CustomerServiceImpl, teaCRM.Service" singleton="false">
 <property name="FunFilterDaoManual" ref="funFilterDaoManual" />
+    <property name="CusInfoDaoManual" ref="cusInfoDaoManual" />
   </object>
   <!--客户逻辑结束-->
 

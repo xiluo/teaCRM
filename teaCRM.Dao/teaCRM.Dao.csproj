@@ -60,7 +60,7 @@
     <Compile Include="Impl\TCusConDaoImpl.cs">
       <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
     </Compile>
-    <Compile Include="Impl\TCusExpvalueDaoImpl.cs">
+    <Compile Include="Impl\TCusExpvalue10000DaoImpl.cs">
       <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Impl\TCusLogDaoImpl.cs">
@@ -119,7 +119,7 @@
     <Compile Include="ITCusConDao.cs">
       <DependentUpon>teaCRMIDao.tt</DependentUpon>
     </Compile>
-    <Compile Include="ITCusExpvalueDao.cs">
+    <Compile Include="ITCusExpvalue10000Dao.cs">
       <DependentUpon>teaCRMIDao.tt</DependentUpon>
     </Compile>
     <Compile Include="ITCusLogDao.cs">
@@ -161,6 +161,8 @@
     <Compile Include="ITSysUserDao.cs">
       <DependentUpon>teaCRMIDao.tt</DependentUpon>
     </Compile>
+    <Compile Include="Manual\IZCusInfoDaoManual.cs" />
+    <Compile Include="Manual\Impl\ZCusInfoDaoManualImpl.cs" />
     <Compile Include="Manual\Impl\TSysCompanyDaoManualImpl.cs" />
     <Compile Include="Manual\Impl\TSysLogDaoManualImpl.cs" />
     <Compile Include="Manual\Impl\TSysUserDaoManualImpl.cs" />

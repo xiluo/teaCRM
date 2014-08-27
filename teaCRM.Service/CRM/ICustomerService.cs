@@ -10,11 +10,12 @@ namespace teaCRM.Service.CRM
     /// </summary>
   public  interface ICustomerService
     {
-      /// <summary>
-      /// 获取筛选器树形列表
-      /// </summary>
-      /// <returns></returns>
-        string GetFilterTreeData();
+        /// <summary>
+        /// 获取筛选器树形列表
+        /// </summary>
+         /// <param name="compNum">公司编号</param>
+        /// <returns></returns>
+        string GetFilterTreeData(string compNum);
 
       /// <summary>
       /// 获取客户信息列表

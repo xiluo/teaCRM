@@ -18,4 +18,6 @@
   <object id="sysDepartmentDao" type="teaCRM.Dao.Impl.TSysDepartmentDaoImpl, teaCRM.Dao" singleton="false">
   </object>
   <!--departmentTreeHelper end-->
+  
+  
 </objects>

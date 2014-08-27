@@ -16,27 +16,27 @@ namespace teaCRM.Dao.Manual.TreeHelpers
         /// 获取父类集合
         /// </summary>
         /// <returns></returns>
-        IList<T> ReturnParentTree();
+        IList<T> ReturnParentTree(string compNum);
 
         /// <summary>
         /// 判断分类是否有子类
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        bool IsHaveChild(int id);
+        bool IsHaveChild(int id,string compNum);
 
         /// <summary>
         /// 根据id获取子类
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        IList<T> GetChild(int id);
+        IList<T> GetChild(int id,string compNum);
 
         /// <summary>
         /// 获取json
         /// </summary>
         /// <returns></returns>
-        string GetJson();
+        string GetJson(string compNum);
 
 
         /// <summary>
@@ -44,6 +44,6 @@ namespace teaCRM.Dao.Manual.TreeHelpers
         /// </summary>
         /// <param name="tree"></param>
         /// <returns></returns>
-        string GetJsonByModel(T tree);
+        string GetJsonByModel(T tree,string compNum);
     }
 }

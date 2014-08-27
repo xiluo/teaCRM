@@ -15,7 +15,7 @@ namespace teaCRM.Web.Filters
         public void OnAuthorization(AuthorizationContext filterContext)
         {
             //检查是否登录
-            if (filterContext.HttpContext.Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID] != null)
+            if (filterContext.HttpContext.Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID] != null && filterContext.HttpContext.Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM]!=null)
             {
                 //跳转到登录页面
                 filterContext.HttpContext.Response.Redirect("/");

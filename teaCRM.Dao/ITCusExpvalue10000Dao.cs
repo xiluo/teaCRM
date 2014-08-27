@@ -9,13 +9,13 @@ using teaCRM.Entity;
 
 namespace teaCRM.Dao
 {
-public  interface ITCusExpvalueDao
+public  interface ITCusExpvalue10000Dao
     {
 	    /// <summary>
         /// 获取所有的数据
 	    /// </summary>
 	    /// <returns>返回所有数据列表</returns>
-         List<TCusExpvalue> GetList() ;
+         List<TCusExpvalue10000> GetList() ;
        
 		/// <summary>
         /// 获取指定的单个实体
@@ -24,33 +24,33 @@ public  interface ITCusExpvalueDao
         /// </summary>
         /// <param name="predicate">Lamda表达式</param>
         /// <returns>Entity</returns>
-         TCusExpvalue GetEntity(Expression<Func<TCusExpvalue, bool>> predicate) ;
+         TCusExpvalue10000 GetEntity(Expression<Func<TCusExpvalue10000, bool>> predicate) ;
        
 		  /// <summary>
         /// 添加实体
         /// </summary>
         /// <param name="entity">实体对象</param>
-         bool InsertEntity(TCusExpvalue entity);
+         bool InsertEntity(TCusExpvalue10000 entity);
        
        /// <summary>
         /// 删除实体
         /// </summary>
          /// <param name="predicate">Lamda表达式</param>
-         bool DeleteEntity(Expression<Func<TCusExpvalue , bool>> predicate) ;
+         bool DeleteEntity(Expression<Func<TCusExpvalue10000 , bool>> predicate) ;
       
 		
 		/// <summary>
         /// 批量删除
         /// </summary>
         /// <param name="list">实体集合</param>
-         bool DeletesEntity(List<TCusExpvalue> list) ;
+         bool DeletesEntity(List<TCusExpvalue10000> list) ;
        
 
          /// <summary>
         /// 修改实体
         /// </summary>
         /// <param name="entity">实体对象</param>
-         bool UpadateEntity(TCusExpvalue entity);
+         bool UpadateEntity(TCusExpvalue10000 entity);
     
 
 
@@ -58,10 +58,10 @@ public  interface ITCusExpvalueDao
         /// 是否存在该记录
         /// </summary>
         /// <returns></returns>
-          bool ExistsEntity(Expression<Func<TCusExpvalue , bool>> predicate);
+          bool ExistsEntity(Expression<Func<TCusExpvalue10000 , bool>> predicate);
 	 
 		 //查询分页
-      List<TCusExpvalue> GetListByPage(int pageIndex, int pageSize, Expression<Func<TCusExpvalue , bool>> predicate);
+      List<TCusExpvalue10000> GetListByPage(int pageIndex, int pageSize, Expression<Func<TCusExpvalue10000 , bool>> predicate);
 	 
 	 
 	  //以下是原生Sql方法==============================================================
@@ -72,7 +72,7 @@ public  interface ITCusExpvalueDao
         /// <param name="sql">sql语句</param>
         /// <param name="namedParameters">sql参数</param>
         /// <returns>集合</returns>
-         IEnumerable<TCusExpvalue> GetListBySql(string sql, dynamic namedParameters);
+         IEnumerable<TCusExpvalue10000> GetListBySql(string sql, dynamic namedParameters);
        	
 		/// <summary>
 	     /// 执行Sql

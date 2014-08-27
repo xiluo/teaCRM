@@ -170,6 +170,7 @@ namespace teaCRM.Web.Controllers
         public ActionResult Logout()
         {
             Session.Remove(teaCRMKeys.SESSION_USER_COMPANY_INFO_ID);
+            Session.Remove(teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM);
             return View("Login");
         }
 

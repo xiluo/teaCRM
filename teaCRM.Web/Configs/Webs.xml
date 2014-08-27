@@ -20,6 +20,7 @@
   <object id="crmIndexController" type="teaCRM.Web.Controllers.Apps.CRM.IndexController, teaCRM.Web" singleton="false" />
   <object id="loadDataController" type="teaCRM.Web.Controllers.Apps.CRM.LoadDataController, teaCRM.Web"
           singleton="false">
+    <property name="AccountService" ref="accountService" />
     <property name="CustomerService" ref="customerService" />
   </object>
   <!--CRM模块控制器结束-->

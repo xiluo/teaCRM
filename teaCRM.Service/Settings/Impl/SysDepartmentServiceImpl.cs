@@ -16,9 +16,9 @@ namespace teaCRM.Service.Settings.Impl
         /// 获取部门树形数据
         /// </summary>
         /// <returns></returns>
-        public string GetTreeData()
+        public string GetTreeData(string compNum)
         {
-            return SysDepartmentDaoManual.GetTreeData();
+            return SysDepartmentDaoManual.GetTreeData(compNum);
         }
     }
 }

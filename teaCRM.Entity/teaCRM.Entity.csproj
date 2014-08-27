@@ -64,7 +64,7 @@
     <Compile Include="TCusCon.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="TCusExpvalue.cs">
+    <Compile Include="TCusExpvalue10000.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="TCusLog.cs">
