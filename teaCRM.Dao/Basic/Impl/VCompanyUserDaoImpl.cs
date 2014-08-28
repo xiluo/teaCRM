@@ -1,78 +1,79 @@
-
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using NLite.Data;
 using teaCRM.DBContext;
 using teaCRM.Entity;
 
-namespace  teaCRM.Dao.Impl
+namespace teaCRM.Dao.Impl
 {
-
     /// <summary>
     /// 自动生成的实现IVCompanyUserDao接口的Dao类。 2014-08-28 05:06:48 By 唐有炜
     /// </summary>
- public class VCompanyUserDaoImpl:IVCompanyUserDao
+    public class VCompanyUserDaoImpl : IVCompanyUserDao
     {
-	    /// <summary>
+        #region T4自动生成的函数 2014-08-21 14:58:50 By 唐有炜
+
+        /// <summary>
         /// 获取所有的数据
-	    /// </summary>
-	    /// <returns>返回所有数据列表</returns>
-        public List<VCompanyUser> GetList() 
+        /// </summary>
+        /// <returns>返回所有数据列表</returns>
+        public List<VCompanyUser> GetList()
         {
-          using (teaCRMDBContext db=new teaCRMDBContext())
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-             var models= db.VCompanyUsers.ToList();
-			 return models;
+                var models = db.VCompanyUsers.ToList();
+                return models;
             }
         }
 
-		/// <summary>
+        /// <summary>
         /// 获取指定的单个实体
         /// 如果不存在则返回null
         /// 如果存在多个则抛异常
         /// </summary>
         /// <param name="predicate">Lamda表达式</param>
         /// <returns>Entity</returns>
-        public VCompanyUser GetEntity(Expression<Func<VCompanyUser, bool>> predicate) 
+        public VCompanyUser GetEntity(Expression<Func<VCompanyUser, bool>> predicate)
         {
-            using (teaCRMDBContext db=new teaCRMDBContext())
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var model =db.VCompanyUsers.Where<VCompanyUser>(predicate).SingleOrDefault();
+                var model = db.VCompanyUsers.Where<VCompanyUser>(predicate).SingleOrDefault();
                 return model;
-		    }
+            }
         }
 
-		
+
         /// <summary>
         /// 是否存在该记录
         /// </summary>
         /// <returns></returns>
-       public   bool ExistsEntity(Expression<Func<VCompanyUser , bool>> predicate)
-	   {
-            using (teaCRMDBContext db=new teaCRMDBContext())
+        public bool ExistsEntity(Expression<Func<VCompanyUser, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-               bool status= db.VCompanyUsers.Any(predicate);
-               return status;
+                bool status = db.VCompanyUsers.Any(predicate);
+                return status;
             }
         }
 
-		 //查询分页
-    public  List<VCompanyUser> GetListByPage(int pageIndex, int pageSize, Expression<Func<VCompanyUser , bool>> predicate)
-	  {
-	   using (teaCRMDBContext db=new teaCRMDBContext())
+        //查询分页
+        public List<VCompanyUser> GetListByPage(int pageIndex, int pageSize,
+            Expression<Func<VCompanyUser, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-             var models= db.VCompanyUsers.ToList();
-			 return models;
+                var models = db.VCompanyUsers.ToList();
+                return models;
             }
-	  }
+        }
 
 
-	  
-	  //以下是原生Sql方法==============================================================
-	  //===========================================================================
-	   /// <summary>
+        //以下是原生Sql方法==============================================================
+        //===========================================================================
+        /// <summary>
         /// 用SQL语句查询
         /// </summary>
         /// <param name="sql">sql语句</param>
@@ -80,15 +81,54 @@ namespace  teaCRM.Dao.Impl
         /// <returns>集合</returns>
         public IEnumerable<VCompanyUser> GetListBySql(string sql, dynamic namedParameters)
         {
-          using (teaCRMDBContext db=new teaCRMDBContext())
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-               return db.DbHelper.ExecuteDataTable(sql,namedParameters).ToList<VCompanyUser>();
+                return db.DbHelper.ExecuteDataTable(sql, namedParameters).ToList<VCompanyUser>();
             }
-          
         }
-		
-		
 
-	   }
-	   }
+        #endregion
 
+        #region 手写的扩展函数 2014-08-21 14:58:50 By 唐有炜
+
+        /// <summary>
+        /// 添加实体
+        /// </summary>
+        /// <param name="sysCompany"></param>
+        /// <param name="sysUser"></param>
+        public bool InsertEntities(TSysCompany sysCompany, TSysUser sysUser)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                if (db.Connection.State != ConnectionState.Open)
+                {
+                    db.Connection.Open();
+                }
+                var tran = db.Connection.BeginTransaction();
+                try
+                {
+                    db.TSysCompanies.Insert(sysCompany);
+                    db.TSysUsers.Insert(sysUser);
+                    tran.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    //return false;
+                    throw new Exception(ex.Message);
+                    return false;
+                }
+                finally
+                {
+                    if (db.Connection.State != ConnectionState.Closed)
+                    {
+                        db.Connection.Close();
+                    }
+                }
+            }
+        }
+
+        #endregion
+    }
+}

@@ -9,7 +9,7 @@ using teaCRM.Entity;
 
 namespace teaCRM.Dao
 {
-public  interface ITCusLogDao:IDao<TCusLog>
+public  interface ITCusLogDao:ITableDao<TCusLog>
     {
 
 	   }

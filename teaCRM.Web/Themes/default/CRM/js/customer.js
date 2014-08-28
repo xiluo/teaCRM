@@ -10,6 +10,6 @@ $(function () {
 //加载树形数据
 function loadTreeData() {
     //$("#filter_tree").ligerTree({ checkbox: false });
-    $("#filter_tree").ligerTree({ url: '/Apps/CRM/LoadData/GetTreeData/', ajaxType: 'get', checkbox: false });
+    $("#filter_tree").ligerTree({ url: '/Apps/CRM/LoadData/GetFilterTreeData/', ajaxType: 'get', checkbox: false });
    
 }

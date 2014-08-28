@@ -24,12 +24,21 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         #region 获取筛选器树形数据
 
         //
-        // GET: /Apps/CRM/LoadData/GetTreeData/
+        // GET: /Apps/CRM/LoadData/GetFilterTreeData/
         [UserAuthorize]
-        public string GetTreeData()
+        public string GetFilterTreeData()
         {
-            var compNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
-            var filterTreeData = CustomerService.GetFilterTreeData(compNum);
+            string filterTreeData = "";
+            try
+            {
+                var compNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
+                filterTreeData = CustomerService.GetFilterTreeData(compNum);
+                MyLogHelper.Info("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() + "的用户获取筛选器树形列表成功。");
+            }
+            catch (Exception ex)
+            {
+                MyLogHelper.Error("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() + "的用户获取筛选器树形列表失败，" + ex.Message);
+            }
             return filterTreeData;
         }
 
@@ -41,7 +50,18 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         // GET: /Apps/CRM/LoadData/GetCustomerLsit/
         public string GetCustomerLsit()
         {
-            return CustomerService.GetCustomerLsit();
+            string customerJson = "";
+            try
+            {
+                customerJson = CustomerService.GetCustomerLsit();
+                MyLogHelper.Info("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() + "的用户获取客户信息成功。");
+            }
+            catch (Exception ex)
+            {
+                MyLogHelper.Error("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() +
+                                  "的用户获取客户信息失败，" + ex.Message);
+            }
+            return customerJson;
         }
 
         #endregion

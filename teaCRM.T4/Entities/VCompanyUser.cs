@@ -6,7 +6,7 @@ using NLite.Data;
 namespace teaCRM.Entity
 {
 	
-	[Table("v_company_user",Readonly=true)]
+	[Table("V_company_user",Readonly=true)]
 	public partial class VCompanyUser 
 	{
 		[Column("user_id")]

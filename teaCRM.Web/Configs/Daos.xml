@@ -1,32 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <objects xmlns="http://www.springframework.net" xmlns:db="http://www.springframework.net/database">
-  <!--sysUserDaoManual-->
-  <object id="sysUserDaoManual" type="teaCRM.Dao.Manual.Impl.TSysUserDaoManualImpl, teaCRM.Dao" singleton="false">
+  <!--sysUserDao-->
+  <object id="sysUserDao" type="teaCRM.Dao.Impl.TSysUserDaoImpl, teaCRM.Dao" singleton="false">
     <!--<property name="aaa" ref="bbb" />-->
   </object>
-  <!--sysCompanyDaoManual-->
-  <object id="sysCompanyDaoManual" type="teaCRM.Dao.Manual.Impl.TSysCompanyDaoManualImpl, teaCRM.Dao" singleton="false">
+  <!--sysCompanyDao-->
+  <object id="sysCompanyDao" type="teaCRM.Dao.Impl.TSysCompanyDaoImpl, teaCRM.Dao" singleton="false">
     <!--<property name="aaa" ref="bbb" />-->
   </object>
-  <!--companyUserDaoManual-->
-  <object id="companyUserDaoManual" type="teaCRM.Dao.Manual.Impl.VCompanyUserDaoManualImpl, teaCRM.Dao" singleton="false">
+  <!--companyUserDao-->
+  <object id="companyUserDao" type="teaCRM.Dao.Impl.VCompanyUserDaoImpl, teaCRM.Dao" singleton="false">
     <!--<property name="aaa" ref="bbb" />-->
   </object>
-  <!--sysLogDaoManual-->
-  <object id="sysLogDaoManual" type="teaCRM.Dao.Manual.Impl.TSysLogDaoManualImpl, teaCRM.Dao" singleton="false">
+  <!--sysLogDao-->
+  <object id="sysLogDao" type="teaCRM.Dao.Impl.TSysLogDaoImpl, teaCRM.Dao" singleton="false">
     <!--<property name="aaa" ref="bbb" />-->
   </object>
-  <!--funFilterDaoManual-->
-  <object id="funFilterDaoManual" type="teaCRM.Dao.Manual.Impl.TFunFilterDaoManualImpl, teaCRM.Dao" singleton="false">
+
+  <!--funFilterDao-->
+  <object id="funFilterDao" type="teaCRM.Dao.Impl.TFunFilterDaoImpl, teaCRM.Dao" singleton="false">
+  </object>
+  <!--cusInfoDao-->
+  <object id="cusInfoDao" type="teaCRM.Dao.CRM.Impl.ZCusInfoDaoImpl, teaCRM.Dao" singleton="false">
     <property name="FilterTreeHelper" ref="filterTreeHelper" />
   </object>
-  <!--sysDepartmentDaoManual-->
-  <object id="sysDepartmentDaoManual" type="teaCRM.Dao.Manual.Impl.TSysDepartmentDaoManualImpl, teaCRM.Dao" singleton="false">
+
+  <!--sysDepartmentDao-->
+  <object id="sysDepartmentDao" type="teaCRM.Dao.Impl.TSysDepartmentDaoImpl, teaCRM.Dao" singleton="false">
+  </object>
+  <!--settingsDao-->
+  <object id="settingsDao" type="teaCRM.Dao.Settings.Impl.ZSettingsDaoImpl, teaCRM.Dao" singleton="false">
     <property name="DepartmentTreeHelper" ref="departmentTreeHelper" />
   </object>
-  <!---自定义客户dao -->
-  <object id="cusInfoDaoManual" type="teaCRM.Dao.Manual.Impl.ZCusInfoDaoManualImpl, teaCRM.Dao" singleton="false">
-    <!--<property name="aaa" ref="bbb" />-->
-  </object>
+  
+  
 </objects>

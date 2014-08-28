@@ -9,7 +9,7 @@ using teaCRM.Entity;
 
 namespace teaCRM.Dao
 {
-public  interface ITFunFilterDao:IDao<TFunFilter>
+public  interface ITFunFilterDao:ITableDao<TFunFilter>
     {
 
 	   }

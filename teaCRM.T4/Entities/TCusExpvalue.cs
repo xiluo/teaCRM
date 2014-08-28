@@ -4,12 +4,12 @@ using System.Linq;
 using NLite.Data;
 namespace teaCRM.Entity
 {
-	[Table("T_con_expvalue")]
-	public partial class TConExpvalue 
+	[Table("T_cus_expvalue")]
+	public partial class TCusExpvalue 
 	{
 	
-		[Id("con_id",IsDbGenerated=true)]
-		public Int32 ConId { get;set; }
+		[Id("cus_id",IsDbGenerated=true)]
+		public Int32 CusId { get;set; }
  
 		[Column("exp_g_leibie")]
 		public String ExpGLeibie { get;set; }

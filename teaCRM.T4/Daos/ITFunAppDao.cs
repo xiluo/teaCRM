@@ -9,7 +9,7 @@ using teaCRM.Entity;
 
 namespace teaCRM.Dao
 {
-public  interface ITFunAppDao:IDao<TFunApp>
+public  interface ITFunAppDao:ITableDao<TFunApp>
     {
 
 	   }

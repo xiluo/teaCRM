@@ -22,8 +22,6 @@ using Common.Logging;
 using teaCRM.Common;
 using teaCRM.Dao;
 using teaCRM.Dao.Impl;
-using teaCRM.Dao.Manual;
-using teaCRM.Dao.Manual.Impl;
 using teaCRM.Entity;
 
 namespace teaCRM.Service.Impl
@@ -33,11 +31,10 @@ namespace teaCRM.Service.Impl
         /// <summary>
         /// 注入账户Dao接口 2014-08-26 14:58:50 By 唐有炜
         /// </summary>
-        public ITSysUserDaoManual SysUserDao { set; get; }
-
-        public ITSysCompanyDaoManual SysCompanyDao{ set; get; }
-        public IVCompanyUserDaoManual CompanyUserDao { set; get; }
-        public ITSysLogDaoManual SysLogDao { set; get; }
+        public ITSysUserDao SysUserDao { set; get; }
+        public ITSysCompanyDao SysCompanyDao{ set; get; }
+        public IVCompanyUserDao CompanyUserDao { set; get; }
+        public ITSysLogDao SysLogDao { set; get; }
 
         #region 账户验证
 

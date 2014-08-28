@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +8,10 @@ using teaCRM.Entity;
 
 namespace teaCRM.Dao
 {
-public  interface ITSysCompanyDao:IDao<TSysCompany>
+    public interface ITSysCompanyDao : ITableDao<TSysCompany>
     {
+        #region 手写的扩展函数 2014-08-21 14:58:50 By 唐有炜
 
-	   }
-	   }
+        #endregion
+    }
+}

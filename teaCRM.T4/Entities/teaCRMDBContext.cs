@@ -26,7 +26,7 @@ namespace teaCRM.DBContext
 	public partial class teaCRMDBContext:DbContext
 	{
 		//连接字符串名称：基于Config文件中连接字符串的配置
-        const string connectionStringName = "teaCRMMySql";
+        const string connectionStringName = "teaCRMSqlServer";
 
         //构造dbConfiguration 对象
         static DbConfiguration dbConfiguration;
@@ -45,6 +45,7 @@ namespace teaCRM.DBContext
 		public IDbSet<TConExpvalue> TConExpvalues { get; private set; }
 		public IDbSet<TCusBase> TCusBases { get; private set; }
 		public IDbSet<TCusCon> TCusCons { get; private set; }
+		public IDbSet<TCusExpvalue> TCusExpvalues { get; private set; }
 		public IDbSet<TCusExpvalue10000> TCusExpvalue10000s { get; private set; }
 		public IDbSet<TCusExpvalue99999> TCusExpvalue99999s { get; private set; }
 		public IDbSet<TCusLog> TCusLogs { get; private set; }

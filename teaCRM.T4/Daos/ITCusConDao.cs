@@ -9,7 +9,7 @@ using teaCRM.Entity;
 
 namespace teaCRM.Dao
 {
-public  interface ITCusConDao:IDao<TCusCon>
+public  interface ITCusConDao:ITableDao<TCusCon>
     {
 
 	   }

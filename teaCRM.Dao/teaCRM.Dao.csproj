@@ -60,7 +60,9 @@
     <Compile Include="Basic\Impl\TSysDepartmentDaoImpl.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="IDao.cs" />
+    <Compile Include="CRM\Impl\ZCusInfoDaoImpl.cs" />
+    <Compile Include="CRM\IZCusInfoDao.cs" />
+    <Compile Include="ITableDao.cs" />
     <Compile Include="CRM\Impl\TConExpvalueDaoImpl.cs" />
     <Compile Include="CRM\Impl\TCusBaseDaoImpl.cs" />
     <Compile Include="CRM\Impl\TCusConDaoImpl.cs" />
@@ -87,31 +89,18 @@
     <Compile Include="Basic\ITSysUserDao.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Manual\IZCusInfoDaoManual.cs" />
-    <Compile Include="Manual\Impl\ZCusInfoDaoManualImpl.cs" />
-    <Compile Include="Manual\Impl\TSysCompanyDaoManualImpl.cs" />
-    <Compile Include="Manual\Impl\TSysLogDaoManualImpl.cs" />
-    <Compile Include="Manual\Impl\TSysUserDaoManualImpl.cs" />
-    <Compile Include="Manual\ITSysCompanyDaoManual.cs" />
-    <Compile Include="Manual\ITSysLogDaoManual.cs" />
-    <Compile Include="Manual\ITSysUserDaoManual.cs" />
-    <Compile Include="Manual\Impl\TCusBaseDaoManualImpl.cs" />
-    <Compile Include="Manual\Impl\TFunFilterDaoManualImpl.cs" />
-    <Compile Include="Manual\ITCusBaseDaoManual.cs" />
-    <Compile Include="Manual\ITFunFilterDaoManual.cs" />
-    <Compile Include="Manual\ITSysDepartmentDaoManual.cs" />
-    <Compile Include="Manual\TreeHelpers\Impl\DepartmentTreeHelperImpl.cs">
+    <Compile Include="IViewDao.cs" />
+    <Compile Include="TreeHelpers\Impl\DepartmentTreeHelperImpl.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Manual\TreeHelpers\Impl\FilterTreeHelperImpl.cs" />
-    <Compile Include="Manual\Impl\TSysDepartmentDaoManualImpl.cs" />
-    <Compile Include="Manual\Impl\VCompanyUserDaoManualImpl.cs" />
-    <Compile Include="Manual\IVCompanyUserDaoManual.cs" />
-    <Compile Include="Manual\TreeHelpers\ITreeHelper.cs" />
+    <Compile Include="TreeHelpers\Impl\FilterTreeHelperImpl.cs" />
+    <Compile Include="TreeHelpers\ITreeHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Basic\VCompanyUser.cs">
+    <Compile Include="Basic\IVCompanyUser.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Settings\Impl\ZSettingsDaoImpl.cs" />
+    <Compile Include="Settings\IZSettingsDao.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\teaCRM.Common\teaCRM.Common.csproj">

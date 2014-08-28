@@ -187,6 +187,9 @@
     <Compile Include="Entities\TCusCon.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\TCusExpvalue.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\TCusExpvalue10000.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>

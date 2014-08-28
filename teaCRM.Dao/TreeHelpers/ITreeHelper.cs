@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using teaCRM.Entity;
 
-namespace teaCRM.Dao.Manual.TreeHelpers
+namespace teaCRM.Dao.TreeHelpers
 {
     /// <summary>
     /// 树形帮助接口  2014-08-27 07:58:50 By 唐有炜

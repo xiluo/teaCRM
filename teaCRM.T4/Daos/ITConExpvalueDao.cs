@@ -9,7 +9,7 @@ using teaCRM.Entity;
 
 namespace teaCRM.Dao
 {
-public  interface ITConExpvalueDao:IDao<TConExpvalue>
+public  interface ITConExpvalueDao:ITableDao<TConExpvalue>
     {
 
 	   }

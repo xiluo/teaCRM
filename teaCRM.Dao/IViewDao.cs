@@ -7,9 +7,9 @@ using System.Text;
 namespace teaCRM.Dao
 {
     /// <summary>
-    /// Dao层接口 2014-08-28 04:10:51 By 唐有炜
+    /// Dao层View接口 2014-08-28 04:10:51 By 唐有炜
     /// </summary>
-    public interface IDao<T>
+ public   interface IViewDao<T>
     {
         /// <summary>
         /// 获取所有的数据
@@ -26,31 +26,6 @@ namespace teaCRM.Dao
         /// <returns>Entity</returns>
         T GetEntity(Expression<Func<T, bool>> predicate);
 
-        /// <summary>
-        /// 添加实体
-        /// </summary>
-        /// <param name="entity">实体对象</param>
-        bool InsertEntity(T entity);
-
-        /// <summary>
-        /// 删除实体
-        /// </summary>
-        /// <param name="predicate">Lamda表达式</param>
-        bool DeleteEntity(Expression<Func<T, bool>> predicate);
-
-
-        /// <summary>
-        /// 批量删除
-        /// </summary>
-        /// <param name="list">实体集合</param>
-        bool DeletesEntity(List<T> list);
-
-
-        /// <summary>
-        /// 修改实体
-        /// </summary>
-        /// <param name="entity">实体对象</param>
-        bool UpadateEntity(T entity);
 
 
         /// <summary>
@@ -73,12 +48,5 @@ namespace teaCRM.Dao
         /// <returns>集合</returns>
         IEnumerable<T> GetListBySql(string sql, dynamic namedParameters);
 
-        /// <summary>
-        /// 执行Sql
-        /// </summary>
-        /// <param name="sql">Sql语句</param>
-        /// <param name="namedParameters">查询字符串</param>
-        /// <returns></returns>
-        bool ExecuteSql(string sql, dynamic namedParameters = null);
     }
 }

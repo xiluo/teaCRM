@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using teaCRM.Common;
 using teaCRM.Service;
 using teaCRM.Service.Impl;
@@ -13,14 +14,13 @@ namespace teaCRM.Web.Controllers.Apps.Settings
         /// <summary>
         /// 依赖注入 2014-08-27 14:58:50 By 唐有炜
         /// </summary>
-      public  ISysDepartmentService SysDepartmentService { set; get; }
-        
+        public ISysDepartmentService SysDepartmentService { set; get; }
 
         #region 组织架构首页
 
         //
         // GET: /Settings/Department/
-         [UserAuthorize]
+        [UserAuthorize]
         public ActionResult Index()
         {
             return View("Index");
@@ -66,11 +66,20 @@ namespace teaCRM.Web.Controllers.Apps.Settings
 
         //
         // GET: /Apps/Settings/Department/GetDepartmentTreeData
-         [UserAuthorize]
+        [UserAuthorize]
         public string GetDepartmentTreeData()
         {
-            var compNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
-              string treeData = SysDepartmentService.GetTreeData(compNum);
+            string treeData = "";
+            try
+            {
+                var compNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
+                treeData = SysDepartmentService.GetTreeData(compNum);
+                MyLogHelper.Info("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() + "的用户获取部门树形列表成功。");
+            }
+            catch (Exception ex)
+            {
+                MyLogHelper.Error("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() + "的用户获取部门树形列表失败，" + ex.Message);
+            }
             return treeData;
         }
 

@@ -19,8 +19,8 @@ using System.Text;
  * 修改说明：修改说明
  * ========================================================================
 */
-using teaCRM.Dao.Manual;
-using teaCRM.Dao.Manual.Impl;
+using teaCRM.Dao;
+using teaCRM.Dao.CRM;
 
 namespace teaCRM.Service.CRM.Impl
 {
@@ -29,8 +29,7 @@ namespace teaCRM.Service.CRM.Impl
         /// <summary>
         /// CustomerServiceImpl注入dao依赖
         /// </summary>
-        public ITFunFilterDaoManual FunFilterDaoManual { set; get; }
-        public IZCusInfoDaoManual CusInfoDaoManual { set; get; }
+         public IZCusInfoDao CusInfoDao { set; get; }
         #region 获取筛选器树形列表
 
        /// <summary>
@@ -41,7 +40,7 @@ namespace teaCRM.Service.CRM.Impl
         public string GetFilterTreeData(string compNum)
        {
 
-           var filterTreeData = FunFilterDaoManual.GetTreeData(compNum);
+           var filterTreeData = CusInfoDao.GetFilterTreeData(compNum);
             return filterTreeData;
         }
 
@@ -76,7 +75,7 @@ namespace teaCRM.Service.CRM.Impl
         public string GetPagerData(int page, int pagesize, string searchs, string tag_ids, string search_owner)
         {
             var count = 0;
-            DataTable table = CusInfoDaoManual.GetCustomerLsit(1, 1, "", "", out count);
+            DataTable table = CusInfoDao.GetCustomerLsit(1, 1, "", "", out count);
 
             string cus_data = "{\"Rows\": [";
             for (int i = 0; i < table.Rows.Count; i++)

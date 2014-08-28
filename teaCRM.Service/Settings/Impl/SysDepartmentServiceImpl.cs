@@ -1,4 +1,5 @@
-﻿using teaCRM.Dao.Manual;
+﻿using teaCRM.Dao;
+using teaCRM.Dao.Settings;
 
 namespace teaCRM.Service.Settings.Impl
 {
@@ -10,7 +11,7 @@ namespace teaCRM.Service.Settings.Impl
         /// <summary>
         /// 依赖注入 2014-08-27 14:58:50 By 唐有炜
         /// </summary>
-        public ITSysDepartmentDaoManual SysDepartmentDaoManual { set; get; }
+        public IZSettingsDao SettingsDao { set; get; }
 
         /// <summary>
         /// 获取部门树形数据
@@ -18,7 +19,7 @@ namespace teaCRM.Service.Settings.Impl
         /// <returns></returns>
         public string GetTreeData(string compNum)
         {
-            return SysDepartmentDaoManual.GetTreeData(compNum);
+            return SettingsDao.GetDepartmentTreeData(compNum);
         }
     }
 }

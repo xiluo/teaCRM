@@ -4,24 +4,24 @@
 
   <!--账户逻辑开始-->
   <object id="accountService" type="teaCRM.Service.Impl.AccountServiceImpl, teaCRM.Service" singleton="false">
-    <property name="SysUserDao" ref="sysUserDaoManual" />
-    <property name="SysCompanyDao" ref="sysCompanyDaoManual" />
-    <property name="CompanyUserDao" ref="companyUserDaoManual" />
-    <property name="SysLogDao" ref="sysLogDaoManual" />
+    <property name="SysUserDao" ref="sysUserDao" />
+    <property name="SysCompanyDao" ref="sysCompanyDao" />
+    <property name="CompanyUserDao" ref="companyUserDao" />
+    <property name="SysLogDao" ref="sysLogDao" />
   </object>
   <!--账户逻辑结束-->
 
   <!--客户逻辑开始-->
   <object id="customerService" type="teaCRM.Service.CRM.Impl.CustomerServiceImpl, teaCRM.Service" singleton="false">
-<property name="FunFilterDaoManual" ref="funFilterDaoManual" />
-    <property name="CusInfoDaoManual" ref="cusInfoDaoManual" />
+   <property name="CusInfoDao" ref="cusInfoDao" />
   </object>
   <!--客户逻辑结束-->
 
   <!--设置逻辑开始-->
   <!--组织架构逻辑开始-->
-  <object id="sysDepartmentService" type="teaCRM.Service.Settings.Impl.SysDepartmentServiceImpl, teaCRM.Service" singleton="false">
-    <property name="SysDepartmentDaoManual" ref="sysDepartmentDaoManual" />
+  <object id="sysDepartmentService" type="teaCRM.Service.Settings.Impl.SysDepartmentServiceImpl, teaCRM.Service"
+          singleton="false">
+    <property name="SettingsDao" ref="settingsDao" />
   </object>
   <!--组织架构逻辑结束-->
   <!--设置逻辑结束-->

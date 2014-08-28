@@ -4,7 +4,7 @@ using System.Linq;
 using NLite.Data;
 namespace teaCRM.Entity
 {
-	[Table("t_sys_user")]
+	[Table("T_sys_user")]
 	public partial class TSysUser 
 	{
 	
@@ -40,10 +40,10 @@ namespace teaCRM.Entity
 		[Column("user_enable")]
 		public Int32 UserEnable { get;set; }
  
-		[ManyToOne(ThisKey="RoleId",OtherKey="Id")]
-		public TSysRole Role { get;set; }
 		[ManyToOne(ThisKey="DepId",OtherKey="Id")]
 		public TSysDepartment Dep { get;set; }
+		[ManyToOne(ThisKey="RoleId",OtherKey="Id")]
+		public TSysRole Role { get;set; }
  
  
 	}

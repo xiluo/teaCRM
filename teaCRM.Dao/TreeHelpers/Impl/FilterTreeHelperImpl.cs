@@ -1,30 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using teaCRM.Dao.Impl;
-using teaCRM.Dao.Manual.Impl;
 using teaCRM.Entity;
 
-namespace teaCRM.Dao.Manual.TreeHelpers.Impl
+namespace teaCRM.Dao.TreeHelpers.Impl
 {
     /// <summary>
-    /// 部门树形帮助类。 2014-08-20 07:58:50 By 唐有炜
+    /// 筛选器树形帮助类。 2014-08-20 07:58:50 By 唐有炜
     /// </summary>
-    public class DepartmentTreeHelperImpl : ITreeHelper<DepartmentTree>
+    public class FilterTreeHelperImpl : ITreeHelper<FilterTree>
     {
-        public ITSysDepartmentDao SysDepartmentDao = new TSysDepartmentDaoImpl();
+        //private static ITFunFilterDaoManual FunFilterDaoManual = new TFunFilterDaoManualImpl();
+        public ITFunFilterDao FunFilterDao { set; get; }
 
         #region 获取父类集合
 
-        /// <summary>
-        /// 获取父类集合
-        /// </summary>
-        /// <returns></returns>
-        public IList<DepartmentTree> ReturnParentTree(string compNum)
+        public IList<FilterTree> ReturnParentTree(string compNum)
         {
-            List<DepartmentTree> trees;
-            trees = SysDepartmentDao.GetList()
-                .Where(d => d.ParentId == 0&&d.CompNum==compNum)
-                .Select(d => new DepartmentTree() {ModuleID = d.Id, ParentID = d.ParentId, ModuleName = d.DepName})
+            List<FilterTree> trees;
+            trees = FunFilterDao.GetList()
+                .Where(f => f.ParentId == 0&&f.CompNum==compNum)
+                .Select(f => new FilterTree() {ModuleID = f.Id, ParentID = (int) f.ParentId, ModuleName = f.FilName})
                 .ToList();
             return trees;
         }
@@ -37,10 +32,11 @@ namespace teaCRM.Dao.Manual.TreeHelpers.Impl
         /// 判断分类是否有子类
         /// </summary>
         /// <param name="id"></param>
+        /// <param name="compNum">公司编号</param>
         /// <returns></returns>
-        public bool IsHaveChild(int id, string compNum)
+        public bool IsHaveChild(int id,string compNum)
         {
-            bool flag = SysDepartmentDao.ExistsEntity(d => d.Id == id && d.CompNum == compNum);
+            bool flag = FunFilterDao.ExistsEntity(f => f.Id == id&&f.CompNum==compNum);
             return flag;
         }
 
@@ -52,12 +48,13 @@ namespace teaCRM.Dao.Manual.TreeHelpers.Impl
         /// 根据id获取子类
         /// </summary>
         /// <param name="id"></param>
+        /// <param name="compNum"></param>
         /// <returns></returns>
-        public IList<DepartmentTree> GetChild(int id, string compNum)
+        public IList<FilterTree> GetChild(int id,string compNum)
         {
-            var childTrees = SysDepartmentDao.GetList()
-                .Where(d => d.ParentId == id && d.CompNum == compNum)
-                .Select(d => new DepartmentTree() {ModuleID = d.Id, ParentID = d.ParentId, ModuleName = d.DepName})
+            var childTrees = FunFilterDao.GetList()
+                .Where(f => f.ParentId == id&&f.CompNum==compNum)
+                .Select(f => new FilterTree() {ModuleID = f.Id, ParentID = (int) f.ParentId, ModuleName = f.FilName})
                 .ToList();
             return childTrees;
         }
@@ -73,8 +70,8 @@ namespace teaCRM.Dao.Manual.TreeHelpers.Impl
         public string GetJson(string compNum)
         {
             string json = "[";
-            IList<DepartmentTree> trees = ReturnParentTree(compNum);
-            foreach (DepartmentTree tree in trees)
+            IList<FilterTree> trees = ReturnParentTree(compNum);
+            foreach (FilterTree tree in trees)
             {
                 if (tree != trees[trees.Count - 1])
                 {
@@ -99,8 +96,9 @@ namespace teaCRM.Dao.Manual.TreeHelpers.Impl
         /// 根据模型生成json
         /// </summary>
         /// <param name="tree"></param>
+        /// <param name="compNum"></param>
         /// <returns></returns>
-        public string GetJsonByModel(DepartmentTree tree, string compNum)
+        public string GetJsonByModel(FilterTree tree,string compNum)
         {
             string json = "";
             bool flag = IsHaveChild(tree.ModuleID,compNum);
@@ -113,10 +111,10 @@ namespace teaCRM.Dao.Manual.TreeHelpers.Impl
             if (flag)
             {
                 json += "\"children\":";
-                IList<DepartmentTree> childTrees = GetChild(tree.ModuleID,compNum);
+                IList<FilterTree> childTrees = GetChild(tree.ModuleID,compNum);
 
                 json += "[";
-                foreach (DepartmentTree childTree in childTrees)
+                foreach (FilterTree childTree in childTrees)
                 {
                     if (tree != childTrees[childTrees.Count - 1])
                     {
