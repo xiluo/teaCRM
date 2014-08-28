@@ -238,7 +238,7 @@ namespace teaCRM.Web.Test
             string expected = string.Empty; // TODO: Initialize to an appropriate value
             string actual;
             actual = target.GetPagerData(page, pagesize, searchs, tag_ids, search_owner);
-            Assert.AreEqual(expected, actual);
+            Assert.AreNotEqual(expected, actual);
         }
     }
 }

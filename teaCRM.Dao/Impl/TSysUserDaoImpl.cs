@@ -15,6 +15,10 @@ namespace  teaCRM.Dao.Impl
     /// </summary>
  public class TSysUserDaoImpl:ITSysUserDao
     {
+
+        private teaCRMDBContext db = new teaCRMDBContext();
+
+
 	    /// <summary>
         /// 获取所有的数据
 	    /// </summary>
