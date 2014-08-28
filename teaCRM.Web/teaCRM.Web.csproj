@@ -39,6 +39,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
     </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Spring.Core, Version=2.0.0.40000, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -139,6 +142,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MyLogHelper.cs" />
     <Compile Include="MyHtmlHelper.cs" />
     <Compile Include="MyViewEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1291,6 +1295,8 @@
     <Content Include="Views\Account\PublicRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="log4net.config" />
+    <Content Include="log4net.static.config" />
     <None Include="Themes\default\js\ligerUI\skins\ext-purple\images\icon\icon-done.gif.695873" />
     <None Include="Themes\default\js\ligerUI\skins\ext-purple\image\flexigrid_blue\indicator_waitanim.gif.bak" />
     <None Include="Themes\default\js\ligerUI\skins\ext-purple\image\flexigrid_blue\vssver2.scc" />

@@ -18,6 +18,7 @@
 using System;
 using System.Linq;
 using System.Web;
+using Common.Logging;
 using teaCRM.Common;
 using teaCRM.Dao;
 using teaCRM.Dao.Impl;
@@ -258,15 +259,16 @@ namespace teaCRM.Service.Impl
         /// 书写SesionCookie
         /// </summary>
         /// <param name="sessionHttpContext">HttpContext</param>
-         /// <param name="compUser">用户信息</param>
+        /// <param name="compUser">用户信息</param>
         /// <param name="userName">用户名</param>
         /// <param name="userPassword">加密的密码</param>
         /// <param name="remember">是否记住密码（默认记住）</param>
-        public void WriteSessionCookie(HttpContext sessionHttpContext, VCompanyUser compUser, string userName, string userPassword,
+        public void WriteSessionCookie(HttpContext sessionHttpContext, VCompanyUser compUser, string userName,
+            string userPassword,
             string remember = "true")
         {
             sessionHttpContext.Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID] = compUser.UserId;
-              sessionHttpContext.Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM] = compUser.CompNum;
+            sessionHttpContext.Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM] = compUser.CompNum;
             sessionHttpContext.Session.Timeout = 45;
             //记住登录状态下次自动登录
             if (remember.ToLower() == "true")
@@ -346,7 +348,12 @@ namespace teaCRM.Service.Impl
             string userPassword,
             string remember, string clientIp, string clientPlace, string clientTime)
         {
+            LogHelper.Info(userName + "登陆验证开始...");
+
             ResponseMessage rmsg = ValidateAccount("login", type, accountType, userName, userPassword);
+
+            LogHelper.Info(userName + "登陆验证结束...");
+
             if (rmsg.Status) //登陆成功
             {
                 //获取用户信息
@@ -370,7 +377,10 @@ namespace teaCRM.Service.Impl
                     LogTime = DateTime.Parse(clientTime)
                 };
                 SysLogDaoManual.InsertEntity(sysLog);
+               
+                LogHelper.Info(userName + "登陆成功，登陆日志已记录。");
             }
+
 
             return rmsg;
         }
@@ -445,7 +455,7 @@ namespace teaCRM.Service.Impl
                 //获取用户信息
                 var compUser = GetVCompanyUserByAccountTypeAndUserName(accountType, userName);
                 //书写SessionCookie
-                WriteSessionCookie(httpContext,compUser, userName, userPassword);
+                WriteSessionCookie(httpContext, compUser, userName, userPassword);
             }
 
             return rmsg;

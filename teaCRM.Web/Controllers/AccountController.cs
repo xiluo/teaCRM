@@ -21,11 +21,12 @@ namespace teaCRM.Web.Controllers
         #region 登陆
 
         //
-        // GET: /Account/Login 默认登陆页面
+        // GET: /Account/Login 默认登陆页面 2014-08-26 14:58:50 By 唐有炜
         [HttpGet]
         [AutoLogin]
         public ActionResult Login()
         {
+            MyLogHelper.Info("登陆页面被打开。");
             return View();
         }
 
@@ -34,14 +35,23 @@ namespace teaCRM.Web.Controllers
         [HttpPost]
         public ActionResult Login(FormCollection fc)
         {
-            //IAccountService AccountService = new teaCRM.Service.Impl.AccountServiceImpl();
-            ResponseMessage rmsg = AccountService.Login(System.Web.HttpContext.Current, fc["type"].ToString(),
-                fc["accountType"].ToString(), fc["userName"].ToString(), fc["userPassword"].ToString(),
-                fc["remember"].ToString(),
-                fc["clientIp"].ToString(), HttpUtility.UrlDecode(fc["clientPlace"].ToString()),
-                fc["clientTime"].ToString());
+            ResponseMessage rmsg;
+            try
+            {
+                MyLogHelper.Info("来自"+HttpUtility.UrlDecode(fc["clientPlace"].ToString())+"的"+fc["userName"].ToString()+"正在登陆...");
+                rmsg = AccountService.Login(System.Web.HttpContext.Current, fc["type"].ToString(),
+                    fc["accountType"].ToString(), fc["userName"].ToString(), fc["userPassword"].ToString(),
+                    fc["remember"].ToString(),
+                    fc["clientIp"].ToString(), HttpUtility.UrlDecode(fc["clientPlace"].ToString()),
+                    fc["clientTime"].ToString());
+            }
+            catch (Exception ex)
+            {
+                MyLogHelper.Error("登陆异常," + ex.Message);
+                rmsg = new ResponseMessage() {Status = false, Msg = "登陆异常，请联系管理员！"};
+            }
 
-           return Json(rmsg);
+            return Json(rmsg);
         }
 
 //        //
@@ -158,7 +168,8 @@ namespace teaCRM.Web.Controllers
         public ActionResult PublicRegister(FormCollection fc)
         {
             //IAccountService AccountService = new teaCRM.Service.Impl.AccountServiceImpl();
-            ResponseMessage rmsg = AccountService.PublicRegister(System.Web.HttpContext.Current,fc["userName"], fc["phone"], fc["userPassword"],
+            ResponseMessage rmsg = AccountService.PublicRegister(System.Web.HttpContext.Current, fc["userName"],
+                fc["phone"], fc["userPassword"],
                 HttpUtility.UrlDecode(fc["userTname"]));
             return Json(rmsg);
         }
