@@ -31,7 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ELinq">
+    <Reference Include="ELinq, Version=0.6.1.0, Culture=neutral, PublicKeyToken=de4bad8fb4637582, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\ELinq.0.6.1\lib\net40\ELinq.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
@@ -41,10 +42,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="NLite">
+    <Reference Include="NLite, Version=0.9.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NLite.0.9.5.7\lib\net40\NLite.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
@@ -54,115 +57,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Impl\TConExpvalueDaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    <Compile Include="Basic\Impl\TSysDepartmentDaoImpl.cs">
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Impl\TCusBaseDaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    <Compile Include="IDao.cs" />
+    <Compile Include="CRM\Impl\TConExpvalueDaoImpl.cs" />
+    <Compile Include="CRM\Impl\TCusBaseDaoImpl.cs" />
+    <Compile Include="CRM\Impl\TCusConDaoImpl.cs" />
+    <Compile Include="CRM\Impl\TCusLogDaoImpl.cs" />
+    <Compile Include="Basic\Impl\TFunFilterDaoImpl.cs" />
+    <Compile Include="Basic\Impl\TSysCompanyDaoImpl.cs" />
+    <Compile Include="Basic\Impl\TSysLogDaoImpl.cs" />
+    <Compile Include="Basic\Impl\TSysUserDaoImpl.cs" />
+    <Compile Include="Basic\Impl\VCompanyUserDaoImpl.cs" />
+    <Compile Include="CRM\ITConExpvalueDao.cs" />
+    <Compile Include="CRM\ITCusBaseDao.cs" />
+    <Compile Include="CRM\ITCusConDao.cs" />
+    <Compile Include="CRM\ITCusLogDao.cs" />
+    <Compile Include="Basic\ITFunFilterDao.cs" />
+    <Compile Include="Basic\ITSysCompanyDao.cs">
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Impl\TCusConDaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    <Compile Include="Basic\ITSysDepartmentDao.cs">
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Impl\TCusExpvalue10000DaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    <Compile Include="Basic\ITSysLogDao.cs">
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Impl\TCusLogDaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Impl\teaCRMDaoImpl.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Impl\TFunAppDaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Impl\TFunExpandDaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Impl\TFunFilterDaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Impl\TFunMyappDaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Impl\TFunOperatingDaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Impl\TFunTagDaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Impl\TSysCompanyDaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Impl\TSysDepartmentDaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Impl\TSysLogDaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Impl\TSysPowerDaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Impl\TSysRoleDaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Impl\TSysUserDaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Impl\VCompanyUserDaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ITConExpvalueDao.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ITCusBaseDao.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ITCusConDao.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ITCusExpvalue10000Dao.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ITCusLogDao.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ITFunAppDao.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ITFunExpandDao.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ITFunFilterDao.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ITFunMyappDao.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ITFunOperatingDao.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ITFunTagDao.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ITSysCompanyDao.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ITSysDepartmentDao.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ITSysLogDao.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ITSysPowerDao.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ITSysRoleDao.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ITSysUserDao.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    <Compile Include="Basic\ITSysUserDao.cs">
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Manual\IZCusInfoDaoManual.cs" />
     <Compile Include="Manual\Impl\ZCusInfoDaoManualImpl.cs" />
@@ -186,13 +109,8 @@
     <Compile Include="Manual\IVCompanyUserDaoManual.cs" />
     <Compile Include="Manual\TreeHelpers\ITreeHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="teaCRMIDao.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
-    <Compile Include="VCompanyUser.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    <Compile Include="Basic\VCompanyUser.cs">
+      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -209,20 +127,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Impl\teaCRMDaoImpl.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>teaCRMDaoImpl.cs</LastGenOutput>
-    </None>
     <None Include="packages.config" />
-    <None Include="teaCRMIDao.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>teaCRMIDao.cs</LastGenOutput>
-    </None>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

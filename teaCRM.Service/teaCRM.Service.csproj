@@ -49,10 +49,10 @@
   <ItemGroup>
     <Compile Include="CRM\ICustomerService.cs" />
     <Compile Include="CRM\Impl\CustomerServiceImpl.cs" />
-    <Compile Include="IAccountService.cs">
+    <Compile Include="Basic\IAccountService.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Impl\AccountServiceImpl.cs" />
+    <Compile Include="Basic\Impl\AccountServiceImpl.cs" />
     <Compile Include="Settings\Impl\SysDepartmentServiceImpl.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -82,7 +82,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

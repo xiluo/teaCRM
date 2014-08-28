@@ -4,10 +4,10 @@
 
   <!--账户逻辑开始-->
   <object id="accountService" type="teaCRM.Service.Impl.AccountServiceImpl, teaCRM.Service" singleton="false">
-    <property name="SysUserDaoManual" ref="sysUserDaoManual" />
-    <property name="SysCompanyDaoManual" ref="sysCompanyDaoManual" />
-    <property name="CompanyUserDaoManual" ref="companyUserDaoManual" />
-    <property name="SysLogDaoManual" ref="sysLogDaoManual" />
+    <property name="SysUserDao" ref="sysUserDaoManual" />
+    <property name="SysCompanyDao" ref="sysCompanyDaoManual" />
+    <property name="CompanyUserDao" ref="companyUserDaoManual" />
+    <property name="SysLogDao" ref="sysLogDaoManual" />
   </object>
   <!--账户逻辑结束-->
 

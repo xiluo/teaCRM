@@ -31,17 +31,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ELinq">
+    <Reference Include="ELinq, Version=0.6.2.6, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\ELinq.0.6.1\lib\net40\ELinq.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
       <HintPath>..\packages\MySql.Data.6.8.3\lib\net40\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="NLite">
+    <Reference Include="NLite, Version=0.9.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NLite.0.9.5.7\lib\net40\NLite.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -50,83 +53,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DepartmentTree.cs" />
-    <Compile Include="FilterTree.cs" />
-    <Compile Include="KeyValue.cs" />
+    <Compile Include="Manual\Tree\DepartmentTree.cs" />
+    <Compile Include="Manual\Tree\FilterTree.cs" />
+    <Compile Include="Manual\KeyValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResponseMessage.cs" />
-    <Compile Include="TConExpvalue.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TCusBase.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TCusCon.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TCusExpvalue10000.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TCusLog.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="teaCRMDBContext.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TFunApp.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TFunExpand.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TFunFilter.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TFunMyapp.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TFunOperating.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TFunTag.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tree.cs" />
-    <Compile Include="TSysCompany.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TSysDepartment.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TSysLog.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TSysPower.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TSysRole.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TSysUser.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="VCompanyUser.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Manual\ResponseMessage.cs" />
+    <Compile Include="CRM\TConExpvalue.cs" />
+    <Compile Include="CRM\TCusBase.cs" />
+    <Compile Include="CRM\TCusCon.cs" />
+    <Compile Include="CRM\TCusLog.cs" />
+    <Compile Include="teaCRMDBContext.cs" />
+    <Compile Include="Basic\TFunApp.cs" />
+    <Compile Include="Basic\TFunExpand.cs" />
+    <Compile Include="Basic\TFunFilter.cs" />
+    <Compile Include="Basic\TFunMyapp.cs" />
+    <Compile Include="Basic\TFunOperating.cs" />
+    <Compile Include="Basic\TFunTag.cs" />
+    <Compile Include="Manual\Tree\Tree.cs" />
+    <Compile Include="Basic\TSysCompany.cs" />
+    <Compile Include="Basic\TSysDepartment.cs" />
+    <Compile Include="Basic\TSysLog.cs" />
+    <Compile Include="Basic\TSysPower.cs" />
+    <Compile Include="Basic\TSysRole.cs" />
+    <Compile Include="Basic\TSysUser.cs" />
+    <Compile Include="Basic\VCompanyUser.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="MultipleOutputHelper.ttinclude" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="teaCRMDBContext.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>teaCRMDBContext.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

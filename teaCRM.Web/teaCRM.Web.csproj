@@ -122,7 +122,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Basic\AccountController.cs" />
     <Compile Include="Controllers\Apps\CRM\IndexController.cs" />
     <Compile Include="Controllers\Apps\CRM\LoadDataController.cs" />
     <Compile Include="Controllers\Apps\IndexController.cs" />
@@ -136,7 +136,7 @@
     <Compile Include="Controllers\Apps\Settings\ImportExportController.cs" />
     <Compile Include="Controllers\Apps\Settings\RoleController.cs" />
     <Compile Include="Controllers\Apps\Settings\UsersController.cs" />
-    <Compile Include="Controllers\WorkbenchController.cs" />
+    <Compile Include="Controllers\Basic\WorkbenchController.cs" />
     <Compile Include="Filters\AutoLoginAttribute.cs" />
     <Compile Include="Filters\UserAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -1295,8 +1295,8 @@
     <Content Include="Views\Account\PublicRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="log4net.auto.config" />
     <Content Include="log4net.config" />
-    <Content Include="log4net.static.config" />
     <None Include="Themes\default\js\ligerUI\skins\ext-purple\images\icon\icon-done.gif.695873" />
     <None Include="Themes\default\js\ligerUI\skins\ext-purple\image\flexigrid_blue\indicator_waitanim.gif.bak" />
     <None Include="Themes\default\js\ligerUI\skins\ext-purple\image\flexigrid_blue\vssver2.scc" />
