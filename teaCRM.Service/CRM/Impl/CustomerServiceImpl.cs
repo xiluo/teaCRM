@@ -19,8 +19,11 @@ using System.Text;
  * 修改说明：修改说明
  * ========================================================================
 */
+using teaCRM.Common;
 using teaCRM.Dao;
 using teaCRM.Dao.CRM;
+using teaCRM.Entity;
+using teaCRM.Entity.CRM;
 
 namespace teaCRM.Service.CRM.Impl
 {
@@ -29,69 +32,57 @@ namespace teaCRM.Service.CRM.Impl
         /// <summary>
         /// CustomerServiceImpl注入dao依赖
         /// </summary>
-         public IZCusInfoDao CusInfoDao { set; get; }
+        public IZCusInfoDao CusInfoDao { set; get; }
+
+        public ITFunExpandDao FunExpandDao { set; get; }
+
         #region 获取筛选器树形列表
 
-       /// <summary>
+        /// <summary>
         /// 获取筛选器树形列表
-       /// </summary>
-       /// <param name="compNum">客户编号</param>
-       /// <returns></returns>
+        /// </summary>
+        /// <param name="compNum">客户编号</param>
+        /// <returns></returns>
         public string GetFilterTreeData(string compNum)
-       {
-
-           var filterTreeData = CusInfoDao.GetFilterTreeData(compNum);
+        {
+            var filterTreeData = CusInfoDao.GetFilterTreeData(compNum);
             return filterTreeData;
         }
 
         #endregion
 
-        #region 获取客户信息列表
+        #region 获取客户信息列表,ligerUI分页处理 2014-08-29 14:58:50 By 唐有炜
 
         /// <summary>
-        /// 获取客户信息列表
+        /// 获取客户信息列表 2014-08-29 14:58:50 By 唐有炜
         /// </summary>
-        /// <returns></returns>
-        public string GetCustomerLsit()
-        {
-            string json = GetPagerData(1, 1, "", "", "");
-            return json;
-//            return
-//                System.IO.File.ReadAllText(
-//                    "D:\\学习资料\\开发参考资料\\优创科技\\项目\\工作项目\\优创CRM\\源码\\teaCRM\\teaCRM.Service\\CRM\\Impl\\temp1.txt");
-        }
-
-        #region ligerUI分页处理
-        /// /Plugins/Customer/Home/Index
-        /// <summary>
-        /// 获取分页数据
-        /// </summary>
-        /// <param name="page">页码</param>
-        /// <param name="pagesize">每页显示数目</param>
-        /// <param name="searchs">搜索关键字</param>
-        /// <param name="tag_ids">标签id集合（1,2,3）</param>
-        /// <param name="search_owner">搜索人</param>
-        /// <returns>分页json数据</returns>
-        public string GetPagerData(int page, int pagesize, string searchs, string tag_ids, string search_owner)
+        /// <param name="compNum">企业编号</param>
+        /// <param name="selectFields">选择的字段（格式：new string[]{"id,cus_sname"}，id必须要有）</param>
+        /// <param name="pageIndex">页码</param>
+        /// <param name="pageSize">每页的数目</param>
+        /// <param name="strWhere">筛选条件（字段名="值",字段名 in (值1,值2)）</param>
+        /// <param name="filedOrder">排序字段（字段名）</param>
+        /// <returns>DataTable</returns>
+        public string GetCustomerLsit(string compNum, string[] selectFields, int pageIndex, int pageSize,
+            string strWhere, string filedOrder)
         {
             var count = 0;
-            DataTable table = CusInfoDao.GetCustomerLsit(1, 1, "", "", out count);
+            DataTable table = CusInfoDao.GetCustomerLsit(compNum, selectFields, pageIndex, pageSize, strWhere,
+                filedOrder, out count);
 
             string cus_data = "{\"Rows\": [";
             for (int i = 0; i < table.Rows.Count; i++)
             {
-                var row = table.Rows[i];
                 cus_data += "{";
                 for (int j = 0; j < table.Columns.Count; j++)
                 {
                     var col = table.Columns[j];
                     cus_data += "\"" + col.ColumnName + "\":" + "\"" + table.Rows[i][j].ToString() + "\",";
                 }
-                cus_data = cus_data.Substring(0, cus_data.Length - 1);
+                cus_data = cus_data.TrimEnd(',');
                 cus_data += "},";
-                //cus_data = cus_data.Substring(0, cus_data.Length - 1);
             }
-            cus_data = cus_data.Substring(0, cus_data.Length - 1);
+            cus_data = cus_data.TrimEnd(',');
 
             cus_data += "],\"Total\":" + count;
             cus_data += "}";
@@ -100,7 +91,70 @@ namespace teaCRM.Service.CRM.Impl
 
         #endregion
 
+        #region 获取客户扩展字段信息 2014-08-29 14:58:50 By 唐有炜
+
+        /// <summary>
+        /// 获取客户扩展字段信息(MyappId==1代表客户扩展字段) 2014-08-29 14:58:50 By 唐有炜
+        /// </summary>
+        /// <param name="compNum">公司编号</param>
+        /// <returns></returns>
+        public List<TFunExpand> GetCustomerExpandFields(string compNum)
+        {
+            //MyappId==1代表客户扩展字段
+            var customerExpandFields =FunExpandDao.GetList(e => e.CompNum == compNum && e.MyappId == 1);
+            if (customerExpandFields.Count>0)
+            {
+                LogHelper.Info("客户扩展字段获取成功，共" + customerExpandFields.Count + "个字段。");
+            }
+            else
+            {
+                LogHelper.Error("客户扩展字段为空。");
+            }
+            return customerExpandFields;
+        }
+
         #endregion
+
+        #region 获取客户联系人扩展字段信息 2014-08-29 14:58:50 By 唐有炜
+
+        /// <summary>
+        /// 获取客户联系人扩展字段信息(MyappId==2代表联系人扩展字段) 2014-08-29 14:58:50 By 唐有炜
+        /// </summary>
+        /// <param name="compNum">公司编号</param>
+        /// <returns></returns>
+        public List<TFunExpand> GetContactExpandFields(string compNum)
+        {
+            //MyappId==2代表联系人扩展字段
+          var contactExpandFields =FunExpandDao.GetList(e => e.CompNum == compNum && e.MyappId == 2);
+          if (contactExpandFields.Count > 0)
+          {
+              LogHelper.Info("联系人扩展字段获取成功,共" + contactExpandFields.Count + "个字段。");
+          }
+          else
+          {
+              LogHelper.Error("联系人扩展字段为空。");
+          }
+            return contactExpandFields;
+        }
+
+        #endregion
+
+        #region 添加客户信息 2014-08-29 14:58:50 By 唐有炜
+
+          /// <summary>
+        /// 添加客户信息 2014-08-30 14:58:50 By 唐有炜
+     /// </summary>
+     /// <param name="cusInfo">客户信息</param>
+     /// <param name="cusConInfo">主联系人信息</param>
+     /// <returns></returns>
+    public    bool AddCustomer(ZCusInfo cusInfo,ZCusConInfo cusConInfo)
+        {
+            return CusInfoDao.AddCustomer(cusInfo,cusConInfo);
+        }
+
+        #endregion
+
+
 
         #region 获取客户工具栏
 

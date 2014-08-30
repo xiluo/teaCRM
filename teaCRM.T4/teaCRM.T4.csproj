@@ -53,9 +53,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Daos\Impl\TConExpvalueDaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
-    </Compile>
     <Compile Include="Daos\Impl\TCusBaseDaoImpl.cs">
       <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
     </Compile>
@@ -115,9 +112,6 @@
     <Compile Include="Daos\Impl\VCompanyUserDaoImpl.cs">
       <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
     </Compile>
-    <Compile Include="Daos\ITConExpvalueDao.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
     <Compile Include="Daos\ITCusBaseDao.cs">
       <DependentUpon>teaCRMIDao.tt</DependentUpon>
     </Compile>
@@ -170,16 +164,12 @@
       <DependentUpon>teaCRMIDao.tt</DependentUpon>
     </Compile>
     <Compile Include="Daos\teaCRMIDao.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-      <SubType>Code</SubType>
-      <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
     </Compile>
     <Compile Include="Daos\VCompanyUser.cs">
       <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\TConExpvalue.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\TCusBase.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
@@ -187,7 +177,10 @@
     <Compile Include="Entities\TCusCon.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\TCusExpvalue.cs">
+    <Compile Include="Entities\TCusConExpvalue10000.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TCusConExpvalue99999.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\TCusExpvalue10000.cs">

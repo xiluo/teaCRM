@@ -4,7 +4,7 @@ using System.Linq;
 using NLite.Data;
 namespace teaCRM.Entity
 {
-	[Table("T_sys_log")]
+	[Table("t_sys_log")]
 	public partial class TSysLog 
 	{
 	

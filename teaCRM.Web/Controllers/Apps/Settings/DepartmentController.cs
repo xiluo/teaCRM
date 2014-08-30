@@ -74,11 +74,11 @@ namespace teaCRM.Web.Controllers.Apps.Settings
             {
                 var compNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
                 treeData = SysDepartmentService.GetTreeData(compNum);
-                MyLogHelper.Info("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() + "的用户获取部门树形列表成功。");
+                LogHelper.Info("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() + "的用户获取部门树形列表成功。");
             }
             catch (Exception ex)
             {
-                MyLogHelper.Error("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() + "的用户获取部门树形列表失败，" + ex.Message);
+                LogHelper.Error("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() + "的用户获取部门树形列表失败，" + ex.Message);
             }
             return treeData;
         }

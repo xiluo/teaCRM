@@ -25,8 +25,13 @@ teaCRM
 
 2014-08-28
 ----------
->1、增加日志记录模块   
+>1、增加客户
+>增加客户扩展字段要新建表，并且还有新建外键管理
 
+2014-08-28
+----------
+>1、增加日志记录模块 
+  
 2014-08-27
 ----------
 >1、继续客户模块        
@@ -47,6 +52,17 @@ teaCRM
 >1、完成登录。  
 >2、数据库采用MySql  
 
+程序发布
+=============================
+>1、.NET MVC项目Session需要额外配置        
+  <system.web>  
+  <sessionState mode="StateServer" stateConnectionString="tcpip=127.0.0.1:42424" sqlConnectionString="data source=127.0.0.1;Trusted_Connection=yes" cookieless="false" timeout="720" />
+  </system.web>  
+>2、Log4Net发布到IIS后需要对User用户加上写入权限
+
+更新历史
+=============================
+
 参考资料
 =======
 >1、.NET 版的SSH（ASP.NET MVC+NHibernate+String .NET）    
@@ -62,6 +78,8 @@ http://www.cnblogs.com/kissazi2/p/3389551.html
 http://www.cnblogs.com/24la/p/log4net-simplly-config.html         
 >6开启MySql日志跟踪        
 http://www.cnblogs.com/wuyifu/p/3328024.html     
+>7在C#代码中应用Log4Net（五）将Log4Net正确地封装在自己的类库中并进行调用    
+http://www.cnblogs.com/kissazi2/p/3394430.html   
  
 
 

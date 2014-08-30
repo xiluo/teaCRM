@@ -206,15 +206,14 @@ namespace UCsoft.Web
         /// <param name="displayNameFalse"></param>
         /// <param name="replaceValue"></param>
         /// <returns></returns>
-        public static MvcHtmlString BooleanParse(this HtmlHelper htmlHelper, bool? b, string displayNameTrue,
+        public static MvcHtmlString BooleanParse(this HtmlHelper htmlHelper, int? b, string displayNameTrue,
             string displayNameFalse, string replaceValue = "default")
         {
             if (null == b)
             {
                 return MvcHtmlString.Create(replaceValue);
             }
-            bool state = bool.Parse(b.ToString().ToLower());
-            if (state)
+            if (b == 1)
             {
                 return MvcHtmlString.Create(displayNameTrue);
             }
@@ -252,6 +251,68 @@ namespace UCsoft.Web
             else
             {
                 return MvcHtmlString.Create(replaceValue);
+            }
+        }
+
+        #endregion
+
+        #region 下拉框输出
+
+        /// <summary>
+        /// 下拉框输出
+        /// </summary>
+        /// <param name="htmlHelper"></param>
+        /// <param name="value">v1|t1,v2|t2</param>
+        /// <returns></returns>
+        /// //<option>aaaa</option>
+        //<option>aaaa</option>
+        public static MvcHtmlString StringToOptions(this HtmlHelper htmlHelper, string value)
+        {
+            if (!String.IsNullOrEmpty(value))
+            {
+                string result = "";
+                string[] str_arr = value.Split(',');
+                foreach (var str in str_arr)
+                {
+                    result += "<option value=\"" + str.Split('|')[0] + "\">" + str.Split('|')[1] + "</option>";
+                }
+                return MvcHtmlString.Create(result);
+            }
+            else
+            {
+                return MvcHtmlString.Create("<option>default</option>");
+            }
+
+        }
+        #endregion
+
+        #region 文本复选框   2014-08-29 14:58:50 By 唐有炜
+        /// <summary>
+        /// 复选框
+        /// </summary>
+        /// <param name="htmlHelper"></param>
+        /// <param name="value">v1|t1,v2|t2</param>
+        /// <returns></returns>
+        public static MvcHtmlString StringToCheckboxList(this HtmlHelper htmlHelper, string value, string id, string name, string field_cname, int field_required)
+        {
+            if (!String.IsNullOrEmpty(value))
+            {
+                string result = "";
+                string[] str_arr = value.Split(',');
+
+                foreach (var str in str_arr)
+                {
+                    result += String.Format("<input type=\"checkbox\" field_type=\"radio\" style=\"padding-right: 10px; padding-left: 10px;value=\"{0}\" id=\"{1}\" name=\"{2}\" field_cname=\"{3}\" field_required=\"{4}\" />{5}", str.Split('|')[0], id, name, field_cname, field_required, str.Split('|')[1]);
+                    //result += String.Format("{0},{1},{2}", 1,2,3);
+                    //result += "<input type=\"checkbox\" field_type=\"checkbox\" style=\"padding-right: 10px; padding-left: 10px;\" value=\"" + str.Split('|')[0] +
+                    //          "\"/>" + str.Split('|')[1];
+
+                }
+                return MvcHtmlString.Create(result);
+            }
+            else
+            {
+                return MvcHtmlString.Create("<input type=\"checkbox\"/>");
             }
         }
 

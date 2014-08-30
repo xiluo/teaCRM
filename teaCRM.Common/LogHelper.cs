@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using System;
+using log4net;
 
 namespace teaCRM.Common
 {
@@ -10,24 +11,18 @@ namespace teaCRM.Common
         /// <summary>
         /// 信息标志
         /// </summary>
-        private static readonly string LOG_INFO = "loginfo";
+        private static readonly log4net.ILog loginfo = log4net.LogManager.GetLogger("loginfo");
 
         /// <summary>
         /// 错误标志
         /// </summary>
-        private static readonly string LOG_ERROR = "logerror";
-
+        private static readonly log4net.ILog logerror = log4net.LogManager.GetLogger("logerror");
 
         /// <summary>
-        /// Log4Net日志接口封装  2014-08-26 14:58:50 By 唐有炜
+        /// 调试标志
         /// </summary>
-        /// <param name="name">日志标志</param>
-        /// <returns></returns>
-        public static ILog GetMyLogger(string name)
-        {
-            ILog logger = log4net.LogManager.GetLogger(name);
-            return logger;
-        }
+        private static readonly log4net.ILog logdebug = log4net.LogManager.GetLogger("logdebug");
+
 
         /// <summary>
         /// Log4Net信息记录封装  2014-08-28 14:58:50 By 唐有炜
@@ -36,13 +31,11 @@ namespace teaCRM.Common
         /// <returns></returns>
         public static void Info(string message)
         {
-            ILog logger = GetMyLogger(LOG_INFO);
-            if (logger.IsInfoEnabled)
+            if (loginfo.IsInfoEnabled)
             {
-                logger.Info(message);
+                loginfo.Info(message);
             }
         }
-
 
         /// <summary>
         /// Log4Net错误记录封装  2014-08-28 14:58:50 By 唐有炜
@@ -51,11 +44,92 @@ namespace teaCRM.Common
         /// <returns></returns>
         public static void Error(string message)
         {
-            ILog logger = GetMyLogger(LOG_ERROR);
-            if (logger.IsErrorEnabled)
+            if (logerror.IsErrorEnabled)
             {
-                logger.Error(message);
+                logerror.Error(message);
             }
+        }
+
+        /// <summary>
+        /// Log4Net错误记录封装  2014-08-28 14:58:50 By 唐有炜
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="ex"></param>
+        /// <returns></returns>
+        public static void Error(string message, Exception ex)
+        {
+            if (logerror.IsErrorEnabled)
+            {
+                if (!string.IsNullOrEmpty(message) && ex == null)
+                {
+                    logerror.ErrorFormat("<br/>【附加信息】 : {0}<br>", new object[] {message});
+                }
+                else if (!string.IsNullOrEmpty(message) && ex != null)
+                {
+                    string errorMsg = BeautyErrorMsg(ex);
+                    logerror.ErrorFormat("<br/>【附加信息】 : {0}<br>{1}", new object[] { message, errorMsg });
+                }
+                else if (string.IsNullOrEmpty(message) && ex != null)
+                {
+                    string errorMsg = BeautyErrorMsg(ex);
+                    logerror.Error(errorMsg);
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Log4Net调试记录封装  2014-08-28 14:58:50 By 唐有炜
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public static void Debug(string message)
+        {
+            if (logdebug.IsErrorEnabled)
+            {
+                logdebug.Debug(message);
+            }
+        }
+
+        /// <summary>
+        /// Log4Net调试记录封装  2014-08-28 14:58:50 By 唐有炜
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="ex"></param>
+        /// <returns></returns>
+        public static void Debug(string message, Exception ex)
+        {
+            if (logdebug.IsDebugEnabled)
+            {
+                if (!string.IsNullOrEmpty(message) && ex == null)
+                {
+                    logdebug.DebugFormat("<br/>【附加信息】 : {0}<br>", new object[] {message});
+                }
+                else if (!string.IsNullOrEmpty(message) && ex != null)
+                {
+                    string errorMsg = BeautyErrorMsg(ex);
+                    logdebug.DebugFormat("<br/>【附加信息】 : {0}<br>{1}", new object[] { message, errorMsg });
+                }
+                else if (string.IsNullOrEmpty(message) && ex != null)
+                {
+                    string errorMsg = BeautyErrorMsg(ex);
+                    logdebug.Debug(errorMsg);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 美化错误信息
+        /// </summary>
+        /// <param name="ex">异常</param>
+        /// <returns>错误信息</returns>
+        private static string BeautyErrorMsg(Exception ex)
+        {
+            string errorMsg = string.Format("【异常类型】：{0} <br>【异常信息】：{1} <br>【堆栈调用】：{2}",
+                new object[] {ex.GetType().Name, ex.Message, ex.StackTrace});
+            errorMsg = errorMsg.Replace("\r\n", "<br>");
+            errorMsg = errorMsg.Replace("位置", "<strong style=\"color:red\">位置</strong><br/>");
+            return errorMsg;
         }
     }
 }

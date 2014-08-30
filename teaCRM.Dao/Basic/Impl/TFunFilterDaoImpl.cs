@@ -9,7 +9,7 @@ using teaCRM.Entity;
 namespace teaCRM.Dao.Impl
 {
     /// <summary>
-    /// 自动生成的实现ITFunFilterDao接口的Dao类。 2014-08-28 05:06:48 By 唐有炜
+    /// 实现ITFunFilterDao接口的Dao类。 2014-08-28 05:06:48 By 唐有炜
     /// </summary>
     public class TFunFilterDaoImpl : ITFunFilterDao
     {
@@ -27,6 +27,22 @@ namespace teaCRM.Dao.Impl
                 return models;
             }
         }
+
+
+        /// <summary>
+        /// 获取所有的数据
+        /// </summary>
+        /// <param name="predicate">Lamda表达式</param>
+        /// <returns>返回所有数据列表</returns>
+        public List<TFunFilter> GetList(Expression<Func<TFunFilter, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var models = db.TFunFilters.Where<TFunFilter>(predicate).ToList();
+                return models;
+            }
+        }
+
 
         /// <summary>
         /// 获取指定的单个实体

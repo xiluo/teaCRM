@@ -142,7 +142,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="MyLogHelper.cs" />
     <Compile Include="MyHtmlHelper.cs" />
     <Compile Include="MyViewEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -191,6 +190,8 @@
     <Content Include="Themes\default\images\shadow_x.png" />
     <Content Include="Themes\default\images\shadow_y.png" />
     <Content Include="Themes\default\images\skin_icons.png" />
+    <Content Include="Themes\default\images\sprites-button.png" />
+    <Content Include="Themes\default\images\sprites-button_save.png" />
     <Content Include="Themes\default\images\t.gif" />
     <Content Include="Themes\default\images\weixin_qrcode.png" />
     <Content Include="Themes\default\js\account\login.js" />
@@ -1295,8 +1296,10 @@
     <Content Include="Views\Account\PublicRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="log4net.auto.config" />
-    <Content Include="log4net.config" />
+    <Content Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="log4net.bak.config" />
     <None Include="Themes\default\js\ligerUI\skins\ext-purple\images\icon\icon-done.gif.695873" />
     <None Include="Themes\default\js\ligerUI\skins\ext-purple\image\flexigrid_blue\indicator_waitanim.gif.bak" />
     <None Include="Themes\default\js\ligerUI\skins\ext-purple\image\flexigrid_blue\vssver2.scc" />
@@ -1306,6 +1309,10 @@
     <None Include="Themes\default\js\ligerUI\skins\ext\image\flexigrid_blue\vssver2.scc" />
     <None Include="Themes\default\js\ligerUI\skins\icons\1.bat" />
     <None Include="Themes\default\js\ligerUI\skins\icons\新建 Microsoft Office Excel 工作表.xlsx" />
+    <Content Include="Views\Shared\_Error.cshtml" />
+    <Content Include="Views\Apps\CRM\Index\CustomerShow.cshtml" />
+    <Content Include="Views\Apps\CRM\Index\CustomerEdit.cshtml" />
+    <Content Include="Views\Apps\CRM\Index\ContactEdit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

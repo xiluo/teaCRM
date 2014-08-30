@@ -4,7 +4,7 @@ using System.Linq;
 using NLite.Data;
 namespace teaCRM.Entity
 {
-	[Table("T_fun_myapp")]
+	[Table("t_fun_myapp")]
 	public partial class TFunMyapp 
 	{
 	

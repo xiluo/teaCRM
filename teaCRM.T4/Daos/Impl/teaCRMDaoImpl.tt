@@ -76,6 +76,21 @@ namespace <#= @DaoNamespace #>
             }
         }
 
+		
+        /// <summary>
+        /// 获取所有的数据
+        /// </summary>
+        /// <param name="predicate">Lamda表达式</param>
+        /// <returns>返回所有数据列表</returns>
+       public List<<#=daoModelName#>> GetList(Expression<Func<<#=daoModelName#>, bool>> predicate)
+        {
+             using (<#=dbContextName#> db=new <#=dbContextName#>())
+            {
+             var models= db.<#=daoListName#>.Where<<#=daoModelName#>>(predicate).ToList();
+			 return models;
+            }
+        }
+
 		/// <summary>
         /// 获取指定的单个实体
         /// 如果不存在则返回null
@@ -297,6 +312,20 @@ namespace <#= @DaoNamespace #>
           using (<#=dbContextName#> db=new <#=dbContextName#>())
             {
              var models= db.<#=daoListName#>.ToList();
+			 return models;
+            }
+        }
+
+		  /// <summary>
+        /// 获取所有的数据
+        /// </summary>
+        /// <param name="predicate">Lamda表达式</param>
+        /// <returns>返回所有数据列表</returns>
+        public    List<<#=daoModelName#>> GetList(Expression<Func<<#=daoModelName#>, bool>> predicate)
+        {
+             using (<#=dbContextName#> db=new <#=dbContextName#>())
+            {
+             var models= db.<#=daoListName#>.Where<<#=daoModelName#>>(predicate).ToList();
 			 return models;
             }
         }

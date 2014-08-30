@@ -26,7 +26,7 @@ namespace teaCRM.Web.Controllers
         [AutoLogin]
         public ActionResult Login()
         {
-            MyLogHelper.Info("登陆页面被打开。");
+            LogHelper.Info("登陆页面被打开。");
             return View();
         }
 
@@ -38,7 +38,7 @@ namespace teaCRM.Web.Controllers
             ResponseMessage rmsg;
             try
             {
-                MyLogHelper.Info("来自"+HttpUtility.UrlDecode(fc["clientPlace"].ToString())+"的"+fc["userName"].ToString()+"正在登陆...");
+                LogHelper.Info("来自"+HttpUtility.UrlDecode(fc["clientPlace"].ToString())+"的"+fc["userName"].ToString()+"正在登陆...");
                 rmsg = AccountService.Login(System.Web.HttpContext.Current, fc["type"].ToString(),
                     fc["accountType"].ToString(), fc["userName"].ToString(), fc["userPassword"].ToString(),
                     fc["remember"].ToString(),
@@ -47,7 +47,7 @@ namespace teaCRM.Web.Controllers
             }
             catch (Exception ex)
             {
-                MyLogHelper.Error("登陆异常," + ex.Message);
+                LogHelper.Error("登陆异常," + ex.Message);
                 rmsg = new ResponseMessage() {Status = false, Msg = "登陆异常，请联系管理员！"};
             }
 

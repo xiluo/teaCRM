@@ -57,13 +57,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Basic\Impl\TFunExpandDaoImpl.cs" />
     <Compile Include="Basic\Impl\TSysDepartmentDaoImpl.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Basic\ITFunExpandDao.cs" />
     <Compile Include="CRM\Impl\ZCusInfoDaoImpl.cs" />
     <Compile Include="CRM\IZCusInfoDao.cs" />
     <Compile Include="ITableDao.cs" />
-    <Compile Include="CRM\Impl\TConExpvalueDaoImpl.cs" />
     <Compile Include="CRM\Impl\TCusBaseDaoImpl.cs" />
     <Compile Include="CRM\Impl\TCusConDaoImpl.cs" />
     <Compile Include="CRM\Impl\TCusLogDaoImpl.cs" />
@@ -72,7 +73,6 @@
     <Compile Include="Basic\Impl\TSysLogDaoImpl.cs" />
     <Compile Include="Basic\Impl\TSysUserDaoImpl.cs" />
     <Compile Include="Basic\Impl\VCompanyUserDaoImpl.cs" />
-    <Compile Include="CRM\ITConExpvalueDao.cs" />
     <Compile Include="CRM\ITCusBaseDao.cs" />
     <Compile Include="CRM\ITCusConDao.cs" />
     <Compile Include="CRM\ITCusLogDao.cs" />

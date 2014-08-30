@@ -10,16 +10,16 @@ namespace teaCRM.Entity
  
 		[Column("cus_id")]
 		public Int32 CusId { get;set; }
-		[Column("exp_is_marry")]
-		public String ExpIsMarry { get;set; }
-		[Column("exp_evaluate")]
-		public String ExpEvaluate { get;set; }
-		[Column("exp_nation")]
-		public String ExpNation { get;set; }
-		[Column("exp_email")]
-		public String ExpEmail { get;set; }
-		[Column("exp_age")]
-		public Int32? ExpAge { get;set; }
+		[Column("exp_url")]
+		public String ExpUrl { get;set; }
+		[Column("exp_nimabi")]
+		public String ExpNimabi { get;set; }
+		[Column("exp_sex")]
+		public String ExpSex { get;set; }
+		[Column("exp_attach")]
+		public String ExpAttach { get;set; }
+		[Column("exp_addtime")]
+		public DateTime? ExpAddtime { get;set; }
  
  
  

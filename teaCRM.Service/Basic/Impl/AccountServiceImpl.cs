@@ -402,8 +402,7 @@ namespace teaCRM.Service.Impl
             {
                 //注册验证成功成功
                 //随机编号
-                Random rand = new Random(Guid.NewGuid().GetHashCode());
-                string compNum = rand.Next(100000, 1000000000).ToString();
+                var  compNum= RandomHelper.GetComoanyNumber();
                 TSysCompany sysCompany = new TSysCompany()
                 {
                     CompNum = compNum

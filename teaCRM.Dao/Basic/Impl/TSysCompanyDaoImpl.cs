@@ -28,6 +28,22 @@ namespace  teaCRM.Dao.Impl
             }
         }
 
+
+
+        /// <summary>
+        /// 获取所有的数据
+        /// </summary>
+        /// <param name="predicate">Lamda表达式</param>
+        /// <returns>返回所有数据列表</returns>
+        public List<TSysCompany> GetList(Expression<Func<TSysCompany, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var models = db.TSysCompanies.Where<TSysCompany>(predicate).ToList();
+                return models;
+            }
+        }
+
 		/// <summary>
         /// 获取指定的单个实体
         /// 如果不存在则返回null

@@ -1,0 +1,19 @@
+﻿@using UCsoft.Web
+@{
+    var rootPath = System.Configuration.ConfigurationManager.AppSettings["rootPath"].ToString();
+    //客户扩展字段信息
+    var customerFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.CustomerExpandFields;
+    //联系人扩展字段信息
+    var contactFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.ContactExpandFields;
+    Layout = null;
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>年修改联系人_优创CRM软件平台_打造中国办公软件第一品牌</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <meta http-equiv="X-UA-Compatible" content="IE=7" />
+</head>
+<body>
+<h2>ContactEdit</h2>
+</body>

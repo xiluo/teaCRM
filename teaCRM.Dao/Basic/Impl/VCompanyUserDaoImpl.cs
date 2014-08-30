@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using NLite.Data;
+using teaCRM.Common;
 using teaCRM.DBContext;
 using teaCRM.Entity;
 
@@ -28,6 +29,21 @@ namespace teaCRM.Dao.Impl
                 return models;
             }
         }
+
+        /// <summary>
+        /// 获取所有的数据
+        /// </summary>
+        /// <param name="predicate">Lamda表达式</param>
+        /// <returns>返回所有数据列表</returns>
+        public List<VCompanyUser> GetList(Expression<Func<VCompanyUser, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var models = db.VCompanyUsers.Where<VCompanyUser>(predicate).ToList();
+                return models;
+            }
+        }
+
 
         /// <summary>
         /// 获取指定的单个实体
@@ -115,8 +131,7 @@ namespace teaCRM.Dao.Impl
                 catch (Exception ex)
                 {
                     tran.Rollback();
-                    //return false;
-                    throw new Exception(ex.Message);
+                    LogHelper.Error("注册失败，",ex);
                     return false;
                 }
                 finally

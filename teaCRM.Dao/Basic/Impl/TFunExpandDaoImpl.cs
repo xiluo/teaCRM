@@ -1,60 +1,74 @@
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using NLite.Data;
 using teaCRM.DBContext;
 using teaCRM.Entity;
 
-namespace  teaCRM.Dao.Impl
+namespace teaCRM.Dao.Impl
 {
-
     /// <summary>
     /// 自动生成的实现ITFunExpandDao接口的Dao类。 2014-08-28 05:06:48 By 唐有炜
     /// </summary>
- public class TFunExpandDaoImpl:ITFunExpandDao
+    public class TFunExpandDaoImpl : ITFunExpandDao
     {
-	    /// <summary>
+        #region T4自动生成的函数 2014-08-29 14:58:50 By 唐有炜
+
+        /// <summary>
         /// 获取所有的数据
-	    /// </summary>
-	    /// <returns>返回所有数据列表</returns>
-        public List<TFunExpand> GetList() 
+        /// </summary>
+        /// <returns>返回所有数据列表</returns>
+        public List<TFunExpand> GetList()
         {
-          using (teaCRMDBContext db=new teaCRMDBContext())
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-             var models= db.TFunExpands.ToList();
-			 return models;
+                var models = db.TFunExpands.ToList();
+                return models;
             }
         }
 
-		/// <summary>
+
+        /// <summary>
+        /// 获取所有的数据
+        /// </summary>
+        /// <param name="predicate">Lamda表达式</param>
+        /// <returns>返回所有数据列表</returns>
+        public List<TFunExpand> GetList(Expression<Func<TFunExpand, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var models = db.TFunExpands.Where<TFunExpand>(predicate).ToList();
+                return models;
+            }
+        }
+
+        /// <summary>
         /// 获取指定的单个实体
         /// 如果不存在则返回null
         /// 如果存在多个则抛异常
         /// </summary>
         /// <param name="predicate">Lamda表达式</param>
         /// <returns>Entity</returns>
-        public TFunExpand GetEntity(Expression<Func<TFunExpand, bool>> predicate) 
+        public TFunExpand GetEntity(Expression<Func<TFunExpand, bool>> predicate)
         {
-            using (teaCRMDBContext db=new teaCRMDBContext())
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var model =db.TFunExpands.Where<TFunExpand>(predicate).SingleOrDefault();
+                var model = db.TFunExpands.Where<TFunExpand>(predicate).SingleOrDefault();
                 return model;
-		    }
+            }
         }
 
-		
-		  /// <summary>
+
+        /// <summary>
         /// 添加实体
         /// </summary>
         /// <param name="entity">实体对象</param>
         public bool InsertEntity(TFunExpand entity)
         {
-            using (teaCRMDBContext db=new teaCRMDBContext())
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-              int rows=  db.TFunExpands.Insert(entity);
-				 if (rows > 0)
+                int rows = db.TFunExpands.Insert(entity);
+                if (rows > 0)
                 {
                     return true;
                 }
@@ -64,17 +78,18 @@ namespace  teaCRM.Dao.Impl
                 }
             }
         }
-       /// <summary>
+
+        /// <summary>
         /// 删除实体
         /// </summary>
-         /// <param name="predicate">Lamda表达式</param>
-        public bool DeleteEntity(Expression<Func<TFunExpand , bool>> predicate) 
+        /// <param name="predicate">Lamda表达式</param>
+        public bool DeleteEntity(Expression<Func<TFunExpand, bool>> predicate)
         {
-            using (teaCRMDBContext db=new teaCRMDBContext())
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                TFunExpand  entity = db.TFunExpands.Where(predicate).First();
-                int rows=db.TFunExpands.Delete(entity);
-				 if (rows > 0)
+                TFunExpand entity = db.TFunExpands.Where(predicate).First();
+                int rows = db.TFunExpands.Delete(entity);
+                if (rows > 0)
                 {
                     return true;
                 }
@@ -84,14 +99,14 @@ namespace  teaCRM.Dao.Impl
                 }
             }
         }
-		
-		/// <summary>
+
+        /// <summary>
         /// 批量删除
         /// </summary>
         /// <param name="list">实体集合</param>
-        public bool DeletesEntity(List<TFunExpand> list) 
+        public bool DeletesEntity(List<TFunExpand> list)
         {
-            using (teaCRMDBContext db=new teaCRMDBContext())
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
                 //var tran = db.Connection.BeginTransaction();
                 try
@@ -101,27 +116,27 @@ namespace  teaCRM.Dao.Impl
                         db.TFunExpands.Delete(item);
                     }
                     //tran.Commit();
-					return true;
+                    return true;
                 }
                 catch (Exception ex)
                 {
                     //tran.Rollback();
-					return false;
+                    return false;
                     throw new Exception(ex.Message);
                 }
             }
         }
 
-         /// <summary>
+        /// <summary>
         /// 修改实体
         /// </summary>
         /// <param name="entity">实体对象</param>
         public bool UpadateEntity(TFunExpand entity)
         {
-            using (teaCRMDBContext db=new teaCRMDBContext())
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-               int rows= db.TFunExpands.Update(entity);
-			   if (rows > 0)
+                int rows = db.TFunExpands.Update(entity);
+                if (rows > 0)
                 {
                     return true;
                 }
@@ -137,31 +152,29 @@ namespace  teaCRM.Dao.Impl
         /// 是否存在该记录
         /// </summary>
         /// <returns></returns>
-       public   bool ExistsEntity(Expression<Func<TFunExpand , bool>> predicate)
-	   {
-            using (teaCRMDBContext db=new teaCRMDBContext())
+        public bool ExistsEntity(Expression<Func<TFunExpand, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-               bool status= db.TFunExpands.Any(predicate);
-               return status;
+                bool status = db.TFunExpands.Any(predicate);
+                return status;
             }
         }
 
-		 //查询分页
-    public  List<TFunExpand> GetListByPage(int pageIndex, int pageSize, Expression<Func<TFunExpand , bool>> predicate)
-	  {
-	   using (teaCRMDBContext db=new teaCRMDBContext())
+        //查询分页
+        public List<TFunExpand> GetListByPage(int pageIndex, int pageSize, Expression<Func<TFunExpand, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-             var models= db.TFunExpands.ToList();
-			 return models;
+                var models = db.TFunExpands.ToList();
+                return models;
             }
-	  }
+        }
 
 
-	  
-
-	  //以下是原生Sql方法==============================================================
-	  //===========================================================================
-	   /// <summary>
+        //以下是原生Sql方法==============================================================
+        //===========================================================================
+        /// <summary>
         /// 用SQL语句查询
         /// </summary>
         /// <param name="sql">sql语句</param>
@@ -169,37 +182,38 @@ namespace  teaCRM.Dao.Impl
         /// <returns>集合</returns>
         public IEnumerable<TFunExpand> GetListBySql(string sql, dynamic namedParameters)
         {
-          using (teaCRMDBContext db=new teaCRMDBContext())
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-               return db.DbHelper.ExecuteDataTable(sql,namedParameters).ToList<TFunExpand>();
+                return db.DbHelper.ExecuteDataTable(sql, namedParameters).ToList<TFunExpand>();
             }
-          
         }
-		
-		/// <summary>
-	     /// 执行Sql
-	     /// </summary>
-	     /// <param name="sql">Sql语句</param>
-	     /// <param name="namedParameters">查询字符串</param>
-	     /// <returns></returns>
-		public bool ExecuteSql(string sql, dynamic namedParameters = null)
-		{
-	         using (teaCRMDBContext db = new teaCRMDBContext())
-	         {
-	             var rows = db.DbHelper.ExecuteNonQuery(sql, namedParameters);
-	             if (rows > 0)
-	             {
-	                 return true;
-	             }
-	             else
-	             {
-	                 return false;
-	             }
-	         }
-		}
 
+        /// <summary>
+        /// 执行Sql
+        /// </summary>
+        /// <param name="sql">Sql语句</param>
+        /// <param name="namedParameters">查询字符串</param>
+        /// <returns></returns>
+        public bool ExecuteSql(string sql, dynamic namedParameters = null)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var rows = db.DbHelper.ExecuteNonQuery(sql, namedParameters);
+                if (rows > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
 
+        #endregion
 
+        #region 手写的扩展函数 2014-08-21 14:58:50 By 唐有炜
 
-	   }
-	   }
+        #endregion
+    }
+}

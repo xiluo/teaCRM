@@ -28,6 +28,21 @@ namespace  teaCRM.Dao.Impl
             }
         }
 
+
+        /// <summary>
+        /// 获取所有的数据
+        /// </summary>
+        /// <param name="predicate">Lamda表达式</param>
+        /// <returns>返回所有数据列表</returns>
+        public List<TCusCon> GetList(Expression<Func<TCusCon, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var models = db.TCusCons.Where<TCusCon>(predicate).ToList();
+                return models;
+            }
+        }
+
 		/// <summary>
         /// 获取指定的单个实体
         /// 如果不存在则返回null

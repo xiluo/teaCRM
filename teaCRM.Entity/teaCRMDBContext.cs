@@ -42,8 +42,7 @@ namespace teaCRM.DBContext
 
 		public teaCRMDBContext():base(dbConfiguration){}
 		
-		public IDbSet<TConExpvalue> TConExpvalues { get; private set; }
-		public IDbSet<TCusBase> TCusBases { get; private set; }
+    	public IDbSet<TCusBase> TCusBases { get; private set; }
 		public IDbSet<TCusCon> TCusCons { get; private set; }
 		public IDbSet<TCusLog> TCusLogs { get; private set; }
 		public IDbSet<TFunApp> TFunApps { get; private set; }

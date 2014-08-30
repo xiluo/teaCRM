@@ -11,7 +11,7 @@ namespace  teaCRM.Dao.Impl
 {
 
     /// <summary>
-    /// 自动生成的实现ITSysUserDao接口的Dao类。 2014-08-28 05:06:48 By 唐有炜
+    /// 自动生成的实现ITSysUserDao接口的Dao类。 2014-08-29 03:17:20 By 唐有炜
     /// </summary>
  public class TSysUserDaoImpl:ITSysUserDao
     {
@@ -24,6 +24,21 @@ namespace  teaCRM.Dao.Impl
           using (teaCRMDBContext db=new teaCRMDBContext())
             {
              var models= db.TSysUsers.ToList();
+			 return models;
+            }
+        }
+
+		
+        /// <summary>
+        /// 获取所有的数据
+        /// </summary>
+        /// <param name="predicate">Lamda表达式</param>
+        /// <returns>返回所有数据列表</returns>
+       public List<TSysUser> GetList(Expression<Func<TSysUser, bool>> predicate)
+        {
+             using (teaCRMDBContext db=new teaCRMDBContext())
+            {
+             var models= db.TSysUsers.Where<TSysUser>(predicate).ToList();
 			 return models;
             }
         }

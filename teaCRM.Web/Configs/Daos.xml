@@ -33,6 +33,9 @@
   <object id="settingsDao" type="teaCRM.Dao.Settings.Impl.ZSettingsDaoImpl, teaCRM.Dao" singleton="false">
     <property name="DepartmentTreeHelper" ref="departmentTreeHelper" />
   </object>
-  
+
+  <!--funExpandDao-->
+  <object id="funExpandDao" type="teaCRM.Dao.Impl.TFunExpandDaoImpl, teaCRM.Dao" singleton="false">
+  </object>
   
 </objects>
