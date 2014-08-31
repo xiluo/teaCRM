@@ -1,0 +1,1368 @@
+<HR COLOR=green>
+日志时间：2014-09-01 00:01:52,629 [34] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:01:52,645 [34] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:02:00,157 [23] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:02:00,164 [23] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:02:00,174 [23] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：添加客户事务开始... <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:02:00,174 [23] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：addCusBaseSql,
+INSERT INTO teacrm.dbo.t_cus_base
+  (
+    cus_no,
+    comp_num,
+    cus_name,
+    cus_sname,
+    cus_lastid,
+    cus_tel,
+    cus_city,
+    cus_address,
+    cus_note,
+    con_id,
+    USER_ID,
+    con_team,
+    con_is_pub,
+    con_back
+  )
+VALUES
+  (
+    @cus_no,
+    @comp_num,
+    @cus_name,
+    @cus_sname,
+    @cus_lastid,
+    @cus_tel,
+    @cus_city,
+    @cus_address,
+    @cus_note,
+    @con_id,
+    @USER_ID,
+    @con_team,
+    @con_is_pub,
+    @con_back
+  )
+; SELECT SCOPE_IDENTITY(); <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:02:00,181 [23] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：刚插入的客户id为：39 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:02:00,181 [23] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：add T_cus_expvalue_10000 Sql,INSERT INTO T_cus_expvalue_10000(cus_id,exp_is_marry,exp_evaluate,exp_nation,exp_email,exp_age) VALUES (@cus_id,@exp_is_marry,@exp_evaluate,@exp_nation,@exp_email,@exp_age) <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:02:00,185 [23] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：addCusConSql,
+INSERT INTO teacrm.dbo.t_cus_con
+           (cus_id
+           ,con_name
+           ,con_tel
+           ,con_qq
+           ,con_email
+           ,con_bir
+           ,con_note
+           ,con_is_main
+           ,user_id
+)
+     VALUES
+           (
+            @cus_id
+           ,@con_name
+           ,@con_tel
+           ,@con_qq
+           ,@con_email
+           ,@con_bir
+           ,@con_note
+           ,@con_is_main
+           ,@user_id
+)
+; SELECT SCOPE_IDENTITY();
+ <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:02:00,186 [23] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：主联系人主表已插入。该联系人的id：14 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:02:00,186 [23] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：add T_cus_con_expvalue_10000 Sql,INSERT INTO T_cus_con_expvalue_10000(con_id,exp_con_duty) VALUES (@con_id,@exp_con_duty) <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:02:00,293 [23] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：update T_cus_base Sql,UPDATE T_cus_base SET con_id=@con_id
+WHERE id=@id <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:02:00,295 [23] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：添加客户事务结束... <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:02:00,366 [11] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:02:00,368 [11] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：pagingSql, SELECT * FROM  (  SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  ORDER BY id DESC  ) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:02:00,376 [11] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:11:41,895 [24] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:11:41,910 [24] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:11:49,383 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:11:49,388 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:11:49,396 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：添加客户事务开始... <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:11:49,396 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：addCusBaseSql,
+INSERT INTO teacrm.dbo.t_cus_base
+  (
+    cus_no,
+    comp_num,
+    cus_name,
+    cus_sname,
+    cus_lastid,
+    cus_tel,
+    cus_city,
+    cus_address,
+    cus_note,
+    con_id,
+    USER_ID,
+    con_team,
+    con_is_pub,
+    con_back
+  )
+VALUES
+  (
+    @cus_no,
+    @comp_num,
+    @cus_name,
+    @cus_sname,
+    @cus_lastid,
+    @cus_tel,
+    @cus_city,
+    @cus_address,
+    @cus_note,
+    @con_id,
+    @USER_ID,
+    @con_team,
+    @con_is_pub,
+    @con_back
+  )
+; SELECT SCOPE_IDENTITY(); <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:11:49,406 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：刚插入的客户id为：40 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:11:49,406 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：add T_cus_expvalue_10000 Sql,INSERT INTO T_cus_expvalue_10000(cus_id,exp_is_marry,exp_evaluate,exp_nation,exp_email,exp_age) VALUES (@cus_id,@exp_is_marry,@exp_evaluate,@exp_nation,@exp_email,@exp_age) <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:11:49,409 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：addCusConSql,
+INSERT INTO teacrm.dbo.t_cus_con
+           (cus_id
+           ,con_name
+           ,con_tel
+           ,con_qq
+           ,con_email
+           ,con_bir
+           ,con_note
+           ,con_is_main
+           ,user_id
+)
+     VALUES
+           (
+            @cus_id
+           ,@con_name
+           ,@con_tel
+           ,@con_qq
+           ,@con_email
+           ,@con_bir
+           ,@con_note
+           ,@con_is_main
+           ,@user_id
+)
+; SELECT SCOPE_IDENTITY();
+ <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:11:49,410 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：主联系人主表已插入。该联系人的id：15 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:11:49,410 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：add T_cus_con_expvalue_10000 Sql,INSERT INTO T_cus_con_expvalue_10000(con_id,exp_con_duty) VALUES (@con_id,@exp_con_duty) <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:11:49,440 [21] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：update T_cus_base Sql,UPDATE T_cus_base SET con_id=@con_id
+WHERE id=@id <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:11:49,441 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：添加客户事务结束... <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:11:49,505 [26] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:11:49,507 [26] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：pagingSql, SELECT * FROM  (  SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  ORDER BY id DESC  ) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:11:49,516 [26] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:08,337 [29] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：登陆页面被打开。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:13,395 [27] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：来自河南省郑州市的terwer@99999正在登陆... <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:13,396 [27] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：terwer@99999登陆验证开始... <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:13,469 [27] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：terwer@99999登陆验证结束... <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:13,551 [27] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：terwer@99999登陆成功，登陆日志已记录。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:16,442 [13] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_99999 AS b ON  a.id = b.cus_id) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:16,442 [13] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：pagingSql, SELECT * FROM  (  SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_99999 AS b ON  a.id = b.cus_id) AS T  ORDER BY id DESC  ) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:16,473 [13] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为5的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:16,994 [29] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为5的用户获取筛选器树形列表成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:19,896 [29] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:19,903 [29] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:28,926 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:28,932 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:28,933 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：添加客户事务开始... <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:28,933 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：addCusBaseSql,
+INSERT INTO teacrm.dbo.t_cus_base
+  (
+    cus_no,
+    comp_num,
+    cus_name,
+    cus_sname,
+    cus_lastid,
+    cus_tel,
+    cus_city,
+    cus_address,
+    cus_note,
+    con_id,
+    USER_ID,
+    con_team,
+    con_is_pub,
+    con_back
+  )
+VALUES
+  (
+    @cus_no,
+    @comp_num,
+    @cus_name,
+    @cus_sname,
+    @cus_lastid,
+    @cus_tel,
+    @cus_city,
+    @cus_address,
+    @cus_note,
+    @con_id,
+    @USER_ID,
+    @con_team,
+    @con_is_pub,
+    @con_back
+  )
+; SELECT SCOPE_IDENTITY(); <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:28,965 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：刚插入的客户id为：41 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:28,965 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：add T_cus_expvalue_99999 Sql,INSERT INTO T_cus_expvalue_99999(cus_id,exp_url,exp_addtime) VALUES (@cus_id,@exp_url,@exp_addtime) <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:28,980 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：addCusConSql,
+INSERT INTO teacrm.dbo.t_cus_con
+           (cus_id
+           ,con_name
+           ,con_tel
+           ,con_qq
+           ,con_email
+           ,con_bir
+           ,con_note
+           ,con_is_main
+           ,user_id
+)
+     VALUES
+           (
+            @cus_id
+           ,@con_name
+           ,@con_tel
+           ,@con_qq
+           ,@con_email
+           ,@con_bir
+           ,@con_note
+           ,@con_is_main
+           ,@user_id
+)
+; SELECT SCOPE_IDENTITY();
+ <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:28,981 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：主联系人主表已插入。该联系人的id：16 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:28,982 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：add T_cus_con_expvalue_99999 Sql,INSERT INTO T_cus_con_expvalue_99999(con_id,exp_con_salary) VALUES (@con_id,@exp_con_salary) <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:28,984 [21] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：update T_cus_base Sql,UPDATE T_cus_base SET con_id=@con_id
+WHERE id=@id <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:28,995 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：添加客户事务结束... <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:29,161 [13] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_99999 AS b ON  a.id = b.cus_id) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:29,161 [13] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：pagingSql, SELECT * FROM  (  SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_99999 AS b ON  a.id = b.cus_id) AS T  ORDER BY id DESC  ) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:29,164 [13] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为5的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:54,164 [22] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:54,165 [22] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：pagingSql, SELECT * FROM  (  SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  ORDER BY id DESC  ) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:12:54,169 [22] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:15:14,234 [28] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:15:14,234 [28] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：pagingSql, SELECT * FROM  (  SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  ORDER BY id DESC  ) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:15:14,241 [28] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:15:25,410 [6] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:15:25,410 [6] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：pagingSql, SELECT * FROM  (  SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  ORDER BY id DESC  ) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:15:25,411 [6] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:15:25,892 [6] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取筛选器树形列表成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:30:23,307 [41] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:30:23,308 [41] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：pagingSql, SELECT * FROM  (  SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  ORDER BY id DESC  ) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:30:23,319 [41] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:30:23,732 [39] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取筛选器树形列表成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:30:26,246 [39] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:30:34,388 [39] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:30:36,228 [36] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:30:38,238 [36] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:30:40,963 [39] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:30:49,131 [33] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:30:49,131 [33] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：pagingSql, SELECT * FROM  (  SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  ORDER BY id DESC  ) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:30:49,132 [33] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:30:49,617 [32] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取筛选器树形列表成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:31:41,902 [6] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:31:48,920 [22] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:31:51,186 [16] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:31:54,207 [16] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:32:26,536 [28] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:32:26,538 [28] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：pagingSql, SELECT * FROM  (  SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  ORDER BY id DESC  ) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:32:26,549 [28] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:32:27,566 [29] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取筛选器树形列表成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:32:28,560 [28] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:32:30,746 [13] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:32:32,978 [29] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:35:54,870 [26] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:35:54,871 [26] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：pagingSql, SELECT * FROM  (  SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  ORDER BY id DESC  ) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:35:54,882 [26] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:35:56,430 [32] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取筛选器树形列表成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:35:59,733 [35] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:36:07,778 [36] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:36:24,277 [38] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:36:24,277 [38] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：pagingSql, SELECT * FROM  (  SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  ORDER BY id DESC  ) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:36:24,279 [38] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:36:24,784 [6] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取筛选器树形列表成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:36:26,506 [28] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:41:42,894 [34] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:41:42,895 [34] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：pagingSql, SELECT * FROM  (  SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  ORDER BY id DESC  ) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:41:42,906 [34] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:41:43,399 [39] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取筛选器树形列表成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:41:45,343 [28] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:41:49,761 [15] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取筛选器树形列表成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:41:49,810 [37] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:41:49,810 [37] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：pagingSql, SELECT * FROM  (  SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  ORDER BY id DESC  ) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:41:49,813 [37] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:41:51,990 [28] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:41:53,731 [10] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:41:59,490 [37] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:41:59,490 [37] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：pagingSql, SELECT * FROM  (  SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  ORDER BY id DESC  ) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:41:59,492 [37] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:41:59,991 [37] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取筛选器树形列表成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:42:02,152 [32] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:42:03,976 [10] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:42:05,244 [29] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:42:09,449 [27] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:42:11,535 [28] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:42:13,413 [10] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:42:32,305 [10] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取筛选器树形列表成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:42:32,341 [27] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:42:32,341 [27] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：pagingSql, SELECT * FROM  (  SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  ORDER BY id DESC  ) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:42:32,344 [27] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-01 00:42:34,001 [39] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1>

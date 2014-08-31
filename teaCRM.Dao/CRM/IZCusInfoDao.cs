@@ -42,7 +42,8 @@ namespace teaCRM.Dao.CRM
          /// <param name="cusInfo">客户信息</param>
          /// <param name="cusConInfo">主联系人信息</param>
          /// <returns></returns>
-         bool AddCustomer(ZCusInfo cusInfo, ZCusConInfo cusConInfo);
+         bool AddCustomer( ZCusInfo cusInfo, ZCusConInfo cusConInfo);
+
 
     }
 }

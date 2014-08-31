@@ -73,6 +73,32 @@ namespace teaCRM.Web.Controllers.Apps.CRM
 
         #endregion
 
+        #region 获取客户信息列表 2014-09-01 14:58:50 By 唐有炜
+
+        //
+        // GET: /Apps/CRM/LoadData/GetCustomerLsit/
+        [UserAuthorize]
+        public string GetContactList()
+        {
+            string customerJson = "";
+            try
+            {
+                customerJson =
+                    CustomerService.GetContactLsit(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(),1);
+                LogHelper.Info("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() + "的用户获取客户信息成功。");
+                return customerJson;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() +
+                                  "的用户获取客户信息失败", ex);
+                return "";
+            }
+        }
+
+        #endregion
+
+
         #region 获取客户工具栏
 
         //
@@ -87,19 +113,23 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         #region 获取跟进记录列表
 
         //
-        // GET: /Apps/CRM/LoadData/GetTraceList/
-        public string GetTraceList()
+        // GET: /Apps/CRM/LoadData/GetFollowList/
+        public string GetFollowList(string CustomerNo)
         {
-            return CustomerService.GetTraceList();
+            if (String.IsNullOrEmpty(CustomerNo))
+            {
+                return "{\"Rows\":[],\"Total\":\"0\"}";
+            }
+            return CustomerService.GetFollowList();
         }
 
         #region 获取跟进记录工具栏
 
         //
-        // GET: /Apps/CRM/LoadData/GetTraceMenu/
-        public string GetTraceMenu()
+        // GET: /Apps/CRM/LoadData/GetFollowMenu/
+        public string GetFollowMenu()
         {
-            return CustomerService.GetTraceMenu();
+            return CustomerService.GetFollowMenu();
         }
 
         #endregion

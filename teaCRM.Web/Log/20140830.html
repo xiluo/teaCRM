@@ -3008,4 +3008,311 @@ INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  ORDER BY id DESC
 日志级别：INFO  <BR>
 日志标志：loginfo <BR> 
 日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:20:36,067 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:20:36,081 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:20:45,622 [16] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:20:45,628 [16] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:20:45,633 [16] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：添加客户事务开始... <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:20:45,633 [16] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：addCusBaseSql,
+INSERT INTO teacrm.dbo.t_cus_base
+  (
+    cus_no,
+    comp_num,
+    cus_name,
+    cus_sname,
+    cus_lastid,
+    cus_tel,
+    cus_city,
+    cus_address,
+    cus_note,
+    con_id,
+    USER_ID,
+    con_team,
+    con_is_pub,
+    con_back
+  )
+VALUES
+  (
+    @CusNo,
+    @CompNum,
+    @CusName,
+    @CusSName,
+    @CusLastid,
+    @CusTel,
+    @CusCity,
+    @CusAddress,
+    @CusNote,
+    @ConId,
+    @USERID,
+    @ConTeam,
+    @conIsPub,
+    @conBack
+  )
+; SELECT SCOPE_IDENTITY(); <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:20:45,640 [16] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：刚插入的客户id为：21 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:20:45,640 [16] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：add T_cus_expvalue_10000 Sql,INSERT INTO T_cus_expvalue_10000(cus_id,exp_is_marry,exp_evaluate,exp_nation,exp_email,exp_age) VALUES (@cus_id,@exp_is_marry,@exp_evaluate,@exp_nation,@exp_email,@exp_age) <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:20:45,671 [16] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：添加客户事务结束... <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:20:45,731 [16] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:20:45,732 [16] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：pagingSql, SELECT * FROM  (  SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  ORDER BY id DESC  ) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:20:45,740 [16] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:22:58,318 [16] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:22:58,334 [16] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:23:15,601 [20] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:23:15,607 [20] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:23:15,611 [20] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：添加客户事务开始... <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:23:15,611 [20] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：addCusBaseSql,
+INSERT INTO teacrm.dbo.t_cus_base
+  (
+    cus_no,
+    comp_num,
+    cus_name,
+    cus_sname,
+    cus_lastid,
+    cus_tel,
+    cus_city,
+    cus_address,
+    cus_note,
+    con_id,
+    USER_ID,
+    con_team,
+    con_is_pub,
+    con_back
+  )
+VALUES
+  (
+    @CusNo,
+    @CompNum,
+    @CusName,
+    @CusSName,
+    @CusLastid,
+    @CusTel,
+    @CusCity,
+    @CusAddress,
+    @CusNote,
+    @ConId,
+    @USERID,
+    @ConTeam,
+    @conIsPub,
+    @conBack
+  )
+; SELECT SCOPE_IDENTITY(); <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:23:15,618 [20] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：刚插入的客户id为：22 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:23:15,618 [20] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：add T_cus_expvalue_10000 Sql,INSERT INTO T_cus_expvalue_10000(cus_id,exp_is_marry,exp_evaluate,exp_nation,exp_email,exp_age) VALUES (@cus_id,@exp_is_marry,@exp_evaluate,@exp_nation,@exp_email,@exp_age) <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:23:15,621 [20] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：添加客户事务结束... <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:23:15,670 [18] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:23:15,672 [18] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：pagingSql, SELECT * FROM  (  SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  ORDER BY id DESC  ) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:23:15,681 [18] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:25:57,249 [19] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:25:57,249 [19] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：pagingSql, SELECT * FROM  (  SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                       a.con_id,
+                       a.user_id,
+                       a.con_team,
+                       a.con_is_pub,
+                       a.con_back,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id) AS T  ORDER BY id DESC  ) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-08-30 12:25:57,250 [19] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
  <HR Size=1>

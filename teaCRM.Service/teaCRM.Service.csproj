@@ -69,6 +69,7 @@
     <Content Include="CRM\Impl\temp2.txt" />
     <Content Include="CRM\Impl\temp3.txt" />
     <Content Include="CRM\Impl\temp4.txt" />
+    <Content Include="CRM\Impl\temp5.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\teaCRM.Common\teaCRM.Common.csproj">

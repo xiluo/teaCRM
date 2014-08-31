@@ -93,21 +93,22 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             Init();
 
             ResponseMessage rmsg = new ResponseMessage();
-            //添加逻辑==============================================
+            //客户赋值==============================================
+            var compNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
             ZCusInfo cusInfo = new ZCusInfo();
             //基本字段
             cusInfo.CusBase = new TCusBase()
             {
                 CusNo = RandomHelper.GetCustomerNumber(),
-                CompNum = "10000",
-                CusName = "唐有炜的公司",
-                CusSname = "唐",
+                CompNum = compNum,
+                CusName = fc["cus_name"].TrimEnd(','),
+                CusSname = fc["cus_sname"],
                 CusLastid = 0,
                 CusTel = "15225062328",
                 CusCity = "河南",
                 CusAddress = "郑州",
                 CusNote = "备注",
-                ConId = 1,
+                //ConId = 1,//在Dao层处理
                 UserId = 1,
                 ConTeam = "1,2",
                 ConIsPub = 1,
@@ -127,10 +128,36 @@ namespace teaCRM.Web.Controllers.Apps.CRM
                     }
                 }
             }
+            //========================================================================
 
-            //联系人添加
+            //主联系人赋值 
             ZCusConInfo cusConInfo = new ZCusConInfo();
-
+            cusConInfo.CusCon = new TCusCon()
+            {
+                ConName = "马腾军",
+                ConTel = "13243454545",
+                ConQq = "232332",
+                ConEmail = "df",
+                ConBir = DateTime.Now,
+                ConNote = "",
+                ConIsMain = 1,
+                UserId = 1
+            };
+            cusConInfo.Fields = new Dictionary<string, object>();
+            for (int i = 0; i < fc.Count; i++)
+            {
+                var field_con = fc.GetKey(i);
+                var value_con = fc.Get(field_con);
+                foreach (var field_con2 in contactExpandFields)
+                {
+                    if (field_con == field_con2.ExpName)
+                    {
+                        //LogHelper.Debug("联系人扩展字段："+field_con);
+                        cusConInfo.Fields.Add(new KeyValuePair<string, object>(field_con, value_con));
+                    }
+                }
+            }
+            //==============================================================
 
             //添加提交
             bool add_status = CustomerService.AddCustomer(cusInfo, cusConInfo);

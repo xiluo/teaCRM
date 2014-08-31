@@ -91,6 +91,28 @@ namespace teaCRM.Service.CRM.Impl
 
         #endregion
 
+
+
+
+        #region 获取联系人信息列表 2014-08-29 14:58:50 By 唐有炜
+
+        /// <summary>
+        /// 获取联系人信息列表 2014-09-01 14:58:50 By 唐有炜
+        /// </summary>
+        /// <param name="compNum">企业编号</param>
+        /// /// <param name="CusId">客户Id</param>
+        /// <returns>CusId</returns>
+        public string GetContactLsit(string compNum, int CusId)
+        {
+            return
+              System.IO.File.ReadAllText(
+                  "D:\\学习资料\\开发参考资料\\优创科技\\项目\\工作项目\\优创CRM\\源码\\teaCRM\\teaCRM.Service\\CRM\\Impl\\temp5.txt");
+        }
+
+        #endregion
+
+
+
         #region 获取客户扩展字段信息 2014-08-29 14:58:50 By 唐有炜
 
         /// <summary>
@@ -141,13 +163,13 @@ namespace teaCRM.Service.CRM.Impl
 
         #region 添加客户信息 2014-08-29 14:58:50 By 唐有炜
 
-          /// <summary>
+        /// <summary>
         /// 添加客户信息 2014-08-30 14:58:50 By 唐有炜
-     /// </summary>
-     /// <param name="cusInfo">客户信息</param>
-     /// <param name="cusConInfo">主联系人信息</param>
-     /// <returns></returns>
-    public    bool AddCustomer(ZCusInfo cusInfo,ZCusConInfo cusConInfo)
+        /// </summary>
+        /// <param name="cusInfo">客户信息</param>
+        /// <param name="cusConInfo">主联系人信息</param>
+        /// <returns></returns>
+        public    bool AddCustomer( ZCusInfo cusInfo, ZCusConInfo cusConInfo)
         {
             return CusInfoDao.AddCustomer(cusInfo,cusConInfo);
         }
@@ -173,7 +195,7 @@ namespace teaCRM.Service.CRM.Impl
         /// 获取跟进记录列表
         /// </summary>
         /// <returns></returns>
-        public string GetTraceList()
+        public string GetFollowList()
         {
             return
                 System.IO.File.ReadAllText(
@@ -184,7 +206,7 @@ namespace teaCRM.Service.CRM.Impl
 
         #region 获取跟进工具栏
 
-        public string GetTraceMenu()
+        public string GetFollowMenu()
         {
             return
                 System.IO.File.ReadAllText(

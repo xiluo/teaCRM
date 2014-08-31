@@ -68,7 +68,7 @@
 //                            html += "</div>";
 //                            return html;
                         //                        }
-                        display: '公司名称', name: 'cus_sname', width: 200, align: 'left'
+                        display: '公司名称', name: 'cus_name', width: 200, align: 'left'
                     },
                     { display: '电话', name: 'cus_tel', width: 120, align: 'right' },
                     { display: '客户类型', name: 'CustomerType', width: 80 },
@@ -113,7 +113,8 @@
                  onSelectRow: function (data, rowindex, rowobj) {
                      var manager = $("#maingrid5").ligerGetGridManager();
                      manager.showData({ Rows: [], Total: 0 });
-                     var url = "../../data/CRM_Follow.ashx?Action=grid&customer_id=" + data.id;
+                     //var url = "../../data/CRM_Follow.ashx?Action=grid&customer_id=" + data.id;
+                     var url = "/Apps/CRM/LoadData/GetFollowList/?Action=grid&CustomerNo=cc4ff7e8-86ea-43e8-a618-786f6718ac44";
                      manager.GetDataByURL(url);
                  },
 
@@ -157,7 +158,7 @@
 
                              usePager: false,
                              checkbox: true,
-                             url: "../../data/CRM_Contact.ashx?Action=grid&customerid=" + r.id,
+                             url: "/Apps/CRM/LoadData/GetContactList/?Action=grid&customerid=" + r.id,
                              width: '1022px', height: '100px',
                              heightDiff: 0
                          })
@@ -195,7 +196,7 @@
 
                  dataAction: 'server', pageSize: 30, pageSizeOptions: [20, 30, 50, 100],
                  //checkbox:true,
-                 url: "/Apps/CRM/LoadData/GetTraceList/?Action=grid&customer_id=0",
+                 url: "/Apps/CRM/LoadData/GetFollowList/?Action=grid&CustomerNo=",
                  width: '100%', height: '100%',
                  //title: "跟进信息",
                  heightDiff: -1,
@@ -245,7 +246,7 @@
                  });
 
              });
-             $.get("/Apps/CRM/LoadData/GetTraceMenu/?Action=GetSys&mid=6&rnd=" + Math.random(), function (reault, textStatus) {
+             $.get("/Apps/CRM/LoadData/GetFollowMenu/?Action=GetSys&mid=6&rnd=" + Math.random(), function (reault, textStatus) {
                  //alert(reault);
                  //return;
                  var data = eval("(" + reault + ")");
