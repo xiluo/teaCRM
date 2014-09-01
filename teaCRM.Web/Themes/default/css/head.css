@@ -205,3 +205,8 @@ body {
 .exit a:hover {
     color: yellowgreen;
 }
+
+/*气泡*/ /*140822 By 唐有炜*/
+.tips {
+    font-family: microsoft yahei;
+}

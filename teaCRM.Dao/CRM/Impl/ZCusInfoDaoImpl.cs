@@ -67,10 +67,11 @@ namespace teaCRM.Dao.CRM.Impl
                        a.cus_address,
                        a.cus_note,
                        a.con_id,
-                       a.user_id,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_id,
                        a.con_team,
                        a.con_is_pub,
                        a.con_back,
+                       a.cus_createTime,
                        b.*";
 
                 //选择字段
@@ -98,6 +99,7 @@ namespace teaCRM.Dao.CRM.Impl
 FROM   T_cus_base AS a
 INNER JOIN T_cus_expvalue_" + compNum + @" AS b ON  a.id = b.cus_id";
                 strSql.Append(fromJoin);
+
                 if (strWhere.Trim() != "")
                 {
                     strSql.Append(" where " + strWhere);

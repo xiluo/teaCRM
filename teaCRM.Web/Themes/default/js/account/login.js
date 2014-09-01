@@ -1,4 +1,4 @@
-﻿//*账户登陆JS函数
+﻿//*账户登录JS函数
 //*作者：唐有炜
 //*时间：2014年08月21日
 
@@ -10,7 +10,7 @@ $(document).ready(function() {
 });
 
 $(function() {
-    //登陆
+    //登录
     do_login();
 
 });
@@ -81,7 +81,7 @@ function remember() {
     }
 }
 
-//登陆提交
+//登录提交
 function do_login() {
     $("#userName").focus(function() {
         $("#hdExtLink").removeClass("show-block").addClass("hide");
@@ -144,7 +144,7 @@ function login_ajax(userName, userPassword) {
         },
         success: function(data) {
             $("#hdExtLink").text(data.Msg).removeClass("hide").addClass("show-block");
-            if (data.Status) { //登陆成功
+            if (data.Status) { //登录成功
                 d.content("<div class=\"loading\">正在登录中，请稍后...</div>");
                 location.href = "/";
             } else {

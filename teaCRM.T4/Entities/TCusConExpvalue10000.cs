@@ -8,8 +8,8 @@ namespace teaCRM.Entity
 	public partial class TCusConExpvalue10000 
 	{
  
-		[Column("cus_id")]
-		public Int32? CusId { get;set; }
+		[Column("con_id")]
+		public Int32? ConId { get;set; }
 		[Column("exp_con_duty")]
 		public String ExpConDuty { get;set; }
  

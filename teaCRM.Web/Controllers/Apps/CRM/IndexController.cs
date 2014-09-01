@@ -95,6 +95,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             ResponseMessage rmsg = new ResponseMessage();
             //客户赋值==============================================
             var compNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
+            var userId = int.Parse(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString());
             ZCusInfo cusInfo = new ZCusInfo();
             //基本字段
             cusInfo.CusBase = new TCusBase()
@@ -103,16 +104,17 @@ namespace teaCRM.Web.Controllers.Apps.CRM
                 CompNum = compNum,
                 CusName = fc["cus_name"].TrimEnd(','),
                 CusSname = fc["cus_sname"],
-                CusLastid = 0,
+                CusLastid = 0,//默认无上级客户
                 CusTel = "15225062328",
                 CusCity = "河南",
                 CusAddress = "郑州",
                 CusNote = "备注",
                 //ConId = 1,//在Dao层处理
-                UserId = 1,
+                UserId = userId,//负责人
                 ConTeam = "1,2",
                 ConIsPub = 1,
                 ConBack = 1
+                //创建时间有数据库默认指定
             };
             //扩展字段
             cusInfo.Fields = new Dictionary<string, object>();

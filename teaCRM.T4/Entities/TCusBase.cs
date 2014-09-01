@@ -38,7 +38,9 @@ namespace teaCRM.Entity
 		[Column("con_is_pub")]
 		public Int32 ConIsPub { get;set; }
 		[Column("con_back")]
-		public Int32 ConBack { get;set; }
+		public Decimal ConBack { get;set; }
+		[Column("cus_createTime")]
+		public DateTime? CusCreateTime { get;set; }
  
  
 		[OneToMany(ThisKey="Id",OtherKey="CusId")]

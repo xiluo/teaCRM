@@ -16,7 +16,7 @@
     border-radius: 6px;
     outline: 0;
     background-clip: padding-box;
-    font-family: Helvetica, arial, sans-serif;
+    font-family: 'Microsoft yahei','ËÎÌו',Helvetica, arial, sans-serif;
     font-size: 14px;
     line-height: 1.428571429;
     color: #333;
@@ -91,7 +91,7 @@
     margin: 0;
     line-height: 1.428571429;
     min-height: 16.428571429px;
-    padding: 15px;
+    padding: 10px 10px 10px 10px;
     overflow:hidden; 
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -99,7 +99,7 @@
     cursor: default;
 }
 .ui-dialog-body {
-    padding: 20px;
+    padding: 0px 0 20px 0;
     text-align: center;
 }
 .ui-dialog-content {

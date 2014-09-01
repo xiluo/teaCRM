@@ -20,7 +20,7 @@ function showUserInfo() {
     var d_user;
     $("#user-pic").click(function() {
         d_user = dialog({
-            content: '欢迎您选用优创CRM云平台！',
+            content: '<div class="tips">欢迎您选用优创CRM云平台！</div>',
             quickClose: true // 点击空白处快速关闭
         });
         d_user.show(this);

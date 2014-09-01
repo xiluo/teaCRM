@@ -42,7 +42,7 @@ namespace teaCRM.Service.Impl
         /// 账户验证 2014/8/21 9:04:10   By 唐有炜
         /// </summary>
         /// <param name="action">操作类型（login、register）</param>
-        /// <param name="type">注册或登陆方式（normal,qrcode,usb,footprint）</param>
+        /// <param name="type">注册或登录方式（normal,qrcode,usb,footprint）</param>
         /// <param name="accountType">账号类型（username,email,phone）</param>
         /// <param name="userName">用户名</param>
         /// <param name="userPassword">密码</param>
@@ -58,7 +58,7 @@ namespace teaCRM.Service.Impl
                     switch (type)
                     {
                         case "normal": //正常
-                            //登陆时账户类型不分开
+                            //登录时账户类型不分开
                             if (UserNameExists("username", userName) || UserNameExists("email", userName) ||
                                 UserNameExists("phone", userName))
                             {
@@ -89,7 +89,7 @@ namespace teaCRM.Service.Impl
                             break;
                         default:
                             rmsg.Status = false;
-                            rmsg.Msg = "该登陆方式尚未开通！";
+                            rmsg.Msg = "该登录方式尚未开通！";
                             return rmsg;
                             break;
                     }
@@ -326,32 +326,32 @@ namespace teaCRM.Service.Impl
 
         #endregion
 
-        #region 登陆提交
+        #region 登录提交
 
         /// <summary>
-        /// 登陆验证并写入登陆日志 2014-08-21 07:58:50 By 唐有炜
+        /// 登录验证并写入登录日志 2014-08-21 07:58:50 By 唐有炜
         /// </summary>
         /// <param name="httpContext">HttpContext</param>
-        /// <param name="type">注册或登陆方式（normal,qrcode,usb,footprint）</param>
+        /// <param name="type">注册或登录方式（normal,qrcode,usb,footprint）</param>
         /// <param name="accountType">账号类型（username,email,phone）</param>
         /// <param name="userName">用户名</param>
         /// <param name="userPassword">密码</param>
         /// <param name="remember">记住密码</param>
         /// <param name="clientIp">客户端ip地址</param>
         ///   /// <param name="clientPlace">客户端地址</param>
-        /// <param name="clientTime">客户端登陆时间</param>
+        /// <param name="clientTime">客户端登录时间</param>
         /// <returns>ResponseMessage</returns>
         public ResponseMessage Login(HttpContext httpContext, string type, string accountType, string userName,
             string userPassword,
             string remember, string clientIp, string clientPlace, string clientTime)
         {
-            LogHelper.Info(userName + "登陆验证开始...");
+            LogHelper.Info(userName + "登录验证开始...");
 
             ResponseMessage rmsg = ValidateAccount("login", type, accountType, userName, userPassword);
 
-            LogHelper.Info(userName + "登陆验证结束...");
+            LogHelper.Info(userName + "登录验证结束...");
 
-            if (rmsg.Status) //登陆成功
+            if (rmsg.Status) //登录成功
             {
                 //获取用户信息
                 var compUser = GetVCompanyUserByAccountTypeAndUserName(accountType, userName);
@@ -368,14 +368,14 @@ namespace teaCRM.Service.Impl
                     UserId = compUser.UserId,
                     UserLname = compUser.UserLname,
                     LogAction = teaCRMEnums.LogActionEnum.Login.ToString(),
-                    LogRemark = loginUser + "登陆了系统。",
+                    LogRemark = loginUser + "登录了系统。",
                     LogIp = clientIp,
                     LogPlace = clientPlace,
                     LogTime = DateTime.Parse(clientTime)
                 };
                 SysLogDao.InsertEntity(sysLog);
                
-                LogHelper.Info(userName + "登陆成功，登陆日志已记录。");
+                LogHelper.Info(userName + "登录成功，登录日志已记录。");
             }
 
 

@@ -89,7 +89,8 @@ http://www.cnblogs.com/24la/p/log4net-simplly-config.html
 http://www.cnblogs.com/wuyifu/p/3328024.html     
 >7在C#代码中应用Log4Net（五）将Log4Net正确地封装在自己的类库中并进行调用    
 http://www.cnblogs.com/kissazi2/p/3394430.html   
- 
+>8项目架构评析    
+http://www.cnblogs.com/legendxian/archive/2012/06/18/2553111.html#!comments    
 
 
 

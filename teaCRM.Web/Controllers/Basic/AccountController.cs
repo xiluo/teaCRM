@@ -18,27 +18,27 @@ namespace teaCRM.Web.Controllers
         /// </summary>
         public IAccountService AccountService { set; get; }
 
-        #region 登陆
+        #region 登录
 
         //
-        // GET: /Account/Login 默认登陆页面 2014-08-26 14:58:50 By 唐有炜
+        // GET: /Account/Login 默认登录页面 2014-08-26 14:58:50 By 唐有炜
         [HttpGet]
         [AutoLogin]
         public ActionResult Login()
         {
-            LogHelper.Info("登陆页面被打开。");
+            LogHelper.Info("登录页面被打开。");
             return View();
         }
 
         //
-        // GET: /Account/Login 登陆提交
+        // GET: /Account/Login 登录提交
         [HttpPost]
         public ActionResult Login(FormCollection fc)
         {
             ResponseMessage rmsg;
             try
             {
-                LogHelper.Info("来自"+HttpUtility.UrlDecode(fc["clientPlace"].ToString())+"的"+fc["userName"].ToString()+"正在登陆...");
+                LogHelper.Info("来自"+HttpUtility.UrlDecode(fc["clientPlace"].ToString())+"的"+fc["userName"].ToString()+"正在登录...");
                 rmsg = AccountService.Login(System.Web.HttpContext.Current, fc["type"].ToString(),
                     fc["accountType"].ToString(), fc["userName"].ToString(), fc["userPassword"].ToString(),
                     fc["remember"].ToString(),
@@ -47,15 +47,15 @@ namespace teaCRM.Web.Controllers
             }
             catch (Exception ex)
             {
-                LogHelper.Error("登陆异常," + ex.Message);
-                rmsg = new ResponseMessage() {Status = false, Msg = "登陆异常，请联系管理员！"};
+                LogHelper.Error("登录异常," + ex.Message);
+                rmsg = new ResponseMessage() {Status = false, Msg = "登录异常，请联系管理员！"};
             }
 
             return Json(rmsg);
         }
 
 //        //
-//        // GET: /Account/ValidateLogin 自动登陆检测
+//        // GET: /Account/ValidateLogin 自动登录检测
 //        [HttpPost]
 //        public ActionResult ValidateLogin(FormCollection fc)
 //        {

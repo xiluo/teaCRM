@@ -138,7 +138,7 @@ function register_ajax(userName, phone, userPassword, userTname) {
         },
         success: function(data) {
             $("#hdExtLink").text(data.Msg).removeClass("hide").addClass("show-block");
-            if (data.Status) { //登陆成功
+            if (data.Status) { //登录成功
                 d.content("<div class=\"loading\">正在注册中，请稍后...</div>");
                 location.href = "/";
             } else {

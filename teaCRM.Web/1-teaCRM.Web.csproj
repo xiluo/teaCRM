@@ -1,0 +1,1358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{20C4980B-EE81-4C68-AA86-A5B7BCE3166B}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>teaCRM.Web</RootNamespace>
+    <AssemblyName>teaCRM.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common.Logging, Version=2.1.2.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Spring.Core, Version=2.0.0.40000, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Spring.Core.2.0.0-RC1\lib\net40\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Web, Version=2.0.0.40000, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Spring.Web.2.0.0-RC1\lib\net40\Spring.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Web.Mvc4, Version=2.0.0.40000, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spring.Web.Mvc4.2.0.0-RC1\lib\net40\Spring.Web.Mvc4.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\Basic\AccountController.cs" />
+    <Compile Include="Controllers\Apps\CRM\IndexController.cs" />
+    <Compile Include="Controllers\Apps\CRM\LoadDataController.cs" />
+    <Compile Include="Controllers\Apps\IndexController.cs" />
+    <Compile Include="Controllers\Apps\Product\IndexController.cs" />
+    <Compile Include="Controllers\Apps\Sale\IndexController.cs" />
+    <Compile Include="Controllers\Apps\Service\IndexController.cs" />
+    <Compile Include="Controllers\Apps\Settings\DepartmentController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\Apps\Settings\ExpandoFieldController.cs" />
+    <Compile Include="Controllers\Apps\Settings\ImportExportController.cs" />
+    <Compile Include="Controllers\Apps\Settings\RoleController.cs" />
+    <Compile Include="Controllers\Apps\Settings\UsersController.cs" />
+    <Compile Include="Controllers\Basic\WorkbenchController.cs" />
+    <Compile Include="Filters\AutoLoginAttribute.cs" />
+    <Compile Include="Filters\UserAuthorizeAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="MyHtmlHelper.cs" />
+    <Compile Include="MyViewEngine.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Configs\Daos.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Resource Include="Configs\Services.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Configs\Objects.xml" />
+    <Content Include="Configs\Webs.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Global.asax" />
+    <Content Include="Themes\default\CRM\css\crm.list.css" />
+    <Content Include="Themes\default\CRM\css\crm.layout.css" />
+    <Content Include="Themes\default\CRM\images\c_baidu.jpg" />
+    <Content Include="Themes\default\CRM\images\c_google.jpg" />
+    <Content Include="Themes\default\CRM\images\c_left_btn.png" />
+    <Content Include="Themes\default\CRM\images\filter-bar-btn-hidden1.gif" />
+    <Content Include="Themes\default\CRM\images\icon-light.gif" />
+    <Content Include="Themes\default\CRM\images\skin_icons.png" />
+    <Content Include="Themes\default\CRM\images\view_btn.png" />
+    <Content Include="Themes\default\CRM\js\customer_add.js" />
+    <Content Include="Themes\default\CRM\js\customer_index.js" />
+    <Content Include="Themes\default\CRM\js\TYW.js" />
+    <Content Include="Themes\default\css\foot.css" />
+    <Content Include="Themes\default\css\formtip.css" />
+    <Content Include="Themes\default\css\globle.css" />
+    <Content Include="Themes\default\css\head.css" />
+    <Content Include="Themes\default\css\poshytip.css" />
+    <Content Include="Themes\default\css\setting.css" />
+    <Content Include="Themes\default\images\all2.jpg" />
+    <Content Include="Themes\default\images\arr.png" />
+    <Content Include="Themes\default\images\bgx.png" />
+    <Content Include="Themes\default\images\bg_v2.png" />
+    <Content Include="Themes\default\images\header.jpg" />
+    <Content Include="Themes\default\images\link.png" />
+    <Content Include="Themes\default\images\logo.jpg" />
+    <Content Include="Themes\default\images\logo_ie6_v2.png" />
+    <Content Include="Themes\default\images\logo_v2.png" />
+    <Content Include="Themes\default\images\long_logo.png" />
+    <Content Include="Themes\default\images\ntes_logo.jpg" />
+    <Content Include="Themes\default\images\ntes_logo.png" />
+    <Content Include="Themes\default\images\ntes_logo_ie6.png" />
+    <Content Include="Themes\default\images\shadow_x.png" />
+    <Content Include="Themes\default\images\shadow_y.png" />
+    <Content Include="Themes\default\images\skin_icons.png" />
+    <Content Include="Themes\default\images\sprites-button.png" />
+    <Content Include="Themes\default\images\sprites-button_save.png" />
+    <Content Include="Themes\default\images\t.gif" />
+    <Content Include="Themes\default\images\weixin_qrcode.png" />
+    <Content Include="Themes\default\js\account\login.js" />
+    <Content Include="Themes\default\js\account\puclic_register.js" />
+    <Content Include="Themes\default\js\artDialog\css\ui-dialog.css" />
+    <Content Include="Themes\default\js\artDialog\dist\dialog-min.js" />
+    <Content Include="Themes\default\js\artDialog\dist\dialog-plus-min.js" />
+    <Content Include="Themes\default\js\artDialog\dist\dialog-plus.js" />
+    <Content Include="Themes\default\js\artDialog\dist\dialog.js" />
+    <Content Include="Themes\default\js\autoComplete\jquery.autocomplete.js" />
+    <Content Include="Themes\default\js\global.js" />
+    <Content Include="Themes\default\js\cookie\jquery.cookie.js" />
+    <Content Include="Themes\default\js\form_validate.js" />
+    <Content Include="Themes\default\js\function.js" />
+    <Content Include="Themes\default\js\json2.js" />
+    <Content Include="Themes\default\js\ligerUI\js\common.js" />
+    <Content Include="Themes\default\js\ligerUI\js\ligerui.all.js" />
+    <Content Include="Themes\default\js\ligerUI\js\ligerui.min.js" />
+    <Content Include="Themes\default\js\ligerUI\js\ligerui.min2.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerAccordion.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerAccordion1.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerButton.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerCheckBox.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerComboBox.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerDateEditor.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerDialog.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerDrag.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerEasyTab.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerForm.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerGrid.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerLayout.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerMenu.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerMenuBar.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerMessageBox.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerNoSelect.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerPanel.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerPortal.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerRadio.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerResizable.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerSpinner.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerTab.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerTextBox.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerTip.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerToolBar.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerTree.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\ligerWindow.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\副本 ligerButton.js" />
+    <Content Include="Themes\default\js\ligerUI\js\plugins\副本 ligerDialog.js" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\css\ligerui-all.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\css\ligerui-checkbox.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\css\ligerui-common.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\css\ligerui-dialog.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\css\ligerui-form.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\css\ligerui-grid.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\css\ligerui-layout.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\css\ligerui-menu.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\css\ligerui-radio.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\css\ligerui-tab.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\css\ligerui-tree.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\box\box-btn-done.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\box\box-btn-error.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\box\box-btn-l-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\box\box-btn-l.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\box\box-btn-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\box\box-btn-question.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\box\box-btn-r-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\box\box-btn-r.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\box\box-btn-warn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\box\box-btn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\box\box-close-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\box\box-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\box\box-lefttop.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\box\box-righttop.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\box\box-top.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\box\tabs-item-left-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\common\loading.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\controls\bg-panel-title-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\controls\bg-panel-title-pressed.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\controls\bg-panel-title.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\controls\bg-tab-title-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\controls\bg-tab-title-pressed.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\controls\bg-tab-title.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\controls\bg-text.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\controls\bg-text.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\controls\bg-trigger-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\controls\bg-trigger-pressed.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\controls\bg-trigger.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\controls\btn-l.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\controls\btn-r.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\controls\btn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\controls\button-bg-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\controls\button-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\controls\checkbox.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\controls\checkboxandradio.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\controls\dateeditor-bar-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\controls\dateeditor-header-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\controls\radio.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dateeditor\icon-first.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dateeditor\icon-last.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dateeditor\icon-next.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dateeditor\icon-prev.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dialog\dialog-bc.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dialog\dialog-bl.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dialog\dialog-br.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dialog\dialog-button.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dialog\dialog-button.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dialog\dialog-cl.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dialog\dialog-close.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dialog\dialog-cr.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dialog\dialog-done.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dialog\dialog-error.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dialog\dialog-icons.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dialog\dialog-question.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dialog\dialog-tc.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dialog\dialog-title-icon.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dialog\dialog-tl.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dialog\dialog-tr.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dialog\dialog-warn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dialog\ie6\dialog-bc.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dialog\ie6\dialog-cl.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dialog\ie6\dialog-cr.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\dialog\ie6\dialog-tc.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\form\verify-corner.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\grid\box-lefttop.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\grid\box-righttop.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\grid\grid-checkbox-checked.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\grid\grid-checkbox.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\grid\grid-detail-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\grid\grid-detail-open.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\grid\grid-line.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\grid\grid-tree-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\grid\grid-tree-open.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\grid\header-bg-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\grid\header-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\grid\header2-bg.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\grid\loading.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\grid\popup-line.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\grid\popup-row-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\grid\popup-row-over.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\bar-button-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\checkbox-checked.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\checkbox.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\icon-close-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\icon-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\icon-close18X18.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\icon-done.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\icon-down.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\icon-drop.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\icon-edited.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\icon-first.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\icon-last.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\icon-line.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\icon-load.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\icon-load.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\icon-milestone.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\icon-next.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\icon-prev.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\icon-remark15X15.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\icon-sort-asc.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\icon-sort-desc.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\icon-up.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\icon-warn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\icon\magnifier.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\layout\accordion-content.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\layout\accordion-header-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\layout\accordion-header.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\layout\layout-header-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\layout\layout-header.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\layout\layout-sidebar-header.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\layout\mini-bottom.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\layout\mini-left.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\layout\mini-right.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\layout\mini-top.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\layout\panel-content.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\layout\panel-header-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\layout\panel-header.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\layout\tabs-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\layout\tabs-item-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\layout\tabs-item-left-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\layout\tabs-item-over-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\layout\tabs-item-right-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\layout\tabs-tools.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\layout\tabs-tools.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\layout\togglebar.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\layout\togglebar.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\menu\menu-item-arrow.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\menu\menu-item-down.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\menu\menu-item-over-l.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\menu\menu-item-over-m.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\menu\menu-item-over-r.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\menu\menu-line-x.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\menu\menu-line-y.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\panel\bar-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\panel\header-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\panel\header-bg.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\panel\header2-bg.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\panel\panel-btn-l.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\panel\panel-btn-r.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\panel\panel-btn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\panel\panel-header.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\panel\panel-menu-item-down.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\panel\panel-menu.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\panel\panel-menu.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\panel\panel-toolbar.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\panel\panel-toolbar.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\panel\panel-tools-sprites.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\panel\panel-tools.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\tree\folder-open.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\tree\folder.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\tree\loading.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\tree\tree-leaf.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\tree\tree-level.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\tree\tree-noline.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\tree\tree-status-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\tree\tree-status-open.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\tree\tree-status.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\tree\tree.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Aqua\images\tree\tree.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\css\ligerui-all.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\css\ligerui-common.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\css\ligerui-dialog.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\css\ligerui-fix.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\css\ligerui-form.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\css\ligerui-grid.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\css\ligerui-layout.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\css\ligerui-menu.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\css\ligerui-tab.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\css\ligerui-tree.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\box\box-btn-done.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\box\box-btn-error.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\box\box-btn-l-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\box\box-btn-l.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\box\box-btn-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\box\box-btn-question.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\box\box-btn-r-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\box\box-btn-r.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\box\box-btn-warn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\box\box-btn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\box\box-close-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\box\box-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\box\box-lefttop.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\box\box-righttop.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\box\box-top.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\box\tabs-item-left-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\common\loading.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\controls\bg-panel-title-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\controls\bg-panel-title-pressed.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\controls\bg-panel-title.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\controls\bg-tab-title-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\controls\bg-tab-title-pressed.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\controls\bg-tab-title.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\controls\bg-text.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\controls\bg-text.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\controls\bg-trigger - 副本.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\controls\bg-trigger-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\controls\bg-trigger-pressed.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\controls\bg-trigger.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\controls\btn-l.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\controls\btn-r.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\controls\btn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\controls\button-bg-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\controls\button-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\controls\checkbox.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\controls\checkboxandradio.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\controls\dateeditor-bar-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\controls\dateeditor-header-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\controls\radio.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dateeditor\icon-first.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dateeditor\icon-last.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dateeditor\icon-next.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dateeditor\icon-prev.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dialog\dialog-bc.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dialog\dialog-bl.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dialog\dialog-br.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dialog\dialog-button.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dialog\dialog-button.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dialog\dialog-cl.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dialog\dialog-close.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dialog\dialog-cr.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dialog\dialog-done.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dialog\dialog-error.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dialog\dialog-icons.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dialog\dialog-question.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dialog\dialog-tc.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dialog\dialog-title-icon.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dialog\dialog-tl.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dialog\dialog-tr.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dialog\dialog-warn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dialog\ie6\dialog-bc.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dialog\ie6\dialog-cl.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dialog\ie6\dialog-cr.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\dialog\ie6\dialog-tc.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\form\verify-corner.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\grid\box-lefttop.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\grid\box-righttop.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\grid\fhbg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\grid\fhbg.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\grid\foot-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\grid\grid-checkbox-checked.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\grid\grid-checkbox.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\grid\grid-detail-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\grid\grid-detail-open.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\grid\grid-line.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\grid\grid-tree-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\grid\grid-tree-open.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\grid\header-bg-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\grid\header-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\grid\header2-bg.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\grid\loading.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\grid\popup-line.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\grid\popup-row-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\grid\popup-row-over.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\bar-button-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\checkbox-checked.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\checkbox.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\icon-close-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\icon-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\icon-close1.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\icon-close18X18.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\icon-close2.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\icon-done.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\icon-down.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\icon-drop.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\icon-edited.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\icon-first.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\icon-last.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\icon-line.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\icon-load.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\icon-load.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\icon-milestone.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\icon-next.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\icon-prev.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\icon-remark15X15.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\icon-sort-asc.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\icon-sort-desc.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\icon-up.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\icon-warn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\loading.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\icon\magnifier.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\layout\accordion-content.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\layout\accordion-header-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\layout\accordion-header.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\layout\layout-header-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\layout\layout-header.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\layout\layout-sidebar-header.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\layout\mini-bottom.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\layout\mini-left.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\layout\mini-right.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\layout\mini-top.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\layout\panel-content.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\layout\panel-header-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\layout\panel-header.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\layout\tabs-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\layout\tabs-bg1.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\layout\tabs-item-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\layout\tabs-item-left-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\layout\tabs-item-over-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\layout\tabs-item-right-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\layout\tabs-tools.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\layout\togglebar.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\menu\menu-item-arrow.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\menu\menu-item-down.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\menu\menu-item-over-l.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\menu\menu-item-over-m.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\menu\menu-item-over-r.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\menu\menu-line-x.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\menu\menu-line-y.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\panel\bar-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\panel\header-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\panel\header-bg.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\panel\header2-bg.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\panel\panel-btn-l.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\panel\panel-btn-r.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\panel\panel-btn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\panel\panel-header.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\panel\panel-menu-item-down.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\panel\panel-menu.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\panel\panel-menu.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\panel\panel-toolbar.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\panel\panel-toolbar.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\panel\panel-tools-sprites.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\panel\panel-tools.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\tree\folder-open.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\tree\folder.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\tree\loading.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\tree\tree - 副本.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\tree\tree-leaf.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\tree\tree-level.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\tree\tree-noline.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\tree\tree-status-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\tree\tree-status-open.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\tree\tree-status.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\tree\tree.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\tree\tree.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\win\box-icons.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\win\box.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\win\dialog - 副本.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\win\dialog-bc.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\win\dialog-icons.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\win\dialog-tc.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\win\dialog-winbtns.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\win\dialog.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\win\taskbar-task.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\win\taskbar.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\win\taskbar.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\images\win\taskicon.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\all.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\delete.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\edit.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\btn-sprite.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\button.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\ch.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\chtd-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\ddn.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\dn.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\fhbg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\fhbg.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\fhbg2.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\first.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\grid.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\grid3-special-col-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\grid3-special-col-sel-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\gridth.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\headbg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\hl.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\indicator_waitanim.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\last.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\line.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\load-bg.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\load.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\load.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\magnifier.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\next.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\page-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\prev.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\sort_asc.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\sort_desc.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\tbg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\up.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\uup.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\wbg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\home.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\home1.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\home2.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\linked.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\new.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\read-n.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\read-y.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\role-setup.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\save.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\search.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\send.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\sended.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\TabPanel\scroll-left.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\TabPanel\scroll-right.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\TabPanel\tab-bg-active.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\TabPanel\tab-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\TabPanel\tab-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\TabPanel\tab-content-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\Toolbar\bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\Toolbar\fix_bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\Toolbar\fix_bg_2.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\Toolbar\fix_border.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\Toolbar\fix_border_2.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\Toolbar\tb_border.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\WindowPanel\title-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\image\WindowPanel\window-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\img\hd-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\img\leaf.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\img\light-hd.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\img\s.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\img\tab-strip-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\img\tab-strip-btm-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\img\tabs-sprite.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\img\tool-sprites.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Purple\img\white-top-bottom.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\css\ligerui-all.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\css\ligerui-common.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\css\ligerui-dialog.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\css\ligerui-fix.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\css\ligerui-form.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\css\ligerui-grid.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\css\ligerui-layout.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\css\ligerui-menu.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\css\ligerui-panel.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\css\ligerui-tab.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\css\ligerui-tree.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\box\box-btn-done.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\box\box-btn-error.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\box\box-btn-l-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\box\box-btn-l.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\box\box-btn-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\box\box-btn-question.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\box\box-btn-r-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\box\box-btn-r.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\box\box-btn-warn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\box\box-btn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\box\box-close-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\box\box-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\box\box-lefttop.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\box\box-righttop.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\box\box-top.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\box\tabs-item-left-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\common\bigloading.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\common\button-disabled.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\common\button-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\common\button.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\common\drop-icons.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\common\exclamation.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\common\indicator_waitanim.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\common\invalid-line.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\common\loading.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\common\page_loading.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\common\p_loading.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\common\table.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\common\toggle.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\controls\bg-panel-title-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\controls\bg-panel-title-pressed.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\controls\bg-panel-title.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\controls\bg-tab-title-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\controls\bg-tab-title-pressed.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\controls\bg-tab-title.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\controls\bg-text.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\controls\bg-text.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\controls\bg-trigger-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\controls\bg-trigger-pressed.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\controls\bg-trigger.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\controls\btn-l.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\controls\btn-r.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\controls\btn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\controls\button-bg-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\controls\button-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\controls\checkbox.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\controls\checkboxandradio.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\controls\dateeditor-bar-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\controls\dateeditor-header-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\controls\radio.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dateeditor\icon-first.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dateeditor\icon-last.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dateeditor\icon-next.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dateeditor\icon-prev.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\33.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-bc.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-bc.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-bl.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-bl.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-br.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-br.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-button.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-button.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-cl.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-cl.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-close.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-cr.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-cr.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-done.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-error.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-icons.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-question.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-tc.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-tc.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-title-icon.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-tl.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-tl.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-tr.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-tr.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\dialog-warn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\ie6\dialog-bc.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\ie6\dialog-bc.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\ie6\dialog-cl.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\ie6\dialog-cl.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\ie6\dialog-cr.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\ie6\dialog-cr.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\ie6\dialog-tc.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\ie6\dialog-tc.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\dialog\indicator_waitanim.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\form\cal.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\form\verify-corner.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\grid\bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\grid\box-lefttop.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\grid\box-righttop.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\grid\grid-checkbox-checked.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\grid\grid-checkbox.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\grid\grid-detail-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\grid\grid-detail-open.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\grid\grid-line.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\grid\grid-tree-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\grid\grid-tree-open.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\grid\gridheaderbg.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\grid\header-bg-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\grid\header-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\grid\header2-bg.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\grid\loading.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\grid\popup-line.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\grid\popup-row-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\grid\popup-row-over.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\bar-button-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\checkbox-checked.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\checkbox.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\icon-close-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\icon-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\icon-close1.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\icon-close18X18.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\icon-close2.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\icon-done.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\icon-down.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\icon-drop.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\icon-edited.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\icon-first.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\icon-last.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\icon-line.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\icon-load.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\icon-load.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\icon-milestone.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\icon-next.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\icon-prev.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\icon-remark15X15.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\icon-sort-asc.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\icon-sort-desc.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\icon-up.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\icon-warn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\loading.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\icon\magnifier.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\layout\accordion-content.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\layout\accordion-header-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\layout\accordion-header.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\layout\layout-header-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\layout\layout-header.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\layout\layout-sidebar-header.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\layout\mini-bottom.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\layout\mini-left.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\layout\mini-right.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\layout\mini-top.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\layout\panel-content.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\layout\panel-header-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\layout\panel-header.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\layout\tabs-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\layout\tabs-bg1.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\layout\tabs-item-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\layout\tabs-item-left-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\layout\tabs-item-over-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\layout\tabs-item-right-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\layout\tabs-tools.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\layout\togglebar.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\menu\add.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\menu\del.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\menu\edit.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\menu\editpwd.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\menu\jsrole.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\menu\menu-item-arrow.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\menu\menu-item-down.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\menu\menu-item-over-l.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\menu\menu-item-over-m.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\menu\menu-item-over-r.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\menu\menu-line-x.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\menu\menu-line-y.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\menu\people.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\menu\pl.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\menu\pm.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\menu\regain.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\menu\sjrole.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\menu\view.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\panel\bar-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\panel\header-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\panel\header-bg.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\panel\header2-bg.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\panel\panel-btn-l.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\panel\panel-btn-r.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\panel\panel-btn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\panel\panel-header.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\panel\panel-menu-item-down.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\panel\panel-menu.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\panel\panel-menu.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\panel\panel-toolbar.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\panel\panel-toolbar.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\panel\panel-tools-sprites.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\panel\panel-tools.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\panel\tb_border.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\toolbar\bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\tree\folder-open.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\tree\folder.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\tree\loading.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\tree\tree-leaf.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\tree\tree-level.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\tree\tree-noline.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\tree\tree-status-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\tree\tree-status-open.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\tree\tree-status.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\tree\tree.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\tree\tree.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\btn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\button-disabled.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\button-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\button.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\button1.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\button2.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\dateeditor-bar.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\dateeditor-btn-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\dateeditor-btn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\dateeditor-thead.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\grid-detail-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\grid-detail-open.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\gridalt.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\gridbar.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\grideditor.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\icon-down.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\icon-select.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\icon-unselect.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\icon-up.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\input.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\inputdisabled.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\loading.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\loading2.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\images\ui\trigger.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\all.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\delete.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\edit.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\btn-sprite.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\button.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\ch.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\chtd-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\ddn.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\dn.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\fhbg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\fhbg.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\first.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\grid.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\grid3-special-col-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\grid3-special-col-sel-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\gridth.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\headbg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\hl.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\indicator_waitanim.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\last.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\line.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\load-bg.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\load.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\load.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\magnifier.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\next.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\page-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\prev.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\sort_asc.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\sort_desc.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\tbg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\up.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\uup.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\wbg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\home.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\home1.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\home2.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\indicator_waitanim.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\linked.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\new.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\page_loading.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\read-n.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\read-y.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\role-setup.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\save.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\search.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\send.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\sended.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\TabPanel\scroll-left.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\TabPanel\scroll-right.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\TabPanel\tab-bg-active.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\TabPanel\tab-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\TabPanel\tab-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\TabPanel\tab-content-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\Toolbar\bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\Toolbar\fix_bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\Toolbar\fix_bg_2.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\Toolbar\fix_border.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\Toolbar\fix_border_2.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\Toolbar\tb_border.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\WindowPanel\title-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\image\WindowPanel\window-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\img\hd-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\img\leaf.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\img\light-hd.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\img\s.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\img\tab-strip-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\img\tab-strip-btm-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\img\tabs-sprite.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\img\tool-sprites.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Tea\img\white-top-bottom.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\add.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\archives.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\attibutes.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\back.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\bluebook.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\bookpen.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\busy.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\calendar.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\candle.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\coffee.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\comment.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\communication.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\config.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\customers.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\cut.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\database.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\delete.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\discuss.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\edit.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\graywarn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\greenwarn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\help.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\home.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\lock.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\logout.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\mailbox.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\memeber.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\modify.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\msn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\myaccount.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\ok.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\outbox.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\pager.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\photograph.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\plus.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\prev.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\print.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\process.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\qq.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\refresh.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\right.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\role.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\save-disabled.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\save.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\search.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\search2.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\settings.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\true.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\icons\up.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\ligerui-icons.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\css\ligerui-all.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\css\ligerui-common.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\css\ligerui-dialog.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\css\ligerui-form.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\css\ligerui-grid.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\css\ligerui-layout.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\css\ligerui-menu.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\css\ligerui-tab.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\css\ligerui-tree.css" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\box\box-btn-done.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\box\box-btn-error.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\box\box-btn-l-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\box\box-btn-l.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\box\box-btn-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\box\box-btn-question.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\box\box-btn-r-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\box\box-btn-r.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\box\box-btn-warn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\box\box-btn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\box\box-close-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\box\box-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\box\box-lefttop.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\box\box-righttop.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\box\box-top.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\box\tabs-item-left-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\common\loading.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\controls\bg-panel-title-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\controls\bg-panel-title-pressed.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\controls\bg-panel-title.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\controls\bg-tab-title-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\controls\bg-tab-title-pressed.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\controls\bg-tab-title.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\controls\bg-text.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\controls\bg-text.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\controls\bg-trigger-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\controls\bg-trigger-pressed.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\controls\bg-trigger.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\controls\btn-l.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\controls\btn-r.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\controls\btn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\controls\button-bg-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\controls\button-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\controls\checkbox.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\controls\checkboxandradio.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\controls\dateeditor-bar-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\controls\dateeditor-header-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\controls\radio.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\dateeditor\icon-first.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\dateeditor\icon-last.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\dateeditor\icon-next.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\dateeditor\icon-prev.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\dialog\dialog-bc.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\dialog\dialog-bl.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\dialog\dialog-br.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\dialog\dialog-button.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\dialog\dialog-cl.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\dialog\dialog-close.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\dialog\dialog-cr.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\dialog\dialog-icons.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\dialog\dialog-tc.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\dialog\dialog-title-icon.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\dialog\dialog-tl.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\dialog\dialog-tr.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\dialog\ie6\dialog-bc.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\dialog\ie6\dialog-cl.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\dialog\ie6\dialog-cr.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\dialog\ie6\dialog-tc.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\form\address.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\form\checkboxradio.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\form\config.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\form\invalid_line.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\form\text-date-icon.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\form\text-down-icon.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\form\text-focus.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\form\text-l-focus.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\form\text-l-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\form\text-l.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\form\text-memeber-icon.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\form\text-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\form\text-r-focus.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\form\text-r-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\form\text-r.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\form\text.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\form\verify-corner.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\grid\box-lefttop.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\grid\box-righttop.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\grid\grid-checkbox-checked.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\grid\grid-checkbox.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\grid\grid-detail-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\grid\grid-detail-open.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\grid\grid-line.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\grid\grid-tree-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\grid\grid-tree-open.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\grid\gridheaderbg.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\grid\header-bg-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\grid\header-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\grid\header2-bg.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\grid\loading.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\grid\popup-line.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\grid\popup-row-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\grid\popup-row-over.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\icon\bar-button-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\icon\checkbox-checked.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\icon\checkbox.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\icon\icon-close-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\icon\icon-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\icon\icon-down.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\icon\icon-drop.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\icon\icon-edited.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\icon\icon-first.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\icon\icon-last.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\icon\icon-line.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\icon\icon-load.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\icon\icon-load.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\icon\icon-next.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\icon\icon-prev.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\icon\icon-sort-asc.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\icon\icon-sort-desc.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\icon\icon-up.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\icon\magnifier.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\layout\accordion-content.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\layout\accordion-header-over.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\layout\accordion-header.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\layout\layout-header-over.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\layout\layout-header-over.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\layout\layout-header.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\layout\panel-content.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\layout\panel-header-over.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\layout\panel-header.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\layout\tabs-bg.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\layout\tabs-item-bg.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\layout\tabs-item-left-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\layout\tabs-item-over-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\layout\tabs-item-right-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\layout\tabs-tools.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\layout\tabs-tools.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\layout\togglebar.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\layout\togglebar.png" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\menu\menu-item-arrow.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\menu\menu-item-down.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\menu\menu-item-over-l.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\menu\menu-item-over-m.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\menu\menu-item-over-r.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\menu\menu-line-x.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\menu\menu-line-y.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\panel\bar-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\panel\header-bg.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\panel\header-bg.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\panel\header2-bg.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\panel\panel-btn-l.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\panel\panel-btn-r.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\panel\panel-btn.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\panel\panel-header.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\panel\panel-menu-item-down.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\panel\panel-menu.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\panel\panel-menu.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\panel\panel-toolbar.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\panel\panel-toolbar.jpg" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\panel\panel-tools-sprites.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\panel\panel-tools.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\tree\folder-open.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\tree\folder.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\tree\loading.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\tree\tree-leaf.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\tree\tree-level.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\tree\tree-noline.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\tree\tree-status-close.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\tree\tree-status-open.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\tree\tree-status.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\tree\tree.gif" />
+    <Content Include="Themes\default\js\ligerUI\skins\Silvery\images\tree\tree.png" />
+    <Content Include="Themes\default\js\my97DatePicker\skin\WdatePicker.css" />
+    <Content Include="Themes\default\js\my97DatePicker\WdatePicker.js" />
+    <Content Include="Themes\default\js\settings\department.js" />
+    <Content Include="Themes\default\js\layout.js" />
+    <Content Include="Themes\default\js\jquery\jquery-1.7.1.min.js" />
+    <Content Include="Views\Apps\CRM\Index\CustomerIndex.cshtml" />
+    <Content Include="Views\Apps\Settings\Department\Add.cshtml" />
+    <Content Include="Views\Apps\Settings\Department\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Themes\default\Sale\" />
+    <Folder Include="Themes\default\Service\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\teaCRM.Common\5-teaCRM.Common.csproj">
+      <Project>{D03BBC00-649A-43B6-BB8D-65CB34AECC53}</Project>
+      <Name>5-teaCRM.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\teaCRM.Entity\4-teaCRM.Entity.csproj">
+      <Project>{0687C70A-0976-40D8-A069-56ED9E6FFF2D}</Project>
+      <Name>4-teaCRM.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\teaCRM.Service\2-teaCRM.Service.csproj">
+      <Project>{087A655B-AB00-4130-A1A5-7EFB707D60FB}</Project>
+      <Name>2-teaCRM.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Workbench\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\Register.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Apps\Sale\Index\SaleIndex.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Apps\CRM\Index\CustomerAdd.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Apps\Sale\Index\SaleAdd.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Apps\Index\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Apps\Product\Index\ProducrAdd.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Apps\Product\Index\ProductIndex.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Apps\Service\Index\ServiceAdd.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Apps\Service\Index\ServiceIndex.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Apps\Settings\Users\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Apps\Settings\ImportExport\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Apps\Settings\ExpandoField\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Apps\Settings\Role\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\EmailRegister.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\PhoneRegister.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\PublicRegister.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="log4net.bak.config" />
+    <None Include="Themes\default\js\ligerUI\skins\Purple\images\icon\icon-done.gif.695873" />
+    <None Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\indicator_waitanim.gif.bak" />
+    <None Include="Themes\default\js\ligerUI\skins\Purple\image\flexigrid_blue\vssver2.scc" />
+    <None Include="Themes\default\js\ligerUI\skins\Tea\images\grid\Thumbs.db" />
+    <None Include="Themes\default\js\ligerUI\skins\Tea\images\tree\Thumbs.db" />
+    <None Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\indicator_waitanim.gif.bak" />
+    <None Include="Themes\default\js\ligerUI\skins\Tea\image\flexigrid_blue\vssver2.scc" />
+    <None Include="Themes\default\js\ligerUI\skins\icons\1.bat" />
+    <None Include="Themes\default\js\ligerUI\skins\icons\新建 Microsoft Office Excel 工作表.xlsx" />
+    <Content Include="Views\Shared\_Error.cshtml" />
+    <Content Include="Views\Apps\CRM\Index\CustomerShow.cshtml" />
+    <Content Include="Views\Apps\CRM\Index\CustomerEdit.cshtml" />
+    <Content Include="Views\Apps\CRM\Index\ContactEdit.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>20649</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:20649/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

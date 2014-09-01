@@ -8,7 +8,7 @@ namespace teaCRM.Entity
 	public partial class TCusCon 
 	{
 	
-		[Id("id",IsDbGenerated=false)]
+		[Id("id",IsDbGenerated=true)]
 		public Int32 Id { get;set; }
  
 		[Column("cus_id")]

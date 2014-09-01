@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <objects xmlns="http://www.springframework.net" xmlns:db="http://www.springframework.net/database">
-  <!---账户登陆控制器开始-->
+  <!---账户登录控制器开始-->
   <object id="accountController" type="teaCRM.Web.Controllers.AccountController, teaCRM.Web" singleton="false">
     <!---name是当前属性明显，ref是关键的object的id名称-->
     <property name="AccountService" ref="accountService" />
   </object>
-  <!---账户登陆控制器结束-->
+  <!---账户登录控制器结束-->
 
   <!---工作台控制器开始-->
   <object id="workbenchController" type="teaCRM.Web.Controllers.WorkbenchController, teaCRM.Web" singleton="false" />

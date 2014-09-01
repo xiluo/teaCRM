@@ -132,7 +132,7 @@
         public enum LogActionEnum
         {
             /// <summary>
-            /// 登陆
+            /// 登录
             /// </summary>
             Login
         }
