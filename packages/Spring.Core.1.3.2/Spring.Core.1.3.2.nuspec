@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Spring.Core</id>
+    <version>1.3.2</version>
+    <title>Spring.Core</title>
+    <authors>SpringSource</authors>
+    <owners>SpringSource</owners>
+    <licenseUrl>http://www.springframework.net/license.html</licenseUrl>
+    <projectUrl>http://www.springframework.net/</projectUrl>
+    <iconUrl>http://springframework.net/images/SpringSource_Leaves32x32.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Core functionality for Spring.Net IoC container</description>
+    <summary>Core functionality for Spring.Net IoC container</summary>
+    <releaseNotes />
+    <copyright />
+    <language />
+    <dependencies>
+      <dependency id="Common.Logging" version="1.2.0" />
+    </dependencies>
+  </metadata>
+</package>
