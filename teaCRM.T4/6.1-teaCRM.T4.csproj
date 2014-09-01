@@ -261,13 +261,13 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\teaCRM.Dao\teaCRM.Dao.csproj">
+    <ProjectReference Include="..\teaCRM.Dao\3-teaCRM.Dao.csproj">
       <Project>{6887CE80-724B-4E77-9523-89FBEB753E6B}</Project>
-      <Name>teaCRM.Dao</Name>
+      <Name>3-teaCRM.Dao</Name>
     </ProjectReference>
-    <ProjectReference Include="..\teaCRM.Entity\teaCRM.Entity.csproj">
+    <ProjectReference Include="..\teaCRM.Entity\4-teaCRM.Entity.csproj">
       <Project>{0687C70A-0976-40D8-A069-56ED9E6FFF2D}</Project>
-      <Name>teaCRM.Entity</Name>
+      <Name>4-teaCRM.Entity</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

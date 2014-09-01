@@ -106,25 +106,25 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\teaCRM.Common\teaCRM.Common.csproj">
+    <ProjectReference Include="..\teaCRM.Common\5-teaCRM.Common.csproj">
       <Project>{D03BBC00-649A-43B6-BB8D-65CB34AECC53}</Project>
-      <Name>teaCRM.Common</Name>
+      <Name>5-teaCRM.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\teaCRM.Dao\teaCRM.Dao.csproj">
+    <ProjectReference Include="..\teaCRM.Dao\3-teaCRM.Dao.csproj">
       <Project>{6887CE80-724B-4E77-9523-89FBEB753E6B}</Project>
-      <Name>teaCRM.Dao</Name>
+      <Name>3-teaCRM.Dao</Name>
     </ProjectReference>
-    <ProjectReference Include="..\teaCRM.Entity\teaCRM.Entity.csproj">
+    <ProjectReference Include="..\teaCRM.Entity\4-teaCRM.Entity.csproj">
       <Project>{0687C70A-0976-40D8-A069-56ED9E6FFF2D}</Project>
-      <Name>teaCRM.Entity</Name>
+      <Name>4-teaCRM.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\teaCRM.Service\teaCRM.Service.csproj">
+    <ProjectReference Include="..\teaCRM.Service\2-teaCRM.Service.csproj">
       <Project>{087A655B-AB00-4130-A1A5-7EFB707D60FB}</Project>
-      <Name>teaCRM.Service</Name>
+      <Name>2-teaCRM.Service</Name>
     </ProjectReference>
-    <ProjectReference Include="..\teaCRM.Web\teaCRM.Web.csproj">
+    <ProjectReference Include="..\teaCRM.Web\1-teaCRM.Web.csproj">
       <Project>{20C4980B-EE81-4C68-AA86-A5B7BCE3166B}</Project>
-      <Name>teaCRM.Web</Name>
+      <Name>1-teaCRM.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

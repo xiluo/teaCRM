@@ -111,9 +111,9 @@ namespace teaCRM.Web.Controllers.Apps.CRM
                 CusNote = "备注",
                 //ConId = 1,//在Dao层处理
                 UserId = userId,//负责人
-                ConTeam = "1,2",
+                ConTeam = "17,21",
                 ConIsPub = 1,
-                ConBack = 1
+                ConBack = 0
                 //创建时间有数据库默认指定
             };
             //扩展字段

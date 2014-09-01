@@ -68,7 +68,10 @@ namespace teaCRM.Dao.CRM.Impl
                        a.cus_note,
                        a.con_id,
                        (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_id,
-                       a.con_team,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
                        a.con_is_pub,
                        a.con_back,
                        a.cus_createTime,

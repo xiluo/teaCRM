@@ -91,6 +91,10 @@ http://www.cnblogs.com/wuyifu/p/3328024.html
 http://www.cnblogs.com/kissazi2/p/3394430.html   
 >8项目架构评析    
 http://www.cnblogs.com/legendxian/archive/2012/06/18/2553111.html#!comments    
+>9sql多个值拼接成一行字符串    
+http://blog.163.com/zhi_qingfang%40126/blog/static/11747756320132693434495/        
+(select stuff((select ','+user_tname from t_sys_user WHERE id IN (17,21) for xml path ('')),1,1,''))       
+
 
 
 
