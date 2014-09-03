@@ -116,7 +116,7 @@ function save_add() {
             //刷新数据
             window.parent.f_reload();
         } else {
-            parent.dialog.list['save_ok'].close();
+            parent.dialog.list['show_add'].close();
             showTopMsg("save_error", "系统异常！");
         }
     });
