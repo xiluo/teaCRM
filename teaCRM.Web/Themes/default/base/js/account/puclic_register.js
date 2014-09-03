@@ -14,6 +14,7 @@ $(function() {
         rules: {
             userName: {
                 rangelength: [6, 20],
+                noCHS:"",
                 remote: {
                     url: '/Account/ValidateAccount/',
                     data: {
@@ -30,7 +31,7 @@ $(function() {
                 }
             },
             userPassword: {
-                rangelength: [6, 20]
+                rangelength: [6, 20],
             },
             rePassword: {
                 equalTo: "#userPassword"
@@ -94,7 +95,7 @@ function do_register() {
             var is_agree = $("#is_agree").prop("checked");
             //alert(is_agree);
             if (!is_agree) {
-                $("#is_agree").formtip("您必须同意优创C+企业云平台用户服务条款！");
+                showMsg("您必须同意优创C+企业云平台用户服务条款！");
             } else {
                 validateRegister();
             }

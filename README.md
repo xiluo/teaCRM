@@ -94,7 +94,8 @@ http://www.cnblogs.com/legendxian/archive/2012/06/18/2553111.html#!comments
 >9sql多个值拼接成一行字符串    
 http://blog.163.com/zhi_qingfang%40126/blog/static/11747756320132693434495/        
 (select stuff((select ','+user_tname from t_sys_user WHERE id IN (17,21) for xml path ('')),1,1,''))       
-
+>10 jquery validate错误    
+http://stackoverflow.com/questions/14896205/validator-validator-methodsmethod-is-undefined  
 
 
 

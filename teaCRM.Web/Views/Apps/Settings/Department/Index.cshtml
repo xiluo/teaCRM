@@ -2,7 +2,6 @@
 @model dynamic
 
 @{
-    var rootPath = "";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section seo {
@@ -12,12 +11,12 @@
 
 @section head {
     <!-- 组织架构需要导入的js、css -->
-    <link href="@rootPath/Themes/default/settings/css/department.css" rel="stylesheet" type="text/css" />
-    <link href="@rootPath/Themes/default/lib/ligerUI/skins/Tea/css/ligerui-all.css" rel="stylesheet" type="text/css" />
-    <script src="@rootPath/Themes/default/lib/ligerUI/js/plugins/ligerTree.js" type="text/javascript"></script>
+    <link href="/Themes/default/settings/css/department.css" rel="stylesheet" type="text/css" />
+    <link href="/Themes/default/lib/ligerUI/skins/Tea/css/ligerui-all.css" rel="stylesheet" type="text/css" />
+    <script src="/Themes/default/lib/ligerUI/js/plugins/ligerTree.js" type="text/javascript"></script>
   
    
-    <script src="@rootPath/Themes/default/settings/js/department.js" type="text/javascript"></script>
+    <script src="/Themes/default/settings/js/department.js" type="text/javascript"></script>
 }
 
 <div id="department"  style="margin-top: 90px;">

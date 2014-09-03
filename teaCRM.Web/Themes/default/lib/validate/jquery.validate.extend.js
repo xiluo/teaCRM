@@ -1,9 +1,9 @@
 ﻿///////////////////////////////////////////////////////////////
 /*这里是JQuery验证扩展*/
-/*2014-09-01 修改 By 唐有炜*/
+/*2014-06-13 修改 By 唐有炜*/
 //jQuery默认实现的验证有
 //(1)required:true               必输字段
-//(2)remote:"check.ashx"         使用ajax方法调用check.ashx验证输入值
+//(2)remote:"check.ashx"          使用ajax方法调用check.php验证输入值
 //(3)email:true                  必须输入正确格式的电子邮件
 //(4)url:true                    必须输入正确格式的网址
 //(5)date:true                   必须输入正确格式的日期
@@ -22,21 +22,21 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 //下面是自定义扩展
-$(function() {
+$(function () {
     //验证手机号
-    jQuery.validator.addMethod("phone", function(value, element) {
+    jQuery.validator.addMethod("phone", function (value, element) {
         var reg = /^1[3|4|5|8|9]\d{9}$/;
         return reg.test(value);
     }, "&nbsp;手机号格式错误!");
 
     //验证电话号码
-    jQuery.validator.addMethod("tel", function(value, element) {
+    jQuery.validator.addMethod("tel", function (value, element) {
         var reg = /\d{3}-\d{8}|\d{4}-\d{7}/;
         return reg.test(value);
     }, "&nbsp;电话号码格式错误!");
 
     //验证手机和电话号码
-    jQuery.validator.addMethod("mobileTelephome", function(value, element) {
+    jQuery.validator.addMethod("mobileTelephome", function (value, element) {
         var pattern = /(^(([0\+]\d{2,3}-)?(0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$)|(^0{0,1}1[3|4|5|6|7|8|9][0-9]{9}$)/;
         if (pattern.test(value)) {
             return true;
@@ -47,18 +47,19 @@ $(function() {
 
 
     //只允许输入汉字以外的字符
-    jQuery.validator.addMethod("noCHS", function(value, element) {
+    jQuery.validator.addMethod("noCHS", function (value, element) {
         return !(/^[\u4E00-\u9FA0]+$/.test(value));
     }, "&nbsp;不能包含中文字符!");
 
 
     //只允许输入汉字以外的字符
-    jQuery.validator.addMethod("idcard", function(value, element) {
+    jQuery.validator.addMethod("idcard", function (value, element) {
         return isChinaIDCard(value);
     }, "&nbsp;错误");
 
 
 });
+
 
 
 //==================================================
@@ -80,7 +81,7 @@ function isChinaIDCard(StrNo) {
         a = a + parseInt(StrNo.substr(15, 1)) * 4 + parseInt(StrNo.substr(16, 1)) * 2;
         b = a % 11;
 
-        if (b == 2) //最后一位为校验位  
+        if (b == 2)   //最后一位为校验位  
         {
             c = StrNo.substr(17, 1).toUpperCase(); //转为大写X  
         } else {
@@ -88,62 +89,62 @@ function isChinaIDCard(StrNo) {
         }
 
         switch (b) {
-        case 0:
-            if (c != 1) {
-                return false;
-            }
-            break;
-        case 1:
-            if (c != 0) {
-                return false;
-            }
-            break;
-        case 2:
-            if (c != "X") {
-                return false;
-            }
-            break;
-        case 3:
-            if (c != 9) {
-                return false;
-            }
-            break;
-        case 4:
-            if (c != 8) {
-                return false;
-            }
-            break;
-        case 5:
-            if (c != 7) {
-                return false;
-            }
-            break;
-        case 6:
-            if (c != 6) {
-                return false;
-            }
-            break;
-        case 7:
-            if (c != 5) {
-                return false;
-            }
-            break;
-        case 8:
-            if (c != 4) {
-                return false;
-            }
-            break;
-        case 9:
-            if (c != 3) {
-                return false;
-            }
-            break;
-        case 10:
-            if (c != 2) {
-                return false;
-            }
+            case 0:
+                if (c != 1) {
+                    return false;
+                }
+                break;
+            case 1:
+                if (c != 0) {
+                    return false;
+                }
+                break;
+            case 2:
+                if (c != "X") {
+                    return false;
+                }
+                break;
+            case 3:
+                if (c != 9) {
+                    return false;
+                }
+                break;
+            case 4:
+                if (c != 8) {
+                    return false;
+                }
+                break;
+            case 5:
+                if (c != 7) {
+                    return false;
+                }
+                break;
+            case 6:
+                if (c != 6) {
+                    return false;
+                }
+                break;
+            case 7:
+                if (c != 5) {
+                    return false;
+                }
+                break;
+            case 8:
+                if (c != 4) {
+                    return false;
+                }
+                break;
+            case 9:
+                if (c != 3) {
+                    return false;
+                }
+                break;
+            case 10:
+                if (c != 2) {
+                    return false;
+                }
         }
-    } else //15位身份证号  
+    } else   //15位身份证号  
     {
         if (!isInteger(StrNo)) {
             return false;
@@ -151,18 +152,18 @@ function isChinaIDCard(StrNo) {
     }
 
     switch (StrNo.length) {
-    case 15:
-        if (isValidDate("19" + StrNo.substr(6, 2), StrNo.substr(8, 2), StrNo.substr(10, 2))) {
-            return true;
-        } else {
-            return false;
-        }
-    case 18:
-        if (isValidDate(StrNo.substr(6, 4), StrNo.substr(10, 2), StrNo.substr(12, 2))) {
-            return true;
-        } else {
-            return false;
-        }
+        case 15:
+            if (isValidDate("19" + StrNo.substr(6, 2), StrNo.substr(8, 2), StrNo.substr(10, 2))) {
+                return true;
+            } else {
+                return false;
+            }
+        case 18:
+            if (isValidDate(StrNo.substr(6, 4), StrNo.substr(10, 2), StrNo.substr(12, 2))) {
+                return true;
+            } else {
+                return false;
+            }
     }
     return false;
 }
@@ -203,60 +204,60 @@ function IDUpdate(StrNo) {
         b = a % 11;
 
         switch (b) {
-        case 0:
-            {
-                StrNo = StrNo + "1";
-            }
-            break;
-        case 1:
-            {
-                StrNo = StrNo + "0";
-            }
-            break;
-        case 2:
-            {
-                StrNo = StrNo + "X";
-            }
-            break;
-        case 3:
-            {
-                StrNo = StrNo + "9";
-            }
-            break;
-        case 4:
-            {
-                StrNo = StrNo + "8";
-            }
-            break;
-        case 5:
-            {
-                StrNo = StrNo + "7";
-            }
-            break;
-        case 6:
-            {
-                StrNo = StrNo + "6";
-            }
-            break;
-        case 7:
-            {
-                StrNo = StrNo + "5";
-            }
-            break;
-        case 8:
-            {
-                StrNo = StrNo + "4";
-            }
-            break;
-        case 9:
-            {
-                StrNo = StrNo + "3";
-            }
-            break;
-        case 10:
-        {
-            StrNo = StrNo + "3";
-        }
+            case 0:
+                {
+                    StrNo = StrNo + "1";
+                }
+                break;
+            case 1:
+                {
+                    StrNo = StrNo + "0";
+                }
+                break;
+            case 2:
+                {
+                    StrNo = StrNo + "X";
+                }
+                break;
+            case 3:
+                {
+                    StrNo = StrNo + "9";
+                }
+                break;
+            case 4:
+                {
+                    StrNo = StrNo + "8";
+                }
+                break;
+            case 5:
+                {
+                    StrNo = StrNo + "7";
+                }
+                break;
+            case 6:
+                {
+                    StrNo = StrNo + "6";
+                }
+                break;
+            case 7:
+                {
+                    StrNo = StrNo + "5";
+                }
+                break;
+            case 8:
+                {
+                    StrNo = StrNo + "4";
+                }
+                break;
+            case 9:
+                {
+                    StrNo = StrNo + "3";
+                }
+                break;
+            case 10:
+                {
+                    StrNo = StrNo + "3";
+                }
         }
     }
     return StrNo;

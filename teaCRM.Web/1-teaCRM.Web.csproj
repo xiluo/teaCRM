@@ -160,6 +160,33 @@
     </Content>
     <Content Include="Themes\default\base\css\account.css" />
     <Content Include="Themes\default\base\images\develop.png" />
+    <Content Include="Themes\default\lib\artDialog\lib\require.js" />
+    <Content Include="Themes\default\lib\artDialog\lib\sea.js" />
+    <Content Include="Themes\default\lib\jquery\jquery-1.7.1.js" />
+    <Content Include="Themes\default\lib\jquery\jquery-1.7.1.min.js" />
+    <Content Include="Themes\default\lib\poshytip\jquery.poshytip.js" />
+    <Content Include="Themes\default\lib\poshytip\jquery.poshytip.min.js" />
+    <Content Include="Themes\default\lib\poshytip\tip-darkgray\tip-darkgray.css" />
+    <Content Include="Themes\default\lib\poshytip\tip-darkgray\tip-darkgray.png" />
+    <Content Include="Themes\default\lib\poshytip\tip-darkgray\tip-darkgray_arrows.png" />
+    <Content Include="Themes\default\lib\poshytip\tip-green\tip-green.css" />
+    <Content Include="Themes\default\lib\poshytip\tip-green\tip-green_arrows.gif" />
+    <Content Include="Themes\default\lib\poshytip\tip-skyblue\tip-skyblue.css" />
+    <Content Include="Themes\default\lib\poshytip\tip-skyblue\tip-skyblue.png" />
+    <Content Include="Themes\default\lib\poshytip\tip-skyblue\tip-skyblue_arrows.png" />
+    <Content Include="Themes\default\lib\poshytip\tip-twitter\tip-twitter.css" />
+    <Content Include="Themes\default\lib\poshytip\tip-twitter\tip-twitter_arrows.gif" />
+    <Content Include="Themes\default\lib\poshytip\tip-violet\tip-violet.css" />
+    <Content Include="Themes\default\lib\poshytip\tip-violet\tip-violet.png" />
+    <Content Include="Themes\default\lib\poshytip\tip-violet\tip-violet_arrows.png" />
+    <Content Include="Themes\default\lib\poshytip\tip-yellowsimple\tip-yellowsimple.css" />
+    <Content Include="Themes\default\lib\poshytip\tip-yellowsimple\tip-yellowsimple_arrows.gif" />
+    <Content Include="Themes\default\lib\poshytip\tip-yellow\tip-yellow.css" />
+    <Content Include="Themes\default\lib\poshytip\tip-yellow\tip-yellow.png" />
+    <Content Include="Themes\default\lib\poshytip\tip-yellow\tip-yellow_arrows.png" />
+    <Content Include="Themes\default\lib\validate\jquery.validate.extend.js" />
+    <Content Include="Themes\default\lib\validate\jquery.validate.js" />
+    <Content Include="Themes\default\lib\validate\jquery.validate.min.js" />
     <Content Include="Views\Base\Admin\LogView.cshtml" />
     <Resource Include="Configs\Services.xml">
       <SubType>Designer</SubType>
@@ -224,7 +251,6 @@
     <Content Include="Themes\default\lib\ligerUI\js\common.js" />
     <Content Include="Themes\default\lib\ligerUI\js\ligerui.all.js" />
     <Content Include="Themes\default\lib\ligerUI\js\ligerui.min.js" />
-    <Content Include="Themes\default\lib\ligerUI\js\ligerui.min2.js" />
     <Content Include="Themes\default\lib\ligerUI\js\plugins\ligerAccordion.js" />
     <Content Include="Themes\default\lib\ligerUI\js\plugins\ligerAccordion1.js" />
     <Content Include="Themes\default\lib\ligerUI\js\plugins\ligerButton.js" />
@@ -1218,13 +1244,6 @@
     <Content Include="Themes\default\lib\my97DatePicker\WdatePicker.js" />
     <Content Include="Themes\default\settings\js\department.js" />
     <Content Include="Themes\default\base\js\layout.js" />
-    <Content Include="Themes\default\lib\jquery\jquery-1.7.1.min.js" />
-    <None Include="Themes\default\lib\validate\jquery.validate-vsdoc.js" />
-    <Content Include="Themes\default\lib\validate\jquery.validate.extend.js" />
-    <Content Include="Themes\default\lib\validate\jquery.validate.js" />
-    <Content Include="Themes\default\lib\validate\jquery.validate.min.js" />
-    <Content Include="Themes\default\lib\validate\jquery.validate.unobtrusive.js" />
-    <Content Include="Themes\default\lib\validate\jquery.validate.unobtrusive.min.js" />
     <Content Include="Themes\default\lib\validate\messages_cn.js" />
     <Content Include="Views\Apps\CRM\Index\CustomerIndex.cshtml" />
     <Content Include="Views\Apps\Settings\Department\Add.cshtml" />
@@ -1243,7 +1262,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Themes\default\lib\poshytip\" />
     <Folder Include="Themes\default\sale\" />
     <Folder Include="Themes\default\service\" />
     <Folder Include="Themes\default\settings\images\" />

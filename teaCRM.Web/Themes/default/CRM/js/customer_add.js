@@ -3,13 +3,12 @@
 //*时间：2014年09月01日
 
 $(document).ready(function() {
-
+    validate_form();
 });
 
 
 $(function() {
-//表单验证
-    validate_form();
+
 });
 
 //表单验证
@@ -21,15 +20,7 @@ function validate_form() {
                 rangelength: [2, 20]
             },
             cus_tel: {
-                remote: {
-                    url: '/Apps/CRM/LoadData/ValidatePhone/'
-                    //                    ,data: {
-                    //                        action: function () { return "validate_phone"; }
-                    //                    }
-                },
-                con_name: {
-                    rangelength: [2, 20]
-                }
+                remote: { type: "POST", url: '/Apps/CRM/LoadData/ValidatePhone/' }
             }
         },
         messages: {
@@ -38,20 +29,64 @@ function validate_form() {
                 rangelength: "客户名称长度必须在2-20之间"
             },
             cus_tel: {
+                required: "电话或手机号码不能为空！",
                 remote: "该电话或手机号码已存在！"
             },
             con_name: {
                 required: "主联系人名称不能为空！",
-                rangelength: "主联系人名称长度必须在2-20之间"
             }
         },
-        errorPlacement: function (error, element) {
+
+//       onkeyup: false,
+//        success: function (element) {
+//            var elem = $(element);
+//            elem.poshytip('disable');
+//            elem.poshytip('destroy');
+//        },
+//        errorPlacement: function (error, element) {
+//            var elem = $(element);
+//            if (!error.is(':empty')) {
+//                //右：x=right;y=center
+//                //左：x=left;y=center
+//                //上：x=inner-left
+//                //下：x=center;y=bottom
+//                var aX = "center";
+//                if (elem.attr("positionX") != null) {
+//                    aX = elem.attr("positionX");
+//                }
+//                var aY = "bottom";
+//                if (elem.attr("positionY") != null) {
+//                    aY = elem.attr("positionY");
+//                }
+//                elem.filter(':not(.valid)').poshytip({
+//                    content: error,
+//                    alignTo: 'target',
+//                    alignX: aX,
+//                    alignY: aY,
+//                    offsetX: 0,
+//                    offsetY: 5
+//                });
+//            } else {
+//                elem.poshytip('disable');
+//                elem.poshytip('destroy');
+//            }
+//        }
+        errorPlacement: function(error, element) {
             var errorMsg = error[0].innerHTML;
             var elementName = element[0].name;
-            //alert(errorMsg);
-            //alert(elementName);
             $("#" + elementName).formtip(errorMsg);
+        },
+        success: function(element) {
+            var elem = $(element)[0].htmlFor;
+            $("#" + elem).poshytip('disable');
+            $("#" + elem).poshytip('destroy');
+            $("#" + elem).css("border", "1px solid green");
         }
+//          showErrors: function(errorMap, errorList) {
+//             showModal("您的表单包含" + this.numberOfInvalids()
+//              + "项错误，请检查！");
+//            this.defaultShowErrors();
+//        }
     });
 }
 
@@ -61,12 +96,14 @@ function save_add() {
     var data = $("#form_customer").serialize();
     //alert(data);
     //表单验证
-    validate_form();
-    alert($("#form_customer").valid());
-    var flag = $("#form_customer").valid();
-    if (!flag) {
+    //validate_form();
+    //alert($("#form_customer").valid());
+    if (!$("#form_customer").valid()) {
+        //showModal("您的表单包含错误，请检查！");
+        $("#form_msg").html("您的表单包含错误，请检查！").show();
         return false;
     }
+    $("#form_msg").hide();
 
     //提交数据
     var url = "/Apps/CRM/Index/Add/";
