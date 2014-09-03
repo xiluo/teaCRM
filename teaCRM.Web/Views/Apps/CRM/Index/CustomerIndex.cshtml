@@ -441,41 +441,13 @@
             //    } else {
             //        $.ligerDialog.warn('权限不够！');
             //    }
-            var d = dialog({
-                id: 'show_add',
-                title: '添加客户',
-                //url: '/Apps/CRM/Index/Add/',
-                content: '<iframe src="/Apps/CRM/Index/Show/" id="frm" name="frm" height="100%" style="border-bottom:1px solid #E5E5E5;" width="100%" frameborder="0"></iframe>',
-                width: '800',
-                height: '480',
-                left: 0,
-                top: 0,
-                fixed: true,
-                resize: false,
-                drag: false,
-                lock: true
-            });
-            d.showModal();
+         
+             showWindow("show_add", "/Apps/CRM/Index/Show/", "查看客户", 800, 480);
         }
 
         //添加客户
         function add() {
-            //f_openWindow("CRM/Customer/Customer_add.aspx", "新增客户", 770, 495);
-            var d = dialog({
-                id: 'show_add',
-                title: '添加客户',
-                //url: '/Apps/CRM/Index/Add/',
-                content: '<iframe src="/Apps/CRM/Index/Add/" id="frm" name="frm" height="100%" style="border-bottom: 1px solid #E5E5E5;" width="100%" height="100%" width="100%" frameborder="0"></iframe>',
-                width: '670',
-                height: '480',
-                left: 0,
-                top: 0,
-                fixed: true,
-                resize: false,
-                drag: false,
-                lock: true
-            });
-            d.showModal();
+            showWindow("show_add", "/Apps/CRM/Index/Add/", "新增客户", 670, 480);
         }
 
         function edit() {

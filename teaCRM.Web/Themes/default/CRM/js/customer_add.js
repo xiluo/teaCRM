@@ -99,8 +99,8 @@ function save_add() {
     //validate_form();
     //alert($("#form_customer").valid());
     if (!$("#form_customer").valid()) {
-        //showModal("您的表单包含错误，请检查！");
-        $("#form_msg").html("您的表单包含错误，请检查！").show();
+        showMsg("您的表单包含错误，请检查！");
+        //$("#form_msg").html("您的表单包含错误，请检查！").show();
         return false;
     }
     $("#form_msg").hide();
@@ -112,12 +112,12 @@ function save_add() {
             //关闭父窗口
             parent.dialog.list['show_add'].close();
             //在iframe里面打开弹出框并自动关闭
-            showTopMsg("show_add", result.Msg);
+            showTopMsg("save_ok", result.Msg);
             //刷新数据
             window.parent.f_reload();
         } else {
-            parent.dialog.list['show_add'].close();
-            showTopMsg("show_add", "系统异常！");
+            parent.dialog.list['save_ok'].close();
+            showTopMsg("save_error", "系统异常！");
         }
     });
 }

@@ -42,69 +42,110 @@ function Trim(str) {
 //<script src="/Themes/default/js/artDialog/dist/dialog-plus-min.js"></script>
 //修正margin:10px 10px -10px 10px
 function showMsg(Msg, okCallback) {
-    var d;
-    var id = "dlgShowMsg";
     if (arguments.length == 1) {
-        d = dialog({
+        var d = dialog({
             title: '温馨提示',
             content: Msg,
-            time: 2,
+            quickClose: true,
             cancel: false
-        });
+        }).show();
+        //自动关闭
+        setTimeout(function() {
+            d.close().remove();
+        }, 1000);
     } else if (arguments.length == 2) {
-        d = dialog({
+        var d = dialog({
             title: '温馨提示',
             content: Msg,
             okValue: '确 定',
             ok: okCallback,
             cancelValue: '取消',
-            time: 2,
+            quickClose: true,
             cancel: false
-//            ,
-//            cancel: function() {
-//                d.close().remove();
-//            }
-        });
+        }).show();
+        //自动关闭
+        setTimeout(function() {
+            d.close().remove();
+        }, 1000);
     }
-    d.show();
 }
 
 function showModal(Msg, okCallback) {
-    var d;
     if (arguments.length == 1) {
-        d = dialog({
+        var d = dialog({
             title: '温馨提示',
-            content: Msg
-        });
+            content: Msg,
+            quickClose: true,
+            cancel: false
+        }).showModal();
+        //自动关闭
+        setTimeout(function() {
+            d.close().remove();
+        }, 1000);
     } else if (arguments.length == 2) {
-        d = dialog({
+        var d = dialog({
             title: '温馨提示',
             content: Msg,
             okValue: '确 定',
             ok: okCallback,
             cancelValue: '取消',
-            cancel: function() {
-                d.close().remove();
-            }
-        });
+            quickClose: true,
+            cancel: false
+        }).showModal();
+        //自动关闭
+        setTimeout(function() {
+            d.close().remove();
+        }, 1000);
     }
+}
+
+//============================================================================
+//弹出iframe窗口，用作表单===============================================
+//2014-09-03 By 唐有炜
+function showWindow(id, url, title, w, h) {
+    var d = dialog({
+        id: id,
+        title: '添加客户',
+        //url: url,//此方式不支持滚动条
+        content: '<iframe src="' + url + '" id="frm" name="frm" height="100%" style="border-bottom: 1px solid #E5E5E5;" width="100%" height="100%" width="100%" frameborder="0"></iframe>',
+        width: w,
+        height: h,
+        left: 0,
+        top: 0,
+        fixed: true,
+        resize: false,
+        drag: false,
+        lock: true
+    });
     d.showModal();
 }
+
 
 //iframe里面弹出对话框并自动关闭
 function showTopMsg(id, Msg) {
     //在iframe里面打开弹出框并自动关闭
-    top.dialog({
-        id: "save_add",
+    var d = top.dialog({
+        id: id,
         title: '温馨提示',
         content: Msg,
-        onshow: function() {
-            setTimeout(function() {
-                top.dialog.list[id].close().remove();
-            }, 2000);
-        },
         cancel: false
     }).show();
+    setTimeout(function() {
+        d.close().remove();
+    }, 1000);
+}
+
+function showTopModal(id, Msg) {
+    //在iframe里面打开弹出框并自动关闭
+    var d = top.dialog({
+        id: id,
+        title: '温馨提示',
+        content: Msg,
+        cancel: false
+    }).showModal();
+    setTimeout(function() {
+        d.close().remove();
+    }, 2000);
 }
 
 //===========================================================
