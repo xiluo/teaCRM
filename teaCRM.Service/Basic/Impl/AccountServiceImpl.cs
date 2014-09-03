@@ -32,7 +32,8 @@ namespace teaCRM.Service.Impl
         /// 注入账户Dao接口 2014-08-26 14:58:50 By 唐有炜
         /// </summary>
         public ITSysUserDao SysUserDao { set; get; }
-        public ITSysCompanyDao SysCompanyDao{ set; get; }
+
+        public ITSysCompanyDao SysCompanyDao { set; get; }
         public IVCompanyUserDao CompanyUserDao { set; get; }
         public ITSysLogDao SysLogDao { set; get; }
 
@@ -43,12 +44,10 @@ namespace teaCRM.Service.Impl
         /// </summary>
         /// <param name="action">操作类型（login、register）</param>
         /// <param name="type">注册或登录方式（normal,qrcode,usb,footprint）</param>
-        /// <param name="accountType">账号类型（username,email,phone）</param>
         /// <param name="userName">用户名</param>
         /// <param name="userPassword">密码</param>
         /// <returns>ResponseMessage</returns>
-        public ResponseMessage ValidateAccount(string action, string type, string accountType, string userName,
-            string userPassword)
+        public ResponseMessage ValidateAccount(string action, string type, string userName, string userPassword = null)
         {
             ResponseMessage rmsg = new ResponseMessage();
 
@@ -64,6 +63,11 @@ namespace teaCRM.Service.Impl
                             {
                                 rmsg.Status = true;
                                 rmsg.Msg = "用户名输入正确！";
+                                //密码空时只验证用户名
+                                if (String.IsNullOrEmpty(userPassword))
+                                {
+                                    return rmsg;
+                                }
                             }
                             else
                             {
@@ -96,7 +100,8 @@ namespace teaCRM.Service.Impl
 
                     break;
                 case "register":
-                    if (UserNameExists(accountType, userName))
+                    if (UserNameExists("username", userName) || UserNameExists("email", userName) ||
+                        UserNameExists("phone", userName))
                     {
                         rmsg.Status = false;
                         rmsg.Msg = "对不起，该用户名已存在！";
@@ -345,13 +350,8 @@ namespace teaCRM.Service.Impl
             string userPassword,
             string remember, string clientIp, string clientPlace, string clientTime)
         {
-            LogHelper.Info(userName + "登录验证开始...");
-
-            ResponseMessage rmsg = ValidateAccount("login", type, accountType, userName, userPassword);
-
-            LogHelper.Info(userName + "登录验证结束...");
-
-            if (rmsg.Status) //登录成功
+            ResponseMessage rmsg = new ResponseMessage();
+            try
             {
                 //获取用户信息
                 var compUser = GetVCompanyUserByAccountTypeAndUserName(accountType, userName);
@@ -374,10 +374,17 @@ namespace teaCRM.Service.Impl
                     LogTime = DateTime.Parse(clientTime)
                 };
                 SysLogDao.InsertEntity(sysLog);
-               
+
+                rmsg.Status = true;
+                rmsg.Msg = "登陆成功";
                 LogHelper.Info(userName + "登录成功，登录日志已记录。");
             }
-
+            catch (Exception ex)
+            {
+                rmsg.Status = false;
+                rmsg.Msg = "登陆失败";
+                LogHelper.Debug("登陆错误", ex);
+            }
 
             return rmsg;
         }
@@ -397,12 +404,12 @@ namespace teaCRM.Service.Impl
         public ResponseMessage Register(HttpContext httpContext, string accountType, string userName,
             string userPassword)
         {
-            ResponseMessage rmsg = ValidateAccount("register", null, accountType, userName, userPassword);
+            ResponseMessage rmsg = ValidateAccount("register", null, userName, userPassword);
             if (rmsg.Status)
             {
                 //注册验证成功成功
                 //随机编号
-                var  compNum= RandomHelper.GetComoanyNumber();
+                var compNum = RandomHelper.GetComoanyNumber();
                 TSysCompany sysCompany = new TSysCompany()
                 {
                     CompNum = compNum
@@ -474,21 +481,24 @@ namespace teaCRM.Service.Impl
             string userPassword,
             string userTname = null)
         {
-            ResponseMessage rmsg1 = ValidateAccount("register", null, "username", userName + "@10000", userPassword);
-            if (!rmsg1.Status)
+//            ResponseMessage rmsg1 = ValidateAccount("register", null,  userName + "@10000", userPassword);
+//            if (!rmsg1.Status)
+//            {
+//                return rmsg1;
+//            }
+//            ResponseMessage rmsg2 = ValidateAccount("register", null,  phone, userPassword);
+//            if (!rmsg2.Status)
+//            {
+//                rmsg2.Msg = "对不起该手机号已存在！";
+//                return rmsg2;
+//            }
+//            ResponseMessage rmsg = rmsg2;
+//            if (rmsg1.Status && rmsg2.Status)
+//            {
+            ResponseMessage rmsg = new ResponseMessage();
+            try
             {
-                return rmsg1;
-            }
-            ResponseMessage rmsg2 = ValidateAccount("register", null, "phone", phone, userPassword);
-            if (!rmsg2.Status)
-            {
-                rmsg2.Msg = "对不起该手机号已存在！";
-                return rmsg2;
-            }
-            ResponseMessage rmsg = rmsg2;
-            if (rmsg1.Status && rmsg2.Status)
-            {
-                //注册验证成功成功
+                //注册提交
                 var dbPassword = DESEncrypt.Encrypt(userPassword);
                 TSysUser sysUser = new TSysUser()
                 {
@@ -511,6 +521,12 @@ namespace teaCRM.Service.Impl
                     rmsg.Status = false;
                     rmsg.Msg = "注册失败";
                 }
+            }
+            catch (Exception ex)
+            {
+                rmsg.Status = false;
+                rmsg.Msg = "注册失败";
+                LogHelper.Error("注册失败：", ex);
             }
 
             //注册成功

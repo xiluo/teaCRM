@@ -14,7 +14,7 @@ FROM    ( SELECT TOP 10
                                 a.cus_note ,
                                 a.con_id ,
                                 ( SELECT    u.user_tname
-                                  FROM      t_sys_user AS u
+                                  FROM      t_sys_user AS u 
                                   WHERE     u.id = a.user_id
                                 ) AS user_id ,
                                 ( SELECT    STUFF(( SELECT  ','
@@ -22,7 +22,7 @@ FROM    ( SELECT TOP 10
                                                     FROM    t_sys_user AS u2
                                                     WHERE   CHARINDEX(CAST(u2.id AS VARCHAR),
                                                               a.con_team) > 0
-                                                  FOR
+                                                  FOR 
                                                     XML PATH('')
                                                   ), 1, 1, '')
                                 ) AS con_team ,

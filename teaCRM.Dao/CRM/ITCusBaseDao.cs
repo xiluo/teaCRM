@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +8,7 @@ using teaCRM.Entity;
 
 namespace teaCRM.Dao
 {
-public  interface ITCusBaseDao:ITableDao<TCusBase>
+    public interface ITCusBaseDao : ITableDao<TCusBase>
     {
-
-	   }
-	   }
+    }
+}

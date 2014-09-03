@@ -83,5 +83,13 @@ namespace teaCRM.Service.CRM
         /// </summary>
         /// <returns></returns>
         string GetFollowMenu();
+
+
+        /// <summary>
+        /// 验证手机号是否存在
+        /// </summary>
+        /// <param name="cus_tel">手机号</param>
+        /// <returns></returns>
+        bool ValidatePhone(string cus_tel);
     }
 }

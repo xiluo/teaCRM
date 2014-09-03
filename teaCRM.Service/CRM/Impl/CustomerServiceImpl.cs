@@ -33,8 +33,9 @@ namespace teaCRM.Service.CRM.Impl
         /// CustomerServiceImpl注入dao依赖
         /// </summary>
         public IZCusInfoDao CusInfoDao { set; get; }
-
         public ITFunExpandDao FunExpandDao { set; get; }
+        public ITCusBaseDao CusBaseDao { set; get; }
+
 
         #region 获取筛选器树形列表
 
@@ -214,5 +215,21 @@ namespace teaCRM.Service.CRM.Impl
         }
 
         #endregion
+
+
+        #region 验证手机号是否存在 2014-09-01 14:58:50 By 唐有炜
+
+        /// <summary>
+        /// 验证手机号是否存在 2014-09-01  14:58:50 By 唐有炜
+        /// </summary>
+        /// <param name="cus_tel">手机号</param>
+        /// <returns></returns>
+        public bool ValidatePhone(string cus_tel)
+        {
+            bool IsExist = CusBaseDao.ExistsEntity(b => b.CusTel == cus_tel);
+            return !IsExist;
+        }
+        #endregion
+
     }
 }

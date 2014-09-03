@@ -53,7 +53,18 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         [UserAuthorize]
         public ActionResult Index()
         {
-            return View("CustomerIndex");
+            Init();
+            if (contactExpandFields == null || customerExpandFields == null)
+            {
+                ViewBag.ErrorMessage = "客户扩展字段信息或者联系人扩展字段信息失败。";
+                return View("_Error");
+            }
+            else
+            {
+                ViewBag.CustomerExpandFields = customerExpandFields;
+                ViewBag.ContactExpandFields = contactExpandFields;
+                return View("CustomerIndex");
+            }
         }
 
         #endregion

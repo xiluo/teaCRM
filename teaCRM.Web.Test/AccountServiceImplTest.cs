@@ -4,6 +4,7 @@ using teaCRM.Service;
 using teaCRM.Service.Impl;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using teaCRM.Entity;
 
 namespace teaCRM.Web.Test
 {
@@ -68,5 +69,27 @@ namespace teaCRM.Web.Test
             IAccountService target = ctx.GetObject("accountService") as IAccountService;
             Assert.AreNotEqual(target, null);
         }
+
+        /// <summary>
+        ///A test for ValidateAccount
+        ///</summary>
+        [TestMethod()]
+        public void ValidateAccountTest()
+        {
+            IApplicationContext ctx = ContextRegistry.GetContext();
+            IAccountService target = ctx.GetObject("accountService") as IAccountService;
+            string action = "login";
+            string type = "normal";
+            string userName = "admin%4010000"; 
+            string userPassword = null; 
+
+            string expected = null; // TODO: Initialize to an appropriate value
+            string  actual;
+            ResponseMessage result = target.ValidateAccount(action, type, userName, userPassword);
+            actual = result.Action + " " + result.Status + " " + result.Msg;
+            
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }

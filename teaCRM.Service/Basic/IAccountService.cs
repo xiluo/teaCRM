@@ -12,18 +12,17 @@ namespace teaCRM.Service
     /// 账户操作接口。
     /// </summary>
  public   interface IAccountService
- {
-     /// <summary>
-     /// 账户验证  2014-08-21 07:58:50 By 唐有炜
-     /// </summary>
-     /// <param name="action">操作类型（login、register）</param>
-     /// <param name="type">注册或登录方式（normal,qrcode,usb,footprint）</param>
-     /// <param name="accountType">账号类型（username,email,phone）</param>
-     /// <param name="userName">用户名</param>
-     /// <param name="userPassword">密码</param>
-     /// <returns>ResponseMessage</returns>
-     ResponseMessage ValidateAccount(string action, string type, string accountType, string userName,
-         string userPassword);
+    {
+        /// <summary>
+        /// 账户验证 2014/8/21 9:04:10   By 唐有炜
+        /// </summary>
+        /// <param name="action">操作类型（login、register）</param>
+        /// <param name="type">注册或登录方式（normal,qrcode,usb,footprint）</param>
+        /// <param name="userName">用户名</param>
+        /// <param name="userPassword">密码</param>
+        /// <returns>ResponseMessage</returns>
+         ResponseMessage ValidateAccount(string action, string type, string userName,
+            string userPassword=null);
 
 
         /// <summary>
@@ -69,5 +68,7 @@ namespace teaCRM.Service
          /// <param name="userId"></param>
         /// <returns>VCompanyUser</returns>
         VCompanyUser GetCurrentCompanyUser(int userId);
+
+      
  }
 }

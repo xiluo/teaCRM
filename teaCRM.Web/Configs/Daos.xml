@@ -37,5 +37,9 @@
   <!--funExpandDao-->
   <object id="funExpandDao" type="teaCRM.Dao.Impl.TFunExpandDaoImpl, teaCRM.Dao" singleton="false">
   </object>
-  
+
+  <!--cusBaseDao-->
+  <object id="cusBaseDao" type="teaCRM.Dao.Impl.TCusBaseDaoImpl, teaCRM.Dao" singleton="false">
+  </object>
+
 </objects>

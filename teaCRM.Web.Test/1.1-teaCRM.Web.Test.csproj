@@ -104,6 +104,7 @@
     <Compile Include="CustomerServiceImplTest.cs" />
     <Compile Include="IndexControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TCusConDaoImplTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\teaCRM.Common\5-teaCRM.Common.csproj">

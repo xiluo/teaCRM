@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using teaCRM.Common;
+using teaCRM.Entity;
 using teaCRM.Service;
 using teaCRM.Service.CRM;
 using teaCRM.Service.CRM.Impl;
@@ -135,5 +136,21 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         #endregion
 
         #endregion
+
+
+
+        #region 异步验证 2014-09-01 14:58:50 By 唐有炜
+
+        //
+        // GET: /Apps/CRM/LoadData/ValidatePhone/
+        public string ValidatePhone(string cus_tel)
+        {
+            bool IsExist = CustomerService.ValidatePhone(cus_tel);
+            return IsExist.ToString().ToLower();
+        }
+
+
+        #endregion
+
     }
 }

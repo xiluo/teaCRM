@@ -1,5 +1,6 @@
 ﻿using Spring.Context;
 using Spring.Context.Support;
+using teaCRM.Service;
 using teaCRM.Service.CRM;
 using teaCRM.Service.CRM.Impl;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -76,6 +77,23 @@ namespace teaCRM.Web.Test
             IApplicationContext ctx = ContextRegistry.GetContext();
             ICustomerService target = ctx.GetObject("customerService") as ICustomerService;
             Assert.AreNotEqual(target, null);
+        }
+
+        /// <summary>
+        ///A test for ValidatePhone
+        ///</summary>
+        [TestMethod()]
+        public void ValidatePhoneTest()
+        {
+            IApplicationContext ctx = ContextRegistry.GetContext();
+            ICustomerService target = ctx.GetObject("customerService") as ICustomerService;
+            string cus_tel = "15225062328";
+           
+            bool expected = true; 
+            bool actual;
+            actual = target.ValidatePhone(cus_tel);
+           
+            Assert.AreEqual(expected, actual);
         }
     }
 }

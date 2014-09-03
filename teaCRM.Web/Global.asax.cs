@@ -34,29 +34,29 @@ namespace teaCRM.Web
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new MyViewEngine());
         }
-
-        /// <summary>
-        /// 捕捉全局异常
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void Application_Error(object sender, EventArgs e)
-        {
-            // 在出现未处理的错误时运行的代码
-            Exception objExp = HttpContext.Current.Server.GetLastError();
-          
-            //获取用户id
-            if (Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID] != null)
-            {
-                LogHelper.Error("客户端IP为" + Request.UserHostAddress + ",id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID] .ToString()+ "的用户在访问" +
-                         Request.Url + "时发生了异常," + objExp.Message);
-            }
-            else
-            {
-                LogHelper.Error("客户端IP为" + Request.UserHostAddress + "的用户在访问" +
-                         Request.Url + "时发生了异常," + objExp.Message);
-            }
-         
-        }
+//
+//        /// <summary>
+//        /// 捕捉全局异常
+//        /// </summary>
+//        /// <param name="sender"></param>
+//        /// <param name="e"></param>
+//        protected void Application_Error(object sender, EventArgs e)
+//        {
+//            // 在出现未处理的错误时运行的代码
+//            Exception objExp = HttpContext.Current.Server.GetLastError();
+//          
+//            //获取用户id
+//            if (Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID] != null)
+//            {
+//                LogHelper.Error("客户端IP为" + Request.UserHostAddress + ",id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID] .ToString()+ "的用户在访问" +
+//                         Request.Url + "时发生了异常," + objExp.Message);
+//            }
+//            else
+//            {
+//                LogHelper.Error("客户端IP为" + Request.UserHostAddress + "的用户在访问" +
+//                         Request.Url + "时发生了异常," + objExp.Message);
+//            }
+//         
+//        }
     }
 }
