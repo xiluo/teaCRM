@@ -197,18 +197,18 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Global.asax" />
-    <Content Include="Themes\default\crm\css\crm.list.css" />
-    <Content Include="Themes\default\crm\css\crm.layout.css" />
-    <Content Include="Themes\default\crm\images\c_baidu.jpg" />
-    <Content Include="Themes\default\crm\images\c_google.jpg" />
-    <Content Include="Themes\default\crm\images\c_left_btn.png" />
-    <Content Include="Themes\default\crm\images\filter-bar-btn-hidden1.gif" />
-    <Content Include="Themes\default\crm\images\icon-light.gif" />
-    <Content Include="Themes\default\crm\images\skin_icons.png" />
-    <Content Include="Themes\default\crm\images\view_btn.png" />
-    <Content Include="Themes\default\crm\js\customer_add.js" />
-    <Content Include="Themes\default\crm\js\customer_index.js" />
-    <Content Include="Themes\default\crm\js\TYW.js" />
+    <Content Include="Themes\default\crm2\css\crm.list.css" />
+    <Content Include="Themes\default\crm2\css\crm.layout.css" />
+    <Content Include="Themes\default\crm2\images\c_baidu.jpg" />
+    <Content Include="Themes\default\crm2\images\c_google.jpg" />
+    <Content Include="Themes\default\crm2\images\c_left_btn.png" />
+    <Content Include="Themes\default\crm2\images\filter-bar-btn-hidden1.gif" />
+    <Content Include="Themes\default\crm2\images\icon-light.gif" />
+    <Content Include="Themes\default\crm2\images\skin_icons.png" />
+    <Content Include="Themes\default\crm2\images\view_btn.png" />
+    <Content Include="Themes\default\crm2\js\customer_add.js" />
+    <Content Include="Themes\default\crm2\js\customer_index.js" />
+    <Content Include="Themes\default\crm2\js\TYW.js" />
     <Content Include="Themes\default\base\css\foot.css" />
     <Content Include="Themes\default\base\css\globle.css" />
     <Content Include="Themes\default\base\css\head.css" />
