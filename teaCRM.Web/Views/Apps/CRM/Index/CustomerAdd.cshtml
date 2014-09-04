@@ -14,12 +14,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=6" />
     <style>
         @@charset "utf-8";
-
         body, div, dl, dt, dd, ul, ol, li, form, input, textarea, select, p, h1, h2, h3, h4, h5, h6 {
             padding: 0;
             margin: 0;
         }
-
         body, button, input, select, textarea {
             font: 12px/1.5 "微软雅黑",Tahoma,Arial,"宋体";
         }
@@ -168,9 +166,37 @@
             padding: 0 5px;
             background-position: right -26px;
         }
+        /*表单验证样式 配合验证 2014-09-04 By 唐有炜*/
+        .success {
+           border: 1px solid #5ca32d;
+background-color: white;
+        }
+        .error {
+            border: 1px solid #f00;
+background-color: rgb(255, 185, 185);
+        }
     </style>
 
     <script src="/Themes/default/lib/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
+     <!--ie css3-->
+        <!--[if lt IE 10]>
+            <script type="text/javascript" src="/Themes/default/lib/pie/PIE.js"></script>
+        <![endif]-->
+        <script type="text/javascript">
+            $(function () {
+                if (window.PIE) {
+                    $('.rounded').each(function () {
+                        PIE.attach(this);
+                    });
+                }
+            });
+        </script>
+        <!--使用方法
+            -moz-border-radius: 8px; 
+            -webkit-border-radius:8px;
+            border-radius:8px;
+            behavior: url(/Themes/default/lib/pie/pie.htc);/*非常重要*/
+            -->
     <!--artDialog-->
      <link rel="stylesheet" href="/Themes/default/lib/artDialog/css/ui-dialog.css">
     <script src="/Themes/default/lib/artDialog/dist/dialog-plus-min.js"></script>  
@@ -309,7 +335,7 @@
                                             @field.ExpTitle：
                                         </td>
                                         <td>
-                                            <input type="text" name="@field.ExpName" id="@field.ExpName"   class="comm-tbox-1 @Html.BooleanParse(field.ExpIsNull, "required", "", "")" />
+                                            <input type="text" name="@field.ExpName" id="@field.ExpName"   class="comm-tbox-1 " />
                                         </td>
                                     </tr>
                                     break;
@@ -320,7 +346,7 @@
                                             @field.ExpTitle：
                                         </td>
                                         <td>
-                                            <textarea class="comm-abox-1 @Html.BooleanParse(field.ExpIsNull, "required", "", "")" id="@field.ExpName" name="@field.ExpName" cols="50" rows="5" ></textarea>
+                                            <textarea class="comm-abox-1 " id="@field.ExpName" name="@field.ExpName" cols="50" rows="5" ></textarea>
                                         </td>
                                     </tr>
                                     break;
@@ -331,7 +357,7 @@
                                             @field.ExpTitle：
                                         </td>
                                         <td>
-                                            <input type="text" id="@field.ExpName" name="@field.ExpName" class="@Html.BooleanParse(field.ExpIsNull, "required", "", "")"/>
+                                            <input type="text" id="@field.ExpName" name="@field.ExpName" class=""/>
                                         </td>
                                     </tr>
                                     break;
@@ -342,7 +368,7 @@
                                             @field.ExpTitle：
                                         </td>
                                         <td>
-                                            <input type="text"id="@field.ExpName"   class="comm-tbox-1 @Html.BooleanParse(field.ExpIsNull, "required", "", "")" name="@field.ExpName"/>
+                                            <input type="text"id="@field.ExpName"   class="comm-tbox-1 " name="@field.ExpName"/>
                                         </td>
                                     </tr>
                                     break;
@@ -353,7 +379,7 @@
                                             @field.ExpTitle：
                                         </td>
                                         <td>
-                                            <select id="@field.ExpName" name="@field.ExpName" class="@Html.BooleanParse(field.ExpIsNull, "required", "", "")">
+                                            <select id="@field.ExpName" name="@field.ExpName" class="">
                                                 <option selected="selected" value="">--请选择--</option>
                                                 @Html.StringToOptions(field.ExpOption)
                                             </select>
@@ -393,7 +419,7 @@
                                             @field.ExpTitle：
                                         </td>
                                         <td> 
-                                            <input type="text" id="@field.ExpName"   name="@field.ExpName" class="Wdate @Html.BooleanParse(field.ExpIsNull, "required", "", "")" style="width: 90px;" onclick=" WdatePicker({ dateFmt: 'yyyy-MM-dd' }) "/>
+                                            <input type="text" id="@field.ExpName"   name="@field.ExpName" class="Wdate " style="width: 90px;" onclick=" WdatePicker({ dateFmt: 'yyyy-MM-dd' }) "/>
                                         </td>
                                     </tr>
                                     break;
@@ -430,7 +456,7 @@
                         <tr>
                             <td class="label">电话/手机:</td>
                             <td>
-                                <input type="text" name="con_tel" id="con_tel"   class="comm-tbox-1"/>
+                                <input type="text" name="con_tel" id="con_tel"   class="comm-tbox-1 number"/>
                             </td>
                         </tr>
                     
@@ -451,7 +477,7 @@
                         <tr>
                             <td class="label">出生年月：</td>
                             <td>
-                                <input type="text" name="con_bir" id="con_bir"   class="comm-tbox-1 Wdate date"   onclick=" WdatePicker({ dateFmt: 'yyyy-MM-dd' }) " />
+                                <input type="text" name="con_bir" id="con_bir"   class="comm-tbox-1 Wdate dateISO"   onclick=" WdatePicker({ dateFmt: 'yyyy-MM-dd' }) " />
                             </td>
                         </tr>
                         <tr>
@@ -476,7 +502,7 @@
                                             @field.ExpTitle：
                                         </td>
                                         <td>
-                                            <textarea class="comm-abox-1 @Html.BooleanParse(field.ExpIsNull, "required", "", "")" id="@field.ExpName" name="@field.ExpName" cols="50" rows="5" ></textarea>
+                                            <textarea class="comm-abox-1 " id="@field.ExpName" name="@field.ExpName" cols="50" rows="5" ></textarea>
                                         </td>
                                     </tr>
                                     break;

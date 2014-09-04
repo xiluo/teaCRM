@@ -3,6 +3,8 @@
 //*时间：2014年09月01日
 
 $(document).ready(function() {
+    //表单获取焦点
+    $("#cus_name").focus();
     //加载省市数据
     load_city_data();
 });
@@ -91,6 +93,9 @@ function validate_form() {
             },
             cus_note: {
                 maxlength: 255
+            },
+            con_note: {
+                maxlength: 255
             }
         },
         messages: {
@@ -159,7 +164,7 @@ function validate_form() {
             var elem = $(element)[0].htmlFor;
             $("#" + elem).poshytip('disable');
             $("#" + elem).poshytip('destroy');
-            $("#" + elem).css("border", "1px solid green");
+            $("#" + elem).removeClass("error").addClass("success");
         }
 //          showErrors: function(errorMap, errorList) {
 //             showModal("您的表单包含" + this.numberOfInvalids()

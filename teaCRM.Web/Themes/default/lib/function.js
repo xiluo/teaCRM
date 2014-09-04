@@ -70,7 +70,7 @@ function showMsg(Msg, okCallback) {
     }
 }
 
-function showModal(Msg, okCallback) {
+function showMsgModal(Msg, okCallback) {
     if (arguments.length == 1) {
         var d = dialog({
             title: '温馨提示',
@@ -212,7 +212,7 @@ function showTopModal(id, Msg) {
 //        if (second == undefined)
 //            {second = 1;}
         $(".tip-yellow").remove();
-        $(this).css("border", "1px solid red");
+        $(this).removeClass("success").addClass("error");
         $(this).poshytip({
             className: 'tip-yellow',
             content: message,

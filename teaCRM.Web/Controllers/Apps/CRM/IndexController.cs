@@ -147,14 +147,14 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             ZCusConInfo cusConInfo = new ZCusConInfo();
             cusConInfo.CusCon = new TCusCon()
             {
-                ConName = "马腾军",
-                ConTel = "13243454545",
-                ConQq = "232332",
-                ConEmail = "df",
-                ConBir = DateTime.Now,
-                ConNote = "",
+                ConName = fc["con_name"],
+                ConTel = fc["con_tel"],
+                ConQq = fc["con_qq"],
+                ConEmail = fc["con_email"],
+                ConBir = DateTime.Parse(fc["con_bir"]),
+                ConNote = fc["con_note"],
                 ConIsMain = 1,
-                UserId = 1
+                UserId = userId
             };
             cusConInfo.Fields = new Dictionary<string, object>();
             for (int i = 0; i < fc.Count; i++)
