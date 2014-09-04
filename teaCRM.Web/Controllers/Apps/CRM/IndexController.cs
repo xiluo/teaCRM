@@ -116,10 +116,10 @@ namespace teaCRM.Web.Controllers.Apps.CRM
                 CusName = fc["cus_name"].TrimEnd(','),
                 CusSname = fc["cus_sname"],
                 CusLastid = 0,//默认无上级客户
-                CusTel = "15225062328",
-                CusCity = "河南",
-                CusAddress = "郑州",
-                CusNote = "备注",
+                CusTel = fc["cus_tel"],
+                CusCity = String.Format("{0},{1},{2}", fc["cus_province"].ToString(), fc["cus_city"], fc["cus_region"]),
+                CusAddress = fc["cus_address"],
+                CusNote = fc["cus_note"],
                 //ConId = 1,//在Dao层处理
                 UserId = userId,//负责人
                 ConTeam = "17,21",

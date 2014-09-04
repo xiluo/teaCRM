@@ -254,8 +254,7 @@
                                 详细地址：
                             </td>
                             <td>
-                                <input type="text" class="comm-tbox-1" id="cus_address" name="cus_address" field_required="0"
-                                       field_cname="详细地址" field_ename="address" field_type="text" size="40">
+                                <input type="text" class="comm-tbox-1" id="cus_address" name="cus_address">
                             </td>
                         </tr>
                        @* <tr>
@@ -291,8 +290,7 @@
                                 备注：
                             </td>
                             <td>
-                                <textarea class="comm-abox-1" id="cus_note" name="cus_note" cols="50" rows="5"
-                                          field_required="0" field_cname="备注"></textarea>
+                                <textarea class="comm-abox-1" id="cus_note" name="cus_note" cols="50" rows="5"></textarea>
                             </td>
                         </tr>
                         
@@ -304,14 +302,14 @@
                         {
                             switch (field.ExpCtype)
                             {
-                                case "1": //短文本框
+                                    case "1": //短文本框
                                     <tr>
                                         <td class="label">
                                             @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
                                             @field.ExpTitle：
                                         </td>
                                         <td>
-                                            <input type="text" name="@field.ExpName" id="@field.ExpName"   class="comm-tbox-1" field_required="@field.ExpIsNull" field_cname="@field.ExpTitle" field_type="text"/>
+                                            <input type="text" name="@field.ExpName" id="@field.ExpName"   class="comm-tbox-1 @Html.BooleanParse(field.ExpIsNull, "required", "", "")" />
                                         </td>
                                     </tr>
                                     break;
@@ -322,8 +320,7 @@
                                             @field.ExpTitle：
                                         </td>
                                         <td>
-                                            <textarea class="comm-abox-1" id="@field.ExpName" name="@field.ExpName" cols="50" rows="5" field_cname="@field.ExpTitle"
-                                                      field_required="@field.ExpIsNull"></textarea>
+                                            <textarea class="comm-abox-1 @Html.BooleanParse(field.ExpIsNull, "required", "", "")" id="@field.ExpName" name="@field.ExpName" cols="50" rows="5" ></textarea>
                                         </td>
                                     </tr>
                                     break;
@@ -334,8 +331,7 @@
                                             @field.ExpTitle：
                                         </td>
                                         <td>
-                                            <input type="text" id="@field.ExpName" name="@field.ExpName" field_cname="@field.ExpTitle"
-                                                   field_required="@field.ExpIsNull" field_type="text"/>
+                                            <input type="text" id="@field.ExpName" name="@field.ExpName" class="@Html.BooleanParse(field.ExpIsNull, "required", "", "")"/>
                                         </td>
                                     </tr>
                                     break;
@@ -346,21 +342,18 @@
                                             @field.ExpTitle：
                                         </td>
                                         <td>
-                                            <input type="text"id="@field.ExpName"   class="comm-tbox-1" name="@field.ExpName" field_cname="@field.ExpTitle"
-                                                   field_required="@field.ExpIsNull" field_type="number"/>
+                                            <input type="text"id="@field.ExpName"   class="comm-tbox-1 @Html.BooleanParse(field.ExpIsNull, "required", "", "")" name="@field.ExpName"/>
                                         </td>
                                     </tr>
                                     break;
                                 case "5": //下拉框
-                                    //@Html.Raw()
                                     <tr>
                                         <td class="label">
                                             @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
                                             @field.ExpTitle：
                                         </td>
                                         <td>
-                                            <select id="@field.ExpName" name="@field.ExpName" field_cname="@field.ExpTitle"
-                                                    field_required="@field.ExpIsNull">
+                                            <select id="@field.ExpName" name="@field.ExpName" class="@Html.BooleanParse(field.ExpIsNull, "required", "", "")">
                                                 <option selected="selected" value="">--请选择--</option>
                                                 @Html.StringToOptions(field.ExpOption)
                                             </select>
@@ -400,8 +393,7 @@
                                             @field.ExpTitle：
                                         </td>
                                         <td> 
-                                            <input type="text" id="@field.ExpName"   name="@field.ExpName" field_cname="@field.ExpTitle" field_type="date"
-                                                   field_required="@field.ExpIsNull" class="Wdate" style="width: 90px;"onclick=" WdatePicker({ dateFmt: 'yyyy-MM-dd' }) "/>
+                                            <input type="text" id="@field.ExpName"   name="@field.ExpName" class="Wdate @Html.BooleanParse(field.ExpIsNull, "required", "", "")" style="width: 90px;" onclick=" WdatePicker({ dateFmt: 'yyyy-MM-dd' }) "/>
                                         </td>
                                     </tr>
                                     break;
@@ -424,10 +416,6 @@
                 </table>
             </div>
             
-            
-            
-            
-            
             <div class="title">主联系人信息</div>
             <div class="body">
                 <table class="tb-form" cellspacing="0">
@@ -442,34 +430,34 @@
                         <tr>
                             <td class="label">电话/手机:</td>
                             <td>
-                                <input type="text" name="con_tel" id="con_tel"   class="comm-tbox-1" field_cname="电话/手机" field_required="0"  field_ename="mobile" field_type="text"/>
+                                <input type="text" name="con_tel" id="con_tel"   class="comm-tbox-1"/>
                             </td>
                         </tr>
                     
                         <tr>
                             <td class="label">Q&nbsp;&nbsp;Q:</td>
                             <td>
-                                <input type="text" name="con_qq" id="con_qq"   class="comm-tbox-1" field_cname="QQ" field_required="0" field_type="text"/>
+                                <input type="text" name="con_qq" id="con_qq"   class="comm-tbox-1 number"/>
                             </td>
                         </tr>
                     
                         <tr>
                             <td class="label">邮箱：</td>
                             <td>
-                                <input type="text" name="con_email" id="con_email"  class="comm-tbox-1" field_cname="邮箱" field_required="0"  field_ename="email" field_type="text" />
+                                <input type="text" name="con_email" id="con_email"  class="comm-tbox-1 email"/>
                             </td>
                         </tr>
                     
                         <tr>
                             <td class="label">出生年月：</td>
                             <td>
-                                <input type="text" name="con_bir" id="con_bir"   class="comm-tbox-1 Wdate"   onclick=" WdatePicker({ dateFmt: 'yyyy-MM-dd' }) " />
+                                <input type="text" name="con_bir" id="con_bir"   class="comm-tbox-1 Wdate date"   onclick=" WdatePicker({ dateFmt: 'yyyy-MM-dd' }) " />
                             </td>
                         </tr>
                         <tr>
                             <td class="label">备注：</td>
                             <td>
-                                <textarea class="comm-abox-1" rows="5" cols="50" name="con_note" id="con_note" field_type="text" field_cname="备注" field_required="0"></textarea>
+                                <textarea class="comm-abox-1" rows="5" cols="50" name="con_note" id="con_note"></textarea>
                             </td>
                         </tr>
  
@@ -488,7 +476,7 @@
                                             @field.ExpTitle：
                                         </td>
                                         <td>
-                                            <textarea class="comm-abox-1" id="@field.ExpName" name="@field.ExpName" cols="50" rows="5" field_required="@field.ExpIsNull" field_cname="@field.ExpTitle"></textarea>
+                                            <textarea class="comm-abox-1 @Html.BooleanParse(field.ExpIsNull, "required", "", "")" id="@field.ExpName" name="@field.ExpName" cols="50" rows="5" ></textarea>
                                         </td>
                                     </tr>
                                     break;
@@ -498,7 +486,6 @@
                 </table>
             </div>
             
-
             <div class="btn-bar">
                 <a id="save_button" href="javascript:void(0);" class="btn-white-1" onclick=" save_add() "><b>添加</b></a>
 
@@ -513,7 +500,7 @@
             <h3>
                 帮助：</h3>
             <p>
-                1. 属性不够用？管理员可到“<a href="?controller=field&amp;arg=p10076866_10097878" target="_blank">自定义属性</a>”栏目设置个性化属性；</p>
+                1. 属性不够用？管理员可到"<a href="?controller=field&amp;arg=p10076866_10097878" target="_blank">自定义属性</a>”栏目设置个性化属性；</p>
             <p>
                 2. 潜在客户与会员区别？潜在客户指还未成交客户，会员即成交客户。</p>
         </div>
