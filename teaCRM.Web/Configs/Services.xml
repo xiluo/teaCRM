@@ -14,6 +14,7 @@
   <!--客户逻辑开始-->
   <object id="customerService" type="teaCRM.Service.CRM.Impl.CustomerServiceImpl, teaCRM.Service" singleton="false">
    <property name="CusInfoDao" ref="cusInfoDao" />
+    <property name="ConInfoDao" ref="conInfoDao" />
     <property name="FunExpandDao" ref="funExpandDao" />
     <property name="CusBaseDao" ref="cusBaseDao" />
   </object>

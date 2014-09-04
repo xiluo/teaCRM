@@ -33,9 +33,10 @@ namespace teaCRM.Service.CRM.Impl
         /// CustomerServiceImpl注入dao依赖
         /// </summary>
         public IZCusInfoDao CusInfoDao { set; get; }
+
+        public IZConInfoDao ConInfoDao { set; get; }
         public ITFunExpandDao FunExpandDao { set; get; }
         public ITCusBaseDao CusBaseDao { set; get; }
-
 
         #region 获取筛选器树形列表
 
@@ -71,29 +72,11 @@ namespace teaCRM.Service.CRM.Impl
             DataTable table = CusInfoDao.GetCustomerLsit(compNum, selectFields, pageIndex, pageSize, strWhere,
                 filedOrder, out count);
 
-            string cus_data = "{\"Rows\": [";
-            for (int i = 0; i < table.Rows.Count; i++)
-            {
-                cus_data += "{";
-                for (int j = 0; j < table.Columns.Count; j++)
-                {
-                    var col = table.Columns[j];
-                    cus_data += "\"" + col.ColumnName + "\":" + "\"" + table.Rows[i][j].ToString() + "\",";
-                }
-                cus_data = cus_data.TrimEnd(',');
-                cus_data += "},";
-            }
-            cus_data = cus_data.TrimEnd(',');
-
-            cus_data += "],\"Total\":" + count;
-            cus_data += "}";
+            string cus_data = JSONHelper.DataTableToLigerUIList(table, count);
             return cus_data;
         }
 
         #endregion
-
-
-
 
         #region 获取联系人信息列表 2014-08-29 14:58:50 By 唐有炜
 
@@ -101,18 +84,23 @@ namespace teaCRM.Service.CRM.Impl
         /// 获取联系人信息列表 2014-09-01 14:58:50 By 唐有炜
         /// </summary>
         /// <param name="compNum">企业编号</param>
-        /// /// <param name="CusId">客户Id</param>
-        /// <returns>CusId</returns>
-        public string GetContactLsit(string compNum, int CusId)
+        /// <param name="selectFields">选择的字段（格式：new string[]{"id,cus_sname"}，id必须要有）</param>
+        /// <param name="pageIndex">页码</param>
+        /// <param name="pageSize">每页的数目</param>
+        /// <param name="strWhere">筛选条件（字段名="值",字段名 in (值1,值2)）</param>
+        /// <param name="filedOrder">排序字段（字段名）</param>
+        /// <returns>DataTable</returns>
+        public string GetContactLsit(string compNum, string[] selectFields, int pageIndex, int pageSize,
+            string strWhere, string filedOrder)
         {
-            return
-              System.IO.File.ReadAllText(
-                  "D:\\学习资料\\开发参考资料\\优创科技\\项目\\工作项目\\优创CRM\\源码\\teaCRM\\teaCRM.Service\\CRM\\Impl\\temp5.txt");
+            var count = 0;
+           DataTable table = ConInfoDao.GetContactLsit(compNum, selectFields, pageIndex, pageSize, strWhere,
+                filedOrder, out count);
+            string con_data = JSONHelper.DataTableToLigerUIList(table, count);
+            return con_data;
         }
 
         #endregion
-
-
 
         #region 获取客户扩展字段信息 2014-08-29 14:58:50 By 唐有炜
 
@@ -124,8 +112,8 @@ namespace teaCRM.Service.CRM.Impl
         public List<TFunExpand> GetCustomerExpandFields(string compNum)
         {
             //MyappId==1代表客户扩展字段
-            var customerExpandFields =FunExpandDao.GetList(e => e.CompNum == compNum && e.MyappId == 1);
-            if (customerExpandFields.Count>0)
+            var customerExpandFields = FunExpandDao.GetList(e => e.CompNum == compNum && e.MyappId == 1);
+            if (customerExpandFields.Count > 0)
             {
                 LogHelper.Info("客户扩展字段获取成功，共" + customerExpandFields.Count + "个字段。");
             }
@@ -148,15 +136,15 @@ namespace teaCRM.Service.CRM.Impl
         public List<TFunExpand> GetContactExpandFields(string compNum)
         {
             //MyappId==2代表联系人扩展字段
-          var contactExpandFields =FunExpandDao.GetList(e => e.CompNum == compNum && e.MyappId == 2);
-          if (contactExpandFields.Count > 0)
-          {
-              LogHelper.Info("联系人扩展字段获取成功,共" + contactExpandFields.Count + "个字段。");
-          }
-          else
-          {
-              LogHelper.Error("联系人扩展字段为空。");
-          }
+            var contactExpandFields = FunExpandDao.GetList(e => e.CompNum == compNum && e.MyappId == 2);
+            if (contactExpandFields.Count > 0)
+            {
+                LogHelper.Info("联系人扩展字段获取成功,共" + contactExpandFields.Count + "个字段。");
+            }
+            else
+            {
+                LogHelper.Error("联系人扩展字段为空。");
+            }
             return contactExpandFields;
         }
 
@@ -170,14 +158,12 @@ namespace teaCRM.Service.CRM.Impl
         /// <param name="cusInfo">客户信息</param>
         /// <param name="cusConInfo">主联系人信息</param>
         /// <returns></returns>
-        public    bool AddCustomer( ZCusInfo cusInfo, ZCusConInfo cusConInfo)
+        public bool AddCustomer(ZCusInfo cusInfo, ZCusConInfo cusConInfo)
         {
-            return CusInfoDao.AddCustomer(cusInfo,cusConInfo);
+            return CusInfoDao.AddCustomer(cusInfo, cusConInfo);
         }
 
         #endregion
-
-
 
         #region 获取客户工具栏
 
@@ -216,7 +202,6 @@ namespace teaCRM.Service.CRM.Impl
 
         #endregion
 
-
         #region 验证手机号是否存在 2014-09-01 14:58:50 By 唐有炜
 
         /// <summary>
@@ -229,7 +214,7 @@ namespace teaCRM.Service.CRM.Impl
             bool IsExist = CusBaseDao.ExistsEntity(b => b.CusTel == cus_tel);
             return !IsExist;
         }
-        #endregion
 
+        #endregion
     }
 }

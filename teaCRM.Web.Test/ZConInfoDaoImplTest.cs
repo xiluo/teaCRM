@@ -1,21 +1,22 @@
 ﻿using Spring.Context;
 using Spring.Context.Support;
-using teaCRM.Service;
-using teaCRM.Service.CRM;
-using teaCRM.Service.CRM.Impl;
+using teaCRM.Dao.CRM;
+using teaCRM.Dao.CRM.Impl;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Data;
+using teaCRM.Service;
 
 namespace teaCRM.Web.Test
 {
     
     
     /// <summary>
-    ///This is a test class for CustomerServiceImplTest and is intended
-    ///to contain all CustomerServiceImplTest Unit Tests
+    ///This is a test class for ZConInfoDaoImplTest and is intended
+    ///to contain all ZConInfoDaoImplTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class CustomerServiceImplTest
+    public class ZConInfoDaoImplTest
     {
 
 
@@ -69,31 +70,16 @@ namespace teaCRM.Web.Test
 
 
         /// <summary>
-        ///A test for CustomerServiceImpl Context
+        ///A test for ZConInfoDaoImpl Context
         ///</summary>
         [TestMethod()]
-        public void CustomerServiceImplContextTest()
+        public void ZConInfoDaoImplContextTest()
         {
             IApplicationContext ctx = ContextRegistry.GetContext();
-            ICustomerService target = ctx.GetObject("customerService") as ICustomerService;
+            IZConInfoDao target = ctx.GetObject("conInfoDao") as IZConInfoDao;
             Assert.AreNotEqual(target, null);
         }
 
-        /// <summary>
-        ///A test for ValidatePhone
-        ///</summary>
-        [TestMethod()]
-        public void ValidatePhoneTest()
-        {
-            IApplicationContext ctx = ContextRegistry.GetContext();
-            ICustomerService target = ctx.GetObject("customerService") as ICustomerService;
-            string cus_tel = "15225062328";
-           
-            bool expected = true; 
-            bool actual;
-            actual = target.ValidatePhone(cus_tel);
-           
-            Assert.AreEqual(expected, actual);
-        }
+       
     }
 }

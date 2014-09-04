@@ -25,6 +25,9 @@
   <object id="cusInfoDao" type="teaCRM.Dao.CRM.Impl.ZCusInfoDaoImpl, teaCRM.Dao" singleton="false">
     <property name="FilterTreeHelper" ref="filterTreeHelper" />
   </object>
+  <!--conInfoDao-->
+  <object id="conInfoDao" type="teaCRM.Dao.CRM.Impl.ZConInfoDaoImpl, teaCRM.Dao" singleton="false">
+  </object>
 
   <!--sysDepartmentDao-->
   <object id="sysDepartmentDao" type="teaCRM.Dao.Impl.TSysDepartmentDaoImpl, teaCRM.Dao" singleton="false">

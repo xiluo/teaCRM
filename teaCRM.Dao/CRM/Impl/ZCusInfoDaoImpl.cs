@@ -61,13 +61,17 @@ namespace teaCRM.Dao.CRM.Impl
                        a.cus_no,
                        a.cus_name,
                        a.cus_sname,
-                       a.cus_lastid,
+                       a.cus_lastid AS cus_lastname,
                        a.cus_tel,
                        a.cus_city,
                        a.cus_address,
                        a.cus_note,
-                       a.con_id,
-                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_id,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
                       (
 SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
 )       
@@ -111,22 +115,20 @@ INNER JOIN T_cus_expvalue_" + compNum + @" AS b ON  a.id = b.cus_id";
                 //查询总数Sql
                 //counttingSql
                 string counttingSql = PagingHelper.CreateCountingSql(strSql.ToString());
-                LogHelper.Debug("counttingSql," + counttingSql);
+                LogHelper.Debug("customer counttingSql," + counttingSql);
 
                 //查询分页Sql
                 //pagingSql
-                recordCount = 0;
+                recordCount =
+                        Convert.ToInt32(db.DbHelper.ExecuteScalar(counttingSql));
                 dynamic namedParameters = null;
                 string pagingSql = PagingHelper.CreatePagingSql(recordCount, pageSize, pageIndex, strSql.ToString(),
                     filedOrder);
-                LogHelper.Debug("pagingSql," + pagingSql);
+                LogHelper.Debug("customer pagingSql," + pagingSql);
 
 
                 try
                 {
-                    recordCount =
-                        Convert.ToInt32(db.DbHelper.ExecuteScalar(counttingSql));
-
                     DataTable customers =
                         db.DbHelper.ExecuteDataTable(pagingSql, namedParameters);
 

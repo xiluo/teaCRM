@@ -36,12 +36,17 @@ namespace teaCRM.Service.CRM
 
 
         /// <summary>
-        /// 获取联系人信息列表 2014-08-29 14:58:50 By 唐有炜
+        /// 获取联系人信息列表 2014-09-01 14:58:50 By 唐有炜
         /// </summary>
         /// <param name="compNum">企业编号</param>
-        /// /// <param name="CusId">客户Id</param>
-        /// <returns>CusId</returns>
-        string GetContactLsit(string compNum, int CusId);
+         /// <param name="selectFields">选择的字段（格式：new string[]{"id,cus_sname"}，id必须要有）</param>
+        /// <param name="pageIndex">页码</param>
+        /// <param name="pageSize">每页的数目</param>
+        /// <param name="strWhere">筛选条件（字段名="值",字段名 in (值1,值2)）</param>
+        /// <param name="filedOrder">排序字段（字段名）</param>
+        /// <returns>DataTable</returns>
+         string GetContactLsit(string compNum,  string[] selectFields, int pageIndex, int pageSize,
+            string strWhere, string filedOrder);
 
         /// <summary>
         /// 获取客户扩展字段信息 2014-08-29 14:58:50 By 唐有炜

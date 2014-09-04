@@ -62,6 +62,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\ITFunExpandDao.cs" />
+    <Compile Include="CRM\Impl\ZConInfoDaoImpl.cs" />
+    <Compile Include="CRM\IZConInfoDao.cs" />
     <Compile Include="CRM\Impl\ZCusInfoDaoImpl.cs" />
     <Compile Include="CRM\IZCusInfoDao.cs" />
     <Compile Include="ITableDao.cs" />

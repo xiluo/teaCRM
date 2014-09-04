@@ -48,6 +48,7 @@
     <Compile Include="Base64.cs" />
     <Compile Include="CacheHelper.cs" />
     <Compile Include="DESEncrypt.cs" />
+    <Compile Include="JSONHelper.cs" />
     <Compile Include="LogHelper.cs" />
     <Compile Include="MailHelper.cs" />
     <Compile Include="PagingHelper.cs" />
