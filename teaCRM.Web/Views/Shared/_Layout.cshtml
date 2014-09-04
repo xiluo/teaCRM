@@ -12,6 +12,25 @@
         <link href="/Themes/default/base/css/foot.css" rel="stylesheet" type="text/css" />
         <!--jquery库-->
         <script src="/Themes/default/lib/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
+        <!--ie css3-->
+        <!--[if lt IE 10]>
+            <script type="text/javascript" src="/Themes/default/lib/pie/PIE.js"></script>
+        <![endif]-->
+        <script type="text/javascript">
+            $(function() {
+                if (window.PIE) {
+                    $('.rounded').each(function() {
+                        PIE.attach(this);
+                    });
+                }
+            });
+        </script>
+        <!--使用方法
+            -moz-border-radius: 8px; 
+            -webkit-border-radius:8px;
+            border-radius:8px;
+            behavior: url(/Themes/default/lib/pie/pie.htc);/*非常重要*/
+            -->
         <!--artDialog-->
         <link rel="stylesheet" href="/Themes/default/lib/artDialog/css/ui-dialog.css">
         <script src="/Themes/default/lib/artDialog/dist/dialog-plus-min.js"></script>
@@ -31,7 +50,7 @@
             <div class="header">
                 <h1 class="logo"></h1>	
                 <ul class="nav">
-                    <li id="nav-workbench" class="selected"><a href="/Workbench/">工作台</a></li>
+                    <li id="nav-workbench" class="selected" ><a href="/Workbench/">工作台</a></li>
                     <li id="nav-customer"><a href="/Apps/CRM/">客户</a></li>
                     <li id="nav-app"><a href="/Apps/">应用</a></li>
                     <li id="nav-settings"><a href="/Apps/Settings/Department/">设置</a></li>

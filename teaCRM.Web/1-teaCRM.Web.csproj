@@ -160,10 +160,25 @@
     </Content>
     <Content Include="Themes\default\base\css\account.css" />
     <Content Include="Themes\default\base\images\develop.png" />
+    <Content Include="Themes\default\base\js\city.js" />
     <Content Include="Themes\default\lib\artDialog\lib\require.js" />
     <Content Include="Themes\default\lib\artDialog\lib\sea.js" />
     <Content Include="Themes\default\lib\jquery\jquery-1.7.1.js" />
     <Content Include="Themes\default\lib\jquery\jquery-1.7.1.min.js" />
+    <Content Include="Themes\default\lib\my97DatePicker\calendar.js" />
+    <Content Include="Themes\default\lib\my97DatePicker\lang\en.js" />
+    <Content Include="Themes\default\lib\my97DatePicker\lang\zh-cn.js" />
+    <Content Include="Themes\default\lib\my97DatePicker\lang\zh-tw.js" />
+    <Content Include="Themes\default\lib\my97DatePicker\skin\datePicker.gif" />
+    <Content Include="Themes\default\lib\my97DatePicker\skin\default\datepicker.css" />
+    <Content Include="Themes\default\lib\my97DatePicker\skin\default\img.gif" />
+    <Content Include="Themes\default\lib\my97DatePicker\skin\WdatePicker.css" />
+    <Content Include="Themes\default\lib\my97DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="Themes\default\lib\my97DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="Themes\default\lib\my97DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="Themes\default\lib\my97DatePicker\WdatePicker.js" />
+    <Content Include="Themes\default\lib\pie\PIE.htc" />
+    <Content Include="Themes\default\lib\pie\PIE.js" />
     <Content Include="Themes\default\lib\poshytip\jquery.poshytip.js" />
     <Content Include="Themes\default\lib\poshytip\jquery.poshytip.min.js" />
     <Content Include="Themes\default\lib\poshytip\tip-darkgray\tip-darkgray.css" />
@@ -1240,8 +1255,6 @@
     <Content Include="Themes\default\lib\ligerUI\skins\Silvery\images\tree\tree-status.gif" />
     <Content Include="Themes\default\lib\ligerUI\skins\Silvery\images\tree\tree.gif" />
     <Content Include="Themes\default\lib\ligerUI\skins\Silvery\images\tree\tree.png" />
-    <Content Include="Themes\default\lib\my97DatePicker\skin\WdatePicker.css" />
-    <Content Include="Themes\default\lib\my97DatePicker\WdatePicker.js" />
     <Content Include="Themes\default\settings\js\department.js" />
     <Content Include="Themes\default\base\js\layout.js" />
     <Content Include="Themes\default\lib\validate\messages_cn.js" />
