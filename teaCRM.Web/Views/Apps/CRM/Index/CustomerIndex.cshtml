@@ -36,6 +36,8 @@
     <script src="/Themes/default/lib/ligerUI/js/plugins/ligerMenu.js" type="text/javascript"></script>
     <!--CRM js函数封装-->
     <script type="text/javascript" src="/Themes/default/CRM/js/TYW.js"></script>
+    <!--省市数据-->
+    <script src="/Themes/default/base/js/city.js" type="text/javascript"></script>
     <!--客户js，由于动态读取，必须放在页面上-->
     <script type="text/javascript">
         //客户列表==============================================================
@@ -51,6 +53,7 @@
             });
             $("#maingrid4").ligerGrid({
                 checkbox: true,
+                alternatingRow:true,
                 columns: [
                     {
                         display: '选择',
@@ -65,19 +68,19 @@
                         name: 'cus_name',
                         width: 200,
                         align: 'left'
-                        //                ,render: function(item) {
-                        //                    var html = "<div class='abc'>";
-                        //                    if (item.cus_sname)
-                        //                        html += item.Customer;
-                        //                    html += "</div>";
-                        //                    return html;
-                        //                }
                     },
                     {
                         display: '助记简称',
                         name: 'cus_sname',
                         width: 60,
-                        align: 'left'
+                        align: 'left',
+                        render: function(item) {
+                            if (item.cus_sname == "") {
+                                return "暂未填写";
+                            } else {
+                                return item.cus_sname;
+                            }
+                        }
                     },
                     {
                         display: '上级客户',
@@ -93,8 +96,31 @@
                         }
                     },
                     { display: '电话', name: 'cus_tel', width: 120, align: 'right' },
-                    { display: '省市地址', name: 'cus_city', width: 80 },
-                    { display: '详细地址', name: 'cus_address', width: 80 },
+                    {
+                        display: '省市地址',
+                        name: 'cus_city',
+                        width: 80,
+                        render: function(item) {
+                            if (item.cus_city == "0,0,0") {
+                                return "暂未填写";
+                            } else {
+                                var city_detail = get_city_by_ids(item.cus_city);
+                                return city_detail;
+                            }
+                        }
+                    },
+                    {
+                        display: '详细地址',
+                        name: 'cus_address',
+                        width: 80,
+                        render: function(item) {
+                            if (item.cus_address == "") {
+                                return "暂未填写";
+                            } else {
+                                return item.cus_address;
+                            }
+                        }
+                    },
                     { display: '主联系人', name: 'con_name', width: 60 },
                     { display: '负责人', name: 'user_name', width: 70 },
                     { display: '共享成员', name: 'con_team', width: 80, align: 'center' },
@@ -130,11 +156,24 @@
                     @*这里显示扩展字段*@
                     @foreach (var customerField in customerFields)
                     {
-                        var culmonString = String.Format(" {{ display: '{0}', name: '{1}', width: 60 }},",customerField.ExpTitle,customerField.ExpName);
-                         @Html.Raw(culmonString);
+                        var render = @" render: function(item) {if (item." + customerField.ExpName + "=='') {return '暂未填写';} else {return item." + customerField.ExpName + ";}}";
+                        var culmonString = String.Format(" {{ display: '{0}', name: '{1}', width: 60,{2}}},", customerField.ExpTitle, customerField.ExpName, render);
+                        @Html.Raw(culmonString)
+                        ;
                     }
 
-                    { display: '备注', name: 'cus_note', width: 60 },
+                    {
+                        display: '备注',
+                        name: 'cus_note',
+                        width: 60,
+                        render: function(item) {
+                             if (item.cus_note == "") {
+                                return "暂未填写";
+                            } else {
+                                return item.cus_note;
+                            }
+                        }
+                    },
                     {
                         display: '创建时间',
                         name: 'cus_createTime',
@@ -150,19 +189,18 @@
                 },
 
                 //fixedCellHeight:false,
-                onSelectRow: function(data, rowindex, rowobj) {
+                onCheckRow: function(data, rowindex, rowobj) {
                     var manager = $("#maingrid5").ligerGetGridManager();
                     manager.showData({ Rows: [], Total: 0 });
                     //var url = "../../data/CRM_Follow.ashx?Action=grid&customer_id=" + data.id;
                     var url = "/Apps/CRM/LoadData/GetFollowList/?Action=grid&CustomerNo=cc4ff7e8-86ea-43e8-a618-786f6718ac44";
                     manager.GetDataByURL(url);
                 },
-                rowtype: "CustomerType",
                 dataAction: 'server',
                 pageSize: 10,
                 pageSizeOptions: [10, 30, 50, 100],
                 url: "/Apps/CRM/LoadData/GetCustomerLsit/?Action=grid&rnd=" + Math.random(),
-                method:"post",
+                method: "post",
                 width: '100%',
                 height: '70%',
                 heightDiff: -1,
@@ -191,21 +229,58 @@
                             columns: [
                                 { display: '行号', width: 50, render: function(item, i) { return i + 1; } },
                                 { display: '联系人', name: 'con_name', width: 100 },
-                                { display: '电话/手机号码', name: 'con_tel', width: 100 },
-                                { display: 'QQ号', name: 'con_qq', width: 100 },
-                                { display: '邮箱', name: 'con_email', width: 80 },
-                                 { display: '生日', name: 'con_bir', width: 80 },
-                                   @*这里显示扩展字段*@
-                   
-                                  { display: '备注', name: 'con_note', width: 80 },
-                                   { display: '是否主联系人', name: 'con_is_main', width: 80 , render: function(item) {
-                            if (item.con_is_main == 0) {
-                                return "否";
+                                { display: '电话/手机号码', name: 'con_tel', width: 100, render: function(item) {
+                             if (item.con_tel == "") {
+                                return "暂未填写";
                             } else {
-                                return "是";
+                                return item.con_tel;
+                            }
+                        } },
+                                { display: 'QQ号', name: 'con_qq', width: 100 , render: function(item) {
+                             if (item.con_qq == "") {
+                                return "暂未填写";
+                            } else {
+                                return item.con_qq;
                             }
                         }},
-                                    { display: '录入人', name: 'user_id', width: 80 }
+                                { display: '邮箱', name: 'con_email', width: 80, render: function(item) {
+                             if (item.con_email == "") {
+                                return "暂未填写";
+                            } else {
+                                return item.con_email;
+                            }
+                        } },
+                                { display: '生日', name: 'con_bir', width: 80 },
+                                @*这里显示扩展字段*@
+                                @foreach (var contactField in contactFields)
+                                {
+                                    var render = @" render: function(item) {if (item." + contactField.ExpName + "=='') {return '暂未填写';} else {return item." + contactField.ExpName + ";}}";
+                                    var culmonString = String.Format(" {{ display: '{0}', name: '{1}', width: 60,{2} }},", contactField.ExpTitle, contactField.ExpName, render);
+                                    @Html.Raw(culmonString)
+                                    ;
+                                }
+
+                   
+                                { display: '备注', name: 'con_note', width: 80, render: function(item) {
+                             if (item.con_note == "") {
+                                return "暂未填写";
+                            } else {
+                                return item.con_note;
+                            }
+                        } },
+                                {
+                                    display: '是否主联系人',
+                                    name: 'con_is_main',
+                                    width: 80,
+                                    render: function(item) {
+                                        if (item.con_is_main == 0) {
+                                            return "否";
+                                        } else {
+                                            return "是";
+                                        }
+                                    }
+                                },
+                                { display: '录入人', name: 'user_name', width: 80 }
                             ],
 
                             usePager: false,
@@ -452,8 +527,8 @@
             //    } else {
             //        $.ligerDialog.warn('权限不够！');
             //    }
-         
-             showWindow("show_add", "/Apps/CRM/Index/Show/", "查看客户", 800, 480);
+
+            showWindow("show_add", "/Apps/CRM/Index/Show/", "查看客户", 800, 480);
         }
 
         //添加客户

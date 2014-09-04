@@ -42,8 +42,9 @@ namespace teaCRM.Dao.CRM.Impl
       ,con_bir
       ,con_note
       ,con_is_main
-      ,user_id
-,b.*
+      , 
+(SELECT ISNULL(u.user_tname,u.user_lname) FROM t_sys_user  AS u WHERE id=a.[user_id]) AS user_name,
+b.*
 ";
 
                 //选择字段

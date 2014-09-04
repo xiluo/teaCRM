@@ -191,6 +191,7 @@ function save_add() {
     var url = "/Apps/CRM/Index/Add/";
     $.ajax({
         type: "post",
+        cache: false,
         url: url,
         data: data,
         dataType: "json",
@@ -200,8 +201,11 @@ function save_add() {
         complete: function() {
             //d.close().remove();
         },
-        success: function(result) {
-            if (result.Status.toLowerCase() == "true") {
+        success: function (result) {
+            //toLowerCase报错
+            //var status = result.Status.toLowerCase();
+            var status = result.Status;
+            if (status==true||status=="true"||status=="True") {
                 //关闭父窗口
                 parent.dialog.list['show_add'].close();
                 //在iframe里面打开弹出框并自动关闭

@@ -16,3 +16,10 @@ function loadTreeData() {
     $("#filter_tree").ligerTree({ url: '/Apps/CRM/LoadData/GetFilterTreeData/', ajaxType: 'get', checkbox: false });
 }
 
+
+//根据id集合获取省市信息=========================================================================
+//需要引用 <script src="/Themes/default/base/js/city.js" type="text/javascript"></script>
+// 2014-09-04 By 唐有炜
+function get_city_by_ids(ids) {
+    return "唐有炜写的";
+}
