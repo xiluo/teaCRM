@@ -187,23 +187,38 @@ function save_add() {
         //$("#form_msg").html("您的表单包含错误，请检查！").show();
         return false;
     }
-    $("#form_msg").hide();
-
     //提交数据
     var url = "/Apps/CRM/Index/Add/";
-    $.post(url, data, function(result, status) {
-        if (status == "success" && result.Status) {
-            //关闭父窗口
-            parent.dialog.list['show_add'].close();
-            //在iframe里面打开弹出框并自动关闭
-            showTopMsg("save_ok", result.Msg);
-            //刷新数据
-            window.parent.f_reload();
-        } else {
-            parent.dialog.list['show_add'].close();
-            showTopMsg("save_error", "系统异常！");
+    $.ajax({
+        type: "post",
+        url: url,
+        data: data,
+        dataType: "json",
+        beforeSend: function() {
+            //showMsg("添加中，请稍后...");
+        },
+        complete: function() {
+            //d.close().remove();
+        },
+        success: function(result) {
+            if (result.Status.toLowerCase() == "true") {
+                //关闭父窗口
+                parent.dialog.list['show_add'].close();
+                //在iframe里面打开弹出框并自动关闭
+                showTopMsg("save_ok", result.Msg);
+                //刷新数据
+                window.parent.f_reload();
+            } else {
+                parent.dialog.list['show_add'].close();
+                showTopMsg("save_error", "系统异常！");
+            }
+        },
+        error: function() {
+            showMsg("网络连接错误");
         }
     });
+
+
 }
 
 //添加客户提交

@@ -130,9 +130,8 @@
                     @*这里显示扩展字段*@
                     @foreach (var customerField in customerFields)
                     {
-                        var culmonString = String.Format(" {{ display: '{0}', name: '{1}', width: 60 }},", customerField.ExpTitle, customerField.ExpName);
-                        @Html.Raw(culmonString)
-                        ;
+                        var culmonString = String.Format(" {{ display: '{0}', name: '{1}', width: 60 }},",customerField.ExpTitle,customerField.ExpName);
+                         @Html.Raw(culmonString);
                     }
 
                     { display: '备注', name: 'cus_note', width: 60 },
@@ -162,8 +161,8 @@
                 dataAction: 'server',
                 pageSize: 10,
                 pageSizeOptions: [10, 30, 50, 100],
-                url: "/Apps/CRM/LoadData/GetCustomerLsit/?rnd=" + Math.random(),
-                method: "post",
+                url: "/Apps/CRM/LoadData/GetCustomerLsit/?Action=grid&rnd=" + Math.random(),
+                method:"post",
                 width: '100%',
                 height: '70%',
                 heightDiff: -1,
@@ -195,28 +194,18 @@
                                 { display: '电话/手机号码', name: 'con_tel', width: 100 },
                                 { display: 'QQ号', name: 'con_qq', width: 100 },
                                 { display: '邮箱', name: 'con_email', width: 80 },
-                                { display: '生日', name: 'con_bir', width: 80 },
-                                @*这里显示扩展字段*@
-                                @foreach (var contactField in contactFields)
-                                {
-                                    var culmonString = String.Format(" {{ display: '{0}', name: '{1}', width: 60 }},", contactField.ExpTitle, contactField.ExpName);
-                                    @Html.Raw(culmonString)
-                                    ;
-                                }
-                                { display: '备注', name: 'con_note', width: 80 },
-                                {
-                                    display: '是否主联系人',
-                                    name: 'con_is_main',
-                                    width: 80,
-                                    render: function(item) {
-                                        if (item.con_is_main == 0) {
-                                            return "否";
-                                        } else {
-                                            return "是";
-                                        }
-                                    }
-                                },
-                                { display: '录入人', name: 'user_id', width: 80 }
+                                 { display: '生日', name: 'con_bir', width: 80 },
+                                   @*这里显示扩展字段*@
+                   
+                                  { display: '备注', name: 'con_note', width: 80 },
+                                   { display: '是否主联系人', name: 'con_is_main', width: 80 , render: function(item) {
+                            if (item.con_is_main == 0) {
+                                return "否";
+                            } else {
+                                return "是";
+                            }
+                        }},
+                                    { display: '录入人', name: 'user_id', width: 80 }
                             ],
 
                             usePager: false,
@@ -463,8 +452,8 @@
             //    } else {
             //        $.ligerDialog.warn('权限不够！');
             //    }
-
-            showWindow("show_add", "/Apps/CRM/Index/Show/", "查看客户", 800, 480);
+         
+             showWindow("show_add", "/Apps/CRM/Index/Show/", "查看客户", 800, 480);
         }
 
         //添加客户

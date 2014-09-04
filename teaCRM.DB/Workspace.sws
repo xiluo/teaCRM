@@ -4,7 +4,7 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{2DE60615-C8D4-449F-A8C4-A96228723F1B}" Name="优创软件平台" Selected="Yes" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="UCSoftware.pdm"/>
+		<Model Expanded="Yes" ID="{2DE60615-C8D4-449F-A8C4-A96228723F1B}" Name="优创软件平台" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="UCSoftware.pdm"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>

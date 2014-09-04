@@ -145,13 +145,18 @@ namespace teaCRM.Web.Controllers.Apps.CRM
 
             //主联系人赋值 
             ZCusConInfo cusConInfo = new ZCusConInfo();
+            var conBir = fc["con_bir"];
+            if (String.IsNullOrEmpty(fc["con_bir"]))
+            {
+                conBir = DateTime.Now.ToString();
+            }
             cusConInfo.CusCon = new TCusCon()
             {
                 ConName = fc["con_name"],
                 ConTel = fc["con_tel"],
                 ConQq = fc["con_qq"],
                 ConEmail = fc["con_email"],
-                ConBir = DateTime.Parse(fc["con_bir"]),
+                ConBir = DateTime.Parse(conBir),
                 ConNote = fc["con_note"],
                 ConIsMain = 1,
                 UserId = userId
