@@ -1,0 +1,17 @@
+@using UCsoft.Web
+@{
+    //客户扩展字段信息
+    var customerFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.CustomerExpandFields;
+    //联系人扩展字段信息
+    var contactFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.ContactExpandFields;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seo {
+    <title>我的人脉_优创C+企业云平台_打造中国办公软件第一品牌</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+}
+@section head{
+}
+
+<h2>CustomerTrash</h2>

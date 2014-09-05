@@ -58,10 +58,20 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             string customerJson = "";
             try
             {
+                string strWhere = String.Format("con_back=0 AND (user_id={0} OR con_is_pub=1)", int.Parse(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString()));
+                if (!String.IsNullOrEmpty(Request.QueryString["con_back"]))
+                {
+                    strWhere = String.Format("con_back={0}", Request.QueryString["con_back"]);
+                }
+                if (!String.IsNullOrEmpty(Request.QueryString["con_is_pub"]))
+                {
+                    strWhere = String.Format("con_is_pub={0}", Request.QueryString["con_is_pub"]);
+                }
+
                 customerJson =
                     CustomerService.GetCustomerLsit(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(),
                         new string[0], int.Parse(fc["page"]),
-                        int.Parse(fc["pagesize"]), "", "id");
+                        int.Parse(fc["pagesize"]), strWhere, "id");
                 LogHelper.Info("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() + "的用户获取客户信息成功。");
                 return customerJson;
             }
@@ -136,6 +146,37 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         }
 
         #endregion
+
+        #endregion
+
+        #region 放入回收站 2014-09-05 14:58:50 By 唐有炜
+
+        //
+        // GET: /Apps/CRM/LoadData/ToTrash/
+        [UserAuthorize]
+        [HttpPost]
+        public ActionResult ToTrash(int cus_id)
+        {
+            ResponseMessage rmsg = new ResponseMessage();
+            rmsg.Status = CustomerService.UpdateCustomerStatusByWhere("con_back=1", String.Format("id={0}", cus_id));
+            return Json(rmsg);
+        }
+
+        #endregion
+
+        #region 放入公海 2014-09-05 14:58:50 By 唐有炜
+
+        //
+        // GET: /Apps/CRM/LoadData/ToPub/
+        [UserAuthorize]
+        [HttpPost]
+        public ActionResult ToPub(int cus_id)
+        {
+            ResponseMessage rmsg = new ResponseMessage();
+            rmsg.Status = CustomerService.UpdateCustomerStatusByWhere("con_is_pub=1", String.Format("id={0}", cus_id));
+
+            return Json(rmsg);
+        }
 
         #endregion
 

@@ -55,6 +55,8 @@
   <ItemGroup>
     <Compile Include="CRM\ZCusConInfo.cs" />
     <Compile Include="CRM\ZCusInfo.cs" />
+    <Compile Include="Manual\teaCRMEnums.cs" />
+    <Compile Include="Manual\teaCRMKeys.cs" />
     <Compile Include="Manual\Tree\DepartmentTree.cs" />
     <Compile Include="Manual\Tree\FilterTree.cs" />
     <Compile Include="Manual\KeyValue.cs" />

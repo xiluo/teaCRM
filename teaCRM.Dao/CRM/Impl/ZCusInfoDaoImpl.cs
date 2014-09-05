@@ -109,7 +109,7 @@ INNER JOIN T_cus_expvalue_" + compNum + @" AS b ON  a.id = b.cus_id";
 
                 if (strWhere.Trim() != "")
                 {
-                    strSql.Append(" where " + strWhere);
+                    strSql.Append(" WHERE " + strWhere);
                 }
 
                 //查询总数Sql
@@ -365,5 +365,7 @@ WHERE id=@id";
         }
 
         #endregion
+
+     
     }
 }

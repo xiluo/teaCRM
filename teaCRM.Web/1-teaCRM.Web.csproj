@@ -126,6 +126,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Apps\CRM\ContactController.cs" />
+    <Compile Include="Controllers\Apps\CRM\PubController.cs" />
+    <Compile Include="Controllers\Apps\CRM\TrashController.cs" />
     <Compile Include="Controllers\Base\AdminController.cs" />
     <Compile Include="Controllers\Base\AccountController.cs" />
     <Compile Include="Controllers\Apps\CRM\IndexController.cs" />
@@ -1368,6 +1371,9 @@
     <Content Include="Views\Apps\CRM\Index\CustomerShow.cshtml" />
     <Content Include="Views\Apps\CRM\Index\CustomerEdit.cshtml" />
     <Content Include="Views\Apps\CRM\Index\ContactEdit.cshtml" />
+    <Content Include="Views\Apps\CRM\Trash\CustomerTrash.cshtml" />
+    <Content Include="Views\Apps\CRM\Pub\CustomerPub.cshtml" />
+    <Content Include="Views\Apps\CRM\Contact\ContactIndex.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

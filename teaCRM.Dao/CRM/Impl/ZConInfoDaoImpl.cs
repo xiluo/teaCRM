@@ -76,7 +76,7 @@ INNER JOIN T_cus_con_expvalue_" + compNum + @" AS b ON  a.id = b.con_id";
 
                 if (strWhere.Trim() != "")
                 {
-                    strSql.Append(" where " + strWhere);
+                    strSql.Append(" WHERE " + strWhere);
                 }
 
                 //查询总数Sql

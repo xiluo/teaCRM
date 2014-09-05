@@ -105,6 +105,7 @@
     <Compile Include="IndexControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TCusConDaoImplTest.cs" />
+    <Compile Include="TrashControllerTest.cs" />
     <Compile Include="ZConInfoDaoImplTest.cs" />
   </ItemGroup>
   <ItemGroup>

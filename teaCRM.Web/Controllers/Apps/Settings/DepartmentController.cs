@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using teaCRM.Common;
+using teaCRM.Entity;
 using teaCRM.Service;
 using teaCRM.Service.Impl;
 using teaCRM.Service.Settings;

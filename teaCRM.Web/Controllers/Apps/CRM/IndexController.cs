@@ -49,9 +49,9 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         #region CRM首页
 
         //
-        // GET: /Apps/CRM/
+        // GET: /Apps/CRM/Index/?ConBack=0&ConIsPub=0
         [UserAuthorize]
-        public ActionResult Index()
+        public ActionResult Index(int? ConBack, int? ConIsPub)
         {
             Init();
             if (contactExpandFields == null || customerExpandFields == null)
@@ -61,8 +61,12 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             }
             else
             {
+                //扩展字段
                 ViewBag.CustomerExpandFields = customerExpandFields;
                 ViewBag.ContactExpandFields = contactExpandFields;
+
+                ViewBag.ConBack = ConBack;
+                ViewBag.ConIsPub = ConIsPub;
                 return View("CustomerIndex");
             }
         }
@@ -123,7 +127,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
                 //ConId = 1,//在Dao层处理
                 UserId = userId,//负责人
                 ConTeam = "17,21",
-                ConIsPub = 1,
+                ConIsPub =0,
                 ConBack = 0
                 //创建时间有数据库默认指定
             };

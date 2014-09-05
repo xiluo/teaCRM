@@ -1,4 +1,4 @@
-﻿namespace teaCRM.Common
+﻿namespace teaCRM.Entity
 {
     public class teaCRMEnums
     {

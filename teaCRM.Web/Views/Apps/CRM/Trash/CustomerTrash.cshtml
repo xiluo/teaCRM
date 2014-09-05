@@ -7,7 +7,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section seo {
-    <title>全部客户_优创C+企业云平台_打造中国办公软件第一品牌</title>
+    <title>回收站客户_优创C+企业云平台_打造中国办公软件第一品牌</title>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
     <meta http-equiv="X-UA-Compatible" content="IE=8" />
 }
@@ -41,7 +41,7 @@
     <!--客户js，由于动态读取，必须放在页面上-->
     <script type="text/javascript">
         //初始化客户列表==============================================================
-         var customer_url = "/Apps/CRM/LoadData/GetCustomerLsit/?&rnd=" + Math.random();
+       var customer_url = "/Apps/CRM/LoadData/GetCustomerLsit/?con_back=1&rnd=" + Math.random();
         function InitDataGrid() {
             initLayout();
             $(window).resize(function() {

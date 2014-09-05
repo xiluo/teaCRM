@@ -2,7 +2,7 @@
 /* --------------
    *   tree  *
 * ------------ */
-.l-tree { margin: 0; padding: 0; list-style: none; overflow: hidden; position: relative; display: block;}
+.l-tree { margin: 0; padding: 0; list-style: none; overflow: hidden; position: relative; display: block; width: 189px;}
 .l-tree-loading { position: absolute; z-index: 91000; top: 40%; left: 50%; overflow: hidden; background: url('../images/tree/loading.gif') no-repeat 0px 0px; width: 24px; height: 24px; display: none; }
 .l-tree a, .l-tree span { color: #333; /*display: inherit;*/ height: 22px; line-height: 22px; text-decoration: none; }
 .l-tree ul, .l-tree li { list-style: none; margin: 0; padding: 0; }
@@ -20,7 +20,7 @@
 .l-tree .l-last .l-expandable-open { background-position: 0px -154px; }
 .l-tree .l-onlychild .l-expandable-open { background-position: 0px -88px; }
 
-.l-tree .l-over { background: #d0ffff; }
+.l-tree .l-over { background: #E5EDEF; }
 .l-tree .l-selected { background: #D9E8FB; }
 
 .l-tree .l-line { background-position: 0px -176px; }

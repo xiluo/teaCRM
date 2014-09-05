@@ -4,8 +4,8 @@
 
   <!--账户逻辑开始-->
   <object id="accountService" type="teaCRM.Service.Impl.AccountServiceImpl, teaCRM.Service" singleton="false">
-    <property name="SysUserDao" ref="sysUserDao" />
-    <property name="SysCompanyDao" ref="sysCompanyDao" />
+  <property name="SysUserDao" ref="sysUserDao" />
+    <!--   <property name="SysCompanyDao" ref="sysCompanyDao" />-->
     <property name="CompanyUserDao" ref="companyUserDao" />
     <property name="SysLogDao" ref="sysLogDao" />
   </object>

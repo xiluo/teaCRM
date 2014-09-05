@@ -3,12 +3,10 @@
 <objects xmlns="http://www.springframework.net" xmlns:db="http://www.springframework.net/database">
   <!--sysUserDao-->
   <object id="sysUserDao" type="teaCRM.Dao.Impl.TSysUserDaoImpl, teaCRM.Dao" singleton="false">
-    <!--<property name="aaa" ref="bbb" />-->
   </object>
-  <!--sysCompanyDao-->
+  <!--sysCompanyDao
   <object id="sysCompanyDao" type="teaCRM.Dao.Impl.TSysCompanyDaoImpl, teaCRM.Dao" singleton="false">
-    <!--<property name="aaa" ref="bbb" />-->
-  </object>
+  </object>-->
   <!--companyUserDao-->
   <object id="companyUserDao" type="teaCRM.Dao.Impl.VCompanyUserDaoImpl, teaCRM.Dao" singleton="false">
     <!--<property name="aaa" ref="bbb" />-->

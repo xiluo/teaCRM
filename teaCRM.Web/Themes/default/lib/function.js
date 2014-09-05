@@ -41,119 +41,39 @@ function Trim(str) {
 //<link rel="stylesheet" href="/Themes/default/js/artDialog/css/ui-dialog.css">
 //<script src="/Themes/default/js/artDialog/dist/dialog-plus-min.js"></script>
 //修正margin:10px 10px -10px 10px
-function showMsg(Msg, okCallback) {
-    if (arguments.length == 1) {
-        var d = dialog({
-            title: '温馨提示',
-            content: Msg,
-            quickClose: true,
-            cancel: false
-        }).show();
-        //自动关闭
-        setTimeout(function() {
-            d.close().remove();
-        }, 1000);
-    } else if (arguments.length == 2) {
-        var d = dialog({
-            title: '温馨提示',
-            content: Msg,
-            okValue: '确 定',
-            ok: okCallback,
-            cancelValue: '取消',
-            quickClose: true,
-            cancel: false
-        }).show();
-        //自动关闭
-        setTimeout(function() {
-            d.close().remove();
-        }, 1000);
-    }
+function showMsg(Msg) {
+    var d = dialog({
+        title: '温馨提示',
+        content: Msg,
+//            width:'280',
+//            height:'100',
+        quickClose: true,
+        cancel: false
+    }).show();
+    //自动关闭
+    setTimeout(function() {
+        d.close().remove();
+    }, 1000);
 }
 
-function showMsgModal(Msg, okCallback) {
-    if (arguments.length == 1) {
-        var d = dialog({
-            title: '温馨提示',
-            content: Msg,
-            quickClose: true,
-            cancel: false
-        }).showModal();
-        //自动关闭
-        setTimeout(function() {
-            d.close().remove();
-        }, 1000);
-    } else if (arguments.length == 2) {
-        var d = dialog({
-            title: '温馨提示',
-            content: Msg,
-            okValue: '确 定',
-            ok: okCallback,
-            cancelValue: '取消',
-            quickClose: true,
-            cancel: false
-        }).showModal();
-        //自动关闭
-        setTimeout(function() {
-            d.close().remove();
-        }, 1000);
-    }
-}
 
+//弹出对话框，带阴影==============================================
 function showDialog(Msg, okCallback) {
-    if (arguments.length == 1) {
-        var d = dialog({
-            title: '温馨提示',
-            content: Msg,
-            quickClose: true,
-            cancel: function() {
-                d.close().remove();
-            }
-        }).show();
-    } else if (arguments.length == 2) {
-        var d = dialog({
-            title: '温馨提示',
-            content: Msg,
-            okValue: '确 定',
-            ok: okCallback,
-            cancelValue: '取消',
-            quickClose: true,
-            cancel: function() {
-                d.close().remove();
-            }
-        }).show();
-    }
+    var d = dialog({
+        title: '温馨提示',
+        content: Msg,
+        okValue: '确 定',
+        ok: okCallback,
+        cancelValue: '取消',
+        cancel: function() {
+            d.close().remove();
+        }
+    });
+    d.showModal();
 }
-
-function showDialogModal(Msg, okCallback) {
-    if (arguments.length == 1) {
-        var d = dialog({
-            title: '温馨提示',
-            content: Msg,
-            quickClose: true,
-            cancel: function() {
-                d.close().remove();
-            }
-        }).showModal();
-
-    } else if (arguments.length == 2) {
-        var d = dialog({
-            title: '温馨提示',
-            content: Msg,
-            okValue: '确 定',
-            ok: okCallback,
-            cancelValue: '取消',
-            quickClose: true,
-            cancel: function() {
-                d.close().remove();
-            }
-        }).showModal();
-
-    }
-}
-
 
 //============================================================================
-//弹出iframe窗口，用作表单===============================================
+//弹出iframe窗口，带阴影，用作表单===============================================
 //2014-09-03 By 唐有炜
 function showWindow(id, url, title, w, h) {
     var d = dialog({
@@ -186,19 +106,6 @@ function showTopMsg(id, Msg) {
     setTimeout(function() {
         d.close().remove();
     }, 1000);
-}
-
-function showTopModal(id, Msg) {
-    //在iframe里面打开弹出框并自动关闭
-    var d = top.dialog({
-        id: id,
-        title: '温馨提示',
-        content: Msg,
-        cancel: false
-    }).showModal();
-    setTimeout(function() {
-        d.close().remove();
-    }, 2000);
 }
 
 //===========================================================

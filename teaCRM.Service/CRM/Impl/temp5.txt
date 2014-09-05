@@ -1,1 +1,0 @@
-﻿{"Rows":[{"id":2724,"C_name":"唐有炜2","C_sex":"先生","C_department":"","C_position":"","C_birthday":null,"C_tel":"","C_fax":null,"C_email":"","C_mob":"圣达菲","C_QQ":"收费","C_add":null,"C_hobby":"","C_remarks":"","C_customerid":3152,"C_customername":"哈哈哈","C_createId":522,"C_createDate":"\/Date(1409023296253+0800)\/","isDelete":0,"Delete_time":null}],"Total":"1"}

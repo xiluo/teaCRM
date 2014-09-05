@@ -8,7 +8,7 @@ using teaCRM.Entity;
 namespace teaCRM.Dao.Impl
 {
     /// <summary>
-    /// 自动生成的实现ITFunExpandDao接口的Dao类。 2014-08-28 05:06:48 By 唐有炜
+    /// 实现ITFunExpandDao接口的Dao类。 2014-08-28 05:06:48 By 唐有炜
     /// </summary>
     public class TFunExpandDaoImpl : ITFunExpandDao
     {

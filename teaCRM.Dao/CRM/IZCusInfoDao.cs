@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using teaCRM.Entity;
 using teaCRM.Entity.CRM;
 
 namespace teaCRM.Dao.CRM
@@ -43,7 +44,6 @@ namespace teaCRM.Dao.CRM
          /// <param name="cusConInfo">主联系人信息</param>
          /// <returns></returns>
          bool AddCustomer( ZCusInfo cusInfo, ZCusConInfo cusConInfo);
-
 
     }
 }

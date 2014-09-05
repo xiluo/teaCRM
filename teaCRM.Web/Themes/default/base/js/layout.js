@@ -83,6 +83,19 @@ function changeTab() {
         //alert("customer");
         $("#nav-customer").addClass("selected");
         $("#menu-customer").show();
+        //二级分类选中===================================
+        $(".nav2 li").removeClass("selected");
+          if (url.indexOf("Index") > 0) {
+              $("#all").addClass("selected");
+          } else if (url.indexOf("Trash") > 0) {
+              $("#trash").addClass("selected");
+          } else if (url.indexOf("Pub") > 0) {
+              $("#pub").addClass("selected");
+          } else if (url.indexOf("Contact") > 0) {
+              $("#contact").addClass("selected");
+          } else {
+              $("#all").addClass("selected");  
+          }
     } else if (url.indexOf("/Apps/Sale/") > 0 || url.indexOf("/Apps/Product/") > 0 || url.indexOf("/Apps/Service/") > 0) {
         $("#nav-more").addClass("selected");
         $("#menu-more").show();

@@ -54,8 +54,6 @@
     <Compile Include="PagingHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomHelper.cs" />
-    <Compile Include="teaCRMEnums.cs" />
-    <Compile Include="teaCRMKeys.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>

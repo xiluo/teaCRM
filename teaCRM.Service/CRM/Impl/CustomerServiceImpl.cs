@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 /*
  * ========================================================================
@@ -94,7 +95,7 @@ namespace teaCRM.Service.CRM.Impl
             string strWhere, string filedOrder)
         {
             var count = 0;
-           DataTable table = ConInfoDao.GetContactLsit(compNum, selectFields, pageIndex, pageSize, strWhere,
+            DataTable table = ConInfoDao.GetContactLsit(compNum, selectFields, pageIndex, pageSize, strWhere,
                 filedOrder, out count);
             string con_data = JSONHelper.DataTableToLigerUIList(table, count);
             return con_data;
@@ -170,8 +171,7 @@ namespace teaCRM.Service.CRM.Impl
         public string GetCustomerMenu()
         {
             return
-                System.IO.File.ReadAllText(
-                    "D:\\学习资料\\开发参考资料\\优创科技\\项目\\工作项目\\优创CRM\\源码\\teaCRM\\teaCRM.Service\\CRM\\Impl\\temp3.txt");
+                @"{Items:[{type: 'button',text: '查看',icon: 'images/icon/75.png',disable: true,click: function () {view(4)}},{type: 'button',text: '新增',icon: 'images/icon/11.png',disable: true,click: function () {add(4)}},{type: 'button',text: '修改',icon: 'images/icon/33.png',disable: true,click: function () {edit(4)}},{type: 'button',text: '删除',icon: 'images/icon/12.png',disable: true,click: function () {del(4)}}]}";
         }
 
         #endregion
@@ -185,8 +185,8 @@ namespace teaCRM.Service.CRM.Impl
         public string GetFollowList()
         {
             return
-                System.IO.File.ReadAllText(
-                    "D:\\学习资料\\开发参考资料\\优创科技\\项目\\工作项目\\优创CRM\\源码\\teaCRM\\teaCRM.Service\\CRM\\Impl\\temp2.txt");
+                @"{'Rows':[{'id':4364,'Customer_id':61,'Customer_name':'长沙市雷立行电子科技有限公司','Follow':'直接挂电话了','Follow_date':'\/Date(1366871520000+0800)\/','Follow_Type_id':9,'Follow_Type':'电话跟进','department_id':2,'department_name':'优创科技','employee_id':2,'employee_name':'奇迹','isDelete':0,'Delete_time':null},{'id':4364,'Customer_id':61,'Customer_name':'长沙市雷立行电子科技有限公司','Follow':'约会去了','Follow_date':'\/Date(1366871520000+0800)\/','Follow_Type_id':9,'Follow_Type':'电话跟进','department_id':2,'department_name':'优创科技','employee_id':2,'employee_name':'奇迹','isDelete':0,'Delete_time':null},{'id':4364,'Customer_id':61,'Customer_name':'长沙市雷立行电子科技有限公司','Follow':'上厕所了','Follow_date':'\/Date(1366871520000+0800)\/','Follow_Type_id':9,'Follow_Type':'电话跟进','department_id':2,'department_name':'优创科技','employee_id':2,'employee_name':'奇迹','isDelete':0,'Delete_time':null},{'id':4364,'Customer_id':61,'Customer_name':'长沙市雷立行电子科技有限公司','Follow':'吃饭去了','Follow_date':'\/Date(1366871520000+0800)\/','Follow_Type_id':9,'Follow_Type':'电话跟进','department_id':2,'department_name':'优创科技','employee_id':2,'employee_name':'奇迹','isDelete':0,'Delete_time':null},{'id':4364,'Customer_id':61,'Customer_name':'长沙市雷立行电子科技有限公司','Follow':'吃饭去了','Follow_date':'\/Date(1366871520000+0800)\/','Follow_Type_id':9,'Follow_Type':'电话跟进','department_id':2,'department_name':'优创科技','employee_id':2,'employee_name':'奇迹','isDelete':0,'Delete_time':null},{'id':4364,'Customer_id':61,'Customer_name':'长沙市雷立行电子科技有限公司','Follow':'吃饭去了','Follow_date':'\/Date(1366871520000+0800)\/','Follow_Type_id':9,'Follow_Type':'电话跟进','department_id':2,'department_name':'优创科技','employee_id':2,'employee_name':'奇迹','isDelete':0,'Delete_time':null},{'id':4364,'Customer_id':61,'Customer_name':'长沙市雷立行电子科技有限公司','Follow':'吃饭去了','Follow_date':'\/Date(1366871520000+0800)\/','Follow_Type_id':9,'Follow_Type':'电话跟进','department_id':2,'department_name':'优创科技','employee_id':2,'employee_name':'奇迹','isDelete':0,'Delete_time':null}],'Total':'7'}"
+                    .Replace("'", "\"");
         }
 
         #endregion
@@ -196,8 +196,7 @@ namespace teaCRM.Service.CRM.Impl
         public string GetFollowMenu()
         {
             return
-                System.IO.File.ReadAllText(
-                    "D:\\学习资料\\开发参考资料\\优创科技\\项目\\工作项目\\优创CRM\\源码\\teaCRM\\teaCRM.Service\\CRM\\Impl\\temp4.txt");
+                @"{Items:[{type: 'button',text: '新增跟进',icon: 'images/icon/11.png',disable: true,click: function () {addfollow(6)}},{type: 'button',text: '修改跟进',icon: 'images/icon/33.png',disable: true,click: function () {editfollow(6)}},{type: 'button',text: '删除跟进',icon: 'images/icon/12.png',disable: true,click: function () {delfollow(6)}}]}";
         }
 
         #endregion
@@ -213,6 +212,42 @@ namespace teaCRM.Service.CRM.Impl
         {
             bool IsExist = CusBaseDao.ExistsEntity(b => b.CusTel == cus_tel);
             return !IsExist;
+        }
+
+        #endregion
+
+        #region 更改客户状态 2014-09-05 14:58:50 By 唐有炜
+
+        /// <summary>
+        /// 使用where sql语句更改客户状态(只更改主表) 2014-09-05 14:58:50 By 唐有炜
+        /// </summary>
+        /// <param name="strSet">要更新的字段</param>
+        /// <param name="strWhere">条件</param>
+        /// <returns></returns>
+        public bool UpdateCustomerStatusByWhere(string strSet, string strWhere)
+        {
+            if (String.IsNullOrEmpty(strSet) || String.IsNullOrEmpty(strWhere))
+            {
+                return false;
+            }
+
+            return CusBaseDao.UpdateCustomerStatusByWhere(strSet, strWhere);
+        }
+
+        /// <summary>
+        /// 使用LINQ更改客户状态（只更改主表） 2014-09-05 14:58:50 By 唐有炜
+        /// </summary>
+        /// <param name="fields">要更新的字段</param>
+        /// <param name="predicate">条件</param>
+        /// <returns></returns>
+        public bool UpdateCustomerStatusByLINQ(Dictionary<string, object> fields,
+            Expression<Func<TCusBase, bool>> predicate)
+        {
+            if (null == fields || null == predicate)
+            {
+                return false;
+            }
+            return CusBaseDao.UpdateCustomerStatusByLINQ(fields, predicate);
         }
 
         #endregion

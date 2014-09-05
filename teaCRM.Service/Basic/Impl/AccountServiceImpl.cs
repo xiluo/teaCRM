@@ -32,8 +32,8 @@ namespace teaCRM.Service.Impl
         /// 注入账户Dao接口 2014-08-26 14:58:50 By 唐有炜
         /// </summary>
         public ITSysUserDao SysUserDao { set; get; }
+        // ITSysCompanyDao SysCompanyDao { set; get; }
 
-        public ITSysCompanyDao SysCompanyDao { set; get; }
         public IVCompanyUserDao CompanyUserDao { set; get; }
         public ITSysLogDao SysLogDao { set; get; }
 
@@ -144,8 +144,8 @@ namespace teaCRM.Service.Impl
                     string userLName = userComp[0];
                     string compNum = userComp[1];
 
-                    bool userExists = SysUserDao.ExistsEntity(u => u.UserLname == userLName);
-                    bool compExists = SysCompanyDao.ExistsEntity(c => c.CompNum == compNum);
+                    bool userExists = CompanyUserDao.ExistsEntity(u => u.UserLname == userLName);
+                    bool compExists = CompanyUserDao.ExistsEntity(c => c.CompNum == compNum);
                     if (userExists && compExists)
                     {
                         return true;
@@ -156,7 +156,7 @@ namespace teaCRM.Service.Impl
                     }
                     break;
                 case "email":
-                    bool emailExists = SysUserDao.ExistsEntity(u => u.UserEmail == userName);
+                    bool emailExists = CompanyUserDao.ExistsEntity(u => u.UserEmail == userName);
                     if (emailExists)
                     {
                         return true;
@@ -167,7 +167,7 @@ namespace teaCRM.Service.Impl
                     }
                     break;
                 case "phone":
-                    bool phoneExists = SysUserDao.ExistsEntity(u => u.UserPhone == userName);
+                    bool phoneExists = CompanyUserDao.ExistsEntity(u => u.UserPhone == userName);
                     if (phoneExists)
                     {
                         return true;
