@@ -3,10 +3,20 @@
 //*时间：2014年07月231日
 
 
-$(document).ready(function() {
+$(document).ready(function () {
+    //创建树形
     createTree();
+    //初始化输入框
+    InitInput();
 });
-
+//初始化输入框
+function InitInput() {
+    $("input").css("border", "none").attr("readonly", "readonly");
+}
+//开启编辑状态
+function dropInput() {
+    $("input").css("border", "").removeAttr("readonly");
+}
 
 //加载左侧树形
 $(function() {
@@ -130,16 +140,32 @@ function load_form_data(id) {
 
 //编辑部门信息
 function edit() {
+    //开启编辑状态
+    dropInput();
+    //显示保存按钮
+    $("#btn-edit").hide("fast");
+    $("#btn-save").show("fast");
+    //必须有这个，阻止刷新
+    return false;
+}
+
+function save() {
+    $("#btn-save").hide("fast");
+    $("#btn-edit").show("fast");
     var flag = $("#form_department").valid();
-    alert(flag);
+    //alert(flag);
     if (!flag) {
+        showMsg("您的表单包含错误，请检查！");
         return false;
     }
     var id = $("#btn-edit").prev().val();
-    alert(id);
+    //alert(id);
     var data = $("#form_department").serialize();
-    alert(data);
+    //alert(data);
+    showMsg("修改成功！");
 
+    //还原只读状态
+    InitInput();
     //必须有这个，阻止刷新
     return false;
 }

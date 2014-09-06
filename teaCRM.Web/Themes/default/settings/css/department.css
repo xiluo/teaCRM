@@ -29,6 +29,6 @@ body{background: #ECEDF3;}
 /***标题有底边**/
 .boxTitle{ border:#D2D2D2 solid 0px; background:#FFF; overflow:hidden;}
 .boxTitle h2{height:34px; line-height:34px; color:#2D2D2D; font-size:14px; font-weight:bold; padding-left:20px; border-bottom:#D2D2D2 solid 1px; margin-bottom:10px; background-color:#eef5fa;}
-.boxTitle h2 button{ float:right; margin-right:10px; margin-top:6px;font-size:12px;}
+.boxTitle h2 button{  margin-right:10px; margin-top:6px;font-size:12px;}
 /**其他小标签**/
 .linkico{ background:url(/Themes/default/base/images/link.png) 0px 12px no-repeat;}

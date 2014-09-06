@@ -50,3 +50,7 @@ background-color: white;
             border: 1px solid #f00;
 background-color: rgb(255, 185, 185);
         }
+        
+/*隐藏*/
+
+.hide { display: none; }

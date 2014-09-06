@@ -1282,7 +1282,7 @@
     <Content Include="Themes\default\base\js\layout.js" />
     <Content Include="Themes\default\lib\validate\messages_cn.js" />
     <Content Include="Views\Apps\CRM\Index\CustomerIndex.cshtml" />
-    <Content Include="Views\Apps\Settings\Department\Add.cshtml" />
+    <Content Include="Views\Apps\Settings\Department\DepartmentAdd.cshtml" />
     <Content Include="Views\Apps\Settings\Department\DepartmentIndex.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Web.config">

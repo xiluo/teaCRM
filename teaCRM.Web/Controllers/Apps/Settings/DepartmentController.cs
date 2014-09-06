@@ -20,7 +20,7 @@ namespace teaCRM.Web.Controllers.Apps.Settings
         #region 组织架构首页 2014-08-27 14:58:50 By 唐有炜
 
         //
-        // GET: /Settings/Department/
+        // GET: /Apps/Settings/Department/
         [UserAuthorize]
         public ActionResult Index()
         {
@@ -30,12 +30,12 @@ namespace teaCRM.Web.Controllers.Apps.Settings
         #endregion
 
         #region 添加数据 2014-08-27 14:58:50 By 唐有炜
-
+        // /Apps/Settings/Department/Add/
         public ActionResult Add(FormCollection fc)
         {
             if (fc.Count == 0)
             {
-                return View("Add");
+                return PartialView("DepartmentAdd");
             }
             else
             {
