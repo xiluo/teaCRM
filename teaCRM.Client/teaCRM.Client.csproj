@@ -76,9 +76,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\teaCRM.Common\5-teaCRM.Common.csproj">
+    <ProjectReference Include="..\teaCRM.Common\teaCRM.Common.csproj">
       <Project>{D03BBC00-649A-43B6-BB8D-65CB34AECC53}</Project>
-      <Name>5-teaCRM.Common</Name>
+      <Name>teaCRM.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

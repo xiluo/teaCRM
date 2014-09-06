@@ -1307,17 +1307,17 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\teaCRM.Common\5-teaCRM.Common.csproj">
+    <ProjectReference Include="..\teaCRM.Common\teaCRM.Common.csproj">
       <Project>{D03BBC00-649A-43B6-BB8D-65CB34AECC53}</Project>
-      <Name>5-teaCRM.Common</Name>
+      <Name>teaCRM.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\teaCRM.Entity\4-teaCRM.Entity.csproj">
+    <ProjectReference Include="..\teaCRM.Entity\teaCRM.Entity.csproj">
       <Project>{0687C70A-0976-40D8-A069-56ED9E6FFF2D}</Project>
-      <Name>4-teaCRM.Entity</Name>
+      <Name>teaCRM.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\teaCRM.Service\2-teaCRM.Service.csproj">
+    <ProjectReference Include="..\teaCRM.Service\teaCRM.Service.csproj">
       <Project>{087A655B-AB00-4130-A1A5-7EFB707D60FB}</Project>
-      <Name>2-teaCRM.Service</Name>
+      <Name>teaCRM.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -17,6 +17,7 @@
     <property name="ConInfoDao" ref="conInfoDao" />
     <property name="FunExpandDao" ref="funExpandDao" />
     <property name="CusBaseDao" ref="cusBaseDao" />
+    <property name="FunFilterDao" ref="funFilterDao" />
   </object>
   <!--客户逻辑结束-->
 

@@ -49,7 +49,7 @@ var setting = {
     async: {
         //异步加载
         enable: true,
-        url: "/Apps/Settings/Department/AsyncGetNodes/",
+        url: "/Apps/CRM/LoadData/AsyncGetNodes/",
         autoParam: ["id", "name", "pId"]
     },
     callback: {
@@ -72,7 +72,7 @@ var setting = {
 
 function createTree() {
     $.ajax({
-        url: '/Apps/Settings/Department/AsyncGetNodes/', //url  action是方法的名称
+        url: '/Apps/CRM/LoadData/AsyncGetNodes/', //url  action是方法的名称
         data: { id: 0 },
         type: 'Get',
         dataType: "text", //可以是text，如果用text，返回的结果为字符串；如果需要json格式的，可是设置为json

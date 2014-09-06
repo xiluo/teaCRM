@@ -34,12 +34,12 @@ namespace teaCRM.Service.CRM.Impl
         /// CustomerServiceImpl注入dao依赖
         /// </summary>
         public IZCusInfoDao CusInfoDao { set; get; }
-
         public IZConInfoDao ConInfoDao { set; get; }
         public ITFunExpandDao FunExpandDao { set; get; }
         public ITCusBaseDao CusBaseDao { set; get; }
+        public ITFunFilterDao FunFilterDao { set; get; }
 
-//        #region 获取筛选器树形列表
+        #region 获取筛选器树形列表
 //
 //        /// <summary>
 //        /// 获取筛选器树形列表
@@ -52,7 +52,35 @@ namespace teaCRM.Service.CRM.Impl
 //            return filterTreeData;
 //        }
 //
-//        #endregion
+        /// <summary>
+        /// 获取树形节点
+        /// </summary>
+        /// <param name="compNum"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<Node> AsyncGetNodes(string compNum, int? id)
+        {
+            var filters = FunFilterDao.GetList(f =>f.MyappId==1&& f.CompNum == compNum && f.ParentId == (id ?? 0));
+            var nodes = new List<Node>();
+            //将filters转换为nodes
+            foreach (var filter in filters)
+            {
+                var node = new Node();
+                node.id = filter.Id;
+                node.pId = (int)filter.ParentId;
+                node.name = filter.FilName;
+
+                bool isHasChild = FunFilterDao.ExistsEntity(f => f.MyappId == 1 && f.ParentId == node.id && f.CompNum == compNum);
+                if (isHasChild)
+                {
+                    node.isParent = true;
+                }
+
+                nodes.Add(node);
+            }
+            return nodes;
+        }
+       #endregion
 
         #region 获取客户信息列表,ligerUI分页处理 2014-08-29 14:58:50 By 唐有炜
 

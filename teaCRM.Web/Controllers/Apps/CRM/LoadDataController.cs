@@ -21,6 +21,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         public ICustomerService CustomerService { set; get; }
 
         public IAccountService AccountService { set; get; }
+        
 
         #region 获取筛选器树形数据 2014-08-29 14:58:50 By 唐有炜
 
@@ -57,7 +58,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         public ActionResult AsyncGetNodes(int? id)
         {
             var compNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
-            var nodes = new object();//Fil.AsyncGetNodes(compNum, id);
+            var nodes = CustomerService.AsyncGetNodes(compNum, id);
             return Json(nodes, JsonRequestBehavior.AllowGet);
         }
         #endregion

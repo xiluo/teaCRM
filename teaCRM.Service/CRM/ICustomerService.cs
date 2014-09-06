@@ -23,6 +23,14 @@ namespace teaCRM.Service.CRM
 //        string GetFilterTreeData(string compNum);
 
         /// <summary>
+        /// 获取树形节点
+        /// </summary>
+        /// <param name="compNum"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        List<Node> AsyncGetNodes(string compNum, int? id);
+
+        /// <summary>
         /// 获取客户信息列表 2014-08-29 14:58:50 By 唐有炜
         /// </summary>
         /// <param name="compNum">企业编号</param>
