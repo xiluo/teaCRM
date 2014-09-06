@@ -4,7 +4,7 @@ using System.Linq;
 using NLite.Data;
 namespace teaCRM.Entity
 {
-	[Table("t_sys_department")]
+	[Table("T_sys_department")]
 	public partial class TSysDepartment 
 	{
 	
@@ -15,6 +15,8 @@ namespace teaCRM.Entity
 		public Int32 ParentId { get;set; }
 		[Column("comp_num")]
 		public String CompNum { get;set; }
+		[Column("dep_order")]
+		public Int32? DepOrder { get;set; }
 		[Column("dep_name")]
 		public String DepName { get;set; }
 		[Column("dep_num")]

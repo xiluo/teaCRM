@@ -1,21 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <objects xmlns="http://www.springframework.net" xmlns:db="http://www.springframework.net/database">
-
-  <!--filterTreeHelper start-->
-  <object id="filterTreeHelper" type=" teaCRM.Dao.TreeHelpers.Impl.FilterTreeHelperImpl, teaCRM.Dao" singleton="false">
-    <property name="FunFilterDao" ref="funFilterDao" />
-  </object>
-  <!--filterTreeHelper end-->
-
-
-
-  <!--departmentTreeHelper start-->
-  <object id="departmentTreeHelper" type=" teaCRM.Dao.TreeHelpers.Impl.DepartmentTreeHelperImpl, teaCRM.Dao"
-          singleton="false">
-    <property name="SysDepartmentDao" ref="sysDepartmentDao" />
-  </object>
-  <!--departmentTreeHelper end-->
-
-
 </objects>

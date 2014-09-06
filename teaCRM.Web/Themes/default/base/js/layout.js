@@ -20,7 +20,7 @@ function showUserInfo() {
     var d_user;
     $("#user-pic").click(function() {
         d_user = dialog({
-            content: '<div class="tips">欢迎您选用优创C+企业云平台！</div>',
+            content: '<div class="tips">欢迎您选用C+企业云平台！</div>',
             quickClose: true // 点击空白处快速关闭
         });
         d_user.show(this);
@@ -96,10 +96,19 @@ function changeTab() {
           } else {
               $("#all").addClass("selected");  
           }
-    } else if (url.indexOf("/Apps/Sale/") > 0 || url.indexOf("/Apps/Product/") > 0 || url.indexOf("/Apps/Service/") > 0) {
+    } else if (url.indexOf("/Apps/Sale/") > 0) {
         $("#nav-more").addClass("selected");
-        $("#menu-more").show();
-    } else if (url.indexOf("/Apps/Settings/") > 0) {
+        $("#menu-sale").show();
+    }
+    else if ( url.indexOf("/Apps/Product/") > 0) {
+        $("#nav-more").addClass("selected");
+        $("#menu-product").show();
+    }
+    else if (url.indexOf("/Apps/Service/")>0) {
+        $("#nav-more").addClass("selected");
+        $("#menu-service").show();
+    }
+    else if (url.indexOf("/Apps/Settings/") > 0) {
         //alert("Department");
         $("#nav-settings").addClass("selected");
         $("#menu-settings").show();

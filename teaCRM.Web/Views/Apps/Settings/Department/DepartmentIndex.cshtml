@@ -5,21 +5,23 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section seo {
-    <title>组织架构_系统设置_优创C+企业云平台_打造中国办公软件第一品牌</title>
+    <title>组织架构_系统设置_C+企业云平台_打造中国办公软件第一品牌</title>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" /> 
 }
 
 @section head {
     <!-- 组织架构需要导入的js、css -->
     <link href="/Themes/default/settings/css/department.css" rel="stylesheet" type="text/css" />
-    <link href="/Themes/default/lib/ligerUI/skins/Tea/css/ligerui-all.css" rel="stylesheet" type="text/css" />
+    @* <link href="/Themes/default/lib/ligerUI/skins/Tea/css/ligerui-all.css" rel="stylesheet" type="text/css" />
     <script src="/Themes/default/lib/ligerUI/js/plugins/ligerTree.js" type="text/javascript"></script>
-  
-   
+*@
+    <!--ZTree-->
+    <link href="/Themes/default/lib/zTree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
+    <script src="/Themes/default/lib/zTree/js/jquery.ztree.all-3.5.min.js"></script>
     <script src="/Themes/default/settings/js/department.js" type="text/javascript"></script>
 }
 
-<div id="department"  style="margin-top: 90px;">
+<div id="department"  >
     <!--左侧部门开始-->
     <div class="layout-left">
         <div id="nav-side" class="nav-side">
@@ -31,8 +33,9 @@
                     </ul>
                 </div>
                 <!--树形展示开始-->
-                <ul id="department_tree">
-                </ul>
+                @*<ul id="department_tree">
+                </ul>*@
+                <ul id="department_tree" class="ztree"></ul>
                 <!--树形展示结束-->
             </div> 
         </div>
@@ -76,7 +79,7 @@
                                                 <tr>
                                                     <td width="12%">部门名称：</td>
                                                     <td width="41%" style="color: #8a8888;">
-                                                        <input type="text" class="comm-tbox-1" id="cus_name" name="cus_name" field_required="1" value="" field_cname="部门名称" field_ename="name" field_type="text" size="40">
+                                                        <input type="text" class="comm-tbox-1" id="DepName" name="DepName" value="" >
                                                     </td>
                                                     <td>
                                                         <span>薪资标准：</span><span style="color: #8a8888;">44</span>

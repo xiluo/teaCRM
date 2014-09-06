@@ -4,7 +4,7 @@ using System.Linq;
 using NLite.Data;
 namespace teaCRM.Entity
 {
-	[Table("t_cus_base")]
+	[Table("T_cus_base")]
 	public partial class TCusBase 
 	{
 	
@@ -38,7 +38,7 @@ namespace teaCRM.Entity
 		[Column("con_is_pub")]
 		public Int32 ConIsPub { get;set; }
 		[Column("con_back")]
-		public Decimal ConBack { get;set; }
+		public Int32 ConBack { get;set; }
 		[Column("cus_createTime")]
 		public DateTime? CusCreateTime { get;set; }
  

@@ -59,12 +59,6 @@
     <Compile Include="Daos\Impl\TCusConDaoImpl.cs">
       <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
     </Compile>
-    <Compile Include="Daos\Impl\TCusExpvalue10000DaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Daos\Impl\TCusExpvalue99999DaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
-    </Compile>
     <Compile Include="Daos\Impl\TCusLogDaoImpl.cs">
       <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
     </Compile>

@@ -11,7 +11,7 @@ body{background: #ECEDF3;}
 
 /**组织架构左侧及右侧详细页面部分----------------------------------------------------------------------------------------------**/
 .nav-side .ns-item{background:#f3f8fc;border-right:1px solid #a4b8d9;*zoom:1;min-height:500px; padding:0px 0px 10px 0px;}
-.ns-item .c_left{ width:100%; position:relative;zoom:1;background:url(/Themes/default/img/c_left_btn.png) no-repeat; margin-bottom:10px;}
+.ns-item .c_left{ width:100%; position:relative;zoom:1;background:url(/Themes/default/CRM/images/c_left_btn.png) no-repeat; margin-bottom:10px;}
 .ns-item .c_left ul{position:relative; height:38px; z-index:1}
 .ns-item .c_left ul li{width:92px; height:38px; font-size:15px; font-weight:700; line-height:36px; z-index:1; cursor:pointer;display: inline-block;}
 .ns-item .c_left ul li .oz0{margin-left:30px;text-shadow: white 0 1px 0;color: #3C6692;}
@@ -31,4 +31,4 @@ body{background: #ECEDF3;}
 .boxTitle h2{height:34px; line-height:34px; color:#2D2D2D; font-size:14px; font-weight:bold; padding-left:20px; border-bottom:#D2D2D2 solid 1px; margin-bottom:10px; background-color:#eef5fa;}
 .boxTitle h2 button{ float:right; margin-right:10px; margin-top:6px;font-size:12px;}
 /**其他小标签**/
-.linkico{ background:url(/Themes/default/images/link.png) 0px 12px no-repeat;}
+.linkico{ background:url(/Themes/default/base/images/link.png) 0px 12px no-repeat;}

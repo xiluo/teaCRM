@@ -1,6 +1,6 @@
 ﻿namespace teaCRM.Entity
 {
-   public class DepartmentTree:Tree
+   public class DepartmentTree:LigerTree
     {
     }
 }

@@ -53,15 +53,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Node.cs" />
     <Compile Include="CRM\ZCusConInfo.cs" />
     <Compile Include="CRM\ZCusInfo.cs" />
-    <Compile Include="Manual\teaCRMEnums.cs" />
-    <Compile Include="Manual\teaCRMKeys.cs" />
-    <Compile Include="Manual\Tree\DepartmentTree.cs" />
-    <Compile Include="Manual\Tree\FilterTree.cs" />
-    <Compile Include="Manual\KeyValue.cs" />
+    <Compile Include="Common\IZtree.cs" />
+    <Compile Include="Common\teaCRMEnums.cs" />
+    <Compile Include="Common\teaCRMKeys.cs" />
+    <Compile Include="Common\LigerTree\DepartmentTree.cs" />
+    <Compile Include="Common\LigerTree\FilterTree.cs" />
+    <Compile Include="Common\KeyValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Manual\ResponseMessage.cs" />
+    <Compile Include="Common\ResponseMessage.cs" />
     <Compile Include="CRM\TCusBase.cs" />
     <Compile Include="CRM\TCusCon.cs" />
     <Compile Include="CRM\TCusLog.cs" />
@@ -72,7 +74,7 @@
     <Compile Include="Basic\TFunMyapp.cs" />
     <Compile Include="Basic\TFunOperating.cs" />
     <Compile Include="Basic\TFunTag.cs" />
-    <Compile Include="Manual\Tree\Tree.cs" />
+    <Compile Include="Common\LigerTree.cs" />
     <Compile Include="Basic\TSysCompany.cs" />
     <Compile Include="Basic\TSysDepartment.cs" />
     <Compile Include="Basic\TSysLog.cs" />

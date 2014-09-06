@@ -1,0 +1,7 @@
+﻿@charset "utf-8";
+			/*自动完成样式*/
+			.loading {padding:20px 30px; text-align:center;width:200px; font-size:14px;word-break:break-all;}
+			.autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+			.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+			.autocomplete-selected { background: #F0F0F0; }
+			.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }

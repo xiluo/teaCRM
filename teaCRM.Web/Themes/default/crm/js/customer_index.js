@@ -8,23 +8,83 @@ var manager;
 var manager1;
 var view_auth = false;
 
+
+$(document).ready(function () {
+    createTree();
+});
+
+
 $(function() {
     //加载树形数据
-    loadTreeData();
+    //loadTreeData();
     //加载客户、联系人、跟进信息
     InitDataGrid();
 });
 
-//加载树形数据
-function loadTreeData() {
-    //$("#filter_tree").ligerTree({ checkbox: false });
-    $("#filter_tree").ligerTree({
-        url: '/Apps/CRM/LoadData/GetFilterTreeData/',
-        ajaxType: 'get',
-        checkbox: false,
-        nodeWidth: 76
+////加载树形数据
+//function loadTreeData() {
+//    //$("#filter_tree").ligerTree({ checkbox: false });
+//    $("#filter_tree").ligerTree({
+//        url: '/Apps/CRM/LoadData/GetFilterTreeData/',
+//        ajaxType: 'get',
+//        checkbox: false,
+//        nodeWidth: 76
+//    });
+//}
+
+
+
+//ZTree==========================================================================
+//=================================================================================
+//异步加载节点
+var setting = {
+    data: {
+        simpleData: {
+            enable: true,
+            idKey: "id",
+            pIdKey: "pId",
+            rootPId: 0
+        }
+    },
+    async: {
+        //异步加载
+        enable: true,
+        url: "/Apps/Settings/Department/AsyncGetNodes/",
+        autoParam: ["id", "name", "pId"]
+    },
+    callback: {
+        beforeExpand: function (treeId, treeNode) {
+            if (!treeNode.isAjaxing) {
+                return true;
+            } else {
+                alert("zTree 正在下载数据中，请稍后展开节点。。。");
+                return false;
+            }
+        },
+        onAsyncSuccess: function (event, treeId, treeNode, msg) {
+
+        },
+        onAsyncError: function () {
+            alert(" 数据加载失败");
+        }
+    }
+};
+
+function createTree() {
+    $.ajax({
+        url: '/Apps/Settings/Department/AsyncGetNodes/', //url  action是方法的名称
+        data: { id: 0 },
+        type: 'Get',
+        dataType: "text", //可以是text，如果用text，返回的结果为字符串；如果需要json格式的，可是设置为json
+        success: function (data) {
+            $.fn.zTree.init($("#filter_tree"), setting, eval('(' + data + ')'));
+        },
+        error: function (msg) {
+            alert(" 数据加载失败！" + msg);
+        }
     });
 }
+//=============================================================================================
 
 
 //根据id集合获取省市信息=========================================================================

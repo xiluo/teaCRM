@@ -1,0 +1,14 @@
+﻿.must {
+color: red;
+margin: 0 5px 0 0;
+}
+.reg-wrap .reg-tips-wrong {
+background: url("data:image/gif;base64,R0lGODlhEAAQANUAAPFqCPvYv/OBLfSNQ/FrCf3l1Perc/vYvv3m…Tg4sgDXNSdRN4enxSCgVnIAMBix4BbyAEBR9gYloJQhxZsyBdTlBhVVdNZQoYGxYNpE1BADs=") no-repeat 0 2px;
+color: #f16906;
+padding: 0 0 0 20px;
+}
+.reg-wrap .reg-tips-ok {
+background: url("data:image/gif;base64,R0lGODlhEAAQANUAAPFqCPvYv/OBLfSNQ/FrCf3l1Perc/vYvv3m…Tg4sgDXNSdRN4enxSCgVnIAMBix4BbyAEBR9gYloJQhxZsyBdTlBhVVdNZQoYGxYNpE1BADs=") no-repeat 0 2px;
+color: green;
+padding: 0 0 0 20px;
+}

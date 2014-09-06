@@ -9,11 +9,9 @@
   </object>-->
   <!--companyUserDao-->
   <object id="companyUserDao" type="teaCRM.Dao.Impl.VCompanyUserDaoImpl, teaCRM.Dao" singleton="false">
-    <!--<property name="aaa" ref="bbb" />-->
   </object>
   <!--sysLogDao-->
   <object id="sysLogDao" type="teaCRM.Dao.Impl.TSysLogDaoImpl, teaCRM.Dao" singleton="false">
-    <!--<property name="aaa" ref="bbb" />-->
   </object>
 
   <!--funFilterDao-->
@@ -21,7 +19,6 @@
   </object>
   <!--cusInfoDao-->
   <object id="cusInfoDao" type="teaCRM.Dao.CRM.Impl.ZCusInfoDaoImpl, teaCRM.Dao" singleton="false">
-    <property name="FilterTreeHelper" ref="filterTreeHelper" />
   </object>
   <!--conInfoDao-->
   <object id="conInfoDao" type="teaCRM.Dao.CRM.Impl.ZConInfoDaoImpl, teaCRM.Dao" singleton="false">
@@ -32,7 +29,6 @@
   </object>
   <!--settingsDao-->
   <object id="settingsDao" type="teaCRM.Dao.Settings.Impl.ZSettingsDaoImpl, teaCRM.Dao" singleton="false">
-    <property name="DepartmentTreeHelper" ref="departmentTreeHelper" />
   </object>
 
   <!--funExpandDao-->

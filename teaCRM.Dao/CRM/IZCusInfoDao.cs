@@ -13,12 +13,12 @@ namespace teaCRM.Dao.CRM
     /// </summary>
  public   interface IZCusInfoDao
     {
-        /// <summary>
-        /// 获取树形数据
-        /// </summary>
-        /// <param name="compNum">客户编号</param>
-        /// <returns></returns>
-        string GetFilterTreeData(string compNum);
+//        /// <summary>
+//        /// 获取树形数据
+//        /// </summary>
+//        /// <param name="compNum">客户编号</param>
+//        /// <returns></returns>
+//        string GetFilterTreeData(string compNum);
 
         /// <summary>
         /// 获取客户信息列表

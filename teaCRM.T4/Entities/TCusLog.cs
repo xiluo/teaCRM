@@ -4,7 +4,7 @@ using System.Linq;
 using NLite.Data;
 namespace teaCRM.Entity
 {
-	[Table("t_cus_log")]
+	[Table("T_cus_log")]
 	public partial class TCusLog 
 	{
 	
@@ -20,7 +20,7 @@ namespace teaCRM.Entity
 		[Column("user_id")]
 		public Int32? UserId { get;set; }
 		[Column("cus_addtime")]
-		public DateTime? CusAddtime { get;set; }
+		public DateTime CusAddtime { get;set; }
  
  
  

@@ -25,6 +25,7 @@
   <object id="sysDepartmentService" type="teaCRM.Service.Settings.Impl.SysDepartmentServiceImpl, teaCRM.Service"
           singleton="false">
     <property name="SettingsDao" ref="settingsDao" />
+    <property name="SysDepartmentDao" ref="sysDepartmentDao" />
   </object>
   <!--组织架构逻辑结束-->
   <!--设置逻辑结束-->

@@ -4,7 +4,7 @@ using System.Linq;
 using NLite.Data;
 namespace teaCRM.Entity
 {
-	[Table("t_fun_app")]
+	[Table("T_fun_app")]
 	public partial class TFunApp 
 	{
 	
@@ -20,11 +20,11 @@ namespace teaCRM.Entity
 		[Column("app_imgurl")]
 		public String AppImgurl { get;set; }
 		[Column("app_ver")]
-		public Single AppVer { get;set; }
+		public Double AppVer { get;set; }
 		[Column("app_link")]
 		public String AppLink { get;set; }
 		[Column("app_high")]
-		public Single AppHigh { get;set; }
+		public Double AppHigh { get;set; }
 		[Column("app_upnote")]
 		public String AppUpnote { get;set; }
 		[Column("app_lastdate")]
@@ -40,7 +40,7 @@ namespace teaCRM.Entity
 		[Column("app_is_sys")]
 		public Int32 AppIsSys { get;set; }
 		[Column("app_price")]
-		public Single AppPrice { get;set; }
+		public Double AppPrice { get;set; }
  
  
  

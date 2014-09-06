@@ -4,7 +4,7 @@ using System.Linq;
 using NLite.Data;
 namespace teaCRM.Entity
 {
-	[Table("t_sys_role")]
+	[Table("T_sys_role")]
 	public partial class TSysRole 
 	{
 	

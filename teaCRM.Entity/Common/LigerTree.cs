@@ -1,6 +1,6 @@
 ﻿namespace teaCRM.Entity
 {
-    public class Tree
+    public class LigerTree
     {
         public int ModuleID { get; set; }
 

@@ -4,7 +4,7 @@ using System.Linq;
 using NLite.Data;
 namespace teaCRM.Entity
 {
-	[Table("t_fun_filters")]
+	[Table("T_fun_filters")]
 	public partial class TFunFilter 
 	{
 	
@@ -13,6 +13,8 @@ namespace teaCRM.Entity
  
 		[Column("parent_id")]
 		public Int32? ParentId { get;set; }
+		[Column("fil_order")]
+		public Int32? FilOrder { get;set; }
 		[Column("comp_num")]
 		public String CompNum { get;set; }
 		[Column("fil_name")]

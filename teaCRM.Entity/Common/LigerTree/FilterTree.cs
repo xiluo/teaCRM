@@ -5,7 +5,7 @@ using System.Text;
 
 namespace teaCRM.Entity
 {
- public   class FilterTree:Tree
+ public   class FilterTree:LigerTree
     {
     }
 }

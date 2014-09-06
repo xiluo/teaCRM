@@ -39,20 +39,20 @@ namespace teaCRM.Service.CRM.Impl
         public ITFunExpandDao FunExpandDao { set; get; }
         public ITCusBaseDao CusBaseDao { set; get; }
 
-        #region 获取筛选器树形列表
-
-        /// <summary>
-        /// 获取筛选器树形列表
-        /// </summary>
-        /// <param name="compNum">客户编号</param>
-        /// <returns></returns>
-        public string GetFilterTreeData(string compNum)
-        {
-            var filterTreeData = CusInfoDao.GetFilterTreeData(compNum);
-            return filterTreeData;
-        }
-
-        #endregion
+//        #region 获取筛选器树形列表
+//
+//        /// <summary>
+//        /// 获取筛选器树形列表
+//        /// </summary>
+//        /// <param name="compNum">客户编号</param>
+//        /// <returns></returns>
+//        public string GetFilterTreeData(string compNum)
+//        {
+//            var filterTreeData = CusInfoDao.GetFilterTreeData(compNum);
+//            return filterTreeData;
+//        }
+//
+//        #endregion
 
         #region 获取客户信息列表,ligerUI分页处理 2014-08-29 14:58:50 By 唐有炜
 

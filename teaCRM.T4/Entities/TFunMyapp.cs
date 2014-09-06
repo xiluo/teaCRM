@@ -4,7 +4,7 @@ using System.Linq;
 using NLite.Data;
 namespace teaCRM.Entity
 {
-	[Table("t_fun_myapp")]
+	[Table("T_fun_myapp")]
 	public partial class TFunMyapp 
 	{
 	
@@ -32,11 +32,11 @@ namespace teaCRM.Entity
 		[OneToMany(ThisKey="Id",OtherKey="MyappId")]
 		public IList<TFunExpand> TFunExpands { get;set; }
 		[OneToMany(ThisKey="Id",OtherKey="MyappId")]
-		public IList<TFunFilter> TFunFilters { get;set; }
-		[OneToMany(ThisKey="Id",OtherKey="MyappId")]
 		public IList<TFunOperating> TFunOperatings { get;set; }
 		[OneToMany(ThisKey="Id",OtherKey="MyappId")]
 		public IList<TFunTag> TFunTags { get;set; }
+		[OneToMany(ThisKey="Id",OtherKey="MyappId")]
+		public IList<TFunFilter> TFunFilters { get;set; }
  
 	}
   

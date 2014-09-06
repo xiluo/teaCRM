@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using NLite.Data.Common;
 using teaCRM.Common;
-using teaCRM.Dao.TreeHelpers;
 using teaCRM.DBContext;
 using teaCRM.Entity;
 using teaCRM.Entity.CRM;
@@ -19,21 +18,21 @@ namespace teaCRM.Dao.CRM.Impl
     /// </summary>
     public class ZCusInfoDaoImpl : IZCusInfoDao
     {
-        public ITreeHelper<FilterTree> FilterTreeHelper { set; get; }
-
-        #region 获取客户筛选条件树形数据
-
-        /// <summary>
-        ///  获取树形数据
-        /// </summary>
-        /// <param name="compNum"></param>
-        /// <returns></returns>
-        public string GetFilterTreeData(string compNum)
-        {
-            return FilterTreeHelper.GetJson(compNum);
-        }
-
-        #endregion
+//        public ITreeHelper<FilterTree> FilterTreeHelper { set; get; }
+//
+//        #region 获取客户筛选条件树形数据
+//
+//        /// <summary>
+//        ///  获取树形数据
+//        /// </summary>
+//        /// <param name="compNum"></param>
+//        /// <returns></returns>
+//        public string GetFilterTreeData(string compNum)
+//        {
+//            return FilterTreeHelper.GetJson(compNum);
+//        }
+//
+//        #endregion
 
         #region 获取客户信息列表  2014-08-29 14:58:50 By 唐有炜
 
