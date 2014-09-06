@@ -3,16 +3,25 @@
 //*时间：2014年07月231日
 
 
-$(document).ready(function () {
+$(document).ready(function() {
     //创建树形
     createTree();
     //初始化输入框
     InitInput();
 });
+
 //初始化输入框
 function InitInput() {
     $("input").css("border", "none").attr("readonly", "readonly");
 }
+
+
+//清空输入框
+function ClearInput() {
+    dropInput();
+    $("input").val("");
+}
+
 //开启编辑状态
 function dropInput() {
     $("input").css("border", "").removeAttr("readonly");
@@ -137,21 +146,31 @@ function load_form_data(id) {
         }
     });
 }
-
+//========================================================
+//=================================================================================
+var url = "";
 //编辑部门信息
-function edit() {
+function show_edit() {
     //开启编辑状态
     dropInput();
     //显示保存按钮
     $("#btn-edit").hide("fast");
-    $("#btn-save").show("fast");
+    $("#btn-save").text("保存修改").show("fast");
+    url = "/add";
+    //必须有这个，阻止刷新
+    return false;
+}
+
+function show_add() {
+    ClearInput();
+    $("#btn-edit").hide("fast");
+    $("#btn-save").text("提交新部门").show("fast");
+    url = "/add";
     //必须有这个，阻止刷新
     return false;
 }
 
 function save() {
-    $("#btn-save").hide("fast");
-    $("#btn-edit").show("fast");
     var flag = $("#form_department").valid();
     //alert(flag);
     if (!flag) {
@@ -166,19 +185,28 @@ function save() {
 
     //还原只读状态
     InitInput();
+    $("#btn-save").hide("fast");
+    $("#btn-edit").show("fast");
     //必须有这个，阻止刷新
     return false;
+}
+
+
+function save_delete() {
+    showDialog("确认删除该部门吗？", function() {
+        showMsg("删除成功！");
+    });
 }
 
 function validate_form() {
     //表单验证
     $("#form_department").validate({
-        errorPlacement: function (error, element) {
+        errorPlacement: function(error, element) {
             var errorMsg = error[0].innerHTML;
             var elementName = element[0].name;
             $("#" + elementName).formtip(errorMsg);
         },
-        success: function (element) {
+        success: function(element) {
             var elem = $(element)[0].htmlFor;
             $("#" + elem).poshytip('disable');
             $("#" + elem).poshytip('destroy');
@@ -186,3 +214,5 @@ function validate_form() {
         }
     });
 }
+//==============================================
+//=============================================

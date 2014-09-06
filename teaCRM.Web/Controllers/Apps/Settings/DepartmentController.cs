@@ -35,7 +35,7 @@ namespace teaCRM.Web.Controllers.Apps.Settings
         {
             if (fc.Count == 0)
             {
-                return PartialView("DepartmentAdd");
+                return PartialView("_DepartmentAddPartial");
             }
             else
             {

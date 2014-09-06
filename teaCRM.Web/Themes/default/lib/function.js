@@ -78,11 +78,38 @@ function showDialog(Msg, okCallback) {
 function showWindow(id, url, title, w, h) {
     var d = dialog({
         id: id,
-        title: '添加客户',
+        title: title,
         //url: url,//此方式不支持滚动条
-        content: '<iframe src="' + url + '" id="frm" name="frm" height="100%" style="border-bottom: 1px solid #E5E5E5;" width="100%" height="100%" width="100%" frameborder="0"></iframe>',
+        content: '<iframe src="' + url + '" id="frm" name="frm" style="border-bottom: 1px solid #E5E5E5;" width="100%" height="100%" width="100%" frameborder="0"></iframe>',
         width: w,
         height: h,
+        left: 0,
+        top: 0,
+        fixed: true,
+        resize: false,
+        drag: false,
+        lock: true
+    });
+    d.showModal();
+}
+
+//============================================================================
+//弹出url方式加载的窗口，带阴影，用作表单===============================================
+//2014-09-03 By 唐有炜
+function showContentWindow(id, url, title, w, h,okCallback) {
+    var d = dialog({
+        id: id,
+        title: title,
+        //url: url,//此方式不支持滚动条
+        content: '<iframe src="' + url + '" id="frm" name="frm" style="border-bottom: 1px solid #E5E5E5;" width="100%" height="100%" width="100%" frameborder="0"></iframe>',
+        width: w,
+        height: h,
+        okValue: '保 存',
+        ok: okCallback,
+        cancelValue: '取消',
+        cancel: function () {
+            d.close().remove();
+        },
         left: 0,
         top: 0,
         fixed: true,

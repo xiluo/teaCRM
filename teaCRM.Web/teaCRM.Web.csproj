@@ -129,6 +129,7 @@
     <Compile Include="Controllers\Apps\CRM\ContactController.cs" />
     <Compile Include="Controllers\Apps\CRM\PubController.cs" />
     <Compile Include="Controllers\Apps\CRM\TrashController.cs" />
+    <Compile Include="Controllers\Apps\Settings\UserGroupController.cs" />
     <Compile Include="Controllers\Base\AdminController.cs" />
     <Compile Include="Controllers\Base\AccountController.cs" />
     <Compile Include="Controllers\Apps\CRM\IndexController.cs" />
@@ -1282,7 +1283,6 @@
     <Content Include="Themes\default\base\js\layout.js" />
     <Content Include="Themes\default\lib\validate\messages_cn.js" />
     <Content Include="Views\Apps\CRM\Index\CustomerIndex.cshtml" />
-    <Content Include="Views\Apps\Settings\Department\DepartmentAdd.cshtml" />
     <Content Include="Views\Apps\Settings\Department\DepartmentIndex.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Web.config">
@@ -1398,6 +1398,7 @@
     <Content Include="Views\Base\Account\Login.Mobile.cshtml" />
     <Content Include="Views\Shared\_Layout.mobile.cshtml" />
     <Content Include="Views\Base\Account\PublicRegister.Mobile.cshtml" />
+    <Content Include="Views\Apps\Settings\UserGroup\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -36,8 +36,12 @@
             <div class="ns-item">
                 <div class="c_left">
                     <ul id="22">
-                        <li id="221" onclick=""><span class="om0"><b class=""></b></span><a class="oz0">添加</a></li>
-                        <li id="33"><span class="om0"><b class=""></b></span><a class="oz0">删除</a></li>
+                        <li id="221" onclick=""><span><b class=""></b></span>
+                            <a class="oz0"  href="javascript:void(0);" onclick="show_add();">添加</a></li>
+                        <li id="33">
+                            <span><b class=""></b></span>
+                            <a class="oz0"  href="javascript:void(0);" onclick="save_delete();">删除</a>
+                        </li>
                     </ul>
                 </div>
                 <!--树形展示开始-->
@@ -54,7 +58,117 @@
     <!-- 查看部门开始 -->
     <div class="layout-right">
         <div class="layout-content">
-            @Html.Partial("DepartmentAdd")
+            <table border="0" align="center" cellpadding="0" cellspacing="0" id="nobgmian" style="overflow: visible;">
+                <tbody>
+                    <tr>
+                        <td width="31" valign="top" class="linkico">&nbsp;</td>
+                        <td valign="top">
+                            <div class="boxTitle" style="min-height: 460px;">
+                                <div style="display: block;">
+                                    <h2>
+                                        部门职责说明书
+                                        <button id="btn-save" class="btn btn-mini btn-primary hide" onclick=" return save(); ">保存</button>
+                                        <input type="hidden" id="Id" name="Id" />
+                                        <button id="btn-edit" class="btn btn-mini btn-primary" onclick=" return show_edit(); ">编辑</button>
+                                    </h2>
+                                    <!--表单开始-->
+                                    <form id="form_department">
+                                        <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="titbox">
+                                            <tbody>
+                                                <tr>
+                                                    <td width="68" height="30" class="tit">基本信息</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="tableInfo">
+                                            <tbody>
+                                                <tr>
+                                                    <td width="12%">部门名称：</td>
+                                                    <td width="41%" style="color: #8a8888;">
+                                                        <input type="text" class="comm-tbox-1 required" id="DepName" name="DepName" value="" />
+                                                    </td>
+                                                    <td>
+                                                        <span>上级部门：</span><span style="color: #8a8888;"><input type="text" id="" name="" /></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>部门定员：</td>
+                                                    <td style="color: #8a8888;"><input type="text" class="comm-tbox-1" id="DepNum" name="DepNum" value="" /></td>
+                                                    <td>
+                                                        <span>创建日期：</span><span style="color: #8a8888;">
+                                                                              <input type="text" id="" name="" />
+                                                                          </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>部门排序：</td>
+                                                    <td style="color: #8a8888;"><input type="text" class="comm-tbox-1" id="DepOrder" name="DepOrder" value="" /></td>
+                                                   
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+
+                                        <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="titbox">
+                                            <tbody>
+                                                <tr>
+                                                    <td width="109" height="30" class="tit">工作目标与职责</td>
+                                                    <td width="471">&nbsp;</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="tableInfo">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <span>工作目标：</span><span style="color: #8a8888; white-space: normal; word-break: break-all;">
+                                                            <input type="text" id="" name="" />
+                                                        </span> <br />
+                                                        <br />
+                                                        <span>工作职责与任务：</span><span style="color: #8a8888; white-space: normal; word-break: break-all;">
+                                                            <input type="text" id="DepRespon" name="DepRespon" />
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="titbox">
+                                            <tbody>
+                                                <tr>
+                                                    <td width="167" height="30" class="tit">部门应掌握的技能和课程</td>
+                                                    <td width="413">&nbsp;</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="tableInfo">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <span>必备技能：</span><span style="color: #8a8888; white-space: normal; word-break: break-all;">
+                                                            <input type="text" id="DepSkills" name="DepSkills" />
+                                                        </span><br />
+                                                        <br />
+                                                        <span>相关培训课程：</span><span style="color: #8a8888; white-space: normal; word-break: break-all;">
+                                                            <input type="text" id="" name="" />
+                                                        </span><br />
+                                                        <br />
+                                                        <span>备注：</span><span style="color: #8a8888; white-space: normal; word-break: break-all;"><input type="text" id="DepNote" name="DepNote" /></span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                    <!--表单结束-->
+                                </div>
+                            </div>
+                            <!-- 查看部门结束 -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
     </div>
 

@@ -17,11 +17,11 @@
   <!---应用市场控制器结束-->
 
   <!--CRM模块控制器开始-->
-  <object id="crmIndexController" type="teaCRM.Web.Controllers.Apps.CRM.IndexController, teaCRM.Web" singleton="false" >
+  <object id="crmIndexController" type="teaCRM.Web.Controllers.Apps.CRM.IndexController, teaCRM.Web" singleton="false">
     <property name="AccountService" ref="accountService" />
     <property name="CustomerService" ref="customerService" />
   </object>
-  <object id="crmTrashController" type="teaCRM.Web.Controllers.Apps.CRM.TrashController, teaCRM.Web" singleton="false" >
+  <object id="crmTrashController" type="teaCRM.Web.Controllers.Apps.CRM.TrashController, teaCRM.Web" singleton="false">
     <property name="AccountService" ref="accountService" />
     <property name="CustomerService" ref="customerService" />
   </object>
@@ -53,10 +53,14 @@
           singleton="false">
     <property name="SysDepartmentService" ref="sysDepartmentService" />
   </object>
-  <object id="expandoFieldController" type="teaCRM.Web.Controllers.Apps.Settings.ExpandoFieldController, teaCRM.Web"/>
-  <object id="importExportController" type="teaCRM.Web.Controllers.Apps.Settings.ImportExportController, teaCRM.Web"/>
-  <object id="roleController" type="teaCRM.Web.Controllers.Apps.Settings.RoleController, teaCRM.Web"/>
-  <object id="usersController" type="teaCRM.Web.Controllers.Apps.Settings.UsersController, teaCRM.Web"/>
-
+  <object id="roleController" type="teaCRM.Web.Controllers.Apps.Settings.RoleController, teaCRM.Web" singleton="false" />
+  <object id="userGroupController" type="teaCRM.Web.Controllers.Apps.Settings.UserGroupController, teaCRM.Web"
+          singleton="false" />
+  <object id="usersController" type="teaCRM.Web.Controllers.Apps.Settings.UsersController, teaCRM.Web"
+          singleton="false" />
+  <object id="importExportController" type="teaCRM.Web.Controllers.Apps.Settings.ImportExportController, teaCRM.Web"
+          singleton="false" />
+  <object id="expandoFieldController" type="teaCRM.Web.Controllers.Apps.Settings.ExpandoFieldController, teaCRM.Web"
+          singleton="false" />
   <!--设置模块控制器结束-->
 </objects>
