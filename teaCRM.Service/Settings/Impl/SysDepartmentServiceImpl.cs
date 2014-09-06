@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using teaCRM.Dao;
 using teaCRM.Dao.Settings;
@@ -38,7 +39,7 @@ namespace teaCRM.Service.Settings.Impl
         /// <returns></returns>
         public List<Node> AsyncGetNodes(string compNum, int? id)
         {
-            var departments = SysDepartmentDao.GetList(d => d.CompNum == compNum && d.ParentId == (id ?? 0));
+            var departments = SysDepartmentDao.GetList(d => d.CompNum == compNum && d.ParentId == (id ?? 0)).OrderBy(d=>d.DepOrder);
             var nodes = new List<Node>();
             //将departments转换为nodes
             foreach (var department in departments)

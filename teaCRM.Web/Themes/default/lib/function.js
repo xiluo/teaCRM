@@ -134,3 +134,17 @@ function showTopMsg(id, Msg) {
     }
 })(jQuery);
 //====================================
+
+
+//==================================
+//显示加载中 14-09-06 By 唐有炜
+function showLoading() {
+    $(document.body).append("<div id=\"background\" class=\"background\" style=\"display: none; \"></div> <div id=\"progressBar\" class=\"progressBar\" style=\"display: none; \">数据加载中，请稍等...</div> ");
+    var ajaxbg = $("#background,#progressBar");
+    ajaxbg.show();
+}
+function hideLoading() {
+    var ajaxbg = $("#background,#progressBar");
+    ajaxbg.hide();
+}
+//===================================================

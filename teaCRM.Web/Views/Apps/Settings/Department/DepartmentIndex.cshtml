@@ -18,6 +18,14 @@
     <!--ZTree-->
     <link href="/Themes/default/lib/zTree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
     <script src="/Themes/default/lib/zTree/js/jquery.ztree.all-3.5.min.js"></script>
+     <!--气泡提示-->
+<script src="/Themes/default/lib/poshytip/jquery.poshytip.min.js" type="text/javascript"></script>
+<link href="/Themes/default/lib/poshytip/tip-yellow/tip-yellow.css" rel="stylesheet"
+      type="text/css" />
+<!--表单验证，这里不能用min,否则保存，需要在字段上加上class="required"-->
+<script src="/Themes/default/lib/validate/jquery.validate.min.js" type="text/javascript"></script>
+<script src="/Themes/default/lib/validate/messages_cn.js" type="text/javascript"></script>
+<script src="/Themes/default/lib/validate/jquery.validate.extend.js" type="text/javascript"></script>
     <script src="/Themes/default/settings/js/department.js" type="text/javascript"></script>
 }
 
@@ -58,7 +66,8 @@
                                 <div class="boxTitle" style="min-height: 460px;">
                                     <div style="display: block;">
                                         <h2>
-                                            <button type="button" id="btn-edit" class="btn btn-mini btn-primary">编辑</button>
+                                            <input type="hidden" id="Id" name="Id" />
+                                            <button  id="btn-edit" class="btn btn-mini btn-primary" onclick="return edit();">编辑</button>
                                             部门职责说明书
                                         </h2>
                                         <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="titbox">
@@ -79,7 +88,7 @@
                                                 <tr>
                                                     <td width="12%">部门名称：</td>
                                                     <td width="41%" style="color: #8a8888;">
-                                                        <input type="text" class="comm-tbox-1" id="DepName" name="DepName" value="" >
+                                                        <input type="text" class="comm-tbox-1 required" id="DepName" name="DepName" value="" >
                                                     </td>
                                                     <td>
                                                         <span>薪资标准：</span><span style="color: #8a8888;">44</span>
@@ -87,7 +96,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>部门定员：</td>
-                                                    <td style="color: #8a8888;">23</td>
+                                                    <td style="color: #8a8888;"><input type="text" class="comm-tbox-1" id="DepNum" name="DepNum" value=""></td>
                                                     <td><span>部门分析修改日期：</span><span style="color: #8a8888;"></span></td>
                                                 </tr>
                                             </tbody>

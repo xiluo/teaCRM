@@ -60,7 +60,7 @@ namespace teaCRM.Service.CRM.Impl
         /// <returns></returns>
         public List<Node> AsyncGetNodes(string compNum, int? id)
         {
-            var filters = FunFilterDao.GetList(f =>f.MyappId==1&& f.CompNum == compNum && f.ParentId == (id ?? 0));
+            var filters = FunFilterDao.GetList(f =>f.MyappId==1&& f.CompNum == compNum && f.ParentId == (id ?? 0)).OrderBy(f=>f.FilOrder);
             var nodes = new List<Node>();
             //将filters转换为nodes
             foreach (var filter in filters)

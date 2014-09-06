@@ -1,6 +1,6 @@
 ﻿@charset "utf-8";
 
-<!--页面初始化样式汇总部分 -->
+/*页面初始化样式汇总部分*/
 :focus { outline: 0; }
 body {background: #fff;margin: 0;}
 .body_bg { background-color: #f8f7f7; }
@@ -8,3 +8,45 @@ ol,ul, li, form, div, dd, dl, dt {border: 0;margin: 0;padding: 0;list-style: non
 img { border: 0; }
 a { text-decoration: none; }
 body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, select, blockquote {margin: 0;padding: 0;font-family: "微软雅黑";}
+
+/*加载中样式 14-09-06 By 唐有炜*/
+.background { 
+display: block; 
+width: 100%; 
+height: 100%; 
+opacity: 0.4; 
+filter: alpha(opacity=40); 
+background:white; 
+position: absolute; 
+top: 0; 
+left: 0; 
+z-index: 2000; 
+} 
+.progressBar { 
+border: solid 2px #86A5AD; 
+background: white url(/Themes/default/lib/ligerUI/skins/Tea/images/grid/loading.gif) no-repeat 10px 10px; 
+display: block; 
+width: 148px; 
+height: 28px; 
+position: fixed; 
+top: 50%; 
+left: 50%; 
+margin-left: -74px; 
+margin-top: -14px; 
+padding: 10px 10px 10px 50px; 
+text-align: left; 
+line-height: 27px; 
+font-weight: bold; 
+position: absolute; 
+z-index: 2001; 
+} 
+
+  /*表单验证样式 配合验证 2014-09-04 By 唐有炜*/
+        .success {
+           border: 1px solid #5ca32d;
+background-color: white;
+        }
+        .error {
+            border: 1px solid #f00;
+background-color: rgb(255, 185, 185);
+        }

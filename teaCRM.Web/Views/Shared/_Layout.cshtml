@@ -60,64 +60,65 @@
                 <div class="exit"><span id="sayHello">欢迎您，</span>@Html.LoadDefaultValue(Html.GetCurrentCompanyUser(int.Parse(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString())).UserTname, Html.GetCurrentCompanyUser(int.Parse(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString())).UserLname)。<a href="/Account/Logout/">安全退出</a></div>
             </div>
             
-            <div id="main-menu">
-                <!--工作台菜单-->
-                <div id="menu-workbench" class="nav-header2 hide">
-                    <ul class="nav2">
-                        <li class="selected"><a href="">我的工作台</a></li>
-                    </ul>
-                </div>
+        <div id="main-menu">
+            <!--工作台菜单-->
+            <div id="menu-workbench" class="nav-header2 hide">
+                <ul class="nav2">
+                    <li class="selected"><a href="">我的工作台</a></li>
+                </ul>
+            </div>
 
-                <!--客户模块菜单-->
-                <div id="menu-customer" class="nav-header2 hide">
-                    <ul class="nav2">
-                        <li id="all" class="selected"><a href="/Apps/CRM/Index/">全部客户</a></li>
-                        <li id="trash"><a href="/Apps/CRM/Trash/">回收站客户</a></li>
-                        <li id="pub"><a href="/Apps/CRM/Pub/">公海客户</a></li>
-                        <li id="contact"><a href="/Apps/CRM/Contact/">我的人脉</a></li>
-                    </ul>
-                </div>
+            <!--客户模块菜单-->
+            <div id="menu-customer" class="nav-header2 hide">
+                <ul class="nav2">
+                    <li id="all" class="selected"><a href="/Apps/CRM/Index/">全部客户</a></li>
+                    <li id="trash"><a href="/Apps/CRM/Trash/">回收站客户</a></li>
+                    <li id="pub"><a href="/Apps/CRM/Pub/">公海客户</a></li>
+                    <li id="contact"><a href="/Apps/CRM/Contact/">我的人脉</a></li>
+                </ul>
+            </div>
 
-                <!--应用市场菜单-->
-                <div id="menu-app" class="nav-header2 hide">
-                    <ul class="nav2">
-                        <li class="selected"><a href="">免费版</a></li>
-                        <li><a href="">收费版</a></li>
-                    </ul>
-                </div>
+            <!--应用市场菜单-->
+            <div id="menu-app" class="nav-header2 hide">
+                <ul class="nav2">
+                    <li class="selected"><a href="">免费版</a></li>
+                    <li><a href="">收费版</a></li>
+                </ul>
+            </div>
                 
-                <!--销售菜单-->
-                <div id="menu-sale" class="nav-header2 hide">
-                    <ul class="nav2">
-                        <li class="selected"><a href="/Apps/Sale/">销售</a></li>
-                    </ul>
-                </div>
+            <!--销售菜单-->
+            <div id="menu-sale" class="nav-header2 hide">
+                <ul class="nav2">
+                    <li class="selected"><a href="/Apps/Sale/">销售</a></li>
+                </ul>
+            </div>
                 
-                <!--产品菜单-->
-                <div id="menu-product" class="nav-header2 hide">
-                    <ul class="nav2">
-                        <li class="selected"><a href="/Apps/Product/">产品</a></li>
-                    </ul>
-                </div>
+            <!--产品菜单-->
+            <div id="menu-product" class="nav-header2 hide">
+                <ul class="nav2">
+                    <li class="selected"><a href="/Apps/Product/">产品</a></li>
+                </ul>
+            </div>
                 
-                <!--服务菜单-->
-                <div id="menu-service" class="nav-header2 hide">
-                    <ul class="nav2">
-                        <li class="selected"><a href="/Apps/Service/">服务</a></li>
-                    </ul>
-                </div>
+            <!--服务菜单-->
+            <div id="menu-service" class="nav-header2 hide">
+                <ul class="nav2">
+                    <li class="selected"><a href="/Apps/Service/">服务</a></li>
+                </ul>
+            </div>
 
-                <!--设置菜单-->
-                <div id="menu-settings" class="nav-header2 hide">
-                    <ul class="nav2">
-                        <li class="selected"><a href="/Apps/Settings/Department/">组织架构</a></li>
-                        <li><a href="/Apps/Settings/Role/">角色管理</a></li>
-                        <li><a href="/Apps/Settings/Users/">用户管理</a></li>
-                        <li><a href="/Apps/Settings/ImportExport/">数据导入导出</a></li>
-                        <li><a href="/Apps/Settings/ExpandoField/">自定义字段</a></li>
-                    </ul>
-                </div>
+            <!--设置菜单-->
+            <div id="menu-settings" class="nav-header2 hide">
+                <ul class="nav2">
+                    <li class="selected"><a href="/Apps/Settings/Department/">组织架构</a></li>
+                    <li><a href="/Apps/Settings/Role/">角色管理</a></li>
+                    <li><a href="/Apps/Settings/Users/">用户管理</a></li>
+                    <li><a href="/Apps/Settings/ImportExport/">数据导入导出</a></li>
+                    <li><a href="/Apps/Settings/ExpandoField/">自定义字段</a></li>
+                </ul>
+            </div>
 
+        </div>
             </div>
         <!--公共头部结束-->
 

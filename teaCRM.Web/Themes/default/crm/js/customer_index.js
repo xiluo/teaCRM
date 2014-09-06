@@ -66,6 +66,9 @@ var setting = {
         },
         onAsyncError: function () {
             alert(" 数据加载失败");
+        },
+        onClick: function (event, treeId, treeNode, clickFlag) {
+            alert("你选中的节点数据："+treeNode.id+" "+treeNode.name);
         }
     }
 };

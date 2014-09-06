@@ -3,7 +3,7 @@
 //*时间：2014年07月231日
 
 
-$(document).ready(function () {
+$(document).ready(function() {
     createTree();
 });
 
@@ -25,48 +25,52 @@ $(function() {
 //            //data.text指的是data数据表中的text字段，如果有其他字段则换成其他的描述例如ＩＤ字段由这样使用：data.ID //该function的执行过程如下：
 //            //当menu.selectNode(parm)代码执行时，function(data)则逐调用data中的text属性，然后进行相关的逻辑对比操作只要这个function(data) return true则该项被选中，false则未选中．所以当需要对ligerTree设置项目被选中时，可以通过这个tree.selectNode(parm)来调用　function(data)函数来实现．
 //        }
-//    });
-//
-//    //编辑部门信息
-//    edit();
+    //    
+    //表单验证
+    validate_form();
+
 });
 
 
 //ZTree==========================================================================
 //=================================================================================
-  //异步加载节点
-    var setting = {
-        data: {
-            simpleData: {
-                enable: true,
-                idKey: "id",
-                pIdKey: "pId",
-                rootPId: 0
-            }
-        },
-        async: {
-            //异步加载
+//异步加载节点
+var setting = {
+    data: {
+        simpleData: {
             enable: true,
-            url: "/Apps/Settings/Department/AsyncGetNodes/",
-            autoParam: ["id", "name", "pId"]
-        },
-        callback: {
-            beforeExpand: function beforeExpand(treeId, treeNode) {
-                if (!treeNode.isAjaxing) {
-                    return true;
-                } else {
-                    alert("zTree 正在下载数据中，请稍后展开节点。。。");
-                    return false;
-                }
-            },
-            onAsyncSuccess: function onAsyncSuccess(event, treeId, treeNode, msg) {
-
-            },
-            onAsyncError: function onAsyncError() {
-                alert(" 数据加载失败");
-            }
+            idKey: "id",
+            pIdKey: "pId",
+            rootPId: 0
         }
-    };
+    },
+    async: {
+        //异步加载
+        enable: true,
+        url: "/Apps/Settings/Department/AsyncGetNodes/",
+        autoParam: ["id", "name", "pId"]
+    },
+    callback: {
+        beforeExpand: function beforeExpand(treeId, treeNode) {
+            if (!treeNode.isAjaxing) {
+                return true;
+            } else {
+                alert("zTree 正在下载数据中，请稍后展开节点。。。");
+                return false;
+            }
+        },
+        onAsyncSuccess: function onAsyncSuccess(event, treeId, treeNode, msg) {
+            //alert(treeNode);
+        },
+        onAsyncError: function onAsyncError() {
+            alert(" 数据加载失败");
+        },
+        onClick: function(event, treeId, treeNode, clickFlag) {
+            //alert(treeNode.id);
+            load_form_data(treeNode.id);
+        }
+    }
+};
 
 function createTree() {
     $.ajax({
@@ -74,14 +78,23 @@ function createTree() {
         data: { id: 0 },
         type: 'Get',
         dataType: "text", //可以是text，如果用text，返回的结果为字符串；如果需要json格式的，可是设置为json
-        success: function (data) {
+        success: function(data) {
             $.fn.zTree.init($("#department_tree"), setting, eval('(' + data + ')'));
+            //默认选中专业节点
+            var treeObj = $.fn.zTree.getZTreeObj("department_tree");
+            var json = eval('(' + data + ')');
+            //alert(json[0].id);
+            var node = treeObj.getNodeByParam("id", json[0].id);
+            treeObj.selectNode(node, false);
+            //设置选中节点后右边编辑内容的载入
+            load_form_data(json[0].id);
         },
-        error: function (msg) {
+        error: function(msg) {
             alert(" 数据加载失败！" + msg);
         }
     });
 }
+
 //=============================================================================================
 
 //加载表单数据
@@ -96,17 +109,18 @@ function load_form_data(id) {
         data: { id: id },
         dataType: "json",
         beforeSend: function() {
-            //showMsg("请求中，请稍后...");
+            showLoading();
         },
         complete: function() {
+            hideLoading();
         },
         success: function(result) {
-           for (var key in result) {
-               //alert(key + " " + result[key]);
-               if ($("#"+key)!=undefined) {
-                   $("#" + key).val(result[key]);
-               }
-           }
+            for (var key in result) {
+                //alert(key + " " + result[key]);
+                if ($("#" + key) != undefined) {
+                    $("#" + key).val(result[key]);
+                }
+            }
         },
         error: function() {
             showMsg("网络连接错误");
@@ -114,11 +128,35 @@ function load_form_data(id) {
     });
 }
 
-////编辑部门信息
-//function edit() {
-//    $("#btn-edit").click(function() {
-//        var flag = form_validate();
-//        //alert(flag);
-//        //alert("edit");
-//    });
-//}
+//编辑部门信息
+function edit() {
+    var flag = $("#form_department").valid();
+    alert(flag);
+    if (!flag) {
+        return false;
+    }
+    var id = $("#btn-edit").prev().val();
+    alert(id);
+    var data = $("#form_department").serialize();
+    alert(data);
+
+    //必须有这个，阻止刷新
+    return false;
+}
+
+function validate_form() {
+    //表单验证
+    $("#form_department").validate({
+        errorPlacement: function (error, element) {
+            var errorMsg = error[0].innerHTML;
+            var elementName = element[0].name;
+            $("#" + elementName).formtip(errorMsg);
+        },
+        success: function (element) {
+            var elem = $(element)[0].htmlFor;
+            $("#" + elem).poshytip('disable');
+            $("#" + elem).poshytip('destroy');
+            $("#" + elem).removeClass("error").addClass("success");
+        }
+    });
+}
