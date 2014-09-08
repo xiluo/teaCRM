@@ -127,9 +127,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\Apps\CRM\ContactController.cs" />
+    <Compile Include="Controllers\Apps\CRM\ToolbarController.cs" />
     <Compile Include="Controllers\Apps\CRM\PubController.cs" />
     <Compile Include="Controllers\Apps\CRM\TrashController.cs" />
-    <Compile Include="Controllers\Apps\Settings\UserGroupController.cs" />
+    <Compile Include="Controllers\Apps\Settings\PermissionController.cs" />
     <Compile Include="Controllers\Base\AdminController.cs" />
     <Compile Include="Controllers\Base\AccountController.cs" />
     <Compile Include="Controllers\Apps\CRM\IndexController.cs" />
@@ -142,7 +143,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\Apps\Settings\ExpandoFieldController.cs" />
-    <Compile Include="Controllers\Apps\Settings\ImportExportController.cs" />
     <Compile Include="Controllers\Apps\Settings\RoleController.cs" />
     <Compile Include="Controllers\Apps\Settings\UsersController.cs" />
     <Compile Include="Controllers\Base\WorkbenchController.cs" />
@@ -166,10 +166,18 @@
     <Content Include="Themes\default\base\css\login.css" />
     <Content Include="Themes\default\base\css\public_register.mobile.css" />
     <Content Include="Themes\default\base\css\public_register.css" />
+    <Content Include="Themes\default\base\images\btn_bg.gif" />
     <Content Include="Themes\default\base\images\develop.png" />
+    <Content Include="Themes\default\base\images\ie_update.jpg" />
+    <Content Include="Themes\default\base\images\msg_icon.gif" />
+    <Content Include="Themes\default\base\images\tools_bg.gif" />
     <Content Include="Themes\default\base\js\city.js" />
     <Content Include="Themes\default\lib\artDialog\lib\require.js" />
     <Content Include="Themes\default\lib\artDialog\lib\sea.js" />
+    <Content Include="Themes\default\lib\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="Themes\default\lib\bootstrap\css\bootstrap.css" />
+    <Content Include="Themes\default\lib\bootstrap\js\bootstrap.js" />
+    <Content Include="Themes\default\lib\bootstrap\js\bootstrap.min.js" />
     <Content Include="Themes\default\lib\jquery\jquery-1.7.1.js" />
     <Content Include="Themes\default\lib\jquery\jquery-1.7.1.min.js" />
     <Content Include="Themes\default\lib\my97DatePicker\calendar.js" />
@@ -1354,16 +1362,13 @@
     <Content Include="Views\Apps\Service\Index\ServiceIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Apps\Settings\Users\Index.cshtml" />
+    <Content Include="Views\Apps\Settings\Users\UsersIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Apps\Settings\ImportExport\Index.cshtml" />
+    <Content Include="Views\Apps\Settings\ExpandoField\ExpandoFieldIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Apps\Settings\ExpandoField\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Apps\Settings\Role\Index.cshtml" />
+    <Content Include="Views\Apps\Settings\Role\RoleIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Base\Account\EmailRegister.cshtml" />
@@ -1378,7 +1383,6 @@
     <Content Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="log4net.bak.config" />
     <None Include="Themes\default\lib\ligerUI\skins\Purple\images\icon\icon-done.gif.695873" />
     <None Include="Themes\default\lib\ligerUI\skins\Purple\image\flexigrid_blue\indicator_waitanim.gif.bak" />
     <None Include="Themes\default\lib\ligerUI\skins\Purple\image\flexigrid_blue\vssver2.scc" />
@@ -1398,7 +1402,9 @@
     <Content Include="Views\Base\Account\Login.Mobile.cshtml" />
     <Content Include="Views\Shared\_Layout.mobile.cshtml" />
     <Content Include="Views\Base\Account\PublicRegister.Mobile.cshtml" />
-    <Content Include="Views\Apps\Settings\UserGroup\Index.cshtml" />
+    <Content Include="Views\Apps\CRM\ToolBar\FilterEdit.cshtml" />
+    <Content Include="Views\Apps\Settings\Role\RoleEdit.cshtml" />
+    <Content Include="Views\Apps\Settings\Permission\FunctionPermission.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,4739 @@
+<HR COLOR=green>
+日志时间：2014-09-07 17:53:39,041 [7] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：登录页面被打开。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:53:44,360 [5] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：来自河南省新乡市的admin@10000正在登录... <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:53:44,625 [5] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：admin@10000登录成功，登录日志已记录。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:53:58,322 [8] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:53:58,322 [8] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:53:59,149 [8] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:53:59,165 [8] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:53:59,165 [8] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:54:19,703 [8] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:54:19,708 [8] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:54:23,113 [5] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:54:23,128 [5] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:54:56,442 [8] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:54:56,448 [8] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:54:57,127 [11] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:54:57,128 [11] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:54:57,133 [11] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:55:13,798 [15] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:55:13,798 [15] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:55:55,897 [15] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:55:55,912 [15] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:56:40,737 [23] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:56:40,738 [23] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:56:40,743 [23] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:56:42,475 [14] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:56:42,476 [14] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:56:42,484 [14] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:56:44,883 [23] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：contact counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT id
+      ,cus_id
+      ,con_name
+      ,con_tel
+      ,con_qq
+      ,con_email
+      ,con_bir
+      ,con_note
+      ,con_is_main
+      , 
+(SELECT ISNULL(u.user_tname,u.user_lname) FROM t_sys_user  AS u WHERE id=a.[user_id]) AS user_name,
+b.*
+
+FROM   T_cus_con AS a
+INNER JOIN T_cus_con_expvalue_10000 AS b ON  a.id = b.con_id WHERE cus_id=76) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:56:44,883 [23] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：contact pagingSql, SELECT TOP 10 *  FROM (SELECT id
+      ,cus_id
+      ,con_name
+      ,con_tel
+      ,con_qq
+      ,con_email
+      ,con_bir
+      ,con_note
+      ,con_is_main
+      , 
+(SELECT ISNULL(u.user_tname,u.user_lname) FROM t_sys_user  AS u WHERE id=a.[user_id]) AS user_name,
+b.*
+
+FROM   T_cus_con AS a
+INNER JOIN T_cus_con_expvalue_10000 AS b ON  a.id = b.con_id WHERE cus_id=76) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:56:44,883 [23] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取联系人信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:56:48,925 [22] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 17:56:48,934 [22] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:01:47,372 [35] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:01:47,379 [35] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:01:48,174 [25] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:01:48,175 [25] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:01:48,178 [25] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:00,423 [17] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:00,427 [17] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:01,020 [41] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=1) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:01,021 [41] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=1) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:01,024 [41] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:03,961 [55] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:03,965 [55] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:04,607 [63] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:04,607 [63] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:04,611 [63] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:05,957 [61] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:05,964 [61] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:06,489 [59] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:06,499 [59] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:06,694 [64] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=1) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:06,695 [64] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=1) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:06,699 [64] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:08,279 [63] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:08,284 [63] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:08,501 [55] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:08,502 [55] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:08,505 [55] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:10,602 [63] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:10,607 [63] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:10,811 [62] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=1) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:10,811 [62] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=1) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:10,814 [62] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:11,678 [59] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:11,681 [59] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:11,864 [64] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:11,865 [64] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:11,869 [64] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:25,230 [53] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:25,235 [53] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:27,792 [17] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:27,800 [17] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:28,359 [53] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:28,369 [53] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:28,571 [60] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:28,571 [60] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:28,575 [60] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:28,861 [55] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:28,865 [55] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:30,178 [41] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:30,183 [41] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:30,360 [53] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:30,360 [53] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:30,363 [53] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:31,947 [55] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:31,951 [55] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:32,126 [53] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:32,127 [53] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:14:32,130 [53] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:35:32,993 [32] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:35:32,996 [32] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:35:33,554 [20] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:35:33,566 [20] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:35:33,838 [31] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:35:33,839 [31] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:35:33,842 [31] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:36:17,668 [31] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:36:17,673 [31] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:36:18,014 [28] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:36:18,014 [28] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:36:18,036 [28] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:36:19,419 [33] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:36:19,424 [33] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:36:19,693 [31] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:36:19,693 [31] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:36:19,697 [31] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:46:56,146 [43] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:46:56,152 [43] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:46:56,490 [43] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:46:56,490 [43] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 18:46:56,494 [43] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:12:29,437 [8] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：登录页面被打开。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:12:38,665 [8] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：来自河南省新乡市的admin@10000正在登录... <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:12:39,078 [8] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：admin@10000登录成功，登录日志已记录。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:12:42,609 [10] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:12:42,619 [10] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:12:43,228 [5] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:12:43,248 [5] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:12:43,271 [5] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:12:50,622 [7] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:12:50,651 [7] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:12:50,894 [5] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:12:50,895 [5] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:12:50,900 [5] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:13:03,068 [9] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:13:03,085 [9] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:06,070 [7] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:06,072 [7] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 30 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:06,092 [7] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:10,294 [7] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:10,297 [7] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:10,304 [7] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:32,006 [9] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:32,007 [9] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 30 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:32,019 [9] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:33,277 [10] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:33,279 [10] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:33,286 [10] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:36,514 [9] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:36,527 [9] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:37,173 [12] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:37,174 [12] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:37,180 [12] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:42,689 [7] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:42,703 [7] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:43,724 [13] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:43,726 [13] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:43,734 [13] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:53,149 [14] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:53,151 [14] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 30 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:53,180 [14] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:54,732 [9] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:54,734 [9] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:54,743 [9] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:59,075 [13] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:59,077 [13] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 30 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:14:59,102 [13] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:00,224 [12] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:00,227 [12] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:00,234 [12] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:02,077 [16] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:02,080 [16] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:02,087 [16] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:02,444 [7] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:02,446 [7] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:02,454 [7] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:03,179 [9] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:03,181 [9] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:03,188 [9] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:03,545 [14] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:03,548 [14] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:03,556 [14] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:04,335 [13] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:04,336 [13] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:04,341 [13] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:04,745 [7] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:04,747 [7] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:04,757 [7] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:07,784 [16] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:07,786 [16] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:07,795 [16] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:18,962 [12] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:18,965 [12] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:18,973 [12] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:19,483 [9] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:19,485 [9] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:19,497 [9] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:20,955 [9] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:20,960 [9] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:21,009 [9] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:21,770 [12] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:21,772 [12] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:21,779 [12] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:22,450 [16] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:22,451 [16] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:22,457 [16] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:24,410 [14] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:24,413 [14] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:24,420 [14] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:25,043 [7] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:25,045 [7] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:25,050 [7] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:26,041 [16] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:26,044 [16] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:26,051 [16] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:28,818 [14] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:28,821 [14] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:28,827 [14] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:29,278 [7] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:29,280 [7] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 10 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:15:29,286 [7] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:16:34,556 [9] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:16:34,570 [9] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:16:37,572 [9] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:16:37,592 [9] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:16:40,643 [16] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:16:40,657 [16] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:16:53,759 [14] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:16:53,772 [14] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:16:58,200 [14] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:16:58,214 [14] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:17:01,766 [5] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:17:01,779 [5] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:17:02,150 [16] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:17:02,151 [16] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:17:02,156 [16] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:17:04,587 [10] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:17:04,598 [10] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:17:04,836 [10] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:17:04,838 [10] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:17:04,850 [10] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:17:07,788 [14] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:17:07,805 [14] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:20:05,025 [15] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:20:05,033 [15] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:20:07,421 [8] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:20:07,423 [8] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:20:07,435 [8] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:20:22,148 [7] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:20:22,161 [7] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:20:29,929 [14] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:20:29,937 [14] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:20:40,359 [9] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:20:40,381 [9] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:20:40,939 [18] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:20:40,940 [18] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:20:40,943 [18] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:20:46,799 [15] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:20:46,810 [15] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:21:37,053 [18] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:21:37,056 [18] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:21:37,066 [18] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:21:37,693 [7] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:21:37,696 [7] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:21:37,707 [7] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:42:18,300 [62] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:42:18,316 [62] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:42:19,493 [63] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:42:19,499 [63] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 21:42:19,536 [63] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:19:49,586 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:19:49,604 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:19:50,936 [21] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:19:50,941 [21] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:19:50,980 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:19:53,919 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:19:53,923 [21] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:31:59,873 [33] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:31:59,890 [33] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:32:01,145 [30] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:32:01,150 [30] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:32:01,159 [30] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:32:05,088 [18] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:32:05,096 [18] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:32:52,753 [33] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:32:52,757 [33] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:32:53,741 [37] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:32:53,742 [37] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:32:53,747 [37] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:32:55,085 [36] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:32:55,089 [36] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:33:11,279 [38] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：UPDATE T_cus_base SET con_back=1 WHERE id=84 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:33:11,279 [38] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：更新成功！ <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:33:11,330 [35] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:33:11,330 [35] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:33:11,334 [35] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:34:42,838 [36] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：客户扩展字段获取成功，共5个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:34:42,888 [36] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：联系人扩展字段获取成功,共1个字段。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:34:43,546 [38] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:34:43,547 [38] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:34:43,550 [38] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:34:47,848 [9] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：UPDATE T_cus_base SET con_back=1 WHERE id=76 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:34:47,848 [9] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：更新成功！ <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:34:47,904 [47] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:34:47,905 [47] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:34:47,908 [47] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:35:00,654 [33] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：UPDATE T_cus_base SET con_back=1 WHERE id=88 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:35:00,654 [33] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：更新成功！ <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:35:00,709 [36] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:35:00,710 [36] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:35:00,725 [36] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:35:28,851 [33] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：UPDATE T_cus_base SET con_back=1 WHERE id=86 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:35:28,851 [33] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：更新成功！ <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:35:28,906 [38] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:35:28,907 [38] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:35:28,910 [38] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:35:34,528 [48] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：UPDATE T_cus_base SET con_back=1 WHERE id=87 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:35:34,528 [48] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：更新成功！ <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:35:34,616 [45] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer counttingSql, SELECT COUNT(1) AS RecordCount FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:35:34,617 [45] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：customer pagingSql, SELECT TOP 16 *  FROM (SELECT 
+                       a.id,
+                       a.cus_no,
+                       a.cus_name,
+                       a.cus_sname,
+                       a.cus_lastid AS cus_lastname,
+                       a.cus_tel,
+                       a.cus_city,
+                       a.cus_address,
+                       a.cus_note,
+                         (
+                                 SELECT cc.con_name
+                                 FROM   T_cus_con cc
+                                 WHERE  id = a.con_id
+                         )           AS con_name,
+                       (SELECT u.user_tname FROM t_sys_user AS u WHERE u.id=a.user_id) as user_name,
+                      (
+SELECT     STUFF((SELECT ','+u2.user_tname FROM t_sys_user AS u2  WHERE CHARINDEX(CAST(u2.id as VARCHAR),a.con_team) >0 FOR XML PATH ('')),1,1,'')
+)       
+as con_team, 
+                       a.con_is_pub,
+                       a.con_back,
+                       a.cus_createTime,
+                       b.*
+FROM   T_cus_base AS a
+INNER JOIN T_cus_expvalue_10000 AS b ON  a.id = b.cus_id WHERE con_back=0 AND (user_id=3 OR con_is_pub=1)) AS T  ORDER BY id  <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-07 23:35:34,623 [45] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：用户id为3的用户获取客户信息成功。 <BR>
+ <HR Size=1>

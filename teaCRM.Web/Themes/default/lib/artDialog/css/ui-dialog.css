@@ -13,9 +13,6 @@
     position: relative;
     background-color: #FFF;
     border: 1px solid #999;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
     outline: 0;
     background-clip: padding-box;
     font-family: 'Microsoft yahei', '宋体', Helvetica, arial, sans-serif;
@@ -27,7 +24,6 @@
     transform: scale(0);
     -webkit-transition: -webkit-transform .15s ease-in-out, opacity .15s ease-in-out;
     transition: transform .15s ease-in-out, opacity .15s ease-in-out;
-    behavior: url(/Themes/default/lib/pie/pie.htc); /*非常重要*/
 }
 
 .ui-popup-show .ui-dialog {

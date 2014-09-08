@@ -3,15 +3,20 @@
 /*作者：唐有炜
 /*时间：2014年08月25日*/
 
-.layout-left{display:inline;float:left;width:189px;position:relative;z-index:102;*zoom:1;_height:705px; background-color:#F6FAFD;border-right:1px solid #a4b8d9; min-height:600px;}
+.layout-left{display:inline;float:left;width:189px;position:relative;z-index:102;*zoom:1;_height:705px; background-color:#eaedf4;border-right:1px solid #d8dce5;}
 .layout-right{display:inline;float:right;width:100%;margin-left:-190px;position:relative;z-index:101;*zoom:1;_height:705px;background: #fff;}
-.layout-content{margin: 10px 10px 0 200px;position:relative;z-index:102;*zoom:1}
+.layout-content{margin:0px 0px 0px 190px;position:relative;z-index:102;*zoom:1}
 
+/*此部分为左侧内容格式*/
+.l-top{line-height:26px; margin:10px;}
+.l-top .l-top-list li{float: left;height:26px;padding: 0px 10px;border: 1px solid #E6E6E6;margin-right:8px;margin-bottom:8px;
+line-height:26spx; background-color:#fff;}
+.l-top .l-top-list li a{color:#333;}
+.l-top .l-top-list li strong{color:#E4393C;}
+.l-top .r-list{ float:right;}
+.l-top .r-list .keyword{ display:block; float:left; margin:0;padding:0 5px; width:125px; height:30px; line-height:28px; font-size:12px; border:1px solid #dbdbdb; color:#444; border-bottom:none;}
+.l-top .r-list .btn-search{ display:block; float:left; margin:0 0 0 -1px; padding:0; width:30px; height:30px; line-height:30px; border:1px solid #dbdbdb; background:url(../images/skin_icons.png) -160px -20px no-repeat #fafafa; cursor:pointer; text-indent:-9999px; }
 
-/**客户左侧及右侧详细页面部分----------------------------------------------------------------------------------------------**/
-.nav-side .ns-item{*zoom:1; padding:0px 0px 10px 0px;}
-.ns-item .c_left{ width:100%; position:relative;zoom:1;background:url(/Themes/default/CRM/images/c_left_btn.png) no-repeat; margin-bottom:10px;}
-.ns-item .c_left ul{position:relative; height:38px; z-index:1}
-.ns-item .c_left ul li{width:92px; height:38px; font-size:15px; font-weight:700; line-height:36px; z-index:1; cursor:pointer; float:left;}
-.ns-item .c_left ul li .oz0{margin-left:30px;text-shadow: white 0 1px 0;color: #3C6692;}
-.ns-item .c_left ul li a:hover{ color:#000;}
+.layout-left-filter{margin:10px 0px; width:100%;}
+.layout-left-filter h2{line-height:36px; color:#FFFFFF; background-color:#3083EB; font-size:14px; width:170px; padding:0px 10px;}
+.layout-left-filter h2 a{line-height:20px; font-size:11px; margin-top:16px; float:right; margin-right:5px; font-weight:normal; color:#F2F2F2;}

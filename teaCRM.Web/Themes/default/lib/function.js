@@ -33,6 +33,39 @@ function Trim(str) {
     return LTrim(RTrim(str));
 }
 
+//可以自动关闭的提示
+function jsprint(msgtitle, msgcss, callback) {
+    $("#msgprint").remove();
+    var cssname = "";
+    switch (msgcss) {
+    case "Success":
+        cssname = "pcent success";
+        break;
+    case "Error":
+        cssname = "pcent error";
+        break;
+    case "Warn":
+        cssname = "pcent error";
+        break;
+    default:
+        cssname = "pcent warning";
+        break;
+    }
+    var str = "<div id=\"msgprint\" class=\"" + cssname + "\">" + msgtitle + "</div>";
+    $("body").append(str);
+    $("#msgprint").show();
+    //3秒后清除提示
+    setTimeout(function() {
+        $("#msgprint").fadeOut(500);
+        //如果动画结束则删除节点
+        if (!$("#msgprint").is(":animated")) {
+            $("#msgprint").remove();
+        }
+    }, 2000);
+    //执行回调函数
+    if (typeof (callback) == "function") callback();
+}
+
 //=========================================================================================
 
 //弹出框封装结束开始
@@ -41,27 +74,16 @@ function Trim(str) {
 //<link rel="stylesheet" href="/Themes/default/js/artDialog/css/ui-dialog.css">
 //<script src="/Themes/default/js/artDialog/dist/dialog-plus-min.js"></script>
 //修正margin:10px 10px -10px 10px
-function showMsg(Msg) {
-    var d = dialog({
-        title: '温馨提示',
-        content: Msg,
-//            width:'280',
-//            height:'100',
-        quickClose: true,
-        cancel: false
-    }).show();
-    //自动关闭
-    setTimeout(function() {
-        d.close().remove();
-    }, 1000);
+function showMsg(msg, msgcss, callback) {
+    jsprint(msg, msgcss, callback);
 }
 
 
 //弹出对话框，带阴影==============================================
-function showDialog(Msg, okCallback) {
+function showDialog(msg, okCallback) {
     var d = dialog({
         title: '温馨提示',
-        content: Msg,
+        content: msg,
         okValue: '确 定',
         ok: okCallback,
         cancelValue: '取消',
@@ -88,15 +110,21 @@ function showWindow(id, url, title, w, h) {
         fixed: true,
         resize: false,
         drag: false,
-        lock: true
+        lock: true,
+        okValue: '确 定',
+        ok: function() {},
+        cancelValue: '取消',
+        cancel: function () {
+            d.close().remove();
+        }
     });
     d.showModal();
 }
 
 //============================================================================
-//弹出url方式加载的窗口，带阴影，用作表单===============================================
+//弹出url方式加载的窗口，带阴影，不带添加按钮，用作表单===============================================
 //2014-09-03 By 唐有炜
-function showContentWindow(id, url, title, w, h,okCallback) {
+function showContentWindow(id, url, title, w, h) {
     var d = dialog({
         id: id,
         title: title,
@@ -104,12 +132,6 @@ function showContentWindow(id, url, title, w, h,okCallback) {
         content: '<iframe src="' + url + '" id="frm" name="frm" style="border-bottom: 1px solid #E5E5E5;" width="100%" height="100%" width="100%" frameborder="0"></iframe>',
         width: w,
         height: h,
-        okValue: '保 存',
-        ok: okCallback,
-        cancelValue: '取消',
-        cancel: function () {
-            d.close().remove();
-        },
         left: 0,
         top: 0,
         fixed: true,
@@ -122,12 +144,12 @@ function showContentWindow(id, url, title, w, h,okCallback) {
 
 
 //iframe里面弹出对话框并自动关闭
-function showTopMsg(id, Msg) {
+function showTopMsg(id, msg) {
     //在iframe里面打开弹出框并自动关闭
     var d = top.dialog({
         id: id,
         title: '温馨提示',
-        content: Msg,
+        content: msg,
         cancel: false
     }).show();
     setTimeout(function() {
@@ -160,6 +182,7 @@ function showTopMsg(id, Msg) {
         //$(this).focus();//注意，要结合jquery.validate必须取消
     }
 })(jQuery);
+
 //====================================
 
 
@@ -167,11 +190,12 @@ function showTopMsg(id, Msg) {
 //显示加载中 14-09-06 By 唐有炜
 function showLoading() {
     $(document.body).append("<div id=\"background\" class=\"background\" style=\"display: none; \"></div> <div id=\"progressBar\" class=\"progressBar\" style=\"display: none; \">数据加载中，请稍等...</div> ");
-    var ajaxbg = $("#background,#progressBar");
+    var ajaxbg = $("#background, #progressBar");
     ajaxbg.show();
 }
+
 function hideLoading() {
-    var ajaxbg = $("#background,#progressBar");
+    var ajaxbg = $("#background, #progressBar");
     ajaxbg.hide();
 }
 //===================================================

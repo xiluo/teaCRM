@@ -1,0 +1,122 @@
+﻿@using teaCRM.Common
+@model dynamic
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seo {
+    <title>角色管理_系统设置_C+企业云平台_打造中国办公软件第一品牌</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+}
+@section head {
+   <link href="/Themes/default/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <script type="text/javascript">
+        function show_add() {
+            var url = "/Apps/Settings/Role/Add/";
+            showWindow("edit", url, "添加角色", 700, 240);
+            //必须有这个，阻止刷新
+            return false;
+        }
+
+        function show_edit(id) {
+            var url = "/Apps/Settings/Role/Edit/";
+            showWindow("edit", url, "修改角色", 700, 240);
+            //必须有这个，阻止刷新
+            return false;
+        }
+
+        function show_delete() {
+            var url = "/Apps/Settings/Role/Delete/1/";
+            showDialog("确认删除该角色吗？",function() {
+               showMsg("删除成功！","Success");
+            });
+            //必须有这个，阻止刷新
+            return false;
+        }
+
+    </script>
+}
+
+<div>
+    <a href="javascript:void(0);" onclick="show_add();" class="view-btn" title="查看">新增</a>
+    <table class="table table-striped table-bordered ">
+        <thead>
+            <tr>
+                <th>角色名称</th>
+                <th>角色类型</th>
+                <th>显示顺序</th>
+                 <th>角色描述</th>
+                <th>是否内置</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+         
+             <tr>
+                <td>
+                    aaa
+                </td>
+                <td>
+                    bbb
+                </td>
+                <td>
+                    ccc
+                </td>
+                 <td>
+                     ddd
+                 </td>
+                 <td>
+                     eee
+                 </td>
+                 <td width="16%">
+                     
+                     <a href="javascript:void(0)" onclick="show_edit(1);" class="view-btn" title="查看">修改</a>
+                    </td>
+            </tr>
+
+            <tr>
+                <td>
+                    aaa
+                </td>
+                <td>
+                    bbb
+                </td>
+                <td>
+                    ccc
+                </td>
+                <td>
+                    ddd
+                </td>
+                <td>
+                    eee
+                </td>
+                <td width="16%">
+                    
+                    <a href="javascript:void(0)" onclick="show_edit(1);" class="view-btn" title="查看">修改</a>
+                   </td>
+            </tr>
+            <tr>
+                <td>
+                    aaa
+                </td>
+                <td>
+                    bbb
+                </td>
+                <td>
+                    ccc
+                </td>
+                <td>
+                    ddd
+                </td>
+                <td>
+                    eee
+                </td>
+                <td width="16%">
+                    
+                    <a href="javascript:void(0)" onclick="show_edit(1);" class="view-btn" title="查看">修改</a>
+                    </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

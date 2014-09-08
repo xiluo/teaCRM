@@ -177,12 +177,12 @@ function view() {
     //        $.ligerDialog.warn('权限不够！');
     //    }
 
-    showWindow("show_add", "/Apps/CRM/Index/Show/", "查看客户", 800, 480);
+    showContentWindow("show_add", "/Apps/CRM/Index/Show/", "查看客户", 800, 480);
 }
 
 //添加客户
 function add() {
-    showWindow("show_add", "/Apps/CRM/Index/Add/", "新增客户", 670, 480);
+    showWindow("show_add", "/Apps/CRM/Index/Add/", "新增客户", 800, 480);
 }
 
 function edit() {
@@ -241,14 +241,14 @@ function to_trash() {
                 success: function(result) {
                     var status = result.Status;
                     if (status == true || status == "true" || status == "True") {
-                        showMsg("删除成功！");
+                        showMsg("删除成功！","Success");
                         f_reload();
                     } else {
-                        showMsg("删除失败！");
+                        showMsg("删除失败！","Error");
                     }
                 },
                 error: function() {
-                    showMsg("操作失败！");
+                    showMsg("操作失败！", "Error");
                 }
             });
         });

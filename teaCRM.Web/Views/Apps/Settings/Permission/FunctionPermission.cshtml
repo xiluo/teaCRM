@@ -1,0 +1,155 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section seo{
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+}
+
+@section head
+{
+    <link href="/Themes/default/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+}
+
+
+<table>
+    <tbody>
+        <tr>
+            <td>
+                <table width="100%">
+                    <tbody>
+                        <tr>
+                            <td style="text-align: left;">
+                               
+                            <td style="text-align: right;">
+                                <input id="save" name="save" type="button" value="保  存" class="btn button-blue">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table id="permissions" class="table table-striped table-bordered ">
+                    <thead>
+                        <tr>
+                            <th colspan="2" class="first">权限设置</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="title">
+                            <td width="150" style="text-align: left;">
+                                <input name="allModule" id="allModules" type="checkbox">所有模块
+                                <span class="helper-tip" id="allModule_helper" data-content="'所有模块'复选框选中后，您可以为所有模块设置统一的数据访问权限。例如：你可以设置销售主管在所有的模块的数据访问权限为'仅自己'(即只能访问属于自己的数据，一般来说，自己添加的数据归属于自己)。" data-toggle="popover" data-original-title="温馨提示">&nbsp;</span>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<a id="globalSetting_all" style="" href="javascript:void(0)">更改</a>
+                                <input type="hidden" id="allModules_SelectedValue" value="">
+                            </td>
+                            <td>功能点</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">
+                                <input id="module_Create_CRM_Customer" name="module_Create.CRM.Customer" type="checkbox" value="true"><input name="module_Create.CRM.Customer" type="hidden" value="false">&nbsp;客户
+                                <span class="helper-tip" id="module_helper_Create.CRM.Customer" data-content="'客户'复选框选中后，您可以为该模块设置统一的数据访问权限，该设置将会覆盖'所有模块'的设置。例如：你可以设置销售主管在该模块的数据访问权限为'仅自己'(即只能访问属于自己的数据，一般来说，自己添加的数据归属于自己)。" data-toggle="popover" data-original-title="温馨提示">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <a id="globalSetting_module_Create.CRM.Customer" style="" href="javascript:void(0)">更改</a>
+
+                                <input id="module_Create_CRM_Customer_SelectedValue" name="module_Create.CRM.Customer_SelectedValue" type="hidden" value="">
+                            </td>
+                            <td>
+                                <table width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td width="130" style="text-align: left;"><input id="object_Create_CRM_Customer_Customer" name="object_Create.CRM.Customer_Customer" type="checkbox" value="true"><input name="object_Create.CRM.Customer_Customer" type="hidden" value="false"> 客户</td>
+                                            <td style="text-align: left;">
+                                                <input donnotsetdatasetpermission="False" id="permission_Create_CRM_Customer_Customer_View" name="permission_Create.CRM.Customer_Customer_View" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_Customer_View" type="hidden" value="false">&nbsp;查看 &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input id="permission_Create_CRM_Customer_Customer_Add" name="permission_Create.CRM.Customer_Customer_Add" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_Customer_Add" type="hidden" value="false">&nbsp;新增 &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input id="permission_Create_CRM_Customer_Customer_Edit" name="permission_Create.CRM.Customer_Customer_Edit" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_Customer_Edit" type="hidden" value="false">&nbsp;编辑 &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input id="permission_Create_CRM_Customer_Customer_Delete" name="permission_Create.CRM.Customer_Customer_Delete" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_Customer_Delete" type="hidden" value="false">&nbsp;删除 &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input id="permission_Create_CRM_Customer_Customer_ToSea" name="permission_Create.CRM.Customer_Customer_ToSea" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_Customer_ToSea" type="hidden" value="false">&nbsp;放入公海 &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input id="permission_Create_CRM_Customer_Customer_Transfer" name="permission_Create.CRM.Customer_Customer_Transfer" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_Customer_Transfer" type="hidden" value="false">&nbsp;转移 &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input id="permission_Create_CRM_Customer_Customer_Import" name="permission_Create.CRM.Customer_Customer_Import" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_Customer_Import" type="hidden" value="false">&nbsp;导入 &nbsp;&nbsp;&nbsp;&nbsp;
+
+                                            </td>
+                                            <td width="400">
+                                                <a id="globalSetting_object_Create.CRM.Customer_Customer" style="width: 50px; float: right;" href="javascript:void(0)">更改</a>
+                                                <div id="scopeDescription_Create_CRM_Customer_Customer">全部</div>
+                                                <input id="object_Create_CRM_Customer_Customer_SelectedValue" name="object_Create.CRM.Customer_Customer_SelectedValue" type="hidden" value="type:All;ids:">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td width="130" style="text-align: left;"><input id="object_Create_CRM_Customer_Contact" name="object_Create.CRM.Customer_Contact" type="checkbox" value="true"><input name="object_Create.CRM.Customer_Contact" type="hidden" value="false"> 联系人</td>
+                                            <td style="text-align: left;">
+                                                <input donnotsetdatasetpermission="False" id="permission_Create_CRM_Customer_Contact_View" name="permission_Create.CRM.Customer_Contact_View" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_Contact_View" type="hidden" value="false">&nbsp;查看 &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input id="permission_Create_CRM_Customer_Contact_Add" name="permission_Create.CRM.Customer_Contact_Add" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_Contact_Add" type="hidden" value="false">&nbsp;新增 &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input id="permission_Create_CRM_Customer_Contact_Edit" name="permission_Create.CRM.Customer_Contact_Edit" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_Contact_Edit" type="hidden" value="false">&nbsp;编辑 &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input id="permission_Create_CRM_Customer_Contact_Delete" name="permission_Create.CRM.Customer_Contact_Delete" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_Contact_Delete" type="hidden" value="false">&nbsp;删除 &nbsp;&nbsp;&nbsp;&nbsp;
+
+                                            </td>
+                                            <td width="400">
+                                                <a id="globalSetting_object_Create.CRM.Customer_Contact" style="width: 50px; float: right;" href="javascript:void(0)">更改</a>
+                                                <div id="scopeDescription_Create_CRM_Customer_Contact">全部</div>
+                                                <input id="object_Create_CRM_Customer_Contact_SelectedValue" name="object_Create.CRM.Customer_Contact_SelectedValue" type="hidden" value="type:All;ids:">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td width="130" style="text-align: left;"><input id="object_Create_CRM_Customer_OpenSea" name="object_Create.CRM.Customer_OpenSea" type="checkbox" value="true"><input name="object_Create.CRM.Customer_OpenSea" type="hidden" value="false"> 公海</td>
+                                            <td style="text-align: left;">
+                                                <input donnotsetdatasetpermission="True" id="permission_Create_CRM_Customer_OpenSea_View" name="permission_Create.CRM.Customer_OpenSea_View" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_OpenSea_View" type="hidden" value="false">&nbsp;查看 &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input id="permission_Create_CRM_Customer_OpenSea_Add" name="permission_Create.CRM.Customer_OpenSea_Add" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_OpenSea_Add" type="hidden" value="false">&nbsp;新增 &nbsp;&nbsp;&nbsp;&nbsp;
+
+                                            </td>
+                                            <td width="400"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td width="130" style="text-align: left;"><input id="object_Create_CRM_Customer_CustomerMap" name="object_Create.CRM.Customer_CustomerMap" type="checkbox" value="true"><input name="object_Create.CRM.Customer_CustomerMap" type="hidden" value="false"> 客户分布图</td>
+                                            <td style="text-align: left;">
+                                                <input donnotsetdatasetpermission="True" id="permission_Create_CRM_Customer_CustomerMap_View" name="permission_Create.CRM.Customer_CustomerMap_View" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_CustomerMap_View" type="hidden" value="false">&nbsp;查看 &nbsp;&nbsp;&nbsp;&nbsp;
+
+                                            </td>
+                                            <td width="400"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td width="130" style="text-align: left;"><input id="object_Create_CRM_Customer_CustomerReturnVisit" name="object_Create.CRM.Customer_CustomerReturnVisit" type="checkbox" value="true"><input name="object_Create.CRM.Customer_CustomerReturnVisit" type="hidden" value="false"> 客户关怀</td>
+                                            <td style="text-align: left;">
+                                                <input donnotsetdatasetpermission="False" id="permission_Create_CRM_Customer_CustomerReturnVisit_View" name="permission_Create.CRM.Customer_CustomerReturnVisit_View" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_CustomerReturnVisit_View" type="hidden" value="false">&nbsp;查看 &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input id="permission_Create_CRM_Customer_CustomerReturnVisit_Add" name="permission_Create.CRM.Customer_CustomerReturnVisit_Add" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_CustomerReturnVisit_Add" type="hidden" value="false">&nbsp;新增 &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input id="permission_Create_CRM_Customer_CustomerReturnVisit_Edit" name="permission_Create.CRM.Customer_CustomerReturnVisit_Edit" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_CustomerReturnVisit_Edit" type="hidden" value="false">&nbsp;编辑 &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input id="permission_Create_CRM_Customer_CustomerReturnVisit_Delete" name="permission_Create.CRM.Customer_CustomerReturnVisit_Delete" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_CustomerReturnVisit_Delete" type="hidden" value="false">&nbsp;删除 &nbsp;&nbsp;&nbsp;&nbsp;
+
+                                            </td>
+                                            <td width="400">
+                                                <a id="globalSetting_object_Create.CRM.Customer_CustomerReturnVisit" style="width: 50px; float: right;" href="javascript:void(0)">更改</a>
+                                                <div id="scopeDescription_Create_CRM_Customer_CustomerReturnVisit">全部</div>
+                                                <input id="object_Create_CRM_Customer_CustomerReturnVisit_SelectedValue" name="object_Create.CRM.Customer_CustomerReturnVisit_SelectedValue" type="hidden" value="type:All;ids:">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>

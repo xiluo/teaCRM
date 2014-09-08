@@ -104,7 +104,7 @@
         onContextmenu: null,                   //右击事件
         onRClickToSelect: false,                //右击行时是否选中
         contentType: null,                     //Ajax contentType参数
-        checkboxColWidth: 27,                  //复选框列宽度
+        checkboxColWidth: 37,                  //复选框列宽度
         detailColWidth: 29,                     //明细列宽度
 
         rowid: null,

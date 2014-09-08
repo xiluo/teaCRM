@@ -154,8 +154,8 @@ function show_edit() {
     //开启编辑状态
     dropInput();
     //显示保存按钮
-    $("#btn-edit").hide("fast");
-    $("#btn-save").text("保存修改").show("fast");
+    $("#btn-edit").hide();
+    $("#btn-save").text("保存修改").show();
     url = "/add";
     //必须有这个，阻止刷新
     return false;
@@ -163,8 +163,8 @@ function show_edit() {
 
 function show_add() {
     ClearInput();
-    $("#btn-edit").hide("fast");
-    $("#btn-save").text("提交新部门").show("fast");
+    $("#btn-edit").hide();
+    $("#btn-save").text("提交新部门").show();
     url = "/add";
     //必须有这个，阻止刷新
     return false;
@@ -185,8 +185,8 @@ function save() {
 
     //还原只读状态
     InitInput();
-    $("#btn-save").hide("fast");
-    $("#btn-edit").show("fast");
+    $("#btn-save").hide();
+    $("#btn-edit").show();
     //必须有这个，阻止刷新
     return false;
 }

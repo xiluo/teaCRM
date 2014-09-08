@@ -9,13 +9,13 @@
 @section seo {
     <title>全部客户_C+企业云平台_打造中国办公软件第一品牌</title>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-    <meta http-equiv="X-UA-Compatible" content="IE=6" />
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
 }
 @section head{
 
     <!--客户模块布局及左侧css-->
     <link href="/Themes/default/CRM/css/crm.layout.css" rel="stylesheet" type="text/css" />
-       <!--ZTree-->
+	     <!--ZTree-->
 <link href="/Themes/default/lib/zTree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
 <script src="/Themes/default/lib/zTree/js/jquery.ztree.all-3.5.min.js"></script>
     <!--客户列表css-->
@@ -30,7 +30,7 @@
     <script src="/Themes/default/lib/ligerUI/js/plugins/ligerRadio.js" type="text/javascript"></script>
     <script src="/Themes/default/lib/ligerUI/js/plugins/ligerTextBox.js" type="text/javascript"></script>
     <script src="/Themes/default/lib/ligerUI/js/plugins/ligerSpinner.js" type="text/javascript"></script>
-    @*<script src="/Themes/default/lib/ligerUI/js/plugins/ligerTree.js" type="text/javascript"></script>*@
+    <script src="/Themes/default/lib/ligerUI/js/plugins/ligerTree.js" type="text/javascript"></script>
     <script src="/Themes/default/lib/ligerUI/js/plugins/ligerDialog.js" type="text/javascript"></script>
     <script src="/Themes/default/lib/ligerUI/js/plugins/ligerDrag.js" type="text/javascript"></script>
     <script src="/Themes/default/lib/ligerUI/js/plugins/ligerResizable.js" type="text/javascript"></script>
@@ -43,7 +43,12 @@
     <script src="/Themes/default/base/js/city.js" type="text/javascript"></script>
     <!--客户js，由于动态读取，必须放在页面上-->
     <script type="text/javascript">
-        //初始化客户列表==============================================================
+	<!--首次打开页面时对左侧分类进行高度设定-->
+	$(function (){
+	$(".layout-left").height($(window).height()-83);
+	});
+
+    //初始化客户列表==============================================================
          var customer_url = "/Apps/CRM/LoadData/GetCustomerLsit/?&rnd=" + Math.random();
         function InitDataGrid() {
             initLayout();
@@ -54,50 +59,67 @@
                 checkbox: true,
                 columns: [
                     {
-                        display: '选择',
+                        display: '序号',
                         width: 50,
                         render: function(rowData, rowindex, value, column, rowid, page, pagesize) {
                             return (page - 1) * pagesize + rowindex + 1;
+                        }
+                    },
+					{
+                        display: '助记简称',
+                        name: 'cus_sname',
+                        width: 100,
+                        align: 'left',
+                        render: function(item) {
+                            if (item.cus_sname == "") {
+                                return "null";
+                            } else {
+                                return  item.cus_sname;
+                            }
                         }
                     },
                     {
                         display: '客户名称',
                         "frozen": true,
                         name: 'cus_name',
-                        width: 200,
-                        align: 'left'
-                    },
-                    {
-                        display: '助记简称',
-                        name: 'cus_sname',
-                        width: 60,
+                        width: 240,
                         align: 'left',
-                        render: function(item) {
-                            if (item.cus_sname == "") {
-                                return "暂未填写";
+						render:function(item){
+						    if (item.cus_name == "") {
+                                return "null";
                             } else {
-                                return item.cus_sname;
+                                return  "<a href=''>"+item.cus_name+"</a>";
                             }
-                        }
+						}
                     },
-                    {
-                        display: '上级客户',
-                        name: 'cus_lastname',
-                        width: 120,
-                        align: 'center',
-                        render: function(item) {
-                            if (item.cus_lastid == 0) {
-                                return "暂无上级客户";
+                    
+                    //{
+//                        display: '上级客户',
+//                        name: 'cus_lastname',
+//                        width: 120,
+//                        align: 'center',
+//                        render: function(item) {
+//                            if (item.cus_lastid == 0) {
+//                                return "暂无上级客户";
+//                            } else {
+//                                return "暂无上级客户";
+//                            }
+//                        }
+//                    },
+                    { display: '办公电话', name: 'cus_tel', width: 120, align: 'left',
+					render:function(item){
+						    if (item.cus_tel == "") {
+                                return "null";
                             } else {
-                                return "暂无上级客户";
+                                return  "<a href=''>"+item.cus_tel+"</a>";
                             }
-                        }
-                    },
-                    { display: '电话', name: 'cus_tel', width: 120, align: 'right' },
+						}
+					 },
                     {
                         display: '省市地址',
                         name: 'cus_city',
-                        width: 80,
+                        width: 100,
+						align: 'left',
                         render: function(item) {
                             if (item.cus_city == "0,0,0") {
                                 return "暂未填写";
@@ -110,18 +132,39 @@
                     {
                         display: '详细地址',
                         name: 'cus_address',
-                        width: 80,
+                        width: 180,
+						align: 'left',
                         render: function(item) {
                             if (item.cus_address == "") {
-                                return "暂未填写";
+                                return "无";
                             } else {
                                 return item.cus_address;
                             }
                         }
                     },
-                    { display: '主联系人', name: 'con_name', width: 60 },
-                    { display: '负责人', name: 'user_name', width: 70 },
-                    { display: '共享成员', name: 'con_team', width: 80, align: 'center' },
+                    { 
+					display: '主联系人', 
+					name: 'con_name',
+					width: 100,
+					align: 'left',
+					render:function(item){
+						    if (item.con_name == "") {
+                                return "null";
+                            } else {
+                                return  "<a href=''>"+item.con_name+"</a>";
+                            }
+						}
+					},
+                    { display: '负责人', name: 'user_name', width: 100,align: 'left',
+					render:function(item){
+						    if (item.user_name == "") {
+                                return "null";
+                            } else {
+                                return  "<a href=''>"+item.user_name+"</a>";
+                            }
+						}
+					},
+                    //{ display: '共享成员', name: 'con_team', width: 80, align: 'center' },
                     /* { display: '是否公海', name: 'con_is_pub', width: 60, render: function (item) {
                         if (item.con_is_pub == 0) {
                             return "否";
@@ -161,27 +204,27 @@
                             render = @" render: function(item) {if (item." + customerField.ExpName + "=='') {return '暂未填写';} if (item." + customerField.ExpName + "=='0') {return 'IT互联网';}if (item." + customerField.ExpName + "=='1') {return '教育培训';} if (item." + customerField.ExpName + "=='2') {return '机械设备';}if (item." + customerField.ExpName + "=='3') {return '建筑房产';}if (item." + customerField.ExpName + "=='4') {return '广告传媒';}if (item." + customerField.ExpName + "=='5') {return '金融保险';}if (item." + customerField.ExpName + "=='6') {return ' 服装纺织';}else {return item." + customerField.ExpName + ";}}";
                         }
 
-                        var culmonString = String.Format(" {{ display: '{0}', name: '{1}', width: 60,{2}}},", customerField.ExpTitle, customerField.ExpName, render);
+                        var culmonString = String.Format(" {{ display: '{0}', name: '{1}', width: 100,{2}}},", customerField.ExpTitle, customerField.ExpName, render);
                         @Html.Raw(culmonString)
                         ;
                     }
 
-                    {
-                        display: '备注',
-                        name: 'cus_note',
-                        width: 60,
-                        render: function(item) {
-                            if (item.cus_note == "") {
-                                return "暂未填写";
-                            } else {
-                                return item.cus_note;
-                            }
-                        }
-                    },
+                    //{
+//                        display: '备注',
+//                        name: 'cus_note',
+//                        width: 60,
+//                        render: function(item) {
+//                            if (item.cus_note == "") {
+//                                return "暂未填写";
+//                            } else {
+//                                return item.cus_note;
+//                            }
+//                        }
+//                    },
                     {
                         display: '创建时间',
                         name: 'cus_createTime',
-                        width: 90
+                        width: 100
                         //                ,render: function(item) {
                         //                    var cus_createTime = formatTimebytype(item.cus_createTime, 'yyyy-MM-dd');
                         //                    return cus_createTime;
@@ -431,7 +474,7 @@
                 });
 
                 $("#maingrid4").ligerGetGridManager().onResize();
-                $("#maingrid5").ligerGetGridManager().onResize();
+                //$("#maingrid5").ligerGetGridManager().onResize();
             });
         }
 
@@ -481,17 +524,42 @@
   
     <!--左侧筛选开始-->
     <div class="layout-left">
-        <div id="nav-side" class="nav-side">
+	<div class="l-top">
+	
+	您当前已选择条件中搜索：<br/>
+	<ul class="l-top-list">
+	<li><a href="#" rel="nofollow" title="意向客户"><strong>意向客户</strong></a></li>
+	<li><a href="#" rel="nofollow" title="30天未联系"><strong>集团客户</strong></a></li>
+	</ul>
+	
+	<div class="r-list">
+    <select class="xiala">
+    <option selected="selected">请选择</option>
+    <option selected="selected">客户名称</option>
+    @foreach (var customerField in customerFields)
+    {
+       <option>@customerField.ExpTitle</option>
+     }
+    </select>
+	
+    <input name="txtKeywords" type="text" id="txtKeywords" class="keyword">
+    <a id="lbtnSearch" class="btn-search" href="javascript:__doPostBack('lbtnSearch','')">查询</a>
+    </div>
+	<div class="clear"></div>
+	</div>
+	
+	<div class="layout-left-filter"> 
+	<h2>数据视图&工具<a href="#">管理</a><a href="#">复选</a></h2>
+	 <div id="nav-side" class="nav-side">
             <div class="ns-item">
                 @*<ul id="filter_tree">
-    </ul>
-              *@ 
+                    </ul>
+                *@
                 <ul id="filter_tree" class="ztree"></ul>
             </div>
         </div>
+	</div>
     </div>
-  
-    <!--左侧筛选结束-->
     <!--右侧列表开始-->
     <div class="layout-right">
         <div class="layout-content">
@@ -501,30 +569,19 @@
                     <div class="l-list">
                         <ul class="icon-list">
                             <li><a class="add" href="javascript:void(0);" onclick=" add(); "><i></i><span>新增</span></a></li>
-                            <li><a class="del" id="btnDelete" href="javascript:void(0);" onclick=" del(); "><i></i><span>删除</span></a></li>
-                            <li><a class="chi" id="btnSave"  href="javascript:void(0);" onclick=" to_pub(); "><i></i><span>公海</span></a></li>
+                            <li><a class="del" id="btnDelete" href="javascript:void(0);" onclick=" del(); "><i></i><span>删除至回收站</span></a></li>
+                            <li><a class="chi" id="btnSave"  href="javascript:void(0);" onclick=" to_pub(); "><i></i><span>放入客户池</span></a></li>
+							<li><a class="all" href="#" onclick=""><i></i><span>全选</span></a></li>
                             <li><a class="zhuan" id="btnAudit" href="#"><i></i><span>转移</span></a></li>
-                            <li><a class="biao" id="btnAudit" href="#"><i></i><span>标签</span></a></li>
+							<li><a class="biao" id="btnAudit" href="#"><i></i><span>更多</span></a></li>
+<!--                            <li><a class="biao" id="btnAudit" href="#"><i></i><span>标签</span></a></li>
                             <li><a class="inport" id="btnAudit" href="#"><i></i><span>导入</span></a></li>
                             <li><a class="import" id="btnAudit" href="#"><i></i><span>导出</span></a></li>
                             <li><a class="sms" id="btnAudit" href="#"><i></i><span>短信</span></a></li>
                             <li><a class="email" id="btnAudit" href="#"><i></i><span>邮件</span></a></li>
                             <li><a class="hebing" id="btnAudit" href="#"><i></i><span>合并</span></a></li>
-                            <li><a class="shuxing" id="btnAudit" href="#"><i></i><span>属性</span></a></li>
-                            <li><a class="all" href="#" onclick=" checkAll(this); "><i></i><span>全选</span></a></li>
+                            <li><a class="shuxing" id="btnAudit" href="#"><i></i><span>属性</span></a></li>-->
                         </ul>
-                    </div>
-                    <div class="r-list">
-                        <select  class="keyword">
-                            <option selected="selected">请选择</option>
-                            <option selected="selected">客户名称</option>
-                            @foreach (var customerField in customerFields)
-                            {
-                                <option>@customerField.ExpTitle</option>
-                            }
-                        </select>
-                        <input name="txtKeywords" type="text" id="txtKeywords" class="keyword">
-                        <a id="lbtnSearch" class="btn-search" href="javascript:__doPostBack('lbtnSearch','')">查询</a>
                     </div>
                 </div>
             </div>

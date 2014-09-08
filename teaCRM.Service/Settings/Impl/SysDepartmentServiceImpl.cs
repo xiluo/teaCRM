@@ -75,5 +75,34 @@ namespace teaCRM.Service.Settings.Impl
         }
 
         #endregion
+
+
+        #region 添加部门信息 2014-09-07 14:58:50 By 唐有炜
+
+        /// <summary>
+        /// 添加部门信息 2014-09-07 14:58:50 By 唐有炜
+        /// </summary>
+        /// <param name="sysDepartment"></param>
+        /// <returns></returns>
+        public bool AddDepartment(TSysDepartment sysDepartment)
+        {
+            return SysDepartmentDao.InsertEntity(sysDepartment);
+        }
+        #endregion
+
+
+        #region 删除部门信息 2014-09-07 14:58:50 By 唐有炜
+
+        /// <summary>
+        /// 删除部门信息 2014-09-07 14:58:50 By 唐有炜
+        /// </summary>
+        /// <param name="id">部门</param>
+        /// <returns></returns>
+        public bool DeleteDepartment(int? id)
+        {
+            return SysDepartmentDao.DeleteEntity(d=>d.Id==id);
+        }
+        #endregion
+
     }
 }

@@ -1,15 +1,16 @@
-/* ==========================列表页样式.开始======================== */
-.toolbar-wrap{min-height:38px; padding-top:3px; }
-.toolbar{ left:15px; right:15px;background:#fff; z-index:2; padding-bottom:13px;}
+@charset "utf-8";
+/* ==========================蹇嵎鏍囩鎸夐挳閮ㄥ垎======================== */
+.toolbar-wrap{ height:60px; background:#f5f6f9;}
+.toolbar{ padding:12px;}
 	.toolbar:after{clear:both;content:".";display:block;height:0;visibility:hidden;}
 	.toolbar .l-list{ float:left; }
 	.toolbar .l-list .icon-list{ margin-right:10px; }
 	.toolbar .l-list .icon-list,.toolbar .l-list .icon-list li{ float:left; }
 	.toolbar .l-list .icon-list li:first-child a{ border-left:solid 1px #dbdbdb; }
-	.toolbar .l-list .icon-list li a{ display:inline-block; padding:5px 10px 5px 8px; line-height:20px; height:20px; border:solid 1px #e1e1e1; border-left:none; color:#333; font-size:12px; text-decoration:none; background:#fafafa; }
+	.toolbar .l-list .icon-list li a{ display:inline-block; padding:5px 15px 5px 13px; line-height:24px; height:24px; border:solid 1px #e1e1e1; border-left:none; color:#333; font-size:12px; text-decoration:none; background:#fafafa; }
 	.toolbar .l-list .icon-list li a:hover{ color:#2A72C5; }
 	.toolbar .l-list .icon-list li a span{ display:inline-block; vertical-align:middle; }
-	.toolbar .l-list .icon-list li a i{ display:inline-block; margin-right:3px; width:14px; height:14px; text-indent:-999em; background:url(../images/skin_icons.png) no-repeat; vertical-align:middle; *text-indent:0; /*display:block;*float:left;*margin-top:4px;*/ }
+	.toolbar .l-list .icon-list li a i{ display:inline-block; margin-right:5px; width:14px; height:14px; text-indent:-999em; background:url(../images/skin_icons.png) no-repeat; vertical-align:middle; *text-indent:0; /*display:block;*float:left;*margin-top:4px;*/ }
 	
 	.toolbar .l-list .icon-list li a.add i{ background-position:0 -28px; }
 	.toolbar .l-list .icon-list li a.del i{ background-position:-84px -28px; }
@@ -27,6 +28,8 @@
 	.toolbar .l-list .icon-list li a.list i{ background-position:-140px -28px; }
 	.toolbar .l-list .menu-list{ float:left; }
 
-	.toolbar .r-list{ float:right; }
-	.toolbar .r-list .keyword{ display:block; float:left; margin:0; padding:0 5px; width:110px; height:30px; line-height:28px; font-size:12px; border:1px solid #dbdbdb; color:#444; }
-	.toolbar .r-list .btn-search{ display:block; float:left; margin:0 0 0 -1px; padding:0; width:30px; height:30px; line-height:30px; border:1px solid #dbdbdb; background:url(../images/skin_icons.png) -160px -20px no-repeat #fafafa; cursor:pointer; text-indent:-9999px; }
+
+	
+	
+	
+	

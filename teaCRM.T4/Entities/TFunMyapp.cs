@@ -13,6 +13,8 @@ namespace teaCRM.Entity
  
 		[Column("parent_id")]
 		public Int32 ParentId { get;set; }
+		[Column("comp_num")]
+		public String CompNum { get;set; }
 		[Column("myapp_name")]
 		public String MyappName { get;set; }
 		[Column("myapp_link")]
@@ -30,13 +32,13 @@ namespace teaCRM.Entity
  
  
 		[OneToMany(ThisKey="Id",OtherKey="MyappId")]
-		public IList<TFunExpand> TFunExpands { get;set; }
-		[OneToMany(ThisKey="Id",OtherKey="MyappId")]
-		public IList<TFunOperating> TFunOperatings { get;set; }
+		public IList<TFunFilter> TFunFilters { get;set; }
 		[OneToMany(ThisKey="Id",OtherKey="MyappId")]
 		public IList<TFunTag> TFunTags { get;set; }
 		[OneToMany(ThisKey="Id",OtherKey="MyappId")]
-		public IList<TFunFilter> TFunFilters { get;set; }
+		public IList<TFunOperating> TFunOperatings { get;set; }
+		[OneToMany(ThisKey="Id",OtherKey="MyappId")]
+		public IList<TFunExpand> TFunExpands { get;set; }
  
 	}
   

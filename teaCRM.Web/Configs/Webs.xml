@@ -54,13 +54,11 @@
     <property name="SysDepartmentService" ref="sysDepartmentService" />
   </object>
   <object id="roleController" type="teaCRM.Web.Controllers.Apps.Settings.RoleController, teaCRM.Web" singleton="false" />
-  <object id="userGroupController" type="teaCRM.Web.Controllers.Apps.Settings.UserGroupController, teaCRM.Web"
+ <object id="permissionController" type="teaCRM.Web.Controllers.Apps.Settings.PermissionController, teaCRM.Web"
+          singleton="false" />  
+ <object id="usersController" type="teaCRM.Web.Controllers.Apps.Settings.UsersController, teaCRM.Web"
           singleton="false" />
-  <object id="usersController" type="teaCRM.Web.Controllers.Apps.Settings.UsersController, teaCRM.Web"
-          singleton="false" />
-  <object id="importExportController" type="teaCRM.Web.Controllers.Apps.Settings.ImportExportController, teaCRM.Web"
-          singleton="false" />
-  <object id="expandoFieldController" type="teaCRM.Web.Controllers.Apps.Settings.ExpandoFieldController, teaCRM.Web"
+   <object id="expandoFieldController" type="teaCRM.Web.Controllers.Apps.Settings.ExpandoFieldController, teaCRM.Web"
           singleton="false" />
   <!--设置模块控制器结束-->
 </objects>

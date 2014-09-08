@@ -42,8 +42,6 @@ namespace teaCRM.Entity
  
 		[ManyToOne(ThisKey="DepId",OtherKey="Id")]
 		public TSysDepartment Dep { get;set; }
-		[ManyToOne(ThisKey="RoleId",OtherKey="Id")]
-		public TSysRole Role { get;set; }
  
  
 	}

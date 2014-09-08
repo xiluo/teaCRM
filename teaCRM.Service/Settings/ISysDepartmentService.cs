@@ -23,15 +23,29 @@ namespace teaCRM.Service.Settings
        /// <returns></returns>
        List<Node> AsyncGetNodes(string compNum, int? id);
 
+       /// <summary>
+       /// 获取单个部门信息 2014-09-05 14:58:50 By 唐有炜
+       /// </summary>
+       /// <param name="predicate">筛选条件</param>
+       /// <returns></returns>
+       TSysDepartment GetDepartment(Expression<Func<TSysDepartment, bool>> predicate);
+
 
         /// <summary>
-        /// 获取单个部门信息 2014-09-05 14:58:50 By 唐有炜
+        /// 添加部门信息 2014-09-07 14:58:50 By 唐有炜
         /// </summary>
-        /// <param name="predicate">筛选条件</param>
+        /// <param name="sysDepartment"></param>
         /// <returns></returns>
-        TSysDepartment GetDepartment(Expression<Func<TSysDepartment, bool>> predicate);
+         bool AddDepartment(TSysDepartment sysDepartment);
 
 
+
+        /// <summary>
+        /// 删除部门信息 2014-09-07 14:58:50 By 唐有炜
+        /// </summary>
+        /// <param name="id">部门</param>
+        /// <returns></returns>
+        bool DeleteDepartment(int? id);
 
    }
 }

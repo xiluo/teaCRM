@@ -30,17 +30,26 @@ namespace teaCRM.Web.Controllers.Apps.Settings
         #endregion
 
         #region 添加数据 2014-08-27 14:58:50 By 唐有炜
+
         // /Apps/Settings/Department/Add/
         public ActionResult Add(FormCollection fc)
         {
-            if (fc.Count == 0)
+            ResponseMessage rmsg = new ResponseMessage();
+            TSysDepartment sysDepartment = new TSysDepartment()
             {
-                return PartialView("_DepartmentAddPartial");
+            };
+            bool status = SysDepartmentService.AddDepartment(sysDepartment);
+            if (status)
+            {
+                rmsg.Status = true;
+                rmsg.Msg = "部门添加成功！";
             }
             else
             {
-                return Json(new {id = 2});
+                rmsg.Status = false;
+                rmsg.Msg = "部门添加失败！";
             }
+            return Json(rmsg);
         }
 
         #endregion
@@ -96,7 +105,7 @@ namespace teaCRM.Web.Controllers.Apps.Settings
         {
             var compNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
             var nodes = SysDepartmentService.AsyncGetNodes(compNum, id);
-            return Json(nodes,JsonRequestBehavior.AllowGet);
+            return Json(nodes, JsonRequestBehavior.AllowGet);
         }
 
         #endregion
