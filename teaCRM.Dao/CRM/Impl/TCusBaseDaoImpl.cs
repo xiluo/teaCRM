@@ -1,13 +1,16 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using NLite.Data;
+using NLite.Reflection;
 using teaCRM.Common;
 using teaCRM.DBContext;
 using teaCRM.Entity;
+using System.Linq.Dynamic;
 
 namespace teaCRM.Dao.Impl
 {
@@ -26,10 +29,13 @@ namespace teaCRM.Dao.Impl
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var models = db.TCusBases.ToList();
-                return models;
+                var models = db.TCusBases;
+                var sqlText = models.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return models.ToList();
             }
         }
+
 
         /// <summary>
         /// 获取所有的数据
@@ -40,8 +46,10 @@ namespace teaCRM.Dao.Impl
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var models = db.TCusBases.Where<TCusBase>(predicate).ToList();
-                return models;
+                var models = db.TCusBases.Where<TCusBase>(predicate);
+                var sqlText = models.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return models.ToList();
             }
         }
 
@@ -56,8 +64,29 @@ namespace teaCRM.Dao.Impl
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var model = db.TCusBases.Where<TCusBase>(predicate).SingleOrDefault();
-                return model;
+                var model = db.TCusBases.Where<TCusBase>(predicate);
+                var sqlText = model.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return model.SingleOrDefault();
+            }
+        }
+
+
+
+        /// <summary>
+        /// 根据条件查询某些字段(LINQ 动态查询)
+        /// </summary>
+        /// <param name="selector">要查询的字段（格式：new(ID,Name)）</param>
+        /// <param name="predicate">筛选条件（id=0）</param>
+        /// <returns></returns>
+        public IQueryable<Object> GetFields(string selector, string predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var model = db.TCusBases.Where(predicate).Select(selector);
+                var sqlText = model.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return (IQueryable<object>)model;
             }
         }
 
@@ -81,7 +110,6 @@ namespace teaCRM.Dao.Impl
                 }
             }
         }
-
         /// <summary>
         /// 删除实体
         /// </summary>
@@ -111,21 +139,37 @@ namespace teaCRM.Dao.Impl
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                //var tran = db.Connection.BeginTransaction();
+                if (db.Connection.State != ConnectionState.Open)
+                {
+                    db.Connection.Open();
+                }
+                var tran = db.Connection.BeginTransaction();
                 try
                 {
+                    //数据库操作
+                    LogHelper.Info("删除事务开始...");
+
                     foreach (var item in list)
                     {
                         db.TCusBases.Delete(item);
                     }
-                    //tran.Commit();
+                    tran.Commit();
+                    //数据库操作
+                    LogHelper.Info("删除事务结束...");
                     return true;
                 }
                 catch (Exception ex)
                 {
-                    //tran.Rollback();
+                    tran.Rollback();
+                    LogHelper.Error("删除事务执行失败，", ex);
                     return false;
-                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    if (db.Connection.State != ConnectionState.Closed)
+                    {
+                        db.Connection.Close();
+                    }
                 }
             }
         }
@@ -164,15 +208,18 @@ namespace teaCRM.Dao.Impl
             }
         }
 
+
         //查询分页
-        public List<TCusBase> GetListByPage(int pageIndex, int pageSize, Expression<Func<TCusBase, bool>> predicate)
+        public IPagination<TCusBase> GetListByPage(int pageIndex, int pageSize, int rowCount,
+            Expression<Func<TCusBase, bool>> predicate)
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var models = db.TCusBases.ToList();
+                var models = db.TCusBases.Where(predicate).ToPagination(pageIndex, pageSize, rowCount);
                 return models;
             }
         }
+
 
 
         //以下是原生Sql方法==============================================================
@@ -189,6 +236,7 @@ namespace teaCRM.Dao.Impl
             {
                 return db.DbHelper.ExecuteDataTable(sql, namedParameters).ToList<TCusBase>();
             }
+
         }
 
         /// <summary>
@@ -212,6 +260,8 @@ namespace teaCRM.Dao.Impl
                 }
             }
         }
+
+
 
         #endregion
 

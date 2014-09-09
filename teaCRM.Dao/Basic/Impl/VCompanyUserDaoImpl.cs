@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Linq.Expressions;
 using NLite.Data;
+using NLite.Reflection;
 using teaCRM.Common;
 using teaCRM.DBContext;
 using teaCRM.Entity;
@@ -25,10 +27,13 @@ namespace teaCRM.Dao.Impl
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var models = db.VCompanyUsers.ToList();
-                return models;
+                var models = db.VCompanyUsers;
+                var sqlText = models.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return models.ToList();
             }
         }
+
 
         /// <summary>
         /// 获取所有的数据
@@ -39,11 +44,12 @@ namespace teaCRM.Dao.Impl
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var models = db.VCompanyUsers.Where<VCompanyUser>(predicate).ToList();
-                return models;
+                var models = db.VCompanyUsers.Where<VCompanyUser>(predicate);
+                var sqlText = models.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return models.ToList();
             }
         }
-
 
         /// <summary>
         /// 获取指定的单个实体
@@ -56,10 +62,33 @@ namespace teaCRM.Dao.Impl
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var model = db.VCompanyUsers.Where<VCompanyUser>(predicate).SingleOrDefault();
-                return model;
+                var model = db.VCompanyUsers.Where<VCompanyUser>(predicate);
+                var sqlText = model.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return model.SingleOrDefault();
             }
         }
+
+
+
+        /// <summary>
+        /// 根据条件查询某些字段(LINQ 动态查询)
+        /// </summary>
+        /// <param name="selector">要查询的字段（格式：new(ID,Name)）</param>
+        /// <param name="predicate">筛选条件（id=0）</param>
+        /// <returns></returns>
+        public IQueryable<Object> GetFields(string selector, string predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var model = db.VCompanyUsers.Where(predicate).Select(selector);
+                var sqlText = model.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return (IQueryable<object>)model;
+            }
+        }
+
+
 
 
         /// <summary>
@@ -75,16 +104,18 @@ namespace teaCRM.Dao.Impl
             }
         }
 
+
         //查询分页
-        public List<VCompanyUser> GetListByPage(int pageIndex, int pageSize,
+        public IPagination<VCompanyUser> GetListByPage(int pageIndex, int pageSize, int rowCount,
             Expression<Func<VCompanyUser, bool>> predicate)
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var models = db.VCompanyUsers.ToList();
+                var models = db.VCompanyUsers.Where(predicate).ToPagination(pageIndex, pageSize, rowCount);
                 return models;
             }
         }
+
 
 
         //以下是原生Sql方法==============================================================
@@ -101,7 +132,33 @@ namespace teaCRM.Dao.Impl
             {
                 return db.DbHelper.ExecuteDataTable(sql, namedParameters).ToList<VCompanyUser>();
             }
+
         }
+
+        /// <summary>
+        /// 执行Sql
+        /// </summary>
+        /// <param name="sql">Sql语句</param>
+        /// <param name="namedParameters">查询字符串</param>
+        /// <returns></returns>
+        public bool ExecuteSql(string sql, dynamic namedParameters = null)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var rows = db.DbHelper.ExecuteNonQuery(sql, namedParameters);
+                if (rows > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+
+
 
         #endregion
 

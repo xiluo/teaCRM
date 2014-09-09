@@ -50,6 +50,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Linq.Dynamic">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.2\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,7 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Basic\Impl\TFunExpandDaoImpl.cs" />
-    <Compile Include="Basic\Impl\TSysDepartmentDaoImpl.cs">
+    <Compile Include="Settings\Impl\TSysDepartmentDaoImpl.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\ITFunExpandDao.cs" />
@@ -82,7 +85,7 @@
     <Compile Include="Basic\ITSysCompanyDao.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Basic\ITSysDepartmentDao.cs">
+    <Compile Include="Settings\ITSysDepartmentDao.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\ITSysLogDao.cs">

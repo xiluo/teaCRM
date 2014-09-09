@@ -7,10 +7,12 @@ using NLite.Data;
 using teaCRM.DBContext;
 using teaCRM.Entity;
 
-namespace teaCRM.Dao
+namespace  teaCRM.Dao
 {
-public  interface ITCusBaseDao:ITableDao<TCusBase>
+    public interface ITCusBaseDao:ITableDao<TCusBase>
     {
+        #region 手写的扩展函数 2014-08-21 14:58:50 By 唐有炜
 
-	   }
-	   }
+        #endregion
+    }
+}

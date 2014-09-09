@@ -15,7 +15,7 @@
     border: 1px solid #999;
     outline: 0;
     background-clip: padding-box;
-    font-family: 'Microsoft yahei', 'ËÎÌå', Helvetica, arial, sans-serif;
+    font-family: 'Microsoft yahei', 'ï¿½ï¿½ï¿½ï¿½', Helvetica, arial, sans-serif;
     font-size: 14px;
     line-height: 1.428571429;
     color: #333;
@@ -160,7 +160,6 @@
     cursor: pointer;
     background-image: none;
     border: 1px solid transparent;
-    border-radius: 4px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;

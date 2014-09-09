@@ -1,10 +1,26 @@
+/*
+ * ========================================================================
+ * Copyright(c) 2013-2014 郑州优创科技有限公司, All Rights Reserved.
+ * ========================================================================
+ *  
+ * 【teaCRM数据库操作上下文】
+ *  
+ *  
+ * 作者：唐有炜   时间：2014-09-09 03:06:21
+ * 文件名：TFunApp.cs
+ * 版本：V1.0.0
+ * 
+ * 修改者：唐有炜           时间：2014-09-09 03:06:21           
+ * 修改说明：修改说明
+ * ========================================================================
+*/
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using NLite.Data;
 namespace teaCRM.Entity
 {
-	[Table("t_fun_app")]
+	[Table("T_fun_app")]
 	public partial class TFunApp 
 	{
 	
@@ -20,11 +36,11 @@ namespace teaCRM.Entity
 		[Column("app_imgurl")]
 		public String AppImgurl { get;set; }
 		[Column("app_ver")]
-		public Single AppVer { get;set; }
+		public Double AppVer { get;set; }
 		[Column("app_link")]
 		public String AppLink { get;set; }
 		[Column("app_high")]
-		public Single AppHigh { get;set; }
+		public Double AppHigh { get;set; }
 		[Column("app_upnote")]
 		public String AppUpnote { get;set; }
 		[Column("app_lastdate")]
@@ -40,7 +56,7 @@ namespace teaCRM.Entity
 		[Column("app_is_sys")]
 		public Int32 AppIsSys { get;set; }
 		[Column("app_price")]
-		public Single AppPrice { get;set; }
+		public Double AppPrice { get;set; }
  
  
  

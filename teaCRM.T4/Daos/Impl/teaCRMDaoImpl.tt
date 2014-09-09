@@ -48,12 +48,16 @@ manager.StartNewFile(daoFilename+ ".cs");
 #>
 
 using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using NLite.Data;
+using NLite.Reflection;
+using teaCRM.Common;
 using teaCRM.DBContext;
 using teaCRM.Entity;
+using System.Linq.Dynamic;
 
 namespace <#= @DaoNamespace #>
 {
@@ -71,8 +75,10 @@ namespace <#= @DaoNamespace #>
         {
           using (<#=dbContextName#> db=new <#=dbContextName#>())
             {
-             var models= db.<#=daoListName#>.ToList();
-			 return models;
+             var models= db.<#=daoListName#>;
+			 var sqlText = models.GetProperty("SqlText");
+             LogHelper.Debug(sqlText.ToString());
+			 return models.ToList();
             }
         }
 
@@ -86,8 +92,10 @@ namespace <#= @DaoNamespace #>
         {
              using (<#=dbContextName#> db=new <#=dbContextName#>())
             {
-             var models= db.<#=daoListName#>.Where<<#=daoModelName#>>(predicate).ToList();
-			 return models;
+             var models= db.<#=daoListName#>.Where<<#=daoModelName#>>(predicate);
+			 var sqlText = models.GetProperty("SqlText");
+             LogHelper.Debug(sqlText.ToString());
+			 return models.ToList();
             }
         }
 
@@ -102,9 +110,30 @@ namespace <#= @DaoNamespace #>
         {
             using (<#=dbContextName#> db=new <#=dbContextName#>())
             {
-                var model =db.<#=daoListName#>.Where<<#=daoModelName#>>(predicate).SingleOrDefault();
-                return model;
+                var model =db.<#=daoListName#>.Where<<#=daoModelName#>>(predicate);
+				var sqlText = model.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return model.SingleOrDefault();
 		    }
+        }
+
+
+
+		 /// <summary>
+        /// 根据条件查询某些字段(LINQ 动态查询)
+        /// </summary>
+        /// <param name="selector">要查询的字段（格式：new(ID,Name)）</param>
+        /// <param name="predicate">筛选条件（id=0）</param>
+        /// <returns></returns>
+        public IQueryable<Object> GetFields(string selector, string predicate)
+        {
+            using (<#=dbContextName#> db = new <#=dbContextName#>())
+            {
+                var model = db.<#=daoListName#>.Where(predicate).Select(selector);
+                var sqlText=model.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return (IQueryable<object>) model;
+            }
         }
 
 		
@@ -154,23 +183,39 @@ namespace <#= @DaoNamespace #>
         /// <param name="list">实体集合</param>
         public bool DeletesEntity(List<<#=daoModelName#>> list) 
         {
-            using (<#=dbContextName#> db=new <#=dbContextName#>())
+			using (<#=dbContextName#> db=new <#=dbContextName#>())
             {
-                //var tran = db.Connection.BeginTransaction();
+                if (db.Connection.State != ConnectionState.Open)
+                {
+                    db.Connection.Open();
+                }
+                var tran = db.Connection.BeginTransaction();
                 try
                 {
+                    //数据库操作
+                    LogHelper.Info("删除事务开始...");
+                  
                     foreach (var item in list)
                     {
                         db.<#=daoListName#>.Delete(item);
                     }
-                    //tran.Commit();
-					return true;
+                    tran.Commit();
+                    //数据库操作
+                    LogHelper.Info("删除事务结束...");
+                    return true;
                 }
                 catch (Exception ex)
                 {
-                    //tran.Rollback();
-					return false;
-                    throw new Exception(ex.Message);
+                    tran.Rollback();
+                    LogHelper.Error("删除事务执行失败，", ex);
+                    return false;
+                }
+                finally
+                {
+                    if (db.Connection.State != ConnectionState.Closed)
+                    {
+                        db.Connection.Close();
+                    }
                 }
             }
         }
@@ -209,16 +254,17 @@ namespace <#= @DaoNamespace #>
             }
         }
 
-		 //查询分页
-    public  List<<#=daoModelName#>> GetListByPage(int pageIndex, int pageSize, Expression<Func<<#=daoModelName#> , bool>> predicate)
-	  {
-	   using (<#=dbContextName#> db=new <#=dbContextName#>())
+	
+	      //查询分页
+        public IPagination<<#=daoModelName#>> GetListByPage(int pageIndex, int pageSize, int rowCount,
+            Expression<Func<<#=daoModelName#>, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-             var models= db.<#=daoListName#>.ToList();
-			 return models;
+                var models = db.<#=daoListName#>.Where(predicate).ToPagination(pageIndex, pageSize, rowCount);
+                return models;
             }
-	  }
-
+        }
 
 	  
 
@@ -287,13 +333,19 @@ var daoListName=NamingConversion.Default.QueryableName( tb.TableName);
 manager.StartNewFile(daoFilename+ ".cs");
 #>
 
+
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using NLite.Data;
+using NLite.Reflection;
+using teaCRM.Common;
 using teaCRM.DBContext;
 using teaCRM.Entity;
+using System.Linq.Dynamic;
+
 
 namespace <#= @DaoNamespace #>
 {
@@ -311,22 +363,27 @@ namespace <#= @DaoNamespace #>
         {
           using (<#=dbContextName#> db=new <#=dbContextName#>())
             {
-             var models= db.<#=daoListName#>.ToList();
-			 return models;
+             var models= db.<#=daoListName#>;
+			 var sqlText = models.GetProperty("SqlText");
+             LogHelper.Debug(sqlText.ToString());
+			 return models.ToList();
             }
         }
 
-		  /// <summary>
+		
+        /// <summary>
         /// 获取所有的数据
         /// </summary>
         /// <param name="predicate">Lamda表达式</param>
         /// <returns>返回所有数据列表</returns>
-        public    List<<#=daoModelName#>> GetList(Expression<Func<<#=daoModelName#>, bool>> predicate)
+       public List<<#=daoModelName#>> GetList(Expression<Func<<#=daoModelName#>, bool>> predicate)
         {
              using (<#=dbContextName#> db=new <#=dbContextName#>())
             {
-             var models= db.<#=daoListName#>.Where<<#=daoModelName#>>(predicate).ToList();
-			 return models;
+             var models= db.<#=daoListName#>.Where<<#=daoModelName#>>(predicate);
+			 var sqlText = models.GetProperty("SqlText");
+             LogHelper.Debug(sqlText.ToString());
+			 return models.ToList();
             }
         }
 
@@ -341,12 +398,33 @@ namespace <#= @DaoNamespace #>
         {
             using (<#=dbContextName#> db=new <#=dbContextName#>())
             {
-                var model =db.<#=daoListName#>.Where<<#=daoModelName#>>(predicate).SingleOrDefault();
-                return model;
+                var model =db.<#=daoListName#>.Where<<#=daoModelName#>>(predicate);
+				var sqlText = model.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return model.SingleOrDefault();
 		    }
         }
 
-		
+
+
+		 /// <summary>
+        /// 根据条件查询某些字段(LINQ 动态查询)
+        /// </summary>
+        /// <param name="selector">要查询的字段（格式：new(ID,Name)）</param>
+        /// <param name="predicate">筛选条件（id=0）</param>
+        /// <returns></returns>
+        public IQueryable<Object> GetFields(string selector, string predicate)
+        {
+            using (<#=dbContextName#> db = new <#=dbContextName#>())
+            {
+                var model = db.<#=daoListName#>.Where(predicate).Select(selector);
+                var sqlText=model.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return (IQueryable<object>) model;
+            }
+        }
+
+	
         /// <summary>
         /// 是否存在该记录
         /// </summary>
@@ -360,18 +438,20 @@ namespace <#= @DaoNamespace #>
             }
         }
 
-		 //查询分页
-    public  List<<#=daoModelName#>> GetListByPage(int pageIndex, int pageSize, Expression<Func<<#=daoModelName#> , bool>> predicate)
-	  {
-	   using (<#=dbContextName#> db=new <#=dbContextName#>())
+	
+	      //查询分页
+        public IPagination<<#=daoModelName#>> GetListByPage(int pageIndex, int pageSize, int rowCount,
+            Expression<Func<<#=daoModelName#>, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-             var models= db.<#=daoListName#>.ToList();
-			 return models;
+                var models = db.<#=daoListName#>.Where(predicate).ToPagination(pageIndex, pageSize, rowCount);
+                return models;
             }
-	  }
-
+        }
 
 	  
+
 	  //以下是原生Sql方法==============================================================
 	  //===========================================================================
 	   /// <summary>
@@ -389,7 +469,30 @@ namespace <#= @DaoNamespace #>
           
         }
 		
-		
+		/// <summary>
+	     /// 执行Sql
+	     /// </summary>
+	     /// <param name="sql">Sql语句</param>
+	     /// <param name="namedParameters">查询字符串</param>
+	     /// <returns></returns>
+		public bool ExecuteSql(string sql, dynamic namedParameters = null)
+		{
+	         using (teaCRMDBContext db = new teaCRMDBContext())
+	         {
+	             var rows = db.DbHelper.ExecuteNonQuery(sql, namedParameters);
+	             if (rows > 0)
+	             {
+	                 return true;
+	             }
+	             else
+	             {
+	                 return false;
+	             }
+	         }
+		}
+
+
+
 
 	   }
 	   }

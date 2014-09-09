@@ -33,6 +33,8 @@ namespace teaCRM.Common
         {
             if (loginfo.IsInfoEnabled)
             {
+                message = "<br/>" + message;
+                message = message.Replace("\r\n", "<br>");
                 loginfo.Info(message);
             }
         }
@@ -46,6 +48,8 @@ namespace teaCRM.Common
         {
             if (logerror.IsErrorEnabled)
             {
+                message = "<br/>" + message;
+                message = message.Replace("\r\n", "<br>");
                 logerror.Error(message);
             }
         }
@@ -87,6 +91,8 @@ namespace teaCRM.Common
         {
             if (logdebug.IsErrorEnabled)
             {
+                message = "<br/>"+message;
+                message = message.Replace("\r\n", "<br>");
                 logdebug.Debug(message);
             }
         }

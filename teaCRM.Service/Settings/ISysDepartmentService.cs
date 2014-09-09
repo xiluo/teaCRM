@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using teaCRM.Entity;
 
@@ -29,6 +30,15 @@ namespace teaCRM.Service.Settings
        /// <param name="predicate">筛选条件</param>
        /// <returns></returns>
        TSysDepartment GetDepartment(Expression<Func<TSysDepartment, bool>> predicate);
+
+
+        /// <summary>
+        /// 根据条件查询某些字段(LINQ 动态查询)
+        /// </summary>
+        /// <param name="selector">要查询的字段（格式：new(ID,Name)）</param>
+        /// <param name="predicate">筛选条件（u=>u.id==0）</param>
+        /// <returns></returns>
+       IQueryable<Object> GetFields(string selector, string predicate);
 
 
         /// <summary>

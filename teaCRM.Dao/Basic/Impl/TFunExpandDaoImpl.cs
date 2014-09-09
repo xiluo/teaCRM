@@ -1,7 +1,12 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Linq.Expressions;
+using NLite.Data;
+using NLite.Reflection;
+using teaCRM.Common;
 using teaCRM.DBContext;
 using teaCRM.Entity;
 
@@ -22,8 +27,10 @@ namespace teaCRM.Dao.Impl
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var models = db.TFunExpands.ToList();
-                return models;
+                var models = db.TFunExpands;
+                var sqlText = models.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return models.ToList();
             }
         }
 
@@ -37,8 +44,10 @@ namespace teaCRM.Dao.Impl
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var models = db.TFunExpands.Where<TFunExpand>(predicate).ToList();
-                return models;
+                var models = db.TFunExpands.Where<TFunExpand>(predicate);
+                var sqlText = models.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return models.ToList();
             }
         }
 
@@ -53,8 +62,29 @@ namespace teaCRM.Dao.Impl
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var model = db.TFunExpands.Where<TFunExpand>(predicate).SingleOrDefault();
-                return model;
+                var model = db.TFunExpands.Where<TFunExpand>(predicate);
+                var sqlText = model.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return model.SingleOrDefault();
+            }
+        }
+
+
+
+        /// <summary>
+        /// 根据条件查询某些字段(LINQ 动态查询)
+        /// </summary>
+        /// <param name="selector">要查询的字段（格式：new(ID,Name)）</param>
+        /// <param name="predicate">筛选条件（id=0）</param>
+        /// <returns></returns>
+        public IQueryable<Object> GetFields(string selector, string predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var model = db.TFunExpands.Where(predicate).Select(selector);
+                var sqlText = model.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return (IQueryable<object>)model;
             }
         }
 
@@ -78,7 +108,6 @@ namespace teaCRM.Dao.Impl
                 }
             }
         }
-
         /// <summary>
         /// 删除实体
         /// </summary>
@@ -108,21 +137,37 @@ namespace teaCRM.Dao.Impl
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                //var tran = db.Connection.BeginTransaction();
+                if (db.Connection.State != ConnectionState.Open)
+                {
+                    db.Connection.Open();
+                }
+                var tran = db.Connection.BeginTransaction();
                 try
                 {
+                    //数据库操作
+                    LogHelper.Info("删除事务开始...");
+
                     foreach (var item in list)
                     {
                         db.TFunExpands.Delete(item);
                     }
-                    //tran.Commit();
+                    tran.Commit();
+                    //数据库操作
+                    LogHelper.Info("删除事务结束...");
                     return true;
                 }
                 catch (Exception ex)
                 {
-                    //tran.Rollback();
+                    tran.Rollback();
+                    LogHelper.Error("删除事务执行失败，", ex);
                     return false;
-                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    if (db.Connection.State != ConnectionState.Closed)
+                    {
+                        db.Connection.Close();
+                    }
                 }
             }
         }
@@ -161,15 +206,18 @@ namespace teaCRM.Dao.Impl
             }
         }
 
+
         //查询分页
-        public List<TFunExpand> GetListByPage(int pageIndex, int pageSize, Expression<Func<TFunExpand, bool>> predicate)
+        public IPagination<TFunExpand> GetListByPage(int pageIndex, int pageSize, int rowCount,
+            Expression<Func<TFunExpand, bool>> predicate)
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var models = db.TFunExpands.ToList();
+                var models = db.TFunExpands.Where(predicate).ToPagination(pageIndex, pageSize, rowCount);
                 return models;
             }
         }
+
 
 
         //以下是原生Sql方法==============================================================
@@ -186,6 +234,7 @@ namespace teaCRM.Dao.Impl
             {
                 return db.DbHelper.ExecuteDataTable(sql, namedParameters).ToList<TFunExpand>();
             }
+
         }
 
         /// <summary>
@@ -209,6 +258,8 @@ namespace teaCRM.Dao.Impl
                 }
             }
         }
+
+
 
         #endregion
 

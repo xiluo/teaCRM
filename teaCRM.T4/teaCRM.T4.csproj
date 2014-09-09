@@ -46,6 +46,9 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Linq.Dynamic">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.2\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,6 +60,18 @@
       <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Daos\Impl\TCusConDaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Daos\Impl\TCusConExpvalue10000DaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Daos\Impl\TCusConExpvalue99999DaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Daos\Impl\TCusExpvalue10000DaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Daos\Impl\TCusExpvalue99999DaoImpl.cs">
       <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
     </Compile>
     <Compile Include="Daos\Impl\TCusLogDaoImpl.cs">
@@ -110,6 +125,12 @@
       <DependentUpon>teaCRMIDao.tt</DependentUpon>
     </Compile>
     <Compile Include="Daos\ITCusConDao.cs">
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Daos\ITCusConExpvalue10000Dao.cs">
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Daos\ITCusConExpvalue99999Dao.cs">
       <DependentUpon>teaCRMIDao.tt</DependentUpon>
     </Compile>
     <Compile Include="Daos\ITCusExpvalue10000Dao.cs">
@@ -230,6 +251,8 @@
     <Compile Include="Entities\VCompanyUser.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Daos\ITableDao.cs" />
+    <Compile Include="Daos\IViewDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -255,13 +278,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\teaCRM.Dao\teaCRM.Dao.csproj">
-      <Project>{6887CE80-724B-4E77-9523-89FBEB753E6B}</Project>
-      <Name>teaCRM.Dao</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\teaCRM.Entity\teaCRM.Entity.csproj">
-      <Project>{0687C70A-0976-40D8-A069-56ED9E6FFF2D}</Project>
-      <Name>teaCRM.Entity</Name>
+    <ProjectReference Include="..\teaCRM.Common\teaCRM.Common.csproj">
+      <Project>{d03bbc00-649a-43b6-bb8d-65cb34aecc53}</Project>
+      <Name>teaCRM.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

@@ -113,6 +113,10 @@ http://blog.163.com/zhi_qingfang%40126/blog/static/11747756320132693434495/
 (select stuff((select ','+user_tname from t_sys_user WHERE id IN (17,21) for xml path ('')),1,1,''))       
 >10、jquery validate错误    
 http://stackoverflow.com/questions/14896205/validator-validator-methodsmethod-is-undefined  
+>11、http://weblogs.asp.net/scottgu/dynamic-linq-part-1-using-the-linq-dynamic-query-library   
+
+
+
 
 
 

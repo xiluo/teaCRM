@@ -2,11 +2,6 @@
 //*作者：唐有炜
 //*时间：2014年08月23日
 
-////测试
-//$(function() {
-//    showMsg("aaa");
-//});
-
 //兼容ie8支持trim 2014-08-25 By 唐有炜
 //================================================================
 String.prototype.trim = function() { return Trim(this); };
@@ -97,22 +92,17 @@ function showDialog(msg, okCallback) {
 //============================================================================
 //弹出iframe窗口，带阴影，用作表单===============================================
 //2014-09-03 By 唐有炜
-function showWindow(id, url, title, w, h) {
+//Dialod id:id Iframe id:frm_{id}
+function showWindow(id, url, title, w, h,okCallback) {
     var d = dialog({
         id: id,
         title: title,
         //url: url,//此方式不支持滚动条
-        content: '<iframe src="' + url + '" id="frm" name="frm" style="border-bottom: 1px solid #E5E5E5;" width="100%" height="100%" width="100%" frameborder="0"></iframe>',
+        content: '<iframe src="' + url + '" id="frm_'+id+'" name="frm_'+id+'" style="border-bottom: 1px solid #E5E5E5;" width="100%" height="100%" width="100%" frameborder="0"></iframe>',
         width: w,
         height: h,
-        left: 0,
-        top: 0,
-        fixed: true,
-        resize: false,
-        drag: false,
-        lock: true,
         okValue: '确 定',
-        ok: function() {},
+        ok: okCallback,
         cancelValue: '取消',
         cancel: function () {
             d.close().remove();

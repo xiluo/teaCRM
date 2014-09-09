@@ -1,11 +1,15 @@
-
+﻿
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using NLite.Data;
+using NLite.Reflection;
+using teaCRM.Common;
 using teaCRM.DBContext;
 using teaCRM.Entity;
+using System.Linq.Dynamic;
 
 namespace  teaCRM.Dao.Impl
 {
@@ -14,19 +18,23 @@ namespace  teaCRM.Dao.Impl
     /// 自动生成的实现ITCusLogDao接口的Dao类。 2014-08-28 05:06:48 By 唐有炜
     /// </summary>
  public class TCusLogDaoImpl:ITCusLogDao
-    {
-	    /// <summary>
+ {
+     #region  T4自动生成的函数 2014-09-05 14:58:50 By 唐有炜
+     /// <summary>
         /// 获取所有的数据
-	    /// </summary>
-	    /// <returns>返回所有数据列表</returns>
-        public List<TCusLog> GetList() 
+        /// </summary>
+        /// <returns>返回所有数据列表</returns>
+        public List<TCusLog> GetList()
         {
-          using (teaCRMDBContext db=new teaCRMDBContext())
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-             var models= db.TCusLogs.ToList();
-			 return models;
+                var models = db.TCusLogs;
+                var sqlText = models.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return models.ToList();
             }
         }
+
 
         /// <summary>
         /// 获取所有的数据
@@ -37,37 +45,61 @@ namespace  teaCRM.Dao.Impl
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var models = db.TCusLogs.Where<TCusLog>(predicate).ToList();
-                return models;
+                var models = db.TCusLogs.Where<TCusLog>(predicate);
+                var sqlText = models.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return models.ToList();
             }
         }
-		/// <summary>
+
+        /// <summary>
         /// 获取指定的单个实体
         /// 如果不存在则返回null
         /// 如果存在多个则抛异常
         /// </summary>
         /// <param name="predicate">Lamda表达式</param>
         /// <returns>Entity</returns>
-        public TCusLog GetEntity(Expression<Func<TCusLog, bool>> predicate) 
+        public TCusLog GetEntity(Expression<Func<TCusLog, bool>> predicate)
         {
-            using (teaCRMDBContext db=new teaCRMDBContext())
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var model =db.TCusLogs.Where<TCusLog>(predicate).SingleOrDefault();
-                return model;
-		    }
+                var model = db.TCusLogs.Where<TCusLog>(predicate);
+                var sqlText = model.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return model.SingleOrDefault();
+            }
         }
 
-		
-		  /// <summary>
+
+
+        /// <summary>
+        /// 根据条件查询某些字段(LINQ 动态查询)
+        /// </summary>
+        /// <param name="selector">要查询的字段（格式：new(ID,Name)）</param>
+        /// <param name="predicate">筛选条件（id=0）</param>
+        /// <returns></returns>
+        public IQueryable<Object> GetFields(string selector, string predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var model = db.TCusLogs.Where(predicate).Select(selector);
+                var sqlText = model.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return (IQueryable<object>)model;
+            }
+        }
+
+
+        /// <summary>
         /// 添加实体
         /// </summary>
         /// <param name="entity">实体对象</param>
         public bool InsertEntity(TCusLog entity)
         {
-            using (teaCRMDBContext db=new teaCRMDBContext())
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-              int rows=  db.TCusLogs.Insert(entity);
-				 if (rows > 0)
+                int rows = db.TCusLogs.Insert(entity);
+                if (rows > 0)
                 {
                     return true;
                 }
@@ -77,64 +109,80 @@ namespace  teaCRM.Dao.Impl
                 }
             }
         }
-       /// <summary>
+        /// <summary>
         /// 删除实体
         /// </summary>
-         /// <param name="predicate">Lamda表达式</param>
-        public bool DeleteEntity(Expression<Func<TCusLog , bool>> predicate) 
+        /// <param name="predicate">Lamda表达式</param>
+        public bool DeleteEntity(Expression<Func<TCusLog, bool>> predicate)
         {
-            using (teaCRMDBContext db=new teaCRMDBContext())
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                TCusLog  entity = db.TCusLogs.Where(predicate).First();
-                int rows=db.TCusLogs.Delete(entity);
-				 if (rows > 0)
+                TCusLog entity = db.TCusLogs.Where(predicate).First();
+                int rows = db.TCusLogs.Delete(entity);
+                if (rows > 0)
                 {
                     return true;
                 }
                 else
                 {
                     return false;
-                }
-            }
-        }
-		
-		/// <summary>
-        /// 批量删除
-        /// </summary>
-        /// <param name="list">实体集合</param>
-        public bool DeletesEntity(List<TCusLog> list) 
-        {
-            using (teaCRMDBContext db=new teaCRMDBContext())
-            {
-                //var tran = db.Connection.BeginTransaction();
-                try
-                {
-                    foreach (var item in list)
-                    {
-                        db.TCusLogs.Delete(item);
-                    }
-                    //tran.Commit();
-					return true;
-                }
-                catch (Exception ex)
-                {
-                    //tran.Rollback();
-					return false;
-                    throw new Exception(ex.Message);
                 }
             }
         }
 
-         /// <summary>
+        /// <summary>
+        /// 批量删除
+        /// </summary>
+        /// <param name="list">实体集合</param>
+        public bool DeletesEntity(List<TCusLog> list)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                if (db.Connection.State != ConnectionState.Open)
+                {
+                    db.Connection.Open();
+                }
+                var tran = db.Connection.BeginTransaction();
+                try
+                {
+                    //数据库操作
+                    LogHelper.Info("删除事务开始...");
+
+                    foreach (var item in list)
+                    {
+                        db.TCusLogs.Delete(item);
+                    }
+                    tran.Commit();
+                    //数据库操作
+                    LogHelper.Info("删除事务结束...");
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    LogHelper.Error("删除事务执行失败，", ex);
+                    return false;
+                }
+                finally
+                {
+                    if (db.Connection.State != ConnectionState.Closed)
+                    {
+                        db.Connection.Close();
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// 修改实体
         /// </summary>
         /// <param name="entity">实体对象</param>
         public bool UpadateEntity(TCusLog entity)
         {
-            using (teaCRMDBContext db=new teaCRMDBContext())
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-               int rows= db.TCusLogs.Update(entity);
-			   if (rows > 0)
+                int rows = db.TCusLogs.Update(entity);
+                if (rows > 0)
                 {
                     return true;
                 }
@@ -150,31 +198,32 @@ namespace  teaCRM.Dao.Impl
         /// 是否存在该记录
         /// </summary>
         /// <returns></returns>
-       public   bool ExistsEntity(Expression<Func<TCusLog , bool>> predicate)
-	   {
-            using (teaCRMDBContext db=new teaCRMDBContext())
+        public bool ExistsEntity(Expression<Func<TCusLog, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-               bool status= db.TCusLogs.Any(predicate);
-               return status;
+                bool status = db.TCusLogs.Any(predicate);
+                return status;
             }
         }
 
-		 //查询分页
-    public  List<TCusLog> GetListByPage(int pageIndex, int pageSize, Expression<Func<TCusLog , bool>> predicate)
-	  {
-	   using (teaCRMDBContext db=new teaCRMDBContext())
+
+        //查询分页
+        public IPagination<TCusLog> GetListByPage(int pageIndex, int pageSize, int rowCount,
+            Expression<Func<TCusLog, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-             var models= db.TCusLogs.ToList();
-			 return models;
+                var models = db.TCusLogs.Where(predicate).ToPagination(pageIndex, pageSize, rowCount);
+                return models;
             }
-	  }
+        }
 
 
-	  
 
-	  //以下是原生Sql方法==============================================================
-	  //===========================================================================
-	   /// <summary>
+        //以下是原生Sql方法==============================================================
+        //===========================================================================
+        /// <summary>
         /// 用SQL语句查询
         /// </summary>
         /// <param name="sql">sql语句</param>
@@ -182,37 +231,42 @@ namespace  teaCRM.Dao.Impl
         /// <returns>集合</returns>
         public IEnumerable<TCusLog> GetListBySql(string sql, dynamic namedParameters)
         {
-          using (teaCRMDBContext db=new teaCRMDBContext())
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-               return db.DbHelper.ExecuteDataTable(sql,namedParameters).ToList<TCusLog>();
+                return db.DbHelper.ExecuteDataTable(sql, namedParameters).ToList<TCusLog>();
             }
-          
+
         }
-		
-		/// <summary>
-	     /// 执行Sql
-	     /// </summary>
-	     /// <param name="sql">Sql语句</param>
-	     /// <param name="namedParameters">查询字符串</param>
-	     /// <returns></returns>
-		public bool ExecuteSql(string sql, dynamic namedParameters = null)
-		{
-	         using (teaCRMDBContext db = new teaCRMDBContext())
-	         {
-	             var rows = db.DbHelper.ExecuteNonQuery(sql, namedParameters);
-	             if (rows > 0)
-	             {
-	                 return true;
-	             }
-	             else
-	             {
-	                 return false;
-	             }
-	         }
-		}
+
+        /// <summary>
+        /// 执行Sql
+        /// </summary>
+        /// <param name="sql">Sql语句</param>
+        /// <param name="namedParameters">查询字符串</param>
+        /// <returns></returns>
+        public bool ExecuteSql(string sql, dynamic namedParameters = null)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var rows = db.DbHelper.ExecuteNonQuery(sql, namedParameters);
+                if (rows > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
 
 
+        #endregion
 
 
-	   }
+        #region 手写的扩展函数 2014-08-21 14:58:50 By 唐有炜
+
+        #endregion
+
+    }
 	   }

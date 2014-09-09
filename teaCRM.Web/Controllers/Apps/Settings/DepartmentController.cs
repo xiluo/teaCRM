@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Reflection;
 using System.Web.Mvc;
 using teaCRM.Common;
 using teaCRM.Entity;
@@ -29,11 +31,15 @@ namespace teaCRM.Web.Controllers.Apps.Settings
 
         #endregion
 
-        #region 添加数据 2014-08-27 14:58:50 By 唐有炜
+        #region 添加部门 2014-08-27 14:58:50 By 唐有炜
 
         // /Apps/Settings/Department/Add/
         public ActionResult Add(FormCollection fc)
         {
+            if (fc.Count == 0)
+            {
+                return View("DepartmentAdd");
+            }
             ResponseMessage rmsg = new ResponseMessage();
             TSysDepartment sysDepartment = new TSysDepartment()
             {
@@ -118,11 +124,49 @@ namespace teaCRM.Web.Controllers.Apps.Settings
         /// 获取一条部门数据  2014-09-5 14:58:50 By 唐有炜
         /// </summary>
         /// <returns></returns>
-        [HttpPost]
+        //[HttpPost]
         public ActionResult GetDepartment(int id)
         {
             var department = SysDepartmentService.GetDepartment(d => d.Id == id);
-            return Json(department);
+            //JsonResult result = Json(department, JsonRequestBehavior.AllowGet);
+            JsonResult result = Json(department);
+            string ParentName = "顶级分类";
+            if (department.ParentId != 0)
+            {
+                //直接查询整个实体
+                //ParentName = SysDepartmentService.GetDepartment(d => d.Id == department.ParentId).DepName;
+                try
+                {
+                    //利用反射查询指定字段
+                    ParentName =
+                        ((dynamic)
+                            SysDepartmentService.GetFields("new(DepName)", String.Format("Id={0}", department.ParentId))
+                                .FirstOrDefault()).DepName;
+                    LogHelper.Debug("反射获取的字段值：" + ParentName);
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.Error("系统异常：", ex);
+                }
+            }
+            result.Data =
+                new
+                {
+                    Id = department.Id,
+                    ParentId = department.ParentId,
+                    ParentName = ParentName,
+                    DepName = department.DepName,
+                    DepNum = department.DepNum,
+                    CreateDate = ((DateTime) department.CreateDate).ToString("yyyy-MM-dd HH:mm:ss"),
+                    DepOrder = department.DepOrder,
+                    DepGoal = department.DepGoal,
+                    DepRespon = department.DepRespon,
+                    DepSkills = department.DepSkills,
+                    DepCourse = department.DepCourse,
+                    DepNote = department.DepNote
+                };
+            result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+            return result;
         }
 
         #endregion

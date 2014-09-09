@@ -1,0 +1,172 @@
+﻿@{
+    Layout = null;
+}
+
+<link href="/Themes/default/base/css/globle.css" rel="stylesheet" type="text/css" />
+  <!--bootstrap-->
+<link href="/Themes/default/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+<link href="/Themes/default/lib/bootstrap/js/bootstrap.js" rel="stylesheet" />
+<!--jquery-->
+<script src="~/Themes/default/lib/jquery/jquery-1.7.1.min.js"></script>
+<!--function-->
+<script src="/Themes/default/lib/function.js"></script>
+  <!--ZTree-->
+<link href="/Themes/default/lib/zTree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
+<script src="/Themes/default/lib/zTree/js/jquery.ztree.all-3.5.min.js"></script>
+   <!--气泡提示-->
+<script src="/Themes/default/lib/poshytip/jquery.poshytip.min.js" type="text/javascript"></script>
+<link href="/Themes/default/lib/poshytip/tip-yellow/tip-yellow.css" rel="stylesheet" type="text/css" />
+<!--表单验证-->
+<script src="/Themes/default/lib/validate/jquery.validate.min.js" type="text/javascript"></script>
+<script src="/Themes/default/lib/validate/messages_cn.js" type="text/javascript"></script>
+<script src="/Themes/default/lib/validate/jquery.validate.extend.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function() {
+        validate_form();
+    });
+
+    //表单验证
+    function validate_form() {
+        $("#form_department").validate({
+            errorPlacement: function (error, element) {
+                var errorMsg = error[0].innerHTML;
+                var elementName = element[0].name;
+                $("#" + elementName).formtip(errorMsg);
+            },
+            success: function (element) {
+                var elem = $(element)[0].htmlFor;
+                $("#" + elem).poshytip('disable');
+                $("#" + elem).poshytip('destroy');
+                $("#" + elem).removeClass("error").addClass("success");
+            }
+        });
+    }
+
+    //表单验证方法，供父窗口调用
+    function form_valid() {
+        return $("#form_department").valid();
+    }
+</script>
+<script type="text/javascript">
+    <!--
+    var setting = {
+        check: {
+            enable: true,
+            chkStyle: "radio",
+            radioType: "all"
+        },
+        view: {
+            dblClickExpand: false
+        },
+        data: {
+            simpleData: {
+                enable: true
+            }
+        },
+        callback: {
+            onClick: onClick,
+            onCheck: onCheck
+        }
+    };
+
+    var zNodes =[
+        {id:1, pId:0, name:"北京"},
+        {id:2, pId:0, name:"天津"},
+        {id:3, pId:0, name:"上海"},
+        {id:6, pId:0, name:"重庆"},
+        {id:4, pId:0, name:"河北省", open:true, nocheck:true},
+        {id:41, pId:4, name:"石家庄"},
+        {id:42, pId:4, name:"保定"},
+        {id:43, pId:4, name:"邯郸"},
+        {id:44, pId:4, name:"承德"},
+        {id:5, pId:0, name:"广东省", open:true, nocheck:true},
+        {id:51, pId:5, name:"广州"},
+        {id:52, pId:5, name:"深圳"},
+        {id:53, pId:5, name:"东莞"},
+        {id:54, pId:5, name:"佛山"},
+        {id:6, pId:0, name:"福建省", open:true, nocheck:true},
+        {id:61, pId:6, name:"福州"},
+        {id:62, pId:6, name:"厦门"},
+        {id:63, pId:6, name:"泉州"},
+        {id:64, pId:6, name:"三明"}
+    ];
+
+    function onClick(e, treeId, treeNode) {
+        var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+        zTree.checkNode(treeNode, !treeNode.checked, null, true);
+        return false;
+    }
+
+    function onCheck(e, treeId, treeNode) {
+        var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
+            nodes = zTree.getCheckedNodes(true),
+            v = "";
+        for (var i=0, l=nodes.length; i<l; i++) {
+            v += nodes[i].name + ",";
+        }
+        if (v.length > 0 ) v = v.substring(0, v.length-1);
+        var cityObj = $("#ParentId");
+        cityObj.attr("value", v);
+    }
+
+    function showMenu() {
+        var cityObj = $("#ParentId");
+        var cityOffset = $("#ParentId").offset();
+        $("#menuContent").css({left:cityOffset.left + "px", top:cityOffset.top + cityObj.outerHeight() + "px"}).slideDown("fast");
+
+        $("body").bind("mousedown", onBodyDown);
+    }
+    function hideMenu() {
+        $("#menuContent").fadeOut("fast");
+        $("body").unbind("mousedown", onBodyDown);
+    }
+    function onBodyDown(event) {
+        if (!(event.target.id == "menuBtn" || event.target.id == "ParentId" || event.target.id == "menuContent" || $(event.target).parents("#menuContent").length>0)) {
+            hideMenu();
+        }
+    }
+
+    $(document).ready(function(){
+        $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+    });
+    //-->
+</script>
+
+
+<!--表单开始-->
+<body>
+    <div class="tb-form-1">
+<form id="form_department">
+<div style="height:20px;"></div>
+<div class="tab-pane active">
+ <table width="100%" border="0"  cellpadding="0" cellspacing="0" class="commontable shortSelect">
+            <tr>
+                <th><em class="imp">*</em> 部门名称：</th>
+				<td><input type="text" class="required" id="DepName" name="DepName" placeholder="输入部门名称"/></td>
+				
+				<th><em class="imp">*</em> 上级部门：</th>
+				<td><input type="text" class="required" id="cus_name" name="cus_name"></td>
+            </tr>
+            <tr>
+                <th>部门人数：</th><td><input type="text" id="DepNum" name="DepNum" /></td>
+                <th>部门排序：</th><td><input type="text" id="DepOrder" name="DepOrder" /></td>
+            </tr>
+            <tr>
+                <th>工作目标：</th><td colspan="3"><textarea class="wid515" id="DepGoal" name="DepGoal" cols="2" rows="4"></textarea></td>
+            </tr>
+			<tr><th>工作职责：</th><td colspan="3"><textarea class="wid515" id="DepRespon" name="DepRespon" cols="2" rows="3"></textarea></td></tr>
+            <tr><th>必备技能：</th><td> <input type="text" id="DepSkills" name="DepSkills" /></td>
+            <tr><th>相关课程：</th><td colspan="3"><textarea class="wid515" id="DepCourse" name="DepCourse" cols="2" rows="3"></textarea></td></tr>            <tr><th>备注：</th><td colspan="3"><textarea class="wid515" id="DepNote" name="DepNote" cols="2" rows="3"></textarea></td></tr>
+    </table>
+</div>
+                    
+</form>
+<!--表单结束-->
+
+<div id="menuContent" class="menuContent" style="display:none; position: absolute;">
+    <ul id="treeDemo" class="ztree" style="margin-top:0; width:180px; height: 300px;"></ul>
+</div>
+
+</div>
+
+</body>

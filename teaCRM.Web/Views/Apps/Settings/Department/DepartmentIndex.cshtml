@@ -1,57 +1,46 @@
-@using teaCRM.Common
+Ôªø@using teaCRM.Common
 @model dynamic
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section seo {
-    <title>◊È÷Øº‹ππ_œµÕ≥…Ë÷√_C+∆Û“µ‘∆∆ΩÃ®_¥Ú‘Ï÷–π˙∞Ïπ´»Ìº˛µ⁄“ª∆∑≈∆</title>
+  <title>ÁªÑÁªáÊû∂ÊûÑ_Á≥ªÁªüËÆæÁΩÆ_C+‰ºÅ‰∏ö‰∫ëÂπ≥Âè∞_ÊâìÈÄ†‰∏≠ÂõΩÂäûÂÖ¨ËΩØ‰ª∂Á¨¨‰∏ÄÂìÅÁâå</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
 }
 
 @section head {
-    <!--bootstrap-->
-    <link href="/Themes/default/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
     <!--ZTree-->
     <link href="/Themes/default/lib/zTree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
     <script src="/Themes/default/lib/zTree/js/jquery.ztree.all-3.5.min.js"></script>
-    <!--∆¯≈›Ã· æ-->
-    <script src="/Themes/default/lib/poshytip/jquery.poshytip.min.js" type="text/javascript"></script>
-    <link href="/Themes/default/lib/poshytip/tip-yellow/tip-yellow.css" rel="stylesheet"
-          type="text/css" />
-    <!--±Ìµ•—È÷§-->
-    <script src="/Themes/default/lib/validate/jquery.validate.min.js" type="text/javascript"></script>
-    <script src="/Themes/default/lib/validate/messages_cn.js" type="text/javascript"></script>
-    <script src="/Themes/default/lib/validate/jquery.validate.extend.js" type="text/javascript"></script>
-    <!--±æ“≥√Êcss,js-->
+      <!--Êú¨È°µÈù¢css,js-->
     <link href="/Themes/default/settings/css/department.css" rel="stylesheet" type="text/css" />
     <script src="/Themes/default/settings/js/department.js" type="text/javascript"></script>
 }
 
 <div>
-    <!--◊Û≤‡≤ø√≈ø™ º-->
+    <!--Â∑¶‰æßÈÉ®Èó®ÂºÄÂßã-->
     <div class="layout-left">
         <div id="nav-side" class="nav-side">
             <div class="ns-item">
                 <div class="c_left">
                     <ul id="22">
                         <li id="221" onclick=""><span><b class=""></b></span>
-                            <a class="oz0"  href="javascript:void(0);" onclick=" show_add(); ">ÃÌº”</a></li>
+                            <a class="oz0"  href="javascript:void(0);" onclick=" show_add(); ">Ê∑ªÂä†</a></li>
                         <li id="33">
                             <span><b class=""></b></span>
-                            <a class="oz0"  href="javascript:void(0);" onclick=" save_delete(); ">…æ≥˝</a>
+                            <a class="oz0"  href="javascript:void(0);" onclick=" save_delete(); ">Âà†Èô§</a>
                         </li>
                     </ul>
                 </div>
-                <!-- ˜–Œ’π æø™ º-->
+                <!--Ê†ëÂΩ¢Â±ïÁ§∫ÂºÄÂßã-->
                 <ul id="department_tree" class="ztree"></ul>
-                <!-- ˜–Œ’π æΩ· ¯-->
+                <!--Ê†ëÂΩ¢Â±ïÁ§∫ÁªìÊùü-->
             </div> 
         </div>
     </div>
-    <!--◊Û≤‡≤ø√≈Ω· ¯-->
-  
-    <!-- ≤Èø¥≤ø√≈ø™ º -->
+    <!--Â∑¶‰æßÈÉ®Èó®ÁªìÊùü-->
+    <!-- Êü•ÁúãÈÉ®Èó®ÂºÄÂßã -->
     <div class="layout-right">
         <div class="layout-content">
             <table border="0" align="center" cellpadding="0" cellspacing="0" id="nobgmian" style="overflow: visible;">
@@ -62,19 +51,14 @@
                             <div class="boxTitle" style="min-height: 460px;">
                                 <div style="display: block;">
                                     <h2>
-                                        ≤ø√≈÷∞‘Àµ√˜ È
+                                        ÈÉ®Èó®ËÅåË¥£ËØ¥Êòé‰π¶
                                     </h2>
-                                    <!--±Ìµ•ø™ º-->
+                                    <!--Ë°®ÂçïÂºÄÂßã-->
                                     <form id="form_department">
-                                        <div class="head-btn">
-                                            <button id="btn-save" class="btn btn-primary hide" onclick=" return save(); ">±£¥Ê</button>
-                                            <input type="hidden" id="Id" name="Id" />
-                                            <button id="btn-edit" class="btn btn-primary" onclick=" return show_edit(); ">±‡º≠</button>
-                                        </div>
-                                             <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="titbox">
+                                        <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="titbox">
                                             <tbody>
                                                 <tr>
-                                                    <td width="68" height="30" class="tit">ª˘±æ–≈œ¢</td>
+                                                    <td width="68" height="30" class="tit">Âü∫Êú¨‰ø°ÊÅØ</td>
                                                     <td>&nbsp;</td>
                                                 </tr>
                                             </tbody>
@@ -83,32 +67,33 @@
                                         <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="tableInfo">
                                             <tbody>
                                                 <tr>
-                                                    <td >
-                                                        <span>≤ø√≈√˚≥∆£∫</span><span style="color: #8a8888;"><input type="text" id="DepName" name="DepName" /></span>
+                                                    <td>
+                                                        <span>ÈÉ®Èó®ÂêçÁß∞Ôºö</span><span style="color: #8a8888;"><label id="DepName" name="DepName"></label></span>
                                                     </td>
                                                     <td>
-                                                        <span>…œº∂≤ø√≈£∫</span><span style="color: #8a8888;"><input type="text" id="ParentId" name="ParentId" /></span>
+                                                        <span>‰∏äÁ∫ßÂàÜÁ±ªÔºö</span><span style="color: #8a8888;">
+                                                            <label id="ParentName" name="ParentName"></label>
+                                                        </span>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <span>≤ø√≈»À ˝£∫</span><span style="color: #8a8888;">
-                                                                              <input type="text" id="DepNum" name="DepNum" />
+                                                        <span>ÈÉ®Èó®‰∫∫Êï∞Ôºö</span><span style="color: #8a8888;">
+                                                            <label id="DepNum" name="DepNum"></label>
                                                         </span>
                                                     </td>
                                                     <td>
-                                                        <span>¥¥Ω®»’∆⁄£∫</span><span style="color: #8a8888;">
-                                                                              <input type="text" id="CreateDate" name="CreateDate" />
-                                                                          </span>
+                                                        <span>ÈÉ®Èó®ÊéíÂ∫èÔºö</span><span style="color: #8a8888;">
+                                                            <label id="DepOrder" name="DepOrder"></label>
+                                                        </span>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <span>≤ø√≈≈≈–Ú£∫</span><span style="color: #8a8888;">
-                                                                              <input type="text" id="DepOrder" name="DepOrder" />
+                                                        <span>ÂàõÂª∫Êó•ÊúüÔºö</span><span style="color: #8a8888;">
+                                                            <label id="CreateDate" name="CreateDate"></label>
                                                         </span>
                                                     </td>
-                                                   
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -117,7 +102,7 @@
                                         <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="titbox">
                                             <tbody>
                                                 <tr>
-                                                    <td width="109" height="30" class="tit">π§◊˜ƒø±Í”Î÷∞‘</td>
+                                                    <td width="109" height="30" class="tit">Â∑•‰ΩúÁõÆÊ†á‰∏éËÅåË¥£</td>
                                                     <td width="471">&nbsp;</td>
                                                 </tr>
                                             </tbody>
@@ -126,13 +111,13 @@
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <span>π§◊˜ƒø±Í£∫</span><span style="color: #8a8888; white-space: normal; word-break: break-all;">
-                                                                              <input type="text" id="DepGoal" name="DepGoal" />
-                                                                          </span> <br />
+                                                        <span>Â∑•‰ΩúÁõÆÊ†áÔºö</span><span style="color: #8a8888; white-space: normal; word-break: break-all;">
+                                                            <label id="DepGoal" name="DepGoal"></label>
+                                                        </span> <br />
                                                         <br />
-                                                        <span>π§◊˜÷∞‘£∫</span><span style="color: #8a8888; white-space: normal; word-break: break-all;">
-                                                                                 <textarea class="wid515" id="DepRespon" name="DepRespon" cols="50" rows="2"></textarea>
-                                                                             </span>
+                                                        <span>Â∑•‰ΩúËÅåË¥£Ôºö</span><span style="color: #8a8888; white-space: normal; word-break: break-all;">
+                                                            <label id="DepRespon" name="DepRespon"></label>
+                                                        </span>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -140,7 +125,7 @@
                                         <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="titbox">
                                             <tbody>
                                                 <tr>
-                                                    <td width="167" height="30" class="tit">≤ø√≈”¶’∆Œ’µƒººƒ‹∫ÕøŒ≥Ã</td>
+                                                    <td width="167" height="30" class="tit">ÈÉ®Èó®Â∫îÊéåÊè°ÁöÑÊäÄËÉΩÂíåËØæ</td>
                                                     <td width="413">&nbsp;</td>
                                                 </tr>
                                             </tbody>
@@ -149,26 +134,26 @@
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <span>±ÿ±∏ººƒ‹£∫</span><span style="color: #8a8888; white-space: normal; word-break: break-all;">
-                                                                              <input type="text" id="DepSkills" name="DepSkills" />
-                                                                          </span><br />
+                                                        <span>ÂøÖÂ§áÊäÄËÉΩÔºö</span><span style="color: #8a8888; white-space: normal; word-break: break-all;">
+                                                            <label id="DepSkills" name="DepSkills"></label>
+                                                        </span><br />
                                                         <br />
-                                                        <span>œ‡πÿøŒ≥Ã£∫</span><span style="color: #8a8888; white-space: normal; word-break: break-all;">
-                                                                              <input type="text" id="DepCourse" name="DepCourse" />
-                                                                            </span><br />
+                                                        <span>Áõ∏ÂÖ≥ËØæÁ®ãÔºö</span><span style="color: #8a8888; white-space: normal; word-break: break-all;">
+                                                            <label id="DepCourse" name="DepCourse"></label>
+                                                        </span><br />
                                                         <br />
-                                                        <span>±∏◊¢£∫</span><span style="color: #8a8888; white-space: normal; word-break: break-all;">
-                                                                            <textarea class="wid515" id="DepNote" name="DepNote" cols="50" rows="2"></textarea>
-                                                                        </span>
+                                                        <span>Â§áÊ≥®Ôºö</span><span style="color: #8a8888; white-space: normal; word-break: break-all;">
+                                                            <label id="DepNote" name="DepNote"></label>
+                                                        </span>
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </form>
-                                    <!--±Ìµ•Ω· ¯-->
+                                    <!--Ë°®ÂçïÁªìÊùü-->
                                 </div>
                             </div>
-                            <!-- ≤Èø¥≤ø√≈Ω· ¯ -->
+                            <!-- Êü•ÁúãÈÉ®Èó®ÁªìÊùü -->
                         </td>
                     </tr>
                 </tbody>

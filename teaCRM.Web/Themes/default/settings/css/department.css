@@ -30,8 +30,4 @@ body{background: #ECEDF3;}
 .boxTitle h2 button{  margin-right:10px; margin-top:6px;font-size:12px;}
 /**其他小标签**/
 .linkico{ background:url(/Themes/default/base/images/link.png) 0px 12px no-repeat;}
-/*操作按钮*/
-.head-btn {
-    padding: 5px 0 0 30px;
-}
 

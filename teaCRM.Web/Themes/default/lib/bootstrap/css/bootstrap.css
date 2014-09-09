@@ -1025,7 +1025,7 @@ pre code {
 }
 
 form {
-  margin: 0 0 20px;
+  margin: 0px;
 }
 
 fieldset {
@@ -1091,15 +1091,13 @@ input[type="tel"],
 input[type="color"],
 .uneditable-input {
   display: inline-block;
-  height: 20px;
   padding: 3px 6px;
-  margin-bottom:5px;
+  margin-bottom:10px;
   font-size: 12px;
   line-height: 20px;
   color: #555555;
   vertical-align: middle;
 }
-
 input,
 textarea,
 .uneditable-input {

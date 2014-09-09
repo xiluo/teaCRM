@@ -234,6 +234,8 @@
     <Content Include="Themes\default\lib\zTree\css\zTreeStyle\zTreeStyle.css" />
     <Content Include="Themes\default\lib\zTree\js\jquery.ztree.all-3.5.js" />
     <Content Include="Themes\default\lib\zTree\js\jquery.ztree.all-3.5.min.js" />
+    <Content Include="Themes\default\lib\zTree\js\jquery.ztree.excheck-3.5.js" />
+    <Content Include="Themes\default\lib\zTree\js\jquery.ztree.excheck-3.5.min.js" />
     <Content Include="Views\Base\Admin\LogView.cshtml" />
     <Resource Include="Configs\Services.xml">
       <SubType>Designer</SubType>
@@ -1405,6 +1407,7 @@
     <Content Include="Views\Apps\CRM\ToolBar\FilterEdit.cshtml" />
     <Content Include="Views\Apps\Settings\Role\RoleEdit.cshtml" />
     <Content Include="Views\Apps\Settings\Permission\FunctionPermission.cshtml" />
+    <Content Include="Views\Apps\Settings\Department\DepartmentAdd.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
