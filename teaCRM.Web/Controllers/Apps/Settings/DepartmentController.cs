@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Web.Mvc;
@@ -78,40 +79,33 @@ namespace teaCRM.Web.Controllers.Apps.Settings
 
         #endregion
 
-        #region 获取树形数据 2014-08-27 14:58:50 By 唐有炜
-
-//        //
-//        // GET: /Apps/Settings/Department/GetDepartmentTreeData
-//        [UserAuthorize]
-//        public string GetDepartmentTreeData()
-//        {
-//            string treeData = "";
-//            try
-//            {
-//                var compNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
-//                treeData = SysDepartmentService.GetTreeData(compNum);
-//                LogHelper.Info("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() + "的用户获取部门树形列表成功。");
-//            }
-//            catch (Exception ex)
-//            {
-//                LogHelper.Error("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() + "的用户获取部门树形列表失败，" +
-//                                ex.Message);
-//            }
-//            return treeData;
-//        }
+        #region 异步获取部门属性数据 2014-08-27 14:58:50 By 唐有炜
 
         // /Apps/Settings/Department/AsyncGetNodes/
         /// <summary>
         /// 得到指定ID的子节点列表，并序列化为JSON串
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">节点父id</param>
+        /// <param name="type">类型（默认：show，select:添加一个根节点）</param>
         /// <returns></returns>
         [UserAuthorize]
-        public ActionResult AsyncGetNodes(int? id)
+        public ActionResult AsyncGetNodes(int? id, string type)
         {
             var compNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
             var nodes = SysDepartmentService.AsyncGetNodes(compNum, id);
-            return Json(nodes, JsonRequestBehavior.AllowGet);
+            //加入根节点
+            if (type == "select")
+            {
+                Node node = new Node()
+                {
+                    id = 0,
+                    isParent = false,
+                    name = "顶级分类",
+                    pId = -1
+                };
+                nodes.Insert(0, node);
+            }
+            return Json(nodes);
         }
 
         #endregion

@@ -182,7 +182,9 @@ function view() {
 
 //添加客户
 function add() {
-    showWindow("show_add", "/Apps/CRM/Index/Add/", "新增客户", 800, 480);
+    showWindow("show_add", "/Apps/CRM/Index/Add/", "新增客户", 800, 480,function() {
+        
+    });
 }
 
 function edit() {

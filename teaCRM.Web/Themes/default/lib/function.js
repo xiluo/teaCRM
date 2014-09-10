@@ -28,39 +28,6 @@ function Trim(str) {
     return LTrim(RTrim(str));
 }
 
-//可以自动关闭的提示
-function jsprint(msgtitle, msgcss, callback) {
-    $("#msgprint").remove();
-    var cssname = "";
-    switch (msgcss) {
-    case "Success":
-        cssname = "pcent success";
-        break;
-    case "Error":
-        cssname = "pcent error";
-        break;
-    case "Warn":
-        cssname = "pcent error";
-        break;
-    default:
-        cssname = "pcent warning";
-        break;
-    }
-    var str = "<div id=\"msgprint\" class=\"" + cssname + "\">" + msgtitle + "</div>";
-    $("body").append(str);
-    $("#msgprint").show();
-    //3秒后清除提示
-    setTimeout(function() {
-        $("#msgprint").fadeOut(500);
-        //如果动画结束则删除节点
-        if (!$("#msgprint").is(":animated")) {
-            $("#msgprint").remove();
-        }
-    }, 2000);
-    //执行回调函数
-    if (typeof (callback) == "function") callback();
-}
-
 //=========================================================================================
 
 //弹出框封装结束开始
@@ -70,9 +37,36 @@ function jsprint(msgtitle, msgcss, callback) {
 //<script src="/Themes/default/js/artDialog/dist/dialog-plus-min.js"></script>
 //修正margin:10px 10px -10px 10px
 function showMsg(msg, msgcss, callback) {
-    jsprint(msg, msgcss, callback);
+    $("#msgprint").remove();
+    var cssname = "";
+    switch (msgcss) {
+        case "Success":
+            cssname = "pcent success";
+            break;
+        case "Error":
+            cssname = "pcent error";
+            break;
+        case "Warn":
+            cssname = "pcent error";
+            break;
+        default:
+            cssname = "pcent warning";
+            break;
+    }
+    var str = "<div id=\"msgprint\" class=\"" + cssname + "\">" + msg + "</div>";
+    $("body").append(str);
+    $("#msgprint").show();
+    //3秒后清除提示
+    setTimeout(function () {
+        $("#msgprint").fadeOut(500);
+        //如果动画结束则删除节点
+        if (!$("#msgprint").is(":animated")) {
+            $("#msgprint").remove();
+        }
+    }, 2000);
+    //执行回调函数
+    if (typeof (callback) == "function") callback();
 }
-
 
 //弹出对话框，带阴影==============================================
 function showDialog(msg, okCallback) {

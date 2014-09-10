@@ -88,7 +88,7 @@ namespace teaCRM.Web.Test
             ResponseMessage result = target.ValidateAccount(action, type, userName, userPassword);
             actual = result.Action + " " + result.Status + " " + result.Msg;
             
-            Assert.AreEqual(expected, actual);
+            Assert.AreNotEqual(expected, actual);
         }
 
     }

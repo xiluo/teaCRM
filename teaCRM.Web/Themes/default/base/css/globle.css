@@ -41,8 +41,8 @@ input2{background-color: white;border: 1px solid #CCC;height: 20px;padding: 3px 
 .progressBar { border: solid 2px #86A5AD; background: white url(/Themes/default/lib/ligerUI/skins/Tea/images/grid/loading.gif) no-repeat 10px 10px; display: block; width: 148px; height: 28px; position: fixed; top: 50%; left: 50%; margin-left: -74px; margin-top: -14px; padding: 10px 10px 10px 50px; text-align: left; line-height: 27px; font-weight: bold; position: absolute; z-index: 2001; } 
 
 /*表单验证样式 配合验证 2014-09-04 By 唐有炜*/
-.success {border: 1px solid #5ca32d;background-color: white;}
-.error {border: 1px solid #f00;background-color: rgb(255, 185, 185);}
+.success {border: 1px solid #5ca32d !important;background-color: white !important;}
+.error {border: 1px solid #f00 !important;background-color: rgb(255, 185, 185) !important;}
 
 /*显示JS提示框*/
 #msgprint.pcent{ top:30px; right:45%; position:absolute; z-index:99; opacity:0.9; display:none; }

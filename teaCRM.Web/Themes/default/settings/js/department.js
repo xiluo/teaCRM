@@ -53,7 +53,7 @@ function createTree(treeId) {
     $.ajax({
         url: '/Apps/Settings/Department/AsyncGetNodes/', //url  action是方法的名称
         data: { id: 0 },
-        type: 'Get',
+        type: 'post',
         dataType: "text", //可以是text，如果用text，返回的结果为字符串；如果需要json格式的，可是设置为json
         success: function(data) {
             $.fn.zTree.init($("#" + treeId), setting, eval('(' + data + ')'));
@@ -109,26 +109,23 @@ function load_form_data(id) {
 var url = "";
 //编辑部门信息
 function show_edit() {
-    url = "/Apps/Settings/Department/Add/";
+    url = "/Apps/Settings/Department/Edit/";
+    //        var id = $("#btn-edit").prev().val();
+    //        //alert(id);
     showWindow("show");
 }
 
 function show_add() {
     url = "/Apps/Settings/Department/Add/";
-    showWindow("show_add", url, "添加部门", 680, 480, function () {
+    showWindow("show_add", url, "添加部门", 800, 480, function () {
         var form_department = $(window.frames["frm_show_add"].document).find("#form_department");
-        //alert($(form_department).serialize());
         var flag = document.getElementById("frm_show_add").contentWindow.form_valid();
-        //alert(flag); 
           if (!flag) {
-            showMsg("您的表单包含错误，请检查！");
-            return false;
+          return false;
         }
-        return false;
-//        var id = $("#btn-edit").prev().val();
-//        //alert(id);
         var data = $(form_department).serialize();
-        alert(data);
+        console.log(data);
+        dialog.list['show_add'].close().remove();
         showMsg("修改成功！");
     });
 }

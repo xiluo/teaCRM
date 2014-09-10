@@ -1,172 +1,222 @@
 ﻿@{
     Layout = null;
 }
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>添加部门_系统设置_C+企业云平台_打造中国办公软件第一品牌</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="/Themes/default/base/css/globle.css" rel="stylesheet" type="text/css" />
+        <!--bootstrap-->
+        <link href="/Themes/default/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+        <!--jquery-->
+        <script src="~/Themes/default/lib/jquery/jquery-1.7.1.min.js"></script>
+        <!--function-->
+        <script src="/Themes/default/lib/function.js"></script>
+        <!--ZTree-->
+        <link href="/Themes/default/lib/zTree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
+        <script src="/Themes/default/lib/zTree/js/jquery.ztree.all-3.5.min.js"></script>
+        <!--气泡提示-->
+        <script src="/Themes/default/lib/poshytip/jquery.poshytip.min.js" type="text/javascript"></script>
+        <link href="/Themes/default/lib/poshytip/tip-yellow/tip-yellow.css" rel="stylesheet" type="text/css" />
+        <!--表单验证-->
+        <script src="/Themes/default/lib/validate/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="/Themes/default/lib/validate/messages_cn.js" type="text/javascript"></script>
+        <script src="/Themes/default/lib/validate/jquery.validate.extend.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#DepName").focus();
+            });
+            $(function() {
+                validate_form();
+            });
 
-<link href="/Themes/default/base/css/globle.css" rel="stylesheet" type="text/css" />
-  <!--bootstrap-->
-<link href="/Themes/default/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
-<link href="/Themes/default/lib/bootstrap/js/bootstrap.js" rel="stylesheet" />
-<!--jquery-->
-<script src="~/Themes/default/lib/jquery/jquery-1.7.1.min.js"></script>
-<!--function-->
-<script src="/Themes/default/lib/function.js"></script>
-  <!--ZTree-->
-<link href="/Themes/default/lib/zTree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
-<script src="/Themes/default/lib/zTree/js/jquery.ztree.all-3.5.min.js"></script>
-   <!--气泡提示-->
-<script src="/Themes/default/lib/poshytip/jquery.poshytip.min.js" type="text/javascript"></script>
-<link href="/Themes/default/lib/poshytip/tip-yellow/tip-yellow.css" rel="stylesheet" type="text/css" />
-<!--表单验证-->
-<script src="/Themes/default/lib/validate/jquery.validate.min.js" type="text/javascript"></script>
-<script src="/Themes/default/lib/validate/messages_cn.js" type="text/javascript"></script>
-<script src="/Themes/default/lib/validate/jquery.validate.extend.js" type="text/javascript"></script>
-<script type="text/javascript">
-    $(function() {
-        validate_form();
-    });
+            //表单验证
+            function validate_form() {
+                $("#form_department").validate({
+                    rules: {
+                        DepName: {
+                            rangelength: [2, 200]
+                        }
+                    },
+                    invalidHandler: function(e, validator) {
+                        var msg = "有 " + validator.numberOfInvalids() + " 项填写有误，请检查！";
+                        $("#msgprint").html(msg).show().focus();
+                        setTimeout(function() {
+                            $("#msgprint").fadeOut(500);
+                            //如果动画结束则删除节点
+                            if (!$("#msgprint").is(":animated")) {
+                                $("#msgprint").hide();
+                            }
+                        }, 1000);
+                    },
+                    focusInvalid: false,
+                    errorPlacement: function(error, element) {
+                        var errorMsg = error[0].innerHTML;
+                        var elementName = element[0].name;
+                        $("#" + elementName).formtip(errorMsg);
+                        $("#" + elementName).attr("placeholder", errorMsg);
+                    },
+                    success: function(element) {
+                        var elem = $(element)[0].htmlFor;
+                        $("#" + elem).poshytip('disable');
+                        $("#" + elem).poshytip('destroy');
+                        $("#" + elem).removeClass("error").addClass("success");
+                    }
 
-    //表单验证
-    function validate_form() {
-        $("#form_department").validate({
-            errorPlacement: function (error, element) {
-                var errorMsg = error[0].innerHTML;
-                var elementName = element[0].name;
-                $("#" + elementName).formtip(errorMsg);
-            },
-            success: function (element) {
-                var elem = $(element)[0].htmlFor;
-                $("#" + elem).poshytip('disable');
-                $("#" + elem).poshytip('destroy');
-                $("#" + elem).removeClass("error").addClass("success");
+                });
+
             }
-        });
-    }
 
-    //表单验证方法，供父窗口调用
-    function form_valid() {
-        return $("#form_department").valid();
-    }
-</script>
-<script type="text/javascript">
-    <!--
-    var setting = {
-        check: {
-            enable: true,
-            chkStyle: "radio",
-            radioType: "all"
-        },
-        view: {
-            dblClickExpand: false
-        },
-        data: {
-            simpleData: {
-                enable: true
+            //表单验证方法，供父窗口调用
+            function form_valid() {
+                return $("#form_department").valid();
             }
-        },
-        callback: {
-            onClick: onClick,
-            onCheck: onCheck
-        }
-    };
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                createTree("department_tree");
+            });
 
-    var zNodes =[
-        {id:1, pId:0, name:"北京"},
-        {id:2, pId:0, name:"天津"},
-        {id:3, pId:0, name:"上海"},
-        {id:6, pId:0, name:"重庆"},
-        {id:4, pId:0, name:"河北省", open:true, nocheck:true},
-        {id:41, pId:4, name:"石家庄"},
-        {id:42, pId:4, name:"保定"},
-        {id:43, pId:4, name:"邯郸"},
-        {id:44, pId:4, name:"承德"},
-        {id:5, pId:0, name:"广东省", open:true, nocheck:true},
-        {id:51, pId:5, name:"广州"},
-        {id:52, pId:5, name:"深圳"},
-        {id:53, pId:5, name:"东莞"},
-        {id:54, pId:5, name:"佛山"},
-        {id:6, pId:0, name:"福建省", open:true, nocheck:true},
-        {id:61, pId:6, name:"福州"},
-        {id:62, pId:6, name:"厦门"},
-        {id:63, pId:6, name:"泉州"},
-        {id:64, pId:6, name:"三明"}
-    ];
+            //ZTree==========================================================================
+            //=================================================================================
+            function createTree(treeId) {
+                //异步加载节点
+                var setting = {
+                    check: {
+                        enable: true,
+                        chkStyle: "radio",
+                        radioType: "all"
+                    },
+                    view: {
+                        dblClickExpand: false
+                    },
+                    data: {
+                        simpleData: {
+                            enable: true,
+                            idKey: "id",
+                            pIdKey: "pId",
+                            rootPId: 0
+                        }
+                    },
+                    async: {
+                        //异步加载
+                        enable: true,
+                        url: "/Apps/Settings/Department/AsyncGetNodes/",
+                        autoParam: ["id", "name", "pId"]
+                    },
+                    callback: {
+                        beforeExpand: function(treeId, treeNode) {
+                            if (!treeNode.isAjaxing) {
+                                return true;
+                            } else {
+                                alert("zTree 正在下载数据中，请稍后展开节点。。。");
+                                return false;
+                            }
+                        },
+                        onAsyncSuccess: function(event, treeId, treeNode, msg) {
+                            //console.log(treeNode);
+                        },
+                        onAsyncError: function() {
+                            console.log(" 数据加载失败");
+                        },
+                        beforeCheck: function (treeId, treeNode) {
+                            $("#ParentId").val(treeNode.name).focus();
+                            $("#HiddenParentId").val(treeNode.id);
+                            console.log($("#ParentId").val()+  $("#HiddenParentId").val());
+                            hideMenu();
+                            return true;
+                        },
+                        onClick: function (event, treeId, treeNode) {
+                            $("#ParentId").val(treeNode.name).focus().removeClass("error").addClass("success");
+                            $("#HiddenParentId").val(treeNode.id);
+                            console.log($("#ParentId").val() + $("#HiddenParentId").val());
+                            hideMenu();
+                        }
+                    }
+                };
+                $.ajax({
+                    url: '/Apps/Settings/Department/AsyncGetNodes/', //url  action是方法的名称
+                    data: { id: 0,type:"select" },
+                    type: 'post',
+                    dataType: "text", //可以是text，如果用text，返回的结果为字符串；如果需要json格式的，可是设置为json
+                    success: function(data) {
+                        $.fn.zTree.init($("#" + treeId), setting, eval('(' + data + ')'));
+                    },
+                    error: function(msg) {
+                        console.log(" 数据加载失败！" + msg);
+                    }
+                });
+            }
 
-    function onClick(e, treeId, treeNode) {
-        var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-        zTree.checkNode(treeNode, !treeNode.checked, null, true);
-        return false;
-    }
+//=============================================================================================
 
-    function onCheck(e, treeId, treeNode) {
-        var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
-            nodes = zTree.getCheckedNodes(true),
-            v = "";
-        for (var i=0, l=nodes.length; i<l; i++) {
-            v += nodes[i].name + ",";
-        }
-        if (v.length > 0 ) v = v.substring(0, v.length-1);
-        var cityObj = $("#ParentId");
-        cityObj.attr("value", v);
-    }
+            function showMenu() {
+                var cityObj = $("#ParentId");
+                //防止提示遮挡树形
+                cityObj.poshytip('disable').poshytip('destroy');
+                var cityOffset = $("#ParentId").offset();
+                $("#menuContent").css({ left: cityOffset.left + "px", top: cityOffset.top + cityObj.outerHeight() + "px" }).slideDown("fast");
+                $("body").bind("mousedown", onBodyDown);
+            }
 
-    function showMenu() {
-        var cityObj = $("#ParentId");
-        var cityOffset = $("#ParentId").offset();
-        $("#menuContent").css({left:cityOffset.left + "px", top:cityOffset.top + cityObj.outerHeight() + "px"}).slideDown("fast");
+            function hideMenu() {
+                $("#menuContent").fadeOut("fast");
+                $("body").unbind("mousedown", onBodyDown);
+            }
 
-        $("body").bind("mousedown", onBodyDown);
-    }
-    function hideMenu() {
-        $("#menuContent").fadeOut("fast");
-        $("body").unbind("mousedown", onBodyDown);
-    }
-    function onBodyDown(event) {
-        if (!(event.target.id == "menuBtn" || event.target.id == "ParentId" || event.target.id == "menuContent" || $(event.target).parents("#menuContent").length>0)) {
-            hideMenu();
-        }
-    }
+            function onBodyDown(event) {
+                if (!(event.target.id == "menuBtn" || event.target.id == "ParentId" || event.target.id == "menuContent" || $(event.target).parents("#menuContent").length > 0)) {
+                    hideMenu();
+                }
+            }
+        </script>
 
-    $(document).ready(function(){
-        $.fn.zTree.init($("#treeDemo"), setting, zNodes);
-    });
-    //-->
-</script>
+    </head>
+    
+    <body>
+        <div>
+            <!--表单开始-->
+            <form id="form_department">
+                <div class="tab-content">
+                    <!--表单错误提示区-->
+                    <div tabindex="-1" id="msgprint" class="warning" style="position: fixed; width: 90%; display: none;">您的表单包含错误，请检查！</div>
+                    <dl>
+                        <dt><em class="imp">*</em> 部门名称：</dt>
+                        <dd><input type="text" class="required" id="DepName" name="DepName" placeholder="输入部门名称"></dd>
 
-
-<!--表单开始-->
-<body>
-    <div class="tb-form-1">
-<form id="form_department">
-<div style="height:20px;"></div>
-<div class="tab-pane active">
- <table width="100%" border="0"  cellpadding="0" cellspacing="0" class="commontable shortSelect">
-            <tr>
-                <th><em class="imp">*</em> 部门名称：</th>
-				<td><input type="text" class="required" id="DepName" name="DepName" placeholder="输入部门名称"/></td>
-				
-				<th><em class="imp">*</em> 上级部门：</th>
-				<td><input type="text" class="required" id="cus_name" name="cus_name"></td>
-            </tr>
-            <tr>
-                <th>部门人数：</th><td><input type="text" id="DepNum" name="DepNum" /></td>
-                <th>部门排序：</th><td><input type="text" id="DepOrder" name="DepOrder" /></td>
-            </tr>
-            <tr>
-                <th>工作目标：</th><td colspan="3"><textarea class="wid515" id="DepGoal" name="DepGoal" cols="2" rows="4"></textarea></td>
-            </tr>
-			<tr><th>工作职责：</th><td colspan="3"><textarea class="wid515" id="DepRespon" name="DepRespon" cols="2" rows="3"></textarea></td></tr>
-            <tr><th>必备技能：</th><td> <input type="text" id="DepSkills" name="DepSkills" /></td>
-            <tr><th>相关课程：</th><td colspan="3"><textarea class="wid515" id="DepCourse" name="DepCourse" cols="2" rows="3"></textarea></td></tr>            <tr><th>备注：</th><td colspan="3"><textarea class="wid515" id="DepNote" name="DepNote" cols="2" rows="3"></textarea></td></tr>
-    </table>
-</div>
+                        <dt><em class="imp">*</em> 上级部门：</dt>
+                        <dd>
+                            <input type="text" class="required" id="ParentId" name="ParentId" onclick=" showMenu(); " readonly="true" placeholder="请点击选择" />
+                            <input type="hidden" id="HiddenParentId" name="HiddenParentId" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>部门人数：</dt>
+                        <dd><input type="text" id="DepNum" name="DepNum" class="number" /></dd>
+                        <dt>部门排序：</dt>
+                        <dd><input type="text" id="DepOrder" name="DepOrder" class="number" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>工作目标：</dt>
+                        <dd ><textarea class="wid515" id="DepGoal" name="DepGoal" cols="2" rows="4"></textarea></dd>
+                    </dl>
+                    <dl><dt>工作职责：</dt><dd ><textarea class="wid515" id="DepRespon" name="DepRespon" cols="2" rows="3"></textarea></dd></dl>
+                    <dl>
+                        <dt>必备技能：</dt>
+                        <dd> <input type="text" id="DepSkills" name="DepSkills" /></dd>
+                    </dl>
+                    <dl><dt>相关课程：</dt><dd ><textarea class="wid515" id="DepCourse" name="DepCourse" cols="2" rows="3"></textarea></dd></dl>
+                    <dl><dt>备注：</dt><dd ><textarea class="wid515" id="DepNote" name="DepNote" cols="2" rows="3"></textarea></dd></dl>
                     
-</form>
-<!--表单结束-->
+                </div>
+            </form>
+            <!--表单结束-->
 
-<div id="menuContent" class="menuContent" style="display:none; position: absolute;">
-    <ul id="treeDemo" class="ztree" style="margin-top:0; width:180px; height: 300px;"></ul>
-</div>
+            <div id="menuContent" class="menuContent" style="display: none; position: absolute;">
+                <ul id="department_tree" class="ztree" style="margin-top: 0; width: 180px; height: 300px;"></ul>
+            </div>
 
-</div>
-
-</body>
+        </div>
+       
+    </body>
+</html>
