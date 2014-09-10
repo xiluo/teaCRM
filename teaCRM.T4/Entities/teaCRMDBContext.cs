@@ -7,11 +7,11 @@
  * 【teaCRM数据库操作上下文】
  *  
  *  
- * 作者：唐有炜   时间：2014-09-09 03:14:54
+ * 作者：唐有炜   时间：2014-09-10 08:00:55
  * 文件名：teaCRMDBContext.cs
  * 版本：V1.0.0
  * 
- * 修改者：唐有炜           时间：2014-09-09 03:14:54            
+ * 修改者：唐有炜           时间：2014-09-10 08:00:55            
  * 修改说明：修改说明
  * ========================================================================
 */
@@ -65,6 +65,7 @@ namespace teaCRM.DBContext
 		public IDbSet<TSysRole> TSysRoles { get; private set; }
 		public IDbSet<TSysUser> TSysUsers { get; private set; }
 		public IDbSet<VCompanyUser> VCompanyUsers { get; private set; }
+		public IDbSet<VSysDepartment> VSysDepartments { get; private set; }
         #endregion
 	}
 	

@@ -39,11 +39,34 @@ namespace teaCRM.Web.Controllers.Apps.Settings
         {
             if (fc.Count == 0)
             {
-                return View("DepartmentAdd");
+                return View("DepartmentEdit");
             }
             ResponseMessage rmsg = new ResponseMessage();
+            var compNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
+            var depNum = 0;
+            var depOrder = 0;
+            if (!String.IsNullOrEmpty(fc["DepNum"]))
+            {
+                depNum = int.Parse(fc["DepNum"]);
+            }
+            if (!String.IsNullOrEmpty(fc["depOrder"]))
+            {
+                depNum = int.Parse(fc["depOrder"]);
+            }
+
             TSysDepartment sysDepartment = new TSysDepartment()
             {
+                DepName = fc["DepName"],
+                ParentId = int.Parse(fc["HiddenParentId"].ToString()),
+                CompNum = compNum,
+                DepNum = depNum,
+                DepOrder = depOrder,
+                CreateDate = DateTime.Now,
+                DepGoal = fc["DepGoal"],
+                DepRespon = fc["DepRespon"],
+                DepSkills = fc["DepSkills"],
+                DepCourse = fc["DepCourse"],
+                DepNote = fc["DepNote"]
             };
             bool status = SysDepartmentService.AddDepartment(sysDepartment);
             if (status)
@@ -63,18 +86,93 @@ namespace teaCRM.Web.Controllers.Apps.Settings
 
         #region 修改数据 2014-08-27 14:58:50 By 唐有炜
 
-        public ActionResult Edit()
+        public ActionResult Edit(FormCollection fc, int id)
         {
-            return View();
+            //首次访问
+
+            if (fc.Count == 0)
+            {
+                var vdepartment = SysDepartmentService.GetDepartment(d => d.Id == id);
+                ViewBag.Department = vdepartment;
+                return View("DepartmentEdit");
+            }
+            //修改提交
+            ResponseMessage rmsg = new ResponseMessage();
+
+            try
+            {
+                var compNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
+                var depNum = 0;
+                var depOrder = 0;
+                if (!String.IsNullOrEmpty(fc["DepNum"]))
+                {
+                    depNum = int.Parse(fc["DepNum"]);
+                }
+                if (!String.IsNullOrEmpty(fc["depOrder"]))
+                {
+                    depNum = int.Parse(fc["depOrder"]);
+                }
+                TSysDepartment department = new TSysDepartment
+                {
+                    Id = id,
+                    DepName = fc["DepName"],
+                    ParentId = int.Parse(fc["HiddenParentId"].ToString()),
+                    CompNum = compNum,
+                    DepNum = depNum,
+                    DepOrder = depOrder,
+                    CreateDate = DateTime.Now,
+                    DepGoal = fc["DepGoal"],
+                    DepRespon = fc["DepRespon"],
+                    DepSkills = fc["DepSkills"],
+                    DepCourse = fc["DepCourse"],
+                    DepNote = fc["DepNote"]
+                };
+                bool status = SysDepartmentService.UpdateDepartment(department);
+                if (status)
+                {
+                    rmsg.Status = true;
+                }
+                else
+                {
+                    rmsg.Status = false;
+                }
+                LogHelper.Debug("部门" + department.DepName + "修改成功！");
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error("部门修改失败！", ex);
+                rmsg.Status = false;
+            }
+            return Json(rmsg);
         }
 
         #endregion
 
         #region 删除数据 2014-08-27 14:58:50 By 唐有炜
 
-        public ActionResult Delete()
+        public ActionResult Delete(int id)
         {
-            return View();
+            ResponseMessage rmsg = new ResponseMessage();
+            try
+            {
+                bool status = SysDepartmentService.DeleteDepartment(id);
+                if (status)
+                {
+                    rmsg.Status = true;
+                }
+                else
+                {
+                    rmsg.Status = false;
+                }
+                LogHelper.Debug("部门删除成功！");
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error("部门删除失败！", ex);
+                rmsg.Status = false;
+            }
+
+            return Json(rmsg);
         }
 
         #endregion
@@ -122,45 +220,7 @@ namespace teaCRM.Web.Controllers.Apps.Settings
         public ActionResult GetDepartment(int id)
         {
             var department = SysDepartmentService.GetDepartment(d => d.Id == id);
-            //JsonResult result = Json(department, JsonRequestBehavior.AllowGet);
-            JsonResult result = Json(department);
-            string ParentName = "顶级分类";
-            if (department.ParentId != 0)
-            {
-                //直接查询整个实体
-                //ParentName = SysDepartmentService.GetDepartment(d => d.Id == department.ParentId).DepName;
-                try
-                {
-                    //利用反射查询指定字段
-                    ParentName =
-                        ((dynamic)
-                            SysDepartmentService.GetFields("new(DepName)", String.Format("Id={0}", department.ParentId))
-                                .FirstOrDefault()).DepName;
-                    LogHelper.Debug("反射获取的字段值：" + ParentName);
-                }
-                catch (Exception ex)
-                {
-                    LogHelper.Error("系统异常：", ex);
-                }
-            }
-            result.Data =
-                new
-                {
-                    Id = department.Id,
-                    ParentId = department.ParentId,
-                    ParentName = ParentName,
-                    DepName = department.DepName,
-                    DepNum = department.DepNum,
-                    CreateDate = ((DateTime) department.CreateDate).ToString("yyyy-MM-dd HH:mm:ss"),
-                    DepOrder = department.DepOrder,
-                    DepGoal = department.DepGoal,
-                    DepRespon = department.DepRespon,
-                    DepSkills = department.DepSkills,
-                    DepCourse = department.DepCourse,
-                    DepNote = department.DepNote
-                };
-            result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
-            return result;
+            return Json(department);
         }
 
         #endregion

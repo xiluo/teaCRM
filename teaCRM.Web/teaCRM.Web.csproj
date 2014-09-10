@@ -235,8 +235,13 @@
     <Content Include="Themes\default\lib\zTree\css\zTreeStyle\zTreeStyle.css" />
     <Content Include="Themes\default\lib\zTree\js\jquery.ztree.all-3.5.js" />
     <Content Include="Themes\default\lib\zTree\js\jquery.ztree.all-3.5.min.js" />
+    <Content Include="Themes\default\lib\zTree\js\jquery.ztree.core-3.5.js" />
+    <Content Include="Themes\default\lib\zTree\js\jquery.ztree.core-3.5.min.js" />
     <Content Include="Themes\default\lib\zTree\js\jquery.ztree.excheck-3.5.js" />
     <Content Include="Themes\default\lib\zTree\js\jquery.ztree.excheck-3.5.min.js" />
+    <Content Include="Themes\default\lib\zTree\js\jquery.ztree.exedit-3.5.js" />
+    <Content Include="Themes\default\lib\zTree\js\jquery.ztree.exedit-3.5.min.js" />
+    <Content Include="Themes\default\lib\zTree\js\jquery.ztree.exedit.js" />
     <Content Include="Views\Base\Admin\LogView.cshtml" />
     <Resource Include="Configs\Services.xml">
       <SubType>Designer</SubType>
@@ -1408,11 +1413,14 @@
     <Content Include="Views\Apps\CRM\ToolBar\FilterEdit.cshtml" />
     <Content Include="Views\Apps\Settings\Role\RoleEdit.cshtml" />
     <Content Include="Views\Apps\Settings\Permission\FunctionPermission.cshtml" />
-    <Content Include="Views\Apps\Settings\Department\DepartmentAdd.cshtml" />
+    <Content Include="Views\Apps\Settings\Department\DepartmentEdit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
@@ -1438,6 +1446,14 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

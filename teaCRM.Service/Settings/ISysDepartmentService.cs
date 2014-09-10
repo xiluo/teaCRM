@@ -11,11 +11,6 @@ namespace teaCRM.Service.Settings
     /// </summary>
    public interface ISysDepartmentService
    {
-//       /// <summary>
-//       /// 获取部门树形数据
-//       /// </summary>
-//       /// <returns></returns>
-//        string GetTreeData(string compNum);
        /// <summary>
        /// 获取树形节点
        /// </summary>
@@ -29,7 +24,7 @@ namespace teaCRM.Service.Settings
        /// </summary>
        /// <param name="predicate">筛选条件</param>
        /// <returns></returns>
-       TSysDepartment GetDepartment(Expression<Func<TSysDepartment, bool>> predicate);
+       VSysDepartment GetDepartment(Expression<Func<VSysDepartment, bool>> predicate);
 
 
         /// <summary>
@@ -48,6 +43,13 @@ namespace teaCRM.Service.Settings
         /// <returns></returns>
          bool AddDepartment(TSysDepartment sysDepartment);
 
+
+         /// <summary>
+         /// 修改部门信息 2014-09-07 14:58:50 By 唐有炜
+         /// </summary>
+         /// <param name="sysDepartment"></param>
+         /// <returns></returns>
+         bool UpdateDepartment(TSysDepartment sysDepartment);
 
 
         /// <summary>

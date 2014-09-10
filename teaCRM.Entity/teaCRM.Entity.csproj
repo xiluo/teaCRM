@@ -70,6 +70,7 @@
     <Compile Include="CRM\TCusBase.cs" />
     <Compile Include="CRM\TCusCon.cs" />
     <Compile Include="CRM\TCusLog.cs" />
+    <Compile Include="Settings\VSysDepartment.cs" />
     <Compile Include="teaCRMDBContext.cs" />
     <Compile Include="Basic\TFunApp.cs" />
     <Compile Include="Basic\TFunExpand.cs" />
@@ -79,7 +80,7 @@
     <Compile Include="Basic\TFunTag.cs" />
     <Compile Include="Common\LigerTree.cs" />
     <Compile Include="Basic\TSysCompany.cs" />
-    <Compile Include="Basic\TSysDepartment.cs" />
+    <Compile Include="Settings\TSysDepartment.cs" />
     <Compile Include="Basic\TSysLog.cs" />
     <Compile Include="Basic\TSysPower.cs" />
     <Compile Include="Basic\TSysRole.cs" />

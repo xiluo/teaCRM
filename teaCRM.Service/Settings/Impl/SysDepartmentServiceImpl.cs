@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using teaCRM.Common;
 using teaCRM.Dao;
 using teaCRM.Dao.Settings;
 using teaCRM.Entity;
@@ -22,15 +23,6 @@ namespace teaCRM.Service.Settings.Impl
 
         #region 获取部门树形数据  2014-09-05 14:58:50 By 唐有炜
 
-//        /// <summary>
-//        /// 获取部门树形数据(LigerUI) 2014-09-05 14:58:50 By 唐有炜
-//        /// </summary>
-//        /// <returns></returns>
-//        public string GetTreeData(string compNum)
-//        {
-//            return SettingsDao.GetDepartmentTreeData(compNum);
-//        }
-
         /// <summary>
         /// 获取树形节点
         /// </summary>
@@ -39,7 +31,8 @@ namespace teaCRM.Service.Settings.Impl
         /// <returns></returns>
         public List<Node> AsyncGetNodes(string compNum, int? id)
         {
-            var departments = SysDepartmentDao.GetList(d => d.CompNum == compNum && d.ParentId == (id ?? 0)).OrderBy(d=>d.DepOrder);
+            var departments =
+                SysDepartmentDao.GetList(d => d.CompNum == compNum && d.ParentId == (id ?? 0)).OrderBy(d => d.DepOrder);
             var nodes = new List<Node>();
             //将departments转换为nodes
             foreach (var department in departments)
@@ -69,13 +62,26 @@ namespace teaCRM.Service.Settings.Impl
         /// </summary>
         /// <param name="predicate">筛选条件</param>
         /// <returns></returns>
-        public TSysDepartment GetDepartment(Expression<Func<TSysDepartment, bool>> predicate)
+        public VSysDepartment GetDepartment(Expression<Func<VSysDepartment, bool>> predicate)
         {
             return SysDepartmentDao.GetEntity(predicate);
         }
 
         #endregion
 
+        #region  修改部门信息 2014-09-10 14:58:50 By 唐有炜
+
+        /// <summary>
+        /// 修改部门信息 2014-09-07 14:58:50 By 唐有炜
+        /// </summary>
+        /// <param name="sysDepartment"></param>
+        /// <returns></returns>
+        public bool UpdateDepartment(TSysDepartment sysDepartment)
+        {
+            return SysDepartmentDao.UpadateEntity(sysDepartment);
+        }
+
+        #endregion
 
         #region  根据条件查询某些字段(LINQ 动态查询) 2014-09-10 14:58:50 By 唐有炜
 
@@ -92,7 +98,6 @@ namespace teaCRM.Service.Settings.Impl
 
         #endregion
 
-
         #region
 
         /// <summary>
@@ -100,14 +105,12 @@ namespace teaCRM.Service.Settings.Impl
         /// </summary>
         /// <param name="predicate">筛选条件</param>
         /// <returns></returns>
-        public object GetField(Expression<Func<TSysDepartment, bool>> predicate)
+        public object GetField(Expression<Func<VSysDepartment, bool>> predicate)
         {
-
             return SysDepartmentDao.GetEntity(predicate);
         }
 
         #endregion
-
 
         #region 添加部门信息 2014-09-07 14:58:50 By 唐有炜
 
@@ -120,8 +123,8 @@ namespace teaCRM.Service.Settings.Impl
         {
             return SysDepartmentDao.InsertEntity(sysDepartment);
         }
-        #endregion
 
+        #endregion
 
         #region 删除部门信息 2014-09-07 14:58:50 By 唐有炜
 
@@ -132,9 +135,15 @@ namespace teaCRM.Service.Settings.Impl
         /// <returns></returns>
         public bool DeleteDepartment(int? id)
         {
-            return SysDepartmentDao.DeleteEntity(d=>d.Id==id);
+            //有子类，禁止删除
+            bool exist = SysDepartmentDao.ExistsEntity(d => d.ParentId == id);
+            if (exist)
+            {
+                return false;
+            }
+            return SysDepartmentDao.DeleteEntity(d => d.Id == id);
         }
-        #endregion
 
+        #endregion
     }
 }

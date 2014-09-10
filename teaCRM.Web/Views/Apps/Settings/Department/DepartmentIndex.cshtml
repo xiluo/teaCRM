@@ -5,15 +5,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section seo {
-  <title>组织架构_系统设置_C+企业云平台_打造中国办公软件第一品牌</title>
+    <title>组织架构_系统设置_C+企业云平台_打造中国办公软件第一品牌</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
 }
 
 @section head {
     <!--ZTree-->
     <link href="/Themes/default/lib/zTree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
-    <script src="/Themes/default/lib/zTree/js/jquery.ztree.all-3.5.min.js"></script>
-      <!--本页面css,js-->
+    <script src="/Themes/default/lib/zTree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script src="/Themes/default/lib/zTree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script src="/Themes/default/lib/zTree/js/jquery.ztree.exedit-3.5.min.js"></script>
+    <!--本页面css,js-->
     <link href="/Themes/default/settings/css/department.css" rel="stylesheet" type="text/css" />
     <script src="/Themes/default/settings/js/department.js" type="text/javascript"></script>
 }
@@ -26,18 +28,32 @@
                 <div class="c_left">
                     <ul id="22">
                         <li id="221" onclick=""><span><b class=""></b></span>
-                            <a class="oz0"  href="javascript:void(0);" onclick=" show_add(); ">添加</a></li>
+                            <a class="oz0"  href="javascript:void(0);" onclick=" add(); ">添加</a></li>
                         <li id="33">
                             <span><b class=""></b></span>
-                            <a class="oz0"  href="javascript:void(0);" onclick=" save_delete(); ">删除</a>
+                            <a class="oz0"  href="javascript:void(0);" onclick=" del(); ">删除</a>
                         </li>
                     </ul>
                 </div>
                 <!--树形展示开始-->
                 <ul id="department_tree" class="ztree"></ul>
                 <!--树形展示结束-->
+                <!--树形右键菜单开始-->
+                <div id="rMenu">
+                    <ul>
+                        <li id="m_add" onclick=" add(); ">增加部门</li>
+                        <li id="m_edit" onclick=" edit(); ">修改部门</li>
+                        <li id="m_del" onclick=" del(); ">删除部门</li>
+                        @*<li id="m_check" onclick="check_tree(true);">Check节点</li>
+                <li id="m_unCheck" onclick="check_tree(false);">unCheck节点</li>
+                <li id="m_reset" onclick="reset_tree();">恢复zTree</li>*@
+                    </ul>
+                </div>
+                <!--树形右键菜单结束-->
             </div> 
+            
         </div>
+     
     </div>
     <!--左侧部门结束-->
     <!-- 查看部门开始 -->
@@ -72,27 +88,27 @@
                                                     </td>
                                                     <td>
                                                         <span>上级分类：</span><span style="color: #8a8888;">
-                                                            <label id="ParentName" name="ParentName"></label>
-                                                        </span>
+                                                                              <label id="ParentName" name="ParentName"></label>
+                                                                          </span>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
                                                         <span>部门人数：</span><span style="color: #8a8888;">
-                                                            <label id="DepNum" name="DepNum"></label>
-                                                        </span>
+                                                                              <label id="DepNum" name="DepNum"></label>
+                                                                          </span>
                                                     </td>
                                                     <td>
                                                         <span>部门排序：</span><span style="color: #8a8888;">
-                                                            <label id="DepOrder" name="DepOrder"></label>
-                                                        </span>
+                                                                              <label id="DepOrder" name="DepOrder"></label>
+                                                                          </span>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
                                                         <span>创建日期：</span><span style="color: #8a8888;">
-                                                            <label id="CreateDate" name="CreateDate"></label>
-                                                        </span>
+                                                                              <label id="CreateDate" name="CreateDate"></label>
+                                                                          </span>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -112,12 +128,12 @@
                                                 <tr>
                                                     <td>
                                                         <span>工作目标：</span><span style="color: #8a8888; white-space: normal; word-break: break-all;">
-                                                            <label id="DepGoal" name="DepGoal"></label>
-                                                        </span> <br />
+                                                                              <label id="DepGoal" name="DepGoal"></label>
+                                                                          </span> <br />
                                                         <br />
                                                         <span>工作职责：</span><span style="color: #8a8888; white-space: normal; word-break: break-all;">
-                                                            <label id="DepRespon" name="DepRespon"></label>
-                                                        </span>
+                                                                              <label id="DepRespon" name="DepRespon"></label>
+                                                                          </span>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -135,16 +151,16 @@
                                                 <tr>
                                                     <td>
                                                         <span>必备技能：</span><span style="color: #8a8888; white-space: normal; word-break: break-all;">
-                                                            <label id="DepSkills" name="DepSkills"></label>
-                                                        </span><br />
+                                                                              <label id="DepSkills" name="DepSkills"></label>
+                                                                          </span><br />
                                                         <br />
                                                         <span>相关课程：</span><span style="color: #8a8888; white-space: normal; word-break: break-all;">
-                                                            <label id="DepCourse" name="DepCourse"></label>
-                                                        </span><br />
+                                                                              <label id="DepCourse" name="DepCourse"></label>
+                                                                          </span><br />
                                                         <br />
                                                         <span>备注：</span><span style="color: #8a8888; white-space: normal; word-break: break-all;">
-                                                            <label id="DepNote" name="DepNote"></label>
-                                                        </span>
+                                                                            <label id="DepNote" name="DepNote"></label>
+                                                                        </span>
                                                     </td>
                                                 </tr>
                                             </tbody>

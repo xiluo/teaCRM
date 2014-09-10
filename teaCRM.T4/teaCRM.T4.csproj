@@ -121,6 +121,9 @@
     <Compile Include="Daos\Impl\VCompanyUserDaoImpl.cs">
       <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
     </Compile>
+    <Compile Include="Daos\Impl\VSysDepartmentDaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
     <Compile Include="Daos\ITCusBaseDao.cs">
       <DependentUpon>teaCRMIDao.tt</DependentUpon>
     </Compile>
@@ -184,6 +187,9 @@
       <DependentUpon>teaCRMIDao.tt</DependentUpon>
     </Compile>
     <Compile Include="Daos\VCompanyUser.cs">
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Daos\VSysDepartment.cs">
       <DependentUpon>teaCRMIDao.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\TCusBase.cs">
@@ -253,6 +259,9 @@
     </Compile>
     <Compile Include="Daos\ITableDao.cs" />
     <Compile Include="Daos\IViewDao.cs" />
+    <Compile Include="Entities\VSysDepartment.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

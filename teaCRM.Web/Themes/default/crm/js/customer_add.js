@@ -207,7 +207,7 @@ function save_add() {
             var status = result.Status;
             if (status==true||status=="true"||status=="True") {
                 //关闭父窗口
-                parent.dialog.list['show_add'].close();
+             dialog.list['show_add'].close();
                 //在iframe里面打开弹出框并自动关闭
                 showTopMsg("save_ok", result.Msg);
                 //刷新数据

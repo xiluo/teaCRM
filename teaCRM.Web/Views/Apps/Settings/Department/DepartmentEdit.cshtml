@@ -1,4 +1,8 @@
-﻿@{
+﻿@using NLite.Reflection
+@using teaCRM.Entity
+@using UCsoft.Web
+@{
+    VSysDepartment dep = ViewBag.Department ?? (new VSysDepartment());
     Layout = null;
 }
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -54,7 +58,10 @@
                     errorPlacement: function(error, element) {
                         var errorMsg = error[0].innerHTML;
                         var elementName = element[0].name;
-                        $("#" + elementName).formtip(errorMsg);
+                        //防止气泡提示遮挡树形
+                        if (elementName!="ParentId") {
+                            $("#" + elementName).formtip(errorMsg);
+                        }
                         $("#" + elementName).attr("placeholder", errorMsg);
                     },
                     success: function(element) {
@@ -153,8 +160,6 @@
 
             function showMenu() {
                 var cityObj = $("#ParentId");
-                //防止提示遮挡树形
-                cityObj.poshytip('disable').poshytip('destroy');
                 var cityOffset = $("#ParentId").offset();
                 $("#menuContent").css({ left: cityOffset.left + "px", top: cityOffset.top + cityObj.outerHeight() + "px" }).slideDown("fast");
                 $("body").bind("mousedown", onBodyDown);
@@ -183,30 +188,30 @@
                     <div tabindex="-1" id="msgprint" class="warning" style="position: fixed; width: 90%; display: none;">您的表单包含错误，请检查！</div>
                     <dl>
                         <dt><em class="imp">*</em> 部门名称：</dt>
-                        <dd><input type="text" class="required" id="DepName" name="DepName" placeholder="输入部门名称"></dd>
+                        <dd><input type="text" class="required" id="DepName" name="DepName" value='@dep.DepName' placeholder="输入部门名称" /></dd>
 
                         <dt><em class="imp">*</em> 上级部门：</dt>
                         <dd>
-                            <input type="text" class="required" id="ParentId" name="ParentId" onclick=" showMenu(); " readonly="true" placeholder="请点击选择" />
-                            <input type="hidden" id="HiddenParentId" name="HiddenParentId" /></dd>
+                            <input type="text" class="required" id="ParentId" name="ParentId" value="@dep.ParentName" onclick=" showMenu(); " readonly="true" placeholder="请点击选择" />
+                            <input type="hidden" id="HiddenParentId" name="HiddenParentId" value="@dep.ParentId" /></dd>
                     </dl>
                     <dl>
                         <dt>部门人数：</dt>
-                        <dd><input type="text" id="DepNum" name="DepNum" class="number" /></dd>
+                        <dd><input type="text" id="DepNum" name="DepNum" class="number" value="@dep.DepNum" /></dd>
                         <dt>部门排序：</dt>
-                        <dd><input type="text" id="DepOrder" name="DepOrder" class="number" /></dd>
+                        <dd><input type="text" id="DepOrder" name="DepOrder" class="number" value="@dep.DepOrder"/></dd>
                     </dl>
                     <dl>
                         <dt>工作目标：</dt>
-                        <dd ><textarea class="wid515" id="DepGoal" name="DepGoal" cols="2" rows="4"></textarea></dd>
+                        <dd ><textarea class="wid515" id="DepGoal" name="DepGoal" cols="2" rows="4">@dep.DepGoal</textarea></dd>
                     </dl>
-                    <dl><dt>工作职责：</dt><dd ><textarea class="wid515" id="DepRespon" name="DepRespon" cols="2" rows="3"></textarea></dd></dl>
+                    <dl><dt>工作职责：</dt><dd ><textarea class="wid515" id="DepRespon" name="DepRespon" cols="2" rows="3">@dep.DepRespon</textarea></dd></dl>
                     <dl>
                         <dt>必备技能：</dt>
-                        <dd> <input type="text" id="DepSkills" name="DepSkills" /></dd>
+                        <dd> <input type="text" id="DepSkills" name="DepSkills" value="@dep.DepSkills"/></dd>
                     </dl>
-                    <dl><dt>相关课程：</dt><dd ><textarea class="wid515" id="DepCourse" name="DepCourse" cols="2" rows="3"></textarea></dd></dl>
-                    <dl><dt>备注：</dt><dd ><textarea class="wid515" id="DepNote" name="DepNote" cols="2" rows="3"></textarea></dd></dl>
+                    <dl><dt>相关课程：</dt><dd ><textarea class="wid515" id="DepCourse" name="DepCourse" cols="2" rows="3">@dep.DepCourse</textarea></dd></dl>
+                    <dl><dt>备注：</dt><dd ><textarea class="wid515" id="DepNote" name="DepNote" cols="2" rows="3">@dep.DepNote</textarea></dd></dl>
                     
                 </div>
             </form>

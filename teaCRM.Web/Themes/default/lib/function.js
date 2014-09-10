@@ -71,6 +71,7 @@ function showMsg(msg, msgcss, callback) {
 //弹出对话框，带阴影==============================================
 function showDialog(msg, okCallback) {
     var d = dialog({
+        id:"show_dialog",
         title: '温馨提示',
         content: msg,
         okValue: '确 定',

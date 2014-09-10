@@ -17,7 +17,7 @@ namespace  teaCRM.Dao.Impl
 {
 
     /// <summary>
-    /// 自动生成的实现IVCompanyUserDao接口的Dao类。 2014-09-09 03:48:14 By 唐有炜
+    /// 自动生成的实现IVCompanyUserDao接口的Dao类。 2014-09-10 07:35:30 By 唐有炜
     /// </summary>
  public class VCompanyUserDaoImpl:IVCompanyUserDao
     {
@@ -162,4 +162,3 @@ namespace  teaCRM.Dao.Impl
 
 	   }
 	   }
-

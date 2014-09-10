@@ -88,6 +88,9 @@ teaCRM
   </system.web>  
  `
 >2、Log4Net发布到IIS后需要对User用户加上写入权限
+>3
+注意：生成完毕后，必须执行\teaCRM\teaCRM.Tools\bin\Debug下面的teaCRM.Tools.exe，否则无法使用MVC动态Model，详情：见参考资料11
+====================================================================================================
 
 参考资料
 =======
@@ -114,6 +117,8 @@ http://blog.163.com/zhi_qingfang%40126/blog/static/11747756320132693434495/
 >10、jquery validate错误    
 http://stackoverflow.com/questions/14896205/validator-validator-methodsmethod-is-undefined  
 >11、http://weblogs.asp.net/scottgu/dynamic-linq-part-1-using-the-linq-dynamic-query-library   
+>12、Mono.Cecil 解决视图动态Model
+http://blog.zhaojie.me/2011/09/aspnet-mvc-dynamic-model-mono-cecil.html     
 
 
 

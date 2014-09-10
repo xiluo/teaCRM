@@ -61,6 +61,7 @@ namespace teaCRM.DBContext
 		public IDbSet<TSysRole> TSysRoles { get; private set; }
 		public IDbSet<TSysUser> TSysUsers { get; private set; }
 		public IDbSet<VCompanyUser> VCompanyUsers { get; private set; }
+        public IDbSet<VSysDepartment> VSysDepartments { get; private set; }
         #endregion
 	}
 	

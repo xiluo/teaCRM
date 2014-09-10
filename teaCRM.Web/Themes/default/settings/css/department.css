@@ -31,3 +31,12 @@ body{background: #ECEDF3;}
 /**其他小标签**/
 .linkico{ background:url(/Themes/default/base/images/link.png) 0px 12px no-repeat;}
 
+/*树形右键菜单*/
+div#rMenu {position:absolute; visibility:hidden; top:0; background-color: #555;text-align: left;padding: 2px;}
+div#rMenu ul li{
+	margin: 1px 0;
+	padding: 0 5px;
+	cursor: pointer;
+	list-style: none outside none;
+	background-color: #DFDFDF;
+}

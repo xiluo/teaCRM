@@ -8,7 +8,7 @@ using teaCRM.Entity;
 
 namespace teaCRM.Dao
 {
-    public interface ITSysDepartmentDao : ITableDao<TSysDepartment>
+    public interface ITSysDepartmentDao : ITableDao<TSysDepartment>, IViewDao<VSysDepartment>
     {
         #region 手写的扩展函数 2014-08-21 14:58:50 By 唐有炜
 

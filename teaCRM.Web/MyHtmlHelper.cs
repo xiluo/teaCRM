@@ -355,6 +355,17 @@ namespace UCsoft.Web
             return MvcHtmlString.Create(value.ToString());
         }
 
+
+        public static MvcHtmlString LoadDefaultValue(this HtmlHelper htmlHelper,dynamic obj, object value, string replaceValue)
+        {
+            if (null==obj||null == value )
+            {
+                return MvcHtmlString.Create(replaceValue);
+            }
+            return MvcHtmlString.Create(value.ToString());
+        }
+
+
         #endregion
 
         #region 加载默认图片

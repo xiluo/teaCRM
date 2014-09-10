@@ -8,7 +8,7 @@ using teaCRM.Entity;
 
 namespace teaCRM.Dao
 {
-    public interface ITCusBaseDao : ITableDao<TCusBase>
+    public interface ITCusBaseDao : ITableDao<TCusBase>, IViewDao<TCusBase>
     {
         #region 手写的扩展函数 2014-09-05 14:58:50 By 唐有炜
 

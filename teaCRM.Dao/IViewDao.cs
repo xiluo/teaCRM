@@ -8,9 +8,9 @@ using NLite.Data;
 namespace teaCRM.Dao
 {
     /// <summary>
-    /// Dao层View接口 2014-08-28 04:10:51 By 唐有炜
+    /// Dao层View接口 2014-09-10 04:10:51 By 唐有炜
     /// </summary>
- public   interface IViewDao<T>
+    public interface IViewDao<T>
     {
         /// <summary>
         /// 获取所有的数据
@@ -53,7 +53,6 @@ namespace teaCRM.Dao
         IPagination<T> GetListByPage(int pageIndex, int pageSize, int rowCount, Expression<Func<T, bool>> predicate);
 
 
-
         //以下是原生Sql方法==============================================================
         //===========================================================================
         /// <summary>
@@ -63,6 +62,5 @@ namespace teaCRM.Dao
         /// <param name="namedParameters">sql参数</param>
         /// <returns>集合</returns>
         IEnumerable<T> GetListBySql(string sql, dynamic namedParameters);
-
     }
 }
