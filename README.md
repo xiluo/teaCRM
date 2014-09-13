@@ -6,7 +6,7 @@ teaCRM
 版本信息
 -------
 >版本: V1.0     
->开发工具：Microsoft Visual Studio 2010      
+>开发工具：Microsoft Visual Studio 2010、Microsoft Visual Studio 2013      
 >作者: Terwer,Huang   
 >作者邮箱: cbgtyw@gmail.com   
 
@@ -27,7 +27,7 @@ teaCRM
 ----------
 >1、角色全部完成   
 
-2014-09-10
+2014-09-7~10
 ----------
 >1、部门全部完成   
 
@@ -44,7 +44,7 @@ teaCRM
 ----------
 >1、分页优化。    
 
-2014-09-01~03
+2014-09-02~03
 ----------
 >1、客户添加完成。       
 >2、彻底修复验证。
@@ -53,7 +53,7 @@ teaCRM
 ----------
 >1、客户添加完成。
 
-2014-08-30
+2014-08-30~31
 ----------
 >1、增加客户
 >事务处理
@@ -77,7 +77,7 @@ teaCRM
 >1、继续客户模块        
 >2、引入Spring .NET框架，优化系统架构
 
-2014-08-25
+2014-08-23~25
 ----------
 >1、开始客户模块  
 >2、后期树形缓存ZTree
@@ -94,7 +94,7 @@ teaCRM
 <system.web>  
   <sessionState mode="StateServer" stateConnectionString="tcpip=127.0.0.1:42424" sqlConnectionString="data source=127.0.0.1;Trusted_Connection=yes" cookieless="false" timeout="720" />   
   </system.web>  
- `
+ `           
 >2、Log4Net发布到IIS后需要对User用户加上写入权限      
 >3
 注意：生成完毕后，必须执行\teaCRM\teaCRM.Tools\bin\Debug下面的teaCRM.Tools.exe，否则无法使用MVC动态Model，详情：见参考资料11              
@@ -117,7 +117,7 @@ http://www.cnblogs.com/kissazi2/p/3389551.html
 http://www.cnblogs.com/24la/p/log4net-simplly-config.html         
 >6、开启MySql日志跟踪        
 http://www.cnblogs.com/wuyifu/p/3328024.html     
->7、在C#代码中应用Log4Net（五）将Log4Net正确地封装在自己的类库中并进行调用    
+>7、在C#代码中应用Log4Net，将Log4Net正确地封装在自己的类库中并进行调用    
 http://www.cnblogs.com/kissazi2/p/3394430.html   
 >8、项目架构评析    
 http://www.cnblogs.com/legendxian/archive/2012/06/18/2553111.html#!comments    
@@ -126,8 +126,9 @@ http://blog.163.com/zhi_qingfang%40126/blog/static/11747756320132693434495/
 (select stuff((select ','+user_tname from t_sys_user WHERE id IN (17,21) for xml path ('')),1,1,''))       
 >10、jquery validate错误    
 http://stackoverflow.com/questions/14896205/validator-validator-methodsmethod-is-undefined  
->11、http://weblogs.asp.net/scottgu/dynamic-linq-part-1-using-the-linq-dynamic-query-library   
->12、Mono.Cecil 解决视图动态Model
+>11、动态LINQ解决查询   
+http://weblogs.asp.net/scottgu/dynamic-linq-part-1-using-the-linq-dynamic-query-library   
+>12、Mono.Cecil 解决视图动态Model     
 http://blog.zhaojie.me/2011/09/aspnet-mvc-dynamic-model-mono-cecil.html     
 >13、LinqKit    
 http://www.albahari.com/nutshell/linqkit.aspx   
