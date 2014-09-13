@@ -95,10 +95,10 @@ teaCRM
   <sessionState mode="StateServer" stateConnectionString="tcpip=127.0.0.1:42424" sqlConnectionString="data source=127.0.0.1;Trusted_Connection=yes" cookieless="false" timeout="720" />   
   </system.web>  
  `
->2、Log4Net发布到IIS后需要对User用户加上写入权限
+>2、Log4Net发布到IIS后需要对User用户加上写入权限      
 >3
-注意：生成完毕后，必须执行\teaCRM\teaCRM.Tools\bin\Debug下面的teaCRM.Tools.exe，否则无法使用MVC动态Model，详情：见参考资料11
-====================================================================================================
+注意：生成完毕后，必须执行\teaCRM\teaCRM.Tools\bin\Debug下面的teaCRM.Tools.exe，否则无法使用MVC动态Model，详情：见参考资料11              
+====================================================================================================================      
 >4、要使用压缩必须修改     
   ` <compilation debug="false" targetFramework="4.0" /> `
 
