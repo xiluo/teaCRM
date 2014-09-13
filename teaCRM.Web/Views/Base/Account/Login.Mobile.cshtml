@@ -1,4 +1,5 @@
-﻿@model dynamic
+﻿@using System.Web.Optimization
+@model dynamic
 @{
     Layout = null;
 }
@@ -12,26 +13,16 @@
         <!--自适应设备-->
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="/Themes/default/base/css/login.mobile.css" rel="stylesheet" type="text/css" />
-        <!--jquery-->
-        <script src="/Themes/default/lib/jquery/jquery-1.7.1.min.js"></script>
-        <!--cookie-->
-        <script src="/Themes/default/lib/cookie/jquery.cookie.js" type="text/javascript"></script>
+        @Styles.Render("~/Themes/default/css/cp.globle.min.css")
+        @Scripts.Render("~/Themes/default/js/cp.globle.min.js")
+
         <!--jquery mobile-->
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
         <script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
         <!--获取ip地址-->
         <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script> 
         <script src="/Themes/default/lib/autoComplete/jquery.autocomplete.js" type="text/javascript"></script> 
-        <!--artDialog-->
-        <link rel="stylesheet" href="/Themes/default/lib/artDialog/css/ui-dialog.css">
-        <script src="/Themes/default/lib/artDialog/dist/dialog-plus-min.js"></script>
-        <!--公共函数-->
-        <script src="/Themes/default/lib/function.js" type="text/javascript"></script>
-      
-        <!--表单验证，需要在字段上加上class="required"-->
-        <script src="/Themes/default/lib/validate/jquery.validate.min.js" type="text/javascript"></script>
-        <script src="/Themes/default/lib/validate/messages_cn.js" type="text/javascript"></script>
-        <script src="/Themes/default/lib/validate/jquery.validate.extend.js" type="text/javascript"></script>
+        
       
         <!--本页面js-->
         <script src="/Themes/default/base/js/account/login.js" type="text/javascript"></script>
@@ -61,7 +52,7 @@
                                 <input type="button" id="btnSubmit" value="登录" class="btn btn-login" />
                             </div>
                             <!-- 相关选项功能-->
-                           <div class="ft-ext">
+                            <div class="ft-ext">
                                 <a href="/Account/PublicRegister/" target="_blank">注册免费试用</a>
                             </div>
                         </form>

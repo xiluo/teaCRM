@@ -1,3 +1,4 @@
+锘緻using System.Web.Optimization
 @model dynamic
 
 @{
@@ -5,11 +6,20 @@
 }
 
 @section seo {
-    <title>工作台_teaCRM</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>宸ヤ綔鍙癬teaCRM</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+@Styles.Render("~/Themes/default/css/cp.globle.min5.css")
+@Scripts.Render("~/Themes/default/js/cp.globle.min5.js")
+
+
+
 }
 @section head {}
 
 <div id="plugin"   style="background:url(/Themes/default/base/images/develop.png) no-repeat white;position:absolute; width:100%; ">   
-   <h1 style="margin: 200px;text-align: center;color: white;">产品模块开发中正在开发中...</h1>
+    <h1 style="margin: 200px;text-align: center;color: white;">浜у搧妯″潡寮�鍙戜腑姝ｅ湪寮�鍙戜腑...</h1>
 </div>
+@section script
+{
+
+}

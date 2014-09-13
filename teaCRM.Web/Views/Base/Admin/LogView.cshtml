@@ -16,7 +16,7 @@
     <script src="/Themes/default/lib/function.js" type="text/javascript"></script>
         <script type="text/javascript">
             function delete_log(view_url) {
-                showDialogModal("确认删除该日志文件吗？",function() {
+                showDialog("确认删除该日志文件吗？",function() {
                     //alert(view_url + "删除成功！");
                     var url = "/Admin/LogDelete/";
                     $.post(url, { filename: view_url }, function (data, status) {

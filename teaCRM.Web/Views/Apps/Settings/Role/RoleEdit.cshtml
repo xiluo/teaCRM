@@ -1,4 +1,6 @@
-﻿@model dynamic
+﻿@using System.Web.Optimization
+@using teaCRM.Entity
+@model dynamic
 
 @{
     Layout = null;
@@ -7,69 +9,155 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        
+        @Styles.Render("~/Themes/default/css/cp.globle.min1.css")
+        @Scripts.Render("~/Themes/default/js/cp.globle.min1.js")
 
-        <script src="/Themes/default/lib/jquery/jquery-1.7.1.min.js"></script>
-        <link href="/Themes/default/base/css/globle.css" rel="stylesheet" />
-        <link href="/Themes/default/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
-        <script src="/Themes/default/lib/bootstrap/js/bootstrap.js"></script>
+ 
+
+
         <style type="text/css">
-            
-            
             
             
         </style>
 
         <script type="text/javascript">
+            $(document).ready(function () {
+                $("#RoleName").focus();
+                var id = "@ViewBag.Id";
+                if (id != "") {
+                    console.log("开始修改");
+                    load_form_data(id);
+                }
+            });
+            $(function () {
+                validate_form({
+                    rules: {
+                      RoleName: {
+                          rangelength:[2,30]
+                      }  
+                    }
+                });
+            });
+
+            function load_form_data(id) {
+                //alert(id);
+                //提交数据
+                var url = "/api/settings/role/getRole/"+id;
+                $.ajax({
+                    type: "get",
+                    cache: false,
+                    url: url,
+                    data: { id: id },
+                    dataType: "json",
+                    beforeSend: function () {
+                        //showLoading();
+                    },
+                    complete: function () {
+                        //hideLoading();
+                    },
+                    success: function (result) {
+                        console.log(result);
+                        for (var key in result) {
+                            //alert(key + " " + result[key]);
+                            if ($("#" + key) != undefined) {
+                                $("#" + key).val(result[key]);
+                            }
+                        }
+                        console.log("数据加载成功。");
+                    },
+                    error: function () {
+                        console.log("数据加载失败。");
+                        showMsg("服务器异常！");
+                    }
+                });
+            }
 
 
+            //表单验证
+            function validate_form() {
+                $("#form_role").validate({
+                    invalidHandler: function (e, validator) {
+                        var msg = "有 " + validator.numberOfInvalids() + " 项填写有误，请检查！";
+                        $("#msgprint").html(msg).show().focus();
+                        setTimeout(function () {
+                            $("#msgprint").fadeOut(500);
+                            //如果动画结束则删除节点
+                            if (!$("#msgprint").is(":animated")) {
+                                $("#msgprint").hide();
+                            }
+                        }, 1000);
+                    },
+                    focusInvalid: false,
+                    errorPlacement: function (error, element) {
+                        var errorMsg = error[0].innerHTML;
+                        var elementName = element[0].name;
+                         $("#" + elementName).formtip(errorMsg);
+                        $("#" + elementName).attr("placeholder", errorMsg);
+                    },
+                    success: function (element) {
+                        var elem = $(element)[0].htmlFor;
+                        $("#" + elem).poshytip('disable');
+                        $("#" + elem).poshytip('destroy');
+                        $("#" + elem).removeClass("error").addClass("success");
+                    }
 
+                });
+            }
+
+            //表单验证方法，供父窗口调用
+            function form_valid() {
+                return $("#form_role").valid();
+            }
         </script>
     </head>
     <body>
         <div class="tab-content">
-
-            <dl>
-                <dt>
-                    <em class="imp">*</em>角色名称：
-                </dt>
-                <dd>
-                    <input type="text" class="wid515 required" id="role_name" name="role_name" placeholder="输入角色名称" />
-                </dd>
-            </dl>
-            <dl>
-                <dt>
-                    <em class="imp">*</em>角色类型：
-                </dt>
-                <dd>
-                    <div class="controls">
-                        <select id="select01">
-                            <option>--请选择--</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+               <!--表单错误提示区-->
+                    <div tabindex="-1" id="msgprint" class="warning" style="position: fixed; width: 90%; display: none;">您的表单包含错误，请检查！</div>
+            <form id="form_role">
+                <input type="hidden" id="Id" name="Id" value="@ViewBag.Id"/>
+                <!--当前公司id-->
+                <input type="hidden" id="CompNum" name="CompNum" value="@Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM]" />
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>角色名称：
+                    </dt>
+                    <dd>
+                        <input type="text" class="wid515 required" id="RoleName" name="RoleName" placeholder="输入角色名称" />
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>    角色类型：
+                    </dt>
+                    <dd>
+                        <select id="RoleType" name="RoleType" required>
+                            <option value>--请选择--</option>
+                            <option value="2">普通员工</option>
+                            <option value="1">系统管理员</option>
+                            <option value="0">超级管理员</option>
                         </select>
-                    </div>
-                </dd>
-            </dl>
-            <dl>
-                <dt>
-                    <em class="imp">*</em>显示顺序：
-                </dt>
-                <dd>
-                    <input type="text" class="wid515 required" id="role_name" name="role_name"  value="0" placeholder="输入角色名称" />
-                </dd>
-            </dl>
-            <dl>
-                <dt>
-                    <em class="imp">*</em>角色描述：
-                </dt>
-                <dd>
-                    <textarea class="wid515" id="cus_note" name="cus_note" cols="50" rows="2"></textarea>
-                </dd>
-            </dl>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        显示顺序：
+                    </dt>
+                    <dd>
+                        <input type="text" class="wid515 required number" id="RoleOrder" name="RoleOrder"  value="0" placeholder="输入角色名称" />
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        角色描述：
+                    </dt>
+                    <dd>
+                        <textarea class="wid515" id="RoleDesc" name="RoleDesc" cols="50" rows="2"></textarea>
+                    </dd>
+                </dl>
 
-          
+            </form>
         </div>
     </body>
 </html>

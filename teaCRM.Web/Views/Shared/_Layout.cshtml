@@ -1,31 +1,19 @@
-﻿@using teaCRM.Common
+﻿@using System.Web.Optimization
+@using teaCRM.Common
 @using teaCRM.Entity
 @using UCsoft.Web
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <!--所有页面seo开始-->
+        <!--seo开始-->
         @RenderSection("seo")
-        <!--所有页面seo结束-->
-        <!--母版页面js,css开始-->
-        <link href="/Themes/default/base/css/globle.css" rel="stylesheet" type="text/css" />
-        <link href="/Themes/default/base/css/head.css" rel="stylesheet" type="text/css" />
-        <link href="/Themes/default/base/css/foot.css" rel="stylesheet" type="text/css" />
-        <!--jquery库-->
-        <script src="/Themes/default/lib/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
-        <!--artDialog-->
-        <link rel="stylesheet" href="/Themes/default/lib/artDialog/css/ui-dialog.css">
-        <script src="/Themes/default/lib/artDialog/dist/dialog-plus-min.js"></script>
-        <!--公共函数-->
-        <script src="/Themes/default/lib/function.js" type="text/javascript"></script>
-        <!--本页面js-->
-        <script src="/Themes/default/base/js/layout.js" type="text/javascript"></script>
-        <!--母版页面js,css结束-->
-        <!--子页面头部js,css开始-->
+        <!--seo结束-->
+
+        <!--页面头部开始-->
         @RenderSection("head")
-        <!--子页面头部js,css结束-->
+        <!--页面头部结束-->
     </head>
-    <body style="overflow: hidden;">
+    <body>
         <!--公共头部开始-->
         <div id="header">
             <div class="header">
@@ -52,8 +40,6 @@
                 <div id="menu-customer" class="head-nav-header2 hide">
                     <ul class="head-head-nav2">
                         <li id="all" class="selected"><a href="/Apps/CRM/Index/">全部客户</a></li>
-                        <li id="trash"><a href="/Apps/CRM/Trash/">回收站客户</a></li>
-                        <li id="pub"><a href="/Apps/CRM/Pub/">公海客户</a></li>
                         <li id="contact"><a href="/Apps/CRM/Contact/">我的人脉</a></li>
                     </ul>
                 </div>
@@ -72,9 +58,9 @@
                     <ul class="head-head-nav2">
                         <li class="selected"><a href="/Apps/Settings/Department/" >组织架构</a></li>
                         <li><a href="/Apps/Settings/Role/">角色管理</a></li>
-                          <li><a href="/Apps/Settings/Users/">用户管理</a></li>
-                        <li><a href="/Apps/Settings/ExpandoField/">应用定制</a></li>
-                        <li><a href="/Apps/Settings/ExpandoField/">系统设置</a></li>
+                        <li><a href="/Apps/Settings/Users/">用户管理</a></li>
+                        <li><a href="/Apps/Settings/AppMaker/">应用定制</a></li>
+                     
                     </ul>
                 </div>
             </div>
@@ -90,5 +76,6 @@
                   <div class="copyright"> copyright © 2014-2024 teaCRM.net All Rights Reserved.</div>
               </div>-->
         <!--公共底部结束-->
+        @RenderSection("script")
     </body>
 </html>

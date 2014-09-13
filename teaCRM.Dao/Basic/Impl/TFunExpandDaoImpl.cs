@@ -19,6 +19,41 @@ namespace teaCRM.Dao.Impl
     {
         #region T4自动生成的函数 2014-08-29 14:58:50 By 唐有炜
 
+        #region 读操作
+
+        /// <summary>
+        /// 获取数据总数
+        /// </summary>
+        /// <returns>返回所有数据总数</returns>
+        public int GetCount()
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var models = db.TFunExpands;
+                var sqlText = models.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return models.Count();
+            }
+        }
+
+
+        /// <summary>
+        /// 获取数据总数
+        /// </summary>
+        /// <param name="predicate">Lamda表达式</param>
+        /// <returns>返回所有数据总数</returns>
+        public int GetCount(Expression<Func<TFunExpand, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var models = db.TFunExpands.Where<TFunExpand>(predicate);
+                var sqlText = models.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return models.Count();
+            }
+        }
+
+
         /// <summary>
         /// 获取所有的数据
         /// </summary>
@@ -70,7 +105,6 @@ namespace teaCRM.Dao.Impl
         }
 
 
-
         /// <summary>
         /// 根据条件查询某些字段(LINQ 动态查询)
         /// </summary>
@@ -84,10 +118,69 @@ namespace teaCRM.Dao.Impl
                 var model = db.TFunExpands.Where(predicate).Select(selector);
                 var sqlText = model.GetProperty("SqlText");
                 LogHelper.Debug(sqlText.ToString());
-                return (IQueryable<object>)model;
+                return (IQueryable<object>) model;
             }
         }
 
+
+        /// <summary>
+        /// 是否存在该记录
+        /// </summary>
+        /// <returns></returns>
+        public bool ExistsEntity(Expression<Func<TFunExpand, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                bool status = db.TFunExpands.Any(predicate);
+                return status;
+            }
+        }
+
+
+        //查询分页
+        public IPagination<TFunExpand> GetListByPage(int pageIndex, int pageSize, out int rowCount,
+            IDictionary<string, teaCRM.Entity.teaCRMEnums.OrderEmum> orders,
+            Expression<Func<TFunExpand, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var roles = db.TFunExpands;
+                rowCount = roles.Count();
+                var prevCount = (pageIndex - 1)*pageSize;
+                var models = roles
+                    .Skip(prevCount)
+                    .Take(pageSize)
+                    .Where(predicate);
+                foreach (var order in orders)
+                {
+                    models = models.OrderBy(String.Format("{0} {1}", order.Key, order.Value));
+                }
+                var sqlText = models.GetProperty("SqlText");
+                LogHelper.Debug("ELINQ Paging:<br/>" + sqlText.ToString());
+                return models.ToPagination(pageSize, pageSize, rowCount);
+            }
+        }
+
+
+        //以下是原生Sql方法==============================================================
+        //===========================================================================
+        /// <summary>
+        /// 用SQL语句查询
+        /// </summary>
+        /// <param name="sql">sql语句</param>
+        /// <param name="namedParameters">sql参数</param>
+        /// <returns>集合</returns>
+        public IEnumerable<TFunExpand> GetListBySql(string sql, dynamic namedParameters)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                return db.DbHelper.ExecuteDataTable(sql, namedParameters).ToList<TFunExpand>();
+            }
+        }
+
+        #endregion
+
+        #region 写操作
 
         /// <summary>
         /// 添加实体
@@ -108,6 +201,7 @@ namespace teaCRM.Dao.Impl
                 }
             }
         }
+
         /// <summary>
         /// 删除实体
         /// </summary>
@@ -137,37 +231,21 @@ namespace teaCRM.Dao.Impl
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                if (db.Connection.State != ConnectionState.Open)
-                {
-                    db.Connection.Open();
-                }
-                var tran = db.Connection.BeginTransaction();
+                //var tran = db.Connection.BeginTransaction();
                 try
                 {
-                    //数据库操作
-                    LogHelper.Info("删除事务开始...");
-
                     foreach (var item in list)
                     {
                         db.TFunExpands.Delete(item);
                     }
-                    tran.Commit();
-                    //数据库操作
-                    LogHelper.Info("删除事务结束...");
+                    //tran.Commit();
                     return true;
                 }
                 catch (Exception ex)
                 {
-                    tran.Rollback();
-                    LogHelper.Error("删除事务执行失败，", ex);
+                    //tran.Rollback();
                     return false;
-                }
-                finally
-                {
-                    if (db.Connection.State != ConnectionState.Closed)
-                    {
-                        db.Connection.Close();
-                    }
+                    throw new Exception(ex.Message);
                 }
             }
         }
@@ -194,50 +272,6 @@ namespace teaCRM.Dao.Impl
 
 
         /// <summary>
-        /// 是否存在该记录
-        /// </summary>
-        /// <returns></returns>
-        public bool ExistsEntity(Expression<Func<TFunExpand, bool>> predicate)
-        {
-            using (teaCRMDBContext db = new teaCRMDBContext())
-            {
-                bool status = db.TFunExpands.Any(predicate);
-                return status;
-            }
-        }
-
-
-        //查询分页
-        public IPagination<TFunExpand> GetListByPage(int pageIndex, int pageSize, int rowCount,
-            Expression<Func<TFunExpand, bool>> predicate)
-        {
-            using (teaCRMDBContext db = new teaCRMDBContext())
-            {
-                var models = db.TFunExpands.Where(predicate).ToPagination(pageIndex, pageSize, rowCount);
-                return models;
-            }
-        }
-
-
-
-        //以下是原生Sql方法==============================================================
-        //===========================================================================
-        /// <summary>
-        /// 用SQL语句查询
-        /// </summary>
-        /// <param name="sql">sql语句</param>
-        /// <param name="namedParameters">sql参数</param>
-        /// <returns>集合</returns>
-        public IEnumerable<TFunExpand> GetListBySql(string sql, dynamic namedParameters)
-        {
-            using (teaCRMDBContext db = new teaCRMDBContext())
-            {
-                return db.DbHelper.ExecuteDataTable(sql, namedParameters).ToList<TFunExpand>();
-            }
-
-        }
-
-        /// <summary>
         /// 执行Sql
         /// </summary>
         /// <param name="sql">Sql语句</param>
@@ -259,7 +293,7 @@ namespace teaCRM.Dao.Impl
             }
         }
 
-
+        #endregion
 
         #endregion
 

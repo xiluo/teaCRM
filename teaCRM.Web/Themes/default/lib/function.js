@@ -30,6 +30,17 @@ function Trim(str) {
 
 //=========================================================================================
 
+//======================================
+//页面刷新 2014-09-10 By 脱衣舞
+function refresh(url) {
+    if (arguments.length > 0) {
+        location.href = url;
+    } else {
+        location.href = "./";
+    }
+}
+//====================================
+
 //弹出框封装结束开始
 //需要引用
 //<script src="/Themes/default/js/artDialog/lib/jquery-1.10.2.js"></script>
@@ -173,14 +184,15 @@ function showTopMsg(id, msg) {
 
 //==================================
 //显示加载中 14-09-06 By 唐有炜
+//需要 <div id="progressBar" class="progressBar" style="">数据加载中，请稍等...</div>
 function showLoading() {
-    $(document.body).append("<div id=\"background\" class=\"background\" style=\"display: none; \"></div> <div id=\"progressBar\" class=\"progressBar\" style=\"display: none; \">数据加载中，请稍等...</div> ");
-    var ajaxbg = $("#background, #progressBar");
+    //$(document.body).append("<div id=\"background\" class=\"background\" style=\"display: none; \"></div> <div id=\"progressBar\" class=\"progressBar\" style=\"display: none; \">数据加载中，请稍等...</div> ");
+    var ajaxbg = $("#progressBar");
     ajaxbg.show();
 }
 
 function hideLoading() {
-    var ajaxbg = $("#background, #progressBar");
+    var ajaxbg = $("#progressBar");
     ajaxbg.hide();
 }
 //===================================================

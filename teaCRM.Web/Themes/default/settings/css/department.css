@@ -1,11 +1,12 @@
 ﻿@charset "utf-8";
 body,div,dl,dt,dd,ul,ol,li,form,input,textarea,select,p,h1,h2,h3,h4,h5,h6{padding:0;margin:0}
 body,button,input,select,textarea{font:12px/1.5 "微软雅黑",Tahoma,Arial,"宋体"}img{border:none}ul,ol{list-style:none}
-i,em{font-style:normal}a,label,button{outline:none;hide-focus:expression(this.hideFocus=true)}a{color:#685dd6;text-decoration:none}
+i,em{font-style:normal}a,,button{outline:none;hide-focus:expression(this.hideFocus=true)}a{color:#685dd6;text-decoration:none}
 body{background: #ECEDF3;}
 .layout-left{display:inline;float:left;width:190px;position:relative;z-index:102;*zoom:1;_height:705px; background-color:#ebf0f7;}
 .layout-right{display:inline;float:right;width:100%;margin-left:-190px;position:relative;z-index:101;*zoom:1;_height:705px}
 .layout-content{margin:10px 10px 0 190px;position:relative;z-index:102;*zoom:1}
+label{display: inherit !important}
 
 /**组织架构左侧及右侧详细页面部分----------------------------------------------------------------------------------------------**/
 .nav-side .ns-item{background:#f3f8fc;border-right:1px solid #a4b8d9;*zoom:1;min-height:900px; padding:0px 0px 10px 0px;}

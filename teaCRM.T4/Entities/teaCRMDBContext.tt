@@ -46,11 +46,11 @@
  * 【teaCRM数据库操作上下文】
  *  
  *  
- * 作者：唐有炜   时间：<#=@Date#>
- * 文件名：<#=@dbContextName#>.cs
+ * 作者：唐有炜   时间：@Date
+ * 文件名：@dbContextName
  * 版本：V1.0.0
  * 
- * 修改者：唐有炜           时间：<#=@Date#>            
+ * 修改者：唐有炜           时间：@Date              
  * 修改说明：修改说明
  * ========================================================================
 */
@@ -64,7 +64,7 @@ namespace <#= @contextNamespace #>
 {
 	public partial class <#= dbContextName #>:DbContext
 	{
-        #region 初始化上下文
+	 #region 初始化上下文
 		//连接字符串名称：基于Config文件中连接字符串的配置
         const string connectionStringName = "<#= connectionStringName #>";
 
@@ -81,13 +81,13 @@ namespace <#= @contextNamespace #>
 		}
 
 		public <#= dbContextName #>():base(dbConfiguration){}
-		#endregion
+			#endregion
 
 		#region 数据集关联
 <#foreach (var tb in databaseSchema.Tables.Union(databaseSchema.Views)){#>
 		public IDbSet<<#=NamingConversion.Default.ClassName(tb.TableName)  #>> <#= NamingConversion.Default.QueryableName(tb.TableName) #> { get; private set; }
 <#}#>
-        #endregion
+  #endregion
 	}
 	<#
 //结束DbContext======================================================================================
@@ -101,22 +101,6 @@ namespace <#= @contextNamespace #>
   <#
 manager.StartNewFile(NamingConversion.Default.ClassName(tb.TableName)+ ".cs");
 #>
-/*
- * ========================================================================
- * Copyright(c) 2013-2014 郑州优创科技有限公司, All Rights Reserved.
- * ========================================================================
- *  
- * 【teaCRM数据库操作上下文】
- *  
- *  
- * 作者：唐有炜   时间：<#=@Date#>
- * 文件名：<#= NamingConversion.Default.ClassName( tb.TableName) #>.cs
- * 版本：V1.0.0
- * 
- * 修改者：唐有炜           时间：<#=@Date#>           
- * 修改说明：修改说明
- * ========================================================================
-*/
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -149,7 +133,7 @@ namespace <#= @ModelNamespace #>
 	 //开始视图
 	 #>
 
-using System;
+	using System;
 using System.Collections.Generic;
 using System.Linq;
 using NLite.Data;
@@ -162,9 +146,12 @@ namespace <#= @ModelNamespace #>
 <#foreach (var col in tb.Columns){#>
 		[Column("<#= col.ColumnName#>")]
 		public <#= col.Type.Name #> <#= NamingConversion.Default.PropertyName(col.ColumnName) #> { get;set; }
-<#}#> 
 
-	}
+		 
+<#}#>  
+     
+
+		  }
 <# 
 	} 
 

@@ -1,8 +1,8 @@
 
 
 using System;
-using System.Collections.Generic;
 using System.Data;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using NLite.Data;
@@ -12,25 +12,62 @@ using teaCRM.DBContext;
 using teaCRM.Entity;
 using System.Linq.Dynamic;
 
-
 namespace  teaCRM.Dao.Impl
 {
 
     /// <summary>
-    /// 自动生成的实现IVCompanyUserDao接口的Dao类。 2014-09-10 07:35:30 By 唐有炜
+    /// 自动生成的实现IVCompanyUserDao接口的Dao类。 2014-09-13 11:37:10 By 唐有炜
     /// </summary>
  public class VCompanyUserDaoImpl:IVCompanyUserDao
     {
-	    /// <summary>
-        /// 获取所有的数据
-	    /// </summary>
-	    /// <returns>返回所有数据列表</returns>
-        public List<VCompanyUser> GetList() 
+	     #region 读操作
+
+
+	   /// <summary>
+        /// 获取数据总数
+        /// </summary>
+        /// <returns>返回所有数据总数</returns>
+        public int GetViewCount() 
         {
           using (teaCRMDBContext db=new teaCRMDBContext())
             {
              var models= db.VCompanyUsers;
 			 var sqlText = models.GetProperty("SqlText");
+             LogHelper.Debug(sqlText.ToString());
+			 return models.Count();
+            }
+        }
+
+		
+             /// <summary>
+        /// 获取数据总数
+        /// </summary>
+        /// <param name="predicate">Lamda表达式</param>
+        /// <returns>返回所有数据总数</returns>
+       public int GetViewCount(Expression<Func<VCompanyUser, bool>> predicate)
+        {
+             using (teaCRMDBContext db=new teaCRMDBContext())
+            {
+             var models= db.VCompanyUsers.Where<VCompanyUser>(predicate);
+			 var sqlText = models.GetProperty("SqlText");
+             LogHelper.Debug(sqlText.ToString());
+			 return models.Count();
+            }
+        }
+
+
+
+
+	    /// <summary>
+        /// 获取所有的数据
+	    /// </summary>
+	    /// <returns>返回所有数据列表</returns>
+        public List<VCompanyUser> GetViewList() 
+        {
+          using (teaCRMDBContext db=new teaCRMDBContext())
+            {
+             var models= db.VCompanyUsers;
+			  var sqlText = models.GetProperty("SqlText");
              LogHelper.Debug(sqlText.ToString());
 			 return models.ToList();
             }
@@ -42,12 +79,12 @@ namespace  teaCRM.Dao.Impl
         /// </summary>
         /// <param name="predicate">Lamda表达式</param>
         /// <returns>返回所有数据列表</returns>
-       public List<VCompanyUser> GetList(Expression<Func<VCompanyUser, bool>> predicate)
+       public List<VCompanyUser> GetViewList(Expression<Func<VCompanyUser, bool>> predicate)
         {
              using (teaCRMDBContext db=new teaCRMDBContext())
             {
              var models= db.VCompanyUsers.Where<VCompanyUser>(predicate);
-			 var sqlText = models.GetProperty("SqlText");
+			   var sqlText = models.GetProperty("SqlText");
              LogHelper.Debug(sqlText.ToString());
 			 return models.ToList();
             }
@@ -60,42 +97,42 @@ namespace  teaCRM.Dao.Impl
         /// </summary>
         /// <param name="predicate">Lamda表达式</param>
         /// <returns>Entity</returns>
-        public VCompanyUser GetEntity(Expression<Func<VCompanyUser, bool>> predicate) 
+        public VCompanyUser GetViewEntity(Expression<Func<VCompanyUser, bool>> predicate) 
         {
             using (teaCRMDBContext db=new teaCRMDBContext())
             {
                 var model =db.VCompanyUsers.Where<VCompanyUser>(predicate);
-				var sqlText = model.GetProperty("SqlText");
+			    var sqlText = model.GetProperty("SqlText");
                 LogHelper.Debug(sqlText.ToString());
                 return model.SingleOrDefault();
 		    }
         }
 
-
-
-		 /// <summary>
+		
+		
+        /// <summary>
         /// 根据条件查询某些字段(LINQ 动态查询)
         /// </summary>
         /// <param name="selector">要查询的字段（格式：new(ID,Name)）</param>
         /// <param name="predicate">筛选条件（id=0）</param>
         /// <returns></returns>
-        public IQueryable<Object> GetFields(string selector, string predicate)
+        public IQueryable<Object> GetViewFields(string selector, string predicate)
         {
-            using (teaCRMDBContext db = new teaCRMDBContext())
+            using (teaCRMDBContext db=new teaCRMDBContext())
             {
                 var model = db.VCompanyUsers.Where(predicate).Select(selector);
-                var sqlText=model.GetProperty("SqlText");
+                var sqlText = model.GetProperty("SqlText");
                 LogHelper.Debug(sqlText.ToString());
                 return (IQueryable<object>) model;
             }
         }
 
-	
-        /// <summary>
+
+		   /// <summary>
         /// 是否存在该记录
         /// </summary>
         /// <returns></returns>
-       public   bool ExistsEntity(Expression<Func<VCompanyUser , bool>> predicate)
+       public   bool ExistsViewEntity(Expression<Func<VCompanyUser , bool>> predicate)
 	   {
             using (teaCRMDBContext db=new teaCRMDBContext())
             {
@@ -104,17 +141,32 @@ namespace  teaCRM.Dao.Impl
             }
         }
 
-	
-	      //查询分页
-        public IPagination<VCompanyUser> GetListByPage(int pageIndex, int pageSize, int rowCount,
+		
+
+		
+	   //查询分页
+        public IPagination<VCompanyUser> GetViewListByPage(int pageIndex, int pageSize, out int rowCount,
+            IDictionary<string, teaCRM.Entity.teaCRMEnums.OrderEmum> orders,
             Expression<Func<VCompanyUser, bool>> predicate)
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var models = db.VCompanyUsers.Where(predicate).ToPagination(pageIndex, pageSize, rowCount);
-                return models;
+                 var roles = db.VCompanyUsers.Where(predicate);
+                rowCount = roles.Count();
+                var prevCount = (pageIndex - 1)*pageSize;
+                var models = roles
+                    .Skip(prevCount)
+                    .Take(pageSize);
+                foreach (var order in orders)
+                {
+                    models = models.OrderBy(String.Format("{0} {1}", order.Key, order.Value));
+                }
+                var sqlText = models.GetProperty("SqlText");
+                LogHelper.Debug("ELINQ Paging:<br/>" + sqlText.ToString());
+                return models.ToPagination(pageSize, pageSize, rowCount);
             }
         }
+
 
 	  
 
@@ -126,7 +178,7 @@ namespace  teaCRM.Dao.Impl
         /// <param name="sql">sql语句</param>
         /// <param name="namedParameters">sql参数</param>
         /// <returns>集合</returns>
-        public IEnumerable<VCompanyUser> GetListBySql(string sql, dynamic namedParameters)
+        public IEnumerable<VCompanyUser> GetViewListBySql(string sql, dynamic namedParameters)
         {
           using (teaCRMDBContext db=new teaCRMDBContext())
             {
@@ -134,31 +186,7 @@ namespace  teaCRM.Dao.Impl
             }
           
         }
-		
-		/// <summary>
-	     /// 执行Sql
-	     /// </summary>
-	     /// <param name="sql">Sql语句</param>
-	     /// <param name="namedParameters">查询字符串</param>
-	     /// <returns></returns>
-		public bool ExecuteSql(string sql, dynamic namedParameters = null)
-		{
-	         using (teaCRMDBContext db = new teaCRMDBContext())
-	         {
-	             var rows = db.DbHelper.ExecuteNonQuery(sql, namedParameters);
-	             if (rows > 0)
-	             {
-	                 return true;
-	             }
-	             else
-	             {
-	                 return false;
-	             }
-	         }
-		}
-
-
-
+  #endregion
 
 	   }
 	   }

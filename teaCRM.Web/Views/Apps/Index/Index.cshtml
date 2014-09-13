@@ -1,3 +1,4 @@
+﻿@using System.Web.Optimization
 @model dynamic
 
 @{
@@ -5,11 +6,20 @@
 }
 
 @section seo {
-    <title>Ӧ���г�_C+��ҵ��ƽ̨_�����й��칫������һƷ��</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>应用市场_C+企业云平台_打造中国办公软件第一品牌</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 }
-@section head {}
+@section head {
+    @Styles.Render("~/Themes/default/css/cp.globle.min3.css")
+@Scripts.Render("~/Themes/default/js/cp.globle.min3.js")
+
+
+}
 
 <div id="plugin"  style="background:url(/Themes/default/base/images/develop.png) no-repeat white;position:absolute; width:100%; ">   
-   <h1 style="margin: 200px;text-align: center;color: white;">Ӧ���г�ģ�鿪�������ڿ�����...</h1>
+    <h1 style="margin: 200px;text-align: center;color: white;">应用市场模块开发中正在开发中...</h1>
 </div>
+@section script
+{
+    
+}

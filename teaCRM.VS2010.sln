@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3-teaCRM.Dao", "teaCRM.Dao\3-teaCRM.Dao.csproj", "{6887CE80-724B-4E77-9523-89FBEB753E6B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2-teaCRM.Service", "teaCRM.Service\2-teaCRM.Service.csproj", "{087A655B-AB00-4130-A1A5-7EFB707D60FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5-teaCRM.Common", "teaCRM.Common\5-teaCRM.Common.csproj", "{D03BBC00-649A-43B6-BB8D-65CB34AECC53}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4-teaCRM.Common", "teaCRM.Common\4-teaCRM.Common.csproj", "{D03BBC00-649A-43B6-BB8D-65CB34AECC53}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1-teaCRM.Web", "teaCRM.Web\1-teaCRM.Web.csproj", "{20C4980B-EE81-4C68-AA86-A5B7BCE3166B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4-teaCRM.Entity", "teaCRM.Entity\4-teaCRM.Entity.csproj", "{0687C70A-0976-40D8-A069-56ED9E6FFF2D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5-teaCRM.Entity", "teaCRM.Entity\5-teaCRM.Entity.csproj", "{0687C70A-0976-40D8-A069-56ED9E6FFF2D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.3-teaCRM.Console", "teaCRM.Console\6.3-teaCRM.Console.csproj", "{834DEA0D-F4E5-4853-9F22-E1A146230B87}"
 EndProject
@@ -34,7 +32,22 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.1-teaCRM.Web.Test", "teaC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.1-teaCRM.T4", "teaCRM.T4\6.1-teaCRM.T4.csproj", "{9C7D8146-3E23-4D46-8B6F-33EC87841232}"
 EndProject
-Project("{C8D11400-126E-41CD-887F-60BD40844F9E}") = "7-teaCRM.DB", "teaCRM.DB\7-teaCRM.DB.dbproj", "{67CBC824-A49E-4E9B-A947-360F3DFE65C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3-teaCRM.Dao", "teaCRM.Dao\3-teaCRM.Dao.csproj", "{6887CE80-724B-4E77-9523-89FBEB753E6B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.2-teaCRM.DB", "0.2-teaCRM.DB", "{AFB3155B-4751-4047-9AA2-2CC23CE08076}"
+	ProjectSection(SolutionItems) = preProject
+		teaCRM.DB\INIT_DATA.sql = teaCRM.DB\INIT_DATA.sql
+		teaCRM.DB\Permissions.sql = teaCRM.DB\Permissions.sql
+		teaCRM.DB\sql.sql = teaCRM.DB\sql.sql
+		teaCRM.DB\teaCRM.bak = teaCRM.DB\teaCRM.bak
+		teaCRM.DB\teacrm.data.sql = teaCRM.DB\teacrm.data.sql
+		teaCRM.DB\teacrm.sql = teaCRM.DB\teacrm.sql
+		teaCRM.DB\teacrm.struct.sql = teaCRM.DB\teacrm.struct.sql
+		teaCRM.DB\UCSoftware.pdb = teaCRM.DB\UCSoftware.pdb
+		teaCRM.DB\UCSoftware.pdm = teaCRM.DB\UCSoftware.pdm
+		teaCRM.DB\Workspace.sws = teaCRM.DB\Workspace.sws
+		teaCRM.DB\关键逻辑.sql = teaCRM.DB\关键逻辑.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -49,16 +62,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Release|x86.ActiveCfg = Release|Any CPU
 		{087A655B-AB00-4130-A1A5-7EFB707D60FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{087A655B-AB00-4130-A1A5-7EFB707D60FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{087A655B-AB00-4130-A1A5-7EFB707D60FB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -139,20 +142,16 @@ Global
 		{9C7D8146-3E23-4D46-8B6F-33EC87841232}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{9C7D8146-3E23-4D46-8B6F-33EC87841232}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{9C7D8146-3E23-4D46-8B6F-33EC87841232}.Release|x86.ActiveCfg = Release|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Mixed Platforms.Deploy.0 = Debug|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Mixed Platforms.Deploy.0 = Release|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|x86.ActiveCfg = Release|Any CPU
+		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{6887CE80-724B-4E77-9523-89FBEB753E6B}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

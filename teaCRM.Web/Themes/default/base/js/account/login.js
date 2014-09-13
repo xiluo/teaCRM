@@ -45,15 +45,27 @@ $(function() {
                 remote: "密码错误！"
             }
         },
+//        errorPlacement: function(error, element) {
+//            var errorMsg = error[0].innerHTML;
+//            var elementName = element[0].name;
+//            //$("#" + elementName).formtip(errorMsg);
+//            $("#login-tips").text(errorMsg).removeClass("hide").addClass("show-block");
+//        },
+//        success: function(label) {
+//            var elementName = label[0].htmlFor;
+//            $("#login-tips").removeClass("hide").addClass("show-block");
+        //        }
+        focusInvalid: false,
         errorPlacement: function(error, element) {
             var errorMsg = error[0].innerHTML;
             var elementName = element[0].name;
-            //$("#" + elementName).formtip(errorMsg);
-            $("#login-tips").text(errorMsg).removeClass("hide").addClass("show-block");
+            $("#" + elementName).formtip(errorMsg);
         },
-        success: function(label) {
-            var elementName = label[0].htmlFor;
-            $("#login-tips").removeClass("hide").addClass("show-block");
+        success: function(element) {
+            var elem = $(element)[0].htmlFor;
+            $("#" + elem).poshytip('disable');
+            $("#" + elem).poshytip('destroy');
+            $("#" + elem).removeClass("error").addClass("success");
         }
     });
 
@@ -64,18 +76,19 @@ $(function() {
 
 //自动完成
 function auto_complete() {
-    var browser_not_supported = false;
-    if ($.browser.msie) {
-        browser_not_supported = true;
-    }
+    //===============================================
     //IE不显示智能提示
-    if (!browser_not_supported) {
-        $('#userName').autocomplete({
-            serviceUrl: '/Account/UserNameAuto/',
-            onSelect: function(suggestion) {
-                //alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
-            }
-        });
+    if (!$.support.leadingWhitespace) {
+        try {
+            $('#userName').autocomplete({
+                serviceUrl: '/Account/UserNameAuto/',
+                onSelect: function(suggestion) {
+                    //alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+                }
+            });
+        } catch (e) {
+            console.log(e);
+        }
     }
 //服务器返回结果
 //{
@@ -130,12 +143,12 @@ function remember() {
 
 //登录提交
 function do_login() {
-//    $("#userName").click(function() {
-//        $("#login-tips").removeClass("show-block").addClass("hide");
-//    });
-//    $("#userPassword").click(function () {
-//        $("#login-tips").removeClass("show-block").addClass("hide");
-//    });
+    $("#userName").click(function() {
+        $("#login-tips").removeClass("show-block").addClass("hide");
+    });
+    $("#userPassword").click(function () {
+        $("#login-tips").removeClass("show-block").addClass("hide");
+    });
 
     $("#btnSubmit").click(function() {
         //集成jquery validate   

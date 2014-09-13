@@ -24,11 +24,15 @@
   <object id="conInfoDao" type="teaCRM.Dao.CRM.Impl.ZConInfoDaoImpl, teaCRM.Dao" singleton="false">
   </object>
 
+
+  <!--settingsDao-->
+  <object id="settingsDao" type="teaCRM.Dao.Settings.Impl.ZSettingsDaoImpl, teaCRM.Dao" singleton="false">
+  </object>
   <!--sysDepartmentDao-->
   <object id="sysDepartmentDao" type="teaCRM.Dao.Impl.TSysDepartmentDaoImpl, teaCRM.Dao" singleton="false">
   </object>
-  <!--settingsDao-->
-  <object id="settingsDao" type="teaCRM.Dao.Settings.Impl.ZSettingsDaoImpl, teaCRM.Dao" singleton="false">
+  <!--sysRoleDao-->
+  <object id="sysRoleDao" type="teaCRM.Dao.Impl.TSysRoleDaoImpl, teaCRM.Dao" singleton="false">
   </object>
 
   <!--funExpandDao-->

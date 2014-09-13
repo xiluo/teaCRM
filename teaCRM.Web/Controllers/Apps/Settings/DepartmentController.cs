@@ -35,10 +35,18 @@ namespace teaCRM.Web.Controllers.Apps.Settings
         #region 添加部门 2014-08-27 14:58:50 By 唐有炜
 
         // /Apps/Settings/Department/Add/
-        public ActionResult Add(FormCollection fc)
+        public ActionResult Add(FormCollection fc,int ?id)
         {
             if (fc.Count == 0)
             {
+                VSysDepartment vdepartment = new VSysDepartment();
+                if (String.IsNullOrEmpty(id.ToString()))
+                {
+                    id = 0;
+                }
+                vdepartment.ParentId =(int) id;
+                vdepartment.ParentName = Request.QueryString["name"];
+                ViewBag.Department = vdepartment;
                 return View("DepartmentEdit");
             }
             ResponseMessage rmsg = new ResponseMessage();
@@ -177,7 +185,7 @@ namespace teaCRM.Web.Controllers.Apps.Settings
 
         #endregion
 
-        #region 异步获取部门属性数据 2014-08-27 14:58:50 By 唐有炜
+        #region 异步获取部门树形数据 2014-08-27 14:58:50 By 唐有炜
 
         // /Apps/Settings/Department/AsyncGetNodes/
         /// <summary>
@@ -199,7 +207,7 @@ namespace teaCRM.Web.Controllers.Apps.Settings
                     id = 0,
                     isParent = false,
                     name = "顶级分类",
-                    pId = -1
+                    pId = 0
                 };
                 nodes.Insert(0, node);
             }
@@ -220,7 +228,7 @@ namespace teaCRM.Web.Controllers.Apps.Settings
         public ActionResult GetDepartment(int id)
         {
             var department = SysDepartmentService.GetDepartment(d => d.Id == id);
-            return Json(department);
+            return Json(new {department.Id,department.DepName,department.ParentName,department.DepNum,department.DepOrder, CreateDate = department.CreateDate.ToString("yyyy-MM-dd HH:mm:ss"),department.DepGoal,department.DepRespon,department.DepSkills,department.DepCourse,department.DepNote});
         }
 
         #endregion

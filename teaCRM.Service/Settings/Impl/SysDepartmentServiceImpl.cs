@@ -14,10 +14,7 @@ namespace teaCRM.Service.Settings.Impl
     /// </summary>
     public class SysDepartmentServiceImpl : ISysDepartmentService
     {
-        /// <summary>
-        /// 依赖注入 2014-08-27 14:58:50 By 唐有炜
-        /// </summary>
-        public IZSettingsDao SettingsDao { set; get; }
+     
 
         public ITSysDepartmentDao SysDepartmentDao { set; get; }
 
@@ -64,7 +61,7 @@ namespace teaCRM.Service.Settings.Impl
         /// <returns></returns>
         public VSysDepartment GetDepartment(Expression<Func<VSysDepartment, bool>> predicate)
         {
-            return SysDepartmentDao.GetEntity(predicate);
+            return SysDepartmentDao.GetViewEntity(predicate);
         }
 
         #endregion
@@ -83,34 +80,6 @@ namespace teaCRM.Service.Settings.Impl
 
         #endregion
 
-        #region  根据条件查询某些字段(LINQ 动态查询) 2014-09-10 14:58:50 By 唐有炜
-
-        /// <summary>
-        /// 根据条件查询某些字段(LINQ 动态查询)
-        /// </summary>
-        /// <param name="selector">要查询的字段（格式：new(ID,Name)）</param>
-        /// <param name="predicate">筛选条件（u=>u.id==0）</param>
-        /// <returns></returns>
-        public IQueryable<Object> GetFields(string selector, string predicate)
-        {
-            return SysDepartmentDao.GetFields(selector, predicate);
-        }
-
-        #endregion
-
-        #region
-
-        /// <summary>
-        /// 获取单个字段
-        /// </summary>
-        /// <param name="predicate">筛选条件</param>
-        /// <returns></returns>
-        public object GetField(Expression<Func<VSysDepartment, bool>> predicate)
-        {
-            return SysDepartmentDao.GetEntity(predicate);
-        }
-
-        #endregion
 
         #region 添加部门信息 2014-09-07 14:58:50 By 唐有炜
 
@@ -145,5 +114,37 @@ namespace teaCRM.Service.Settings.Impl
         }
 
         #endregion
+
+
+        #region  根据条件查询某些字段(LINQ 动态查询) 2014-09-10 14:58:50 By 唐有炜
+
+        /// <summary>
+        /// 根据条件查询某些字段(LINQ 动态查询)
+        /// </summary>
+        /// <param name="selector">要查询的字段（格式：new(ID,Name)）</param>
+        /// <param name="predicate">筛选条件（u=>u.id==0）</param>
+        /// <returns></returns>
+        public IQueryable<Object> GetFields(string selector, string predicate)
+        {
+            return SysDepartmentDao.GetFields(selector, predicate);
+        }
+
+        #endregion
+
+        #region 获取单个字段
+
+        /// <summary>
+        /// 获取单个字段
+        /// </summary>
+        /// <param name="predicate">筛选条件</param>
+        /// <returns></returns>
+        public object GetField(Expression<Func<VSysDepartment, bool>> predicate)
+        {
+            return SysDepartmentDao.GetViewEntity(predicate);
+        }
+
+        #endregion
+
+     
     }
 }

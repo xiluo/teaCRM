@@ -1,14 +1,16 @@
-﻿@{
+﻿@using System.Web.Optimization
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @section seo{
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+@Styles.Render("~/Themes/default/css/cp.globle.min6.css")
+@Scripts.Render("~/Themes/default/js/cp.globle.min6.js")
 }
 
 @section head
 {
-    <link href="/Themes/default/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
 }
 
 
@@ -98,50 +100,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <table width="100%">
-                                    <tbody>
-                                        <tr>
-                                            <td width="130" style="text-align: left;"><input id="object_Create_CRM_Customer_OpenSea" name="object_Create.CRM.Customer_OpenSea" type="checkbox" value="true"><input name="object_Create.CRM.Customer_OpenSea" type="hidden" value="false"> 公海</td>
-                                            <td style="text-align: left;">
-                                                <input donnotsetdatasetpermission="True" id="permission_Create_CRM_Customer_OpenSea_View" name="permission_Create.CRM.Customer_OpenSea_View" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_OpenSea_View" type="hidden" value="false">&nbsp;查看 &nbsp;&nbsp;&nbsp;&nbsp;
-                                                <input id="permission_Create_CRM_Customer_OpenSea_Add" name="permission_Create.CRM.Customer_OpenSea_Add" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_OpenSea_Add" type="hidden" value="false">&nbsp;新增 &nbsp;&nbsp;&nbsp;&nbsp;
-
-                                            </td>
-                                            <td width="400"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <table width="100%">
-                                    <tbody>
-                                        <tr>
-                                            <td width="130" style="text-align: left;"><input id="object_Create_CRM_Customer_CustomerMap" name="object_Create.CRM.Customer_CustomerMap" type="checkbox" value="true"><input name="object_Create.CRM.Customer_CustomerMap" type="hidden" value="false"> 客户分布图</td>
-                                            <td style="text-align: left;">
-                                                <input donnotsetdatasetpermission="True" id="permission_Create_CRM_Customer_CustomerMap_View" name="permission_Create.CRM.Customer_CustomerMap_View" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_CustomerMap_View" type="hidden" value="false">&nbsp;查看 &nbsp;&nbsp;&nbsp;&nbsp;
-
-                                            </td>
-                                            <td width="400"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <table width="100%">
-                                    <tbody>
-                                        <tr>
-                                            <td width="130" style="text-align: left;"><input id="object_Create_CRM_Customer_CustomerReturnVisit" name="object_Create.CRM.Customer_CustomerReturnVisit" type="checkbox" value="true"><input name="object_Create.CRM.Customer_CustomerReturnVisit" type="hidden" value="false"> 客户关怀</td>
-                                            <td style="text-align: left;">
-                                                <input donnotsetdatasetpermission="False" id="permission_Create_CRM_Customer_CustomerReturnVisit_View" name="permission_Create.CRM.Customer_CustomerReturnVisit_View" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_CustomerReturnVisit_View" type="hidden" value="false">&nbsp;查看 &nbsp;&nbsp;&nbsp;&nbsp;
-                                                <input id="permission_Create_CRM_Customer_CustomerReturnVisit_Add" name="permission_Create.CRM.Customer_CustomerReturnVisit_Add" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_CustomerReturnVisit_Add" type="hidden" value="false">&nbsp;新增 &nbsp;&nbsp;&nbsp;&nbsp;
-                                                <input id="permission_Create_CRM_Customer_CustomerReturnVisit_Edit" name="permission_Create.CRM.Customer_CustomerReturnVisit_Edit" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_CustomerReturnVisit_Edit" type="hidden" value="false">&nbsp;编辑 &nbsp;&nbsp;&nbsp;&nbsp;
-                                                <input id="permission_Create_CRM_Customer_CustomerReturnVisit_Delete" name="permission_Create.CRM.Customer_CustomerReturnVisit_Delete" type="checkbox" value="true"><input name="permission_Create.CRM.Customer_CustomerReturnVisit_Delete" type="hidden" value="false">&nbsp;删除 &nbsp;&nbsp;&nbsp;&nbsp;
-
-                                            </td>
-                                            <td width="400">
-                                                <a id="globalSetting_object_Create.CRM.Customer_CustomerReturnVisit" style="width: 50px; float: right;" href="javascript:void(0)">更改</a>
-                                                <div id="scopeDescription_Create_CRM_Customer_CustomerReturnVisit">全部</div>
-                                                <input id="object_Create_CRM_Customer_CustomerReturnVisit_SelectedValue" name="object_Create.CRM.Customer_CustomerReturnVisit_SelectedValue" type="hidden" value="type:All;ids:">
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                             
                             </td>
 
                         </tr>
@@ -153,3 +112,5 @@
         </tr>
     </tbody>
 </table>
+@section script
+{}

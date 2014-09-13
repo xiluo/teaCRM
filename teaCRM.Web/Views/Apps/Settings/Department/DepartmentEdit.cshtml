@@ -1,4 +1,5 @@
-﻿@using NLite.Reflection
+﻿@using System.Web.Optimization
+@using NLite.Reflection
 @using teaCRM.Entity
 @using UCsoft.Web
 @{
@@ -10,23 +11,10 @@
     <head>
         <title>添加部门_系统设置_C+企业云平台_打造中国办公软件第一品牌</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link href="/Themes/default/base/css/globle.css" rel="stylesheet" type="text/css" />
-        <!--bootstrap-->
-        <link href="/Themes/default/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
-        <!--jquery-->
-        <script src="~/Themes/default/lib/jquery/jquery-1.7.1.min.js"></script>
-        <!--function-->
-        <script src="/Themes/default/lib/function.js"></script>
-        <!--ZTree-->
-        <link href="/Themes/default/lib/zTree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
-        <script src="/Themes/default/lib/zTree/js/jquery.ztree.all-3.5.min.js"></script>
-        <!--气泡提示-->
-        <script src="/Themes/default/lib/poshytip/jquery.poshytip.min.js" type="text/javascript"></script>
-        <link href="/Themes/default/lib/poshytip/tip-yellow/tip-yellow.css" rel="stylesheet" type="text/css" />
-        <!--表单验证-->
-        <script src="/Themes/default/lib/validate/jquery.validate.min.js" type="text/javascript"></script>
-        <script src="/Themes/default/lib/validate/messages_cn.js" type="text/javascript"></script>
-        <script src="/Themes/default/lib/validate/jquery.validate.extend.js" type="text/javascript"></script>
+        @Styles.Render("~/Themes/default/css/cp.globle.min2.css")
+        @Scripts.Render("~/Themes/default/js/cp.globle.min2.js")
+
+
         <script type="text/javascript">
             $(document).ready(function() {
                 $("#DepName").focus();

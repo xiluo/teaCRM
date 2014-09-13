@@ -4,6 +4,7 @@
 
 $(document).ready(function() {
     //表单获取焦点
+    $("#con_name").focus();
     $("#cus_name").focus();
     //加载省市数据
     load_city_data();
@@ -78,6 +79,18 @@ function load_city_data() {
 function validate_form() {
     //表单验证
     $("#form_customer").validate({
+        debug: true,
+        invalidHandler: function (e, validator) {
+            var msg = "有 " + validator.numberOfInvalids() + " 项填写有误，请检查！";
+            $("#msgprint").html(msg).show().focus();
+            setTimeout(function () {
+                $("#msgprint").fadeOut(500);
+                //如果动画结束则删除节点
+                if (!$("#msgprint").is(":animated")) {
+                    $("#msgprint").hide();
+                }
+            }, 1000);
+        },
         rules: {
             cus_name: {
                 rangelength: [2, 200]
@@ -87,6 +100,9 @@ function validate_form() {
             },
             cus_tel: {
                 remote: { type: "POST", url: '/Apps/CRM/LoadData/ValidatePhone/' }
+            },
+            con_name: {
+                rangelength: [2, 200]
             },
             cus_address: {
                 maxlength: 255
@@ -174,70 +190,7 @@ function validate_form() {
     });
 }
 
-// /Apps/CRM/Index/Add/页面调用
-//添加客户提交
-function save_add() {
-    var data = $("#form_customer").serialize();
-    //alert(data);
-    //表单验证
-    //validate_form();
-    //alert($("#form_customer").valid());
-    if (!$("#form_customer").valid()) {
-        showMsg("您的表单包含错误，请检查！");
-        //$("#form_msg").html("您的表单包含错误，请检查！").show();
-        return false;
-    }
-    //提交数据
-    var url = "/Apps/CRM/Index/Add/";
-    $.ajax({
-        type: "post",
-        cache: false,
-        url: url,
-        data: data,
-        dataType: "json",
-        beforeSend: function() {
-            //showMsg("添加中，请稍后...");
-        },
-        complete: function() {
-            //d.close().remove();
-        },
-        success: function (result) {
-            //toLowerCase报错
-            //var status = result.Status.toLowerCase();
-            var status = result.Status;
-            if (status==true||status=="true"||status=="True") {
-                //关闭父窗口
-             dialog.list['show_add'].close();
-                //在iframe里面打开弹出框并自动关闭
-                showTopMsg("save_ok", result.Msg);
-                //刷新数据
-                window.parent.f_reload();
-            } else {
-                parent.dialog.list['show_add'].close();
-                showTopMsg("save_error", "系统异常！");
-            }
-        },
-        error: function() {
-            showMsg("网络连接错误");
-        }
-    });
-
-
+//表单验证方法，供父窗口调用
+function form_valid() {
+    return $("#form_customer").valid();
 }
-
-//添加客户提交
-function cancel_add() {
-    parent.dialog.list['show_add'].close();
-    top.dialog({
-        id: "save_add",
-        title: '温馨提示',
-        content: "您取消了添加！",
-        onshow: function() {
-            setTimeout(function() {
-                top.dialog.list['save_add'].close().remove();
-            }, 2000);
-        },
-        cancel: false
-    }).show();
-}
-///////////////////////////////////////////////////////////////////////////////

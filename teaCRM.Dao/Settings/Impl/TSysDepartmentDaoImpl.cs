@@ -20,6 +20,347 @@ namespace teaCRM.Dao.Impl
     {
         #region T4自动生成的函数 2014-09-05 14:58:50 By 唐有炜
 
+
+
+        #region 读操作 (表)
+
+
+        /// <summary>
+        /// 获取数据总数
+        /// </summary>
+        /// <returns>返回所有数据总数</returns>
+        public int GetCount()
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var models = db.TSysDepartments;
+                var sqlText = models.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return models.Count();
+            }
+        }
+
+
+        /// <summary>
+        /// 获取数据总数
+        /// </summary>
+        /// <param name="predicate">Lamda表达式</param>
+        /// <returns>返回所有数据总数</returns>
+        public int GetCount(Expression<Func<TSysDepartment, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var models = db.TSysDepartments.Where<TSysDepartment>(predicate);
+                var sqlText = models.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return models.Count();
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// 获取所有的数据
+        /// </summary>
+        /// <returns>返回所有数据列表</returns>
+        public List<TSysDepartment> GetList()
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var models = db.TSysDepartments;
+                var sqlText = models.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return models.ToList();
+            }
+        }
+
+
+        /// <summary>
+        /// 获取所有的数据
+        /// </summary>
+        /// <param name="predicate">Lamda表达式</param>
+        /// <returns>返回所有数据列表</returns>
+        public List<TSysDepartment> GetList(Expression<Func<TSysDepartment, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var models = db.TSysDepartments.Where<TSysDepartment>(predicate);
+                var sqlText = models.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return models.ToList();
+            }
+        }
+
+        /// <summary>
+        /// 获取指定的单个实体
+        /// 如果不存在则返回null
+        /// 如果存在多个则抛异常
+        /// </summary>
+        /// <param name="predicate">Lamda表达式</param>
+        /// <returns>Entity</returns>
+        public TSysDepartment GetEntity(Expression<Func<TSysDepartment, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var model = db.TSysDepartments.Where<TSysDepartment>(predicate);
+                var sqlText = model.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return model.SingleOrDefault();
+            }
+        }
+
+
+
+        /// <summary>
+        /// 根据条件查询某些字段(LINQ 动态查询)
+        /// </summary>
+        /// <param name="selector">要查询的字段（格式：new(ID,Name)）</param>
+        /// <param name="predicate">筛选条件（id=0）</param>
+        /// <returns></returns>
+        public IQueryable<Object> GetFields(string selector, string predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var model = db.TSysDepartments.Where(predicate).Select(selector);
+                var sqlText = model.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return (IQueryable<object>)model;
+            }
+        }
+
+
+        /// <summary>
+        /// 是否存在该记录
+        /// </summary>
+        /// <returns></returns>
+        public bool ExistsEntity(Expression<Func<TSysDepartment, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                bool status = db.TSysDepartments.Any(predicate);
+                return status;
+            }
+        }
+
+
+
+
+        //查询分页
+        public IPagination<TSysDepartment> GetListByPage(int pageIndex, int pageSize, out int rowCount,
+            IDictionary<string, teaCRM.Entity.teaCRMEnums.OrderEmum> orders,
+            Expression<Func<TSysDepartment, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var roles = db.TSysDepartments;
+                rowCount = roles.Count();
+                var prevCount = (pageIndex - 1) * pageSize;
+                var models = roles
+                    .Skip(prevCount)
+                    .Take(pageSize)
+                    .Where(predicate);
+                foreach (var order in orders)
+                {
+                    models = models.OrderBy(String.Format("{0} {1}", order.Key, order.Value));
+                }
+                var sqlText = models.GetProperty("SqlText");
+                LogHelper.Debug("ELINQ Paging:<br/>" + sqlText.ToString());
+                return models.ToPagination(pageSize, pageSize, rowCount);
+            }
+        }
+
+
+
+
+        //以下是原生Sql方法==============================================================
+        //===========================================================================
+        /// <summary>
+        /// 用SQL语句查询
+        /// </summary>
+        /// <param name="sql">sql语句</param>
+        /// <param name="namedParameters">sql参数</param>
+        /// <returns>集合</returns>
+        public IEnumerable<TSysDepartment> GetListBySql(string sql, dynamic namedParameters)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                return db.DbHelper.ExecuteDataTable(sql, namedParameters).ToList<TSysDepartment>();
+            }
+
+        }
+        #endregion
+
+        #region 读操作（视图）
+
+
+        /// <summary>
+        /// 获取数据总数
+        /// </summary>
+        /// <returns>返回所有数据总数</returns>
+        public int GetViewCount()
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var models = db.VSysDepartments;
+                var sqlText = models.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return models.Count();
+            }
+        }
+
+
+        /// <summary>
+        /// 获取数据总数
+        /// </summary>
+        /// <param name="predicate">Lamda表达式</param>
+        /// <returns>返回所有数据总数</returns>
+        public int GetViewCount(Expression<Func<VSysDepartment, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var models = db.VSysDepartments.Where<VSysDepartment>(predicate);
+                var sqlText = models.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return models.Count();
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// 获取所有的数据
+        /// </summary>
+        /// <returns>返回所有数据列表</returns>
+        public List<VSysDepartment> GetViewList()
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var models = db.VSysDepartments;
+                var sqlText = models.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return models.ToList();
+            }
+        }
+
+
+        /// <summary>
+        /// 获取所有的数据
+        /// </summary>
+        /// <param name="predicate">Lamda表达式</param>
+        /// <returns>返回所有数据列表</returns>
+        public List<VSysDepartment> GetViewList(Expression<Func<VSysDepartment, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var models = db.VSysDepartments.Where<VSysDepartment>(predicate);
+                var sqlText = models.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return models.ToList();
+            }
+        }
+
+        /// <summary>
+        /// 获取指定的单个实体
+        /// 如果不存在则返回null
+        /// 如果存在多个则抛异常
+        /// </summary>
+        /// <param name="predicate">Lamda表达式</param>
+        /// <returns>Entity</returns>
+        public VSysDepartment GetViewEntity(Expression<Func<VSysDepartment, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var model = db.VSysDepartments.Where<VSysDepartment>(predicate);
+                var sqlText = model.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return model.SingleOrDefault();
+            }
+        }
+
+
+
+        /// <summary>
+        /// 根据条件查询某些字段(LINQ 动态查询)
+        /// </summary>
+        /// <param name="selector">要查询的字段（格式：new(ID,Name)）</param>
+        /// <param name="predicate">筛选条件（id=0）</param>
+        /// <returns></returns>
+        public IQueryable<Object> GetViewFields(string selector, string predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var model = db.VSysDepartments.Where(predicate).Select(selector);
+                var sqlText = model.GetProperty("SqlText");
+                LogHelper.Debug(sqlText.ToString());
+                return (IQueryable<object>)model;
+            }
+        }
+
+
+        /// <summary>
+        /// 是否存在该记录
+        /// </summary>
+        /// <returns></returns>
+        public bool ExistsViewEntity(Expression<Func<VSysDepartment, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                bool status = db.VSysDepartments.Any(predicate);
+                return status;
+            }
+        }
+
+
+
+
+        //查询分页
+        public IPagination<VSysDepartment> GetViewListByPage(int pageIndex, int pageSize, out int rowCount,
+            IDictionary<string, teaCRM.Entity.teaCRMEnums.OrderEmum> orders,
+            Expression<Func<VSysDepartment, bool>> predicate)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var roles = db.VSysDepartments;
+                rowCount = roles.Count();
+                var prevCount = (pageIndex - 1) * pageSize;
+                var models = roles
+                    .Skip(prevCount)
+                    .Take(pageSize)
+                    .Where(predicate);
+                foreach (var order in orders)
+                {
+                    models = models.OrderBy(String.Format("{0} {1}", order.Key, order.Value));
+                }
+                var sqlText = models.GetProperty("SqlText");
+                LogHelper.Debug("ELINQ Paging:<br/>" + sqlText.ToString());
+                return models.ToPagination(pageSize, pageSize, rowCount);
+            }
+        }
+
+
+
+
+        //以下是原生Sql方法==============================================================
+        //===========================================================================
+        /// <summary>
+        /// 用SQL语句查询
+        /// </summary>
+        /// <param name="sql">sql语句</param>
+        /// <param name="namedParameters">sql参数</param>
+        /// <returns>集合</returns>
+        public IEnumerable<VSysDepartment> GetViewListBySql(string sql, dynamic namedParameters)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                return db.DbHelper.ExecuteDataTable(sql, namedParameters).ToList<VSysDepartment>();
+            }
+
+        }
+        #endregion
+
+
         #region 写操作
 
         /// <summary>
@@ -150,120 +491,6 @@ namespace teaCRM.Dao.Impl
 
         #endregion
 
-        #region 读操作
-
-        /// <summary>
-        /// 获取所有的数据
-        /// </summary>
-        /// <returns>返回所有数据列表</returns>
-        public List<VSysDepartment> GetList()
-        {
-            using (teaCRMDBContext db = new teaCRMDBContext())
-            {
-                var models = db.VSysDepartments;
-                var sqlText = models.GetProperty("SqlText");
-                LogHelper.Debug(sqlText.ToString());
-                return models.ToList();
-            }
-        }
-
-
-        /// <summary>
-        /// 获取所有的数据
-        /// </summary>
-        /// <param name="predicate">Lamda表达式</param>
-        /// <returns>返回所有数据列表</returns>
-        public List<VSysDepartment> GetList(Expression<Func<VSysDepartment, bool>> predicate)
-        {
-            using (teaCRMDBContext db = new teaCRMDBContext())
-            {
-                var models = db.VSysDepartments.Where<VSysDepartment>(predicate);
-                var sqlText = models.GetProperty("SqlText");
-                LogHelper.Debug(sqlText.ToString());
-                return models.ToList();
-            }
-        }
-
-        /// <summary>
-        /// 获取指定的单个实体
-        /// 如果不存在则返回null
-        /// 如果存在多个则抛异常
-        /// </summary>
-        /// <param name="predicate">Lamda表达式</param>
-        /// <returns>Entity</returns>
-        public VSysDepartment GetEntity(Expression<Func<VSysDepartment, bool>> predicate)
-        {
-            using (teaCRMDBContext db = new teaCRMDBContext())
-            {
-                var model = db.VSysDepartments.Where<VSysDepartment>(predicate);
-                var sqlText = model.GetProperty("SqlText");
-                LogHelper.Debug(sqlText.ToString());
-                return model.SingleOrDefault();
-            }
-        }
-
-
-        /// <summary>
-        /// 根据条件查询某些字段(LINQ 动态查询)
-        /// </summary>
-        /// <param name="selector">要查询的字段（格式：new(ID,Name)）</param>
-        /// <param name="predicate">筛选条件（id=0）</param>
-        /// <returns></returns>
-        public IQueryable<Object> GetFields(string selector, string predicate)
-        {
-            using (teaCRMDBContext db = new teaCRMDBContext())
-            {
-                var model = db.VSysDepartments.Where(predicate).Select(selector);
-                var sqlText = model.GetProperty("SqlText");
-                LogHelper.Debug(sqlText.ToString());
-                return (IQueryable<object>) model;
-            }
-        }
-
-
-        /// <summary>
-        /// 是否存在该记录
-        /// </summary>
-        /// <returns></returns>
-        public bool ExistsEntity(Expression<Func<VSysDepartment, bool>> predicate)
-        {
-            using (teaCRMDBContext db = new teaCRMDBContext())
-            {
-                bool status = db.VSysDepartments.Any(predicate);
-                return status;
-            }
-        }
-
-
-        //查询分页
-        public IPagination<VSysDepartment> GetListByPage(int pageIndex, int pageSize, int rowCount,
-            Expression<Func<VSysDepartment, bool>> predicate)
-        {
-            using (teaCRMDBContext db = new teaCRMDBContext())
-            {
-                var models = db.VSysDepartments.Where(predicate).ToPagination(pageIndex, pageSize, rowCount);
-                return models;
-            }
-        }
-
-
-        //以下是原生Sql方法==============================================================
-        //===========================================================================
-        /// <summary>
-        /// 用SQL语句查询
-        /// </summary>
-        /// <param name="sql">sql语句</param>
-        /// <param name="namedParameters">sql参数</param>
-        /// <returns>集合</returns>
-        public IEnumerable<VSysDepartment> GetListBySql(string sql, dynamic namedParameters)
-        {
-            using (teaCRMDBContext db = new teaCRMDBContext())
-            {
-                return db.DbHelper.ExecuteDataTable(sql, namedParameters).ToList<VSysDepartment>();
-            }
-        }
-
-        #endregion
 
         #endregion
 

@@ -1,10 +1,10 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* ==========================快捷标签按钮部分======================== */
 .toolbar-wrap{ height:60px; background:#f5f6f9;}
 .toolbar{ padding:12px;}
 	.toolbar:after{clear:both;content:".";display:block;height:0;visibility:hidden;}
 	.toolbar .l-list{ float:left; }
-	.toolbar .l-list .icon-list{ margin-right:10px; }
+	.toolbar .l-list .icon-list{ margin-right:10px;width: auto !important }
 	.toolbar .l-list .icon-list,.toolbar .l-list .icon-list li{ float:left; }
 	.toolbar .l-list .icon-list li:first-child a{ border-left:solid 1px #dbdbdb; }
 	.toolbar .l-list .icon-list li a{ display:inline-block; padding:5px 15px 5px 13px; line-height:24px; height:24px; border:solid 1px #e1e1e1; border-left:none; color:#333; font-size:12px; text-decoration:none; background:#fafafa; }

@@ -1,24 +1,32 @@
+ï»¿@using System.Web.Optimization
 @using UCsoft.Web
 @{
-    //¿Í»§À©Õ¹×Ö¶ÎĞÅÏ¢
+    //ï¿½Í»ï¿½ï¿½ï¿½Õ¹ï¿½Ö¶ï¿½ï¿½ï¿½Ï¢
     var customerFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.CustomerExpandFields;
-    //ÁªÏµÈËÀ©Õ¹×Ö¶ÎĞÅÏ¢
+    //ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Õ¹ï¿½Ö¶ï¿½ï¿½ï¿½Ï¢
     var contactFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.ContactExpandFields;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section seo {
-    <title>È«²¿¿Í»§_C+ÆóÒµÔÆÆ½Ì¨_´òÔìÖĞ¹ú°ì¹«Èí¼şµÚÒ»Æ·ÅÆ</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>å…¨éƒ¨å®¢æˆ·_C+ä¼ä¸šäº‘å¹³å°_æ‰“é€ ä¸­å›½åŠå…¬è½¯ä»¶ç¬¬ä¸€å“ç‰Œ</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=8" />
 }
 @section head{
+    
+    
+    @Styles.Render("~/Themes/default/css/cp.globle.min3.css")
+@Scripts.Render("~/Themes/default/js/cp.globle.min3.js")
+    
 
-    <!--¿Í»§Ä£¿é²¼¾Ö¼°×ó²àcss-->
+   <!--å®¢æˆ·æ¨¡å—å¸ƒå±€åŠå·¦ä¾§css-->
+
     <link href="/Themes/default/CRM/css/crm.layout.css" rel="stylesheet" type="text/css" />
 	     <!--ZTree-->
 <link href="/Themes/default/lib/zTree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
 <script src="/Themes/default/lib/zTree/js/jquery.ztree.all-3.5.min.js"></script>
-    <!--¿Í»§ÁĞ±ícss-->
+   <!--å®¢æˆ·åˆ—è¡¨css-->
+
     <link href="/Themes/default/CRM/css/crm.list.css" rel="stylesheet" type="text/css" />
     <link href="/Themes/default/lib/ligerUI/skins/Tea/css/ligerui-all.css" rel="stylesheet" type="text/css" />
     <script src="/Themes/default/lib/ligerUI/js/plugins/ligerLayout.js" type="text/javascript"></script>
@@ -37,18 +45,21 @@
     <script src="/Themes/default/lib/ligerUI/js/plugins/ligerTip.js" type="text/javascript"></script>
     <script src="/Themes/default/lib/ligerUI/js/plugins/ligerToolBar.js" type="text/javascript"></script>
     <script src="/Themes/default/lib/ligerUI/js/plugins/ligerMenu.js" type="text/javascript"></script>
-    <!--CRM jsº¯Êı·â×°-->
+     <!--CRM jså‡½æ•°å°è£…-->
+
     <script type="text/javascript" src="/Themes/default/CRM/js/TYW.js"></script>
-    <!--Ê¡ÊĞÊı¾İ-->
+  <!--çœå¸‚æ•°æ®-->
+
     <script src="/Themes/default/base/js/city.js" type="text/javascript"></script>
-    <!--¿Í»§js£¬ÓÉÓÚ¶¯Ì¬¶ÁÈ¡£¬±ØĞë·ÅÔÚÒ³ÃæÉÏ-->
+   <!--å®¢æˆ·jsï¼Œç”±äºåŠ¨æ€è¯»å–ï¼Œå¿…é¡»æ”¾åœ¨é¡µé¢ä¸Š-->
+
     <script type="text/javascript">
-	<!--Ê×´Î´ò¿ªÒ³ÃæÊ±¶Ô×ó²à·ÖÀà½øĞĞ¸ß¶ÈÉè¶¨-->
+<!--é¦–æ¬¡æ‰“å¼€é¡µé¢æ—¶å¯¹å·¦ä¾§åˆ†ç±»è¿›è¡Œé«˜åº¦è®¾å®š-->
 	$(function (){
 	$(".layout-left").height($(window).height()-83);
 	});
 
-    //³õÊ¼»¯¿Í»§ÁĞ±í==============================================================
+        //åˆå§‹åŒ–å®¢æˆ·åˆ—è¡¨==============================================================
          var customer_url = "/Apps/CRM/LoadData/GetCustomerLsit/?&rnd=" + Math.random();
         function InitDataGrid() {
             initLayout();
@@ -59,91 +70,92 @@
                 checkbox: true,
                 columns: [
                     {
-                        display: 'ĞòºÅ',
+                        display: 'åºå·',
                         width: 50,
                         render: function(rowData, rowindex, value, column, rowid, page, pagesize) {
                             return (page - 1) * pagesize + rowindex + 1;
                         }
                     },
 					{
-                        display: 'Öú¼Ç¼ò³Æ',
+					    display: 'åŠ©è®°ç®€ç§°',
                         name: 'cus_sname',
                         width: 100,
                         align: 'left',
                         render: function(item) {
                             if (item.cus_sname == "") {
-                                return "null";
+                                return "æš‚æ— åç§°";
                             } else {
                                 return  item.cus_sname;
                             }
                         }
                     },
                     {
-                        display: '¿Í»§Ãû³Æ',
+                        display: 'å®¢æˆ·åç§°',
                         "frozen": true,
                         name: 'cus_name',
                         width: 240,
                         align: 'left',
-						render:function(item){
-						    if (item.cus_name == "") {
-                                return "null";
+                        render: function (item) {
+                            if (item.cus_name == "") {
+                                return "æš‚æ— åç§°";
                             } else {
-                                return  "<a href=''>"+item.cus_name+"</a>";
+                                return "<a href=''>" + item.cus_name + "</a>";
                             }
-						}
+                        }
                     },
                     
                     //{
-//                        display: 'ÉÏ¼¶¿Í»§',
+//                        display: 'ï¿½Ï¼ï¿½ï¿½Í»ï¿½',
 //                        name: 'cus_lastname',
 //                        width: 120,
 //                        align: 'center',
 //                        render: function(item) {
 //                            if (item.cus_lastid == 0) {
-//                                return "ÔİÎŞÉÏ¼¶¿Í»§";
+//                                return "ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½Í»ï¿½";
 //                            } else {
-//                                return "ÔİÎŞÉÏ¼¶¿Í»§";
+//                                return "ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½Í»ï¿½";
 //                            }
 //                        }
 //                    },
-                    { display: '°ì¹«µç»°', name: 'cus_tel', width: 120, align: 'left',
-					render:function(item){
-						    if (item.cus_tel == "") {
+                    {
+                        display: 'åŠå…¬ç”µè¯', name: 'cus_tel', width: 120, align: 'left',
+                        render: function (item) {
+                            if (item.cus_tel == "") {
                                 return "null";
                             } else {
-                                return  "<a href=''>"+item.cus_tel+"</a>";
+                                return "<a href=''>" + item.cus_tel + "</a>";
                             }
-						}
-					 },
+                        }
+                    },
                     {
-                        display: 'Ê¡ÊĞµØÖ·',
+                        display: 'çœå¸‚åœ°å€',
                         name: 'cus_city',
                         width: 100,
-						align: 'left',
-                        render: function(item) {
+                        align: 'left',
+                        render: function (item) {
                             if (item.cus_city == "0,0,0") {
-                                return "ÔİÎ´ÌîĞ´";
+                                return "æš‚æœªå¡«å†™";
                             } else {
                                 var city_detail = get_city_by_ids(item.cus_city);
                                 return city_detail;
                             }
-                        }
+                        }
                     },
                     {
-                        display: 'ÏêÏ¸µØÖ·',
+                        display: 'è¯¦ç»†åœ°å€',
                         name: 'cus_address',
                         width: 180,
-						align: 'left',
-                        render: function(item) {
+                        align: 'left',
+                        render: function (item) {
                             if (item.cus_address == "") {
-                                return "ÎŞ";
+                                return "æ— ";
                             } else {
                                 return item.cus_address;
                             }
-                        }
+                        }
                     },
                     { 
-					display: 'Ö÷ÁªÏµÈË', 
+                        display: 'ä¸»è”ç³»äºº',
 					name: 'con_name',
 					width: 100,
 					align: 'left',
@@ -155,7 +167,8 @@
                             }
 						}
 					},
-                    { display: '¸ºÔğÈË', name: 'user_name', width: 100,align: 'left',
+                    {
+                        display: 'è´Ÿè´£äºº', name: 'user_name', width: 100, align: 'left',
 					render:function(item){
 						    if (item.user_name == "") {
                                 return "null";
@@ -164,26 +177,26 @@
                             }
 						}
 					},
-                    //{ display: '¹²Ïí³ÉÔ±', name: 'con_team', width: 80, align: 'center' },
-                    /* { display: 'ÊÇ·ñ¹«º£', name: 'con_is_pub', width: 60, render: function (item) {
+                    //{ display: 'ï¿½ï¿½ï¿½ï¿½ï¿½Ô±', name: 'con_team', width: 80, align: 'center' },
+                    /* { display: 'ï¿½Ç·ñ¹«ºï¿½', name: 'con_is_pub', width: 60, render: function (item) {
                         if (item.con_is_pub == 0) {
-                            return "·ñ";
+                            return "ï¿½ï¿½";
                         } else {
-                            return "ÊÇ";
+                            return "ï¿½ï¿½";
                         }
                     } 
                     },
-                    { display: 'ÊÇ·ñ»ØÊÕÕ¾', name: 'con_back', width: 60, render: function (item) {
+                    { display: 'ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Õ¾', name: 'con_back', width: 60, render: function (item) {
                         if (item.con_back == 0) {
-                            return "·ñ";
+                            return "ï¿½ï¿½";
                         } else {
-                            return "ÊÇ";
+                            return "ï¿½ï¿½";
                         }
                     } 
                     },
                     */
                     /* {
-                display: '×îºó¸ú½ø',
+                display: 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
                 name: 'lastfollow',
                 width: 90,
                 render: function(item) {
@@ -194,14 +207,14 @@
                 }
                 },*/
 
-                    @*ÕâÀïÏÔÊ¾À©Õ¹×Ö¶Î*@
+                    @*å®¢æˆ·æ‰©å±•å­—æ®µ*@
                     @foreach (var customerField in customerFields)
                     {
-                        var render = @" render: function(item) {if (item." + customerField.ExpName + "=='') {return 'ÔİÎ´ÌîĞ´';} else {return item." + customerField.ExpName + ";}}";
-                        //ĞĞÒµÁÙÊ±´¦Àí
+                        var render = @" render: function(item) {if (item." + customerField.ExpName + "=='') {return 'æš‚æœªå¡«å†™';} else {return item." + customerField.ExpName + ";}}";
+                        //è¡Œä¸š
                         if (customerField.ExpName == "exp_pro")
                         {
-                            render = @" render: function(item) {if (item." + customerField.ExpName + "=='') {return 'ÔİÎ´ÌîĞ´';} if (item." + customerField.ExpName + "=='0') {return 'IT»¥ÁªÍø';}if (item." + customerField.ExpName + "=='1') {return '½ÌÓıÅàÑµ';} if (item." + customerField.ExpName + "=='2') {return '»úĞµÉè±¸';}if (item." + customerField.ExpName + "=='3') {return '½¨Öş·¿²ú';}if (item." + customerField.ExpName + "=='4') {return '¹ã¸æ´«Ã½';}if (item." + customerField.ExpName + "=='5') {return '½ğÈÚ±£ÏÕ';}if (item." + customerField.ExpName + "=='6') {return ' ·ş×°·ÄÖ¯';}else {return item." + customerField.ExpName + ";}}";
+                            render = @" render: function(item) {if (item." + customerField.ExpName + "=='') {return 'æš‚æœªå¡«å†™';} if (item." + customerField.ExpName + "=='0') {return 'æš‚æœªå¡«å†™';}if (item." + customerField.ExpName + "=='1') {return 'æš‚æœªå¡«å†™';} if (item." + customerField.ExpName + "=='2') {return 'æš‚æœªå¡«å†™';}if (item." + customerField.ExpName + "=='3') {return 'æš‚æœªå¡«å†™';}if (item." + customerField.ExpName + "=='4') {return 'æš‚æœªå¡«å†™';}if (item." + customerField.ExpName + "=='5') {return 'æš‚æœªå¡«å†™';}if (item." + customerField.ExpName + "=='6') {return 'æš‚æœªå¡«å†™';}else {return item." + customerField.ExpName + ";}}";
                         }
 
                         var culmonString = String.Format(" {{ display: '{0}', name: '{1}', width: 100,{2}}},", customerField.ExpTitle, customerField.ExpName, render);
@@ -210,19 +223,19 @@
                     }
 
                     //{
-//                        display: '±¸×¢',
+//                        display: 'ï¿½ï¿½×¢',
 //                        name: 'cus_note',
 //                        width: 60,
 //                        render: function(item) {
 //                            if (item.cus_note == "") {
-//                                return "ÔİÎ´ÌîĞ´";
+//                                return "ï¿½ï¿½Î´ï¿½ï¿½Ğ´";
 //                            } else {
 //                                return item.cus_note;
 //                            }
 //                        }
 //                    },
                     {
-                        display: '´´½¨Ê±¼ä',
+                        display: 'åˆ›å»ºæ—¶é—´',
                         name: 'cus_createTime',
                         width: 100
                         //                ,render: function(item) {
@@ -258,9 +271,9 @@
                     return false;
                 },
                 onAfterShowData: function(grid) {
-                    $("tr[rowtype='ÒÑ³É½»']").addClass("l-treeleve1").removeClass("l-grid-row-alt");
+                    $("tr[rowtype='å·²æˆäº¤']").addClass("l-treeleve1").removeClass("l-grid-row-alt");
                     var nowTime = new Date();
-                    //showMsg('¼ÓÔØÊı¾İºÄÊ±£º' + (nowTime - startTime));
+                    //showMsg('åŠ è½½æ•°æ®è€—æ—¶ï¼š' + (nowTime - startTime));
                 },
                 onDblClickRow: function(data, rowindex, rowobj) {
                     view();
@@ -274,49 +287,48 @@
                         $(p).append(grid);
                         $(grid).css('margin', 3).ligerGrid({
                             columns: [
-                                { display: 'ĞĞºÅ', width: 50, render: function(item, i) { return i + 1; } },
-                                { display: 'ÁªÏµÈË', name: 'con_name', width: 100 },
+                               { display: 'è¡Œå·', width: 50, render: function (item, i) { return i + 1; } },
+                                { display: 'è”ç³»äºº', name: 'con_name', width: 100 },
                                 {
-                                    display: 'µç»°/ÊÖ»úºÅÂë',
+                                    display: 'ç”µè¯/æ‰‹æœºå·ç ',
                                     name: 'con_tel',
                                     width: 100,
-                                    render: function(item) {
+                                    render: function (item) {
                                         if (item.con_tel == "") {
-                                            return "ÔİÎ´ÌîĞ´";
+                                            return "æš‚æœªå¡«å†™";
                                         } else {
                                             return item.con_tel;
                                         }
-                                    }
+                                    }
                                 },
                                 {
-                                    display: 'QQºÅ',
+                                    display: 'QQå·',
                                     name: 'con_qq',
                                     width: 100,
-                                    render: function(item) {
+                                    render: function (item) {
                                         if (item.con_qq == "") {
-                                            return "ÔİÎ´ÌîĞ´";
+                                            return "æš‚æœªå¡«å†™";
                                         } else {
                                             return item.con_qq;
                                         }
-                                    }
+                                    }
                                 },
                                 {
-                                    display: 'ÓÊÏä',
+                                    display: 'é‚®ç®±',
                                     name: 'con_email',
                                     width: 80,
-                                    render: function(item) {
+                                    render: function (item) {
                                         if (item.con_email == "") {
-                                            return "ÔİÎ´ÌîĞ´";
+                                            return "æš‚æœªå¡«å†™";
                                         } else {
                                             return item.con_email;
                                         }
-                                    }
+                                    }
                                 },
-                                { display: 'ÉúÈÕ', name: 'con_bir', width: 80 },
-                                @*ÕâÀïÏÔÊ¾À©Õ¹×Ö¶Î*@
+                                 { display: 'ç”Ÿæ—¥', name: 'con_bir', width: 80 },
                                 @foreach (var contactField in contactFields)
                                 {
-                                    var render = @" render: function(item) {if (item." + contactField.ExpName + "=='') {return 'ÔİÎ´ÌîĞ´';} else {return item." + contactField.ExpName + ";}}";
+                                    var render = @" render: function(item) {if (item." + contactField.ExpName + "=='') {return 'æš‚æœªå¡«å†™';} else {return item." + contactField.ExpName + ";}}";
                                     var culmonString = String.Format(" {{ display: '{0}', name: '{1}', width: 60,{2} }},", contactField.ExpTitle, contactField.ExpName, render);
                                     @Html.Raw(culmonString)
                                     ;
@@ -324,30 +336,30 @@
 
                    
                                 {
-                                    display: '±¸×¢',
+                                    display: 'å¤‡æ³¨',
                                     name: 'con_note',
                                     width: 80,
-                                    render: function(item) {
+                                    render: function (item) {
                                         if (item.con_note == "") {
-                                            return "ÔİÎ´ÌîĞ´";
+                                            return "æš‚æœªå¡«å†™";
                                         } else {
                                             return item.con_note;
                                         }
-                                    }
+                                    }
                                 },
                                 {
-                                    display: 'ÊÇ·ñÖ÷ÁªÏµÈË',
+                                    display: 'æ˜¯å¦ä¸»è”ç³»äºº',
                                     name: 'con_is_main',
                                     width: 80,
-                                    render: function(item) {
+                                    render: function (item) {
                                         if (item.con_is_main == 0) {
-                                            return "·ñ";
+                                            return "å¦";
                                         } else {
-                                            return "ÊÇ";
+                                            return "æ˜¯";
                                         }
-                                    }
+                                    }
                                 },
-                                { display: 'Â¼ÈëÈË', name: 'user_name', width: 80 }
+                                 { display: 'å½•å…¥äºº', name: 'user_name', width: 80 }
                             ],
 
                             usePager: false,
@@ -362,9 +374,9 @@
             });
 //            $("#maingrid5").ligerGrid({
 //                columns: [
-//                    { display: 'ĞòºÅ', width: 40, render: function(item, i) { return i + 1; } },
+//                    { display: 'ï¿½ï¿½ï¿½', width: 40, render: function(item, i) { return i + 1; } },
 //                    {
-//                        display: '¸ú½øÄÚÈİ',
+//                        display: 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
 //                        name: 'Follow',
 //                        align: 'left',
 //                        width: 590,
@@ -377,16 +389,16 @@
 //                        }
 //                    },
 //                    {
-//                        display: '¸ú½øÊ±¼ä',
+//                        display: 'ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½',
 //                        name: 'Follow_date',
 //                        width: 140,
 //                        render: function(item) {
 //                            return formatTimebytype(item.Follow_date, 'yyyy-MM-dd hh:mm');
 //                        }
 //                    },
-//                    { display: '¸ú½ø·½Ê½', name: 'Follow_Type', width: 60 },
+//                    { display: 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½', name: 'Follow_Type', width: 60 },
 //                    {
-//                        display: '¸ú½øÈË',
+//                        display: 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
 //                        name: '',
 //                        width: 100,
 //                        render: function(item) {
@@ -405,7 +417,7 @@
 //                url: "/Apps/CRM/LoadData/GetFollowList/?Action=grid&CustomerNo=",
 //                width: '100%',
 //                height: '100%',
-//                //title: "¸ú½øĞÅÏ¢",
+//                //title: "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢",
 //                heightDiff: -1,
 //                onRClickToSelect: true,
 //                onContextmenu: function(parm, e) {
@@ -431,13 +443,14 @@
                 var items = [];
                 var arr = data.Items;
                 for (var i = 0; i < arr.length; i++) {
-                    if (arr[i].text == '²é¿´' && arr[i].disable) view_auth = true;
+                    if (arr[i].text == 'æŸ¥çœ‹' && arr[i].disable) view_auth = true;
                     arr[i].icon = "../../" + arr[i].icon;
                     items.push(arr[i]);
                 }
                 items.push({
                     type: 'serchbtn',
-                    text: '¸ß¼¶ËÑË÷',
+                    text: 'é«˜çº§æœç´¢',
+
                     icon: '../../images/search.gif',
                     disable: true,
                     click: function() {
@@ -516,79 +529,84 @@
         }
         //=========================================================================
     </script>
-    <!--±¾Ò³Ãæjs-->
-    <script src="/Themes/default/CRM/js/customer_index.js" type="text/javascript"></script>
+    <!--æœ¬é¡µé¢js-->
+<script src="/Themes/default/CRM/js/customer_index.js" type="text/javascript"></script>
+
+
 }
 
 <div id="customer">
-  
-    <!--×ó²àÉ¸Ñ¡¿ªÊ¼-->
+
+    <!--å·¦ä¾§ç­›é€‰å¼€å§‹-->
     <div class="layout-left">
-	<div class="l-top">
-	
-	Äúµ±Ç°ÒÑÑ¡ÔñÌõ¼şÖĞËÑË÷£º<br/>
-	<ul class="l-top-list">
-	<li><a href="#" rel="nofollow" title="ÒâÏò¿Í»§"><strong>ÒâÏò¿Í»§</strong></a></li>
-	<li><a href="#" rel="nofollow" title="30ÌìÎ´ÁªÏµ"><strong>¼¯ÍÅ¿Í»§</strong></a></li>
-	</ul>
-	
-	<div class="r-list">
-    <select class="xiala">
-    <option selected="selected">ÇëÑ¡Ôñ</option>
-    <option selected="selected">¿Í»§Ãû³Æ</option>
-    @foreach (var customerField in customerFields)
-    {
-       <option>@customerField.ExpTitle</option>
-     }
-    </select>
-	
-    <input name="txtKeywords" type="text" id="txtKeywords" class="keyword">
-    <a id="lbtnSearch" class="btn-search" href="javascript:__doPostBack('lbtnSearch','')">²éÑ¯</a>
-    </div>
-	<div class="clear"></div>
-	</div>
-	
-	<div class="layout-left-filter"> 
-	<h2>Êı¾İÊÓÍ¼&¹¤¾ß<a href="#">¹ÜÀí</a><a href="#">¸´Ñ¡</a></h2>
-	 <div id="nav-side" class="nav-side">
-            <div class="ns-item">
-                @*<ul id="filter_tree">
-                    </ul>
-                *@
-                <ul id="filter_tree" class="ztree"></ul>
+        <div class="l-top">
+
+            æ‚¨å½“å‰å·²é€‰æ‹©æ¡ä»¶ä¸­æœç´¢ï¼š<br />
+            <ul class="l-top-list">
+                <li><a href="#" rel="nofollow" title="æ„å‘å®¢æˆ·"><strong>æ„å‘å®¢æˆ·</strong></a></li>
+                <li><a href="#" rel="nofollow" title="30å¤©æœªè”ç³»"><strong>é›†å›¢å®¢æˆ·</strong></a></li>
+            </ul>
+
+
+
+            <div class="r-list">
+                <select class="xiala">
+                    <option selected="selected">è¯·é€‰æ‹©</option>
+                    <option selected="selected">å®¢æˆ·åç§°</option>
+
+                    @foreach (var customerField in customerFields)
+                    {
+                        <option>@customerField.ExpTitle</option>
+                    }
+                </select>
+
+                <input name="txtKeywords" type="text" id="txtKeywords" class="keyword">
+                <a id="lbtnSearch" class="btn-search" href="javascript:__doPostBack('lbtnSearch','')">æŸ¥è¯¢</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="layout-left-filter">
+            <h2>æ•°æ®è§†å›¾&å·¥å…·<a href="#">ç®¡ç†</a><a href="#">å¤é€‰</a></h2>
+            <div id="nav-side" class="nav-side">
+                <div class="ns-item">
+
+                    <ul id="filter_tree" class="ztree"></ul>
+                </div>
             </div>
         </div>
-	</div>
+
     </div>
-    <!--ÓÒ²àÁĞ±í¿ªÊ¼-->
+    <!--å³ä¾§åˆ—è¡¨å¼€å§‹-->
+
     <div class="layout-right">
         <div class="layout-content">
-		
+
             <div class="toolbar-wrap">
                 <div id="floatHead" class="toolbar">
                     <div class="l-list">
                         <ul class="icon-list">
-                            <li><a class="add" href="javascript:void(0);" onclick=" add(); "><i></i><span>ĞÂÔö</span></a></li>
-                            <li><a class="del" id="btnDelete" href="javascript:void(0);" onclick=" del(); "><i></i><span>É¾³ıÖÁ»ØÊÕÕ¾</span></a></li>
-                            <li><a class="chi" id="btnSave"  href="javascript:void(0);" onclick=" to_pub(); "><i></i><span>·ÅÈë¿Í»§³Ø</span></a></li>
-							<li><a class="all" href="#" onclick=""><i></i><span>È«Ñ¡</span></a></li>
-                            <li><a class="zhuan" id="btnAudit" href="#"><i></i><span>×ªÒÆ</span></a></li>
-							<li><a class="biao" id="btnAudit" href="#"><i></i><span>¸ü¶à</span></a></li>
-<!--                            <li><a class="biao" id="btnAudit" href="#"><i></i><span>±êÇ©</span></a></li>
-                            <li><a class="inport" id="btnAudit" href="#"><i></i><span>µ¼Èë</span></a></li>
-                            <li><a class="import" id="btnAudit" href="#"><i></i><span>µ¼³ö</span></a></li>
-                            <li><a class="sms" id="btnAudit" href="#"><i></i><span>¶ÌĞÅ</span></a></li>
-                            <li><a class="email" id="btnAudit" href="#"><i></i><span>ÓÊ¼ş</span></a></li>
-                            <li><a class="hebing" id="btnAudit" href="#"><i></i><span>ºÏ²¢</span></a></li>
-                            <li><a class="shuxing" id="btnAudit" href="#"><i></i><span>ÊôĞÔ</span></a></li>-->
+                            <li><a class="add" href="javascript:void(0);" onclick=" add(); "><i></i><span>æ–°å¢</span></a></li>
+                            <li><a class="del" id="btnDelete" href="javascript:void(0);" onclick=" del(); "><i></i><span>åˆ é™¤è‡³å›æ”¶ç«™</span></a></li>
+                            <li><a class="chi" id="btnSave" href="javascript:void(0);" onclick=" to_pub(); "><i></i><span>æ”¾å…¥å®¢æˆ·æ± </span></a></li>
+                            <li><a class="all" href="#" onclick=""><i></i><span>å…¨é€‰</span></a></li>
+                            <li><a class="zhuan" id="btnAudit" href="#"><i></i><span>è½¬ç§»</span></a></li>
+                            <li><a class="biao" id="btnAudit" href="#"><i></i><span>æ›´å¤š</span></a></li>
+                            <!--                            <li><a class="biao" id="btnAudit" href="#"><i></i><span>æ ‡ç­¾</span></a></li>
+                            <li><a class="inport" id="btnAudit" href="#"><i></i><span>å¯¼å…¥</span></a></li>
+                            <li><a class="import" id="btnAudit" href="#"><i></i><span>å¯¼å‡º</span></a></li>
+                            <li><a class="sms" id="btnAudit" href="#"><i></i><span>çŸ­ä¿¡</span></a></li>
+                            <li><a class="email" id="btnAudit" href="#"><i></i><span>é‚®ä»¶</span></a></li>
+                            <li><a class="hebing" id="btnAudit" href="#"><i></i><span>åˆå¹¶</span></a></li>
+                            <li><a class="shuxing" id="btnAudit" href="#"><i></i><span>å±æ€§</span></a></li>-->
                         </ul>
                     </div>
                 </div>
             </div>
-		
-		
-        
-            <!--¿Í»§ÁĞ±í¿ªÊ¼-->
+
+
+
+            <!--å®¢æˆ·åˆ—è¡¨å¼€å§‹-->
+
             <form id="form1">
                 <div id="grid">
                     <div id="maingrid4" style="margin: -1px; min-width: 600px;"></div>
@@ -598,9 +616,13 @@
                     @*                    </div>*@
                 </div>
             </form>
-                  
+
         </div>
     </div>
-    <!--ÓÒ²àÁĞ±í½áÊø-->
+    <!--å³ä¾§åˆ—è¡¨ç»“æŸ-->
+
     <div class="clear" style="clear: both;"></div>
 </div>
+@section script{
+    
+}

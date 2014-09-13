@@ -1,111 +1,86 @@
+Ôªø@using System.Web.Optimization
 @using UCsoft.Web
 @{
-    //øÕªß¿©’π◊÷∂Œ–≈œ¢
+    //ÂÆ¢Êà∑Êâ©Â±ïÂ≠óÊÆµ‰ø°ÊÅØ
     var customerFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.CustomerExpandFields;
-    //¡™œµ»À¿©’π◊÷∂Œ–≈œ¢
+    //ËÅîÁ≥ª‰∫∫Êâ©Â±ïÂ≠óÊÆµ‰ø°ÊÅØ
     var contactFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.ContactExpandFields;
     Layout = null;
 }
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>ÃÌº”øÕªß_C+∆Û“µ‘∆∆ΩÃ®_¥Ú‘Ï÷–π˙∞Ïπ´»Ìº˛µ⁄“ª∆∑≈∆</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>Ê∑ªÂä†ÂÆ¢Êà∑_C+‰ºÅ‰∏ö‰∫ëÂπ≥Âè∞_ÊâìÈÄ†‰∏≠ÂõΩÂäûÂÖ¨ËΩØ‰ª∂Á¨¨‰∏ÄÂìÅÁâå</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=8" />
-    <link href="/Themes/default/base/css/globle.css" rel="stylesheet" />
-	    <script src="/Themes/default/lib/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
-<script src="/Themes/default/lib/bootstrap/js/bootstrap.js" type="text/javascript"></script>
-	<link href="/Themes/default/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
-     <!--ie css3-->
-        <!--[if lt IE 10]>
-            <script type="text/javascript" src="/Themes/default/lib/pie/PIE.js"></script>
-        <![endif]-->
-        <script type="text/javascript">
-            $(function () {
-                if (window.PIE) {
-                    $('.rounded').each(function () {
-                        PIE.attach(this);
-                    });
-                }
-            });
-        </script>
-        <!-- π”√∑Ω∑®
-            -moz-border-radius: 8px; 
-            -webkit-border-radius:8px;
-            border-radius:8px;
-            behavior: url(/Themes/default/lib/pie/pie.htc);/*∑«≥£÷ÿ“™*/
-            -->
-    <!--artDialog-->
-     <link rel="stylesheet" href="/Themes/default/lib/artDialog/css/ui-dialog.css">
-    <script src="/Themes/default/lib/artDialog/dist/dialog-plus-min.js"></script>  
+   
+    @Styles.Render("~/Themes/default/css/cp.globle.min1.css")
+@Scripts.Render("~/Themes/default/js/cp.globle.min1.js")
+
     <!--my97DatePicker-->
      <script src="/Themes/default/lib/my97DatePicker/WdatePicker.js" type="text/javascript"></script>
-  <!-- ° – ˝æ›-->
+  <!--ÁúÅÂ∏ÇÊï∞ÊçÆ-->
     <script src="/Themes/default/base/js/city.js" type="text/javascript"></script>
-    <!--∆¯≈›Ã· æ-->
-    <script src="/Themes/default/lib/poshytip/jquery.poshytip.min.js" type="text/javascript"></script>
-    <link href="/Themes/default/lib/poshytip/tip-yellow/tip-yellow.css" rel="stylesheet"
-          type="text/css" />
-    <!--±Ìµ•—È÷§£¨’‚¿Ô≤ªƒ‹”√min,∑Ò‘Ú±£¥Ê£¨–Ë“™‘⁄◊÷∂Œ…œº”…œclass="required"-->
-    <script src="/Themes/default/lib/validate/jquery.validate.min.js" type="text/javascript"></script>
-    <script src="/Themes/default/lib/validate/messages_cn.js" type="text/javascript"></script>
-    <script src="/Themes/default/lib/validate/jquery.validate.extend.js" type="text/javascript"></script>
-    <!--π´π≤∫Ø ˝-->
-    <script src="/Themes/default/lib/function.js" type="text/javascript"></script>
+ 
+    
+    
+
     <script src="/Themes/default/crm/js/customer_add.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="tb-form-1">
         <form id="form_customer" name="form_customer" action="" method="post">
+            <!--Ë°®ÂçïÈîôËØØÊèêÁ§∫Âå∫-->
+            <div tabindex="-1" id="msgprint" class="warning" style="position: fixed; width: 90%; display: none;">ÊÇ®ÁöÑË°®ÂçïÂåÖÂê´ÈîôËØØÔºåËØ∑Ê£ÄÊü•ÔºÅ</div>
             <div class="tab-content">
-			
-			            <ul class="nav nav-tabs">
-                <li class="active">
-                    <a href="#customer-info" data-toggle="tab">øÕªß–≈œ¢</a>
-                </li>
-                <li><a href="#contact-info" data-toggle="tab">÷˜¡™œµ»À–≈œ¢</a></li>
-            </ul>
+            
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#customer-info" data-toggle="tab">ÂÆ¢Êà∑‰ø°ÊÅØ</a>
+                    </li>
+                    <li><a href="#contact-info" data-toggle="tab">‰∏ªËÅîÁ≥ª‰∫∫‰ø°ÊÅØ</a></li>
+                </ul>
                 <div class="tab-pane active" id="customer-info">
                     <dl>
                         <dt>
-                            <em class="imp">*</em>øÕªß√˚≥∆£∫
+                            <em class="imp">*</em>ÂÆ¢Êà∑ÂêçÁß∞Ôºö
                         </dt>
                         <dd>
-                            <input type="text" class="wid260 required" id="cus_name" name="cus_name" placeholder=" ‰»Îµ•Œª√˚≥∆£¨»ÁŒ™∏ˆ»À‘Ú ‰»Î–’√˚" />
+                            <input type="text" class="wid260 required" id="cus_name" name="cus_name" placeholder="ËæìÂÖ•Âçï‰ΩçÂêçÁß∞ÔºåÂ¶Ç‰∏∫‰∏™‰∫∫ÂàôËæìÂÖ•ÂßìÂêç" />
                         </dd>
                         <dt>
-                            ÷˙º«ºÚ≥∆£∫
+                            Âä©ËÆ∞ÁÆÄÁß∞Ôºö
                         </dt>
                         <dd>
-                            <input type="text" class="wid200" id="cus_sname" name="cus_sname" placeholder="øÕªßºÚ≥∆£¨∑Ω±„≤È—Ø" />
+                            <input type="text" class="wid200" id="cus_sname" name="cus_sname" placeholder="ÂÆ¢Êà∑ÁÆÄÁß∞ÔºåÊñπ‰æøÊü•ËØ¢" />
                         </dd>
                     </dl>
                     <dl>
                         <dt>
-                             °∑›≥« –£∫
+                            ÁúÅ‰ªΩÂüéÂ∏ÇÔºö
                         </dt>
                         <dd>
-                            <select id="cus_province" name="cus_province" field_required="0" field_cname=" °∑›">
-                                <option value="0" selected="selected">--«Î—°‘Ò--</option>
+                            <select id="cus_province" name="cus_province" field_required="0" field_cname="ÁúÅ‰ªΩ">
+                                <option value="0" selected="selected">--ËØ∑ÈÄâÊã©--</option>
                             </select>
 
-                            <select id="cus_city" name="cus_city" field_required="0" field_cname="≥« –">
-                                <option value="0" selected="selected">--«Î—°‘Ò--</option>
+                            <select id="cus_city" name="cus_city" field_required="0" field_cname="ÂüéÂ∏Ç">
+                                <option value="0" selected="selected">--ËØ∑ÈÄâÊã©--</option>
                             </select>
-                            <select id="cus_region" name="cus_region" field_required="0" field_cname="≥« –">
-                                <option value="0" selected="selected">--«Î—°‘Ò--</option>
+                            <select id="cus_region" name="cus_region" field_required="0" field_cname="ÂüéÂ∏Ç">
+                                <option value="0" selected="selected">--ËØ∑ÈÄâÊã©--</option>
                             </select>
                         </dd>
                     </dl>
                     <dl>
                         <dt>
-                            <em class="imp">*</em>∞Ïπ´µÁª∞1£∫
+                            <em class="imp">*</em>ÂäûÂÖ¨ÁîµËØù1Ôºö
                         </dt>
                         <dd>
                             <input type="text" class="wid260 required mobileTelephome" name="cus_tel" id="cus_tel" />
                         </dd>
                         <dt>
-                            œÍœ∏µÿ÷∑£∫
+                            ËØ¶ÁªÜÂú∞ÂùÄÔºö
                         </dt>
                         <dd>
                             <input type="text" class="wid200" id="cus_address" name="cus_address" />
@@ -113,123 +88,123 @@
                     </dl>
                     <dl>
                         <dt>
-                            ±∏◊¢£∫
+                            Â§áÊ≥®Ôºö
                         </dt>
                         <dd>
                             <textarea class="wid515" id="cus_note" name="cus_note" cols="50" rows="2"></textarea>
                         </dd>
                     </dl>
 
-                    <!--øÕªß¿©’π◊÷∂Œø™ º-->
+                    <!--ÂÆ¢Êà∑Êâ©Â±ïÂ≠óÊÆµÂºÄÂßã-->
                     @foreach (var field in customerFields)
                     {
                         switch (field.ExpCtype)
                         {
-                            case "1": //∂ÃŒƒ±æøÚ
+                            case "1": //Áü≠ÊñáÊú¨Ê°Ü
                                 <dl>
                                     <dt>
                                         @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                        @field.ExpTitle£∫
+                                        @field.ExpTitleÔºö
                                     </dt>
                                     <dd>
                                         <input type="text" name="@field.ExpName" id="@field.ExpName" class="comm-tbox-1 " />
                                     </dd>
                                 </dl>
                                 break;
-                            case "2": //≥§Œƒ±æøÚ
-                            <dl>
-                                <dt>
-                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                    @field.ExpTitle£∫
-                                </dt>
-                                <dd>
-                                    <textarea class="comm-abox-1 " id="@field.ExpName" name="@field.ExpName" cols="50" rows="5"></textarea>
-                                </dd>
-                            </dl>
+                            case "2": //ÈïøÊñáÊú¨Ê°Ü
+                                <dl>
+                                    <dt>
+                                        @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
+                                        @field.ExpTitleÔºö
+                                    </dt>
+                                    <dd>
+                                        <textarea class="comm-abox-1 " id="@field.ExpName" name="@field.ExpName" cols="50" rows="5"></textarea>
+                                    </dd>
+                                </dl>
                                 break;
-                            case "3": //∂ÃŒƒ±æøÚ(¡¥Ω”)
-                            <dl>
-                                <dt>
-                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                    @field.ExpTitle£∫
-                                </dt>
-                                <dd>
-                                    <input type="text" id="@field.ExpName" name="@field.ExpName" class="" />
-                                </dd>
-                            </dl>
+                            case "3": //Áü≠ÊñáÊú¨Ê°Ü(ÈìæÊé•)
+                                <dl>
+                                    <dt>
+                                        @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
+                                        @field.ExpTitleÔºö
+                                    </dt>
+                                    <dd>
+                                        <input type="text" id="@field.ExpName" name="@field.ExpName" class="" />
+                                    </dd>
+                                </dl>
                                 break;
-                            case "4": //∂ÃŒƒ±æøÚ(ƒÍ¡‰)
-                            <dl>
-                                <dt>
-                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                    @field.ExpTitle£∫
-                                </dt>
-                                <dd>
-                                    <input type="text" id="@field.ExpName" class="comm-tbox-1 " name="@field.ExpName" />
-                                </dd>
-                            </dl>
+                            case "4": //Áü≠ÊñáÊú¨Ê°Ü(Âπ¥ÈæÑ)
+                                <dl>
+                                    <dt>
+                                        @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
+                                        @field.ExpTitleÔºö
+                                    </dt>
+                                    <dd>
+                                        <input type="text" id="@field.ExpName" class="comm-tbox-1 " name="@field.ExpName" />
+                                    </dd>
+                                </dl>
                                 break;
-                            case "5": //œ¬¿≠øÚ
-                            <dl>
-                                <dt>
-                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                    @field.ExpTitle£∫
-                                </dt>
-                                <dd>
-                                    <select id="@field.ExpName" name="@field.ExpName" class="">
-                                        <option selected="selected" value="">--«Î—°‘Ò--</option>
-                                        @Html.StringToOptions(field.ExpOption)
-                                    </select>
-                                </dd>
-                            </dl>
+                            case "5": //‰∏ãÊãâÊ°Ü
+                                <dl>
+                                    <dt>
+                                        @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
+                                        @field.ExpTitleÔºö
+                                    </dt>
+                                    <dd>
+                                        <select id="@field.ExpName" name="@field.ExpName" class="">
+                                            <option selected="selected" value="">--ËØ∑ÈÄâÊã©--</option>
+                                            @Html.StringToOptions(field.ExpOption)
+                                        </select>
+                                    </dd>
+                                </dl>
                                 break;
-                            case "6": //∏¥—°øÚ
-                            <dl>
-                                <dt>
-                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                    @field.ExpTitle£∫
-                                </dt>
-                                <dd>
-                                    @Html.StringToCheckboxList(field.ExpOption, field.ExpName, field.ExpName, field.ExpTitle, field.ExpIsNull)
-                                </dd>
-                            </dl>
+                            case "6": //Â§çÈÄâÊ°Ü
+                                <dl>
+                                    <dt>
+                                        @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
+                                        @field.ExpTitleÔºö
+                                    </dt>
+                                    <dd>
+                                        @Html.StringToCheckboxList(field.ExpOption, field.ExpName, field.ExpName, field.ExpTitle, field.ExpIsNull)
+                                    </dd>
+                                </dl>
                                 break;
-                            case "7": //∏Ωº˛…œ¥´
-                            <dl>
-                                <dt>
-                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                    @field.ExpTitle£∫
-                                </dt>
-                                <dd>
-                                    <div class="box">
-                                        <input type="text" name="copyFile" class="textbox" />
-                                        <a href="javascript:void(0);" class="link">‰Ø¿¿</a>
-                                        <input type="file" class="uploadFile" name="upload" onChange=" getFile(this, 'copyFile') " />
-                                    </div>
-                                </dd>
-                            </dl>
+                            case "7": //ÈôÑ‰ª∂‰∏ä‰º†
+                                <dl>
+                                    <dt>
+                                        @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
+                                        @field.ExpTitleÔºö
+                                    </dt>
+                                    <dd>
+                                        <div class="box">
+                                            <input type="text" name="copyFile" class="textbox" />
+                                            <a href="javascript:void(0);" class="link">ÊµèËßà</a>
+                                            <input type="file" class="uploadFile" name="upload" onChange=" getFile(this, 'copyFile') " />
+                                        </div>
+                                    </dd>
+                                </dl>
                                 break;
-                            case "8": // ±º‰»’∆⁄
-                            <dl>
-                                <dt>
-                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                    @field.ExpTitle£∫
-                                </dt>
-                                <dd>
-                                    <input type="text" id="@field.ExpName" name="@field.ExpName" class="Wdate " style="width: 90px;" onClick=" WdatePicker({ dateFmt: 'yyyy-MM-dd' }) " />
-                                </dd>
-                            </dl>
+                            case "8": //Êó∂Èó¥Êó•Êúü
+                                <dl>
+                                    <dt>
+                                        @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
+                                        @field.ExpTitleÔºö
+                                    </dt>
+                                    <dd>
+                                        <input type="text" id="@field.ExpName" name="@field.ExpName" class="Wdate " style="width: 90px;" onClick=" WdatePicker({ dateFmt: 'yyyy-MM-dd' }) " />
+                                    </dd>
+                                </dl>
                                 break;
-                            case "9": //∏¥—°øÚ
-                            <dl>
-                                <dt>
-                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                    @field.ExpTitle£∫
-                                </dt>
-                                <dd>
-                                    @Html.StringToCheckboxList(field.ExpOption, field.ExpName, field.ExpName, field.ExpTitle, field.ExpIsNull)
-                                </dd>
-                            </dl>
+                            case "9": //Â§çÈÄâÊ°Ü
+                                <dl>
+                                    <dt>
+                                        @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
+                                        @field.ExpTitleÔºö
+                                    </dt>
+                                    <dd>
+                                        @Html.StringToCheckboxList(field.ExpOption, field.ExpName, field.ExpName, field.ExpTitle, field.ExpIsNull)
+                                    </dd>
+                                </dl>
                                 break;
                             default:
                                 break;
@@ -239,39 +214,39 @@
                 <div class="tab-pane" id="contact-info">
 
                     <dl>
-                        <dt>  <em class="imp">*</em>¡™œµ»À√˚≥∆£∫</dt>
+                        <dt>  <em class="imp">*</em>ËÅîÁ≥ª‰∫∫ÂêçÁß∞Ôºö</dt>
                         <dd>
                             <input type="text" name="con_name" id="con_name" class="required" />
                         </dd>
-                        <dt>µÁª∞/ ÷ª˙£∫</dt>
+                        <dt>ÁîµËØù/ÊâãÊú∫Ôºö</dt>
                         <dd>
                             <input type="text" name="con_tel" id="con_tel" class="number" />
                         </dd>
                     </dl>
                     <dl>
-                        <dt>Q&nbsp;&nbsp;Q£∫</dt>
+                        <dt>Q&nbsp;&nbsp;QÔºö</dt>
                         <dd>
                             <input type="text" name="con_qq" id="con_qq" class="number" />
                         </dd>
-                        <dt>” œ‰£∫</dt>
+                        <dt>ÈÇÆÁÆ±Ôºö</dt>
                         <dd>
                             <input type="text" name="con_email" id="con_email" class="email" />
                         </dd>
                     </dl>
                     <dl>
-                        <dt>≥ˆ…˙ƒÍ‘¬£∫</dt>
+                        <dt>Âá∫ÁîüÂπ¥ÊúàÔºö</dt>
                         <dd>
                             <input type="text" name="con_bir" id="con_bir" class="Wdate dateISO" onClick=" WdatePicker({ dateFmt: 'yyyy-MM-dd' }) " />
                         </dd>
                     </dl>
                     <dl>
-                        <dt>±∏◊¢£∫</dt>
+                        <dt>Â§áÊ≥®Ôºö</dt>
                         <dd>
                             <textarea class="comm-abox-1" rows="5" cols="50" name="con_note" id="con_note"></textarea>
                         </dd>
                     </dl>
 
-                    <!--¡™œµ»À¿©’π◊÷∂Œø™ º-->
+                    <!--ËÅîÁ≥ª‰∫∫Êâ©Â±ïÂ≠óÊÆµÂºÄÂßã-->
                     @foreach (var field in contactFields)
                     {
                         switch (field.ExpCtype)
@@ -280,7 +255,7 @@
                                 <dl>
                                     <dt>
                                         @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                        @field.ExpTitle£∫
+                                        @field.ExpTitleÔºö
                                     </dt>
                                     <dt>
                                         <textarea class="comm-abox-1 " id="@field.ExpName" name="@field.ExpName" cols="50" rows="5"></textarea>
@@ -292,13 +267,6 @@
                 </div>
             </div>
 
-
-
-            <div class="btn-bar">
-                <a id="save_button" href="javascript:void(0);" class="btn-white-1" onClick=" save_add() "><b>ÃÌº”</b></a>
-
-                <a id="cancel_add"  href="javascript:void(0);" class="btn-white-1" onClick=" cancel_add(); "><b>»°œ˚</b></a>
-            </div>
         </form>
     </div>
 </body>

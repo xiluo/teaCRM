@@ -1,3 +1,4 @@
+锘緻using System.Web.Optimization
 @model dynamic
 
 @{
@@ -5,10 +6,22 @@
 }
 
 @section seo {
-    <title>工作台_C+企业云平台_打造中国办公软件第一品牌</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>宸ヤ綔鍙癬C+浼佷笟浜戝钩鍙癬鎵撻�犱腑鍥藉姙鍏蒋浠剁涓�鍝佺墝</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 }
-@section head {}
-<div id="content" style="background:url(/Themes/default/base/images/develop.png) no-repeat white;position:absolute; width:100%; ">    
-  <h1 style="margin: 200px;text-align: center;color: white;">这里是工作台。功能正在添加中...</h1>
+@section head {
+    @Styles.Render("~/Themes/default/css/cp.globle.min5.css")
+    @Scripts.Render("~/Themes/default/js/cp.globle.min5.js")
+
+
+}
+<div id="content" style="background: url(/Themes/default/base/images/develop.png) no-repeat white; position: absolute; width: 100%;">    
+    <h1 style="margin: 200px; text-align: center; color: white;">杩欓噷鏄伐浣滃彴銆傚姛鑳芥鍦ㄦ坊鍔犱腑...</h1>
 </div>    
+
+
+
+@section script
+{
+    
+}

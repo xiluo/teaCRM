@@ -168,7 +168,11 @@ function load_form_data(id) {
 //=================================================================================
 //添加部门
 function add() {
-    var url = "/Apps/Settings/Department/Add/";
+    var node = zTree.getSelectedNodes();
+    var id = node[0].id;
+    var name = node[0].name;
+    console.log(node);
+    var url = "/Apps/Settings/Department/Add/"+id+"/?name="+encodeURI(name);
     showWindow("show_add", url, "添加部门", 800, 480, function() {
         var form_department = $(window.frames["frm_show_add"].document).find("#form_department");
         var flag = document.getElementById("frm_show_add").contentWindow.form_valid();
@@ -195,14 +199,15 @@ function add() {
                 var status = result.Status;
                 if (status == true || status == "true" || status == "True") {
                     //刷新数据
-                    zTree.reAsyncChildNodes(null, "refresh");
-                    showMsg("部门添加成功！");
+                    //zTree.reAsyncChildNodes(null, "refresh");
+                    refresh();
+                    showMsg("部门添加成功！","Success");
                 } else {
-                    showMsg("系统异常，部门添加失败！");
+                    showMsg("系统异常，部门添加失败！","Error");
                 }
             },
             error: function() {
-                showMsg("网络连接错误");
+                showMsg("网络连接错误","Error");
             }
         });
 
@@ -241,15 +246,15 @@ function edit() {
                 var status = result.Status;
                 if (status == true || status == "true" || status == "True") {
                     //刷新数据
-                     zTree.reAsyncChildNodes(null, "refresh");
-                    showMsg("部门修改成功！");
+                    zTree.reAsyncChildNodes(null, "refresh");
+                    load_form_data(id);
+                    showMsg("部门修改成功！","Success");
                 } else {
-                    //dialog.list['show_add'].close();
-                    showMsg("系统异常，部门修改失败！");
+                    showMsg("系统异常，部门修改失败！","Error");
                 }
             },
             error: function () {
-                showMsg("网络连接错误");
+                showMsg("网络连接错误","Error");
             }
         });
 
@@ -287,14 +292,15 @@ function del() {
                     var status = result.Status;
                     if (status == true || status == "true" || status == "True") {
                         //刷新数据
-                        zTree.reAsyncChildNodes(null, "refresh");
-                        showMsg("部门删除成功！");
+                        //zTree.reAsyncChildNodes(null, "refresh");
+                        refresh();
+                        showMsg("部门删除成功！","Success");
                     } else {
-                        showMsg("该部门存在子部门，请先删除子部门！");
+                        showMsg("该部门存在子部门，请先删除子部门！","Error");
                     }
                 },
                 error: function () {
-                    showMsg("网络连接错误");
+                    showMsg("网络连接错误","Error");
                 }
             });
 

@@ -32,6 +32,7 @@ namespace teaCRM.Service.Impl
         /// 注入账户Dao接口 2014-08-26 14:58:50 By 唐有炜
         /// </summary>
         public ITSysUserDao SysUserDao { set; get; }
+
         // ITSysCompanyDao SysCompanyDao { set; get; }
 
         public IVCompanyUserDao CompanyUserDao { set; get; }
@@ -144,9 +145,11 @@ namespace teaCRM.Service.Impl
                     string userLName = userComp[0];
                     string compNum = userComp[1];
 
-                    bool userExists = CompanyUserDao.ExistsEntity(u => u.UserLname == userLName);
-                    bool compExists = CompanyUserDao.ExistsEntity(c => c.CompNum == compNum);
-                    if (userExists && compExists)
+//                    bool userExists = CompanyUserDao.ExistsEntity(u => u.UserLname == userLName);
+//                    bool compExists = CompanyUserDao.ExistsEntity(c => c.CompNum == compNum);
+                    bool userExists = CompanyUserDao.ExistsViewEntity(u => u.UserLname == userLName && u.CompNum == compNum);
+                    // if (userExists && compExists)
+                    if (userExists)
                     {
                         return true;
                     }
@@ -156,7 +159,7 @@ namespace teaCRM.Service.Impl
                     }
                     break;
                 case "email":
-                    bool emailExists = CompanyUserDao.ExistsEntity(u => u.UserEmail == userName);
+                    bool emailExists = CompanyUserDao.ExistsViewEntity(u => u.UserEmail == userName);
                     if (emailExists)
                     {
                         return true;
@@ -167,7 +170,7 @@ namespace teaCRM.Service.Impl
                     }
                     break;
                 case "phone":
-                    bool phoneExists = CompanyUserDao.ExistsEntity(u => u.UserPhone == userName);
+                    bool phoneExists = CompanyUserDao.ExistsViewEntity(u => u.UserPhone == userName);
                     if (phoneExists)
                     {
                         return true;
@@ -213,7 +216,7 @@ namespace teaCRM.Service.Impl
                     string compNum = userComp[1];
 
                     passwordExists =
-                        CompanyUserDao.ExistsEntity(
+                        CompanyUserDao.ExistsViewEntity(
                             cu => cu.UserLname == userLName && cu.CompNum == compNum && cu.UserPassword == userPassword);
                     if (passwordExists)
                     {
@@ -226,7 +229,7 @@ namespace teaCRM.Service.Impl
                     break;
                 case "email":
                     passwordExists =
-                        CompanyUserDao.ExistsEntity(
+                        CompanyUserDao.ExistsViewEntity(
                             cu => cu.UserEmail == userName && cu.UserPassword == userPassword);
                     if (passwordExists)
                     {
@@ -239,7 +242,7 @@ namespace teaCRM.Service.Impl
                     break;
                 case "phone":
                     passwordExists =
-                        CompanyUserDao.ExistsEntity(
+                        CompanyUserDao.ExistsViewEntity(
                             cu => cu.UserPhone == userName && cu.UserPassword == userPassword);
                     if (passwordExists)
                     {
@@ -312,15 +315,15 @@ namespace teaCRM.Service.Impl
                     }
                     string userLName = userComp[0];
                     string compNum = userComp[1];
-                    model = CompanyUserDao.GetEntity(cu => cu.UserLname == userLName && cu.CompNum == compNum);
+                    model = CompanyUserDao.GetViewEntity(cu => cu.UserLname == userLName && cu.CompNum == compNum);
                     return model;
                     break;
                 case "email":
-                    model = CompanyUserDao.GetEntity(cu => cu.UserEmail == userName);
+                    model = CompanyUserDao.GetViewEntity(cu => cu.UserEmail == userName);
                     return model;
                     break;
                 case "phone":
-                    model = CompanyUserDao.GetEntity(cu => cu.UserPhone == userName);
+                    model = CompanyUserDao.GetViewEntity(cu => cu.UserPhone == userName);
                     return model;
                     break;
                 default:
@@ -548,7 +551,7 @@ namespace teaCRM.Service.Impl
         /// <returns>ResponseMessage</returns>
         public VCompanyUser GetCurrentCompanyUser(int userId)
         {
-            var model = CompanyUserDao.GetEntity(cu => cu.UserId == userId);
+            var model = CompanyUserDao.GetViewEntity(cu => cu.UserId == userId);
             return model;
         }
 

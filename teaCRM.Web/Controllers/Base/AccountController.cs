@@ -73,7 +73,11 @@ namespace teaCRM.Web.Controllers
         [AutoLogin]
         public ActionResult Login()
         {
-            LogHelper.Info("登录页面被打开。");
+
+
+
+
+//            LogHelper.Info("登录页面被打开。");
             return View();
         }
 

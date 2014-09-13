@@ -1,7 +1,7 @@
 teaCRM
 ======
 
-我开发的灵活、高效、强大的CRM系统。使用Spring .NET、ASP .NET MVC、ELinq作为基本项目架构，同时使用Unit Test单元测试、Log4Net日志记录、MySql作为数据库、T4模板代码自动生成，适合大型企业多用户、高并发、高性能、基于云平台。
+我开发的灵活、高效、强大的CRM系统。使用Spring .NET、ASP .NET MVC、ELinq作为基本项目架构，同时使用Unit Test单元测试、Glimpse作为性能测试、Log4Net日志记录、MySql作为数据库、T4模板代码自动生成，Bootstrape作为前端框架，适合大型企业多用户、高并发、高性能、基于云平台。
 
 版本信息
 -------
@@ -23,6 +23,10 @@ teaCRM
 
 更新历史
 =======
+2014-09-10
+----------
+>1、部门全部完成   
+
 2014-09-06
 ----------
 >1、树形列表更换为ZTree   
@@ -91,6 +95,8 @@ teaCRM
 >3
 注意：生成完毕后，必须执行\teaCRM\teaCRM.Tools\bin\Debug下面的teaCRM.Tools.exe，否则无法使用MVC动态Model，详情：见参考资料11
 ====================================================================================================
+>4、要使用压缩必须修改     
+  ` <compilation debug="false" targetFramework="4.0" /> `
 
 参考资料
 =======
@@ -119,6 +125,8 @@ http://stackoverflow.com/questions/14896205/validator-validator-methodsmethod-is
 >11、http://weblogs.asp.net/scottgu/dynamic-linq-part-1-using-the-linq-dynamic-query-library   
 >12、Mono.Cecil 解决视图动态Model
 http://blog.zhaojie.me/2011/09/aspnet-mvc-dynamic-model-mono-cecil.html     
+>13、LinqKit    
+http://www.albahari.com/nutshell/linqkit.aspx   
 
 
 

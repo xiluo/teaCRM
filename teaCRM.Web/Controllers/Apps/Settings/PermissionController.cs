@@ -12,8 +12,8 @@ namespace teaCRM.Web.Controllers.Apps.Settings
         #region 功能权限管理 2014-09-07 14:58:50 By 唐有炜
 
         //
-        // GET: /Apps/Settings/Permission/Function/
-        public ActionResult Function(FormCollection fc,int id)
+        // GET: /Apps/Settings/Permission/Index/
+        public ActionResult Index(FormCollection fc,int? id)
         {
             if (fc.Count == 0) //默认返回页面
             {
@@ -28,24 +28,7 @@ namespace teaCRM.Web.Controllers.Apps.Settings
 
         #endregion
 
-        #region 数据权限管理 2014-09-07 14:58:50 By 唐有炜
-
-        //
-        // GET: /Apps/Settings/Permission/Data/
-        public ActionResult Data(FormCollection fc, int id)
-        {
-            if (fc.Count == 0) //默认返回页面
-            {
-                return View("DataPermission");
-            }
-            else //数据修改
-            {
-                ResponseMessage rmsg = new ResponseMessage();
-                return Json(rmsg);
-            }
-        }
-
-        #endregion
+      
 
     }
 }
