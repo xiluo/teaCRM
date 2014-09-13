@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Glimpse</id>
+    <version>1.8.6</version>
+    <title>Glimpse Core</title>
+    <authors>nmolnar,  avanderhoorn</authors>
+    <owners>nmolnar,  avanderhoorn</owners>
+    <licenseUrl>http://www.opensource.org/licenses/apache2.0</licenseUrl>
+    <projectUrl>http://getglimpse.com/</projectUrl>
+    <iconUrl>http://getglimpse.com/content/glimpse100.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Glimpse is a web debugging and diagnostics tool used to gain a better understanding of whats happening inside of your ASP.NET 4.0 application. For ASP.NET MVC3 support, please NuGet Glimpse.MVC3.</description>
+    <summary>ASP.NET 4.5 web debugging and diagnostics tool.</summary>
+    <releaseNotes>Featherweight release for Core:
+ - Add button which makes it easy to launch glimpse for service only sites
+ - Improve how client renders for thoses using Zurb Foundation</releaseNotes>
+    <tags>ASP.NET Web WebForms Glimpse diagnostics performance profiling timing</tags>
+  </metadata>
+</package>
