@@ -29,3 +29,9 @@ _ReSharper*/
 Thumbs.db
 #Ignore files build by Visual Studio
 [Tt]est[Rr]esult*
+/teaCRM.Setup
+/teaCRM.DB
+/teaCRM.Console
+/teaCRM.Client
+/teaCRM.T4
+/teaCRM.Web.Test
