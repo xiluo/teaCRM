@@ -26,6 +26,7 @@
 .bootgrid-header .actionBar,
 .bootgrid-footer .infoBar {
   text-align: right;
+  padding:0;
 }
 .bootgrid-header .actionBar .btn-group > .btn-group .dropdown-menu,
 .bootgrid-footer .infoBar .btn-group > .btn-group .dropdown-menu {

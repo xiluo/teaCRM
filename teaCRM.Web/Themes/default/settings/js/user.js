@@ -2,6 +2,7 @@
 //*作者：唐有炜
 //*时间：2014年07月231日
 //全局变量
+var grid;
 
 $(document).ready(function() {
     //创建树形
@@ -9,7 +10,7 @@ $(document).ready(function() {
 });
 
 $(function() {
-    InitGrid()
+    InitGrid();
 });
 
 
@@ -83,41 +84,46 @@ function createTree(treeId) {
 
 function InitGrid() {
 
-        $("#grid-data").bootgrid({
-            ajax: true,
-            post: function () {
-                /* To accumulate custom parameter with the request object */
-                return {
-                    compNum: "1000"
-                };
-            },
-            url: "/api/settings/role/getAllRoles",
-            selection: true,
-            multiSelect: true,
-            rowCount: [5, 10, 20],
-            formatters: {
-                "RoleType": function (column, row) {
-                    if (row.RoleType == 0) {
-                        return "超级管理员";
-                    } else if (row.RoleIssys == 1) {
-                        return "系统管理员";
-                    } else {
-                        return "普通员工";
-                    }
-    
-                },
-                "RoleIsSys": function (column, row) {
-                    if (row.RoleIsSys == 0) {
-                        return "否";
-                    } else {
-                        return "是";
-                    }
-    
-                },
-                "commands": function (column, row) {
-                    return "<button type=\"button\" class=\"btn btn-xs btn-default command-edit\" onclick=edit(" + row.Id + ")><span class=\"fa fa-pencil\"></span>修改</button> " +
-                        "<button type=\"button\" class=\"btn btn-xs btn-default command-delete\" onclick=del(" + row.Id + ")><span class=\"fa fa-trash-o\"></span>删除</button>";
+    grid = $("#grid-data").bootgrid({
+        ajax: true,
+        post: function () {
+            /* To accumulate custom parameter with the request object */
+            return {
+                compNum: $("#CompNum").val()
+            };
+        },
+        url: "/api/settings/role/getAllRoles",
+        selection: true,
+        multiSelect: true,
+        rowCount: [10, 30, 50],
+        templates: {
+            header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}}\"><div class=\"row\"><div class=\"col-sm-12 actionBar\"><div class=\"btn-group\" style=\"float:left;\"><button class=\"btn  btn-primary\" title=\"新增\" onclick=\" add(); \">新增</button><button class=\"btn  btn-primary\" title=\"批量删除\" onclick=\" del(); \">批量删除</button></div>" +
+                "<div class=\"search form-group\"><div class=\"input-group\"><span class=\"icon glyphicon input-group-addon glyphicon-search\"></span> <input type=\"text\" class=\"search-field form-control\" placeholder=\"输入关键字\"></div></div>" +
+                "<p class=\"{{css.actions}}\"></p></div></div></div>"
+        },
+        formatters: {
+            "RoleType": function (column, row) {
+                if (row.RoleType == 0) {
+                    return "超级管理员";
+                } else if (row.RoleIssys == 1) {
+                    return "系统管理员";
+                } else {
+                    return "普通员工";
                 }
+
+            },
+            "RoleIsSys": function (column, row) {
+                if (row.RoleIsSys == 0) {
+                    return "否";
+                } else {
+                    return "是";
+                }
+
+            },
+            "commands": function (column, row) {
+                return "<button type=\"button\" class=\"btn btn-xs btn-default command-edit\" onclick=edit(" + row.Id + ")><span class=\"fa fa-pencil\"></span>修改</button> " +
+                    "<button type=\"button\" class=\"btn btn-xs btn-default command-delete\" onclick=del(" + row.Id + ")><span class=\"fa fa-trash-o\"></span>删除</button>";
             }
-        });
+        }
+    });
 }

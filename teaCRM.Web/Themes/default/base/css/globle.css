@@ -10,10 +10,11 @@ a{text-decoration: none; color:#014C8C;}
 a:hover{color:#3091f2;text-decoration:underline;}
 body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, textarea, select, blockquote,td,th{margin: 0;padding: 0;font-family: "微软雅黑"; font-size:12px;}
 .clear{ clear:both;}
-.hide { display: none; }
+.hide { display: none !important;}
 .imp{ line-height:30px; color:#FF0000; margin-right:10px; font-style:normal;}
 .wid260{ width:260px;}
 .wid515{ width:515px;}
+.wid915{ width:915px;}
 .wid120{ width:120px;}
 .wid90{ width:90px;}
 .wid200{ width:200px;}

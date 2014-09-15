@@ -68,7 +68,7 @@ function changeTab() {
     if (url.indexOf("/Apps/CRM/") > 0) {
         //alert("customer");
         $("#head-nav-customer").addClass("selected");
-        $("#menu-customer").show();
+        $("#menu-customer").removeClass("hide").removeClass("hide").show();
         //二级分类选中===================================
         $(".nav2 li").removeClass("selected");
           if (url.indexOf("Index") > 0) {
@@ -84,30 +84,30 @@ function changeTab() {
           }
     } else if (url.indexOf("/Apps/Sale/") > 0) {
         $("#head-nav-more").addClass("selected");
-        $("#menu-sale").show();
+        $("#menu-sale").removeClass("hide").show();
     }
     else if ( url.indexOf("/Apps/Product/") > 0) {
         $("#head-nav-more").addClass("selected");
-        $("#menu-product").show();
+        $("#menu-product").removeClass("hide").show();
     }
     else if (url.indexOf("/Apps/Service/")>0) {
         $("#head-nav-more").addClass("selected");
-        $("#menu-service").show();
+        $("#menu-service").removeClass("hide").show();
     }
     else if (url.indexOf("/Apps/Settings/") > 0) {
         //alert("Department");
         $("#head-nav-settings").addClass("selected");
-        $("#menu-settings").show();
+        $("#menu-settings").removeClass("hide").removeClass("hide").show();
         //
     }  else if (url.indexOf("/Apps/") > 0) {
         //alert("index");
         $("#head-nav-app").addClass("selected");
-        $("#menu-app").show();
+        $("#menu-app").removeClass("hide").show();
     } else if (url.indexOf("/Workbench/") > 0) {
         $("#head-nav-workbench").addClass("selected");
-        $("#menu-workbench").show();
+        $("#menu-workbench").removeClass("hide").show();
     } else {
         $("#head-nav-workbench").addClass("selected");
-        $("#menu-workbench").show();
+        $("#menu-workbench").removeClass("hide").show();
     }
 }

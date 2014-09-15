@@ -65,10 +65,10 @@ width: 140px;
 
 .head-nav-header2 {
     width: 100%;
-    height: 22px;
+    height: 32px;
     border-bottom: 1px #edeaea solid;
-    padding: 5px 0px;
     background-color: #fff;
+    line-height: 32px;
 }
 
 .head-nav-header2 li {
@@ -82,7 +82,7 @@ width: 140px;
     font-size: 14px;
     color: #969393;
     padding: 0 15px;
-    line-height: 24px;
+    line-height:32px;
 	font-family:微软雅黑;
 }
 

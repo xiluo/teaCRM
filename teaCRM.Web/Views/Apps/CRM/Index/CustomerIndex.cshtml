@@ -1,9 +1,9 @@
 ﻿@using System.Web.Optimization
 @using UCsoft.Web
 @{
-    //�ͻ���չ�ֶ���Ϣ
+    //初始化客户扩展字段
     var customerFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.CustomerExpandFields;
-    //��ϵ����չ�ֶ���Ϣ
+    //初始化联系人扩展字段
     var contactFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.ContactExpandFields;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -54,12 +54,14 @@
    <!--客户js，由于动态读取，必须放在页面上-->
 
     <script type="text/javascript">
-<!--首次打开页面时对左侧分类进行高度设定-->
+<!--首次打开页面时对左侧分类进行高度设定-->
+
 	$(function (){
-	$(".layout-left").height($(window).height()-83);
+	$(".layout-left").height($(window).height()-100);
 	});
 
-        //初始化客户列表==============================================================
+        //初始化客户列表==============================================================
+
          var customer_url = "/Apps/CRM/LoadData/GetCustomerLsit/?&rnd=" + Math.random();
         function InitDataGrid() {
             initLayout();
@@ -101,22 +103,9 @@
                             } else {
                                 return "<a href=''>" + item.cus_name + "</a>";
                             }
-                        }
+                        }
+
                     },
-                    
-                    //{
-//                        display: '�ϼ��ͻ�',
-//                        name: 'cus_lastname',
-//                        width: 120,
-//                        align: 'center',
-//                        render: function(item) {
-//                            if (item.cus_lastid == 0) {
-//                                return "�����ϼ��ͻ�";
-//                            } else {
-//                                return "�����ϼ��ͻ�";
-//                            }
-//                        }
-//                    },
                     {
                         display: '办公电话', name: 'cus_tel', width: 120, align: 'left',
                         render: function (item) {
@@ -126,7 +115,8 @@
                                 return "<a href=''>" + item.cus_tel + "</a>";
                             }
                         }
-                    },
+                    },
+
                     {
                         display: '省市地址',
                         name: 'cus_city',
@@ -139,7 +129,8 @@
                                 var city_detail = get_city_by_ids(item.cus_city);
                                 return city_detail;
                             }
-                        }
+                        }
+
                     },
                     {
                         display: '详细地址',
@@ -152,7 +143,8 @@
                             } else {
                                 return item.cus_address;
                             }
-                        }
+                        }
+
                     },
                     { 
                         display: '主联系人',
@@ -216,7 +208,6 @@
                         {
                             render = @" render: function(item) {if (item." + customerField.ExpName + "=='') {return '暂未填写';} if (item." + customerField.ExpName + "=='0') {return '暂未填写';}if (item." + customerField.ExpName + "=='1') {return '暂未填写';} if (item." + customerField.ExpName + "=='2') {return '暂未填写';}if (item." + customerField.ExpName + "=='3') {return '暂未填写';}if (item." + customerField.ExpName + "=='4') {return '暂未填写';}if (item." + customerField.ExpName + "=='5') {return '暂未填写';}if (item." + customerField.ExpName + "=='6') {return '暂未填写';}else {return item." + customerField.ExpName + ";}}";
                         }
-
                         var culmonString = String.Format(" {{ display: '{0}', name: '{1}', width: 100,{2}}},", customerField.ExpTitle, customerField.ExpName, render);
                         @Html.Raw(culmonString)
                         ;
@@ -235,7 +226,8 @@
 //                        }
 //                    },
                     {
-                        display: '创建时间',
+                        display: '创建时间',
+
                         name: 'cus_createTime',
                         width: 100
                         //                ,render: function(item) {
@@ -271,9 +263,11 @@
                     return false;
                 },
                 onAfterShowData: function(grid) {
-                    $("tr[rowtype='已成交']").addClass("l-treeleve1").removeClass("l-grid-row-alt");
+                    $("tr[rowtype='已成交']").addClass("l-treeleve1").removeClass("l-grid-row-alt");
+
                     var nowTime = new Date();
-                    //showMsg('加载数据耗时：' + (nowTime - startTime));
+                    //showMsg('加载数据耗时：' + (nowTime - startTime));
+
                 },
                 onDblClickRow: function(data, rowindex, rowobj) {
                     view();
@@ -288,7 +282,8 @@
                         $(grid).css('margin', 3).ligerGrid({
                             columns: [
                                { display: '行号', width: 50, render: function (item, i) { return i + 1; } },
-                                { display: '联系人', name: 'con_name', width: 100 },
+                                { display: '联系人', name: 'con_name', width: 100 },
+
                                 {
                                     display: '电话/手机号码',
                                     name: 'con_tel',
@@ -299,7 +294,8 @@
                                         } else {
                                             return item.con_tel;
                                         }
-                                    }
+                                    }
+
                                 },
                                 {
                                     display: 'QQ号',
@@ -311,7 +307,8 @@
                                         } else {
                                             return item.con_qq;
                                         }
-                                    }
+                                    }
+
                                 },
                                 {
                                     display: '邮箱',
@@ -323,9 +320,11 @@
                                         } else {
                                             return item.con_email;
                                         }
-                                    }
+                                    }
+
                                 },
-                                 { display: '生日', name: 'con_bir', width: 80 },
+                                 { display: '生日', name: 'con_bir', width: 80 },
+
                                 @foreach (var contactField in contactFields)
                                 {
                                     var render = @" render: function(item) {if (item." + contactField.ExpName + "=='') {return '暂未填写';} else {return item." + contactField.ExpName + ";}}";
@@ -345,7 +344,8 @@
                                         } else {
                                             return item.con_note;
                                         }
-                                    }
+                                    }
+
                                 },
                                 {
                                     display: '是否主联系人',
@@ -357,9 +357,11 @@
                                         } else {
                                             return "是";
                                         }
-                                    }
+                                    }
+
                                 },
-                                 { display: '录入人', name: 'user_name', width: 80 }
+                                 { display: '录入人', name: 'user_name', width: 80 }
+
                             ],
 
                             usePager: false,
@@ -540,16 +542,7 @@
     <!--左侧筛选开始-->
     <div class="layout-left">
         <div class="l-top">
-
-            您当前已选择条件中搜索：<br />
-            <ul class="l-top-list">
-                <li><a href="#" rel="nofollow" title="意向客户"><strong>意向客户</strong></a></li>
-                <li><a href="#" rel="nofollow" title="30天未联系"><strong>集团客户</strong></a></li>
-            </ul>
-
-
-
-            <div class="r-list">
+            <div class="s-list">
                 <select class="xiala">
                     <option selected="selected">请选择</option>
                     <option selected="selected">客户名称</option>
@@ -559,7 +552,7 @@
                         <option>@customerField.ExpTitle</option>
                     }
                 </select>
-
+<div class="gaoji"> <a href="#" title="高级搜索">高级搜索</a></div>
                 <input name="txtKeywords" type="text" id="txtKeywords" class="keyword">
                 <a id="lbtnSearch" class="btn-search" href="javascript:__doPostBack('lbtnSearch','')">查询</a>
             </div>
@@ -569,7 +562,6 @@
             <h2>数据视图&工具<a href="#">管理</a><a href="#">复选</a></h2>
             <div id="nav-side" class="nav-side">
                 <div class="ns-item">
-
                     <ul id="filter_tree" class="ztree"></ul>
                 </div>
             </div>
@@ -600,6 +592,14 @@
                             <li><a class="shuxing" id="btnAudit" href="#"><i></i><span>属性</span></a></li>-->
                         </ul>
                     </div>
+					
+					<div class="r-list">
+            <ul class="l-top-list">
+			<li>当前显示结果：</li>
+                <li><a href="#" rel="nofollow" title="意向客户"><strong>意向客户</strong></a></li>
+                <li><a href="#" rel="nofollow" title="30天未联系"><strong>集团客户</strong></a></li>
+            </ul>
+					</div>
                 </div>
             </div>
 

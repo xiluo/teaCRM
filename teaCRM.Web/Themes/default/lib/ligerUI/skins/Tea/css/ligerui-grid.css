@@ -112,7 +112,7 @@
 .l-grid-row-cell-inner-fixedheight { height: 38px; }
 .l-panel-bar-backup { height: 32px; background: #C9DFFF url('../images/panel/bar-bg.gif') repeat-x left bottom; overflow: hidden; border-top: 1px solid #84A0C4; }
 
-.l-panel-bar { margin-left: 0; /*background: url(../image/flexigrid_blue/page-bg.gif) repeat-x;*/ background:ghostwhite; padding-top: 3px; border-bottom: 1px solid #ccc; border-top: 1px solid #ccc; overflow: hidden; white-space: nowrap; /*position: relative;*/ padding-left: 3px; padding:9px 3px;}
+.l-panel-bar { margin-left: 0; /*background: url(../image/flexigrid_blue/page-bg.gif) repeat-x;*/ background:ghostwhite; padding-top: 3px; border-bottom: 1px solid #ccc; border-top: 1px solid #ccc; overflow: hidden; white-space: nowrap; /*position: relative;*/ padding-left: 3px; padding:6px 3px;}
 
 .l-panel-bbar-inner {  padding-left: -2px; width: 100%; }
 

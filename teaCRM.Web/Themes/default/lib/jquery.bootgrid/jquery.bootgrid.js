@@ -1,4 +1,4 @@
-/*! 
+﻿/*! 
  * jQuery Bootgrid v1.0.0 - 09/01/2014
  * Copyright (c) 2014 Rafael Staib (http://www.jquery-bootgrid.com)
  * Licensed under MIT http://www.opensource.org/licenses/MIT
@@ -974,11 +974,11 @@
         formatters: {},
         labels: {
             all: "All",
-            infos: "Showing {{ctx.start}} to {{ctx.end}} of {{ctx.total}} entries",
-            loading: "Loading...",
-            noResults: "No results found!",
-            refresh: "Refresh",
-            search: "Search"
+            infos: "当前显示： {{ctx.start}} 到 {{ctx.end}} 总计 {{ctx.total}}",
+            loading: "加载中...",
+            noResults: "对不起，没有任何记录!",
+            refresh: "刷新",
+            search: "请输入关键字"
         },
         templates: {
             actionButton: "<button class=\"btn btn-default\" type=\"button\" title=\"{{ctx.text}}\">{{ctx.content}}</button>",

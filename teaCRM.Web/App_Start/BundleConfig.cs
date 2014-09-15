@@ -13,7 +13,7 @@ namespace teaCRM.Web
             bundles.Add(new ScriptBundle("~/Themes/default/js/cp.globle.min1.js")
                 .Include(
                     "~/Themes/default/lib/jquery/jquery-1.*")
-                .Include("~/Themes/default/lib/bootstrap/js/bootstrap-2.3.2.min.js")
+                .Include("~/Themes/default/lib/bootstrap/js/bootstrap-3.2.0.min.js")
                 .Include("~/Themes/default/lib/cookie/jquery.cookie.js")
                 .Include("~/Themes/default/lib/artDialog/dist/dialog-plus-min.js")
                 .Include("~/Themes/default/lib/validate/jquery.validate.min.js")
@@ -24,7 +24,7 @@ namespace teaCRM.Web
 
             bundles.Add(
                 new StyleBundle("~/Themes/default/css/cp.globle.min1.css")
-                    .Include("~/Themes/default/lib/bootstrap/css/bootstrap-2.3.2.css")
+                       .Include("~/Themes/default/lib/bootstrap/css/bootstrap-3.2.0.css")
                     .Include("~/Themes/default/base/css/globle.css")
                     .Include("~/Themes/default/lib/artDialog/css/ui-dialog.css")
                     .Include("~/Themes/default/lib/poshytip/tip-yellow/tip-yellow.css")
@@ -37,7 +37,7 @@ namespace teaCRM.Web
             bundles.Add(new ScriptBundle("~/Themes/default/js/cp.globle.min2.js")
                 .Include(
                     "~/Themes/default/lib/jquery/jquery-1.*")
-                .Include("~/Themes/default/lib/bootstrap/js/bootstrap-2.3.2.min.js")
+                .Include("~/Themes/default/lib/bootstrap/js/bootstrap-3.2.0.js")
                 .Include("~/Themes/default/lib/cookie/jquery.cookie.js")
                 .Include("~/Themes/default/lib/artDialog/dist/dialog-plus-min.js")
                 .Include("~/Themes/default/lib/validate/jquery.validate.min.js")
@@ -52,7 +52,7 @@ namespace teaCRM.Web
 
             bundles.Add(
                 new StyleBundle("~/Themes/default/css/cp.globle.min2.css")
-                    .Include("~/Themes/default/lib/bootstrap/css/bootstrap-2.3.2.css")
+                    .Include("~/Themes/default/lib/bootstrap/css/bootstrap-3.2.0.css")
                     .Include("~/Themes/default/base/css/globle.css")
                     .Include("~/Themes/default/lib/artDialog/css/ui-dialog.css")
                     .Include("~/Themes/default/lib/poshytip/tip-yellow/tip-yellow.css")
@@ -126,8 +126,8 @@ namespace teaCRM.Web
             bundles.Add(new ScriptBundle("~/Themes/default/js/cp.globle.min6.js")
                 .Include(
                     "~/Themes/default/lib/jquery/jquery-1.*")
-                .Include("~/Themes/default/lib/bootstrap/js/bootstrap-2.3.2.min.js")
-                .Include("~/Themes/default/lib/jquery.bootgrid/jquery.bootgrid.min.js")
+                .Include("~/Themes/default/lib/bootstrap/js/bootstrap-3.2.0.min.js")
+                .Include("~/Themes/default/lib/jquery.bootgrid/jquery.bootgrid.js")
                 .Include("~/Themes/default/lib/cookie/jquery.cookie.js")
                 .Include("~/Themes/default/lib/artDialog/dist/dialog-plus-min.js")
                 .Include("~/Themes/default/lib/function.js")
@@ -135,7 +135,7 @@ namespace teaCRM.Web
 
             bundles.Add(
                 new StyleBundle("~/Themes/default/css/cp.globle.min6.css")
-                    .Include("~/Themes/default/lib/bootstrap/css/bootstrap-2.3.2.css")
+                    .Include("~/Themes/default/lib/bootstrap/css/bootstrap-3.2.0.css")
                     .Include("~/Themes/default/base/css/globle.css")
                     .Include("~/Themes/default/base/css/head.css")
                     .Include("~/Themes/default/base/css/foot.css")
@@ -149,7 +149,7 @@ namespace teaCRM.Web
 
 
 
-            #region jquery、bootstrap、jquery.cookie、artDialog、jquery.validate、jquery.poshytip、function、globle 类库7（适用于登陆、注册）
+            #region jquery、jquery.cookie、artDialog、jquery.validate、jquery.poshytip、function、globle 类库7（适用于登陆、注册）
 
             bundles.Add(new ScriptBundle("~/Themes/default/js/cp.globle.min7.js")
                 .Include(
@@ -184,8 +184,8 @@ namespace teaCRM.Web
             bundles.Add(new ScriptBundle("~/Themes/default/js/cp.globle.min8.js")
                 .Include(
                     "~/Themes/default/lib/jquery/jquery-1.*")
-                .Include("~/Themes/default/lib/bootstrap/js/bootstrap-2.3.2.min.js")
-                .Include("~/Themes/default/lib/jquery.bootgrid/jquery.bootgrid.min.js")
+                .Include("~/Themes/default/lib/bootstrap/js/bootstrap-3.2.0.min.js")
+                .Include("~/Themes/default/lib/jquery.bootgrid/jquery.bootgrid.js")
                 .Include("~/Themes/default/lib/cookie/jquery.cookie.js")
                 .Include("~/Themes/default/lib/artDialog/dist/dialog-plus-min.js")
                 .Include("~/Themes/default/lib/zTree/js/jquery.ztree.all-3.5.min.js")
@@ -197,7 +197,7 @@ namespace teaCRM.Web
 
             bundles.Add(
                 new StyleBundle("~/Themes/default/css/cp.globle.min8.css")
-                    .Include("~/Themes/default/lib/bootstrap/css/bootstrap-2.3.2.css")
+                    .Include("~/Themes/default/lib/bootstrap/css/bootstrap-3.2.0.css")
                     .Include("~/Themes/default/base/css/globle.css")
                     .Include("~/Themes/default/base/css/head.css")
                     .Include("~/Themes/default/base/css/foot.css")

@@ -16,9 +16,11 @@ $(function() {
         url: "/api/settings/role/getAllRoles",
         selection: true,
         multiSelect:true,
-        rowCount: [5, 10, 20],
+        rowCount: [10, 30, 50],
         templates: {
-            header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}}\"><div class=\"row\"><div class=\"col-sm-12 actionBar\"><p class=\"{{css.search}}\"></p><p class=\"{{css.actions}}\"></p></div></div></div>"
+            header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}}\"><div class=\"row\"><div class=\"col-sm-12 actionBar\"><div class=\"btn-group\" style=\"float:left;\"><button class=\"btn  btn-primary\" title=\"新增\" onclick=\" add(); \">新增</button><button class=\"btn  btn-primary\" title=\"批量删除\" onclick=\" del(); \">批量删除</button></div>" +
+                "<div class=\"search form-group\"><div class=\"input-group\"><span class=\"icon glyphicon input-group-addon glyphicon-search\"></span> <input type=\"text\" class=\"search-field form-control\" placeholder=\"输入关键字\"></div></div>" +
+                "<p class=\"{{css.actions}}\"></p></div></div></div>"
         },
         formatters: {
             "RoleType": function (column, row) {
@@ -78,7 +80,7 @@ function add() {
                  var status = result.Status;
                  if (status == true || status == "true" || status == "True") {
                      //刷新数据
-                     //$("#grid-data").reload();
+                     grid.bootgrid("reload");
                      showMsg("角色添加成功！", "Success");
                  } else {
                      showMsg("系统异常，角色添加失败！", "Error");
@@ -125,9 +127,9 @@ function edit(id) {
                 var status = result.Status;
                 if (status == true || status == "true" || status == "True") {
                     //刷新数据
-                    //$("#grid-data").reload();
+                    grid.bootgrid("reload");
                     console.log(grid);
-                    //grid.reload();
+                 
                     showMsg("角色修改成功！", "Success");
                 } else {
                     showMsg("系统异常，角色修改失败！", "Error");
@@ -167,7 +169,7 @@ function del(id) {
                 var status = result.Status;
                 if (status == true || status == "true" || status == "True") {
                     //刷新数据
-                    //$("#grid-data").reload();
+                    grid.bootgrid("reload");
                     showMsg("角色删除成功！", "Success");
                 } else {
                     showMsg("系统异常，角色删除失败！", "Error");

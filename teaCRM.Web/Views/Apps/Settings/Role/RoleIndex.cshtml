@@ -15,22 +15,12 @@
 @section head {
     @Styles.Render("~/Themes/default/css/cp.globle.min6.css")
 @Scripts.Render("~/Themes/default/js/cp.globle.min6.js")
-
-
-
-
     <script src="/Themes/default/settings/js/role.js"></script>
 }
 
-<div>
+<div style="margin: 0px 20px;">
     <!--当前公司id-->
     <input type="hidden" id="CompNum" name="CompNum" value="@Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM]" />
-    <div class="btn-group">
-        <button class="btn  btn-primary" title="新增" onclick=" add(); ">新增</button>
-    </div>
-   
-  
-				
     <table id="grid-data" class="table table-condensed table-hover table-striped table-bordered" data-selection="true" data-multi-select="true">
         <thead>
             <tr>

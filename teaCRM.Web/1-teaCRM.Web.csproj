@@ -200,12 +200,9 @@
     <Content Include="Themes\default\base\js\city.js" />
     <Content Include="Themes\default\lib\artDialog\lib\require.js" />
     <Content Include="Themes\default\lib\artDialog\lib\sea.js" />
-    <Content Include="Themes\default\lib\bootstrap\css\bootstrap-responsive-2.3.2.css" />
-    <Content Include="Themes\default\lib\bootstrap\css\bootstrap-2.3.2.css" />
-    <Content Include="Themes\default\lib\bootstrap\js\bootstrap-2.3.2.js" />
-    <Content Include="Themes\default\lib\bootstrap\js\bootstrap-2.3.2.min.js" />
-    <Content Include="Themes\default\lib\bootstrap\js\bootstrap.js" />
-    <Content Include="Themes\default\lib\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Themes\default\lib\bootstrap\css\bootstrap-3.2.0.css" />
+    <Content Include="Themes\default\lib\bootstrap\css\bootstrap-3.2.0.min.css" />
+    <Content Include="Themes\default\lib\bootstrap\js\bootstrap-3.2.0.min.js" />
     <Content Include="Themes\default\lib\bt-validate\bt-validate.js" />
     <Content Include="Themes\default\lib\jquery.bootgrid\jquery.bootgrid.css" />
     <Content Include="Themes\default\lib\jquery.bootgrid\jquery.bootgrid.js" />

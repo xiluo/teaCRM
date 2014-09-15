@@ -1,5 +1,6 @@
 ﻿@using System.Web.Optimization
 @using teaCRM.Common
+@using teaCRM.Entity
 @model dynamic
 
 @{
@@ -12,47 +13,10 @@
 @section head {
     
     @Styles.Render("~/Themes/default/css/cp.globle.min8.css")
-@Scripts.Render("~/Themes/default/js/cp.globle.min8.js")
+    @Scripts.Render("~/Themes/default/js/cp.globle.min8.js")
     
 
     <style type="text/css">
-        @@charset "utf-8";
-
-        body, div, dl, dt, dd, ul, ol, li, form, input, textarea, select, p, h1, h2, h3, h4, h5, h6 {
-            padding: 0;
-            margin: 0;
-        }
-
-        body, button, input, select, textarea {
-            font: 12px/1.5 "微软雅黑", Tahoma, Arial, "宋体";
-        }
-
-        img {
-            border: none;
-        }
-
-        ul, ol {
-            list-style: none;
-        }
-
-        i, em {
-            font-style: normal;
-        }
-
-        a, label, button {
-            outline: none;
-            hide-focus: expression(this.hideFocus=true);
-        }
-
-        a {
-            color: #685dd6;
-            text-decoration: none;
-        }
-
-        body {
-            background: #ECEDF3;
-        }
-
         .layout-left {
             display: inline;
             float: left;
@@ -84,7 +48,7 @@
 
 
 
-        /**组织架构左侧及右侧详细页面部分----------------------------------------------------------------------------------------------**/
+        /**左侧**/
 
         .nav-side .ns-item {
             background: #f3f8fc;
@@ -102,36 +66,35 @@
             margin-bottom: 10px;
         }
 
-            .ns-item .c_left ul {
-                position: relative;
-                height: 38px;
-                z-index: 1;
-            }
+        .ns-item .c_left ul {
+            position: relative;
+            height: 38px;
+            z-index: 1;
+        }
 
-                .ns-item .c_left ul li {
-                    width: 92px;
-                    height: 38px;
-                    font-size: 15px;
-                    font-weight: 700;
-                    line-height: 36px;
-                    z-index: 1;
-                    cursor: pointer;
-                    display: inline-block;
-                }
+        .ns-item .c_left ul li {
+            width: 92px;
+            height: 38px;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 36px;
+            z-index: 1;
+            cursor: pointer;
+            display: inline-block;
+        }
 
-                    .ns-item .c_left ul li .oz0 {
-                        margin-left: 30px;
-                        text-shadow: white 0 1px 0;
-                        color: #3C6692;
-                    }
+        .ns-item .c_left ul li .oz0 {
+            margin-left: 30px;
+            text-shadow: white 0 1px 0;
+            color: #3C6692;
+        }
 
-                    .ns-item .c_left ul li a:hover {
-                        color: #000;
-                    }
+        .ns-item .c_left ul li a:hover { color: #000; }
     </style>
     <script type="text/javascript">
+    
     </script>
-<script src="/Themes/default/settings/js/user.js"></script>
+    <script src="/Themes/default/settings/js/user.js"></script>
 }
 
 <div>
@@ -151,31 +114,38 @@
         <div class="layout-content">
 
 
-
-            <div class="btn-group">
-                <button class="btn  btn-primary" title="新增" onclick=" add(); ">新增</button>
+            <div style="margin: 0px 20px;">
+                <!--当前公司id-->
+                <input type="hidden" id="CompNum" name="CompNum" value="@Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM]" />
+                <table id="grid-data" class="table table-condensed table-hover table-striped table-bordered" data-selection="true" data-multi-select="true">
+                    <thead>
+                        <tr>
+                            <th data-column-id="RoleOrder" data-order="asc">登陆名称</th>
+                            <th data-column-id="RoleName" data-order="desc">显示名称</th>
+                            <th data-column-id="RoleType" data-formatter="RoleType" data-order="desc">密码</th>
+                            <th data-column-id="RoleDesc" data-order="desc">手机</th>
+                            <th data-column-id="RoleIssys" data-formatter="RoleIsSys" data-sortable="false">邮箱</th>
+                            <th data-column-id="RoleIssys" data-formatter="RoleIsSys" data-sortable="false">电话</th>
+                            <th data-column-id="RoleIssys" data-formatter="RoleIsSys" data-sortable="false">QQ</th>
+                            <th data-column-id="RoleIssys" data-formatter="RoleIsSys" data-sortable="false">所属部门</th>
+                            <th data-column-id="RoleIssys" data-formatter="RoleIsSys" data-sortable="false">角色</th>
+                            <th data-column-id="RoleIssys" data-formatter="RoleIsSys" data-sortable="false">数据范围</th>
+                            <th data-column-id="RoleIssys" data-formatter="RoleIsSys" data-sortable="false">职位</th>
+                            <th data-column-id="RoleIssys" data-formatter="RoleIsSys" data-sortable="false">职位状态</th>
+                            <th data-column-id="RoleIssys" data-formatter="RoleIsSys" data-sortable="false">用户状态</th>
+                            <th data-column-id="Id" data-formatter="commands" data-sortable="false">操作</th>
+                        </tr>
+                    </thead>
+                </table>
             </div>
 
 
 
-            <table id="grid-data" class="table table-condensed table-hover table-striped table-bordered" data-selection="true" data-multi-select="true">
-                <thead>
-                    <tr>
-                        <th data-column-id="RoleOrder" data-order="asc">显示顺序</th>
-                        <th data-column-id="RoleName" data-order="desc">角色名称</th>
-                        <th data-column-id="RoleType" data-formatter="RoleType" data-order="desc">角色类型</th>
-                        <th data-column-id="RoleDesc" data-order="desc">角色描述</th>
-                        <th data-column-id="RoleIssys" data-formatter="RoleIsSys" data-sortable="false">是否内置</th>
-                        <th data-column-id="Id" data-formatter="commands" data-sortable="false">操作</th>
-                    </tr>
-                </thead>
-            </table>
         </div>
             
 
-        </div>
     </div>
-    <!-- 右侧结束 -->
+    <!--右侧结束-->
 </div>
 
 @section script
