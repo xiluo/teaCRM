@@ -86,6 +86,9 @@
     <Compile Include="Daos\Impl\TFunAppDaoImpl.cs">
       <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
     </Compile>
+    <Compile Include="Daos\Impl\TFunAppMyappDaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
     <Compile Include="Daos\Impl\TFunExpandDaoImpl.cs">
       <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
     </Compile>
@@ -119,6 +122,9 @@
     <Compile Include="Daos\Impl\TSysUserDaoImpl.cs">
       <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
     </Compile>
+    <Compile Include="Daos\Impl\VAppMyappDaoImpl.cs">
+      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
+    </Compile>
     <Compile Include="Daos\Impl\VCompanyUserDaoImpl.cs">
       <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
     </Compile>
@@ -148,6 +154,9 @@
       <DependentUpon>teaCRMIDao.tt</DependentUpon>
     </Compile>
     <Compile Include="Daos\ITFunAppDao.cs">
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Daos\ITFunAppMyappDao.cs">
       <DependentUpon>teaCRMIDao.tt</DependentUpon>
     </Compile>
     <Compile Include="Daos\ITFunExpandDao.cs">
@@ -190,6 +199,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>teaCRMIDao.tt</DependentUpon>
     </Compile>
+    <Compile Include="Daos\VAppMyapp.cs">
+      <DependentUpon>teaCRMIDao.tt</DependentUpon>
+    </Compile>
     <Compile Include="Daos\VCompanyUser.cs">
       <DependentUpon>teaCRMIDao.tt</DependentUpon>
     </Compile>
@@ -226,6 +238,9 @@
     <Compile Include="Entities\TFunApp.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\TFunAppMyapp.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\TFunExpand.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
@@ -257,6 +272,9 @@
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\TSysUser.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\VAppMyapp.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\VCompanyUser.cs">

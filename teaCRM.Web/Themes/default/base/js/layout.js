@@ -103,11 +103,11 @@ function changeTab() {
         //alert("index");
         $("#head-nav-app").addClass("selected");
         $("#menu-app").removeClass("hide").show();
-    } else if (url.indexOf("/Workbench/") > 0) {
-        $("#head-nav-workbench").addClass("selected");
-        $("#menu-workbench").removeClass("hide").show();
+    } else if (url.indexOf("/Desktop/") > 0) {
+        $("#head-nav-desktop").addClass("selected");
+        $("#menu-desktop").removeClass("hide").show();
     } else {
-        $("#head-nav-workbench").addClass("selected");
-        $("#menu-workbench").removeClass("hide").show();
+        $("#head-nav-desktop").addClass("selected");
+        $("#menu-desktop").removeClass("hide").show();
     }
 }

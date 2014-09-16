@@ -1,0 +1,1323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="teaCRMModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="teaCRMModelStoreContainer">
+          <EntitySet Name="T_cus_base" EntityType="teaCRMModel.Store.T_cus_base" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_cus_con" EntityType="teaCRMModel.Store.T_cus_con" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="t_cus_expvalue_10000" EntityType="teaCRMModel.Store.t_cus_expvalue_10000" store:Type="Tables" store:Schema="dbo" store:Name="t_cus_expvalue_10000">
+            <DefiningQuery>SELECT 
+      [t_cus_expvalue_10000].[cus_id] AS [cus_id], 
+      [t_cus_expvalue_10000].[exp_is_marry] AS [exp_is_marry], 
+      [t_cus_expvalue_10000].[exp_evaluate] AS [exp_evaluate], 
+      [t_cus_expvalue_10000].[exp_nation] AS [exp_nation], 
+      [t_cus_expvalue_10000].[exp_email] AS [exp_email], 
+      [t_cus_expvalue_10000].[exp_age] AS [exp_age]
+      FROM [dbo].[t_cus_expvalue_10000] AS [t_cus_expvalue_10000]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="t_cus_expvalue_99999" EntityType="teaCRMModel.Store.t_cus_expvalue_99999" store:Type="Tables" store:Schema="dbo" store:Name="t_cus_expvalue_99999">
+            <DefiningQuery>SELECT 
+      [t_cus_expvalue_99999].[cus_id] AS [cus_id], 
+      [t_cus_expvalue_99999].[exp_url] AS [exp_url], 
+      [t_cus_expvalue_99999].[exp_nimabi] AS [exp_nimabi], 
+      [t_cus_expvalue_99999].[exp_sex] AS [exp_sex], 
+      [t_cus_expvalue_99999].[exp_attach] AS [exp_attach], 
+      [t_cus_expvalue_99999].[exp_addtime] AS [exp_addtime]
+      FROM [dbo].[t_cus_expvalue_99999] AS [t_cus_expvalue_99999]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="T_cus_log" EntityType="teaCRMModel.Store.T_cus_log" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_fun_app" EntityType="teaCRMModel.Store.T_fun_app" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_fun_expand" EntityType="teaCRMModel.Store.T_fun_expand" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_fun_filters" EntityType="teaCRMModel.Store.T_fun_filters" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_fun_myapp" EntityType="teaCRMModel.Store.T_fun_myapp" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_fun_operating" EntityType="teaCRMModel.Store.T_fun_operating" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_fun_tags" EntityType="teaCRMModel.Store.T_fun_tags" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_sys_company" EntityType="teaCRMModel.Store.T_sys_company" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_sys_department" EntityType="teaCRMModel.Store.T_sys_department" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_sys_log" EntityType="teaCRMModel.Store.T_sys_log" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_sys_power" EntityType="teaCRMModel.Store.T_sys_power" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_sys_role" EntityType="teaCRMModel.Store.T_sys_role" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_sys_user" EntityType="teaCRMModel.Store.T_sys_user" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="V_company_user" EntityType="teaCRMModel.Store.V_company_user" store:Type="Views" store:Schema="dbo" store:Name="V_company_user">
+            <DefiningQuery>SELECT 
+      [V_company_user].[user_id] AS [user_id], 
+      [V_company_user].[comp_id] AS [comp_id], 
+      [V_company_user].[comp_num] AS [comp_num], 
+      [V_company_user].[user_lname] AS [user_lname], 
+      [V_company_user].[user_password] AS [user_password], 
+      [V_company_user].[user_tname] AS [user_tname], 
+      [V_company_user].[comp_tname] AS [comp_tname], 
+      [V_company_user].[user_sex] AS [user_sex], 
+      [V_company_user].[user_phone] AS [user_phone], 
+      [V_company_user].[user_email] AS [user_email], 
+      [V_company_user].[user_tel] AS [user_tel], 
+      [V_company_user].[user_qq] AS [user_qq], 
+      [V_company_user].[dep_id] AS [dep_id], 
+      [V_company_user].[user_position] AS [user_position], 
+      [V_company_user].[user_jobstatus] AS [user_jobstatus], 
+      [V_company_user].[role_id] AS [role_id], 
+      [V_company_user].[user_enable] AS [user_enable]
+      FROM [dbo].[V_company_user] AS [V_company_user]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_sys_department" EntityType="teaCRMModel.Store.V_sys_department" store:Type="Views" store:Schema="dbo" store:Name="V_sys_department">
+            <DefiningQuery>SELECT 
+      [V_sys_department].[id] AS [id], 
+      [V_sys_department].[parent_id] AS [parent_id], 
+      [V_sys_department].[parent_name] AS [parent_name], 
+      [V_sys_department].[comp_num] AS [comp_num], 
+      [V_sys_department].[dep_name] AS [dep_name], 
+      [V_sys_department].[dep_num] AS [dep_num], 
+      [V_sys_department].[create_date] AS [create_date], 
+      [V_sys_department].[dep_order] AS [dep_order], 
+      [V_sys_department].[dep_goal] AS [dep_goal], 
+      [V_sys_department].[dep_respon] AS [dep_respon], 
+      [V_sys_department].[dep_skills] AS [dep_skills], 
+      [V_sys_department].[dep_course] AS [dep_course], 
+      [V_sys_department].[dep_note] AS [dep_note]
+      FROM [dbo].[V_sys_department] AS [V_sys_department]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_T_CUS_CO_REFERENCE_T_CUS_BA" Association="teaCRMModel.Store.FK_T_CUS_CO_REFERENCE_T_CUS_BA">
+            <End Role="T_cus_base" EntitySet="T_cus_base" />
+            <End Role="T_cus_con" EntitySet="T_cus_con" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_FUN_EX_REFERENCE_T_FUN_MY" Association="teaCRMModel.Store.FK_T_FUN_EX_REFERENCE_T_FUN_MY">
+            <End Role="T_fun_myapp" EntitySet="T_fun_myapp" />
+            <End Role="T_fun_expand" EntitySet="T_fun_expand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_FUN_FI_REFERENCE_T_FUN_MY" Association="teaCRMModel.Store.FK_T_FUN_FI_REFERENCE_T_FUN_MY">
+            <End Role="T_fun_myapp" EntitySet="T_fun_myapp" />
+            <End Role="T_fun_filters" EntitySet="T_fun_filters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_FUN_OP_REFERENCE_T_FUN_MY" Association="teaCRMModel.Store.FK_T_FUN_OP_REFERENCE_T_FUN_MY">
+            <End Role="T_fun_myapp" EntitySet="T_fun_myapp" />
+            <End Role="T_fun_operating" EntitySet="T_fun_operating" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_FUN_TA_REFERENCE_T_FUN_MY" Association="teaCRMModel.Store.FK_T_FUN_TA_REFERENCE_T_FUN_MY">
+            <End Role="T_fun_myapp" EntitySet="T_fun_myapp" />
+            <End Role="T_fun_tags" EntitySet="T_fun_tags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_SYS_US_REFERENCE_T_SYS_DE" Association="teaCRMModel.Store.FK_T_SYS_US_REFERENCE_T_SYS_DE">
+            <End Role="T_sys_department" EntitySet="T_sys_department" />
+            <End Role="T_sys_user" EntitySet="T_sys_user" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="T_cus_base">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="cus_no" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="comp_num" Type="varchar" MaxLength="20" />
+          <Property Name="cus_name" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="cus_sname" Type="nvarchar" MaxLength="100" />
+          <Property Name="cus_lastid" Type="int" />
+          <Property Name="cus_tel" Type="varchar" MaxLength="20" />
+          <Property Name="cus_city" Type="varchar" MaxLength="255" />
+          <Property Name="cus_address" Type="nvarchar" MaxLength="255" />
+          <Property Name="cus_note" Type="nvarchar" MaxLength="255" />
+          <Property Name="con_id" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="con_team" Type="varchar" MaxLength="255" />
+          <Property Name="con_is_pub" Type="int" Nullable="false" />
+          <Property Name="con_back" Type="int" Nullable="false" />
+          <Property Name="cus_createTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="T_cus_con">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="cus_id" Type="int" Nullable="false" />
+          <Property Name="con_name" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="con_tel" Type="varchar" MaxLength="50" />
+          <Property Name="con_qq" Type="varchar" MaxLength="40" />
+          <Property Name="con_email" Type="varchar" MaxLength="100" />
+          <Property Name="con_bir" Type="datetime" />
+          <Property Name="con_note" Type="nvarchar" MaxLength="255" />
+          <Property Name="con_is_main" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'teaCRM.dbo.t_cus_expvalue_10000' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="t_cus_expvalue_10000">
+          <Key>
+            <PropertyRef Name="cus_id" />
+          </Key>
+          <Property Name="cus_id" Type="int" Nullable="false" />
+          <Property Name="exp_is_marry" Type="nvarchar" MaxLength="20" />
+          <Property Name="exp_evaluate" Type="nvarchar" MaxLength="255" />
+          <Property Name="exp_nation" Type="nvarchar" MaxLength="20" />
+          <Property Name="exp_email" Type="nvarchar" MaxLength="100" />
+          <Property Name="exp_age" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'teaCRM.dbo.t_cus_expvalue_99999' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="t_cus_expvalue_99999">
+          <Key>
+            <PropertyRef Name="cus_id" />
+          </Key>
+          <Property Name="cus_id" Type="int" Nullable="false" />
+          <Property Name="exp_url" Type="nvarchar" MaxLength="50" />
+          <Property Name="exp_nimabi" Type="nvarchar" MaxLength="20" />
+          <Property Name="exp_sex" Type="nvarchar" MaxLength="10" />
+          <Property Name="exp_attach" Type="nvarchar" MaxLength="100" />
+          <Property Name="exp_addtime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="T_cus_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="cus_id" Type="int" Nullable="false" />
+          <Property Name="cus_type" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="cus_info" Type="nvarchar" MaxLength="255" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="cus_addtime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_fun_app">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="app_name" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="app_author" Type="nvarchar" MaxLength="50" />
+          <Property Name="app_adddate" Type="datetime" />
+          <Property Name="app_imgurl" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="app_ver" Type="float" Nullable="false" />
+          <Property Name="app_link" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="app_high" Type="float" Nullable="false" />
+          <Property Name="app_upnote" Type="nvarchar" MaxLength="300" />
+          <Property Name="app_lastdate" Type="datetime" />
+          <Property Name="app_ind" Type="int" Nullable="false" />
+          <Property Name="app_is_hot" Type="int" Nullable="false" />
+          <Property Name="app_is_red" Type="int" Nullable="false" />
+          <Property Name="app_is_my" Type="int" Nullable="false" />
+          <Property Name="app_is_sys" Type="int" Nullable="false" />
+          <Property Name="app_price" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_fun_expand">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="myapp_id" Type="int" Nullable="false" />
+          <Property Name="comp_num" Type="varchar" MaxLength="20" />
+          <Property Name="exp_name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="exp_title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="exp_ctype" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="exp_dtype" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="exp_length" Type="int" />
+          <Property Name="exp_place" Type="char" MaxLength="20" />
+          <Property Name="exp_option" Type="nvarchar" MaxLength="255" />
+          <Property Name="exp_default" Type="nvarchar" MaxLength="255" />
+          <Property Name="exp_is_null" Type="int" Nullable="false" />
+          <Property Name="exp_is_pw" Type="int" Nullable="false" />
+          <Property Name="exp_is_html" Type="int" Nullable="false" />
+          <Property Name="exp_etype" Type="int" />
+          <Property Name="exp_tipmsg" Type="nvarchar" MaxLength="255" />
+          <Property Name="exp_errmsg" Type="nvarchar" MaxLength="255" />
+          <Property Name="exp_pattern" Type="nvarchar" MaxLength="255" />
+          <Property Name="exp_sortid" Type="nvarchar" MaxLength="255" />
+          <Property Name="exp_css" Type="varchar" MaxLength="100" />
+          <Property Name="exp_is_sys" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_fun_filters">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="parent_id" Type="int" />
+          <Property Name="fil_order" Type="int" />
+          <Property Name="comp_num" Type="varchar" MaxLength="20" />
+          <Property Name="fil_name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="myapp_id" Type="int" Nullable="false" />
+          <Property Name="fil_where" Type="nvarchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="T_fun_myapp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="parent_id" Type="int" Nullable="false" />
+          <Property Name="comp_num" Type="varchar" MaxLength="20" />
+          <Property Name="myapp_name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="myapp_link" Type="varchar" MaxLength="100" />
+          <Property Name="myapp_note" Type="nvarchar" MaxLength="255" />
+          <Property Name="myapp_action" Type="varchar" MaxLength="100" />
+          <Property Name="myapp_date" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="myapp_is_nav" Type="int" Nullable="false" />
+          <Property Name="myapp_is_sys" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_fun_operating">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="myapp_id" Type="int" Nullable="false" />
+          <Property Name="myapp_name" Type="nvarchar" MaxLength="200" />
+          <Property Name="ope_action" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ope_is_sys" Type="int" Nullable="false" />
+          <Property Name="ope_is_status" Type="int" Nullable="false" />
+          <Property Name="ope_is_fast" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_fun_tags">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="myapp_id" Type="int" Nullable="false" />
+          <Property Name="tag_name" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="tag_value" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="tag_color" Type="varchar" Nullable="false" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="T_sys_company">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="comp_num" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="comp_num" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="comp_tname" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="T_sys_department">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="parent_id" Type="int" Nullable="false" />
+          <Property Name="comp_num" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="dep_name" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="dep_num" Type="int" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="dep_order" Type="int" />
+          <Property Name="dep_goal" Type="nvarchar" MaxLength="255" />
+          <Property Name="dep_respon" Type="nvarchar" MaxLength="255" />
+          <Property Name="dep_skills" Type="nvarchar" MaxLength="255" />
+          <Property Name="dep_course" Type="nvarchar" MaxLength="255" />
+          <Property Name="dep_note" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="T_sys_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="user_lname" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="log_action" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="log_remark" Type="nvarchar" MaxLength="255" />
+          <Property Name="log_ip" Type="varchar" MaxLength="50" />
+          <Property Name="log_place" Type="nvarchar" MaxLength="50" />
+          <Property Name="log_time" Type="datetime" />
+        </EntityType>
+        <EntityType Name="T_sys_power">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="role_id" Type="int" />
+          <Property Name="module" Type="int" Nullable="false" />
+          <Property Name="power_nav" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="power_action" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="T_sys_role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="comp_num" Type="varchar" MaxLength="20" />
+          <Property Name="role_name" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="role_type" Type="int" Nullable="false" />
+          <Property Name="role_issys" Type="int" Nullable="false" />
+          <Property Name="role_order" Type="int" />
+          <Property Name="role_desc" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="T_sys_user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="comp_num" Type="varchar" MaxLength="20" />
+          <Property Name="user_lname" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="user_password" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="user_tname" Type="nvarchar" MaxLength="20" />
+          <Property Name="user_sex" Type="int" Nullable="false" />
+          <Property Name="user_phone" Type="varchar" MaxLength="20" />
+          <Property Name="user_email" Type="varchar" MaxLength="50" />
+          <Property Name="user_tel" Type="varchar" MaxLength="20" />
+          <Property Name="user_qq" Type="varchar" MaxLength="20" />
+          <Property Name="dep_id" Type="int" Nullable="false" />
+          <Property Name="data_ids" Type="varchar" MaxLength="100" />
+          <Property Name="data_type" Type="int" />
+          <Property Name="user_position" Type="nvarchar" MaxLength="30" />
+          <Property Name="user_jobstatus" Type="int" />
+          <Property Name="role_id" Type="int" Nullable="false" />
+          <Property Name="user_enable" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'teaCRM.dbo.V_company_user' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V_company_user">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="comp_id" />
+            <PropertyRef Name="comp_num" />
+            <PropertyRef Name="user_lname" />
+            <PropertyRef Name="user_password" />
+            <PropertyRef Name="user_sex" />
+            <PropertyRef Name="dep_id" />
+            <PropertyRef Name="role_id" />
+            <PropertyRef Name="user_enable" />
+          </Key>
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="comp_id" Type="int" Nullable="false" />
+          <Property Name="comp_num" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="user_lname" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="user_password" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="user_tname" Type="nvarchar" MaxLength="20" />
+          <Property Name="comp_tname" Type="nvarchar" MaxLength="30" />
+          <Property Name="user_sex" Type="int" Nullable="false" />
+          <Property Name="user_phone" Type="varchar" MaxLength="20" />
+          <Property Name="user_email" Type="varchar" MaxLength="50" />
+          <Property Name="user_tel" Type="varchar" MaxLength="20" />
+          <Property Name="user_qq" Type="varchar" MaxLength="20" />
+          <Property Name="dep_id" Type="int" Nullable="false" />
+          <Property Name="user_position" Type="nvarchar" MaxLength="30" />
+          <Property Name="user_jobstatus" Type="int" />
+          <Property Name="role_id" Type="int" Nullable="false" />
+          <Property Name="user_enable" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'teaCRM.dbo.V_sys_department' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V_sys_department">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="parent_id" />
+            <PropertyRef Name="parent_name" />
+            <PropertyRef Name="comp_num" />
+            <PropertyRef Name="dep_name" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="parent_id" Type="int" Nullable="false" />
+          <Property Name="parent_name" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="comp_num" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="dep_name" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="dep_num" Type="int" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="dep_order" Type="int" />
+          <Property Name="dep_goal" Type="nvarchar" MaxLength="255" />
+          <Property Name="dep_respon" Type="nvarchar" MaxLength="255" />
+          <Property Name="dep_skills" Type="nvarchar" MaxLength="255" />
+          <Property Name="dep_course" Type="nvarchar" MaxLength="255" />
+          <Property Name="dep_note" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK_T_CUS_CO_REFERENCE_T_CUS_BA">
+          <End Role="T_cus_base" Type="teaCRMModel.Store.T_cus_base" Multiplicity="1" />
+          <End Role="T_cus_con" Type="teaCRMModel.Store.T_cus_con" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_cus_base">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="T_cus_con">
+              <PropertyRef Name="cus_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_FUN_EX_REFERENCE_T_FUN_MY">
+          <End Role="T_fun_myapp" Type="teaCRMModel.Store.T_fun_myapp" Multiplicity="1" />
+          <End Role="T_fun_expand" Type="teaCRMModel.Store.T_fun_expand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_fun_myapp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="T_fun_expand">
+              <PropertyRef Name="myapp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_FUN_FI_REFERENCE_T_FUN_MY">
+          <End Role="T_fun_myapp" Type="teaCRMModel.Store.T_fun_myapp" Multiplicity="1" />
+          <End Role="T_fun_filters" Type="teaCRMModel.Store.T_fun_filters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_fun_myapp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="T_fun_filters">
+              <PropertyRef Name="myapp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_FUN_OP_REFERENCE_T_FUN_MY">
+          <End Role="T_fun_myapp" Type="teaCRMModel.Store.T_fun_myapp" Multiplicity="1" />
+          <End Role="T_fun_operating" Type="teaCRMModel.Store.T_fun_operating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_fun_myapp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="T_fun_operating">
+              <PropertyRef Name="myapp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_FUN_TA_REFERENCE_T_FUN_MY">
+          <End Role="T_fun_myapp" Type="teaCRMModel.Store.T_fun_myapp" Multiplicity="1" />
+          <End Role="T_fun_tags" Type="teaCRMModel.Store.T_fun_tags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_fun_myapp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="T_fun_tags">
+              <PropertyRef Name="myapp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_SYS_US_REFERENCE_T_SYS_DE">
+          <End Role="T_sys_department" Type="teaCRMModel.Store.T_sys_department" Multiplicity="1" />
+          <End Role="T_sys_user" Type="teaCRMModel.Store.T_sys_user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_sys_department">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="T_sys_user">
+              <PropertyRef Name="dep_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+      warning 6013: The table/view 'teaCRM.dbo.T_cus_con_expvalue_10000' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="T_cus_con_expvalue_10000">
+        <Property Name="con_id" Type="int" />
+        <Property Name="exp_con_duty" Type="nvarchar" MaxLength="20" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'teaCRM.dbo.T_cus_con_expvalue_99999' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="T_cus_con_expvalue_99999">
+        <Property Name="con_id" Type="int" />
+        <Property Name="exp_con_salary" Type="varchar" MaxLength="10" />
+      </EntityType>-->
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="teaCRMModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="teaCRMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="T_cus_base" EntityType="teaCRMModel.T_cus_base" />
+          <EntitySet Name="T_cus_con" EntityType="teaCRMModel.T_cus_con" />
+          <EntitySet Name="t_cus_expvalue_10000" EntityType="teaCRMModel.t_cus_expvalue_10000" />
+          <EntitySet Name="t_cus_expvalue_99999" EntityType="teaCRMModel.t_cus_expvalue_99999" />
+          <EntitySet Name="T_cus_log" EntityType="teaCRMModel.T_cus_log" />
+          <EntitySet Name="T_fun_app" EntityType="teaCRMModel.T_fun_app" />
+          <EntitySet Name="T_fun_expand" EntityType="teaCRMModel.T_fun_expand" />
+          <EntitySet Name="T_fun_filters" EntityType="teaCRMModel.T_fun_filters" />
+          <EntitySet Name="T_fun_myapp" EntityType="teaCRMModel.T_fun_myapp" />
+          <EntitySet Name="T_fun_operating" EntityType="teaCRMModel.T_fun_operating" />
+          <EntitySet Name="T_fun_tags" EntityType="teaCRMModel.T_fun_tags" />
+          <EntitySet Name="T_sys_company" EntityType="teaCRMModel.T_sys_company" />
+          <EntitySet Name="T_sys_department" EntityType="teaCRMModel.T_sys_department" />
+          <EntitySet Name="T_sys_log" EntityType="teaCRMModel.T_sys_log" />
+          <EntitySet Name="T_sys_power" EntityType="teaCRMModel.T_sys_power" />
+          <EntitySet Name="T_sys_role" EntityType="teaCRMModel.T_sys_role" />
+          <EntitySet Name="T_sys_user" EntityType="teaCRMModel.T_sys_user" />
+          <EntitySet Name="V_company_user" EntityType="teaCRMModel.V_company_user" />
+          <EntitySet Name="V_sys_department" EntityType="teaCRMModel.V_sys_department" />
+          <AssociationSet Name="FK_T_CUS_CO_REFERENCE_T_CUS_BA" Association="teaCRMModel.FK_T_CUS_CO_REFERENCE_T_CUS_BA">
+            <End Role="T_cus_base" EntitySet="T_cus_base" />
+            <End Role="T_cus_con" EntitySet="T_cus_con" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_FUN_EX_REFERENCE_T_FUN_MY" Association="teaCRMModel.FK_T_FUN_EX_REFERENCE_T_FUN_MY">
+            <End Role="T_fun_myapp" EntitySet="T_fun_myapp" />
+            <End Role="T_fun_expand" EntitySet="T_fun_expand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_FUN_FI_REFERENCE_T_FUN_MY" Association="teaCRMModel.FK_T_FUN_FI_REFERENCE_T_FUN_MY">
+            <End Role="T_fun_myapp" EntitySet="T_fun_myapp" />
+            <End Role="T_fun_filters" EntitySet="T_fun_filters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_FUN_OP_REFERENCE_T_FUN_MY" Association="teaCRMModel.FK_T_FUN_OP_REFERENCE_T_FUN_MY">
+            <End Role="T_fun_myapp" EntitySet="T_fun_myapp" />
+            <End Role="T_fun_operating" EntitySet="T_fun_operating" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_FUN_TA_REFERENCE_T_FUN_MY" Association="teaCRMModel.FK_T_FUN_TA_REFERENCE_T_FUN_MY">
+            <End Role="T_fun_myapp" EntitySet="T_fun_myapp" />
+            <End Role="T_fun_tags" EntitySet="T_fun_tags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_SYS_US_REFERENCE_T_SYS_DE" Association="teaCRMModel.FK_T_SYS_US_REFERENCE_T_SYS_DE">
+            <End Role="T_sys_department" EntitySet="T_sys_department" />
+            <End Role="T_sys_user" EntitySet="T_sys_user" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="T_cus_base">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cus_no" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="comp_num" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="cus_name" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="cus_sname" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="cus_lastid" Type="Int32" />
+          <Property Name="cus_tel" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="cus_city" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="cus_address" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="cus_note" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="con_id" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="con_team" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="con_is_pub" Type="Int32" Nullable="false" />
+          <Property Name="con_back" Type="Int32" Nullable="false" />
+          <Property Name="cus_createTime" Type="DateTime" />
+          <NavigationProperty Name="T_cus_con" Relationship="teaCRMModel.FK_T_CUS_CO_REFERENCE_T_CUS_BA" FromRole="T_cus_base" ToRole="T_cus_con" />
+        </EntityType>
+        <EntityType Name="T_cus_con">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cus_id" Type="Int32" Nullable="false" />
+          <Property Name="con_name" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="con_tel" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="con_qq" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="con_email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="con_bir" Type="DateTime" />
+          <Property Name="con_note" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="con_is_main" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="T_cus_base" Relationship="teaCRMModel.FK_T_CUS_CO_REFERENCE_T_CUS_BA" FromRole="T_cus_con" ToRole="T_cus_base" />
+        </EntityType>
+        <EntityType Name="t_cus_expvalue_10000">
+          <Key>
+            <PropertyRef Name="cus_id" />
+          </Key>
+          <Property Name="cus_id" Type="Int32" Nullable="false" />
+          <Property Name="exp_is_marry" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="exp_evaluate" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="exp_nation" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="exp_email" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="exp_age" Type="Int32" />
+        </EntityType>
+        <EntityType Name="t_cus_expvalue_99999">
+          <Key>
+            <PropertyRef Name="cus_id" />
+          </Key>
+          <Property Name="cus_id" Type="Int32" Nullable="false" />
+          <Property Name="exp_url" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="exp_nimabi" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="exp_sex" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="exp_attach" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="exp_addtime" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="T_cus_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cus_id" Type="Int32" Nullable="false" />
+          <Property Name="cus_type" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="cus_info" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="cus_addtime" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_fun_app">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="app_name" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="app_author" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="app_adddate" Type="DateTime" />
+          <Property Name="app_imgurl" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="app_ver" Type="Double" Nullable="false" />
+          <Property Name="app_link" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="app_high" Type="Double" Nullable="false" />
+          <Property Name="app_upnote" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="app_lastdate" Type="DateTime" />
+          <Property Name="app_ind" Type="Int32" Nullable="false" />
+          <Property Name="app_is_hot" Type="Int32" Nullable="false" />
+          <Property Name="app_is_red" Type="Int32" Nullable="false" />
+          <Property Name="app_is_my" Type="Int32" Nullable="false" />
+          <Property Name="app_is_sys" Type="Int32" Nullable="false" />
+          <Property Name="app_price" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_fun_expand">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="myapp_id" Type="Int32" Nullable="false" />
+          <Property Name="comp_num" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="exp_name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="exp_title" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="exp_ctype" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="exp_dtype" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="exp_length" Type="Int32" />
+          <Property Name="exp_place" Type="String" MaxLength="20" Unicode="false" FixedLength="true" />
+          <Property Name="exp_option" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="exp_default" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="exp_is_null" Type="Int32" Nullable="false" />
+          <Property Name="exp_is_pw" Type="Int32" Nullable="false" />
+          <Property Name="exp_is_html" Type="Int32" Nullable="false" />
+          <Property Name="exp_etype" Type="Int32" />
+          <Property Name="exp_tipmsg" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="exp_errmsg" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="exp_pattern" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="exp_sortid" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="exp_css" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="exp_is_sys" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="T_fun_myapp" Relationship="teaCRMModel.FK_T_FUN_EX_REFERENCE_T_FUN_MY" FromRole="T_fun_expand" ToRole="T_fun_myapp" />
+        </EntityType>
+        <EntityType Name="T_fun_filters">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="parent_id" Type="Int32" />
+          <Property Name="fil_order" Type="Int32" />
+          <Property Name="comp_num" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="fil_name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="myapp_id" Type="Int32" Nullable="false" />
+          <Property Name="fil_where" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="T_fun_myapp" Relationship="teaCRMModel.FK_T_FUN_FI_REFERENCE_T_FUN_MY" FromRole="T_fun_filters" ToRole="T_fun_myapp" />
+        </EntityType>
+        <EntityType Name="T_fun_myapp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="parent_id" Type="Int32" Nullable="false" />
+          <Property Name="comp_num" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="myapp_name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="myapp_link" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="myapp_note" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="myapp_action" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="myapp_date" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="myapp_is_nav" Type="Int32" Nullable="false" />
+          <Property Name="myapp_is_sys" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="T_fun_expand" Relationship="teaCRMModel.FK_T_FUN_EX_REFERENCE_T_FUN_MY" FromRole="T_fun_myapp" ToRole="T_fun_expand" />
+          <NavigationProperty Name="T_fun_filters" Relationship="teaCRMModel.FK_T_FUN_FI_REFERENCE_T_FUN_MY" FromRole="T_fun_myapp" ToRole="T_fun_filters" />
+          <NavigationProperty Name="T_fun_operating" Relationship="teaCRMModel.FK_T_FUN_OP_REFERENCE_T_FUN_MY" FromRole="T_fun_myapp" ToRole="T_fun_operating" />
+          <NavigationProperty Name="T_fun_tags" Relationship="teaCRMModel.FK_T_FUN_TA_REFERENCE_T_FUN_MY" FromRole="T_fun_myapp" ToRole="T_fun_tags" />
+        </EntityType>
+        <EntityType Name="T_fun_operating">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="myapp_id" Type="Int32" Nullable="false" />
+          <Property Name="myapp_name" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="ope_action" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ope_is_sys" Type="Int32" Nullable="false" />
+          <Property Name="ope_is_status" Type="Int32" Nullable="false" />
+          <Property Name="ope_is_fast" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="T_fun_myapp" Relationship="teaCRMModel.FK_T_FUN_OP_REFERENCE_T_FUN_MY" FromRole="T_fun_operating" ToRole="T_fun_myapp" />
+        </EntityType>
+        <EntityType Name="T_fun_tags">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="myapp_id" Type="Int32" Nullable="false" />
+          <Property Name="tag_name" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="tag_value" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="tag_color" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="T_fun_myapp" Relationship="teaCRMModel.FK_T_FUN_TA_REFERENCE_T_FUN_MY" FromRole="T_fun_tags" ToRole="T_fun_myapp" />
+        </EntityType>
+        <EntityType Name="T_sys_company">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="comp_num" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="comp_num" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="comp_tname" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="T_sys_department">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="parent_id" Type="Int32" Nullable="false" />
+          <Property Name="comp_num" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="dep_name" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="dep_num" Type="Int32" />
+          <Property Name="create_date" Type="DateTime" />
+          <Property Name="dep_order" Type="Int32" />
+          <Property Name="dep_goal" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="dep_respon" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="dep_skills" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="dep_course" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="dep_note" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="T_sys_user" Relationship="teaCRMModel.FK_T_SYS_US_REFERENCE_T_SYS_DE" FromRole="T_sys_department" ToRole="T_sys_user" />
+        </EntityType>
+        <EntityType Name="T_sys_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="user_lname" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="log_action" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="log_remark" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="log_ip" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="log_place" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="log_time" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="T_sys_power">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="role_id" Type="Int32" />
+          <Property Name="module" Type="Int32" Nullable="false" />
+          <Property Name="power_nav" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="power_action" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="T_sys_role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="comp_num" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="role_name" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="role_type" Type="Int32" Nullable="false" />
+          <Property Name="role_issys" Type="Int32" Nullable="false" />
+          <Property Name="role_order" Type="Int32" />
+          <Property Name="role_desc" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="T_sys_user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="comp_num" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="user_lname" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="user_password" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="user_tname" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="user_sex" Type="Int32" Nullable="false" />
+          <Property Name="user_phone" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="user_email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="user_tel" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="user_qq" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="dep_id" Type="Int32" Nullable="false" />
+          <Property Name="data_ids" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="data_type" Type="Int32" />
+          <Property Name="user_position" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="user_jobstatus" Type="Int32" />
+          <Property Name="role_id" Type="Int32" Nullable="false" />
+          <Property Name="user_enable" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="T_sys_department" Relationship="teaCRMModel.FK_T_SYS_US_REFERENCE_T_SYS_DE" FromRole="T_sys_user" ToRole="T_sys_department" />
+        </EntityType>
+        <EntityType Name="V_company_user">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="comp_id" />
+            <PropertyRef Name="comp_num" />
+            <PropertyRef Name="user_lname" />
+            <PropertyRef Name="user_password" />
+            <PropertyRef Name="user_sex" />
+            <PropertyRef Name="dep_id" />
+            <PropertyRef Name="role_id" />
+            <PropertyRef Name="user_enable" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="comp_id" Type="Int32" Nullable="false" />
+          <Property Name="comp_num" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="user_lname" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="user_password" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="user_tname" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="comp_tname" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="user_sex" Type="Int32" Nullable="false" />
+          <Property Name="user_phone" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="user_email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="user_tel" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="user_qq" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="dep_id" Type="Int32" Nullable="false" />
+          <Property Name="user_position" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="user_jobstatus" Type="Int32" />
+          <Property Name="role_id" Type="Int32" Nullable="false" />
+          <Property Name="user_enable" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="V_sys_department">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="parent_id" />
+            <PropertyRef Name="parent_name" />
+            <PropertyRef Name="comp_num" />
+            <PropertyRef Name="dep_name" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="parent_id" Type="Int32" Nullable="false" />
+          <Property Name="parent_name" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="comp_num" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="dep_name" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="dep_num" Type="Int32" />
+          <Property Name="create_date" Type="DateTime" />
+          <Property Name="dep_order" Type="Int32" />
+          <Property Name="dep_goal" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="dep_respon" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="dep_skills" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="dep_course" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="dep_note" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_T_CUS_CO_REFERENCE_T_CUS_BA">
+          <End Role="T_cus_base" Type="teaCRMModel.T_cus_base" Multiplicity="1" />
+          <End Role="T_cus_con" Type="teaCRMModel.T_cus_con" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_cus_base">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="T_cus_con">
+              <PropertyRef Name="cus_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_FUN_EX_REFERENCE_T_FUN_MY">
+          <End Role="T_fun_myapp" Type="teaCRMModel.T_fun_myapp" Multiplicity="1" />
+          <End Role="T_fun_expand" Type="teaCRMModel.T_fun_expand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_fun_myapp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="T_fun_expand">
+              <PropertyRef Name="myapp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_FUN_FI_REFERENCE_T_FUN_MY">
+          <End Role="T_fun_myapp" Type="teaCRMModel.T_fun_myapp" Multiplicity="1" />
+          <End Role="T_fun_filters" Type="teaCRMModel.T_fun_filters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_fun_myapp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="T_fun_filters">
+              <PropertyRef Name="myapp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_FUN_OP_REFERENCE_T_FUN_MY">
+          <End Role="T_fun_myapp" Type="teaCRMModel.T_fun_myapp" Multiplicity="1" />
+          <End Role="T_fun_operating" Type="teaCRMModel.T_fun_operating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_fun_myapp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="T_fun_operating">
+              <PropertyRef Name="myapp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_FUN_TA_REFERENCE_T_FUN_MY">
+          <End Role="T_fun_myapp" Type="teaCRMModel.T_fun_myapp" Multiplicity="1" />
+          <End Role="T_fun_tags" Type="teaCRMModel.T_fun_tags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_fun_myapp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="T_fun_tags">
+              <PropertyRef Name="myapp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_SYS_US_REFERENCE_T_SYS_DE">
+          <End Role="T_sys_department" Type="teaCRMModel.T_sys_department" Multiplicity="1" />
+          <End Role="T_sys_user" Type="teaCRMModel.T_sys_user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_sys_department">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="T_sys_user">
+              <PropertyRef Name="dep_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="teaCRMModelStoreContainer" CdmEntityContainer="teaCRMEntities">
+          <EntitySetMapping Name="T_cus_base">
+            <EntityTypeMapping TypeName="teaCRMModel.T_cus_base">
+              <MappingFragment StoreEntitySet="T_cus_base">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cus_no" ColumnName="cus_no" />
+                <ScalarProperty Name="comp_num" ColumnName="comp_num" />
+                <ScalarProperty Name="cus_name" ColumnName="cus_name" />
+                <ScalarProperty Name="cus_sname" ColumnName="cus_sname" />
+                <ScalarProperty Name="cus_lastid" ColumnName="cus_lastid" />
+                <ScalarProperty Name="cus_tel" ColumnName="cus_tel" />
+                <ScalarProperty Name="cus_city" ColumnName="cus_city" />
+                <ScalarProperty Name="cus_address" ColumnName="cus_address" />
+                <ScalarProperty Name="cus_note" ColumnName="cus_note" />
+                <ScalarProperty Name="con_id" ColumnName="con_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="con_team" ColumnName="con_team" />
+                <ScalarProperty Name="con_is_pub" ColumnName="con_is_pub" />
+                <ScalarProperty Name="con_back" ColumnName="con_back" />
+                <ScalarProperty Name="cus_createTime" ColumnName="cus_createTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_cus_con">
+            <EntityTypeMapping TypeName="teaCRMModel.T_cus_con">
+              <MappingFragment StoreEntitySet="T_cus_con">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cus_id" ColumnName="cus_id" />
+                <ScalarProperty Name="con_name" ColumnName="con_name" />
+                <ScalarProperty Name="con_tel" ColumnName="con_tel" />
+                <ScalarProperty Name="con_qq" ColumnName="con_qq" />
+                <ScalarProperty Name="con_email" ColumnName="con_email" />
+                <ScalarProperty Name="con_bir" ColumnName="con_bir" />
+                <ScalarProperty Name="con_note" ColumnName="con_note" />
+                <ScalarProperty Name="con_is_main" ColumnName="con_is_main" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_cus_expvalue_10000">
+            <EntityTypeMapping TypeName="teaCRMModel.t_cus_expvalue_10000">
+              <MappingFragment StoreEntitySet="t_cus_expvalue_10000">
+                <ScalarProperty Name="cus_id" ColumnName="cus_id" />
+                <ScalarProperty Name="exp_is_marry" ColumnName="exp_is_marry" />
+                <ScalarProperty Name="exp_evaluate" ColumnName="exp_evaluate" />
+                <ScalarProperty Name="exp_nation" ColumnName="exp_nation" />
+                <ScalarProperty Name="exp_email" ColumnName="exp_email" />
+                <ScalarProperty Name="exp_age" ColumnName="exp_age" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_cus_expvalue_99999">
+            <EntityTypeMapping TypeName="teaCRMModel.t_cus_expvalue_99999">
+              <MappingFragment StoreEntitySet="t_cus_expvalue_99999">
+                <ScalarProperty Name="cus_id" ColumnName="cus_id" />
+                <ScalarProperty Name="exp_url" ColumnName="exp_url" />
+                <ScalarProperty Name="exp_nimabi" ColumnName="exp_nimabi" />
+                <ScalarProperty Name="exp_sex" ColumnName="exp_sex" />
+                <ScalarProperty Name="exp_attach" ColumnName="exp_attach" />
+                <ScalarProperty Name="exp_addtime" ColumnName="exp_addtime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_cus_log">
+            <EntityTypeMapping TypeName="teaCRMModel.T_cus_log">
+              <MappingFragment StoreEntitySet="T_cus_log">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cus_id" ColumnName="cus_id" />
+                <ScalarProperty Name="cus_type" ColumnName="cus_type" />
+                <ScalarProperty Name="cus_info" ColumnName="cus_info" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="cus_addtime" ColumnName="cus_addtime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_fun_app">
+            <EntityTypeMapping TypeName="teaCRMModel.T_fun_app">
+              <MappingFragment StoreEntitySet="T_fun_app">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="app_name" ColumnName="app_name" />
+                <ScalarProperty Name="app_author" ColumnName="app_author" />
+                <ScalarProperty Name="app_adddate" ColumnName="app_adddate" />
+                <ScalarProperty Name="app_imgurl" ColumnName="app_imgurl" />
+                <ScalarProperty Name="app_ver" ColumnName="app_ver" />
+                <ScalarProperty Name="app_link" ColumnName="app_link" />
+                <ScalarProperty Name="app_high" ColumnName="app_high" />
+                <ScalarProperty Name="app_upnote" ColumnName="app_upnote" />
+                <ScalarProperty Name="app_lastdate" ColumnName="app_lastdate" />
+                <ScalarProperty Name="app_ind" ColumnName="app_ind" />
+                <ScalarProperty Name="app_is_hot" ColumnName="app_is_hot" />
+                <ScalarProperty Name="app_is_red" ColumnName="app_is_red" />
+                <ScalarProperty Name="app_is_my" ColumnName="app_is_my" />
+                <ScalarProperty Name="app_is_sys" ColumnName="app_is_sys" />
+                <ScalarProperty Name="app_price" ColumnName="app_price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_fun_expand">
+            <EntityTypeMapping TypeName="teaCRMModel.T_fun_expand">
+              <MappingFragment StoreEntitySet="T_fun_expand">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="myapp_id" ColumnName="myapp_id" />
+                <ScalarProperty Name="comp_num" ColumnName="comp_num" />
+                <ScalarProperty Name="exp_name" ColumnName="exp_name" />
+                <ScalarProperty Name="exp_title" ColumnName="exp_title" />
+                <ScalarProperty Name="exp_ctype" ColumnName="exp_ctype" />
+                <ScalarProperty Name="exp_dtype" ColumnName="exp_dtype" />
+                <ScalarProperty Name="exp_length" ColumnName="exp_length" />
+                <ScalarProperty Name="exp_place" ColumnName="exp_place" />
+                <ScalarProperty Name="exp_option" ColumnName="exp_option" />
+                <ScalarProperty Name="exp_default" ColumnName="exp_default" />
+                <ScalarProperty Name="exp_is_null" ColumnName="exp_is_null" />
+                <ScalarProperty Name="exp_is_pw" ColumnName="exp_is_pw" />
+                <ScalarProperty Name="exp_is_html" ColumnName="exp_is_html" />
+                <ScalarProperty Name="exp_etype" ColumnName="exp_etype" />
+                <ScalarProperty Name="exp_tipmsg" ColumnName="exp_tipmsg" />
+                <ScalarProperty Name="exp_errmsg" ColumnName="exp_errmsg" />
+                <ScalarProperty Name="exp_pattern" ColumnName="exp_pattern" />
+                <ScalarProperty Name="exp_sortid" ColumnName="exp_sortid" />
+                <ScalarProperty Name="exp_css" ColumnName="exp_css" />
+                <ScalarProperty Name="exp_is_sys" ColumnName="exp_is_sys" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_fun_filters">
+            <EntityTypeMapping TypeName="teaCRMModel.T_fun_filters">
+              <MappingFragment StoreEntitySet="T_fun_filters">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="fil_order" ColumnName="fil_order" />
+                <ScalarProperty Name="comp_num" ColumnName="comp_num" />
+                <ScalarProperty Name="fil_name" ColumnName="fil_name" />
+                <ScalarProperty Name="myapp_id" ColumnName="myapp_id" />
+                <ScalarProperty Name="fil_where" ColumnName="fil_where" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_fun_myapp">
+            <EntityTypeMapping TypeName="teaCRMModel.T_fun_myapp">
+              <MappingFragment StoreEntitySet="T_fun_myapp">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="comp_num" ColumnName="comp_num" />
+                <ScalarProperty Name="myapp_name" ColumnName="myapp_name" />
+                <ScalarProperty Name="myapp_link" ColumnName="myapp_link" />
+                <ScalarProperty Name="myapp_note" ColumnName="myapp_note" />
+                <ScalarProperty Name="myapp_action" ColumnName="myapp_action" />
+                <ScalarProperty Name="myapp_date" ColumnName="myapp_date" />
+                <ScalarProperty Name="myapp_is_nav" ColumnName="myapp_is_nav" />
+                <ScalarProperty Name="myapp_is_sys" ColumnName="myapp_is_sys" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_fun_operating">
+            <EntityTypeMapping TypeName="teaCRMModel.T_fun_operating">
+              <MappingFragment StoreEntitySet="T_fun_operating">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="myapp_id" ColumnName="myapp_id" />
+                <ScalarProperty Name="myapp_name" ColumnName="myapp_name" />
+                <ScalarProperty Name="ope_action" ColumnName="ope_action" />
+                <ScalarProperty Name="ope_is_sys" ColumnName="ope_is_sys" />
+                <ScalarProperty Name="ope_is_status" ColumnName="ope_is_status" />
+                <ScalarProperty Name="ope_is_fast" ColumnName="ope_is_fast" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_fun_tags">
+            <EntityTypeMapping TypeName="teaCRMModel.T_fun_tags">
+              <MappingFragment StoreEntitySet="T_fun_tags">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="myapp_id" ColumnName="myapp_id" />
+                <ScalarProperty Name="tag_name" ColumnName="tag_name" />
+                <ScalarProperty Name="tag_value" ColumnName="tag_value" />
+                <ScalarProperty Name="tag_color" ColumnName="tag_color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_sys_company">
+            <EntityTypeMapping TypeName="teaCRMModel.T_sys_company">
+              <MappingFragment StoreEntitySet="T_sys_company">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="comp_num" ColumnName="comp_num" />
+                <ScalarProperty Name="comp_tname" ColumnName="comp_tname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_sys_department">
+            <EntityTypeMapping TypeName="teaCRMModel.T_sys_department">
+              <MappingFragment StoreEntitySet="T_sys_department">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="comp_num" ColumnName="comp_num" />
+                <ScalarProperty Name="dep_name" ColumnName="dep_name" />
+                <ScalarProperty Name="dep_num" ColumnName="dep_num" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="dep_order" ColumnName="dep_order" />
+                <ScalarProperty Name="dep_goal" ColumnName="dep_goal" />
+                <ScalarProperty Name="dep_respon" ColumnName="dep_respon" />
+                <ScalarProperty Name="dep_skills" ColumnName="dep_skills" />
+                <ScalarProperty Name="dep_course" ColumnName="dep_course" />
+                <ScalarProperty Name="dep_note" ColumnName="dep_note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_sys_log">
+            <EntityTypeMapping TypeName="teaCRMModel.T_sys_log">
+              <MappingFragment StoreEntitySet="T_sys_log">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_lname" ColumnName="user_lname" />
+                <ScalarProperty Name="log_action" ColumnName="log_action" />
+                <ScalarProperty Name="log_remark" ColumnName="log_remark" />
+                <ScalarProperty Name="log_ip" ColumnName="log_ip" />
+                <ScalarProperty Name="log_place" ColumnName="log_place" />
+                <ScalarProperty Name="log_time" ColumnName="log_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_sys_power">
+            <EntityTypeMapping TypeName="teaCRMModel.T_sys_power">
+              <MappingFragment StoreEntitySet="T_sys_power">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="module" ColumnName="module" />
+                <ScalarProperty Name="power_nav" ColumnName="power_nav" />
+                <ScalarProperty Name="power_action" ColumnName="power_action" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_sys_role">
+            <EntityTypeMapping TypeName="teaCRMModel.T_sys_role">
+              <MappingFragment StoreEntitySet="T_sys_role">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="comp_num" ColumnName="comp_num" />
+                <ScalarProperty Name="role_name" ColumnName="role_name" />
+                <ScalarProperty Name="role_type" ColumnName="role_type" />
+                <ScalarProperty Name="role_issys" ColumnName="role_issys" />
+                <ScalarProperty Name="role_order" ColumnName="role_order" />
+                <ScalarProperty Name="role_desc" ColumnName="role_desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_sys_user">
+            <EntityTypeMapping TypeName="teaCRMModel.T_sys_user">
+              <MappingFragment StoreEntitySet="T_sys_user">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="comp_num" ColumnName="comp_num" />
+                <ScalarProperty Name="user_lname" ColumnName="user_lname" />
+                <ScalarProperty Name="user_password" ColumnName="user_password" />
+                <ScalarProperty Name="user_tname" ColumnName="user_tname" />
+                <ScalarProperty Name="user_sex" ColumnName="user_sex" />
+                <ScalarProperty Name="user_phone" ColumnName="user_phone" />
+                <ScalarProperty Name="user_email" ColumnName="user_email" />
+                <ScalarProperty Name="user_tel" ColumnName="user_tel" />
+                <ScalarProperty Name="user_qq" ColumnName="user_qq" />
+                <ScalarProperty Name="dep_id" ColumnName="dep_id" />
+                <ScalarProperty Name="data_ids" ColumnName="data_ids" />
+                <ScalarProperty Name="data_type" ColumnName="data_type" />
+                <ScalarProperty Name="user_position" ColumnName="user_position" />
+                <ScalarProperty Name="user_jobstatus" ColumnName="user_jobstatus" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="user_enable" ColumnName="user_enable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_company_user">
+            <EntityTypeMapping TypeName="teaCRMModel.V_company_user">
+              <MappingFragment StoreEntitySet="V_company_user">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="comp_id" ColumnName="comp_id" />
+                <ScalarProperty Name="comp_num" ColumnName="comp_num" />
+                <ScalarProperty Name="user_lname" ColumnName="user_lname" />
+                <ScalarProperty Name="user_password" ColumnName="user_password" />
+                <ScalarProperty Name="user_tname" ColumnName="user_tname" />
+                <ScalarProperty Name="comp_tname" ColumnName="comp_tname" />
+                <ScalarProperty Name="user_sex" ColumnName="user_sex" />
+                <ScalarProperty Name="user_phone" ColumnName="user_phone" />
+                <ScalarProperty Name="user_email" ColumnName="user_email" />
+                <ScalarProperty Name="user_tel" ColumnName="user_tel" />
+                <ScalarProperty Name="user_qq" ColumnName="user_qq" />
+                <ScalarProperty Name="dep_id" ColumnName="dep_id" />
+                <ScalarProperty Name="user_position" ColumnName="user_position" />
+                <ScalarProperty Name="user_jobstatus" ColumnName="user_jobstatus" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="user_enable" ColumnName="user_enable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_sys_department">
+            <EntityTypeMapping TypeName="teaCRMModel.V_sys_department">
+              <MappingFragment StoreEntitySet="V_sys_department">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="parent_name" ColumnName="parent_name" />
+                <ScalarProperty Name="comp_num" ColumnName="comp_num" />
+                <ScalarProperty Name="dep_name" ColumnName="dep_name" />
+                <ScalarProperty Name="dep_num" ColumnName="dep_num" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="dep_order" ColumnName="dep_order" />
+                <ScalarProperty Name="dep_goal" ColumnName="dep_goal" />
+                <ScalarProperty Name="dep_respon" ColumnName="dep_respon" />
+                <ScalarProperty Name="dep_skills" ColumnName="dep_skills" />
+                <ScalarProperty Name="dep_course" ColumnName="dep_course" />
+                <ScalarProperty Name="dep_note" ColumnName="dep_note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="teaCRMModel" ZoomLevel="66">
+        <EntityTypeShape EntityType="teaCRMModel.T_cus_base" Width="1.5" PointX="5.75" PointY="7" Height="4.2879036458333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="teaCRMModel.T_cus_con" Width="1.5" PointX="8" PointY="7.625" Height="3.1340950520833317" IsExpanded="true" />
+        <EntityTypeShape EntityType="teaCRMModel.t_cus_expvalue_10000" Width="1.5" PointX="10.75" PointY="0.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="teaCRMModel.t_cus_expvalue_99999" Width="1.5" PointX="10.75" PointY="3.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="teaCRMModel.T_cus_log" Width="1.5" PointX="10.75" PointY="6.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="teaCRMModel.T_fun_app" Width="1.5" PointX="10.75" PointY="9.75" Height="4.0956022135416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="teaCRMModel.T_fun_expand" Width="1.5" PointX="3" PointY="1.625" Height="5.2494108072916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="teaCRMModel.T_fun_filters" Width="1.5" PointX="3" PointY="7.625" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="teaCRMModel.T_fun_myapp" Width="1.5" PointX="0.75" PointY="7.125" Height="3.7109993489583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="teaCRMModel.T_fun_operating" Width="1.5" PointX="3" PointY="10.875" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="teaCRMModel.T_fun_tags" Width="1.5" PointX="3" PointY="14.125" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="teaCRMModel.T_sys_company" Width="1.5" PointX="7.75" PointY="11.75" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="teaCRMModel.T_sys_department" Width="1.5" PointX="5.75" PointY="1.5" Height="3.518697916666667" IsExpanded="true" />
+        <EntityTypeShape EntityType="teaCRMModel.T_sys_log" Width="1.5" PointX="12.75" PointY="0.75" Height="2.5571907552083388" IsExpanded="true" />
+        <EntityTypeShape EntityType="teaCRMModel.T_sys_power" Width="1.5" PointX="12.75" PointY="4.75" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="teaCRMModel.T_sys_role" Width="1.5" PointX="12.75" PointY="7.75" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="teaCRMModel.T_sys_user" Width="1.5" PointX="8" PointY="1" Height="4.4802050781250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="teaCRMModel.V_company_user" Width="1.5" PointX="12.75" PointY="11.75" Height="4.2879036458333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="teaCRMModel.V_sys_department" Width="1.5" PointX="14.75" PointY="0.75" Height="3.5186979166666674" IsExpanded="true" />
+        <AssociationConnector Association="teaCRMModel.FK_T_CUS_CO_REFERENCE_T_CUS_BA" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.25" PointY="9.1920475260416659" />
+          <ConnectorPoint PointX="8" PointY="9.1920475260416659" />
+        </AssociationConnector>
+        <AssociationConnector Association="teaCRMModel.FK_T_FUN_EX_REFERENCE_T_FUN_MY" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="7.125" />
+          <ConnectorPoint PointX="1.5" PointY="4.2497054036458337" />
+          <ConnectorPoint PointX="3" PointY="4.2497054036458337" />
+        </AssociationConnector>
+        <AssociationConnector Association="teaCRMModel.FK_T_FUN_FI_REFERENCE_T_FUN_MY" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="8.9035953776041659" />
+          <ConnectorPoint PointX="3" PointY="8.9035953776041659" />
+        </AssociationConnector>
+        <AssociationConnector Association="teaCRMModel.FK_T_FUN_OP_REFERENCE_T_FUN_MY" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="10.835999348958332" />
+          <ConnectorPoint PointX="1.5" PointY="12.153595377604166" />
+          <ConnectorPoint PointX="1.8229191666666667" PointY="12.153595377604166" />
+          <ConnectorPoint PointX="1.9895858333333332" PointY="12.153595377604166" />
+          <ConnectorPoint PointX="3" PointY="12.153595377604166" />
+        </AssociationConnector>
+        <AssociationConnector Association="teaCRMModel.FK_T_FUN_TA_REFERENCE_T_FUN_MY" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.9062525" PointY="10.835999348958332" />
+          <ConnectorPoint PointX="1.9062525" PointY="15.211293945312502" />
+          <ConnectorPoint PointX="3" PointY="15.211293945312502" />
+        </AssociationConnector>
+        <AssociationConnector Association="teaCRMModel.FK_T_SYS_US_REFERENCE_T_SYS_DE" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.25" PointY="3.2593489583333337" />
+          <ConnectorPoint PointX="8" PointY="3.2593489583333337" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

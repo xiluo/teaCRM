@@ -11,7 +11,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>添加客户_C+企业云平台_打造中国办公软件第一品牌</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=8" />
    
     @Styles.Render("~/Themes/default/css/cp.globle.min1.css")
@@ -52,7 +52,7 @@
                             助记简称：
                         </dt>
                         <dd>
-                            <input type="text" class="wid200" id="cus_sname" name="cus_sname" placeholder="客户简称，方便查询" />
+                            <input type="text"class="form-control wid200" id="cus_sname" name="cus_sname" placeholder="客户简称，方便查询" />
                         </dd>
                     </dl>
                     <dl>
@@ -60,16 +60,18 @@
                             省份城市：
                         </dt>
                         <dd>
-                            <select id="cus_province" name="cus_province" field_required="0" field_cname="省份">
+                            <div class="form-group">
+                            <select id="cus_province" name="cus_province" field_required="0"  class="form-control wid120" field_cname="省份">
                                 <option value="0" selected="selected">--请选择--</option>
                             </select>
 
-                            <select id="cus_city" name="cus_city" field_required="0" field_cname="城市">
+                            <select id="cus_city" name="cus_city" field_required="0" class="form-control wid120" style="margin: -30px 0 0 130px"  field_cname="城市">
                                 <option value="0" selected="selected">--请选择--</option>
                             </select>
-                            <select id="cus_region" name="cus_region" field_required="0" field_cname="城市">
+                            <select id="cus_region" name="cus_region" field_required="0" class="form-control wid120" style="margin: -30px 0 0 260px" field_cname="城市">
                                 <option value="0" selected="selected">--请选择--</option>
                             </select>
+                            </div>
                         </dd>
                     </dl>
                     <dl>
@@ -77,13 +79,13 @@
                             <em class="imp">*</em>办公电话1：
                         </dt>
                         <dd>
-                            <input type="text" class="wid260 required mobileTelephome" name="cus_tel" id="cus_tel" />
+                            <input type="text"class="form-control wid260 required mobileTelephome" name="cus_tel" id="cus_tel" />
                         </dd>
                         <dt>
                             详细地址：
                         </dt>
                         <dd>
-                            <input type="text" class="wid200" id="cus_address" name="cus_address" />
+                            <input type="text"class="form-control wid200" id="cus_address" name="cus_address" />
                         </dd>
                     </dl>
                     <dl>
@@ -91,7 +93,7 @@
                             备注：
                         </dt>
                         <dd>
-                            <textarea class="wid515" id="cus_note" name="cus_note" cols="50" rows="2"></textarea>
+                            <textarea class="form-control wid515" id="cus_note" name="cus_note" cols="50" rows="2"></textarea>
                         </dd>
                     </dl>
 
@@ -107,7 +109,7 @@
                                         @field.ExpTitle：
                                     </dt>
                                     <dd>
-                                        <input type="text" name="@field.ExpName" id="@field.ExpName" class="comm-tbox-1 " />
+                                        <input type="text" name="@field.ExpName" id="@field.ExpName"class="form-control comm-tbox-1 " />
                                     </dd>
                                 </dl>
                                 break;
@@ -118,7 +120,7 @@
                                         @field.ExpTitle：
                                     </dt>
                                     <dd>
-                                        <textarea class="comm-abox-1 " id="@field.ExpName" name="@field.ExpName" cols="50" rows="5"></textarea>
+                                        <textarea class="form-control comm-abox-1 " id="@field.ExpName" name="@field.ExpName" cols="50" rows="5"></textarea>
                                     </dd>
                                 </dl>
                                 break;
@@ -129,7 +131,7 @@
                                         @field.ExpTitle：
                                     </dt>
                                     <dd>
-                                        <input type="text" id="@field.ExpName" name="@field.ExpName" class="" />
+                                        <input type="text" id="@field.ExpName" name="@field.ExpName" class="form-control " />
                                     </dd>
                                 </dl>
                                 break;
@@ -140,7 +142,7 @@
                                         @field.ExpTitle：
                                     </dt>
                                     <dd>
-                                        <input type="text" id="@field.ExpName" class="comm-tbox-1 " name="@field.ExpName" />
+                                        <input type="text" id="@field.ExpName" class="form-control comm-tbox-1 " name="@field.ExpName" />
                                     </dd>
                                 </dl>
                                 break;
@@ -151,7 +153,7 @@
                                         @field.ExpTitle：
                                     </dt>
                                     <dd>
-                                        <select id="@field.ExpName" name="@field.ExpName" class="">
+                                        <select id="@field.ExpName" name="@field.ExpName" class="form-control ">
                                             <option selected="selected" value="">--请选择--</option>
                                             @Html.StringToOptions(field.ExpOption)
                                         </select>
@@ -177,9 +179,9 @@
                                     </dt>
                                     <dd>
                                         <div class="box">
-                                            <input type="text" name="copyFile" class="textbox" />
+                                            <input type="text" name="copyFile" class="form-control textbox" />
                                             <a href="javascript:void(0);" class="link">浏览</a>
-                                            <input type="file" class="uploadFile" name="upload" onChange=" getFile(this, 'copyFile') " />
+                                            <input type="file" class="form-control uploadFile" name="upload" onChange=" getFile(this, 'copyFile') " />
                                         </div>
                                     </dd>
                                 </dl>
@@ -191,7 +193,7 @@
                                         @field.ExpTitle：
                                     </dt>
                                     <dd>
-                                        <input type="text" id="@field.ExpName" name="@field.ExpName" class="Wdate " style="width: 90px;" onClick=" WdatePicker({ dateFmt: 'yyyy-MM-dd' }) " />
+                                        <input type="text" id="@field.ExpName" name="@field.ExpName" class="form-control Wdate " style="width: 90px;" onClick=" WdatePicker({ dateFmt: 'yyyy-MM-dd' }) " />
                                     </dd>
                                 </dl>
                                 break;
@@ -216,33 +218,33 @@
                     <dl>
                         <dt>  <em class="imp">*</em>联系人名称：</dt>
                         <dd>
-                            <input type="text" name="con_name" id="con_name" class="required" />
+                            <input type="text" name="con_name" id="con_name" class="form-control required" />
                         </dd>
                         <dt>电话/手机：</dt>
                         <dd>
-                            <input type="text" name="con_tel" id="con_tel" class="number" />
+                            <input type="text" name="con_tel" id="con_tel" class="form-control number" />
                         </dd>
                     </dl>
                     <dl>
                         <dt>Q&nbsp;&nbsp;Q：</dt>
                         <dd>
-                            <input type="text" name="con_qq" id="con_qq" class="number" />
+                            <input type="text" name="con_qq" id="con_qq" class="form-control number" />
                         </dd>
                         <dt>邮箱：</dt>
                         <dd>
-                            <input type="text" name="con_email" id="con_email" class="email" />
+                            <input type="text" name="con_email" id="con_email" class="form-control email" />
                         </dd>
                     </dl>
                     <dl>
                         <dt>出生年月：</dt>
                         <dd>
-                            <input type="text" name="con_bir" id="con_bir" class="Wdate dateISO" onClick=" WdatePicker({ dateFmt: 'yyyy-MM-dd' }) " />
+                            <input type="text" name="con_bir" id="con_bir" class="form-control Wdate dateISO" onClick=" WdatePicker({ dateFmt: 'yyyy-MM-dd' }) " />
                         </dd>
                     </dl>
                     <dl>
                         <dt>备注：</dt>
                         <dd>
-                            <textarea class="comm-abox-1" rows="5" cols="50" name="con_note" id="con_note"></textarea>
+                            <textarea class="form-control comm-abox-1" rows="5" cols="50" name="con_note" id="con_note"></textarea>
                         </dd>
                     </dl>
 
@@ -258,7 +260,7 @@
                                         @field.ExpTitle：
                                     </dt>
                                     <dt>
-                                        <textarea class="comm-abox-1 " id="@field.ExpName" name="@field.ExpName" cols="50" rows="5"></textarea>
+                                        <textarea class="form-control comm-abox-1 " id="@field.ExpName" name="@field.ExpName" cols="50" rows="5"></textarea>
                                     </dt>
                                 </dl>
                                 break;

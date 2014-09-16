@@ -3,21 +3,18 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Msg"] = "产品模块开发中正在开发中";
 }
 
 @section seo {
-    <title>工作台_teaCRM</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-@Styles.Render("~/Themes/default/css/cp.globle.min5.css")
-@Scripts.Render("~/Themes/default/js/cp.globle.min5.js")
-
-
-
+    <title>产品_C+企业云平台_打造中国办公软件第一品牌</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    @Styles.Render("~/Themes/default/css/cp.globle.min5.css")
+    @Scripts.Render("~/Themes/default/js/cp.globle.min5.js")
 }
 @section head {}
-<div id="plugin"   style="background:url(/Themes/default/base/images/develop.png) no-repeat white;position:absolute; width:100%; ">   
-    <h1 style="margin: 200px;text-align: center;color: white;">产品模块开发中正在开发中...</h1>
-</div>
+
+@Html.Partial("_Error", this.ViewData)
 @section script
 {
 

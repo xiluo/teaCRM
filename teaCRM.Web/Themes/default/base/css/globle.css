@@ -47,10 +47,10 @@ input2{background-color: white;border: 1px solid #CCC;height: 20px;padding: 3px 
 
 /*显示JS提示框*/
 #msgprint.pcent{ top:30px; right:45%; position:absolute; z-index:99; opacity:0.9; display:none; }
-#msgprint.success,#msgprint.error,#msgprint.warning{ padding:5px 10px 5px 24px; }
-#msgprint.success{ border:1px solid #CCF9C1; color:#090; background:url(/Themes/default/base/images/msg_icon.gif) 5px 6px no-repeat #F1FEF2; }
-#msgprint.error{ border:1px solid #F9F2B7; color:#F00; background:url(/Themes/default/base/images/msg_icon.gif) 5px -23px no-repeat #FDF8E8; }
-#msgprint.warning{ border:1px solid #FAF4B8; color:#C52716; background:url(/Themes/default/base/images/msg_icon.gif) 5px -53px no-repeat #FEFDE9; }
+#msgprint.success,#msgprint.error,#msgprint.warning{ padding:5px 10px 5px 24px;z-index:9999;}
+#msgprint.success{ border:1px solid #CCF9C1; color:#090; background:url(/Themes/default/base/images/msg_icon.gif) 5px 6px no-repeat #F1FEF2;}
+#msgprint.error{ border:1px solid #F9F2B7; color:#F00; background:url(/Themes/default/base/images/msg_icon.gif) 5px -23px no-repeat #FDF8E8;}
+#msgprint.warning{ border:1px solid #FAF4B8; color:#C52716; background:url(/Themes/default/base/images/msg_icon.gif) 5px -53px no-repeat #FEFDE9;}
 
 /* Tabs样式*/
 .tab_nav{ margin:8px auto; height:23px; line-height:23px; border-bottom:1px #e1e1e1 solid; font-family:"微软雅黑"; }

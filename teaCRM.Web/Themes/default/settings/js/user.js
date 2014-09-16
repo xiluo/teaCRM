@@ -49,8 +49,8 @@ function createTree(treeId) {
                 alert(" 数据加载失败");
             },
             onClick: function(event, treeId, treeNode, clickFlag) {
-                //alert(treeNode.id);
-                //load_form_data(treeNode.id);
+                //console.log(treeNode.id);
+                load_grid_data(treeNode.id);
             }
         }
     };
@@ -70,7 +70,7 @@ function createTree(treeId) {
 //            var node = treeObj.getNodeByParam("id", json[0].id);
 //            treeObj.selectNode(node, false);
 //            //设置选中节点后右边编辑内容的载入
-//            load_form_data(json[0].id);
+//             load_grid_data(json[0].id);
         },
         error: function(msg) {
             alert(" 数据加载失败！" + msg);
@@ -92,9 +92,11 @@ function InitGrid() {
                 compNum: $("#CompNum").val()
             };
         },
-        url: "/api/settings/role/getAllRoles",
+        url: "/api/settings/users/GetAllUsers",
         selection: true,
         multiSelect: true,
+        rowSelect: true,
+        keepSelection: true,
         rowCount: [10, 30, 50],
         templates: {
             header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}}\"><div class=\"row\"><div class=\"col-sm-12 actionBar\"><div class=\"btn-group\" style=\"float:left;\"><button class=\"btn  btn-primary\" title=\"新增\" onclick=\" add(); \">新增</button><button class=\"btn  btn-primary\" title=\"批量删除\" onclick=\" del(); \">批量删除</button></div>" +
@@ -112,11 +114,11 @@ function InitGrid() {
                 }
 
             },
-            "RoleIsSys": function (column, row) {
+            "UserEnable": function (column, row) {
                 if (row.RoleIsSys == 0) {
-                    return "否";
+                    return "禁用";
                 } else {
-                    return "是";
+                    return "启用";
                 }
 
             },
@@ -126,4 +128,109 @@ function InitGrid() {
             }
         }
     });
+}
+
+function  load_grid_data(id) {
+    console.log("dep_id:" + id);
+    grid.bootgrid("search","dep_id="+id);
+
+}
+
+
+function add() {
+    showWindow("show_add", "/Apps/Settings/Users/Add", "添加用户", 750, 345, function () {
+        var form_user = $(window.frames["frm_show_add"].document).find("#form_user");
+        //console.log(form_role);
+        var flag = document.getElementById("frm_show_add").contentWindow.form_valid();
+        if (!flag) {
+            return false;
+        }
+        //var data = $(form_user).serializeObject();
+        var data = $(form_user).serialize();
+        console.log((data));
+        $.ajax({
+            type: "post",
+            cache: false,
+            url: "/api/settings/users/addUser",
+            data: data,
+            dataType: "json",
+            beforeSend: function () {
+                //showMsg("添加中，请稍后...");
+            },
+            complete: function () {
+                //d.close().remove();
+            },
+            success: function (result) {
+                //toLowerCase报错
+                //var status = result.Status.toLowerCase();
+                var status = result.Status;
+                if (status == true || status == "true" || status == "True") {
+                    //刷新数据
+                    grid.bootgrid("reload");
+                    showMsg("用户添加成功！", "Success");
+                } else {
+                    showMsg("系统异常，用户添加失败！", "Error");
+                }
+            },
+            error: function () {
+                showMsg("网络连接错误", "Error");
+            }
+        });
+
+    });
+    //必须有这个，阻止刷新
+    return false;
+}
+
+
+function edit() {
+    showWindow("show_edit", "/Apps/Settings/Users/Edit", "修改用户", 750, 345, function() {
+        var form_user = $(window.frames["frm_show_edit"].document).find("#form_user");
+        //console.log(form_role);
+        var flag = document.getElementById("frm_show_edit").contentWindow.form_valid();
+        if (!flag) {
+            return false;
+        }
+        //var data = $(form_user).serializeObject();
+        var data = $(form_user).serialize();
+        console.log((data));
+    });
+}
+
+
+function del(id) {
+    console.log(id);
+    showDialog("确认删除该角色吗？", function () {
+//        $.ajax({
+//            type: "get",
+//            cache: false,
+//            url: "/api/settings/role/deleteRole/",
+//            data: { id: id },
+//            dataType: "json",
+//            beforeSend: function () {
+//                //showMsg("添加中，请稍后...");
+//            },
+//            complete: function () {
+//                //d.close().remove();
+//            },
+//            success: function (result) {
+//                //toLowerCase报错
+//                //var status = result.Status.toLowerCase();
+//                var status = result.Status;
+//                if (status == true || status == "true" || status == "True") {
+//                    //刷新数据
+//                    grid.bootgrid("reload");
+//                    showMsg("角色删除成功！", "Success");
+//                } else {
+//                    showMsg("系统异常，角色删除失败！", "Error");
+//                }
+//            },
+//            error: function () {
+//                showMsg("网络连接错误", "Error");
+//            }
+        //        });
+        showMsg("系统异常，角色删除失败！", "Error");
+    });
+    //必须有这个，阻止刷新
+    return false;
 }

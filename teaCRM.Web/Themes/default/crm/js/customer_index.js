@@ -9,7 +9,7 @@ var manager1;
 var view_auth = false;
 
 
-$(document).ready(function () {
+$(document).ready(function() {
     createTree();
 });
 
@@ -21,72 +21,69 @@ $(function() {
     InitDataGrid();
 });
 
-////加载树形数据
-//function loadTreeData() {
-//    //$("#filter_tree").ligerTree({ checkbox: false });
-//    $("#filter_tree").ligerTree({
-//        url: '/Apps/CRM/LoadData/GetFilterTreeData/',
-//        ajaxType: 'get',
-//        checkbox: false,
-//        nodeWidth: 76
-//    });
-//}
-
-
-
 //ZTree==========================================================================
 //=================================================================================
 //异步加载节点
-var setting = {
-    data: {
-        simpleData: {
-            enable: true,
-            idKey: "id",
-            pIdKey: "pId",
-            rootPId: 0
-        }
-    },
-    async: {
-        //异步加载
-        enable: true,
-        url: "/Apps/CRM/LoadData/AsyncGetNodes/",
-        autoParam: ["id", "name", "pId"]
-    },
-    callback: {
-        beforeExpand: function (treeId, treeNode) {
-            if (!treeNode.isAjaxing) {
-                return true;
-            } else {
-                alert("zTree 正在下载数据中，请稍后展开节点。。。");
-                return false;
+function createTree() {
+    var setting = {
+        data: {
+            simpleData: {
+                enable: true,
+                idKey: "id",
+                pIdKey: "pId",
+                rootPId: 0
             }
         },
-        onAsyncSuccess: function (event, treeId, treeNode, msg) {
+        async: {
+            //异步加载
+            enable: true,
+            url: "/Apps/CRM/LoadData/AsyncGetNodes/",
+            autoParam: ["id", "name", "pId"]
+        },
+        callback: {
+            beforeExpand: function(treeId, treeNode) {
+                if (!treeNode.isAjaxing) {
+                    return true;
+                } else {
+                    alert("zTree 正在下载数据中，请稍后展开节点。。。");
+                    return false;
+                }
+            },
+            onAsyncSuccess: function(event, treeId, treeNode, msg) {
 
-        },
-        onAsyncError: function () {
-            alert(" 数据加载失败");
-        },
-        onClick: function (event, treeId, treeNode, clickFlag) {
-            alert("你选中的节点数据："+treeNode.id+" "+treeNode.name);
+
+            },
+            onAsyncError: function() {
+                alert(" 数据加载失败");
+            },
+            onClick: function(event, treeId, treeNode, clickFlag) {
+                alert("你选中的节点数据：" + treeNode.id + " " + treeNode.name);
+            }
         }
-    }
-};
-
-function createTree() {
+    };
     $.ajax({
         url: '/Apps/CRM/LoadData/AsyncGetNodes/', //url  action是方法的名称
         data: { id: 0 },
         type: 'Get',
         dataType: "text", //可以是text，如果用text，返回的结果为字符串；如果需要json格式的，可是设置为json
-        success: function (data) {
+        success: function(data) {
             $.fn.zTree.init($("#filter_tree"), setting, eval('(' + data + ')'));
+            //展开一级
+            var json_data = eval('(' + data + ')');
+            for (var index in json_data) {
+                var tnode = json_data[index];
+                console.log(tnode);
+                var treeObj = $.fn.zTree.getZTreeObj("filter_tree");
+                var node = treeObj.getNodeByParam("id", tnode.id, null);
+                treeObj.expandNode(node, true, true, true);
+            }
         },
-        error: function (msg) {
+        error: function(msg) {
             alert(" 数据加载失败！" + msg);
         }
     });
 }
+
 //=============================================================================================
 
 
@@ -182,7 +179,7 @@ function view() {
 
 //添加客户
 function add() {
-    showWindow("show_add", "/Apps/CRM/Index/Add/", "新增客户", 800, 480, function () {
+    showWindow("show_add", "/Apps/CRM/Index/Add/", "新增客户", 800, 480, function() {
         var form_customer = $(window.frames["frm_show_add"].document).find("#form_customer");
         //var data = $(form_customer).serialize();
         //alert(data);
@@ -202,33 +199,32 @@ function add() {
             url: url,
             data: data,
             dataType: "json",
-            beforeSend: function () {
+            beforeSend: function() {
                 //showMsg("添加中，请稍后...");
             },
-            complete: function () {
+            complete: function() {
                 //d.close().remove();
             },
-            success: function (result) {
+            success: function(result) {
                 //toLowerCase报错
                 //var status = result.Status.toLowerCase();
                 var status = result.Status;
                 if (status == true || status == "true" || status == "True") {
                     //在iframe里面打开弹出框并自动关闭
-                    showMsg(result.Msg,"Success");
+                    showMsg(result.Msg, "Success");
                     //刷新数据
                     f_reload();
                 } else {
-                    showMsg("系统异常！","Error");
+                    showMsg("系统异常！", "Error");
                 }
             },
-            error: function () {
+            error: function() {
                 showMsg("网络连接错误");
             }
         });
 
     });
 }
-
 
 
 function edit() {
@@ -281,10 +277,10 @@ function to_trash() {
                 success: function(result) {
                     var status = result.Status;
                     if (status == true || status == "true" || status == "True") {
-                        showMsg("删除成功！","Success");
+                        showMsg("删除成功！", "Success");
                         f_reload();
                     } else {
-                        showMsg("删除失败！","Error");
+                        showMsg("删除失败！", "Error");
                     }
                 },
                 error: function() {

@@ -5,9 +5,16 @@
 var grid;
 
 $(function() {
-    grid=   $("#grid-data").bootgrid({
+
+//初始化表格
+    InitGrid();
+});
+
+
+function InitGrid() {
+    grid = $("#grid-data").bootgrid({
         ajax: true,
-        post: function() {
+        post: function () {
             /* To accumulate custom parameter with the request object */
             return {
                 compNum: $("#CompNum").val()
@@ -15,7 +22,9 @@ $(function() {
         },
         url: "/api/settings/role/getAllRoles",
         selection: true,
-        multiSelect:true,
+        multiSelect: true,
+        rowSelect: true,
+        keepSelection: true,
         rowCount: [10, 30, 50],
         templates: {
             header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}}\"><div class=\"row\"><div class=\"col-sm-12 actionBar\"><div class=\"btn-group\" style=\"float:left;\"><button class=\"btn  btn-primary\" title=\"新增\" onclick=\" add(); \">新增</button><button class=\"btn  btn-primary\" title=\"批量删除\" onclick=\" del(); \">批量删除</button></div>" +
@@ -31,7 +40,7 @@ $(function() {
                 } else {
                     return "普通员工";
                 }
-                
+
             },
             "RoleIsSys": function (column, row) {
                 if (row.RoleIsSys == 0) {
@@ -41,14 +50,13 @@ $(function() {
                 }
 
             },
-            "commands": function(column, row) {
+            "commands": function (column, row) {
                 return "<a href='/Apps/Settings/Permission'>权限管理</a>  " + "<button type=\"button\" class=\"btn btn-xs btn-default command-edit\" onclick=edit(" + row.Id + ")><span class=\"fa fa-pencil\"></span>修改</button> " +
                     "<button type=\"button\" class=\"btn btn-xs btn-default command-delete\" onclick=del(" + row.Id + ")><span class=\"fa fa-trash-o\"></span>删除</button>";
             }
         }
     });
-
-});
+}
 
 
 function add() {

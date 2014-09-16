@@ -7,18 +7,263 @@
 
 @section seo {
     <title>应用市场_C+企业云平台_打造中国办公软件第一品牌</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
 }
 @section head {
     @Styles.Render("~/Themes/default/css/cp.globle.min3.css")
-@Scripts.Render("~/Themes/default/js/cp.globle.min3.js")
-
-
+    @Scripts.Render("~/Themes/default/js/cp.globle.min3.js")
+    <link href="http://mimg.127.net/p/appcenter/1.0b1407221000/css/overlay_compress.css" rel="stylesheet" type="text/css"  />
+    <script type="text/javascript" src="/Themes/default/base/js/app.js"></script>
 }
 
-<div id="plugin"  style="background:url(/Themes/default/base/images/develop.png) no-repeat white;position:absolute; width:100%; ">   
-    <h1 style="margin: 200px;text-align: center;color: white;">应用市场模块开发中正在开发中...</h1>
+<div class="frame-wrap">
+    <div class="frame-swrap">
+        <aside class="frame-nav frame-skin-sideLeft">
+            <div class="frame-nav-schWrap" id="dvSearch">
+                <div id="_mail_component_0_0" class="js-component-component frame-nav-sch" role="search">
+                    <b class="ico ico-app-sch"></b>
+                    <div id="_mail_input_0_2" class="js-component-input app-sch-wrap nui-ipt ">
+                        <label class="nui-ipt-placeholder">搜索你需要的应用</label>
+                        <input class="nui-ipt-input nav-app-sch" type="text" />
+                    </div>
+                    <a id="_mail_link_0_3" href="javascript:void(0)" class="js-component-link dz " hidefocus="hidefocus" title="回车(enter)"><b id="_mail_icon_0_4" class="js-component-icon fn-bg ico "></b><span id="_mail_link_0_3_text"></span></a>
+                </div>
+            </div>
+            <div class="frame-nav-wrap fn-scroll" id="main-nav">
+                <ul class="frame-nav-list">
+                    <li class="frame-nav-item" id="19575007" data-id="myapp" data-module="usermanage.UserManageModule"><b class="ico ico-nav ico-nav-mine"></b>我的应用<strong class="frame-nav-item-modTipsNum">(1)</strong></li>
+                    <li class="splitline"></li>
+                    <li class="frame-nav-item frame-nav-item-selected" id="82254944" data-id="recommen" data-module="recommend.RecommendModule"><b class="ico ico-nav ico-nav-recommen"></b>首页推荐</li>
+                    <li class="frame-nav-item" id="65290012" data-id="all" data-module="list.ListModule"><b class="ico ico-nav ico-nav-all"></b>所有应用</li>
+                    <li class="splitline"></li>
+                    <li class="frame-nav-item" id="55641008" data-id="2" data-module="list.ListModule"><b class="ico ico-nav ico-nav-efficiency"></b>效率</li>
+                    <li class="frame-nav-item" id="71504633" data-id="3" data-module="list.ListModule"><b class="ico ico-nav ico-nav-tools"></b>工具</li>
+                    <li class="frame-nav-item" id="64385901" data-id="4" data-module="list.ListModule"><b class="ico ico-nav ico-nav-communication"></b>沟通</li>
+                    <li class="frame-nav-item" id="83540251" data-id="5" data-module="list.ListModule"><b class="ico ico-nav ico-nav-information"></b>资讯</li>
+                    <li class="frame-nav-item" id="50195628" data-id="6" data-module="list.ListModule"><b class="ico ico-nav ico-nav-amusement"></b>娱乐</li>
+                    <li class="frame-nav-item" id="80712967" data-id="7" data-module="list.ListModule"><b class="ico ico-nav ico-nav-share"></b>分享</li>
+                    <li class="frame-nav-item" id="87147101" data-id="8" data-module="list.ListModule"><b class="ico ico-nav ico-nav-games"></b>游戏</li>
+                    <li class="frame-nav-item" id="17497884" data-id="9" data-module="list.ListModule"><b class="ico ico-nav ico-nav-buy"></b>网购</li>
+                </ul>
+            </div>
+        </aside>
+        <section class="frame-main fn-scroll">
+            <div id="dvContainer" class="frame-main-wrap">
+                <div id="_dvModuleContainer_recommend.RecommendModule_0">
+                    <div class="" id="1410845638058_ScrollDiv">
+                        <div class="frame-main-swrap frame-main-newWarper">
+                            <section class="frame-main-cont">
+                                <div class="m-sld" id="1410845638058_dvPicSliderContainer">
+                                    <div id="_mail_carousel_0_5" class="js-component-carousel carousel  mod-picSlider-warper">
+                                        <div class="m-sld-wrap">
+                                            <ul class="m-sld-bd" style="left: -3120px;">
+                                                <li data-index="0" class="m-sld-item"><a class="" href="javascript:;"><img width="780" height="190" src="" /></a></li>
+                                                <li data-index="1" class="m-sld-item"><a class="" href="javascript:;"><img width="780" height="190" src="" /></a></li>
+                                                <li data-index="2" class="m-sld-item"><a class="" href="javascript:;"><img width="780" height="190" src="" /></a></li>
+                                                <li data-index="3" class="m-sld-item"><a class="" href="javascript:;"><img width="780" height="190" src="" /></a></li>
+                                                <li data-index="4" class="m-sld-item"><a class="" href="javascript:;"><img width="780" height="190" src="http://mimg.127.net/ggimg/all/img16/130820_rings_638x190.jpg" /></a></li>
+                                                <li data-index="5" class="m-sld-item"><a class="" href="javascript:;"><img width="780" height="190" src="" /></a></li>
+                                                <li data-index="6" class="m-sld-item"><a class="" href="javascript:;"><img width="780" height="190" src="" /></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="mod-picSlider-mask"></div>
+                                        <a class="mod-picSlider-link" title="" href="javascript:;" data-index="4"></a>
+                                        <div class="m-sld-picmenu">
+                                            <a href="javascript:;" data-index="0" class="m-sld-picmenu-item">0
+                                                <div class="makeRound">
+                                                    <b class="spinner pie"></b>
+                                                    <b class="filler pie"></b>
+                                                    <b class="mask"></b>
+                                                </div></a>
+                                            <a href="javascript:;" data-index="1" class="m-sld-picmenu-item">1
+                                                <div class="makeRound">
+                                                    <b class="spinner pie"></b>
+                                                    <b class="filler pie"></b>
+                                                    <b class="mask"></b>
+                                                </div></a>
+                                            <a href="javascript:;" data-index="2" class="m-sld-picmenu-item">2
+                                                <div class="makeRound">
+                                                    <b class="spinner pie"></b>
+                                                    <b class="filler pie"></b>
+                                                    <b class="mask"></b>
+                                                </div></a>
+                                            <a href="javascript:;" data-index="3" class="m-sld-picmenu-item">3
+                                                <div class="makeRound">
+                                                    <b class="spinner pie"></b>
+                                                    <b class="filler pie"></b>
+                                                    <b class="mask"></b>
+                                                </div></a>
+                                            <a href="javascript:;" data-index="4" class="m-sld-picmenu-item m-sld-picmenu-item-active">4
+                                                <div class="makeRound">
+                                                    <b class="spinner pie"></b>
+                                                    <b class="filler pie"></b>
+                                                    <b class="mask"></b>
+                                                </div></a>
+                                            <a href="javascript:;" data-index="5" class="m-sld-picmenu-item">5
+                                                <div class="makeRound">
+                                                    <b class="spinner pie"></b>
+                                                    <b class="filler pie"></b>
+                                                    <b class="mask"></b>
+                                                </div></a>
+                                            <a href="javascript:;" data-index="6" class="m-sld-picmenu-item">6
+                                                <div class="makeRound">
+                                                    <b class="spinner pie"></b>
+                                                    <b class="filler pie"></b>
+                                                    <b class="mask"></b>
+                                                </div></a>
+                                        </div>
+                                        <a href="javascript:;" data-action="pre" class="m-sld-swit m-sld-swit m-sld-pre" title="上一张">
+                                            <div class="m-sld-switbg"></div><b class="ico ico-pre"></b></a>
+                                        <a href="javascript:;" data-action="next" class="m-sld-swit m-sld-swit m-sld-next" title="下一张">
+                                            <div class="m-sld-switbg"></div><b class="ico ico-next"></b></a>
+                                    </div>
+                                </div>
+                                <div class="m-Content boutique-Content" id="1410845638058_dvHotAppList" "="">
+                                    <div class="m-title">
+                                        <h2 class="m-title-txt">精品推荐</h2>
+                                    </div>
+                                    <div class="m-boutique-box">
+                                        <div style="display: none;" class="m-boutique-nav" id="1410845638058_dvBoutiqueNav">
+                                            <a id="_mail_link_1_6" href="javascript:void(0)" class="active js-component-link " hidefocus="hidefocus">热门</a>
+                                            <a id="_mail_link_2_7" href="javascript:void(0)" class=" last-item js-component-link " hidefocus="hidefocus">最新</a>
+                                        </div>
+                                        <div class="m-contBox-content">
+                                            <ul class="m-boutique-list" id="best_app">
+                                                @*  <li class="m-appShow"><a id="_mail_link_3_8" href="javascript:void(0)" class="js-component-link m-appshow-name" hidefocus="hidefocus" title="一元夺宝  一元实现梦想"><img src="./app_files/yiyuan_1_75.png" alt="一元夺宝 " />一元夺宝</a><p class="m-appShow-counts mod-appShow-name-hover">33100位用户</p>
+               <div class="m-rating-box">
+                <div id="_mail_component_9_9" class="js-component-component m-rating m-rating-set4" data-orginal="m-rating-set4">
+                 <a class="m-rating-ico ico m-rating-ico-s1" href="javascript:void(0);">标1星</a>
+                 <a class="m-rating-ico ico m-rating-ico-s2" href="javascript:void(0);">标2星</a>
+                 <a class="m-rating-ico ico m-rating-ico-s3" href="javascript:void(0);">标3星</a>
+                 <a class="m-rating-ico ico m-rating-ico-s4" href="javascript:void(0);">标4星</a>
+                 <a class="m-rating-ico ico m-rating-ico-s5" href="javascript:void(0);">标5星</a>
+                 <div class="doSucc" style="display:none;">
+                  打分成功
+                 </div>
+                </div>
+               </div>
+               <div class="doSucc doSuccess" style="display:none;">
+                打分成功
+               </div></li>
+             *@
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="m-Content special-Content" id="1410845638058_dvTopicContainer" ></div>
+                                <div class="m-Content dJ" id="1410845638058_dvNewAppList" "="">
+                                    <div class="m-title">
+                                        <h2 class="m-title-txt">最新应用</h2>
+                                        <a id="_mail_link_24_71" href="javascript:void(0)" class="more js-component-link " hidefocus="hidefocus">更多</a>
+                                    </div>
+                                    <ul class="dU" id="new_app">
+                                        @* <li class="ei" style="background-color:#5cc0ff;border-color: #1299e7"><img src="./app_files/voyage.gif" alt="航旅纵横" /><b id="_mail_icon_1_72" class="js-component-icon ico-onBox-new ico "></b>
+             <div class="ea"> 
+              <p class="dE">航旅纵横</p>
+              <div class="count">
+               <p class="user-num" title="已有7550人添加该应用">7550位用户</p>
+               <div class="m-rating-box">
+                <div id="_mail_component_73_73" class="js-component-component m-rating m-rating-set3" data-orginal="m-rating-set3">
+                 <a class="m-rating-ico ico m-rating-ico-s1" href="javascript:void(0);">标1星</a>
+                 <a class="m-rating-ico ico m-rating-ico-s2" href="javascript:void(0);">标2星</a>
+                 <a class="m-rating-ico ico m-rating-ico-s3" href="javascript:void(0);">标3星</a>
+                 <a class="m-rating-ico ico m-rating-ico-s4" href="javascript:void(0);">标4星</a>
+                 <a class="m-rating-ico ico m-rating-ico-s5" href="javascript:void(0);">标5星</a>
+                 <div class="doSucc" style="display:none;">
+                  打分成功
+                 </div>
+                </div>
+               </div>
+              </div>
+              <div class="doSucc doSuccess" style="display:none;">
+               打分成功
+              </div>
+              <p id="_mail_component_75_75" class="js-component-component dM">提供最权威、最及时、最准确、最全面的航班动态查询</p>
+              <div class="opt">
+               <a id="_mail_button_0_77" href="javascript:;" role="button" tabindex="0" class="js-component-button btn-Succ btn-success btn btn-hasIco btn-success-hasIco  "><b id="_mail_icon_2_78" class="js-component-icon ico ico-add  "></b>添加</a>
+              </div>
+             </div></li>
+             *@
+                                    </ul>
+          
+                                </div>
+                                <div class="ec">
+                                    <a href="/Apps/" target="_blank">应用中心官方首页</a>
+                                    <a href="/" target="_blank">帮助中心</a>
+                                    <a href="/" target="_blank">反馈</a> &nbsp;|&nbsp;
+                                    <span>优创科技 版权所有 &copy; 2013-@DateTime.Now.Year</span>
+                                </div>
+                            </section>
+                            <section class="frame-main-side " id="1410845638058_dvSideBox">
+                                <header class="eb">
+                                    <div class="dF">
+                                        <p class="dG dH">唐有炜<a href="#" target="_blank" class="ico Afeedback" title="反馈">反馈</a></p>
+                                        <p class="dG"><b class="ico ico-jifen ico-hidTxt">积分</b><span id="_mail_component_103_103" class="js-component-component ej">1087</span><b id="_mail_component_105_105" class="js-component-component ico ico-coupon ico-hidTxt">优惠券</b></p>
+                                        <a id="_mail_button_5_107" href="javascript:;" role="button" tabindex="0" class="js-component-button btn-myApp btn-nor btn btn-hasIco btn-nor-hasIco  "><b id="_mail_icon_10_108" class="js-component-icon ico ico-app  "></b>我的应用</a>
+                                    </div>
+                                </header>
+                                <div class="m-sideCont">
+                                    <p class="m-sideCont-title">最近使用</p>
+                                    <div class="mod-SideContBox-con bT">
+                                        <ul class="dZ" id="latest_app">
+                                           @* <li class="dD"><a id="_mail_link_26_109" href="javascript:void(0)" class="js-component-link " hidefocus="hidefocus" title="简历中心"><img src="./app_files/resume_2_32.png" alt="简历中心" /></a></li>
+                                            <li class="dD"><a id="_mail_link_27_110" href="javascript:void(0)" class="js-component-link " hidefocus="hidefocus" title="网易云音乐"><img src="./app_files/yun_music_32.png" alt="网易云音乐" /></a></li>
+                                            <li class="dD"><a id="_mail_link_28_111" href="javascript:void(0)" class="js-component-link " hidefocus="hidefocus" title="有道云笔记"><img src="./app_files/cloud_notes_32.png" alt="有道云笔记" /></a></li>
+                                            <li class="dD"><a id="_mail_link_29_112" href="javascript:void(0)" class="js-component-link " hidefocus="hidefocus" title="中国天气网"><img src="./app_files/chinese_weather_32.png" alt="中国天气网" /></a></li>
+                                            <li class="dD"><a id="_mail_link_30_113" href="javascript:void(0)" class="js-component-link " hidefocus="hidefocus" title="贺卡"><img src="./app_files/card_2_32.png" alt="贺卡" /></a></li>
+                                            <li class="dD"><a id="_mail_link_31_114" href="javascript:void(0)" class="js-component-link " hidefocus="hidefocus" title="礼物"><img src="./app_files/gift_2_32.png" alt="礼物" /></a></li>
+                                            <li class="dD"><a id="_mail_link_32_115" href="javascript:void(0)" class="js-component-link " hidefocus="hidefocus" title="明信片"><img src="./app_files/postcard_2_32.png" alt="明信片" /></a></li>
+                                            <li class="dD"><a id="_mail_link_33_116" href="javascript:void(0)" class="js-component-link " hidefocus="hidefocus" title="电子名片"><img src="./app_files/ecard_2_32.png" alt="电子名片" /></a></li>*@
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="splitline"></div>
+                                <div class="m-sideCont">
+                                    <p class="m-sideCont-title">便民服务</p>
+                                    <div class="mod-SideContBox-con ">
+                                        <ul class="ed">
+                                            <li><a id="_mail_link_34_117" href="javascript:void(0)" class="js-component-link dN dI " hidefocus="hidefocus"><b id="_mail_icon_11_118" class="js-component-icon ico-service ico-phone ico "></b><span id="_mail_link_34_117_text">充话费<b class="ico ico-dArr"></b><b class="ico ico-specialOffer ico-hidTxt">特价</b></span></a></li>
+                                            <li><a id="_mail_link_35_119" href="javascript:void(0)" class="js-component-link dN " hidefocus="hidefocus"><b id="_mail_icon_12_120" class="js-component-icon ico-service ico-drop ico "></b><span id="_mail_link_35_119_text">水电煤<b class="ico ico-dArr"></b></span></a></li>
+                                            <li><a id="_mail_link_36_121" href="javascript:void(0)" class="js-component-link dN " hidefocus="hidefocus"><b id="_mail_icon_13_122" class="js-component-icon ico-service ico-cards ico "></b><span id="_mail_link_36_121_text">充点卡<b class="ico ico-dArr"></b></span></a></li>
+                                            <li><a id="_mail_link_37_123" href="javascript:void(0)" class="js-component-link dN " hidefocus="hidefocus"><b id="_mail_icon_14_124" class="js-component-icon ico-service ico-DCball ico "></b><span id="_mail_link_37_123_text">双色球<b class="ico ico-dArr"></b></span></a></li>
+                                            <li><a id="_mail_link_38_125" href="javascript:void(0)" class="js-component-link dN " hidefocus="hidefocus"><b id="_mail_icon_15_126" class="js-component-icon ico-service ico-safety ico "></b><span id="_mail_link_38_125_text">保险<b class="ico ico-dArr"></b></span></a></li>
+                                            <li><a id="_mail_link_39_127" href="javascript:void(0)" class="js-component-link dN " hidefocus="hidefocus"><b id="_mail_icon_16_128" class="js-component-icon ico-service ico-money ico "></b><span id="_mail_link_39_127_text">理财<b class="ico ico-dArr"></b></span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="" id="1410845638058_dvServiceContainer">
+                                        <div class="service_frame_wrapper dV" id="1410845638058_huafei">
+                                            <div class="splitline"></div>
+                                            <iframe frameborder="0" allowtransparency="allowTransparency" border="0" style="width: 198px; height: 204px;" src="http://mall.163.com/promoter/mail/charge.htm"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="m-sideCont">
+                                    <p class="m-sideCont-title">应用排行榜</p>
+                                    <div class="mod-SideContBox-con cO" style="height: 300px;">
+                                        <ol class="m-appTop-box">
+                                              <li id="_mail_component_130_130" class="js-component-component m-appTop "><span class="num num-1">1</span><a id="_mail_link_40_129" href="javascript:void(0)" class="link js-component-link " hidefocus="hidefocus"><img src="http://mimg.127.net/p/images/app/BoBo_2_16.png" alt="客户" />客户</a><span class="intro">管理客户信息</span></li>
+                                        <li id="_mail_component_133_133" class="js-component-component m-appTop "><span class="num num-2">2</span><a id="_mail_link_41_132" href="/Apps/Sale/"  target="_blank" class="link js-component-link " hidefocus="hidefocus"><img src="http://mimg.127.net/p/images/app/openclass_16.png" alt="销售" />销售</a><span class="intro">管理销售</span></li>
+                                            <li id="_mail_component_136_136" class="js-component-component m-appTop "><span class="num num-3">3</span><a id="_mail_link_42_135" href="/Apps/Product/"  target="_blank" class="link js-component-link " hidefocus="hidefocus"><img src="http://mimg.127.net/p/images/app/netfolder_2_16.png" alt="产品" />产品</a><span class="intro">管理产品</span></li>
+                                            <li id="_mail_component_148_148" class="js-component-component m-appTop "><span class="num num-4">4</span><a id="_mail_link_46_147" href="/Apps/Service/"  target="_blank" class="link js-component-link " hidefocus="hidefocus"><img src="http://mimg.127.net/p/images/app/netease_flower_field_16.png" alt="服务">服务</a><span class="intro">服务</span></li>
+                                        
+                                         
+                                        </ol>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </div>
+
+
+
+
+
 @section script
 {
     

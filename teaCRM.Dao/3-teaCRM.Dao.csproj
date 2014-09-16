@@ -60,19 +60,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Basic\Impl\TFunExpandDaoImpl.cs" />
-    <Compile Include="Basic\Impl\TFunFilterDaoImpl.cs" />
+    <Compile Include="Settings\Impl\TFunAppDaoImpl.cs" />
+    <Compile Include="Settings\Impl\TFunAppMyappDaoImpl.cs" />
+    <Compile Include="Settings\Impl\TFunExpandDaoImpl.cs" />
+    <Compile Include="Settings\Impl\TFunFilterDaoImpl.cs" />
+    <Compile Include="Settings\Impl\TFunMyappDaoImpl.cs" />
     <Compile Include="Basic\Impl\TSysCompanyDaoImpl.cs" />
     <Compile Include="Basic\Impl\TSysLogDaoImpl.cs" />
-    <Compile Include="Basic\Impl\TSysUserDaoImpl.cs" />
+    <Compile Include="Settings\Impl\VAppMyappDaoImpl.cs" />
+    <Compile Include="Settings\ITFunAppDao.cs" />
+    <Compile Include="Settings\ITFunAppMyappDao.cs" />
+    <Compile Include="Settings\ITFunMyappDao.cs" />
+    <Compile Include="Settings\Impl\TSysUserDaoImpl.cs" />
     <Compile Include="Basic\Impl\VCompanyUserDaoImpl.cs" />
-    <Compile Include="Basic\ITFunExpandDao.cs" />
-    <Compile Include="Basic\ITFunFilterDao.cs">
+    <Compile Include="Settings\ITFunExpandDao.cs" />
+    <Compile Include="Settings\ITFunFilterDao.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\ITSysCompanyDao.cs" />
     <Compile Include="Basic\ITSysLogDao.cs" />
-    <Compile Include="Basic\ITSysUserDao.cs" />
+    <Compile Include="Settings\ITSysUserDao.cs" />
     <Compile Include="Basic\IVCompanyUser.cs" />
     <Compile Include="CRM\Impl\TCusBaseDaoImpl.cs" />
     <Compile Include="CRM\Impl\TCusConDaoImpl.cs" />
@@ -93,6 +100,7 @@
     <Compile Include="Settings\ITSysDepartmentDao.cs" />
     <Compile Include="Settings\ITSysRoleDao.cs" />
     <Compile Include="Settings\IZSettingsDao.cs" />
+    <Compile Include="Settings\IVAppMyapp.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

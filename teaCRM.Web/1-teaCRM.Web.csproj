@@ -147,7 +147,10 @@
   <ItemGroup>
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Controllers\Api\AppController.cs" />
+    <Compile Include="Controllers\Api\Settings\AppMakerController.cs" />
     <Compile Include="Controllers\Api\Settings\RoleController.cs" />
+    <Compile Include="Controllers\Api\Settings\UsersController.cs" />
     <Compile Include="Controllers\Apps\CRM\ContactController.cs" />
     <Compile Include="Controllers\Apps\CRM\PubController.cs" />
     <Compile Include="Controllers\Apps\CRM\ToolbarController.cs" />
@@ -167,7 +170,7 @@
     </Compile>
     <Compile Include="Controllers\Apps\Settings\RoleController.cs" />
     <Compile Include="Controllers\Apps\Settings\UsersController.cs" />
-    <Compile Include="Controllers\Base\WorkbenchController.cs" />
+    <Compile Include="Controllers\Base\DesktopController.cs" />
     <Compile Include="Filters\AutoLoginAttribute.cs" />
     <Compile Include="Filters\UserAuthorizeAttribute.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
@@ -186,17 +189,17 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="ie6update.html" />
-    <Content Include="index.html" />
     <Content Include="Themes\default\base\css\account.css" />
     <Content Include="Themes\default\base\css\login.css" />
     <Content Include="Themes\default\base\css\login.mobile.css" />
     <Content Include="Themes\default\base\css\public_register.css" />
     <Content Include="Themes\default\base\css\public_register.mobile.css" />
     <Content Include="Themes\default\base\images\btn_bg.gif" />
-    <Content Include="Themes\default\base\images\develop.png" />
     <Content Include="Themes\default\base\images\ie_update.jpg" />
     <Content Include="Themes\default\base\images\msg_icon.gif" />
+    <Content Include="Themes\default\base\images\develop.png" />
     <Content Include="Themes\default\base\images\tools_bg.gif" />
+    <Content Include="Themes\default\base\js\app.js" />
     <Content Include="Themes\default\base\js\city.js" />
     <Content Include="Themes\default\lib\artDialog\lib\require.js" />
     <Content Include="Themes\default\lib\artDialog\lib\sea.js" />
@@ -271,6 +274,7 @@
     <Content Include="Themes\default\lib\zTree\js\jquery.ztree.exedit-3.5.js" />
     <Content Include="Themes\default\lib\zTree\js\jquery.ztree.exedit-3.5.min.js" />
     <Content Include="Themes\default\lib\zTree\js\jquery.ztree.exedit.js" />
+    <Content Include="Themes\default\settings\js\app_maker.js" />
     <Content Include="Themes\default\settings\js\role.js" />
     <Content Include="Themes\default\settings\js\user.js" />
     <Content Include="Views\Base\Admin\LogView.cshtml" />
@@ -1367,7 +1371,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Base\Workbench\Index.cshtml" />
+    <Content Include="Views\Base\Desktop\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Base\Account\Login.cshtml" />
@@ -1382,19 +1386,10 @@
     <Content Include="Views\Apps\CRM\Index\CustomerAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Apps\Sale\Index\SaleAdd.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Apps\Index\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Apps\Product\Index\ProducrAdd.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Apps\Product\Index\ProductIndex.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Apps\Service\Index\ServiceAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Apps\Service\Index\ServiceIndex.cshtml" />
@@ -1415,6 +1410,7 @@
     <Content Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Themes\default\lib\bootstrap\css\bootstrap.css.map" />
     <None Include="Themes\default\lib\ligerUI\skins\Purple\images\icon\icon-done.gif.695873" />
     <None Include="Themes\default\lib\ligerUI\skins\Purple\image\flexigrid_blue\indicator_waitanim.gif.bak" />
     <None Include="Themes\default\lib\ligerUI\skins\Purple\image\flexigrid_blue\vssver2.scc" />
@@ -1443,6 +1439,7 @@
     <Content Include="Views\Base\Account\PublicRegister.Mobile.cshtml" />
     <Content Include="Views\Shared\_Layout.mobile.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Apps\Settings\AppMaker\AppMakerDetail.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

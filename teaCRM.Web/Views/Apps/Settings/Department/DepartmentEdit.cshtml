@@ -47,7 +47,7 @@
                         var errorMsg = error[0].innerHTML;
                         var elementName = element[0].name;
                         //防止气泡提示遮挡树形
-                        if (elementName!="ParentId") {
+                        if (elementName != "ParentId") {
                             $("#" + elementName).formtip(errorMsg);
                         }
                         $("#" + elementName).attr("placeholder", errorMsg);
@@ -115,14 +115,14 @@
                         onAsyncError: function() {
                             console.log(" 数据加载失败");
                         },
-                        beforeCheck: function (treeId, treeNode) {
+                        beforeCheck: function(treeId, treeNode) {
                             $("#ParentId").val(treeNode.name).focus();
                             $("#HiddenParentId").val(treeNode.id);
-                            console.log($("#ParentId").val()+  $("#HiddenParentId").val());
+                            console.log($("#ParentId").val() + $("#HiddenParentId").val());
                             hideMenu();
                             return true;
                         },
-                        onClick: function (event, treeId, treeNode) {
+                        onClick: function(event, treeId, treeNode) {
                             $("#ParentId").val(treeNode.name).focus().removeClass("error").addClass("success");
                             $("#HiddenParentId").val(treeNode.id);
                             console.log($("#ParentId").val() + $("#HiddenParentId").val());
@@ -132,11 +132,20 @@
                 };
                 $.ajax({
                     url: '/Apps/Settings/Department/AsyncGetNodes/', //url  action是方法的名称
-                    data: { id: 0,type:"select" },
+                    data: { id: 0, type: "select" },
                     type: 'post',
                     dataType: "text", //可以是text，如果用text，返回的结果为字符串；如果需要json格式的，可是设置为json
                     success: function(data) {
                         $.fn.zTree.init($("#" + treeId), setting, eval('(' + data + ')'));
+                        //展开一级
+                        var json_data = eval('(' + data + ')');
+                        for (var index in json_data) {
+                            var tnode = json_data[index];
+                            console.log(tnode);
+                            var treeObj = $.fn.zTree.getZTreeObj("department_tree");
+                            var node = treeObj.getNodeByParam("id", tnode.id, null);
+                            treeObj.expandNode(node, true, true, true);
+                        }
                     },
                     error: function(msg) {
                         console.log(" 数据加载失败！" + msg);

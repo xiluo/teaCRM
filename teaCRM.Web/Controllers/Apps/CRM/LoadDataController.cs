@@ -24,30 +24,6 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         
 
         #region 获取筛选器树形数据 2014-08-29 14:58:50 By 唐有炜
-
-//        //
-//        // GET: /Apps/CRM/LoadData/GetFilterTreeData/
-//        [UserAuthorize]
-//        public string GetFilterTreeData()
-//        {
-//            string filterTreeData = "";
-//            try
-//            {
-//                var compNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
-//                filterTreeData = CustomerService.GetFilterTreeData(compNum);
-//                LogHelper.Info("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() +
-//                               "的用户获取筛选器树形列表成功。");
-//            }
-//            catch (Exception ex)
-//            {
-//                LogHelper.Error("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() +
-//                                "的用户获取筛选器树形列表失败，" + ex.Message);
-//            }
-//            return filterTreeData;
-//        }
-
-
-
         // /Apps/CRM/LoadData/AsyncGetNodes/
         /// <summary>
         /// 得到指定ID的子节点列表，并序列化为JSON串

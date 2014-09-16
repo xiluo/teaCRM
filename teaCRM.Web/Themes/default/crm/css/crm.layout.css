@@ -3,9 +3,9 @@
 /*作者：唐有炜
 /*时间：2014年08月25日*/
 
-.layout-left{display:inline;float:left;width:189px;position:relative;z-index:102;*zoom:1;_height:705px; background-color:#eaedf4;border-right:1px solid #d8dce5;}
+.layout-left{display:inline;float:left;width:189px;position:relative;z-index:102;*zoom:1;_height:705px;border-right:1px solid #d8dce5;}
 .layout-right{display:inline;float:right;width:100%;margin-left:-190px;position:relative;z-index:101;*zoom:1;_height:705px;background: #fff;}
-.layout-content{margin:0px 0px 0px 190px;position:relative;z-index:102;*zoom:1}
+.layout-content{margin:0px 15px 0px 205px;position:relative;z-index:102;*zoom:1}
 
 /*此部分为左侧内容格式*/
 .l-top{line-height:26px; margin:10px;}

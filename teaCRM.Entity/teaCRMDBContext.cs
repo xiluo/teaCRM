@@ -45,22 +45,24 @@ namespace teaCRM.DBContext
 		#endregion
 
 		#region 数据集关联
-		public IDbSet<TCusBase> TCusBases { get; private set; }
-		public IDbSet<TCusCon> TCusCons { get; private set; }
-		public IDbSet<TCusLog> TCusLogs { get; private set; }
-		public IDbSet<TFunApp> TFunApps { get; private set; }
-		public IDbSet<TFunExpand> TFunExpands { get; private set; }
-		public IDbSet<TFunFilter> TFunFilters { get; private set; }
-		public IDbSet<TFunMyapp> TFunMyapps { get; private set; }
-		public IDbSet<TFunOperating> TFunOperatings { get; private set; }
-		public IDbSet<TFunTag> TFunTags { get; private set; }
-		public IDbSet<TSysCompany> TSysCompanies { get; private set; }
-		public IDbSet<TSysDepartment> TSysDepartments { get; private set; }
-		public IDbSet<TSysLog> TSysLogs { get; private set; }
-		public IDbSet<TSysPower> TSysPowers { get; private set; }
-		public IDbSet<TSysRole> TSysRoles { get; private set; }
-		public IDbSet<TSysUser> TSysUsers { get; private set; }
-		public IDbSet<VCompanyUser> VCompanyUsers { get; private set; }
+        public IDbSet<TCusBase> TCusBases { get; private set; }
+        public IDbSet<TCusCon> TCusCons { get; private set; }
+        public IDbSet<TCusLog> TCusLogs { get; private set; }
+        public IDbSet<TFunApp> TFunApps { get; private set; }
+        public IDbSet<TFunAppMyapp> TFunAppMyapps { get; private set; }
+        public IDbSet<TFunExpand> TFunExpands { get; private set; }
+        public IDbSet<TFunFilter> TFunFilters { get; private set; }
+        public IDbSet<TFunMyapp> TFunMyapps { get; private set; }
+        public IDbSet<TFunOperating> TFunOperatings { get; private set; }
+        public IDbSet<TFunTag> TFunTags { get; private set; }
+        public IDbSet<TSysCompany> TSysCompanies { get; private set; }
+        public IDbSet<TSysDepartment> TSysDepartments { get; private set; }
+        public IDbSet<TSysLog> TSysLogs { get; private set; }
+        public IDbSet<TSysPower> TSysPowers { get; private set; }
+        public IDbSet<TSysRole> TSysRoles { get; private set; }
+        public IDbSet<TSysUser> TSysUsers { get; private set; }
+        public IDbSet<VAppMyapp> VAppMyapps { get; private set; }
+        public IDbSet<VCompanyUser> VCompanyUsers { get; private set; }
         public IDbSet<VSysDepartment> VSysDepartments { get; private set; }
         #endregion
 	}

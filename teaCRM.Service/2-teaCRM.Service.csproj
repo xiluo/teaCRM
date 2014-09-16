@@ -64,7 +64,10 @@
     <Compile Include="CRM\ICustomerService.cs" />
     <Compile Include="CRM\Impl\CustomerServiceImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings\IAppMaker.cs" />
+    <Compile Include="Settings\IAppMakerService.cs" />
+    <Compile Include="Settings\IFunAppService.cs" />
+    <Compile Include="Settings\Impl\AppMakerServiceImpl.cs" />
+    <Compile Include="Settings\Impl\FunAppServiceImpl.cs" />
     <Compile Include="Settings\Impl\SysDepartmentServiceImpl.cs" />
     <Compile Include="Settings\Impl\SysRoleServiceImpl.cs" />
     <Compile Include="Settings\Impl\SysUserServiceImpl.cs" />

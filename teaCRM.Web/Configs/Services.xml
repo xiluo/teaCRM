@@ -21,6 +21,14 @@
   </object>
   <!--客户逻辑结束-->
 
+  <!--应用市场逻辑开始-->
+  <object id="funAppService" type="teaCRM.Service.Settings.Impl.FunAppServiceImpl, teaCRM.Service"
+          singleton="false">
+    <property name="FunAppDao" ref="funAppDao" />
+  </object>
+  <!--应用市场逻辑开始-->
+  
+  
   <!--设置逻辑开始-->
   <!--组织架构逻辑开始-->
   <object id="sysDepartmentService" type="teaCRM.Service.Settings.Impl.SysDepartmentServiceImpl, teaCRM.Service"
@@ -34,6 +42,18 @@
     <property name="SysRoleDao" ref="sysRoleDao" />
   </object>
   <!--角色逻辑结束-->
+  <!--用户逻辑开始-->
+  <object id="sysUserService" type="teaCRM.Service.Settings.Impl.SysUserServiceImpl, teaCRM.Service"
+          singleton="false">
+    <property name="SysUserDao" ref="sysUserDao" />
+  </object>
+  <!--用户逻辑结束-->
+  <!--应用定制逻辑开始-->
+  <object id="appMakerService" type="teaCRM.Service.Settings.Impl.AppMakerServiceImpl, teaCRM.Service"
+          singleton="false">
+    <property name="AppMyappDao" ref="appMyappDao" />
+  </object>
+  <!--应用定制逻辑结束-->
   <!--设置逻辑结束-->
 
 </objects>

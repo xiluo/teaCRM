@@ -1,16 +1,31 @@
+﻿@using UCsoft.Web
 @{
     Layout = null;
+    var msg = (string) ViewData["Msg"];
 }
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>���ʴ���_C+��ҵ��ƽ̨_�����й��칫������һƷ��</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-    <meta http-equiv="X-UA-Compatible" content="IE=7" />
-</head>
-<body>
-    <h1 style="color: red;">
-        @ViewBag.ErrorMessage
-    </h1>
-</body>
+    <head>
+        <title>访问错误_C+企业云平台_打造中国办公软件第一品牌</title>
+          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=8" />
+        <style>
+            .on1{background:url(/Themes/default/base/images/develop.png) no-repeat;height: 360px;width:900px;margin:50px auto;}.on1 .ph1{padding:164px 0 0 410px}.sj1 .ph1{padding:160px 0 0 410px}.vo0 .ph1{padding:110px 0 0 410px}.si1 .ph1{padding:175px 0 0 440px}.sJ1 .ph1{padding:130px 0 0 430px}.ro1 .ph1{padding:65px 0 0 488px}.rm1{margin-bottom:5px;font-size:16px;font-weight:700;line-height:26px}.lh1{padding:50px 25px;color:#707070}.xd0{width:100%;height:96px;position:relative;overflow:hidden;background-color:#e0ecf4;margin-top:15px;margin-bottom:15px}
+        </style>
+        <script type="text/javascript">
+            //======================================
+            //页面刷新 2014-09-10 By 唐有炜
+            function refresh(url) {
+                if (arguments.length > 0) {
+                    location.href = url;
+                } else {
+                    location.href = "./";
+                }
+            }
+            //====================================
+        </script>
+    </head>
+    <body>
+        <div id="errorDiv"><div class="vj0 on1"><div class="ph1"><div class="rm1">@Html.LoadDefaultValue(msg, "正在开发中")，您可以：</div><div class="rt1"><a title="到应用市场看看" id="_mail_link_30_370" href="/Apps" class=" js-component-link nui-txt-link mh1" hidefocus="hidefocus">到应用市场看看</a><br><a title="重新刷新试试" id="_mail_link_31_371" href="javascript:void(0)" class=" js-component-link nui-txt-link mh1" hidefocus="hidefocus" onclick="refresh();">重新刷新试试</a></div></div></div></div>
+    </body>
 </html>

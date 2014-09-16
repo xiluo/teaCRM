@@ -4,11 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using teaCRM.Entity;
+using teaCRM.Service.Settings;
 
 namespace teaCRM.Web.Controllers.Apps.Settings
 {
     public class UsersController : Controller
     {
+
+        //用户注入
+        public ISysUserService UserService { set; get; }
+
+
+
         #region 用户首页 2014-09-07 14:58:50 By 唐有炜
 
         //

@@ -3,40 +3,73 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using NLite.Data;
+using teaCRM.Common;
 using teaCRM.Dao;
 using teaCRM.Entity;
 
 namespace teaCRM.Service.Settings.Impl
 {
-   public class SysUserServiceImpl
+    public class SysUserServiceImpl:ISysUserService
     {
-
         //用户注入
         public ITSysUserDao SysUserDao { set; get; }
 
-
         #region 获取用户信息列表 2014-08-29 14:58:50 By 唐有炜
 
-        /// <summary>
-        /// 获取用户信息列表 2014-08-29 14:58:50 By 唐有炜
-        /// </summary>
-        /// <param name="compNum">企业编号</param>
-        /// <param name="pageIndex">页码</param>
-        /// <param name="pageSize">每页的数目</param>
-        /// <param name="rowCount">总数</param>
-        /// <param name="predicate">条件</param>
-        public IEnumerable<TSysUser> GetUserLsit(string compNum, int pageIndex, int pageSize, out int rowCount,
-            Expression<Func<TSysUser, bool>> predicate)
+        public IEnumerable<TSysUser> GetUserLsit(string compNum, int pageIndex, int pageSize, out int rowCount, IDictionary<string, teaCRMEnums.OrderEmum> orders,
+              Expression<Func<TSysUser, bool>> predicate)
         {
-            var count = SysUserDao.GetList().Count;
-            rowCount = count;
-            return SysUserDao.GetListByPage(pageIndex, pageSize, out count,null, predicate);
+
+            IPagination<TSysUser> users = null;
+            try
+            {
+                users = SysUserDao.GetListByPage(pageIndex, pageSize, out rowCount, orders, predicate);
+                LogHelper.Debug("获取用户列表成功。");
+                return users;
+            }
+            catch (Exception ex)
+            {
+                rowCount = 0;
+                LogHelper.Error("获取用户列表失败：", ex);
+                return null;
+            }
+
+        }
+        #endregion
 
 
+        #region 检测该公司下的账号名是否重复
+
+        /// <summary>
+        /// 检测该公司下的账号名是否重复
+        /// </summary>
+        /// <param name="UserLName"></param>
+        /// <param name="compNum"></param>
+        /// <returns></returns>
+    public    bool ExistsUser(string UserLName, string compNum)
+        {
+            return SysUserDao.ExistsUser(UserLName, compNum);
+             
+        }
+        #endregion
+
+
+
+        #region 获取单个用户信息 2014-09-07 14:58:50 By 唐有炜
+
+       
+        /// <summary>
+        /// 获取单个用户信息 2014-09-07 14:58:50 By 唐有炜
+        /// </summary>
+        /// <param name="id">角色id</param>
+        /// <returns></returns>
+        public TSysUser GetUser(int id)
+        {
+            return SysUserDao.GetEntity(u => u.Id == id);
         }
 
         #endregion
-
 
 
         #region  修改用户信息 2014-09-10 14:58:50 By 唐有炜
@@ -53,7 +86,6 @@ namespace teaCRM.Service.Settings.Impl
 
         #endregion
 
-
         #region 添加用户信息 2014-09-07 14:58:50 By 唐有炜
 
         /// <summary>
@@ -63,7 +95,18 @@ namespace teaCRM.Service.Settings.Impl
         /// <returns></returns>
         public bool AddUser(TSysUser sysUser)
         {
-            return SysUserDao.InsertEntity(sysUser);
+            try
+            {
+                SysUserDao.InsertEntity(sysUser);
+                LogHelper.Debug("用户添加成功！");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error("用户添加失败！",ex);
+                return false;
+            }
+           
         }
 
         #endregion

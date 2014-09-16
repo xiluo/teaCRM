@@ -9,7 +9,7 @@
   <!---账户登录控制器结束-->
 
   <!---工作台控制器开始-->
-  <object id="workbenchController" type="teaCRM.Web.Controllers.WorkbenchController, teaCRM.Web" singleton="false" />
+  <object id="desktopController" type="teaCRM.Web.Controllers.DesktopController, teaCRM.Web" singleton="false" />
   <!---工作台控制器结束-->
 
   <!---应用市场控制器开始-->
@@ -57,10 +57,13 @@
     <property name="RoleService" ref="sysRoleService" />
   </object>
   <object id="usersController" type="teaCRM.Web.Controllers.Apps.Settings.UsersController, teaCRM.Web"
-          singleton="false" />
+          singleton="false" >
+    <property name="UserService" ref="sysUserService" />
+  </object>
   <object id="permissionController" type="teaCRM.Web.Controllers.Apps.Settings.PermissionController, teaCRM.Web"
           singleton="false" />
   <object id="appMakerController" type="teaCRM.Web.Controllers.Apps.Settings.AppMakerController, teaCRM.Web"
-          singleton="false" />
+          singleton="false" >
+  </object>
   <!--设置模块控制器结束-->
 </objects>

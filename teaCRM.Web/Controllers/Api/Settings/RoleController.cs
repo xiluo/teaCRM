@@ -21,7 +21,7 @@ namespace teaCRM.Web.Controllers.Api.Settings
 
         #region 角色列表 14-09-11 By 唐有炜
 
-        [HttpPost] // POST api/settings/role/GetAllRoles
+        [HttpPost] // POST /api/settings/role/GetAllRoles
         //compNum 10000
         //current 1
         //rowCount 10
@@ -64,9 +64,6 @@ namespace teaCRM.Web.Controllers.Api.Settings
                 roles = RoleService.GetRoleLsit(compNum, current, rowCount, out total, orders, r => r.CompNum == compNum);
             }
 
-
-            var c = roles.Count();
-
             return JsonConvert.SerializeObject(new
             {
                 current = current,
@@ -80,7 +77,7 @@ namespace teaCRM.Web.Controllers.Api.Settings
 
         #region 获取角色 14-09-12 By 唐有炜
 
-        // GET api/settings/role/getRole/1
+        // GET /api/settings/role/getRole/1
         //id 1
         public TSysRole GetRole(int id)
         {
@@ -91,7 +88,7 @@ namespace teaCRM.Web.Controllers.Api.Settings
 
         #region 添加角色 14-09-11 By 唐有炜
 
-        // POST /api/settings/role/addRole
+        // POST //api/settings/role/addRole
         [HttpPost]
         public ResponseMessage AddRole([FromBody] TSysRole role)
         {
@@ -114,7 +111,7 @@ namespace teaCRM.Web.Controllers.Api.Settings
         #region 修改角色 14-09-11 By 唐有炜
 
         //
-        // POST api/settings/role/editRole/
+        // POST /api/settings/role/editRole/
         // TSysRole role
         [HttpPost]
         public ResponseMessage EditRole([FromBody] TSysRole role)
@@ -137,7 +134,7 @@ namespace teaCRM.Web.Controllers.Api.Settings
 
         #region 删除角色 14-09-11 By 唐有炜
 
-        // GET api/settings/role/deleteRole/5
+        // GET /api/settings/role/deleteRole/5
         [HttpGet]
         public ResponseMessage DeleteRole(int id)
         {

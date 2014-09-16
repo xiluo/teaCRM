@@ -53,6 +53,7 @@ namespace teaCRM.DBContext
 		public IDbSet<TCusExpvalue99999> TCusExpvalue99999s { get; private set; }
 		public IDbSet<TCusLog> TCusLogs { get; private set; }
 		public IDbSet<TFunApp> TFunApps { get; private set; }
+		public IDbSet<TFunAppMyapp> TFunAppMyapps { get; private set; }
 		public IDbSet<TFunExpand> TFunExpands { get; private set; }
 		public IDbSet<TFunFilter> TFunFilters { get; private set; }
 		public IDbSet<TFunMyapp> TFunMyapps { get; private set; }
@@ -64,6 +65,7 @@ namespace teaCRM.DBContext
 		public IDbSet<TSysPower> TSysPowers { get; private set; }
 		public IDbSet<TSysRole> TSysRoles { get; private set; }
 		public IDbSet<TSysUser> TSysUsers { get; private set; }
+		public IDbSet<VAppMyapp> VAppMyapps { get; private set; }
 		public IDbSet<VCompanyUser> VCompanyUsers { get; private set; }
 		public IDbSet<VSysDepartment> VSysDepartments { get; private set; }
   #endregion

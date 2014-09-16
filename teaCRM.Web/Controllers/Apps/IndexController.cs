@@ -8,13 +8,18 @@ namespace teaCRM.Web.Controllers.Apps
 {
     public class IndexController : Controller
     {
+        #region 应用市场首页
+
         //
-        // GET: /Index/
+        // GET: /Apps/
 
         public ActionResult Index()
         {
             return View();
         }
+
+        #endregion
+
 
     }
 }

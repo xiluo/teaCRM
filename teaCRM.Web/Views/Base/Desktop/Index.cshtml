@@ -1,0 +1,25 @@
+﻿@using System.Web.Optimization
+@model dynamic
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Msg"] = "这里是桌面。功能正在添加中";
+}
+
+@section seo {
+    <title>工作台_C+企业云平台_打造中国办公软件第一品牌</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+}
+@section head {
+    @Styles.Render("~/Themes/default/css/cp.globle.min5.css")
+    @Scripts.Render("~/Themes/default/js/cp.globle.min5.js")
+
+
+} 
+
+@Html.Partial("_Error", this.ViewData)
+
+@section script
+{
+    
+}
