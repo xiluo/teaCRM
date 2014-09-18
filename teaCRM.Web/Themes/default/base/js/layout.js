@@ -134,11 +134,11 @@ function load_sub_nav(menu_id, appId) {
             //console.log(result);
             var sub_nav = $("#main-menu");
             var my_sub_nav = " <div id=\"sub-nav-" + menu_id + "\" class=\"head-nav-header2 hide\"><ul class=\"head-head-nav2\">";
-            for (var index in sub_json_data) {
-                var sub_nav_data = sub_json_data[index];
-                my_sub_nav += "<li class=\"selected\"><a href=\"" + sub_nav_data.MyappLink + "\" >" + sub_nav_data.MyappName + "</a></li>";
-
-            }
+//            for (var index in sub_json_data) {
+//                var sub_nav_data = sub_json_data[index];
+//                my_sub_nav += "<li class=\"selected\"><a href=\"" + sub_nav_data.MyappLink + "\" >" + sub_nav_data.MyappName + "</a></li>";
+//
+//            }
             my_sub_nav += "</ul></div>";
             $(sub_nav).append(my_sub_nav);
             // alert("二级菜单加载完毕！");
