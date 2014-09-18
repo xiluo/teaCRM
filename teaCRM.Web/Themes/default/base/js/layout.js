@@ -138,7 +138,12 @@ function load_sub_nav(menu_id, appId) {
 //                var sub_nav_data = sub_json_data[index];
 //                my_sub_nav += "<li class=\"selected\"><a href=\"" + sub_nav_data.MyappLink + "\" >" + sub_nav_data.MyappName + "</a></li>";
 //
-//            }
+            //            }
+            for (var i = 0; i < sub_json_data.length; i++) {
+                var sub_nav_data = sub_json_data[i];
+                                my_sub_nav += "<li class=\"selected\"><a href=\"" + sub_nav_data.MyappLink + "\" >" + sub_nav_data.MyappName + "</a></li>";
+                
+}
             my_sub_nav += "</ul></div>";
             $(sub_nav).append(my_sub_nav);
             // alert("二级菜单加载完毕！");
