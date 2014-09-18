@@ -15,6 +15,8 @@ namespace teaCRM.Entity
 		public String CompNum { get;set; }
 		[Column("app_id")]
 		public Int32? AppId { get;set; }
+		[Column("app_is_menu")]
+		public Int32? AppIsMenu { get;set; }
 		[Column("app_lastdate")]
 		public DateTime? AppLastdate { get;set; }
  

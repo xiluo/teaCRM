@@ -157,8 +157,9 @@ function del(ids) {
                     var status = result.Status;
                     if (status == true || status == "true" || status == "True") {
                         //刷新我的应用
-                        grid.bootgrid("reload");
+                        //grid.bootgrid("reload");
                         showMsg("应用卸载成功！", "Success");
+                         refresh();
                     } else {
                         showMsg("系统异常，应用卸载失败！");
                     }
@@ -187,8 +188,11 @@ function del(ids) {
                     var status = result.Status;
                     if (status == true || status == "true" || status == "True") {
                         //刷新我的应用
-                        grid.bootgrid("reload");
+                         //load_menu();
+                        //grid.bootgrid("reload");
                         showMsg("应用卸载成功！", "Success");
+                         refresh();
+                       
                     } else {
                         showMsg("系统异常，应用卸载失败！");
                     }

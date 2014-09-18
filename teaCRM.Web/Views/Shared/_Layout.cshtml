@@ -14,31 +14,34 @@
         <!--页面头部结束-->
     </head>
     <body>
+        <!--当前公司id-->
+        <input type="hidden" id="CompNum" name="CompNum" value="@Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM]" />
         <!--公共头部开始-->
         <div id="header">
             <div class="header">
                 <a id="logo" class="logo" href="/" title="C+ CRM"></a>
-                <ul class="head-nav">
-                     <li id="head-nav-desktop" class="selected" ><a href="/Desktop/">桌面</a></li>
-                     <li id="head-nav-customer"><a href="/Apps/CRM/">客户</a></li>
-                    <li id="head-nav-app"><a href="/Apps/">应用</a></li>
-                    <li id="head-nav-settings"><a href="/Apps/Settings/Department/">设置</a></li>
-                    <li id="head-nav-more"><a href="javascript:void(0);">更多</a></li>
+                <ul class="head-nav" id="head-nav">
+                    <li id="head-nav-Desktop" class="selected" ><a href="/Desktop/">桌面</a></li>
+                    @*<li id="head-nav-customer"><a href="/Apps/CRM/">客户</a></li>*@ 
+                    <li id="head-nav-Index"><a href="/Apps/Index/">应用</a></li>
+                    <li id="head-nav-Settings"><a href="/Apps/Settings/Department/">设置</a></li>
+                    <li id="head-nav-More"><a href="javascript:void(0);">更多</a></li>
                 </ul>
+                <!--更多开始-->
+                <div id="more-content" class="hide">
+                    <ul class="head-nav" id="head-more-nav" style="background: #1173ee; margin: 10px 10px -10px 10px;">
+                        @*<li id="head-nav-sale"><a href="/Apps/Sale/">销售</a></li><li id="head-nav-product"><a href="/Apps/Product/">产品</a></li><li id="head-nav-service"><a href="/Apps/Service/">服务</a></li>*@
+                    </ul>
+                </div>
+                <!--更多结束-->
+                <!--欢迎开始-->
                 <div class="exit"><span id="sayHello">欢迎您，</span>@Html.LoadDefaultValue(Html.GetCurrentCompanyUser(int.Parse(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString())).UserTname, Html.GetCurrentCompanyUser(int.Parse(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString())).UserLname)。<a href="/Account/Logout/">安全退出</a></div>
+                <!--欢迎结束-->
             </div>
             
             <div id="main-menu">
  
-         
-                <!--客户模块菜单-->
-                <div id="menu-customer" class="head-nav-header2 hide">
-                    <ul class="head-head-nav2">
-                        <li id="all" class="selected"><a href="/Apps/CRM/Index/">全部客户</a></li>
-                        <li id="contact"><a href="/Apps/CRM/Contact/">我的人脉</a></li>
-                    </ul>
-                </div>
- 
+
                 <!--应用市场菜单-->
                 <div id="menu-app" class="head-nav-header2 hide">
                     <ul class="head-head-nav2">
@@ -58,6 +61,22 @@
                      
                     </ul>
                 </div>
+                
+                
+                
+                
+                
+                @*
+                <!--客户模块菜单-->
+                <div id="menu-customer" class="head-nav-header2 hide">
+                    <ul class="head-head-nav2">
+                        <li id="all" class="selected"><a href="/Apps/CRM/Index/">全部客户</a></li>
+                        <li id="contact"><a href="/Apps/CRM/Contact/">我的人脉</a></li>
+                    </ul>
+                </div>
+ *@
+
+                
 
             </div>
         </div>
