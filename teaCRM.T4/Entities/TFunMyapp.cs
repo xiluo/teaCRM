@@ -8,13 +8,11 @@ namespace teaCRM.Entity
 	public partial class TFunMyapp 
 	{
 	
-		[Id("id",IsDbGenerated=false)]
+		[Id("id",IsDbGenerated=true)]
 		public Int32 Id { get;set; }
  
 		[Column("parent_id")]
 		public Int32 ParentId { get;set; }
-		[Column("comp_num")]
-		public String CompNum { get;set; }
 		[Column("myapp_name")]
 		public String MyappName { get;set; }
 		[Column("myapp_link")]

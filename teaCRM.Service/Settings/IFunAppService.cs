@@ -23,5 +23,13 @@ namespace teaCRM.Service.Settings
         IEnumerable<TFunApp> GetAppLsit(int pageIndex, int pageSize, out int rowCount,
             IDictionary<string, teaCRM.Entity.teaCRMEnums.OrderEmum> orders,
             Expression<Func<TFunApp, bool>> predicate);
+
+
+        /// <summary>
+        /// 发布应用 14-09-17 By 唐有炜
+        /// </summary>
+        /// <param name="app"></param>
+        /// <returns></returns>
+        bool AddApp(TFunApp app);
     }
 }

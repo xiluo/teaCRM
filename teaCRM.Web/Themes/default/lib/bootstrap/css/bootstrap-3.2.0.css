@@ -2080,6 +2080,7 @@ th {
 .table > thead > tr > th {
   vertical-align: bottom;
   border-bottom: 2px solid #ddd;
+  background-color:#eee;
 }
 .table > caption + thead > tr:first-child > th,
 .table > colgroup + thead > tr:first-child > th,
@@ -2732,9 +2733,8 @@ select[multiple].input-lg {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  background-image: none;
-  border: 1px solid transparent;
-  border-radius: 0px;
+		  background-color:#eee;
+		  border:1px solid #ccc;
 }
 .btn:focus,
 .btn:active:focus,

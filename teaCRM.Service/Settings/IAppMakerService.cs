@@ -18,8 +18,37 @@ namespace teaCRM.Service.Settings
         /// <param name="rowCount">总数</param>
         /// <param name="orders">排序</param>
         /// <param name="predicate">条件</param>
-        IEnumerable<VAppMyapp> GetAppLsit(string compNum,int pageIndex, int pageSize, out int rowCount,
+        IEnumerable<VAppCompany> GetAppLsit(string compNum,int pageIndex, int pageSize, out int rowCount,
             IDictionary<string, teaCRM.Entity.teaCRMEnums.OrderEmum> orders,
-            Expression<Func<VAppMyapp, bool>> predicate);
+            Expression<Func<VAppCompany, bool>> predicate);
+
+
+        /// <summary>
+        /// 检测该应用是否安装过
+        /// </summary>
+        /// <param name="compNum">公司id</param>
+        /// <param name="appId">应用id</param>
+        /// <param name="appType">应用类型</param>
+        /// <returns></returns>
+        bool IsInstalled(string compNum, int appId, int appType);
+
+
+
+        /// <summary>
+        ///安装应用
+        /// </summary>
+        /// <param name="compNum">公司id</param>
+        /// <param name="appId">应用id</param>
+         /// <returns></returns>
+        bool Install(string compNum, int appId);
+
+        ///  <summary>
+        /// 卸载应用
+        ///  </summary>
+        ///  <param name="compNum">公司id</param>
+        ///  <param name="appIds">应用id</param>
+        /// <param name="isClear">是否清空数据</param>
+        /// <returns></returns>
+        bool UnInstall(string compNum, string appIds,bool isClear);
     }
 }

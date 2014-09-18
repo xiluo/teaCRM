@@ -33,5 +33,33 @@ namespace teaCRM.Web.Controllers.Api
         }
 
         #endregion
+
+
+
+         #region 发布应用 14-09-17 By 唐有炜
+        
+         // POST /api/app/addApp
+         [HttpPost]
+         public ResponseMessage AddApp([FromBody] TFunApp app)
+         {
+             ResponseMessage rmsg = new ResponseMessage();
+             if (AppService.AddApp(app))
+             {
+                 rmsg.Status = true;
+             }
+             else
+             {
+                 rmsg.Status = false;
+             }
+
+
+             return rmsg;
+         }
+
+         #endregion
+     
+
+
+
     }
 }

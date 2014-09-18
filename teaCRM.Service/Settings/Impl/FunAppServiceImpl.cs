@@ -38,5 +38,26 @@ namespace teaCRM.Service.Settings.Impl
                 return null;
             }
         }
+
+
+        /// <summary>
+        /// 发布应用 14-09-17 By 唐有炜
+        /// </summary>
+        /// <param name="app"></param>
+        /// <returns></returns>
+        public bool AddApp(TFunApp app)
+        {
+            try
+            {
+                FunAppDao.InsertEntity(app);
+                LogHelper.Debug("应用发布成功。");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error("应用发布失败：", ex);
+                return false;
+            }
+        }
     }
 }

@@ -21,8 +21,6 @@ namespace teaCRM.Entity
 		public String AppAuthor { get;set; }
 		[Column("app_des")]
 		public String AppDes { get;set; }
-		[Column("app_adddate")]
-		public DateTime? AppAdddate { get;set; }
 		[Column("app_imgurl16")]
 		public String AppImgurl16 { get;set; }
 		[Column("app_imgurl32")]
@@ -37,6 +35,8 @@ namespace teaCRM.Entity
 		public String AppLink { get;set; }
 		[Column("app_high")]
 		public Double AppHigh { get;set; }
+		[Column("app_adddate")]
+		public DateTime? AppAdddate { get;set; }
 		[Column("app_upnote")]
 		public String AppUpnote { get;set; }
 		[Column("app_is_hot")]

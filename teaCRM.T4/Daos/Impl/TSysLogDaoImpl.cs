@@ -15,7 +15,7 @@ namespace  teaCRM.Dao.Impl
 {
 
     /// <summary>
-    /// 自动生成的实现ITSysLogDao接口的Dao类。 2014-09-16 08:42:54 By 唐有炜
+    /// 自动生成的实现ITSysLogDao接口的Dao类。 2014-09-17 06:52:51 By 唐有炜
     /// </summary>
  public class TSysLogDaoImpl:ITSysLogDao
     {

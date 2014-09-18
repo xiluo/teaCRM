@@ -62,7 +62,15 @@ function createTree(treeId) {
         dataType: "text", //可以是text，如果用text，返回的结果为字符串；如果需要json格式的，可是设置为json
         success: function(data) {
             $.fn.zTree.init($("#" + treeId), setting, eval('(' + data + ')'));
-//            zTree = $.fn.zTree.getZTreeObj(treeId);
+            zTree = $.fn.zTree.getZTreeObj(treeId);
+            //展开一级
+            var json_data = eval('(' + data + ')');
+            for (var index in json_data) {
+                var tnode = json_data[index];
+                console.log(tnode);
+                var node = zTree.getNodeByParam("id", tnode.id, null);
+                zTree.expandNode(node, true, true, true);
+            }
 //            //默认选中专业节点
 //            var treeObj = $.fn.zTree.getZTreeObj(treeId);
 //            var json = eval('(' + data + ')');

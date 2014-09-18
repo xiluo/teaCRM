@@ -61,10 +61,11 @@ namespace teaCRM.Web
 
             #endregion
 
-            #region jquery、artDialog、zTree、function、layout、globe、head、foot 类库3（适用于有树形一般页面）
+            #region jquery、json2,artDialog、zTree、function、layout、globe、head、foot 类库3（适用于有树形一般页面）
 
             bundles.Add(new ScriptBundle("~/Themes/default/js/cp.globle.min3.js")
                 .Include("~/Themes/default/lib/jquery/jquery-1.*")
+                .Include("~/Themes/default/lib/json/json2.js")
                 .Include("~/Themes/default/lib/artDialog/dist/dialog-plus-min.js")
                 .Include("~/Themes/default/lib/zTree/js/jquery.ztree.all-3.5.min.js")
                 .Include("~/Themes/default/lib/zTree/js/jquery.ztree.core-3.5.min.js")

@@ -147,6 +147,9 @@
   <ItemGroup>
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Controllers\Admin\AppController.cs" />
+    <Compile Include="Controllers\Admin\AccountController.cs" />
+    <Compile Include="Controllers\Admin\MainController.cs" />
     <Compile Include="Controllers\Api\AppController.cs" />
     <Compile Include="Controllers\Api\Settings\AppMakerController.cs" />
     <Compile Include="Controllers\Api\Settings\RoleController.cs" />
@@ -157,7 +160,7 @@
     <Compile Include="Controllers\Apps\CRM\TrashController.cs" />
     <Compile Include="Controllers\Apps\Settings\AppMakerController.cs" />
     <Compile Include="Controllers\Apps\Settings\PermissionController.cs" />
-    <Compile Include="Controllers\Base\AdminController.cs" />
+    <Compile Include="Controllers\Admin\LogController.cs" />
     <Compile Include="Controllers\Base\AccountController.cs" />
     <Compile Include="Controllers\Apps\CRM\IndexController.cs" />
     <Compile Include="Controllers\Apps\CRM\LoadDataController.cs" />
@@ -277,7 +280,7 @@
     <Content Include="Themes\default\settings\js\app_maker.js" />
     <Content Include="Themes\default\settings\js\role.js" />
     <Content Include="Themes\default\settings\js\user.js" />
-    <Content Include="Views\Base\Admin\LogView.cshtml" />
+    <Content Include="Views\Admin\Log\LogView.cshtml" />
     <Resource Include="Configs\Services.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -337,7 +340,7 @@
     <Content Include="Themes\default\base\js\global.js" />
     <Content Include="Themes\default\lib\cookie\jquery.cookie.js" />
     <Content Include="Themes\default\lib\function.js" />
-    <Content Include="Themes\default\lib\json2.js" />
+    <Content Include="Themes\default\lib\json\json2.js" />
     <Content Include="Themes\default\lib\ligerUI\js\common.js" />
     <Content Include="Themes\default\lib\ligerUI\js\ligerui.all.js" />
     <Content Include="Themes\default\lib\ligerUI\js\ligerui.min.js" />
@@ -1377,7 +1380,7 @@
     <Content Include="Views\Base\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Base\Account\Register.cshtml" />
+    <Content Include="Views\Admin\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Apps\Sale\Index\SaleIndex.cshtml" />
@@ -1398,10 +1401,10 @@
     <Content Include="Views\Apps\Settings\Users\UserEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Base\Account\EmailRegister.cshtml" />
+    <Content Include="Views\Admin\Account\EmailRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Base\Account\PhoneRegister.cshtml" />
+    <Content Include="Views\Admin\Account\PhoneRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Base\Account\PublicRegister.cshtml" />
@@ -1440,6 +1443,9 @@
     <Content Include="Views\Shared\_Layout.mobile.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Apps\Settings\AppMaker\AppMakerDetail.cshtml" />
+    <Content Include="Views\Admin\Account\AdminLogin.cshtml" />
+    <Content Include="Views\Admin\App\AppAdd.cshtml" />
+    <Content Include="Views\Admin\Main\MainIndex.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

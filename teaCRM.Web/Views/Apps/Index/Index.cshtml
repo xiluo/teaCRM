@@ -1,4 +1,5 @@
 ﻿@using System.Web.Optimization
+@using teaCRM.Entity
 @model dynamic
 
 @{
@@ -16,7 +17,8 @@
     <link href="http://mimg.127.net/p/appcenter/1.0b1407221000/css/overlay_compress.css" rel="stylesheet" type="text/css"  />
     <script type="text/javascript" src="/Themes/default/base/js/app.js"></script>
 }
-
+ <!--当前公司id-->
+    <input type="hidden" id="CompNum" name="CompNum" value="@Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM]" />
 <div class="frame-wrap">
     <div class="frame-swrap">
         <aside class="frame-nav frame-skin-sideLeft">
@@ -32,7 +34,7 @@
             </div>
             <div class="frame-nav-wrap fn-scroll" id="main-nav">
                 <ul class="frame-nav-list">
-                    <li class="frame-nav-item" id="19575007" data-id="myapp" data-module="usermanage.UserManageModule"><b class="ico ico-nav ico-nav-mine"></b>我的应用<strong class="frame-nav-item-modTipsNum">(1)</strong></li>
+                    <li class="frame-nav-item" id="19575007" data-id="myapp" data-module="usermanage.UserManageModule" onclick="refresh('/Apps/Settings/AppMaker/')"><b class="ico ico-nav ico-nav-mine"></b>我的应用<strong class="frame-nav-item-modTipsNum" id="my_app_count">(1)</strong></li>
                     <li class="splitline"></li>
                     <li class="frame-nav-item frame-nav-item-selected" id="82254944" data-id="recommen" data-module="recommend.RecommendModule"><b class="ico ico-nav ico-nav-recommen"></b>首页推荐</li>
                     <li class="frame-nav-item" id="65290012" data-id="all" data-module="list.ListModule"><b class="ico ico-nav ico-nav-all"></b>所有应用</li>

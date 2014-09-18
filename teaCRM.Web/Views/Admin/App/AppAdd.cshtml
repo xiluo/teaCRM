@@ -1,0 +1,207 @@
+﻿@using System.Web.Optimization
+@using teaCRM.Entity
+@model dynamic
+
+@{
+    Layout = null;
+}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        @Styles.Render("~/Themes/default/css/cp.globle.min1.css")
+        @Scripts.Render("~/Themes/default/js/cp.globle.min1.js")
+        <title>发布应用</title>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#form_app").validate({
+                    rules: {
+                        AppName: {
+                            rangelength: [2, 200]
+                        }
+                    },
+                    invalidHandler: function(e, validator) {
+                        var msg = "有 " + validator.numberOfInvalids() + " 项填写有误，请检查！";
+                        $(".alert-danger").html(msg).show();
+                    },
+                    focusInvalid: false,
+                    errorPlacement: function(error, element) {
+                        var errorMsg = error[0].innerHTML;
+                        var elementName = element[0].name;
+                        $("#" + elementName).formtip(errorMsg);
+                        $("#" + elementName).attr("placeholder", errorMsg);
+                    },
+                    success: function(element) {
+                        var elem = $(element)[0].htmlFor;
+                        $("#" + elem).poshytip('disable');
+                        $("#" + elem).poshytip('destroy');
+                        $("#" + elem).removeClass("error").addClass("success");
+                    }
+                });
+            });
+            $(function() {
+                $("#btn-submit").on("click", function() {
+                    if (!$("#form_app").valid()) {
+                        return false;
+                    }
+                    var data = $("#form_app").serialize();
+                    console.log(data);
+                    $.ajax({
+                        type: "post",
+                        cache: false,
+                        url: "/api/app/addApp",
+                        data: data,
+                        dataType: "json",
+                        beforeSend: function() {
+                            //showMsg("添加中，请稍后...");
+                        },
+                        complete: function() {
+                            //showMsg("完成...");
+                        },
+                        success: function(result) {
+                            //toLowerCase报错
+                            //var status = result.Status.toLowerCase();
+                            var status = result.Status;
+                            if (status == true || status == "true" || status == "True") {
+                                $(".alert-success").html("应用发布成功！").show();
+                            } else {
+                                $(".alert-danger").html("系统异常，应用发布失败！").show();
+                            }
+
+                        },
+                        error: function() {
+                            $(".alert-danger").html("网络连接错误").show();
+                        }
+                    });
+                    //阻止表单提交
+                    return false;
+                });
+
+            })
+        </script>
+
+    </head>
+    <body>
+        
+        <div class="tab-content">
+            <!--表单错误提示区-->
+            <div class="alert alert-success" role="alert" style="display: none;">成功</div>
+            <div class="alert alert-info" role="alert" style="display: none;">信息</div>
+            <div class="alert alert-warning" role="alert" style="display: none;">警告</div>
+            <div class="alert alert-danger" role="alert" style="display: none;">错误</div>
+            <form id="form_app">
+                <h1>基本信息</h1>
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>应用名称：
+                    </dt>
+                    <dd>
+                        <input type="text" class=" form-control  required"  id="AppName" name="AppName" placeholder="输入应用名称" >
+                             
+                    </dd>
+                   
+                </dl>
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>应用类型：
+                    </dt>
+                    <dd>
+                        <input type="text" class=" form-control  required"  id="AppType" name="AppType" placeholder="1 客户 2销售 ..." >
+                             
+                    </dd>
+                   
+                </dl>
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>所属行业：
+                    </dt>
+                    <dd>
+                        <input type="text" class=" form-control  required"  id="AppInd" name="AppInd" value="1"  >
+                             
+                    </dd>
+                   
+                </dl>
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>图标16*16：
+                    </dt>
+                    <dd>
+                        <input type="text" class=" form-control wid515 required"  id="AppImgUrl16" name="AppImgUrl16" >
+                             
+                    </dd>
+                   
+                </dl>
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>图标32*32：
+                    </dt>
+                    <dd>
+                        <input type="text" class=" form-control wid515 required"  id="AppImgUrl32" name="AppImgUrl32">
+                             
+                    </dd>
+                   
+                </dl>
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>图标75*75：
+                    </dt>
+                    <dd>
+                        <input type="text" class=" form-control wid515  required"  id="AppImgUrl75" name="AppImgUrl75">
+                             
+                    </dd>
+                   
+                </dl>
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>图标190*190：
+                    </dt>
+                    <dd>
+                        <input type="text" class=" form-control wid515  required"  id="AppImgUrl190" name="AppImgUrl190" >
+                             
+                    </dd>
+                   
+                </dl>
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>应用链接：
+                    </dt>
+                    <dd>
+                        <input type="text" class=" form-control wid515  required"  id="AppLink" name="AppLink" >
+                             
+                    </dd>
+                   
+                </dl>
+                <h1>模块信息</h1>
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>模块一：
+                    </dt>
+                    <dd>
+                        <input type="text" class=" form-control wid515  required"  id="" name="" >
+                             
+                    </dd>
+                   
+                </dl>
+                  <dl>
+                    <dt>
+                        <em class="imp">*</em>模块二：
+                    </dt>
+                    <dd>
+                        <input type="text" class=" form-control wid515  required"  id="" name="" >
+                             
+                    </dd>
+                   
+                </dl>
+                <dl> <dt>
+                         &nbsp;
+                     </dt>
+                      
+                    <dd>
+                        <button id="btn-submit" class="btn btn btn-success btn-large">发布应用</button>
+                    </dd>
+                    
+                </dl>
+            </form>
+        </div>
+    </body>
+</html>

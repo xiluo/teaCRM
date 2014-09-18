@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using teaCRM.Entity;
+using teaCRM.Web.Filters;
 
 namespace teaCRM.Web.Controllers.Apps.Settings
 {
@@ -13,7 +14,7 @@ namespace teaCRM.Web.Controllers.Apps.Settings
 
         //
         // GET:/Apps/Settings/AppMaker/
-
+        [UserAuthorize]
         public ActionResult Index()
         {
             return View("AppMakerIndex");

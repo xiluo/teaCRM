@@ -54,10 +54,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Settings\TFunApp.cs" />
+    <Compile Include="Settings\TFunAppCompany.cs" />
     <Compile Include="Settings\TFunAppMyapp.cs" />
     <Compile Include="Settings\TFunExpand.cs" />
     <Compile Include="Settings\TFunFilter.cs" />
     <Compile Include="Settings\TFunMyapp.cs" />
+    <Compile Include="Settings\TFunMyappCompany.cs" />
     <Compile Include="Settings\TFunOperating.cs" />
     <Compile Include="Settings\TFunTag.cs" />
     <Compile Include="Basic\TSysCompany.cs" />
@@ -82,7 +84,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\TSysDepartment.cs" />
     <Compile Include="Settings\TSysRole.cs" />
-    <Compile Include="Settings\VAppMyapp.cs" />
+    <Compile Include="Settings\VAppCompany.cs" />
+    <Compile Include="Settings\VMyappCompany.cs" />
     <Compile Include="Settings\VSysDepartment.cs" />
     <Compile Include="teaCRMDBContext.cs" />
   </ItemGroup>

@@ -18,7 +18,7 @@
 
 .l-panel-header-text { line-height: 24px; padding-left: 5px; }
 .l-panel-body { position: relative; overflow: hidden; width: 100%; }
-    .l-panel-body .l-grid { border:1px solid #ECEBEB; border-top:none; border-bottom:none;}
+    .l-panel-body .l-grid {}
 .l-grid { position: relative; }
     
 	.l-grid  td div { font-size: 12px;text-align:left; font-family:Arial, Helvetica, sans-serif;}

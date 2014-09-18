@@ -64,6 +64,14 @@ namespace teaCRM.Web
                 namespaces: new string[] { "teaCRM.Web.Controllers.Apps" }
                 );
 
+            //工作人员后台路由路由
+            routes.MapRoute(
+                name: "Admin",
+                url: "Admin/{controller}/{action}/{id}",
+                defaults: new { controller = "Main", action = "Index", id = UrlParameter.Optional },
+                namespaces: new string[] { "teaCRM.Web.Controllers.Admin" }
+                );
+
             //默认路由
             routes.MapRoute(
                 name: "Default",

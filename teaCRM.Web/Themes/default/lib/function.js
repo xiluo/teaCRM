@@ -95,6 +95,20 @@ function showDialog(msg, okCallback) {
     d.showModal();
 }
 
+//通过id可以弹出多个框 14-09-17 By 唐有炜
+function showMoreDialog(id,msg, okCallback,cancelCallback) {
+    var d = dialog({
+        id: id,
+        title: '温馨提示',
+        content: msg,
+        okValue: '确 定',
+        ok: okCallback,
+        cancelValue: '取消',
+        cancel: cancelCallback
+    });
+    d.showModal();
+}
+
 //============================================================================
 //弹出iframe窗口，带阴影，用作表单===============================================
 //2014-09-03 By 唐有炜

@@ -97,10 +97,6 @@ namespace teaCRM.Entity
 		public DateTime AppLastdate { get;set; }
 
 		 
-		[Column("app_is_my")]
-		public Int32 AppIsMy { get;set; }
-
-		 
   
      
 

@@ -16,6 +16,7 @@ namespace teaCRM.Web
                 "~/Views/Shared/{0}.cshtml",//共享视图
                 "~/Views/Base/{1}/{0}.cshtml", //主项目视图
                 "~/Views/Apps/{1}/{0}.cshtml", //Apps视图
+                "~/Views/Admin/{1}/{0}.cshtml", //Admin视图
                 "~/Views/Apps/CRM/{1}/{0}.cshtml", //CRM视图
                 "~/Views/Apps/Sale/{1}/{0}.cshtml", //Sale视图
                 "~/Views/Apps/Product/{1}/{0}.cshtml", //产品视图
@@ -27,6 +28,7 @@ namespace teaCRM.Web
                  "~/Views/{1}/{0}.cshtml",//默认视图
                 "~/Views/Shared/{0}.cshtml",//共享视图
                 "~/Views/Base/{1}/{0}.cshtml", //主项目视图
+                 "~/Views/Admin/{1}/{0}.cshtml", //Admin视图
                 "~/Views/Apps/{1}/{0}.cshtml", //Apps视图
                 "~/Views/Apps/CRM/{1}/{0}.cshtml", //CRM视图
                 "~/Views/Apps/Sale/{1}/{0}.cshtml", //Sale视图

@@ -49,10 +49,11 @@ namespace teaCRM.DBContext
         public IDbSet<TCusCon> TCusCons { get; private set; }
         public IDbSet<TCusLog> TCusLogs { get; private set; }
         public IDbSet<TFunApp> TFunApps { get; private set; }
-        public IDbSet<TFunAppMyapp> TFunAppMyapps { get; private set; }
+        public IDbSet<TFunAppCompany> TFunAppCompanies { get; private set; }
         public IDbSet<TFunExpand> TFunExpands { get; private set; }
         public IDbSet<TFunFilter> TFunFilters { get; private set; }
         public IDbSet<TFunMyapp> TFunMyapps { get; private set; }
+        public IDbSet<TFunMyappCompany> TFunMyappCompanies { get; private set; }
         public IDbSet<TFunOperating> TFunOperatings { get; private set; }
         public IDbSet<TFunTag> TFunTags { get; private set; }
         public IDbSet<TSysCompany> TSysCompanies { get; private set; }
@@ -61,8 +62,9 @@ namespace teaCRM.DBContext
         public IDbSet<TSysPower> TSysPowers { get; private set; }
         public IDbSet<TSysRole> TSysRoles { get; private set; }
         public IDbSet<TSysUser> TSysUsers { get; private set; }
-        public IDbSet<VAppMyapp> VAppMyapps { get; private set; }
-        public IDbSet<VCompanyUser> VCompanyUsers { get; private set; }
+        public IDbSet<VAppCompany> VAppCompanies { get; private set; }
+         public IDbSet<VCompanyUser> VCompanyUsers { get; private set; }
+        public IDbSet<VMyappCompany> VMyappCompanies { get; private set; }
         public IDbSet<VSysDepartment> VSysDepartments { get; private set; }
         #endregion
 	}
