@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Json;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web.Script.Serialization;
 
 namespace teaCRM.Common
@@ -45,7 +46,7 @@ namespace teaCRM.Common
 
         #endregion
 
-        #region 返回对象序列化
+        #region 返回对象序列化(修复时间问题 14-09-18 By 唐有炜)
 
         /// <summary> 
         /// 返回对象序列化 
@@ -55,7 +56,16 @@ namespace teaCRM.Common
         public static string ToJson(object obj)
         {
             JavaScriptSerializer serialize = new JavaScriptSerializer();
-            return serialize.Serialize(obj);
+            string str = serialize.Serialize(obj);
+            str = Regex.Replace(str, @"\\/Date\((\d+)\)\\/", match =>
+            {
+                DateTime dt = new DateTime(1970, 1, 1);
+                dt = dt.AddMilliseconds(long.Parse(match.Groups[1].Value));
+                dt = dt.ToLocalTime();
+//                return dt.ToString("yyyy-MM-dd HH:mm:ss");
+                return dt.ToString("yyyy-MM-dd");
+            });
+            return str;
         }
 
         /// <summary> 

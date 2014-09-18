@@ -6199,3 +6199,8 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+/*操作样式 14-09-18 By 唐有炜*/
+.btn-cmd {
+    color:#000000;
+}

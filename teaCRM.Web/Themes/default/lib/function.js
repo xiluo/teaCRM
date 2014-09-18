@@ -210,3 +210,31 @@ function hideLoading() {
     ajaxbg.hide();
 }
 //===================================================
+
+
+//=================================
+//获取bootgrid选中id 14-09-18 By 唐有炜
+function get_selected_ids(grid_id) {
+    var c = document.getElementById(grid_id).getElementsByTagName("input");
+    var ids = "";
+    var rowIds = [];
+    for (var i = 0; i < c.length; i++) {
+        if (c[i].type == "checkbox" && c[i].checked && c[i].value != "all") {
+            rowIds.push(c[i].value);
+        }
+    }
+    ids = rowIds.join(",");
+    return ids;
+}
+///////////////////////////////////////////////////////////
+
+//====================================
+//js字符省略显示 14-09-18 By 唐有炜
+function shortString(s, l, tag) {
+    if (s.length > l) {
+        return s.substring(0, l) + tag;
+    } else {
+        return s;
+    }
+}
+//======================================

@@ -7,12 +7,14 @@ using System.Web;
 using System.Web.Http;
 using Newtonsoft.Json;
 using Spring.Context.Support;
+using teaCRM.Common;
 using teaCRM.Entity;
 using teaCRM.Service.Settings;
+using teaCRM.Web.Helpers;
 
 namespace teaCRM.Web.Controllers.Api.Settings
 {
-    public class AppMakerController : ApiController
+    public class AppMakerController : MyWebApiController
     {
         //spring 创建service依赖
         private IAppMakerService AppMakerService =
@@ -37,9 +39,29 @@ namespace teaCRM.Web.Controllers.Api.Settings
             IDictionary<string, teaCRM.Entity.teaCRMEnums.OrderEmum> orders =
                 new Dictionary<string, teaCRMEnums.OrderEmum>();
             orders.Add(new KeyValuePair<string, teaCRMEnums.OrderEmum>("id", teaCRMEnums.OrderEmum.Asc));
+            string sort = request.Params.AllKeys.SingleOrDefault(a => a.Contains("sort"));
+            //string sortName = sort.Split('[')[0];
+            string sortField = sort.Split('[')[1].TrimEnd(']');
+            string sortType = request.Params.GetValues(sort).SingleOrDefault();
+            string searchPhrase = request.Params.Get("searchPhrase");
+
             var total = 0;
-            var apps = AppMakerService.GetAppLsit(compNum, current, rowCount, out total, orders, a => a.Id > 0);
-            return JsonConvert.SerializeObject(new
+            IEnumerable<VAppCompany> apps = null;
+            orders.Add(sortType == "desc"
+                ? new KeyValuePair<string, teaCRMEnums.OrderEmum>(sortField, teaCRMEnums.OrderEmum.Desc)
+                : new KeyValuePair<string, teaCRMEnums.OrderEmum>(sortField, teaCRMEnums.OrderEmum.Asc));
+            //搜索
+            if (!String.IsNullOrEmpty(searchPhrase))
+            {
+                apps = AppMakerService.GetAppLsit(compNum, current, rowCount, out total, orders,
+                    a => a.CompNum == compNum && a.AppName.Contains(searchPhrase));
+            }
+            else
+            {
+                apps = AppMakerService.GetAppLsit(compNum, current, rowCount, out total, orders,
+                    a => a.CompNum == compNum);
+                      }
+            return JSONHelper.ToJson(new
             {
                 current = current,
                 rowCount = rowCount,
@@ -50,39 +72,40 @@ namespace teaCRM.Web.Controllers.Api.Settings
 
         #endregion
 
-
         #region 检测该应用是否安装过
+
         // /api/settings/appMaker/isInstalled?id=2&compNum=10000&appType=1
         [HttpGet]
         public ResponseMessage IsInstalled()
         {
-            ResponseMessage rmsg=new ResponseMessage();
-            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"]; //获取传统context
+            ResponseMessage rmsg = new ResponseMessage();
+            HttpContextBase context = (HttpContextBase) Request.Properties["MS_HttpContext"]; //获取传统context
             HttpRequestBase request = context.Request; //定义传统request对象
             int appId = int.Parse(request.Params.Get("id"));
             string compNum = request.Params.Get("compNum");
             int appType = int.Parse(request.Params.Get("appType"));
-            bool status = AppMakerService.IsInstalled(compNum,appId,appType);
+            bool status = AppMakerService.IsInstalled(compNum, appId, appType);
             if (status)
             {
                 rmsg.Status = true;
-            }else
+            }
+            else
             {
-                rmsg.Status = false;   
+                rmsg.Status = false;
             }
             return rmsg;
         }
 
         #endregion
 
-
         #region 安装应用
+
         // /api/settings/appMaker/Install?id=2&compNum=10000
         [HttpGet]
         public ResponseMessage Install()
         {
             ResponseMessage rmsg = new ResponseMessage();
-            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"]; //获取传统context
+            HttpContextBase context = (HttpContextBase) Request.Properties["MS_HttpContext"]; //获取传统context
             HttpRequestBase request = context.Request; //定义传统request对象
             int appId = int.Parse(request.Params.Get("id"));
             string compNum = request.Params.Get("compNum");
@@ -98,15 +121,17 @@ namespace teaCRM.Web.Controllers.Api.Settings
             }
             return rmsg;
         }
+
         #endregion
 
         #region 安装应用
+
         // /api/settings/appMaker/unIstall?id=2&compNum=10000
         [HttpGet]
         public ResponseMessage UnInstall()
         {
             ResponseMessage rmsg = new ResponseMessage();
-            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"]; //获取传统context
+            HttpContextBase context = (HttpContextBase) Request.Properties["MS_HttpContext"]; //获取传统context
             HttpRequestBase request = context.Request; //定义传统request对象
             string appIds = request.Params.Get("ids");
             string compNum = request.Params.Get("compNum");
@@ -122,6 +147,7 @@ namespace teaCRM.Web.Controllers.Api.Settings
             }
             return rmsg;
         }
+
         #endregion
     }
 }

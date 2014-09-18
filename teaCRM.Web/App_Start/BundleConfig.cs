@@ -13,7 +13,7 @@ namespace teaCRM.Web
             bundles.Add(new ScriptBundle("~/Themes/default/js/cp.globle.min1.js")
                 .Include(
                     "~/Themes/default/lib/jquery/jquery-1.*")
-                .Include("~/Themes/default/lib/bootstrap/js/bootstrap-3.2.0.min.js")
+                .Include("~/Themes/default/lib/bootstrap/js/bootstrap-3.2.0.js")
                 .Include("~/Themes/default/lib/cookie/jquery.cookie.js")
                 .Include("~/Themes/default/lib/artDialog/dist/dialog-plus-min.js")
                 .Include("~/Themes/default/lib/validate/jquery.validate.min.js")
@@ -61,7 +61,7 @@ namespace teaCRM.Web
 
             #endregion
 
-            #region jquery、json2,artDialog、zTree、function、layout、globe、head、foot 类库3（适用于有树形一般页面）
+            #region jquery、json2,artDialog、zTree、function、globe、head、foot 类库3（适用于有树形一般页面）
 
             bundles.Add(new ScriptBundle("~/Themes/default/js/cp.globle.min3.js")
                 .Include("~/Themes/default/lib/jquery/jquery-1.*")
@@ -72,7 +72,7 @@ namespace teaCRM.Web
                 .Include("~/Themes/default/lib/zTree/js/jquery.ztree.excheck-3.5.min.js")
                 .Include("~/Themes/default/lib/zTree/js/jquery.ztree.exedit-3.5.min.js")
                 .Include("~/Themes/default/lib/function.js")
-                .Include("~/Themes/default/base/js/layout.js")
+                
                 );
 
             bundles.Add(
@@ -86,13 +86,13 @@ namespace teaCRM.Web
 
             #endregion
 
-            #region jquery、artDialog、function、layout、globe 类库4（适用于简单页面）
+            #region jquery、artDialog、function、globe 类库4（适用于简单页面）
 
             bundles.Add(new ScriptBundle("~/Themes/default/js/cp.globle.min4.js")
                 .Include("~/Themes/default/lib/jquery/jquery-1.*")
                 .Include("~/Themes/default/lib/artDialog/dist/dialog-plus-min.js")
                 .Include("~/Themes/default/lib/function.js")
-                .Include("~/Themes/default/base/js/layout.js")
+                
                 );
 
             bundles.Add(
@@ -103,13 +103,13 @@ namespace teaCRM.Web
 
             #endregion
 
-            #region jquery、artDialog、function、layout、globe、head、foot 类库5(一般页面、不带验证)
+            #region jquery、artDialog、function、globe、head、foot 类库5(一般页面、不带验证)
 
             bundles.Add(new ScriptBundle("~/Themes/default/js/cp.globle.min5.js")
                 .Include("~/Themes/default/lib/jquery/jquery-1.*")
                 .Include("~/Themes/default/lib/artDialog/dist/dialog-plus-min.js")
                 .Include("~/Themes/default/lib/function.js")
-                .Include("~/Themes/default/base/js/layout.js")
+                
                 );
 
             bundles.Add(
@@ -122,17 +122,17 @@ namespace teaCRM.Web
 
             #endregion
 
-            #region jquery、bootstrap、jquery.cookie、artDialog、function、layout、head、foot 类库6（适用于列表页面，使用bootgrid）
+            #region jquery、bootstrap、jquery.cookie、artDialog、function、head、foot 类库6（适用于列表页面，使用bootgrid）
 
             bundles.Add(new ScriptBundle("~/Themes/default/js/cp.globle.min6.js")
                 .Include(
                     "~/Themes/default/lib/jquery/jquery-1.*")
-                .Include("~/Themes/default/lib/bootstrap/js/bootstrap-3.2.0.min.js")
+                .Include("~/Themes/default/lib/bootstrap/js/bootstrap-3.2.0.js")
                 .Include("~/Themes/default/lib/jquery.bootgrid/jquery.bootgrid.js")
                 .Include("~/Themes/default/lib/cookie/jquery.cookie.js")
                 .Include("~/Themes/default/lib/artDialog/dist/dialog-plus-min.js")
                 .Include("~/Themes/default/lib/function.js")
-                .Include("~/Themes/default/base/js/layout.js"));
+                );
 
             bundles.Add(
                 new StyleBundle("~/Themes/default/css/cp.globle.min6.css")
@@ -180,12 +180,12 @@ namespace teaCRM.Web
 
 
 
-            #region jquery、bootstrap、jquery.cookie、artDialog、function、layout、head、foot 类库6（适用于列表页面，使用bootgrid、Ztree）
+            #region jquery、bootstrap、jquery.cookie、artDialog、function、head、foot 类库6（适用于列表页面，使用bootgrid、Ztree）
 
             bundles.Add(new ScriptBundle("~/Themes/default/js/cp.globle.min8.js")
                 .Include(
                     "~/Themes/default/lib/jquery/jquery-1.*")
-                .Include("~/Themes/default/lib/bootstrap/js/bootstrap-3.2.0.min.js")
+                .Include("~/Themes/default/lib/bootstrap/js/bootstrap-3.2.0.js")
                 .Include("~/Themes/default/lib/jquery.bootgrid/jquery.bootgrid.js")
                 .Include("~/Themes/default/lib/cookie/jquery.cookie.js")
                 .Include("~/Themes/default/lib/artDialog/dist/dialog-plus-min.js")
@@ -194,7 +194,7 @@ namespace teaCRM.Web
                 .Include("~/Themes/default/lib/zTree/js/jquery.ztree.excheck-3.5.min.js")
                 .Include("~/Themes/default/lib/zTree/js/jquery.ztree.exedit-3.5.min.js")
                 .Include("~/Themes/default/lib/function.js")
-                .Include("~/Themes/default/base/js/layout.js"));
+                );
 
             bundles.Add(
                 new StyleBundle("~/Themes/default/css/cp.globle.min8.css")

@@ -132,7 +132,8 @@ http://weblogs.asp.net/scottgu/dynamic-linq-part-1-using-the-linq-dynamic-query-
 http://blog.zhaojie.me/2011/09/aspnet-mvc-dynamic-model-mono-cecil.html     
 >13、LinqKit    
 http://www.albahari.com/nutshell/linqkit.aspx   
-
+>14 Bootstraip popover
+http://segmentfault.com/q/1010000000247264
 
 
 

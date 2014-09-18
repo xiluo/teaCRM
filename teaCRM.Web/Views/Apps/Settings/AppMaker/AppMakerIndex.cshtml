@@ -12,11 +12,19 @@
 }
 @section head {
     
- @Styles.Render("~/Themes/default/css/cp.globle.min6.css")
-@Scripts.Render("~/Themes/default/js/cp.globle.min6.js")
+    @Styles.Render("~/Themes/default/css/cp.globle.min6.css")
+    @Scripts.Render("~/Themes/default/js/cp.globle.min6.js")
  
     <script type="text/javascript">
+        $(document).ready(function() {
+
+        });
+
     </script>
+    <!--类别-->
+    <script src="/Themes/default/base/js/category.js" type="text/javascript"></script>
+    <!--行业-->
+    <script src="/Themes/default/base/js/industry.js" type="text/javascript"></script>
     <script src="/Themes/default/settings/js/app_maker.js" type="text/javascript"></script>
     
 }
@@ -24,23 +32,26 @@
 
 
 <div style="margin: 0px 20px;">
+    
+
+
     <!--当前公司id-->
     <input type="hidden" id="CompNum" name="CompNum" value="@Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM]" />
     <table id="grid-data" class="table table-condensed table-hover table-striped table-bordered" data-selection="true" data-multi-select="true">
         <thead>
             <tr>
-                   <th data-column-id="Id" data-type="numeric" data-identifier="true">ID</th>
-                <th data-column-id="AppName" data-order="asc">应用名称</th>
-                <th data-column-id="AppImgurl32" data-order="asc">应用图标</th>
-                <th data-column-id="AppAuthor" data-order="asc">应用作者</th>
-                <th data-column-id="AppDes" data-order="asc">应用描述</th>
-                 <th data-column-id="AppVer" data-order="asc">应用版本</th>
-                 <th data-column-id="AppType" data-order="asc">应用类别</th>
-                <th data-column-id="AppInd" data-order="asc">所属行业</th>
-                <th data-column-id="AppIsSys" data-order="asc">是否官方</th>
-                 <th data-column-id="AppLastdate" data-order="asc">安装日期</th>
-                 <th data-column-id="AppAdddate" data-order="asc">更新日期</th>
-                <th data-column-id="Id" data-formatter="commands" data-sortable="false">操作</th>
+              
+                <th data-column-id="AppName" data-header-align="center" data-align="center" data-order="asc">应用名称</th>
+                <th data-column-id="AppImgurl32"  data-header-align="center" data-align="center"  data-formatter="AppImgurl32" data-order="asc">应用图标</th>
+                <th data-column-id="AppAuthor" data-header-align="center" data-align="center" data-order="asc">应用作者</th>
+                <th data-column-id="AppDes" data-header-align="center" data-align="center" data-formatter="AppDes" data-order="asc">应用描述</th>
+                <th data-column-id="AppVer" data-header-align="center" data-align="center" data-order="asc">应用版本</th>
+                <th data-column-id="AppType" data-header-align="center" data-align="center" data-formatter="AppType" data-order="asc">应用类别</th>
+                <th data-column-id="AppInd" data-header-align="center" data-align="center" data-formatter="AppInd" data-order="asc">所属行业</th>
+                <th data-column-id="AppIsSys" data-header-align="center" data-align="center" data-formatter="AppIsSys" data-order="asc">是否官方</th>
+                <th data-column-id="AppLastdate" data-header-align="center" data-align="center" data-order="asc">安装日期</th>
+                <th data-column-id="AppAdddate" data-header-align="center" data-align="center" data-order="asc">更新日期</th>
+                <th data-column-id="AppId" data-identifier="true" data-formatter="commands" data-header-align="center" data-align="center" data-sortable="false">操作</th>
             </tr>
         </thead>
     </table>

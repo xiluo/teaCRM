@@ -29,7 +29,7 @@ namespace teaCRM.Service.Settings.Impl
             try
             {
                 var apps = AppCompany.GetViewListByPage(pageIndex, pageSize, out rowCount, orders,
-                    a => a.CompNum == compNum);
+                    predicate);
                 LogHelper.Debug("公司id为" + "的公司获取应用列表成功。");
                 return apps;
             }

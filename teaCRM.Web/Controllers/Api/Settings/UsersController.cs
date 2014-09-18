@@ -9,10 +9,11 @@ using Newtonsoft.Json;
 using Spring.Context.Support;
 using teaCRM.Entity;
 using teaCRM.Service.Settings;
+using teaCRM.Web.Helpers;
 
 namespace teaCRM.Web.Controllers.Api.Settings
 {
-    public class UsersController : ApiController
+    public class UsersController : MyWebApiController
     {
 
         //spring 创建service依赖

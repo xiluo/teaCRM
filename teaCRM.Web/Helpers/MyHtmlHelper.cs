@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text.RegularExpressions;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Spring.Context;
@@ -11,10 +6,8 @@ using Spring.Context.Support;
 using teaCRM.Common;
 using teaCRM.Entity;
 using teaCRM.Service;
-using teaCRM.Service.Impl;
 
-
-namespace UCsoft.Web
+namespace teaCRM.Web.Helpers
 {
     /// <summary>
     /// Html格式化输出辅助类

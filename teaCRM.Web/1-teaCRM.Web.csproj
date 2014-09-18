@@ -180,8 +180,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="MyHtmlHelper.cs" />
-    <Compile Include="MyViewEngine.cs" />
+    <Compile Include="Helpers\MyHtmlHelper.cs" />
+    <Compile Include="Helpers\MyViewEngine.cs" />
+    <Compile Include="Helpers\MyWebApiController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -203,12 +204,15 @@
     <Content Include="Themes\default\base\images\develop.png" />
     <Content Include="Themes\default\base\images\tools_bg.gif" />
     <Content Include="Themes\default\base\js\app.js" />
+    <Content Include="Themes\default\base\js\category.js" />
     <Content Include="Themes\default\base\js\city.js" />
+    <Content Include="Themes\default\base\js\industry.js" />
     <Content Include="Themes\default\lib\artDialog\lib\require.js" />
     <Content Include="Themes\default\lib\artDialog\lib\sea.js" />
     <Content Include="Themes\default\lib\bootstrap\css\bootstrap-3.2.0.css" />
     <Content Include="Themes\default\lib\bootstrap\css\bootstrap-3.2.0.min.css" />
     <Content Include="Themes\default\lib\bootstrap\js\bootstrap-3.2.0.min.js" />
+    <Content Include="Themes\default\lib\bootstrap\js\bootstrap-3.2.0.js" />
     <Content Include="Themes\default\lib\bt-validate\bt-validate.js" />
     <Content Include="Themes\default\lib\jquery.bootgrid\jquery.bootgrid.css" />
     <Content Include="Themes\default\lib\jquery.bootgrid\jquery.bootgrid.js" />

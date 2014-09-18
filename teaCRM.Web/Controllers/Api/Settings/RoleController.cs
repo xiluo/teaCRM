@@ -9,11 +9,12 @@ using Spring.Context;
 using Spring.Context.Support;
 using teaCRM.Entity;
 using teaCRM.Service.Settings;
+using teaCRM.Web.Helpers;
 
 
 namespace teaCRM.Web.Controllers.Api.Settings
 {
-    public class RoleController : ApiController
+    public class RoleController : MyWebApiController
     {
         //spring 创建service依赖
         private ISysRoleService RoleService =

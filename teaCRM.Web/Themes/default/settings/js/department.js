@@ -37,7 +37,7 @@ function createTree(treeId) {
                 if (!treeNode.isAjaxing) {
                     return true;
                 } else {
-                    alert("zTree 正在下载数据中，请稍后展开节点。。。");
+                    //alert("zTree 正在下载数据中，请稍后展开节点。。。");
                     return false;
                 }
             },
@@ -45,7 +45,7 @@ function createTree(treeId) {
                 //alert(treeNode);
             },
             onAsyncError: function() {
-                alert(" 数据加载失败");
+                //alert(" 数据加载失败");
             },
             onClick: function(event, treeId, treeNode, clickFlag) {
                 //alert(treeNode.id);

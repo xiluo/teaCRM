@@ -3,12 +3,14 @@
 //*时间：2014年07月28日
 $(document).ready(function() {
     //显示欢迎
-    welcome();
+    sayHello();
     //显示更多
     showMore();
 });
 
-$(function() {
+$(function () {
+    //加载菜单
+    load_menu();
     //菜单切换
     changeTab();
 });
@@ -31,10 +33,6 @@ function showMore() {
         ;
 }
 
-//显示欢迎
-function welcome() {
-    $("#sayHello").html(sayHello());
-}
 
 //欢迎语
 function sayHello() {
@@ -57,8 +55,14 @@ function sayHello() {
     } else {
         welcome = "夜里好！";
     }
-    return welcome;
+    $("#sayHello").html(welcome);
 }
+
+//加载菜单
+function load_menu() {
+    alert("菜单加载完毕！");
+}
+
 
 //菜单切换
 function changeTab() {
