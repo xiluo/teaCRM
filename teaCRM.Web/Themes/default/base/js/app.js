@@ -111,11 +111,12 @@ function add(id, compNum, appType) {
                  //var status = result.Status.toLowerCase();
                  var status = result.Status;
                  if (status == true || status == "true" || status == "True") {
-                     //加载应用市场
-                     load_app_data();
-                     //加载我的应用
-                     load_myapp_data();
-                     showMsg("应用安装成功！","Success");
+//                     //加载应用市场
+//                     load_app_data();
+//                     //加载我的应用
+//                     load_myapp_data();
+                     showMsg("应用安装成功！", "Success");
+                     refresh("/Apps");
                  } else {
                      showMsg("系统异常，应用安装失败！");
                  }

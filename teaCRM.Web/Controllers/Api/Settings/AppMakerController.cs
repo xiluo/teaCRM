@@ -72,6 +72,29 @@ namespace teaCRM.Web.Controllers.Api.Settings
 
         #endregion
 
+
+         
+        #region 获取当前公司某个应用的所有模块 14-09-18 By 唐有炜
+        // Get /api/settings/appMaker/getAllMyApps?compNum=10000&appId=1
+        //current 1
+        //compNum 10000
+        //appId 1
+        [HttpGet]
+        public string GetAllMyApps()
+        {
+            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"]; //获取传统context
+            HttpRequestBase request = context.Request; //定义传统request对象
+            string compNum = request.Params.Get("compNum");
+            int appId = int.Parse(request.Params.Get("appId"));
+            var myApps = AppMakerService.GetAllMyApps(compNum, appId);
+            return JSONHelper.ToJson(myApps);
+        }
+
+        #endregion
+
+
+
+
         #region 检测该应用是否安装过
 
         // /api/settings/appMaker/isInstalled?id=2&compNum=10000&appType=1

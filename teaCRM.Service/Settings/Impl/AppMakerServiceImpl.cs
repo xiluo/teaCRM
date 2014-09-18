@@ -12,6 +12,7 @@ namespace teaCRM.Service.Settings.Impl
     public class AppMakerServiceImpl : IAppMakerService
     {
         public IVAppCompanyDao AppCompany { set; get; }
+        public IVMyappCompanyDao MyAppCompany { set; get; }
 
         /// <summary>
         /// 获取当前公司应用信息列表 2014-09-16 14:58:50 By 唐有炜
@@ -39,6 +40,20 @@ namespace teaCRM.Service.Settings.Impl
                 LogHelper.Error("公司id为" + "的公司获取应用列表失败。", ex);
                 return null;
             }
+        }
+
+
+
+        /// <summary>
+        /// 获取当前公司某个应用的所有模块 14-09018 By 唐有炜
+        /// </summary>
+        /// <param name="compNum"></param>
+        /// <param name="appId"></param>
+        /// <returns></returns>
+        public List<VMyappCompany> GetAllMyApps(string compNum, int appId)
+        {
+           var myapps= MyAppCompany.GetViewList(m=>m.CompNum==compNum&&m.AppId==appId);
+           return myapps;
         }
 
 

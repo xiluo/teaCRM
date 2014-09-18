@@ -43,8 +43,13 @@
   <object id="funAppDao" type="teaCRM.Dao.Impl.TFunAppDaoImpl, teaCRM.Dao" singleton="false">
   </object>
 
-  <!--AppCompany-->
+  <!--appCompany-->
   <object id="appCompany" type="teaCRM.Dao.Impl.VAppCompanyDaoImpl, teaCRM.Dao" singleton="false">
+  </object>
+
+
+  <!--myAppCompany-->
+  <object id="myAppCompany" type="teaCRM.Dao.Impl.VMyappCompanyDaoImpl, teaCRM.Dao" singleton="false">
   </object>
   
   <!--cusBaseDao-->

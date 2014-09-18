@@ -23,6 +23,16 @@ namespace teaCRM.Service.Settings
             Expression<Func<VAppCompany, bool>> predicate);
 
 
+
+
+        /// <summary>
+        /// 获取当前公司某个应用的所有模块 14-09018 By 唐有炜
+        /// </summary>
+        /// <param name="compNum"></param>
+        /// <param name="appId"></param>
+        /// <returns></returns>
+        List<VMyappCompany> GetAllMyApps(string compNum, int appId);
+
         /// <summary>
         /// 检测该应用是否安装过
         /// </summary>

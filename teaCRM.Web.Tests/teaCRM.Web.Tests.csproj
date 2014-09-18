@@ -136,6 +136,7 @@
     <Compile Include="UsersControllerApiTest.cs" />
     <Compile Include="UsersControllerTest.cs" />
     <Compile Include="VAppMyappDaoImplTest.cs" />
+    <Compile Include="VMyappCompanyDaoImplTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\teaCRM.Common\4-teaCRM.Common.csproj">

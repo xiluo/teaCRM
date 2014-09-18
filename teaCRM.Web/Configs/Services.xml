@@ -52,6 +52,7 @@
   <object id="appMakerService" type="teaCRM.Service.Settings.Impl.AppMakerServiceImpl, teaCRM.Service"
           singleton="false">
     <property name="AppCompany" ref="appCompany" />
+    <property name="MyAppCompany" ref="myAppCompany" /> 
   </object>
   <!--应用定制逻辑结束-->
   <!--设置逻辑结束-->
