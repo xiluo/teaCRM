@@ -54,6 +54,8 @@
     <property name="AppCompany" ref="appCompany" />
     <property name="MyAppCompany" ref="myAppCompany" />
     <property name="FunExpandDao" ref="funExpandDao" />
+    <property name="FunFilterDao" ref="funFilterDao" />
+    <property name="FunOperatingDao" ref="funOperatingDao" />
   </object>
   <!--应用定制逻辑结束-->
   <!--设置逻辑结束-->

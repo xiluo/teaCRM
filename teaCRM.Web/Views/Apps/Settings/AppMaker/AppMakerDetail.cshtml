@@ -122,9 +122,9 @@
             <div class="tab-content">
 
                 <ul class="nav nav-tabs" role="tablist">
-                    <li class="active"><a href="#field-info" role="tab" data-toggle="tab">字段</a></li>
-                    <li><a href="#messages" role="tab" data-toggle="tab">视图</a></li>
-                    <li><a href="#settings" role="tab" data-toggle="tab">操作</a></li>
+                    <li class="active"><a href="#field-info" role="tab" data-toggle="tab">自定义字段</a></li>
+                    <li><a href="#messages" role="tab" data-toggle="tab">数据视图&工具</a></li>
+                    <li><a href="#settings" role="tab" data-toggle="tab">可执行操作</a></li>
                 </ul>
 
          
@@ -159,7 +159,12 @@
                     <table id="view_grid" class="table table-condensed table-hover table-striped table-bordered" data-selection="true" data-multi-select="true">
                         <thead>
                             <tr>
-                                <th data-column-id="Id2" data-type="numeric" data-identifier="true">视图ID</th>
+                                 <th data-column-id="FilOrder"   data-header-align="center" data-align="center"   data-order="asc">排序</th>
+                                <th data-column-id="FilName"   data-header-align="center" data-align="center"   data-order="asc">筛选器名称</th>
+                                  <th data-column-id="ParentId"   data-header-align="center" data-align="center"   data-order="asc">父筛选器</th>
+                                <th data-column-id="FilWhere"   data-header-align="center" data-align="center"   data-order="asc">筛选条件</th>
+                               
+                                <th data-column-id="Id" data-identifier="true" data-formatter="commands" data-header-align="center" data-align="center" data-sortable="false">操作</th>
                             </tr>
                         </thead>
                     </table>
@@ -168,7 +173,14 @@
                     <table id="toolbar_grid" class="table table-condensed table-hover table-striped table-bordered" data-selection="true" data-multi-select="true">
                         <thead>
                             <tr>
-                                <th data-column-id="Id3" data-type="numeric" data-identifier="true">操作ID</th>
+                                <th data-column-id="OpeAction"   data-header-align="center" data-align="center"   data-order="asc">可执行操作</th>
+                                <th data-column-id="OpeType"   data-header-align="center" data-align="center"   data-order="asc">操作类型</th>
+                                  <th data-column-id="OpeFunction"   data-header-align="center" data-align="center"   data-order="asc">操作方法</th>
+                                <th data-column-id="OpeIsSys" data-formatter="OpeIsSys"   data-header-align="center" data-align="center"   data-order="asc">是否内置</th>
+                                <th data-column-id="OpeIsStatus"  data-formatter="OpeIsStatus"    data-header-align="center" data-align="center"   data-order="asc">是否禁用</th> 
+                                 <th data-column-id="OpeIsFast" data-formatter="OpeIsFast"     data-header-align="center" data-align="center"   data-order="asc">是否快捷</th>
+                                   <th data-column-id="Id" data-identifier="true" data-formatter="commands" data-header-align="center" data-align="center" data-sortable="false">操作</th>
+
                             </tr>
                         </thead>
                     </table>

@@ -8,15 +8,19 @@ namespace teaCRM.Entity
 	public partial class TFunOperating 
 	{
 	
-		[Id("id",IsDbGenerated=false)]
+		[Id("id",IsDbGenerated=true)]
 		public Int32 Id { get;set; }
  
+		[Column("comp_num")]
+		public String CompNum { get;set; }
 		[Column("myapp_id")]
 		public Int32 MyappId { get;set; }
-		[Column("myapp_name")]
-		public String MyappName { get;set; }
 		[Column("ope_action")]
 		public String OpeAction { get;set; }
+		[Column("ope_type")]
+		public Int32? OpeType { get;set; }
+		[Column("ope_function")]
+		public String OpeFunction { get;set; }
 		[Column("ope_is_sys")]
 		public Int32 OpeIsSys { get;set; }
 		[Column("ope_is_status")]

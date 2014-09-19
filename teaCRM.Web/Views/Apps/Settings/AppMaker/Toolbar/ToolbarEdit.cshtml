@@ -1,0 +1,163 @@
+﻿@using System.Web.Optimization
+@using teaCRM.Entity
+@model dynamic
+
+@{
+    Layout = null;
+}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        
+        @Styles.Render("~/Themes/default/css/cp.globle.min1.css")
+        @Scripts.Render("~/Themes/default/js/cp.globle.min1.js")
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#OpeAction").focus();
+                var id = "@ViewBag.Id";
+                if (id != "") {
+                    console.log("开始修改");
+                    load_form_data(id);
+                }
+            });
+            $(function () {
+                validate_form();
+            });
+
+            function load_form_data(id) {
+//                //alert(id);
+//                //提交数据
+//                var url = "/api/settings/role/getRole/" + id;
+//                $.ajax({
+//                    type: "get",
+//                    cache: false,
+//                    url: url,
+//                    data: { id: id },
+//                    dataType: "json",
+//                    beforeSend: function () {
+//                        //showLoading();
+//                    },
+//                    complete: function () {
+//                        //hideLoading();
+//                    },
+//                    success: function (result) {
+//                        console.log(result);
+//                        for (var key in result) {
+//                            //alert(key + " " + result[key]);
+//                            if ($("#" + key) != undefined) {
+//                                $("#" + key).val(result[key]);
+//                            }
+//                        }
+//                        console.log("数据加载成功。");
+//                    },
+//                    error: function () {
+//                        console.log("数据加载失败。");
+//                        showMsg("服务器异常！");
+//                    }
+//                });
+            }
+
+
+            //表单验证
+            function validate_form() {
+                $("#form_toolbar").validate({
+                    rules: {
+                        RoleName: {
+                            rangelength: [2, 30]
+                        }
+                    }
+,
+                    invalidHandler: function (e, validator) {
+                        var msg = "有 " + validator.numberOfInvalids() + " 项填写有误，请检查！";
+                        $("#msgprint").html(msg).show().focus();
+                        setTimeout(function () {
+                            $("#msgprint").fadeOut(500);
+                            //如果动画结束则删除节点
+                            if (!$("#msgprint").is(":animated")) {
+                                $("#msgprint").hide();
+                            }
+                        }, 1000);
+                    },
+                    focusInvalid: false,
+                    errorPlacement: function (error, element) {
+                        var errorMsg = error[0].innerHTML;
+                        var elementName = element[0].name;
+                        $("#" + elementName).formtip(errorMsg);
+                        $("#" + elementName).attr("placeholder", errorMsg);
+                    },
+                    success: function (element) {
+                        var elem = $(element)[0].htmlFor;
+                        $("#" + elem).poshytip('disable');
+                        $("#" + elem).poshytip('destroy');
+                        $("#" + elem).removeClass("error").addClass("success");
+                    }
+
+                });
+            }
+
+            //表单验证方法，供父窗口调用
+            function form_valid() {
+                return $("#form_toolbar").valid();
+            }
+        </script>
+    </head>
+    <body>
+        <div class="tab-content">
+               <!--表单错误提示区-->
+                    <div tabindex="-1" id="msgprint" class="warning" style="position: fixed; width: 90%; display: none;">您的表单包含错误，请检查！</div>
+            <form id="form_toolbar">
+                <input type="hidden" id="Id" name="Id" value="@ViewBag.Id"/>
+                <!--当前公司id-->
+                <input type="hidden" id="CompNum" name="CompNum" value="@Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM]" />
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>操作名称：
+                    </dt>
+                    <dd>
+                        <input type="text" class="form-control required" id="OpeAction" name="OpeAction" placeholder="输入操作名称" />
+                    </dd>
+                     <dt>
+                        <em class="imp">*</em>操作类型：
+                    </dt>
+                    <dd>
+                        <select id="OpeType" name="OpeType"  class="form-control wid120 required">
+                            
+                        </select>
+                    </dd>
+                </dl>
+            
+                <dl>
+                    <dt>
+                        <em class="imp">*</em>操作方法：
+                    </dt>
+                    <dd>
+                        <textarea class="form-control wid515 required" id="OpeFunction" name="OpeFunction" cols="50" rows="2"></textarea>
+                    </dd>
+                </dl>
+                 <dl>
+                  <dt>
+                      是否内置：
+                    </dt>
+                     <dd>
+                         <input type="checkbox" class="" id="ExpIsSys" name="ExpIsSys" />
+                     </dd>
+                       
+                     <dt>
+                     是否显示：
+                    </dt>
+                    <dd>
+                        <input type="checkbox" class="" id="ExpIsStatus" name="ExpIsStatus" />
+                    </dd>
+                   <dt>
+                      是否快捷：
+                    </dt>
+                    <dd>
+                        <input type="checkbox" class="" id="ExpIsFast" name="ExpIsFast" />
+                    </dd>
+                </dl>
+            </form>
+        </div>
+    </body>
+</html>

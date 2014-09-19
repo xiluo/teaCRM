@@ -32,22 +32,39 @@ namespace teaCRM.Service.Settings
         /// <returns></returns>
         DataTable GetAllMyAppFields(string compNumm,int myappId);
 
+
         /// <summary>
         /// 当前公司某个模块的视图列表 14-09-18 By 唐有炜
         /// </summary>
-        /// <param name="compNumm"></param>
-        /// <param name="myappId"></param>
-        /// <returns></returns>
-        DataTable GetAllMyAppViews(string compNumm, int myappId);
+        /// <param name="compNum">企业编号</param>
+       /// <param name="myappId">模块id</param>
+        /// <param name="pageIndex">页码</param>
+        /// <param name="pageSize">每页的数目</param>
+        /// <param name="rowCount">总数</param>
+        /// <param name="orders">排序</param>
+        /// <param name="predicate">条件</param>
+        IEnumerable<TFunFilter>
+         GetAllMyAppViews(string compNum, int myappId, int pageIndex, int pageSize, out int rowCount,
+            IDictionary<string, teaCRM.Entity.teaCRMEnums.OrderEmum> orders,
+            Expression<Func<TFunFilter, bool>> predicate);
+
 
         /// <summary>
         /// 当前公司某个模块的操作列表 14-09-18 By 唐有炜
         /// </summary>
-        /// <param name="compNumm"></param>
-        /// <param name="myappId"></param>
-        /// <returns></returns>
-        DataTable GetAllMyAppToolBars(string compNumm, int myappId);
+        /// <param name="compNum">企业编号</param>
+        /// <param name="myappId">模块id</param>
+        /// <param name="pageIndex">页码</param>
+        /// <param name="pageSize">每页的数目</param>
+        /// <param name="rowCount">总数</param>
+        /// <param name="orders">排序</param>
+        /// <param name="predicate">条件</param>
+        IEnumerable<TFunOperating>
+         GetAllMyAppToolBars(string compNum, int myappId, int pageIndex, int pageSize, out int rowCount,
+            IDictionary<string, teaCRM.Entity.teaCRMEnums.OrderEmum> orders,
+            Expression<Func<TFunOperating, bool>> predicate);
 
+      
 
         /// <summary>
         /// 获取当前公司某个应用的所有模块 14-09018 By 唐有炜

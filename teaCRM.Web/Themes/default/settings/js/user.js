@@ -208,7 +208,7 @@ function edit() {
 
 function del(id) {
     console.log(id);
-    showDialog("确认删除该角色吗？", function () {
+    showDialog("确认删除该用户吗？", function () {
 //        $.ajax({
 //            type: "get",
 //            cache: false,
@@ -228,16 +228,16 @@ function del(id) {
 //                if (status == true || status == "true" || status == "True") {
 //                    //刷新数据
 //                    grid.bootgrid("reload");
-//                    showMsg("角色删除成功！", "Success");
+//                    showMsg("用户删除成功！", "Success");
 //                } else {
-//                    showMsg("系统异常，角色删除失败！", "Error");
+//                    showMsg("系统异常，用户删除失败！", "Error");
 //                }
 //            },
 //            error: function () {
 //                showMsg("网络连接错误", "Error");
 //            }
         //        });
-        showMsg("系统异常，角色删除失败！", "Error");
+        showMsg("系统异常，用户删除失败！", "Error");
     });
     //必须有这个，阻止刷新
     return false;

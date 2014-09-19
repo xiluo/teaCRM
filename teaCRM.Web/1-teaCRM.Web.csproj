@@ -1451,6 +1451,9 @@
     <Content Include="Views\Admin\Account\AdminLogin.cshtml" />
     <Content Include="Views\Admin\App\AppAdd.cshtml" />
     <Content Include="Views\Admin\Main\MainIndex.cshtml" />
+    <Content Include="Views\Apps\Settings\AppMaker\Field\FieldEdit.cshtml" />
+    <Content Include="Views\Apps\Settings\AppMaker\Toolbar\ToolbarEdit.cshtml" />
+    <Content Include="Views\Apps\Settings\AppMaker\View\ViewEdit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

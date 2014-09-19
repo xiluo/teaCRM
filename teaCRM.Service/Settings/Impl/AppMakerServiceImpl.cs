@@ -15,6 +15,8 @@ namespace teaCRM.Service.Settings.Impl
         public IVAppCompanyDao AppCompany { set; get; }
         public IVMyappCompanyDao MyAppCompany { set; get; }
         public ITFunExpandDao FunExpandDao { set; get; }
+        public ITFunFilterDao FunFilterDao { set; get; }
+        public ITFunOperatingDao FunOperatingDao { set; get; }
 
         /// <summary>
         /// 获取当前公司应用信息列表 2014-09-16 14:58:50 By 唐有炜
@@ -45,7 +47,6 @@ namespace teaCRM.Service.Settings.Impl
         }
 
 
-
         /// <summary>
         /// 获取当前公司某个应用的所有模块 14-09018 By 唐有炜
         /// </summary>
@@ -54,12 +55,9 @@ namespace teaCRM.Service.Settings.Impl
         /// <returns></returns>
         public List<VMyappCompany> GetAllMyApps(string compNum, int appId)
         {
-           var myapps= MyAppCompany.GetViewList(m=>m.CompNum==compNum&&m.AppId==appId);
-           return myapps;
+            var myapps = MyAppCompany.GetViewList(m => m.CompNum == compNum && m.AppId == appId);
+            return myapps;
         }
-
-
-
 
         #region  当前公司某个模块的扩展字段列表 14-09-18 By 唐有炜
 
@@ -76,18 +74,24 @@ namespace teaCRM.Service.Settings.Impl
 
         #endregion
 
-
         #region  当前公司某个模块的视图列表 14-09-18 By 唐有炜
 
         /// <summary>
-        ///当前公司某个模块的视图列表 14-09-18 By 唐有炜
+        /// 当前公司某个模块的视图列表 14-09-18 By 唐有炜
         /// </summary>
-        /// <param name="compNumm"></param>
-        /// <param name="myappId"></param>
-        /// <returns></returns>
-        public DataTable GetAllMyAppViews(string compNumm, int myappId)
+        /// <param name="compNum">企业编号</param>
+        /// <param name="myappId">模块id</param>
+        /// <param name="pageIndex">页码</param>
+        /// <param name="pageSize">每页的数目</param>
+        /// <param name="rowCount">总数</param>
+        /// <param name="orders">排序</param>
+        /// <param name="predicate">条件</param>
+        public IEnumerable<TFunFilter>
+            GetAllMyAppViews(string compNum, int myappId, int pageIndex, int pageSize, out int rowCount,
+                IDictionary<string, teaCRM.Entity.teaCRMEnums.OrderEmum> orders,
+                Expression<Func<TFunFilter, bool>> predicate)
         {
-            return FunExpandDao.GetExpandFields(compNumm, myappId);
+            return FunFilterDao.GetFilterLsit(compNum, myappId, pageIndex, pageSize, out rowCount, orders, predicate);
         }
 
         #endregion
@@ -95,29 +99,36 @@ namespace teaCRM.Service.Settings.Impl
         #region  前公司某个模块的操作列表 14-09-18 By 唐有炜
 
         /// <summary>
-        /// 前公司某个模块的操作列表 14-09-18 By 唐有炜
+        /// 当前公司某个模块的操作列表 14-09-18 By 唐有炜
         /// </summary>
-        /// <param name="compNumm"></param>
-        /// <param name="myappId"></param>
-        /// <returns></returns>
-        public DataTable GetAllMyAppToolBars(string compNumm, int myappId)
+        /// <param name="compNum">企业编号</param>
+        /// <param name="myappId">模块id</param>
+        /// <param name="pageIndex">页码</param>
+        /// <param name="pageSize">每页的数目</param>
+        /// <param name="rowCount">总数</param>
+        /// <param name="orders">排序</param>
+        /// <param name="predicate">条件</param>
+        public IEnumerable<TFunOperating>
+            GetAllMyAppToolBars(string compNum, int myappId, int pageIndex, int pageSize, out int rowCount,
+                IDictionary<string, teaCRM.Entity.teaCRMEnums.OrderEmum> orders,
+                Expression<Func<TFunOperating, bool>> predicate)
         {
-            return FunExpandDao.GetExpandFields(compNumm, myappId);
+            return FunOperatingDao.GetOperatingLsit(compNum, myappId, pageIndex, pageSize, out rowCount, orders,
+                predicate);
         }
 
         #endregion
 
-       /// <summary>
-    /// 检测该应用是否安装过
-    /// </summary>
-    /// <param name="compNum">公司id</param>
-    /// <param name="appId">应用id</param>
-    /// <param name="appType">应用类型</param>
-    /// <returns></returns>
-   public  bool IsInstalled(string compNum, int appId, int appType)
+        /// <summary>
+        /// 检测该应用是否安装过
+        /// </summary>
+        /// <param name="compNum">公司id</param>
+        /// <param name="appId">应用id</param>
+        /// <param name="appType">应用类型</param>
+        /// <returns></returns>
+        public bool IsInstalled(string compNum, int appId, int appType)
         {
-            return AppCompany.IsInstalled(compNum, appId,appType);
-            
+            return AppCompany.IsInstalled(compNum, appId, appType);
         }
 
 
@@ -127,10 +138,11 @@ namespace teaCRM.Service.Settings.Impl
         /// <param name="compNum">公司id</param>
         /// <param name="appId">应用id</param>
         /// <returns></returns>
-       public bool Install(string compNum, int appId)
+        public bool Install(string compNum, int appId)
         {
             return AppCompany.Install(compNum, appId);
         }
+
         ///  <summary>
         /// 卸载应用
         ///  </summary>
@@ -138,9 +150,9 @@ namespace teaCRM.Service.Settings.Impl
         ///  <param name="appIds">应用id</param>
         /// <param name="isClear">是否清空数据</param>
         /// <returns></returns>
-       public bool UnInstall(string compNum, string appIds,bool isClear)
-       {
-           return AppCompany.UnInstall(compNum, appIds,isClear);
-       }
+        public bool UnInstall(string compNum, string appIds, bool isClear)
+        {
+            return AppCompany.UnInstall(compNum, appIds, isClear);
+        }
     }
 }

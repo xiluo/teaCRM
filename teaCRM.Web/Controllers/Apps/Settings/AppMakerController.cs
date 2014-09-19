@@ -84,5 +84,38 @@ namespace teaCRM.Web.Controllers.Apps.Settings
         }
 
         #endregion
+
+
+        #region 扩展字段
+        // /Apps/Settings/AppMaker/EditField
+
+        public ActionResult EditField()
+        {
+            return View("Field/FieldEdit");
+        }
+
+
+
+        #endregion
+
+        #region 系统视图
+        // /Apps/Settings/AppMaker/EditView
+        public ActionResult EditView()
+        {
+            return View("View/ViewEdit");
+        }
+
+        #endregion
+
+        #region 操作
+        // /Apps/Settings/AppMaker/EditToolbar
+        public ActionResult EditToolbar()
+        {
+            return View("Toolbar/ToolbarEdit");
+        }
+        #endregion
+
+
+
     }
 }

@@ -1,4 +1,3 @@
-
 using System;
 using System.Data;
 using System.Collections.Generic;
@@ -12,18 +11,16 @@ using teaCRM.Entity;
 using System.Linq.Dynamic;
 
 
-namespace  teaCRM.Dao.Impl
+namespace teaCRM.Dao.Impl
 {
-
     /// <summary>
     /// 自动生成的实现ITFunOperatingDao接口的Dao类。 2014-08-28 05:06:48 By 唐有炜
     /// </summary>
- public class TFunOperatingDaoImpl:ITFunOperatingDao
+    public class TFunOperatingDaoImpl : ITFunOperatingDao
     {
         #region T4自动生成的dao类
 
         #region 读操作
-
 
         /// <summary>
         /// 获取数据总数
@@ -56,8 +53,6 @@ namespace  teaCRM.Dao.Impl
                 return models.Count();
             }
         }
-
-
 
 
         /// <summary>
@@ -111,7 +106,6 @@ namespace  teaCRM.Dao.Impl
         }
 
 
-
         /// <summary>
         /// 根据条件查询某些字段(LINQ 动态查询)
         /// </summary>
@@ -144,8 +138,6 @@ namespace  teaCRM.Dao.Impl
         }
 
 
-
-
         //查询分页
         public IPagination<TFunOperating> GetListByPage(int pageIndex, int pageSize, out int rowCount,
             IDictionary<string, teaCRMEnums.OrderEmum> orders,
@@ -170,8 +162,6 @@ namespace  teaCRM.Dao.Impl
         }
 
 
-
-
         //以下是原生Sql方法==============================================================
         //===========================================================================
         /// <summary>
@@ -186,11 +176,9 @@ namespace  teaCRM.Dao.Impl
             {
                 return db.DbHelper.ExecuteDataTable(sql, namedParameters).ToList<TFunOperating>();
             }
-
         }
 
         #endregion
-
 
         #region 写操作
 
@@ -283,8 +271,6 @@ namespace  teaCRM.Dao.Impl
         }
 
 
-
-
         /// <summary>
         /// 执行Sql
         /// </summary>
@@ -323,16 +309,14 @@ namespace  teaCRM.Dao.Impl
         /// <param name="rowCount">总数</param>
         /// <param name="orders">排序</param>
         /// <param name="predicate">条件</param>
-     public   IEnumerable<TFunOperating> GetOperatingLsit(string compNum, int myappId, int pageIndex, int pageSize,
+        public IEnumerable<TFunOperating> GetOperatingLsit(string compNum, int myappId, int pageIndex, int pageSize,
             out int rowCount,
             IDictionary<string, teaCRMEnums.OrderEmum> orders,
             Expression<Func<TFunOperating, bool>> predicate)
         {
-            rowCount = 0;
-            return null;
+            return GetListByPage(pageIndex, pageSize, out rowCount, orders, predicate);
         }
+
         #endregion
-
-
-	   }
-	   }
+    }
+}

@@ -39,6 +39,10 @@
   <object id="funExpandDao" type="teaCRM.Dao.Impl.TFunExpandDaoImpl, teaCRM.Dao" singleton="false">
   </object>
 
+  <!--funOperatingDao-->
+  <object id="funOperatingDao" type="teaCRM.Dao.Impl.TFunOperatingDaoImpl, teaCRM.Dao" singleton="false">
+  </object>
+
   <!--funAppDao-->
   <object id="funAppDao" type="teaCRM.Dao.Impl.TFunAppDaoImpl, teaCRM.Dao" singleton="false">
   </object>

@@ -155,19 +155,15 @@ namespace teaCRM.Web.Controllers.Api.Settings
         //sort[UserName]
         //searchPhrase 
         //[HttpPost]
-        [HttpGet]
+        [HttpPost]
         public string GetAllMyAppViews()
         {
-            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"]; //获取传统context
+            HttpContextBase context = (HttpContextBase) Request.Properties["MS_HttpContext"]; //获取传统context
             HttpRequestBase request = context.Request; //定义传统request对象
             string compNum = request.Params.Get("compNum");
             int myappId = int.Parse(request.Params.Get("myappId"));
             int current = int.Parse(request.Params.Get("current"));
             int rowCount = int.Parse(request.Params.Get("rowCount"));
-            //排序
-            IDictionary<string, teaCRM.Entity.teaCRMEnums.OrderEmum> orders =
-                new Dictionary<string, teaCRMEnums.OrderEmum>();
-            orders.Add(new KeyValuePair<string, teaCRMEnums.OrderEmum>("id", teaCRMEnums.OrderEmum.Asc));
             string sort = request.Params.AllKeys.SingleOrDefault(a => a.Contains("sort"));
             //string sortName = sort.Split('[')[0];
             string sortField = sort.Split('[')[1].TrimEnd(']');
@@ -175,26 +171,34 @@ namespace teaCRM.Web.Controllers.Api.Settings
             string searchPhrase = request.Params.Get("searchPhrase");
 
             var total = 0;
-            DataTable views = null;
+            IEnumerable<TFunFilter> filters;
+
+            //排序
+            IDictionary<string, teaCRM.Entity.teaCRMEnums.OrderEmum> orders =
+                new Dictionary<string, teaCRMEnums.OrderEmum>();
+
             orders.Add(sortType == "desc"
                 ? new KeyValuePair<string, teaCRMEnums.OrderEmum>(sortField, teaCRMEnums.OrderEmum.Desc)
                 : new KeyValuePair<string, teaCRMEnums.OrderEmum>(sortField, teaCRMEnums.OrderEmum.Asc));
+
+
             //搜索
             if (!String.IsNullOrEmpty(searchPhrase))
             {
-                views = AppMakerService.GetAllMyAppViews(compNum, myappId);
+                filters = AppMakerService.GetAllMyAppViews(compNum, myappId, current, rowCount, out total, orders,
+                    r => r.CompNum == compNum && r.MyappId == myappId && r.FilName.Contains(searchPhrase));
             }
             else
             {
-                views = AppMakerService.GetAllMyAppViews(compNum, myappId);
+                filters = AppMakerService.GetAllMyAppViews(compNum, myappId, current, rowCount, out total, orders,
+                    r => r.CompNum == compNum && r.MyappId == myappId);
             }
-            views.TableName = "views"; //这个一定要放在得到数据过后。否则报错：无法序列化 DataTable。未设置 DataTable 名称。
-            LogHelper.Info("获取到的字段个数：" + views.Rows.Count);
+
             return JsonConvert.SerializeObject(new
             {
                 current = current,
                 rowCount = rowCount,
-                rows = views,
+                rows = filters,
                 total = total
             });
         }
@@ -208,20 +212,16 @@ namespace teaCRM.Web.Controllers.Api.Settings
         //rowCount 10
         //sort[UserName]
         //searchPhrase 
-        //[HttpPost]
-        [HttpGet]
+        [HttpPost]
+        //[HttpGet]
         public string GetAllMyAppToolBars()
         {
-            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"]; //获取传统context
+            HttpContextBase context = (HttpContextBase) Request.Properties["MS_HttpContext"]; //获取传统context
             HttpRequestBase request = context.Request; //定义传统request对象
             string compNum = request.Params.Get("compNum");
             int myappId = int.Parse(request.Params.Get("myappId"));
             int current = int.Parse(request.Params.Get("current"));
             int rowCount = int.Parse(request.Params.Get("rowCount"));
-            //排序
-            IDictionary<string, teaCRM.Entity.teaCRMEnums.OrderEmum> orders =
-                new Dictionary<string, teaCRMEnums.OrderEmum>();
-            orders.Add(new KeyValuePair<string, teaCRMEnums.OrderEmum>("id", teaCRMEnums.OrderEmum.Asc));
             string sort = request.Params.AllKeys.SingleOrDefault(a => a.Contains("sort"));
             //string sortName = sort.Split('[')[0];
             string sortField = sort.Split('[')[1].TrimEnd(']');
@@ -229,26 +229,34 @@ namespace teaCRM.Web.Controllers.Api.Settings
             string searchPhrase = request.Params.Get("searchPhrase");
 
             var total = 0;
-            DataTable toolbar = null;
+            IEnumerable<TFunOperating> ops;
+
+            //排序
+            IDictionary<string, teaCRM.Entity.teaCRMEnums.OrderEmum> orders =
+                new Dictionary<string, teaCRMEnums.OrderEmum>();
+
             orders.Add(sortType == "desc"
                 ? new KeyValuePair<string, teaCRMEnums.OrderEmum>(sortField, teaCRMEnums.OrderEmum.Desc)
                 : new KeyValuePair<string, teaCRMEnums.OrderEmum>(sortField, teaCRMEnums.OrderEmum.Asc));
+
+
             //搜索
             if (!String.IsNullOrEmpty(searchPhrase))
             {
-                toolbar = AppMakerService.GetAllMyAppToolBars(compNum, myappId);
+                ops = AppMakerService.GetAllMyAppToolBars(compNum, myappId, current, rowCount, out total, orders,
+                    r => r.CompNum == compNum&&r.MyappId==myappId && r.OpeAction.Contains(searchPhrase));
             }
             else
             {
-                toolbar = AppMakerService.GetAllMyAppToolBars(compNum, myappId);
+                ops = AppMakerService.GetAllMyAppToolBars(compNum, myappId, current, rowCount, out total, orders,
+                    r => r.CompNum == compNum && r.MyappId == myappId);
             }
-            toolbar.TableName = "toolbar"; //这个一定要放在得到数据过后。否则报错：无法序列化 DataTable。未设置 DataTable 名称。
-            LogHelper.Info("获取到的字段个数：" + toolbar.Rows.Count);
+
             return JsonConvert.SerializeObject(new
             {
                 current = current,
                 rowCount = rowCount,
-                rows = toolbar,
+                rows = ops,
                 total = total
             });
         }

@@ -34,11 +34,11 @@ namespace teaCRM.Entity
 		[OneToMany(ThisKey="Id",OtherKey="MyappId")]
 		public IList<TFunTag> TFunTags { get;set; }
 		[OneToMany(ThisKey="Id",OtherKey="MyappId")]
-		public IList<TFunOperating> TFunOperatings { get;set; }
+		public IList<TFunExpand> TFunExpands { get;set; }
 		[OneToMany(ThisKey="Id",OtherKey="MyappId")]
 		public IList<TFunFilter> TFunFilters { get;set; }
 		[OneToMany(ThisKey="Id",OtherKey="MyappId")]
-		public IList<TFunExpand> TFunExpands { get;set; }
+		public IList<TFunOperating> TFunOperatings { get;set; }
  
 	}
   

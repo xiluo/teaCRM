@@ -132,6 +132,7 @@
     <Compile Include="RoleControllerTest.cs" />
     <Compile Include="SysUserServiceImplTest.cs" />
     <Compile Include="TFunAppDaoImplTest.cs" />
+    <Compile Include="TFunOperatingDaoImplTest.cs" />
     <Compile Include="TSysUserDaoImplTest.cs" />
     <Compile Include="UsersControllerApiTest.cs" />
     <Compile Include="UsersControllerTest.cs" />

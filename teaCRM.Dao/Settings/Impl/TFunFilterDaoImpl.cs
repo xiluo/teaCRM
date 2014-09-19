@@ -313,8 +313,7 @@ namespace teaCRM.Dao.Impl
             IDictionary<string, teaCRM.Entity.teaCRMEnums.OrderEmum> orders,
             Expression<Func<TFunFilter, bool>> predicate)
         {
-            rowCount = 0;
-           return null; 
+           return GetListByPage(pageIndex,pageSize,out rowCount,orders,predicate); 
         }
 
         #endregion
