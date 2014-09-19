@@ -180,11 +180,12 @@ namespace teaCRM.Web
 
 
 
-            #region jquery、bootstrap、jquery.cookie、artDialog、function、head、foot 类库6（适用于列表页面，使用bootgrid、Ztree）
+            #region jquery、bootstrap、jquery.cookie、artDialog、function、head、foot 类库8（适用于列表页面，使用bootgrid、Ztree）
 
             bundles.Add(new ScriptBundle("~/Themes/default/js/cp.globle.min8.js")
                 .Include(
                     "~/Themes/default/lib/jquery/jquery-1.*")
+                            .Include("~/Themes/default/lib/json/json2.js")
                 .Include("~/Themes/default/lib/bootstrap/js/bootstrap-3.2.0.js")
                 .Include("~/Themes/default/lib/jquery.bootgrid/jquery.bootgrid.js")
                 .Include("~/Themes/default/lib/cookie/jquery.cookie.js")

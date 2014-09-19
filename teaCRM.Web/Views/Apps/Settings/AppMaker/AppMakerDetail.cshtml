@@ -1,5 +1,6 @@
 @using System.Web.Optimization
 @using teaCRM.Common
+@using teaCRM.Entity
 @model dynamic
 
 @{
@@ -89,24 +90,26 @@
 
         .ns-item .c_left ul li a:hover { color: #000; }
     </style>
-
-    <script type="text/javascript">
-
-    
-    </script>
+    <script src="/Themes/default/settings/js/app_maker_detail.js" type="text/javascript"></script>
+  
 }
 
 <div>
-    <!--左侧开始-->
+    @*布局页已经有了公司编号
+    <input type="hidden" id="CompNum" name="CompNum" value="@Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM]" />*@
+    <!--相应应用的id-->
+    <input type="hidden" id="AppId" name="AppId" value="@ViewBag.AppId" />
+       <!--左侧开始-->
     <div class="layout-left">
         <div id="nav-side" class="nav-side">
             <div class="ns-item">
                 <div class="list-group">
-                    <a href="javascript:;" class="list-group-item active disabled">
+                    @* <a href="javascript:;" class="list-group-item active disabled">
                         客户
                     </a>
                     <a href="#" class="list-group-item">客户模块</a>
                     <a href="#" class="list-group-item">联系人模块</a>
+                    *@
                 </div>
             </div>
         </div>
@@ -116,38 +119,41 @@
     <div class="layout-right">
         <div class="layout-content">
             
-               <div class="tab-content">
+            <div class="tab-content">
 
-            <ul class="nav nav-tabs" role="tablist">
-                <li class="active"><a href="#field-info" role="tab" data-toggle="tab">字段</a></li>
-                <li><a href="#messages" role="tab" data-toggle="tab">视图</a></li>
-                <li><a href="#settings" role="tab" data-toggle="tab">操作</a></li>
-            </ul>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="active"><a href="#field-info" role="tab" data-toggle="tab">字段</a></li>
+                    <li><a href="#messages" role="tab" data-toggle="tab">视图</a></li>
+                    <li><a href="#settings" role="tab" data-toggle="tab">操作</a></li>
+                </ul>
 
          
                 <div class="tab-pane active" id="field-info">
-                    <table id="field-grid-data" class="table table-condensed table-hover table-striped table-bordered" data-selection="true" data-multi-select="true">
+                    <table id="field_grid" class="table table-condensed table-hover table-striped table-bordered" data-selection="true" data-multi-select="true">
                         <thead>
                             <tr>
-                                <th data-column-id="Id" data-type="numeric" data-identifier="true">字段ID</th>
+                               
+                                    <th data-column-id="FirldName" data-identifier="true">字段名称</th>
+                                      <th data-column-id="FirldType" data-identifier="true">字段类型</th>
+              
                             </tr>
                         </thead>
                     </table>
                 </div>
                 <div class="tab-pane" id="messages">
-                    <table id="view-grid-data" class="table table-condensed table-hover table-striped table-bordered" data-selection="true" data-multi-select="true">
+                    <table id="view_grid" class="table table-condensed table-hover table-striped table-bordered" data-selection="true" data-multi-select="true">
                         <thead>
                             <tr>
-                                <th data-column-id="Id" data-type="numeric" data-identifier="true">视图ID</th>
+                                <th data-column-id="Id2" data-type="numeric" data-identifier="true">视图ID</th>
                             </tr>
                         </thead>
                     </table>
                 </div>
                 <div class="tab-pane" id="settings">
-                    <table id="toolbar-grid-data" class="table table-condensed table-hover table-striped table-bordered" data-selection="true" data-multi-select="true">
+                    <table id="toolbar_grid" class="table table-condensed table-hover table-striped table-bordered" data-selection="true" data-multi-select="true">
                         <thead>
                             <tr>
-                                <th data-column-id="Id" data-type="numeric" data-identifier="true">操作ID</th>
+                                <th data-column-id="Id3" data-type="numeric" data-identifier="true">操作ID</th>
                             </tr>
                         </thead>
                     </table>

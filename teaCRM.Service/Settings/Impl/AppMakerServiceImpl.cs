@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -13,6 +14,7 @@ namespace teaCRM.Service.Settings.Impl
     {
         public IVAppCompanyDao AppCompany { set; get; }
         public IVMyappCompanyDao MyAppCompany { set; get; }
+        public ITFunExpandDao FunExpandDao { set; get; }
 
         /// <summary>
         /// 获取当前公司应用信息列表 2014-09-16 14:58:50 By 唐有炜
@@ -56,6 +58,54 @@ namespace teaCRM.Service.Settings.Impl
            return myapps;
         }
 
+
+
+
+        #region  当前公司某个模块的扩展字段列表 14-09-18 By 唐有炜
+
+        /// <summary>
+        /// 当前公司某个模块的扩展字段列表 14-09-18 By 唐有炜
+        /// </summary>
+        /// <param name="compNumm"></param>
+        /// <param name="myappId"></param>
+        /// <returns></returns>
+        public DataTable GetAllMyAppFields(string compNumm, int myappId)
+        {
+            return FunExpandDao.GetExpandFields(compNumm, myappId);
+        }
+
+        #endregion
+
+
+        #region  当前公司某个模块的视图列表 14-09-18 By 唐有炜
+
+        /// <summary>
+        ///当前公司某个模块的视图列表 14-09-18 By 唐有炜
+        /// </summary>
+        /// <param name="compNumm"></param>
+        /// <param name="myappId"></param>
+        /// <returns></returns>
+        public DataTable GetAllMyAppViews(string compNumm, int myappId)
+        {
+            return FunExpandDao.GetExpandFields(compNumm, myappId);
+        }
+
+        #endregion
+
+        #region  前公司某个模块的操作列表 14-09-18 By 唐有炜
+
+        /// <summary>
+        /// 前公司某个模块的操作列表 14-09-18 By 唐有炜
+        /// </summary>
+        /// <param name="compNumm"></param>
+        /// <param name="myappId"></param>
+        /// <returns></returns>
+        public DataTable GetAllMyAppToolBars(string compNumm, int myappId)
+        {
+            return FunExpandDao.GetExpandFields(compNumm, myappId);
+        }
+
+        #endregion
 
        /// <summary>
     /// 检测该应用是否安装过

@@ -282,6 +282,7 @@
     <Content Include="Themes\default\lib\zTree\js\jquery.ztree.exedit-3.5.min.js" />
     <Content Include="Themes\default\lib\zTree\js\jquery.ztree.exedit.js" />
     <Content Include="Themes\default\settings\js\app_maker.js" />
+    <Content Include="Themes\default\settings\js\app_maker_detail.js" />
     <Content Include="Themes\default\settings\js\role.js" />
     <Content Include="Themes\default\settings\js\user.js" />
     <Content Include="Views\Admin\Log\LogView.cshtml" />

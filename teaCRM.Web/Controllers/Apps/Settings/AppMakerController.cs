@@ -29,6 +29,7 @@ namespace teaCRM.Web.Controllers.Apps.Settings
 
         public ActionResult Detail(int id)
         {
+            ViewBag.AppId = id;
             return View("AppMakerDetail");
         }
 

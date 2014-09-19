@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -23,6 +24,29 @@ namespace teaCRM.Service.Settings
             Expression<Func<VAppCompany, bool>> predicate);
 
 
+        /// <summary>
+        /// 当前公司某个模块的扩展字段列表 14-09-18 By 唐有炜
+        /// </summary>
+        /// <param name="compNumm"></param>
+        /// <param name="myappId"></param>
+        /// <returns></returns>
+        DataTable GetAllMyAppFields(string compNumm,int myappId);
+
+        /// <summary>
+        /// 当前公司某个模块的视图列表 14-09-18 By 唐有炜
+        /// </summary>
+        /// <param name="compNumm"></param>
+        /// <param name="myappId"></param>
+        /// <returns></returns>
+        DataTable GetAllMyAppViews(string compNumm, int myappId);
+
+        /// <summary>
+        /// 当前公司某个模块的操作列表 14-09-18 By 唐有炜
+        /// </summary>
+        /// <param name="compNumm"></param>
+        /// <param name="myappId"></param>
+        /// <returns></returns>
+        DataTable GetAllMyAppToolBars(string compNumm, int myappId);
 
 
         /// <summary>
