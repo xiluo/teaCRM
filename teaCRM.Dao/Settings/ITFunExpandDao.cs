@@ -16,10 +16,13 @@ namespace teaCRM.Dao
         /// <summary>
         /// 查询某个模块的扩展字段
         /// </summary>
-        /// <param name="compNumm">公司编号</param>
+        /// <param name="compNum">公司编号</param>
         /// <param name="myappId">模块id</param>
         /// <returns></returns>
-        DataTable GetExpandFields(string compNumm,int myappId);
+        DataTable GetExpandFields(string compNum,int myappId);
+
+
+
 
         #endregion
     }

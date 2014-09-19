@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Linq.Dynamic;
 using System.Linq.Expressions;
+using System.Security.Cryptography.X509Certificates;
 using NLite.Data;
 using NLite.Reflection;
 using teaCRM.Common;
@@ -299,16 +300,99 @@ namespace teaCRM.Dao.Impl
 
         #region 手写的扩展函数 2014-08-21 14:58:50 By 唐有炜
 
-          /// <summary>
+        #region 查询某个模块的扩展字段
+
+        /// <summary>
         /// 查询某个模块的扩展字段
         /// </summary>
-        /// <param name="compNumm">公司编号</param>
+        /// <param name="compNum">公司编号</param>
         /// <param name="myappId">模块id</param>
         /// <returns></returns>
-     public   DataTable GetExpandFields(string compNumm,int myappId){
-        
-            return null;
+        public DataTable GetExpandFields(string compNum, int myappId)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                IDictionary<string, object> namedParameters = new Dictionary<string, object>();
+                var baseTableName =
+                    db.TFunMyapps.Where(m => m.Id == myappId).Select(m => m.MyappBaseTable).SingleOrDefault();
+                namedParameters.Add(new KeyValuePair<string, object>("@table_name", baseTableName));
+                namedParameters.Add(new KeyValuePair<string, object>("@comp_num", compNum));
+                namedParameters.Add(new KeyValuePair<string, object>("@myapp_id", myappId));
+                var tableBase = db.DbHelper.ExecuteDataTable(@"
+SELECT 'base'+CAST((row_number() OVER(ORDER BY
+       sys.columns.column_id)) AS VARCHAR) AS id,
+       @myapp_id AS myapp_id,
+       @comp_num AS comp_num,
+       sys.columns.name AS exp_name,
+       (
+           SELECT VALUE
+           FROM   sys.extended_properties
+           WHERE  sys.extended_properties.major_id = sys.columns.object_id
+                  AND sys.extended_properties.minor_id = sys.columns.column_id
+       ) AS exp_title,
+       0 AS exp_ctype,
+       sys.types.name AS exp_dtype,
+       sys.columns.max_length AS exp_length,
+       '' AS exp_place,
+       '' AS exp_option,
+       NULL AS exp_default,
+       sys.columns.is_nullable AS exp_is_null,
+       0 AS exp_is_pw,
+       0 AS exp_is_html,
+       0 AS exp_etype,
+       NULL AS exp_tipmsg,
+       NULL AS exp_errmsg,
+       NULL AS exp_pattern,
+       NULL AS exp_sortid,
+       NULL AS exp_css,
+       1 AS exp_is_sys
+FROM   sys.columns,
+       sys.tables,
+       sys.types
+WHERE  sys.columns.object_id = sys.tables.object_id
+       AND sys.columns.system_type_id = sys.types.system_type_id
+       AND sys.tables.name = @table_name
+       AND sys.types.name <> 'sysname'
+ORDER BY
+       sys.columns.column_id
+", namedParameters);
+                var listExpand = GetList(e => e.CompNum == compNum && e.MyappId == myappId);
+                //合并数据
+                foreach (var expand in listExpand)
+                {
+                    tableBase.Rows.Add(new object[]
+                    {
+                        expand.Id,
+                        expand.MyappId,
+                        expand.CompNum,
+                        expand.ExpName,
+                        expand.ExpTitle,
+                        expand.ExpCtype,
+                        expand.ExpDtype,
+                        expand.ExpLength,
+                        expand.ExpPlace,
+                        expand.ExpOption,
+                        expand.ExpDefault,
+                        expand.ExpIsNull,
+                        expand.ExpIsPw,
+                        expand.ExpIsHtml,
+                        expand.ExpEtype,
+                        expand.ExpTipmsg,
+                        expand.ExpErrmsg,
+                        expand.ExpPattern,
+                        expand.ExpSortid,
+                        expand.ExpCss,
+                        expand.ExpIsSys
+                    });
+                }
+                return tableBase;
+            }
         }
+
+        #endregion
+
+
+     
         #endregion
     }
 }

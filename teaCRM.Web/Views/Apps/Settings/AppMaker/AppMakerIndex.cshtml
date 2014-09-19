@@ -1,4 +1,4 @@
-@using System.Web.Optimization
+﻿@using System.Web.Optimization
 @using teaCRM.Common
 @using teaCRM.Entity
 @model dynamic
@@ -7,8 +7,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section seo {
-    <title>��֯�ܹ�_ϵͳ����_C+��ҵ��ƽ̨_�����й��칫������һƷ��</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />n
+    <title>组织架构_系统设置_C+企业云平台_打造中国办公软件第一品牌</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 }
 @section head {
@@ -24,23 +24,23 @@
     
 
 
-    <!--��ǰ��˾id-->
+    <!--当前公司id-->
     <input type="hidden" id="CompNum" name="CompNum" value="@Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM]" />
     <table id="grid-data" class="table table-condensed table-hover table-striped table-bordered" data-selection="true" data-multi-select="true">
         <thead>
             <tr>
               
-                <th data-column-id="AppName" data-header-align="center" data-align="center" data-order="asc">Ӧ������</th>
-                <th data-column-id="AppImgurl32"  data-header-align="center" data-align="center"  data-formatter="AppImgurl32" data-order="asc">Ӧ��ͼ��</th>
-                <th data-column-id="AppAuthor" data-header-align="center" data-align="center" data-order="asc">Ӧ������</th>
-                <th data-column-id="AppDes" data-header-align="center" data-align="center" data-formatter="AppDes" data-order="asc">Ӧ������</th>
-                <th data-column-id="AppVer" data-header-align="center" data-align="center" data-order="asc">Ӧ�ð汾</th>
-                <th data-column-id="AppType" data-header-align="center" data-align="center" data-formatter="AppType" data-order="asc">Ӧ�����</th>
-                <th data-column-id="AppInd" data-header-align="center" data-align="center" data-formatter="AppInd" data-order="asc">������ҵ</th>
-                <th data-column-id="AppIsSys" data-header-align="center" data-align="center" data-formatter="AppIsSys" data-order="asc">�Ƿ�ٷ�</th>
-                <th data-column-id="AppLastdate" data-header-align="center" data-align="center" data-order="asc">��װ����</th>
-                <th data-column-id="AppAdddate" data-header-align="center" data-align="center" data-order="asc">��������</th>
-                <th data-column-id="AppId" data-identifier="true" data-formatter="commands" data-header-align="center" data-align="center" data-sortable="false">����</th>
+                <th data-column-id="AppName" data-header-align="center" data-align="center" data-order="asc">应用名称</th>
+                <th data-column-id="AppImgurl32"  data-header-align="center" data-align="center"  data-formatter="AppImgurl32" data-order="asc">应用图标</th>
+                <th data-column-id="AppAuthor" data-header-align="center" data-align="center" data-order="asc">应用作者</th>
+                <th data-column-id="AppDes" data-header-align="center" data-align="center" data-formatter="AppDes" data-order="asc">应用描述</th>
+                <th data-column-id="AppVer" data-header-align="center" data-align="center" data-order="asc">应用版本</th>
+                <th data-column-id="AppType" data-header-align="center" data-align="center" data-formatter="AppType" data-order="asc">应用类别</th>
+                <th data-column-id="AppInd" data-header-align="center" data-align="center" data-formatter="AppInd" data-order="asc">所属行业</th>
+                <th data-column-id="AppIsSys" data-header-align="center" data-align="center" data-formatter="AppIsSys" data-order="asc">是否官方</th>
+                <th data-column-id="AppLastdate" data-header-align="center" data-align="center" data-order="asc">安装日期</th>
+                <th data-column-id="AppAdddate" data-header-align="center" data-align="center" data-order="asc">更新日期</th>
+                <th data-column-id="AppId" data-identifier="true" data-formatter="commands" data-header-align="center" data-align="center" data-sortable="false">操作</th>
             </tr>
         </thead>
     </table>
@@ -49,9 +49,9 @@
 
 
 @section script{
-     <!--���-->
+     <!--类别-->
     <script src="/Themes/default/base/js/category.js" type="text/javascript"></script>
-    <!--��ҵ-->
+    <!--行业-->
     <script src="/Themes/default/base/js/industry.js" type="text/javascript"></script>
     <script src="/Themes/default/settings/js/app_maker.js" type="text/javascript"></script>
 }

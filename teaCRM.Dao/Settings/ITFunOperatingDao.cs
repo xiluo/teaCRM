@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +9,13 @@ using teaCRM.Entity;
 
 namespace teaCRM.Dao
 {
-    public interface ITFunFilterDao : ITableDao<TFunFilter>
-    {
-        #region 手写的扩展函数 2014-08-21 14:58:50 By 唐有炜
+    public interface ITFunOperatingDao : ITableDao<TFunOperating>
+{
 
+        #region 手写的dao类
 
         /// <summary>
-        /// 获取视图（即筛选条件）信息列表 2014-09-19 14:58:50 By 唐有炜
+        /// 获取操作信息列表 2014-09-19 14:58:50 By 唐有炜
         /// </summary>
         /// <param name="compNum">企业编号</param>
         /// <param name="myappId">模块id</param>
@@ -23,10 +24,12 @@ namespace teaCRM.Dao
         /// <param name="rowCount">总数</param>
         /// <param name="orders">排序</param>
         /// <param name="predicate">条件</param>
-        IEnumerable<TFunFilter> GetFilterLsit(string compNum, int myappId, int pageIndex, int pageSize, out int rowCount,
-            IDictionary<string, teaCRM.Entity.teaCRMEnums.OrderEmum> orders,
-            Expression<Func<TFunFilter, bool>> predicate);
+        IEnumerable<TFunOperating> GetOperatingLsit(string compNum, int myappId, int pageIndex, int pageSize,
+            out int rowCount,
+            IDictionary<string, teaCRMEnums.OrderEmum> orders,
+            Expression<Func<TFunOperating, bool>> predicate);
 
         #endregion
-    }
-}
+
+	   }
+	   }

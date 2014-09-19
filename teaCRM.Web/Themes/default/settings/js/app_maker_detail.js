@@ -65,9 +65,9 @@ function init_right_grids() {
     //初始化字段表格
     init_field_grid();
     //初始化视图表格
-    init_view_grid();
+    //init_view_grid();
     //初始化操作表格
-    init_toolbar_grid();
+    //init_toolbar_grid();
     showMsg("myappId：" + myappId + "右侧数据初始化成功！", "Success");
 }
 
@@ -111,13 +111,25 @@ function init_field_grid() {
                 infos: "从{{ctx.start}} 到 {{ctx.end}}，共{{ctx.total}} 条记录"
             },
             formatters: {
-                "commands": function(column, row) {
-                    return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"refresh('/Apps/Settings/AppMaker/Detail/" + row.AppId + "')\" title=\"配置" + row.AppName + "模块\"><span class=\"glyphicon glyphicon-pencil\"></span></button>" +
-                        "<button type=\"button\" class=\"btn btn-link btn-sm btn-cmd tip\" title=\"卸载" + row.AppName + "\" onclick=del(" + row.AppId + ")><span class=\"glyphicon glyphicon-remove\"></span></button>";
+            "exp_is_sys": function(column, row) {
+                if (!row.exp_is_sys) {
+                    return "否";
+                } else {
+                    return "是";
                 }
             },
-
-
+            "commands": function(column, row) {
+                    //alert(row.id);
+                    //console.log(row.id+" "+row.id.toString().indexOf("base"));
+                    if (row.id.toString().indexOf("base") >= 0) {
+                          return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" title=\"内置字段不可更改\" style=\"color: wheat;\"><span class=\"glyphicon glyphicon-pencil\"></span></button>" +
+                        "<button type=\"button\" class=\"btn btn-link btn-sm btn-cmd tip\" title=\"内置字段不可删除\"  style=\"color: wheat;\"><span class=\"glyphicon glyphicon-remove\"></span></button>";
+                    } else {
+                        return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" title=\"修改【"+row.exp_title+"】字段\"><span class=\"glyphicon glyphicon-pencil\"></span></button>" +
+                        "<button type=\"button\" class=\"btn btn-link btn-sm btn-cmd tip\" title=\"删除【" + row.exp_title + "】字段\"><span class=\"glyphicon glyphicon-remove\"></span></button>";
+                    }
+                }
+            },
         })
         .on("loaded.rs.jquery.bootgrid", function(e) {
             //按钮提示

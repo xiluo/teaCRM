@@ -27,14 +27,16 @@ namespace teaCRM.Entity
 		public Int32 MyappIsNav { get;set; }
 		[Column("myapp_is_sys")]
 		public Int32 MyappIsSys { get;set; }
+		[Column("myapp_base_table")]
+		public String MyappBaseTable { get;set; }
  
  
-		[OneToMany(ThisKey="Id",OtherKey="MyappId")]
-		public IList<TFunFilter> TFunFilters { get;set; }
 		[OneToMany(ThisKey="Id",OtherKey="MyappId")]
 		public IList<TFunTag> TFunTags { get;set; }
 		[OneToMany(ThisKey="Id",OtherKey="MyappId")]
 		public IList<TFunOperating> TFunOperatings { get;set; }
+		[OneToMany(ThisKey="Id",OtherKey="MyappId")]
+		public IList<TFunFilter> TFunFilters { get;set; }
 		[OneToMany(ThisKey="Id",OtherKey="MyappId")]
 		public IList<TFunExpand> TFunExpands { get;set; }
  

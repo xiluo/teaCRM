@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Spring.Context.Support;
 using teaCRM.Common;
 using teaCRM.Entity;
@@ -60,7 +62,7 @@ namespace teaCRM.Web.Controllers.Api.Settings
             {
                 apps = AppMakerService.GetAppLsit(compNum, current, rowCount, out total, orders,
                     a => a.CompNum == compNum);
-                      }
+            }
             return JSONHelper.ToJson(new
             {
                 current = current,
@@ -72,9 +74,8 @@ namespace teaCRM.Web.Controllers.Api.Settings
 
         #endregion
 
-
-         
         #region 获取当前公司某个应用的所有模块 14-09-18 By 唐有炜
+
         // Get /api/settings/appMaker/getAllMyApps?compNum=10000&appId=1
         //current 1
         //compNum 10000
@@ -82,7 +83,7 @@ namespace teaCRM.Web.Controllers.Api.Settings
         [HttpGet]
         public string GetAllMyApps()
         {
-            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"]; //获取传统context
+            HttpContextBase context = (HttpContextBase) Request.Properties["MS_HttpContext"]; //获取传统context
             HttpRequestBase request = context.Request; //定义传统request对象
             string compNum = request.Params.Get("compNum");
             int appId = int.Parse(request.Params.Get("appId"));
@@ -92,9 +93,6 @@ namespace teaCRM.Web.Controllers.Api.Settings
 
         #endregion
 
-
-
-
         #region 当前公司某个模块的扩展字段列表 14-09-15 By 唐有炜
 
         // Get /api/settings/appMaker/getAllMyAppFields
@@ -102,13 +100,14 @@ namespace teaCRM.Web.Controllers.Api.Settings
         //rowCount 10
         //sort[UserName]
         //searchPhrase 
-        //[HttpPost]
-        [HttpGet]
+        [HttpPost]
+        //[HttpGet]
         public string GetAllMyAppFields()
         {
-            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"]; //获取传统context
+            HttpContextBase context = (HttpContextBase) Request.Properties["MS_HttpContext"]; //获取传统context
             HttpRequestBase request = context.Request; //定义传统request对象
             string compNum = request.Params.Get("compNum");
+            int myappId = int.Parse(request.Params.Get("myappId"));
             int current = int.Parse(request.Params.Get("current"));
             int rowCount = int.Parse(request.Params.Get("rowCount"));
             //排序
@@ -122,32 +121,31 @@ namespace teaCRM.Web.Controllers.Api.Settings
             string searchPhrase = request.Params.Get("searchPhrase");
 
             var total = 0;
-            IEnumerable<VAppCompany> apps = null;
+            DataTable fields = null;
             orders.Add(sortType == "desc"
                 ? new KeyValuePair<string, teaCRMEnums.OrderEmum>(sortField, teaCRMEnums.OrderEmum.Desc)
                 : new KeyValuePair<string, teaCRMEnums.OrderEmum>(sortField, teaCRMEnums.OrderEmum.Asc));
             //搜索
             if (!String.IsNullOrEmpty(searchPhrase))
             {
-                apps = AppMakerService.GetAppLsit(compNum, current, rowCount, out total, orders,
-                    a => a.CompNum == compNum && a.AppName.Contains(searchPhrase));
+                fields = AppMakerService.GetAllMyAppFields(compNum, myappId);
             }
             else
             {
-                apps = AppMakerService.GetAppLsit(compNum, current, rowCount, out total, orders,
-                    a => a.CompNum == compNum);
+                fields = AppMakerService.GetAllMyAppFields(compNum, myappId);
             }
-            return JSONHelper.ToJson(new
+            fields.TableName = "fields"; //这个一定要放在得到数据过后。否则报错：无法序列化 DataTable。未设置 DataTable 名称。
+            LogHelper.Info("获取到的字段个数：" + fields.Rows.Count);
+            return JsonConvert.SerializeObject(new
             {
                 current = current,
                 rowCount = rowCount,
-                rows = apps,
+                rows = fields,
                 total = total
             });
         }
 
         #endregion
-
 
         #region 当前公司某个模块的视图列表 14-09-15 By 唐有炜
 
@@ -156,12 +154,14 @@ namespace teaCRM.Web.Controllers.Api.Settings
         //rowCount 10
         //sort[UserName]
         //searchPhrase 
-        [HttpPost]
+        //[HttpPost]
+        [HttpGet]
         public string GetAllMyAppViews()
         {
             HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"]; //获取传统context
             HttpRequestBase request = context.Request; //定义传统request对象
             string compNum = request.Params.Get("compNum");
+            int myappId = int.Parse(request.Params.Get("myappId"));
             int current = int.Parse(request.Params.Get("current"));
             int rowCount = int.Parse(request.Params.Get("rowCount"));
             //排序
@@ -175,46 +175,47 @@ namespace teaCRM.Web.Controllers.Api.Settings
             string searchPhrase = request.Params.Get("searchPhrase");
 
             var total = 0;
-            IEnumerable<VAppCompany> apps = null;
+            DataTable views = null;
             orders.Add(sortType == "desc"
                 ? new KeyValuePair<string, teaCRMEnums.OrderEmum>(sortField, teaCRMEnums.OrderEmum.Desc)
                 : new KeyValuePair<string, teaCRMEnums.OrderEmum>(sortField, teaCRMEnums.OrderEmum.Asc));
             //搜索
             if (!String.IsNullOrEmpty(searchPhrase))
             {
-                apps = AppMakerService.GetAppLsit(compNum, current, rowCount, out total, orders,
-                    a => a.CompNum == compNum && a.AppName.Contains(searchPhrase));
+                views = AppMakerService.GetAllMyAppViews(compNum, myappId);
             }
             else
             {
-                apps = AppMakerService.GetAppLsit(compNum, current, rowCount, out total, orders,
-                    a => a.CompNum == compNum);
+                views = AppMakerService.GetAllMyAppViews(compNum, myappId);
             }
-            return JSONHelper.ToJson(new
+            views.TableName = "views"; //这个一定要放在得到数据过后。否则报错：无法序列化 DataTable。未设置 DataTable 名称。
+            LogHelper.Info("获取到的字段个数：" + views.Rows.Count);
+            return JsonConvert.SerializeObject(new
             {
                 current = current,
                 rowCount = rowCount,
-                rows = apps,
+                rows = views,
                 total = total
             });
         }
 
         #endregion
 
-
-        #region 当前公司某个模块的视图列表 14-09-15 By 唐有炜
+        #region 当前公司某个模块的操作列表 14-09-15 By 唐有炜
 
         // Get /api/settings/appMaker/getAllMyAppToolBars
         //current 1
         //rowCount 10
         //sort[UserName]
         //searchPhrase 
-        [HttpPost]
+        //[HttpPost]
+        [HttpGet]
         public string GetAllMyAppToolBars()
         {
             HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"]; //获取传统context
             HttpRequestBase request = context.Request; //定义传统request对象
             string compNum = request.Params.Get("compNum");
+            int myappId = int.Parse(request.Params.Get("myappId"));
             int current = int.Parse(request.Params.Get("current"));
             int rowCount = int.Parse(request.Params.Get("rowCount"));
             //排序
@@ -228,26 +229,26 @@ namespace teaCRM.Web.Controllers.Api.Settings
             string searchPhrase = request.Params.Get("searchPhrase");
 
             var total = 0;
-            IEnumerable<VAppCompany> apps = null;
+            DataTable toolbar = null;
             orders.Add(sortType == "desc"
                 ? new KeyValuePair<string, teaCRMEnums.OrderEmum>(sortField, teaCRMEnums.OrderEmum.Desc)
                 : new KeyValuePair<string, teaCRMEnums.OrderEmum>(sortField, teaCRMEnums.OrderEmum.Asc));
             //搜索
             if (!String.IsNullOrEmpty(searchPhrase))
             {
-                apps = AppMakerService.GetAppLsit(compNum, current, rowCount, out total, orders,
-                    a => a.CompNum == compNum && a.AppName.Contains(searchPhrase));
+                toolbar = AppMakerService.GetAllMyAppToolBars(compNum, myappId);
             }
             else
             {
-                apps = AppMakerService.GetAppLsit(compNum, current, rowCount, out total, orders,
-                    a => a.CompNum == compNum);
+                toolbar = AppMakerService.GetAllMyAppToolBars(compNum, myappId);
             }
-            return JSONHelper.ToJson(new
+            toolbar.TableName = "toolbar"; //这个一定要放在得到数据过后。否则报错：无法序列化 DataTable。未设置 DataTable 名称。
+            LogHelper.Info("获取到的字段个数：" + toolbar.Rows.Count);
+            return JsonConvert.SerializeObject(new
             {
                 current = current,
                 rowCount = rowCount,
-                rows = apps,
+                rows = toolbar,
                 total = total
             });
         }

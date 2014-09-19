@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Base64.cs" />
     <Compile Include="CacheHelper.cs" />
+    <Compile Include="DataTableHelper.cs" />
     <Compile Include="DESEncrypt.cs" />
     <Compile Include="JSONHelper.cs" />
     <Compile Include="LogHelper.cs" />

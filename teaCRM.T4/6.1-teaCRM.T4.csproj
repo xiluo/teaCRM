@@ -128,9 +128,6 @@
     <Compile Include="Daos\Impl\VAppCompanyDaoImpl.cs">
       <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
     </Compile>
-    <Compile Include="Daos\Impl\VAppMyappDaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
-    </Compile>
     <Compile Include="Daos\Impl\VCompanyUserDaoImpl.cs">
       <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
     </Compile>
@@ -214,9 +211,6 @@
     <Compile Include="Daos\VAppCompany.cs">
       <DependentUpon>teaCRMIDao.tt</DependentUpon>
     </Compile>
-    <Compile Include="Daos\VAppMyapp.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
     <Compile Include="Daos\VCompanyUser.cs">
       <DependentUpon>teaCRMIDao.tt</DependentUpon>
     </Compile>
@@ -296,9 +290,6 @@
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\VAppCompany.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\VAppMyapp.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\VCompanyUser.cs">

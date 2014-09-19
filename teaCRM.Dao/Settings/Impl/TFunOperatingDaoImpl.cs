@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+
+using System;
 using System.Data;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using NLite.Data;
@@ -10,16 +11,19 @@ using teaCRM.DBContext;
 using teaCRM.Entity;
 using System.Linq.Dynamic;
 
-namespace teaCRM.Dao.Impl
+
+namespace  teaCRM.Dao.Impl
 {
+
     /// <summary>
-    /// 实现ITFunFilterDao接口的Dao类。 2014-08-28 05:06:48 By 唐有炜
+    /// 自动生成的实现ITFunOperatingDao接口的Dao类。 2014-08-28 05:06:48 By 唐有炜
     /// </summary>
-    public class TFunFilterDaoImpl : ITFunFilterDao
+ public class TFunOperatingDaoImpl:ITFunOperatingDao
     {
-        #region  T4自动生成的函数 2014-08-21 14:58:50 By 唐有炜
+        #region T4自动生成的dao类
 
         #region 读操作
+
 
         /// <summary>
         /// 获取数据总数
@@ -29,7 +33,7 @@ namespace teaCRM.Dao.Impl
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var models = db.TFunFilters;
+                var models = db.TFunOperatings;
                 var sqlText = models.GetProperty("SqlText");
                 LogHelper.Debug(sqlText.ToString());
                 return models.Count();
@@ -42,11 +46,11 @@ namespace teaCRM.Dao.Impl
         /// </summary>
         /// <param name="predicate">Lamda表达式</param>
         /// <returns>返回所有数据总数</returns>
-        public int GetCount(Expression<Func<TFunFilter, bool>> predicate)
+        public int GetCount(Expression<Func<TFunOperating, bool>> predicate)
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var models = db.TFunFilters.Where<TFunFilter>(predicate);
+                var models = db.TFunOperatings.Where<TFunOperating>(predicate);
                 var sqlText = models.GetProperty("SqlText");
                 LogHelper.Debug(sqlText.ToString());
                 return models.Count();
@@ -54,15 +58,17 @@ namespace teaCRM.Dao.Impl
         }
 
 
+
+
         /// <summary>
         /// 获取所有的数据
         /// </summary>
         /// <returns>返回所有数据列表</returns>
-        public List<TFunFilter> GetList()
+        public List<TFunOperating> GetList()
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var models = db.TFunFilters;
+                var models = db.TFunOperatings;
                 var sqlText = models.GetProperty("SqlText");
                 LogHelper.Debug(sqlText.ToString());
                 return models.ToList();
@@ -75,11 +81,11 @@ namespace teaCRM.Dao.Impl
         /// </summary>
         /// <param name="predicate">Lamda表达式</param>
         /// <returns>返回所有数据列表</returns>
-        public List<TFunFilter> GetList(Expression<Func<TFunFilter, bool>> predicate)
+        public List<TFunOperating> GetList(Expression<Func<TFunOperating, bool>> predicate)
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var models = db.TFunFilters.Where<TFunFilter>(predicate);
+                var models = db.TFunOperatings.Where<TFunOperating>(predicate);
                 var sqlText = models.GetProperty("SqlText");
                 LogHelper.Debug(sqlText.ToString());
                 return models.ToList();
@@ -93,16 +99,17 @@ namespace teaCRM.Dao.Impl
         /// </summary>
         /// <param name="predicate">Lamda表达式</param>
         /// <returns>Entity</returns>
-        public TFunFilter GetEntity(Expression<Func<TFunFilter, bool>> predicate)
+        public TFunOperating GetEntity(Expression<Func<TFunOperating, bool>> predicate)
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var model = db.TFunFilters.Where<TFunFilter>(predicate);
+                var model = db.TFunOperatings.Where<TFunOperating>(predicate);
                 var sqlText = model.GetProperty("SqlText");
                 LogHelper.Debug(sqlText.ToString());
                 return model.SingleOrDefault();
             }
         }
+
 
 
         /// <summary>
@@ -115,7 +122,7 @@ namespace teaCRM.Dao.Impl
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var model = db.TFunFilters.Where(predicate).Select(selector);
+                var model = db.TFunOperatings.Where(predicate).Select(selector);
                 var sqlText = model.GetProperty("SqlText");
                 LogHelper.Debug(sqlText.ToString());
                 return (IQueryable<object>) model;
@@ -127,30 +134,31 @@ namespace teaCRM.Dao.Impl
         /// 是否存在该记录
         /// </summary>
         /// <returns></returns>
-        public bool ExistsEntity(Expression<Func<TFunFilter, bool>> predicate)
+        public bool ExistsEntity(Expression<Func<TFunOperating, bool>> predicate)
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                bool status = db.TFunFilters.Any(predicate);
+                bool status = db.TFunOperatings.Any(predicate);
                 return status;
             }
         }
 
 
+
+
         //查询分页
-        public IPagination<TFunFilter> GetListByPage(int pageIndex, int pageSize, out int rowCount,
-            IDictionary<string, teaCRM.Entity.teaCRMEnums.OrderEmum> orders,
-            Expression<Func<TFunFilter, bool>> predicate)
+        public IPagination<TFunOperating> GetListByPage(int pageIndex, int pageSize, out int rowCount,
+            IDictionary<string, teaCRMEnums.OrderEmum> orders,
+            Expression<Func<TFunOperating, bool>> predicate)
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var roles = db.TFunFilters;
+                var roles = db.TFunOperatings.Where(predicate);
                 rowCount = roles.Count();
                 var prevCount = (pageIndex - 1)*pageSize;
                 var models = roles
                     .Skip(prevCount)
-                    .Take(pageSize)
-                    .Where(predicate);
+                    .Take(pageSize);
                 foreach (var order in orders)
                 {
                     models = models.OrderBy(String.Format("{0} {1}", order.Key, order.Value));
@@ -162,6 +170,8 @@ namespace teaCRM.Dao.Impl
         }
 
 
+
+
         //以下是原生Sql方法==============================================================
         //===========================================================================
         /// <summary>
@@ -170,15 +180,17 @@ namespace teaCRM.Dao.Impl
         /// <param name="sql">sql语句</param>
         /// <param name="namedParameters">sql参数</param>
         /// <returns>集合</returns>
-        public IEnumerable<TFunFilter> GetListBySql(string sql, dynamic namedParameters)
+        public IEnumerable<TFunOperating> GetListBySql(string sql, dynamic namedParameters)
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                return db.DbHelper.ExecuteDataTable(sql, namedParameters).ToList<TFunFilter>();
+                return db.DbHelper.ExecuteDataTable(sql, namedParameters).ToList<TFunOperating>();
             }
+
         }
 
         #endregion
+
 
         #region 写操作
 
@@ -186,11 +198,11 @@ namespace teaCRM.Dao.Impl
         /// 添加实体
         /// </summary>
         /// <param name="entity">实体对象</param>
-        public bool InsertEntity(TFunFilter entity)
+        public bool InsertEntity(TFunOperating entity)
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                int rows = db.TFunFilters.Insert(entity);
+                int rows = db.TFunOperatings.Insert(entity);
                 if (rows > 0)
                 {
                     return true;
@@ -206,12 +218,12 @@ namespace teaCRM.Dao.Impl
         /// 删除实体
         /// </summary>
         /// <param name="predicate">Lamda表达式</param>
-        public bool DeleteEntity(Expression<Func<TFunFilter, bool>> predicate)
+        public bool DeleteEntity(Expression<Func<TFunOperating, bool>> predicate)
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                TFunFilter entity = db.TFunFilters.Where(predicate).First();
-                int rows = db.TFunFilters.Delete(entity);
+                TFunOperating entity = db.TFunOperatings.Where(predicate).First();
+                int rows = db.TFunOperatings.Delete(entity);
                 if (rows > 0)
                 {
                     return true;
@@ -227,7 +239,7 @@ namespace teaCRM.Dao.Impl
         /// 批量删除
         /// </summary>
         /// <param name="list">实体集合</param>
-        public bool DeletesEntity(List<TFunFilter> list)
+        public bool DeletesEntity(List<TFunOperating> list)
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
@@ -236,7 +248,7 @@ namespace teaCRM.Dao.Impl
                 {
                     foreach (var item in list)
                     {
-                        db.TFunFilters.Delete(item);
+                        db.TFunOperatings.Delete(item);
                     }
                     //tran.Commit();
                     return true;
@@ -254,11 +266,11 @@ namespace teaCRM.Dao.Impl
         /// 修改实体
         /// </summary>
         /// <param name="entity">实体对象</param>
-        public bool UpadateEntity(TFunFilter entity)
+        public bool UpadateEntity(TFunOperating entity)
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                int rows = db.TFunFilters.Update(entity);
+                int rows = db.TFunOperatings.Update(entity);
                 if (rows > 0)
                 {
                     return true;
@@ -269,6 +281,8 @@ namespace teaCRM.Dao.Impl
                 }
             }
         }
+
+
 
 
         /// <summary>
@@ -297,10 +311,10 @@ namespace teaCRM.Dao.Impl
 
         #endregion
 
-        #region 手写的扩展函数 2014-08-21 14:58:50 By 唐有炜
+        #region 手写的dao类
 
         /// <summary>
-        /// 获取视图（即筛选条件）信息列表 2014-09-19 14:58:50 By 唐有炜
+        /// 获取操作信息列表 2014-09-19 14:58:50 By 唐有炜
         /// </summary>
         /// <param name="compNum">企业编号</param>
         /// <param name="myappId">模块id</param>
@@ -309,14 +323,16 @@ namespace teaCRM.Dao.Impl
         /// <param name="rowCount">总数</param>
         /// <param name="orders">排序</param>
         /// <param name="predicate">条件</param>
-       public IEnumerable<TFunFilter> GetFilterLsit(string compNum, int myappId, int pageIndex, int pageSize, out int rowCount,
-            IDictionary<string, teaCRM.Entity.teaCRMEnums.OrderEmum> orders,
-            Expression<Func<TFunFilter, bool>> predicate)
+     public   IEnumerable<TFunOperating> GetOperatingLsit(string compNum, int myappId, int pageIndex, int pageSize,
+            out int rowCount,
+            IDictionary<string, teaCRMEnums.OrderEmum> orders,
+            Expression<Func<TFunOperating, bool>> predicate)
         {
             rowCount = 0;
-           return null; 
+            return null;
         }
-
         #endregion
-    }
-}
+
+
+	   }
+	   }

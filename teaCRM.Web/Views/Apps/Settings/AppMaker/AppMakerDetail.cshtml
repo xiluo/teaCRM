@@ -99,7 +99,7 @@
     <input type="hidden" id="CompNum" name="CompNum" value="@Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM]" />*@
     <!--相应应用的id-->
     <input type="hidden" id="AppId" name="AppId" value="@ViewBag.AppId" />
-       <!--左侧开始-->
+    <!--左侧开始-->
     <div class="layout-left">
         <div id="nav-side" class="nav-side">
             <div class="ns-item">
@@ -132,10 +132,25 @@
                     <table id="field_grid" class="table table-condensed table-hover table-striped table-bordered" data-selection="true" data-multi-select="true">
                         <thead>
                             <tr>
-                               
-                                    <th data-column-id="FirldName" data-identifier="true">字段名称</th>
-                                      <th data-column-id="FirldType" data-identifier="true">字段类型</th>
-              
+                                   <th data-column-id="exp_name"   data-header-align="center" data-align="center"   data-order="asc">字段名称</th>
+                                <th data-column-id="exp_title"   data-header-align="center" data-align="center"   data-order="asc">字段标题</th>
+                                 <th data-column-id="exp_ctype"   data-header-align="center" data-align="center"   data-order="asc">字段类型</th>
+                                 @* <th data-column-id="exp_dtype"   data-header-align="center" data-align="center"   data-order="asc">数据类型</th>
+                                <th data-column-id="exp_length"   data-header-align="center" data-align="center"   data-order="asc">数据长度</th>
+                                <th data-column-id="exp_place"   data-header-align="center" data-align="center"   data-order="asc">数据精度位数</th> 
+                                <th data-column-id="exp_option"   data-header-align="center" data-align="center"   data-order="asc">字段可选值</th>*@
+                              <th data-column-id="exp_default"   data-header-align="center" data-align="center"   data-order="asc">字段默认值</th>
+                                <th data-column-id="exp_is_null"   data-header-align="center" data-align="center"   data-order="asc">是否可为空</th> 
+                                 @*<th data-column-id="exp_is_pw"   data-header-align="center" data-align="center"   data-order="asc">是否为密码型</th> 
+                                <th data-column-id="exp_is_html"   data-header-align="center" data-align="center"   data-order="asc">是否可html语言</th> 
+                                <th data-column-id="exp_etype"   data-header-align="center" data-align="center"   data-order="asc">编辑器类型</th> 
+                                <th data-column-id="exp_tipmsg"   data-header-align="center" data-align="center"   data-order="asc">验证提示信息</th>
+                                 <th data-column-id="exp_errmsg"   data-header-align="center" data-align="center"   data-order="asc">验证失败信息</th> 
+                                <th data-column-id="exp_pattern"   data-header-align="center" data-align="center"   data-order="asc">验证正则表达式</th> *@
+                                <th data-column-id="exp_sortid"   data-header-align="center" data-align="center"   data-order="asc">排序字段</th> 
+                                @*<th data-column-id="exp_css"   data-header-align="center" data-align="center"   data-order="asc">字段调用样式</th>*@
+                                <th data-column-id="exp_is_sys"   data-header-align="center" data-align="center"  data-formatter="exp_is_sys"  data-order="asc">是否为系统内置</th>
+                                 <th data-column-id="id" data-identifier="true" data-formatter="commands" data-header-align="center" data-align="center" data-sortable="false">操作</th>
                             </tr>
                         </thead>
                     </table>

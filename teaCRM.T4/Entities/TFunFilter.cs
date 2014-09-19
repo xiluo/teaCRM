@@ -13,14 +13,14 @@ namespace teaCRM.Entity
  
 		[Column("parent_id")]
 		public Int32? ParentId { get;set; }
+		[Column("myapp_id")]
+		public Int32 MyappId { get;set; }
 		[Column("fil_order")]
 		public Int32? FilOrder { get;set; }
 		[Column("comp_num")]
 		public String CompNum { get;set; }
 		[Column("fil_name")]
 		public String FilName { get;set; }
-		[Column("myapp_id")]
-		public Int32 MyappId { get;set; }
 		[Column("fil_where")]
 		public String FilWhere { get;set; }
  

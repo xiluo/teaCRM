@@ -15,7 +15,7 @@ namespace  teaCRM.Dao.Impl
 {
 
     /// <summary>
-    /// 自动生成的实现ITSysPowerDao接口的Dao类。 2014-09-17 06:52:51 By 唐有炜
+    /// 自动生成的实现ITSysPowerDao接口的Dao类。 2014-09-19 04:25:19 By 唐有炜
     /// </summary>
  public class TSysPowerDaoImpl:ITSysPowerDao
     {

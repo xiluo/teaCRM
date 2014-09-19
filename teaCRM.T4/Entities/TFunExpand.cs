@@ -31,6 +31,8 @@ namespace teaCRM.Entity
 		public String ExpOption { get;set; }
 		[Column("exp_default")]
 		public String ExpDefault { get;set; }
+		[Column("exp_is_show")]
+		public Int32? ExpIsShow { get;set; }
 		[Column("exp_is_null")]
 		public Int32 ExpIsNull { get;set; }
 		[Column("exp_is_pw")]

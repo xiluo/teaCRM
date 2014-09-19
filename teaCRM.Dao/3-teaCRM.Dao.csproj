@@ -68,6 +68,8 @@
     <Compile Include="Settings\Impl\TFunMyappDaoImpl.cs" />
     <Compile Include="Basic\Impl\TSysCompanyDaoImpl.cs" />
     <Compile Include="Basic\Impl\TSysLogDaoImpl.cs" />
+    <Compile Include="Settings\Impl\TFunOperatingDaoImpl.cs" />
+    <Compile Include="Settings\Impl\TSysPowerDaoImpl.cs" />
     <Compile Include="Settings\Impl\VAppCompanyDaoImpl.cs" />
     <Compile Include="Settings\Impl\VMyappCompanyDaoImpl.cs" />
     <Compile Include="Settings\ITFunAppCompanyDao.cs" />
@@ -82,6 +84,8 @@
     </Compile>
     <Compile Include="Basic\ITSysCompanyDao.cs" />
     <Compile Include="Basic\ITSysLogDao.cs" />
+    <Compile Include="Settings\ITFunOperatingDao.cs" />
+    <Compile Include="Settings\ITSysPowerDao.cs" />
     <Compile Include="Settings\ITSysUserDao.cs" />
     <Compile Include="Basic\IVCompanyUser.cs" />
     <Compile Include="CRM\Impl\TCusBaseDaoImpl.cs" />
