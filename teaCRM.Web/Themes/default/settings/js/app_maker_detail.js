@@ -102,7 +102,7 @@ function init_field_grid() {
             //keepSelection: true,
             rowCount: [10, 30, 50],
             templates: {
-                header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}}\"><div class=\"row\"><div class=\"col-sm-12 actionBar\"> <div class=\"btn-group\" style=\"float:left;\"> <button data-toggle=\"tooltip\" data-placement=\"bottom\"  class=\"btn btn-default tip\" title=\"添加自定义字段\"  onclick=\" add_field(); \"><span class=\"glyphicon glyphicon-plus\"></span>添加</button><button class=\"btn  btn-default tip\" data-placement=\"bottom\"  title=\"批量删除\" id=\"field-muti-del\"><span class=\"glyphicon glyphicon glyphicon glyphicon-trash\"></span>批量删除</button></div>" +
+                header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}}\"><div class=\"row\"><div class=\"col-sm-12 actionBar\"> <div class=\"btn-group\" style=\"float:left;\"> <button data-toggle=\"tooltip\"   class=\"btn btn-default tip\" title=\"添加字段\"  onclick=\" add_field(); \"><span class=\"glyphicon glyphicon-plus\"></span>添加</button><button class=\"btn  btn-default tip\"   title=\"批量删除\" id=\"field-muti-del\"><span class=\"glyphicon glyphicon glyphicon glyphicon-trash\"></span>批量删除</button></div>" +
                     "<div class=\"search form-group\"><div class=\"input-group\"><span class=\"icon glyphicon input-group-addon glyphicon-search\"></span> <input type=\"text\" class=\"search-field form-control\" placeholder=\"输入关键字\"></div></div>" +
                     "<p class=\"{{css.actions}}\"></p></div></div></div>"
             },
@@ -174,7 +174,7 @@ function init_view_grid() {
             //keepSelection: true,
             rowCount: [10, 30, 50],
             templates: {
-                header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}}\"><div class=\"row\"><div class=\"col-sm-12 actionBar\"> <div class=\"btn-group\" style=\"float:left;\"> <button data-toggle=\"tooltip\" data-placement=\"bottom\"  class=\"btn btn-default tip\" title=\"添加视图\"  onclick=\" add_view(); \"><span class=\"glyphicon glyphicon-plus\"></span>添加</button><button class=\"btn  btn-default tip\" data-placement=\"bottom\"  title=\"批量删除\" id=\"view-muti-del\"><span class=\"glyphicon glyphicon glyphicon glyphicon-trash\"></span>批量删除</button></div>" +
+                header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}}\"><div class=\"row\"><div class=\"col-sm-12 actionBar\"> <div class=\"btn-group\" style=\"float:left;\"> <button data-toggle=\"tooltip\"   class=\"btn btn-default tip\" title=\"添加视图\"  onclick=\" add_view(); \"><span class=\"glyphicon glyphicon-plus\"></span>添加</button><button class=\"btn  btn-default tip\"   title=\"批量删除\" id=\"view-muti-del\"><span class=\"glyphicon glyphicon glyphicon glyphicon-trash\"></span>批量删除</button></div>" +
                     "<div class=\"search form-group\"><div class=\"input-group\"><span class=\"icon glyphicon input-group-addon glyphicon-search\"></span> <input type=\"text\" class=\"search-field form-control\" placeholder=\"输入关键字\"></div></div>" +
                     "<p class=\"{{css.actions}}\"></p></div></div></div>"
             },
@@ -235,7 +235,7 @@ function init_toolbar_grid() {
             //keepSelection: true,
             rowCount: [10, 30, 50],
             templates: {
-                header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}}\"><div class=\"row\"><div class=\"col-sm-12 actionBar\"> <div class=\"btn-group\" style=\"float:left;\"> <button data-toggle=\"tooltip\" data-placement=\"bottom\"  class=\"btn btn-default tip\" title=\"添加操作\"  onclick=\" add_toolbar(); \"><span class=\"glyphicon glyphicon-plus\"></span>添加</button><button class=\"btn  btn-default tip\" data-placement=\"bottom\"  title=\"批量删除\" id=\"toolbar-muti-del\"><span class=\"glyphicon glyphicon glyphicon glyphicon-trash\"></span>批量删除</button></div>" +
+                header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}}\"><div class=\"row\"><div class=\"col-sm-12 actionBar\"> <div class=\"btn-group\" style=\"float:left;\"> <button data-toggle=\"tooltip\"   class=\"btn btn-default tip\" title=\"添加操作\"  onclick=\" add_toolbar(); \"><span class=\"glyphicon glyphicon-plus\"></span>添加</button><button class=\"btn  btn-default tip\"   title=\"批量删除\" id=\"toolbar-muti-del\"><span class=\"glyphicon glyphicon glyphicon glyphicon-trash\"></span>批量删除</button></div>" +
                     "<div class=\"search form-group\"><div class=\"input-group\"><span class=\"icon glyphicon input-group-addon glyphicon-search\"></span> <input type=\"text\" class=\"search-field form-control\" placeholder=\"输入关键字\"></div></div>" +
                     "<p class=\"{{css.actions}}\"></p></div></div></div>"
             },

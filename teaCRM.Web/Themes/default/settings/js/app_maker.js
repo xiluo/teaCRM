@@ -38,7 +38,7 @@ function InitGrid() {
             //keepSelection: true,
             rowCount: [10, 30, 50],
             templates: {
-                header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}}\"><div class=\"row\"><div class=\"col-sm-12 actionBar\"> <div class=\"btn-group\" style=\"float:left;\"> <button data-toggle=\"tooltip\" data-placement=\"bottom\"  class=\"btn btn-default tip\" title=\"去应用市场添加应用\"  onclick=\" refresh('/Apps/'); \"><span class=\"glyphicon glyphicon-briefcase\"></span>应用市场</button><button class=\"btn  btn-default tip\" data-placement=\"bottom\"  title=\"批量卸载\" id=\"muti-del\"><span class=\"glyphicon glyphicon glyphicon glyphicon-trash\"></span>批量卸载</button></div>" +
+                header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}}\"><div class=\"row\"><div class=\"col-sm-12 actionBar\"> <div class=\"btn-group\" style=\"float:left;\"> <button data-toggle=\"tooltip\"   class=\"btn btn-default tip\" title=\"去应用市场添加应用\"  onclick=\" refresh('/Apps/'); \"><span class=\"glyphicon glyphicon-briefcase\"></span>应用市场</button><button class=\"btn  btn-default tip\"   title=\"批量卸载\" id=\"muti-del\"><span class=\"glyphicon glyphicon glyphicon glyphicon-trash\"></span>批量卸载</button></div>" +
                     "<div class=\"search form-group\"><div class=\"input-group\"><span class=\"icon glyphicon input-group-addon glyphicon-search\"></span> <input type=\"text\" class=\"search-field form-control\" placeholder=\"输入关键字\"></div></div>" +
                     "<p class=\"{{css.actions}}\"></p></div></div></div>"
             },

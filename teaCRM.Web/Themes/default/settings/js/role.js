@@ -27,9 +27,17 @@ function InitGrid() {
         keepSelection: true,
         rowCount: [10, 30, 50],
         templates: {
-            header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}}\"><div class=\"row\"><div class=\"col-sm-12 actionBar\"><div class=\"btn-group\" style=\"float:left;\"><button class=\"btn  btn-primary\" title=\"新增\" onclick=\" add(); \">新增</button><button class=\"btn  btn-primary\" title=\"批量删除\" onclick=\" del(); \">批量删除</button></div>" +
+            header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}}\"><div class=\"row\"><div class=\"col-sm-12 actionBar\"><div class=\"btn-group\" style=\"float:left;\"><button class=\"btn btn-default tip\" title=\"添加角色\" onclick=\" add(); \"><span class=\"glyphicon glyphicon-plus\"></span>添加</button><button class=\"btn btn-default tip\" title=\"批量删除角色\" onclick=\" del(); \"><span class=\"glyphicon glyphicon glyphicon glyphicon-trash\"></span>批量删除</button></div>" +
                 "<div class=\"search form-group\"><div class=\"input-group\"><span class=\"icon glyphicon input-group-addon glyphicon-search\"></span> <input type=\"text\" class=\"search-field form-control\" placeholder=\"输入关键字\"></div></div>" +
                 "<p class=\"{{css.actions}}\"></p></div></div></div>"
+        },
+        labels: {
+            all: "all", //checkbox全选的值
+            search: "请输入角色名称",
+            loading: "加载中...",
+            noResults: "对不起，暂无符合条件的记录！",
+            refresh: "刷新",
+            infos: "从{{ctx.start}} 到 {{ctx.end}}，共{{ctx.total}} 条记录"
         },
         formatters: {
             "RoleType": function (column, row) {
@@ -51,11 +59,18 @@ function InitGrid() {
 
             },
             "commands": function (column, row) {
-                return "<a href='/Apps/Settings/Permission'>权限管理</a>  " + "<button type=\"button\" class=\"btn btn-xs btn-default command-edit\" onclick=edit(" + row.Id + ")><span class=\"fa fa-pencil\"></span>修改</button> " +
-                    "<button type=\"button\" class=\"btn btn-xs btn-default command-delete\" onclick=del(" + row.Id + ")><span class=\"fa fa-trash-o\"></span>删除</button>";
+                return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"refresh('/Apps/Settings/Permission');\" title=\"管理【" + row.RoleName + "】的权限\"><span class=\"glyphicon glyphicon-user\"></span></button>" +
+                "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"edit(" + row.Id + ");\" title=\"修改【" + row.RoleName + "】角色\"><span class=\"glyphicon glyphicon-pencil\"></span></button>" +
+                      "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"del(" + row.Id + ");\" title=\"删除【" + row.RoleName + "】角色\"><span class=\"glyphicon glyphicon-remove\"></span></button>";
             }
         }
-    });
+    }).on("loaded.rs.jquery.bootgrid", function (e) {
+        //按钮提示
+        $('.tip').tooltip();
+        //按钮气泡
+        $('.pop').popover({ html: true, trigger: "hover" });
+        //showMsg("字段加载成功！", "Success");
+    }); 
 }
 
 
