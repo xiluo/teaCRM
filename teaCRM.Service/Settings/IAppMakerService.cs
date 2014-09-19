@@ -74,6 +74,26 @@ namespace teaCRM.Service.Settings
         /// <returns></returns>
         List<VMyappCompany> GetAllMyApps(string compNum, int appId);
 
+
+        #region 添加操作
+
+        bool AddField(TFunExpand field);
+        bool AddFilter(TFunFilter filter);
+        bool AddOperating(TFunOperating operating);
+        #endregion
+
+        #region 修改操作
+        bool EditField(TFunExpand field);
+        bool EditFilter(TFunFilter filter);
+        bool EditOperating(TFunOperating operating);
+        #endregion
+
+        #region 删除操作
+        bool DeleteField(int? ids);
+        bool DeleteFilter(int? ids);
+        bool DeleteOperating(int? ids);
+        #endregion
+
         /// <summary>
         /// 检测该应用是否安装过
         /// </summary>

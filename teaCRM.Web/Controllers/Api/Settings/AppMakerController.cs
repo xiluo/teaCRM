@@ -244,7 +244,7 @@ namespace teaCRM.Web.Controllers.Api.Settings
             if (!String.IsNullOrEmpty(searchPhrase))
             {
                 ops = AppMakerService.GetAllMyAppToolBars(compNum, myappId, current, rowCount, out total, orders,
-                    r => r.CompNum == compNum&&r.MyappId==myappId && r.OpeAction.Contains(searchPhrase));
+                    r => r.CompNum == compNum && r.MyappId == myappId && r.OpeAction.Contains(searchPhrase));
             }
             else
             {
@@ -259,6 +259,201 @@ namespace teaCRM.Web.Controllers.Api.Settings
                 rows = ops,
                 total = total
             });
+        }
+
+        #endregion
+
+        #region 添加操作 14-09-11 By 唐有炜
+
+        //
+        // POST /api/settings/appMaker/addField/
+        // TFunExpand field
+        [HttpPost]
+        public ResponseMessage AddField([FromBody] TFunExpand field)
+        {
+            ResponseMessage rmsg = new ResponseMessage();
+            if (AppMakerService.AddField(field))
+            {
+                rmsg.Status = true;
+            }
+            else
+            {
+                rmsg.Status = false;
+            }
+
+
+            return rmsg;
+        }
+
+
+        //
+        // POST /api/settings/appMaker/addFilter/
+        // TFunFilter filter
+        [HttpPost]
+        public ResponseMessage AddFilter([FromBody] TFunFilter filter)
+        {
+            ResponseMessage rmsg = new ResponseMessage();
+            if (AppMakerService.AddFilter(filter))
+            {
+                rmsg.Status = true;
+            }
+            else
+            {
+                rmsg.Status = false;
+            }
+
+
+            return rmsg;
+        }
+
+        //
+        // POST /api/settings/appMaker/addOperating/
+        // TFunOperating operating
+        [HttpPost]
+        public ResponseMessage AddOperating([FromBody] TFunOperating operating)
+        {
+            ResponseMessage rmsg = new ResponseMessage();
+            if (AppMakerService.AddOperating(operating))
+            {
+                rmsg.Status = true;
+            }
+            else
+            {
+                rmsg.Status = false;
+            }
+
+
+            return rmsg;
+        }
+
+        #endregion
+
+        #region 修改操作 14-09-11 By 唐有炜
+
+        //
+        // POST /api/settings/appMaker/editField/
+        // TFunExpand field
+        [HttpPost]
+        public ResponseMessage EditField([FromBody] TFunExpand field)
+        {
+            ResponseMessage rmsg = new ResponseMessage();
+            if (AppMakerService.EditField(field))
+            {
+                rmsg.Status = true;
+            }
+            else
+            {
+                rmsg.Status = false;
+            }
+
+
+            return rmsg;
+        }
+
+
+        //
+        // POST /api/settings/appMaker/editFilter/
+        // TFunFilter filter
+        [HttpPost]
+        public ResponseMessage EditFilter([FromBody] TFunFilter filter)
+        {
+            ResponseMessage rmsg = new ResponseMessage();
+            if (AppMakerService.EditFilter(filter))
+            {
+                rmsg.Status = true;
+            }
+            else
+            {
+                rmsg.Status = false;
+            }
+
+
+            return rmsg;
+        }
+
+        //
+        // POST /api/settings/appMaker/editOperating/
+        // TFunOperating operating
+        [HttpPost]
+        public ResponseMessage EditOperating([FromBody] TFunOperating operating)
+        {
+            ResponseMessage rmsg = new ResponseMessage();
+            if (AppMakerService.EditOperating(operating))
+            {
+                rmsg.Status = true;
+            }
+            else
+            {
+                rmsg.Status = false;
+            }
+
+
+            return rmsg;
+        }
+
+        #endregion
+
+        #region 删除操作 14-09-11 By 唐有炜
+
+        //
+        // POST /api/settings/appMaker/deleteField/
+        // TFunExpand field
+        [HttpGet]
+        public ResponseMessage DeleteField(int? id)
+        {
+            ResponseMessage rmsg = new ResponseMessage();
+            if (AppMakerService.DeleteField(id))
+            {
+                rmsg.Status = true;
+            }
+            else
+            {
+                rmsg.Status = false;
+            }
+
+
+            return rmsg;
+        }
+
+
+        //
+        // POST /api/settings/appMaker/deleteFilter/
+        // TFunFilter filter
+        [HttpGet]
+        public ResponseMessage DeleteFilter(int? id)
+        {
+            ResponseMessage rmsg = new ResponseMessage();
+            if (AppMakerService.DeleteFilter(id))
+            {
+                rmsg.Status = true;
+            }
+            else
+            {
+                rmsg.Status = false;
+            }
+
+
+            return rmsg;
+        }
+
+        //
+        // POST /api/settings/appMaker/deleteOperating/
+        // TFunOperating operating
+        [HttpGet]
+        public ResponseMessage DeleteOperating(int? id)
+        {
+            ResponseMessage rmsg = new ResponseMessage();
+            if (AppMakerService.DeleteOperating(id))
+            {
+                rmsg.Status = true;
+            }
+            else
+            {
+                rmsg.Status = false;
+            }
+
+
+            return rmsg;
         }
 
         #endregion

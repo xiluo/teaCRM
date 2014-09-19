@@ -309,11 +309,10 @@ function add_field() {
         //var data = $(form_field).serializeObject();
         var data = $(form_field).serialize();
         console.log((data));
-        return false;
         $.ajax({
             type: "post",
             cache: false,
-            url: "/",
+            url: "/api/settings/appMaker/addField/",
             data: data,
             dataType: "json",
             beforeSend: function() {
@@ -329,9 +328,9 @@ function add_field() {
                 if (status == true || status == "true" || status == "True") {
                     //刷新数据
                     field_grid.bootgrid("reload");
-                    showMsg("用户添加成功！", "Success");
+                    showMsg("自定义字段添加成功！", "Success");
                 } else {
-                    showMsg("系统异常，用户添加失败！", "Error");
+                    showMsg("系统异常，自定义字段添加失败！", "Error");
                 }
             },
             error: function() {
@@ -354,11 +353,10 @@ function add_view() {
         }
          var data = $(form_view).serialize();
         console.log((data));
-     return false;
         $.ajax({
             type: "post",
             cache: false,
-            url: "/",
+            url: "/api/settings/appMaker/addFilter/",
             data: data,
             dataType: "json",
             beforeSend: function() {
@@ -373,10 +371,10 @@ function add_view() {
                 var status = result.Status;
                 if (status == true || status == "true" || status == "True") {
                     //刷新数据
-                    field_grid.bootgrid("reload");
-                    showMsg("用户添加成功！", "Success");
+                    view_grid.bootgrid("reload");
+                    showMsg("筛选器添加成功！", "Success");
                 } else {
-                    showMsg("系统异常，用户添加失败！", "Error");
+                    showMsg("系统异常，筛选器添加失败！", "Error");
                 }
             },
             error: function() {
@@ -399,12 +397,11 @@ function add_toolbar() {
         }
         //var data = $(form_user).serializeObject();
         var data = $(form_toolbar).serialize();
-     return false;
-        console.log((data));
+       console.log((data));
         $.ajax({
             type: "post",
             cache: false,
-            url: "/",
+            url: "/api/settings/appMaker/addOperating/",
             data: data,
             dataType: "json",
             beforeSend: function() {
@@ -419,10 +416,10 @@ function add_toolbar() {
                 var status = result.Status;
                 if (status == true || status == "true" || status == "True") {
                     //刷新数据
-                    field_grid.bootgrid("reload");
-                    showMsg("用户添加成功！", "Success");
+                    toolbar_grid.bootgrid("reload");
+                    showMsg("操作添加成功！", "Success");
                 } else {
-                    showMsg("系统异常，用户添加失败！", "Error");
+                    showMsg("系统异常，操作添加失败！", "Error");
                 }
             },
             error: function() {
@@ -448,11 +445,10 @@ function edit_field() {
         //var data = $(form_field).serializeObject();
         var data = $(form_field).serialize();
         console.log((data));
-        return false;
         $.ajax({
             type: "post",
             cache: false,
-            url: "/",
+            url: "/api/settings/appMaker/editField/",
             data: data,
             dataType: "json",
             beforeSend: function() {
@@ -468,9 +464,9 @@ function edit_field() {
                 if (status == true || status == "true" || status == "True") {
                     //刷新数据
                     field_grid.bootgrid("reload");
-                    showMsg("用户添加成功！", "Success");
+                    showMsg("字段修改功！", "Success");
                 } else {
-                    showMsg("系统异常，用户添加失败！", "Error");
+                    showMsg("系统异常，字段修改失败！", "Error");
                 }
             },
             error: function() {
@@ -492,12 +488,10 @@ showWindow("show_add", "/Apps/Settings/AppMaker/EditView", "修改筛选器", 70
             return false;
         }
          var data = $(form_view).serialize();
-        console.log((data));
-     return false;
         $.ajax({
             type: "post",
             cache: false,
-            url: "/",
+            url: "/api/settings/appMaker/editFilter/",
             data: data,
             dataType: "json",
             beforeSend: function() {
@@ -512,10 +506,10 @@ showWindow("show_add", "/Apps/Settings/AppMaker/EditView", "修改筛选器", 70
                 var status = result.Status;
                 if (status == true || status == "true" || status == "True") {
                     //刷新数据
-                    field_grid.bootgrid("reload");
-                    showMsg("用户添加成功！", "Success");
+                    view_grid.bootgrid("reload");
+                    showMsg("筛选器修改成功！", "Success");
                 } else {
-                    showMsg("系统异常，用户添加失败！", "Error");
+                    showMsg("系统异常，筛选器修改失败！", "Error");
                 }
             },
             error: function() {
@@ -538,12 +532,12 @@ showWindow("show_add", "/Apps/Settings/AppMaker/EditToolbar", "修改操作", 70
         }
         //var data = $(form_user).serializeObject();
         var data = $(form_toolbar).serialize();
-     return false;
+
         console.log((data));
         $.ajax({
             type: "post",
             cache: false,
-            url: "/",
+            url: "/api/settings/appMaker/editOperating/",
             data: data,
             dataType: "json",
             beforeSend: function() {
@@ -558,10 +552,10 @@ showWindow("show_add", "/Apps/Settings/AppMaker/EditToolbar", "修改操作", 70
                 var status = result.Status;
                 if (status == true || status == "true" || status == "True") {
                     //刷新数据
-                    field_grid.bootgrid("reload");
-                    showMsg("用户添加成功！", "Success");
+                    toolbar_grid.bootgrid("reload");
+                    showMsg("操作修改成功！", "Success");
                 } else {
-                    showMsg("系统异常，用户添加失败！", "Error");
+                    showMsg("系统异常，操作修改失败！", "Error");
                 }
             },
             error: function() {
@@ -578,35 +572,36 @@ showWindow("show_add", "/Apps/Settings/AppMaker/EditToolbar", "修改操作", 70
 //删除==============================================================
 function del_field() {
   //console.log(id);
+    var id = 0;
     showDialog("确认删除该字段吗？", function () {
-//        $.ajax({
-//            type: "get",
-//            cache: false,
-//            url: "/api/settings/role/deleteRole/",
-//            data: { id: id },
-//            dataType: "json",
-//            beforeSend: function () {
-//                //showMsg("添加中，请稍后...");
-//            },
-//            complete: function () {
-//                //d.close().remove();
-//            },
-//            success: function (result) {
-//                //toLowerCase报错
-//                //var status = result.Status.toLowerCase();
-//                var status = result.Status;
-//                if (status == true || status == "true" || status == "True") {
-//                    //刷新数据
-//                    grid.bootgrid("reload");
-//                    showMsg("字段删除成功！", "Success");
-//                } else {
-//                    showMsg("系统异常，角色删除失败！", "Error");
-//                }
-//            },
-//            error: function () {
-//                showMsg("网络连接错误", "Error");
-//            }
-        //        });
+        $.ajax({
+            type: "get",
+            cache: false,
+            url: "/api/settings/appMaker/deleteField/",
+            data: { id: id },
+            dataType: "json",
+            beforeSend: function () {
+                //showMsg("添加中，请稍后...");
+            },
+            complete: function () {
+                //d.close().remove();
+            },
+            success: function (result) {
+                //toLowerCase报错
+                //var status = result.Status.toLowerCase();
+                var status = result.Status;
+                if (status == true || status == "true" || status == "True") {
+                    //刷新数据
+                    field_grid.bootgrid("reload");
+                    showMsg("字段删除成功！", "Success");
+                } else {
+                    showMsg("系统异常，字段删除失败！", "Error");
+                }
+            },
+            error: function () {
+                showMsg("网络连接错误", "Error");
+            }
+                });
         showMsg("系统异常，字段删除失败！", "Error");
     });
     //必须有这个，阻止刷新
@@ -615,35 +610,36 @@ function del_field() {
 
 function del_view() {
   //console.log(id);
+    var id = 0;
     showDialog("确认删除该筛选器吗？", function () {
-//        $.ajax({
-//            type: "get",
-//            cache: false,
-//            url: "/api/settings/role/deleteRole/",
-//            data: { id: id },
-//            dataType: "json",
-//            beforeSend: function () {
-//                //showMsg("添加中，请稍后...");
-//            },
-//            complete: function () {
-//                //d.close().remove();
-//            },
-//            success: function (result) {
-//                //toLowerCase报错
-//                //var status = result.Status.toLowerCase();
-//                var status = result.Status;
-//                if (status == true || status == "true" || status == "True") {
-//                    //刷新数据
-//                    grid.bootgrid("reload");
-//                    showMsg("筛选器删除成功！", "Success");
-//                } else {
-//                    showMsg("系统异常，角色删除失败！", "Error");
-//                }
-//            },
-//            error: function () {
-//                showMsg("网络连接错误", "Error");
-//            }
-        //        });
+        $.ajax({
+            type: "get",
+            cache: false,
+            url: "/api/settings/appMaker/deleteFilter/",
+            data: { id: id },
+            dataType: "json",
+            beforeSend: function () {
+                //showMsg("添加中，请稍后...");
+            },
+            complete: function () {
+                //d.close().remove();
+            },
+            success: function (result) {
+                //toLowerCase报错
+                //var status = result.Status.toLowerCase();
+                var status = result.Status;
+                if (status == true || status == "true" || status == "True") {
+                    //刷新数据
+                    view_grid.bootgrid("reload");
+                    showMsg("筛选器删除成功！", "Success");
+                } else {
+                    showMsg("系统异常，筛选器删除失败！", "Error");
+                }
+            },
+            error: function () {
+                showMsg("网络连接错误", "Error");
+            }
+                });
         showMsg("系统异常，筛选器删除失败！", "Error");
     });
     //必须有这个，阻止刷新
@@ -652,35 +648,36 @@ function del_view() {
 
 function del_toolbar() {
   //console.log(id);
+    var id = 0;
     showDialog("确认删除该操作吗？", function () {
-//        $.ajax({
-//            type: "get",
-//            cache: false,
-//            url: "/api/settings/role/deleteRole/",
-//            data: { id: id },
-//            dataType: "json",
-//            beforeSend: function () {
-//                //showMsg("添加中，请稍后...");
-//            },
-//            complete: function () {
-//                //d.close().remove();
-//            },
-//            success: function (result) {
-//                //toLowerCase报错
-//                //var status = result.Status.toLowerCase();
-//                var status = result.Status;
-//                if (status == true || status == "true" || status == "True") {
-//                    //刷新数据
-//                    grid.bootgrid("reload");
-//                    showMsg("操作删除成功！", "Success");
-//                } else {
-//                    showMsg("系统异常，角色删除失败！", "Error");
-//                }
-//            },
-//            error: function () {
-//                showMsg("网络连接错误", "Error");
-//            }
-        //        });
+        $.ajax({
+            type: "get",
+            cache: false,
+            url: "/api/settings/appMaker/deleteOperating/",
+            data: { id: id },
+            dataType: "json",
+            beforeSend: function () {
+                //showMsg("添加中，请稍后...");
+            },
+            complete: function () {
+                //d.close().remove();
+            },
+            success: function (result) {
+                //toLowerCase报错
+                //var status = result.Status.toLowerCase();
+                var status = result.Status;
+                if (status == true || status == "true" || status == "True") {
+                    //刷新数据
+                    toolbar_grid.bootgrid("reload");
+                    showMsg("操作删除成功！", "Success");
+                } else {
+                    showMsg("系统异常，操作删除失败！", "Error");
+                }
+            },
+            error: function () {
+                showMsg("网络连接错误", "Error");
+            }
+                });
         showMsg("系统异常，操作删除失败！", "Error");
     });
     //必须有这个，阻止刷新

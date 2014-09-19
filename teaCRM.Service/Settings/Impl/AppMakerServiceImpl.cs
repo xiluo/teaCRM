@@ -119,6 +119,68 @@ namespace teaCRM.Service.Settings.Impl
 
         #endregion
 
+
+        #region 添加操作
+
+        public bool AddField(TFunExpand field)
+        {
+            return false;
+        }
+
+        public bool AddFilter(TFunFilter filter)
+        {
+            return false;
+        }
+
+        public bool AddOperating(TFunOperating operating)
+        {
+            return false;
+        }
+
+        #endregion
+
+
+
+        #region 修改操作
+
+        public bool EditField(TFunExpand field)
+        {
+            return false;
+        }
+
+        public bool EditFilter(TFunFilter filter)
+        {
+            return false;
+        }
+
+        public bool EditOperating(TFunOperating operating)
+        {
+            return false;
+        }
+
+        #endregion
+
+
+        #region 删除操作
+
+        public bool DeleteField(int? ids)
+        {
+            return false;
+        }
+
+        public bool DeleteFilter(int? ids)
+        {
+            return false;
+        }
+
+        public bool DeleteOperating(int? ids)
+        {
+            return false;
+        }
+
+        #endregion
+
+
         /// <summary>
         /// 检测该应用是否安装过
         /// </summary>
