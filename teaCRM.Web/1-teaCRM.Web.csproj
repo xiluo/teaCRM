@@ -151,6 +151,7 @@
     <Compile Include="Controllers\Admin\AccountController.cs" />
     <Compile Include="Controllers\Admin\MainController.cs" />
     <Compile Include="Controllers\Api\AppController.cs" />
+    <Compile Include="Controllers\Api\CRM\CustomerController.cs" />
     <Compile Include="Controllers\Api\Settings\AppMakerController.cs" />
     <Compile Include="Controllers\Api\Settings\RoleController.cs" />
     <Compile Include="Controllers\Api\Settings\UsersController.cs" />
@@ -176,7 +177,6 @@
     <Compile Include="Controllers\Base\DesktopController.cs" />
     <Compile Include="Filters\AutoLoginAttribute.cs" />
     <Compile Include="Filters\UserAuthorizeAttribute.cs" />
-    <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

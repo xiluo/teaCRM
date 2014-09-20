@@ -48,7 +48,6 @@
 
     <script type="text/javascript">
 //首次打开页面时对左侧分类进行高度设定
-
         $(function() {
             $(".layout-left").height($(window).height() - 100);
             $('.tip').tooltip();
@@ -69,11 +68,13 @@
                 checkbox: false,
                 columns: [
                 {
-                    display: '序号',
+                    display: '选择',
+                    name:
+            'id',
                     width: 50,
-                    render: function(rowData, rowindex, value, column, rowid, page, pagesize) {
+                    render: function(item) {
                         //alert(rowid);
-                        return "<input type=\"checkbox\">";
+                        return "<input type=\"checkbox\" value=\""+item.id+"\">";
                     }
         },
         {

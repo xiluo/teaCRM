@@ -17,7 +17,7 @@ $(document).ready(function() {
 
 
 $(function() {
-  
+
 });
 
 //ZTree==========================================================================
@@ -93,89 +93,20 @@ function get_city_by_ids(ids) {
     return "省市信息";
 }
 
-function serchpanel() {
-    if ($(".az").css("display") == "none") {
-        $("#grid").css("margin-top", $(".az").height() + "px");
-        $("#maingrid4").ligerGetGridManager().onResize();
-        $("#maingrid5").ligerGetGridManager().onResize();
-    } else {
-        $("#grid").css("margin-top", "0px");
-        $("#maingrid4").ligerGetGridManager().onResize();
-        $("#maingrid5").ligerGetGridManager().onResize();
-    }
-}
-
-//
-//$(document).KEYDOWN(function(e) {
-//    if (e.keyCode == 13) {
-//        doserch();
-//        alert("aaa");
-//    }
-//});
-
-function doserch() {
-    //            var sendtxt = "&Action=grid&rnd=" + Math.random();
-    //            var serchtxt = $("#serchform :input").fieldSerialize() + sendtxt;
-    //            //alert(serchtxt);           
-    //            var manager = $("#maingrid4").ligerGetGridManager();
-    //
-    //            manager.setURL("../../data/crm_customer.ashx?" + serchtxt);
-    //            manager.loadData(true);
-}
-
-function doclear() {
-    //var serchtxt = $("#serchform :input").reset();
-    $("#serchform").each(function() {
-        this.reset();
-        $(".l-selected").removeClass("l-selected");
-    });
-}
-
-var activeDialog = null;
-
-function f_openWindow(url, title, width, height) {
-    var dialogOptions = {
-        width: width,
-        height: height,
-        title: title,
-        url: url,
-        buttons: [
-            {
-                text: '保存',
-                onclick: function(item, dialog) {
-                    f_save(item, dialog);
-                }
-            },
-            {
-                text: '关闭',
-                onclick: function(item, dialog) {
-                    dialog.close();
-                }
-            }
-        ],
-        isResize: true,
-        timeParmName: 'a'
-    };
-    activeDialog = parent.jQuery.ligerDialog.open(dialogOptions);
-}
-
 //查看客户信息
 function view(id) {
-
-        showContentWindow("show_add", "/Apps/CRM/Index/Show/" + id, "查看客户", 800, 480);
-
-
-    }
+    showContentWindow("show_add", "/Apps/CRM/Index/Show/" + id, "查看客户", 800, 480);
+}
 
 function context_view() {
     var manager = $("#maingrid4").ligerGetGridManager();
-        var row = manager.getSelectedRow();
+    var row = manager.getSelectedRow();
     console.log(row);
-     if (row) {
-         showContentWindow("show_add", "/Apps/CRM/Index/Show/" + row.id, "查看客户", 800, 480);
-     } else {
-         showMsg("请先选中客户！","Error");
-     } 
+    if (row) {
+        showContentWindow("show_add", "/Apps/CRM/Index/Show/" + row.id, "查看客户", 800, 480);
+    } else {
+        showMsg("请先选中客户！", "Error");
+    }
 }
 
 
@@ -215,7 +146,7 @@ function add() {
                     //在iframe里面打开弹出框并自动关闭
                     showMsg(result.Msg, "Success");
                     //刷新数据
-                    f_reload();
+                    customer_reload();
                 } else {
                     showMsg("系统异常！", "Error");
                 }
@@ -330,134 +261,8 @@ function to_pub() {
     }
 }
 
-function f_save(item, dialog) {
-    var issave = dialog.frame.f_save();
-    if (issave) {
-        dialog.close();
-        top.$.ligerDialog.waitting('数据保存中,请稍候...');
-        $.ajax({
-            url: "../../data/CRM_Customer.ashx",
-            type: "POST",
-            data: issave,
-            success: function(result) {
-                top.$.ligerDialog.closeWaitting();
-                f_reload();
-            },
-            error: function() {
-                top.$.ligerDialog.closeWaitting();
-                top.$.ligerDialog.error('操作失败！');
-            }
-        });
-
-    }
-}
-
-function f_reload() {
+//重新加载客户数据
+function customer_reload() {
     var manager = $("#maingrid4").ligerGetGridManager();
     manager.loadData(true);
 };
-
-//follow
-function follow_openWindow(url, title, width, height) {
-    var dialogOptions = {
-        width: width,
-        height: height,
-        title: title,
-        url: url,
-        buttons: [
-            {
-                text: '保存',
-                onclick: function(item, dialog) {
-                    f_savefollow(item, dialog);
-                }
-            },
-            {
-                text: '关闭',
-                onclick: function(item, dialog) {
-                    dialog.close();
-                }
-            }
-        ],
-        isResize: true,
-        timeParmName: 'b'
-    };
-    activeDialog1 = top.jQuery.ligerDialog.open(dialogOptions);
-}
-
-//        function addfollow() {
-//            var manager = $("#maingrid4").ligerGetGridManager();
-//            var row = manager.getSelectedRow();
-//            if (row) {
-//                follow_openWindow("CRM/Customer/Customer_follow_add.aspx?cid=" + row.id, "新增跟进", 530, 400);
-//            } else {
-//                $.ligerDialog.warn('请选择客户！');
-//            }
-//        }
-//
-//        function editfollow() {
-//            var manager = $("#maingrid5").ligerGetGridManager();
-//            var row = manager.getSelectedRow();
-//            if (row) {
-//                follow_openWindow('CRM/Customer/Customer_follow_add.aspx?fid=' + row.id + "&cid=" + row.Customer_id, "修改跟进", 530, 400);
-//            } else {
-//                $.ligerDialog.warn('请选择跟进！');
-//            }
-//        }
-//
-//        function delfollow() {
-//            var manager = $("#maingrid5").ligerGetGridManager();
-//            var row = manager.getSelectedRow();
-//            if (row) {
-//                $.ligerDialog.confirm("确定删除？", function(yes) {
-//                    if (yes) {
-//                        $.ajax({
-//                            url: "../../data/CRM_Follow.ashx",
-//                            type: "POST",
-//                            data: { Action: "AdvanceDelete", id: row.id, rnd: Math.random() },
-//                            success: function(result) {
-//                                if (result == "true") {
-//                                    f_followreload();
-//                                    f_reload();
-//                                } else {
-//                                    top.$.ligerDialog.error('删除失败！');
-//                                }
-//
-//                            },
-//                            error: function() {
-//                                top.$.ligerDialog.error('删除失败！');
-//                            }
-//                        });
-//                    }
-//                });
-//            } else {
-//                $.ligerDialog.warn("请选择跟进");
-//            }
-//        }
-//
-//        function f_savefollow(item, dialog) {
-//            var issave = dialog.frame.f_save();
-//            if (issave) {
-//                dialog.close();
-//                $.ligerDialog.waitting('数据保存中,请稍候...');
-//                $.ajax({
-//                    url: "../../data/CRM_Follow.ashx",
-//                    type: "POST",
-//                    data: issave,
-//                    success: function(result) {
-//                        $.ligerDialog.closeWaitting();
-//                        f_followreload();
-//                        f_reload();
-//                    },
-//                    error: function() {
-//                        $.ligerDialog.closeWaitting();
-//                        $.ligerDialog.error('操作失败！');
-//                    }
-//                });
-//
-//            }
-//        }
-//
-//        function f_followreload() {
-//            var manager = $("#maingrid5").ligerGetGridManager();
-//            manager.loadData(true);
-//        };
