@@ -163,7 +163,54 @@ function add() {
 
 
 function edit() {
-    view();
+    var manager = $("#maingrid4").ligerGetGridManager();
+    var row = manager.getSelectedRow();
+        showWindow("show_add", "/Apps/CRM/Index/Edit/"+row.id, "修改客户", 800, 480, function () {
+            var form_customer = $(window.frames["frm_show_add"].document).find("#form_customer");
+            //var data = $(form_customer).serialize();
+            //alert(data);
+            //表单验证
+            //validate_form();
+            var flag = document.getElementById("frm_show_add").contentWindow.form_valid();
+            if (!flag) {
+                return false;
+            }
+            var data = $(form_customer).serialize();
+            //console.log(data);
+            //提交数据
+            var url = "/Apps/CRM/Index/Add/";
+            $.ajax({
+                type: "post",
+                cache: false,
+                url: url,
+                data: data,
+                dataType: "json",
+                beforeSend: function () {
+                    //showMsg("添加中，请稍后...");
+                },
+                complete: function () {
+                    //d.close().remove();
+                },
+                success: function (result) {
+                    //toLowerCase报错
+                    //var status = result.Status.toLowerCase();
+                    var status = result.Status;
+                    if (status == true || status == "true" || status == "True") {
+                        //在iframe里面打开弹出框并自动关闭
+                        showMsg(result.Msg, "Success");
+                        //刷新数据
+                        //customer_grid_reload();
+                    } else {
+                        showMsg("系统异常！", "Error");
+                    }
+                },
+                error: function () {
+                    showMsg("网络连接错误");
+                }
+            });
+
+        });
+    
 }
 
 function del() {

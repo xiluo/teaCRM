@@ -17,12 +17,7 @@
   <!--funFilterDao-->
   <object id="funFilterDao" type="teaCRM.Dao.Impl.TFunFilterDaoImpl, teaCRM.Dao" singleton="false">
   </object>
-  <!--cusInfoDao-->
-  <object id="cusInfoDao" type="teaCRM.Dao.CRM.Impl.ZCusInfoDaoImpl, teaCRM.Dao" singleton="false">
-  </object>
-  <!--conInfoDao-->
-  <object id="conInfoDao" type="teaCRM.Dao.CRM.Impl.ZConInfoDaoImpl, teaCRM.Dao" singleton="false">
-  </object>
+  
 
 
   <!--settingsDao-->
@@ -58,6 +53,9 @@
   
   <!--cusBaseDao-->
   <object id="cusBaseDao" type="teaCRM.Dao.Impl.TCusBaseDaoImpl, teaCRM.Dao" singleton="false">
+  </object>
+  <!--cusConDao-->
+  <object id="cusConDao" type="teaCRM.Dao.Impl.TCusConDaoImpl, teaCRM.Dao" singleton="false">
   </object>
 
 </objects>

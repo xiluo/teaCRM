@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 using teaCRM.Common;
 using teaCRM.Entity;
-using teaCRM.Entity.CRM;
 using teaCRM.Service;
 using teaCRM.Service.CRM;
 using teaCRM.Service.Settings;
@@ -18,10 +18,10 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         //客户IndexController 注入Service依赖
         public ICustomerService CustomerService { set; get; }
         public IAccountService AccountService { set; get; }
-      public  IAppMakerService  AppMakerService { set; get; }
+        public IAppMakerService AppMakerService { set; get; }
 
         #region 全局字段定义 2014-08-29 14:58:50 By 唐有炜
-        
+
         //当前应用的类别id，（对应/Themes/default/base/js/category.js里面的code和T_fun_app表里面的app_id） 14-09-21 By 唐有炜
         private int AppId = 1;
 
@@ -29,7 +29,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         private List<TFunExpand> customerExpandFields = null;
         private List<TFunExpand> contactExpandFields = null;
         private List<TFunOperating> customerOperatings = null;
-        public List<VMyappCompany> myApps = null; 
+        public List<VMyappCompany> myApps = null;
 
         #endregion
 
@@ -105,7 +105,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             {
                 ViewBag.CustomerExpandFields = customerExpandFields;
                 ViewBag.ContactExpandFields = contactExpandFields;
-                return View("CustomerAdd");
+                return View("CustomerEdit");
             }
         }
 
@@ -123,28 +123,28 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             //客户赋值==============================================
             var compNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
             var userId = int.Parse(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString());
-            ZCusInfo cusInfo = new ZCusInfo();
+
             //基本字段
-            cusInfo.CusBase = new TCusBase()
+            TCusBase CusBase = new TCusBase()
             {
                 CusNo = RandomHelper.GetCustomerNumber(),
                 CompNum = compNum,
                 CusName = fc["cus_name"].TrimEnd(','),
                 CusSname = fc["cus_sname"],
-                CusLastid = 0,//默认无上级客户
+                CusLastid = 0, //默认无上级客户
                 CusTel = fc["cus_tel"],
                 CusCity = String.Format("{0},{1},{2}", fc["cus_province"].ToString(), fc["cus_city"], fc["cus_region"]),
                 CusAddress = fc["cus_address"],
                 CusNote = fc["cus_note"],
                 //ConId = 1,//在Dao层处理
-                UserId = userId,//负责人
+                UserId = userId, //负责人
                 ConTeam = "17,21",
-                ConIsPub =0,
+                ConIsPub = 0,
                 ConBack = 0
                 //创建时间有数据库默认指定
             };
             //扩展字段
-            cusInfo.Fields = new Dictionary<string, object>();
+            Dictionary<string, object> cusFields = new Dictionary<string, object>();
             for (int i = 0; i < fc.Count; i++)
             {
                 var field = fc.GetKey(i);
@@ -153,20 +153,23 @@ namespace teaCRM.Web.Controllers.Apps.CRM
                 {
                     if (field == field2.ExpName)
                     {
-                        cusInfo.Fields.Add(new KeyValuePair<string, object>(field, value));
+                        cusFields.Add(field, value);
                     }
                 }
             }
+            //存储扩展字段的值
+            CusBase.CusFields = JsonConvert.SerializeObject(cusFields);
+
+
             //========================================================================
 
             //主联系人赋值 
-            ZCusConInfo cusConInfo = new ZCusConInfo();
             var conBir = fc["con_bir"];
             if (String.IsNullOrEmpty(fc["con_bir"]))
             {
                 conBir = DateTime.Now.ToString();
             }
-            cusConInfo.CusCon = new TCusCon()
+            TCusCon CusCon = new TCusCon()
             {
                 ConName = fc["con_name"],
                 ConTel = fc["con_tel"],
@@ -177,7 +180,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
                 ConIsMain = 1,
                 UserId = userId
             };
-            cusConInfo.Fields = new Dictionary<string, object>();
+            Dictionary<string, object> conFields = new Dictionary<string, object>();
             for (int i = 0; i < fc.Count; i++)
             {
                 var field_con = fc.GetKey(i);
@@ -187,14 +190,16 @@ namespace teaCRM.Web.Controllers.Apps.CRM
                     if (field_con == field_con2.ExpName)
                     {
                         //LogHelper.Debug("联系人扩展字段："+field_con);
-                        cusConInfo.Fields.Add(new KeyValuePair<string, object>(field_con, value_con));
+                        conFields.Add(field_con, value_con);
                     }
                 }
             }
+            //存储扩展字段的值
+            CusCon.ConFields = JsonConvert.SerializeObject(conFields);
             //==============================================================
-
-            //添加提交
-            bool add_status = CustomerService.AddCustomer(cusInfo, cusConInfo);
+//
+//            //添加提交
+            bool add_status = CustomerService.AddCustomer(CusBase, CusCon);
             if (add_status)
             {
                 rmsg.Status = add_status;
@@ -230,7 +235,14 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             {
                 ViewBag.CustomerExpandFields = customerExpandFields;
                 ViewBag.ContactExpandFields = contactExpandFields;
-                ViewBag.Customer = CustomerService.GetCustomer(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(), id);
+                Dictionary<string, object> cus =
+                    CustomerService.GetCustomer(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(), id);
+                ViewBag.Customer = cus;
+                object con_id = null;
+                cus.TryGetValue("con_id", out con_id);
+                ViewBag.MainContact =
+                    CustomerService.GetMainContact(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(),
+                        (int) con_id);
                 ViewBag.MyApps = myApps;
                 return View("CustomerShow");
             }
@@ -244,7 +256,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         // GET: /Apps/CRM/Index/Edit/
         [UserAuthorize]
         [HttpGet]
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
             //初始化扩展字段
             Init();
@@ -289,8 +301,5 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         }
 
         #endregion
-
-      
-
     }
 }

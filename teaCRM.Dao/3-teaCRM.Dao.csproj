@@ -91,13 +91,9 @@
     <Compile Include="CRM\Impl\TCusBaseDaoImpl.cs" />
     <Compile Include="CRM\Impl\TCusConDaoImpl.cs" />
     <Compile Include="CRM\Impl\TCusLogDaoImpl.cs" />
-    <Compile Include="CRM\Impl\ZConInfoDaoImpl.cs" />
-    <Compile Include="CRM\Impl\ZCusInfoDaoImpl.cs" />
     <Compile Include="CRM\ITCusBaseDao.cs" />
     <Compile Include="CRM\ITCusConDao.cs" />
     <Compile Include="CRM\ITCusLogDao.cs" />
-    <Compile Include="CRM\IZConInfoDao.cs" />
-    <Compile Include="CRM\IZCusInfoDao.cs" />
     <Compile Include="ITableDao.cs" />
     <Compile Include="IViewDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

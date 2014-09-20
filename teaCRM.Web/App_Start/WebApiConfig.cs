@@ -10,6 +10,14 @@ namespace teaCRM.Web
         public static void Register(HttpConfiguration config)
         {
 
+
+            //CRM api
+            config.Routes.MapHttpRoute(
+                name: "CRMApi",
+                routeTemplate: "api/crm/{controller}/{action}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
             //设置api
             config.Routes.MapHttpRoute(
                 name: "SettingsApi",

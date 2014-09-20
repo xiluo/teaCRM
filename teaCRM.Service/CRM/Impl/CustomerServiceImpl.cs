@@ -22,19 +22,17 @@ using System.Text;
 */
 using teaCRM.Common;
 using teaCRM.Dao;
-using teaCRM.Dao.CRM;
 using teaCRM.Entity;
-using teaCRM.Entity.CRM;
+
 
 namespace teaCRM.Service.CRM.Impl
 {
     public class CustomerServiceImpl : ICustomerService
     {
         //CustomerServiceImpl注入dao依赖
-        public IZCusInfoDao CusInfoDao { set; get; }
-        public IZConInfoDao ConInfoDao { set; get; }
         public ITFunExpandDao FunExpandDao { set; get; }
         public ITCusBaseDao CusBaseDao { set; get; }
+        public ITCusConDao CusConDao { set; get; }
         public ITFunFilterDao FunFilterDao { set; get; }
         public ITFunOperatingDao FunOperatingDao { set; get; }
 
@@ -92,16 +90,16 @@ namespace teaCRM.Service.CRM.Impl
         /// <param name="pageSize">每页的数目</param>
         /// <param name="strWhere">筛选条件（字段名="值",字段名 in (值1,值2)）</param>
         /// <param name="filedOrder">排序字段（字段名）</param>
+        /// <param name="recordCount">总数</param>
         /// <returns>DataTable</returns>
-        public string GetCustomerLsit(string compNum, string[] selectFields, int pageIndex, int pageSize,
-            string strWhere, string filedOrder)
+        public DataTable GetCustomerLsit(string compNum, string[] selectFields, int pageIndex, int pageSize,
+            string strWhere, string filedOrder, out int recordCount)
         {
-            var count = 0;
-            DataTable table = CusInfoDao.GetCustomerLsit(compNum, selectFields, pageIndex, pageSize, strWhere,
-                filedOrder, out count);
+            DataTable table = CusBaseDao.GetCustomerLsit(compNum, selectFields, pageIndex, pageSize, strWhere,
+                filedOrder, out recordCount);
 
-            string cus_data = JSONHelper.DataTableToLigerUIList(table, count);
-            return cus_data;
+            return table;
+
         }
 
         #endregion
@@ -114,12 +112,15 @@ namespace teaCRM.Service.CRM.Impl
         /// <param name="compNum"></param>
         /// <param name="customerId"></param>
         /// <returns></returns>
-        public DataTable GetCustomer(string compNum, int customerId)
+        public Dictionary<string,object> GetCustomer(string compNum, int customerId)
         {
             var count = 0;
-            return CusInfoDao.GetCustomerLsit(compNum, new string[0], 1, 1,
+            var cusTable= CusBaseDao.GetCustomerLsit(compNum, new string[0], 1, 1,
                 String.Format("id={0} AND comp_num={1}", customerId, compNum),
                 "id", out count);
+
+          return    DataTableHelper.DataTableToListDictory(cusTable).FirstOrDefault();
+
         }
 
         #endregion
@@ -203,12 +204,12 @@ namespace teaCRM.Service.CRM.Impl
         /// <summary>
         /// 添加客户信息 2014-08-30 14:58:50 By 唐有炜
         /// </summary>
-        /// <param name="cusInfo">客户信息</param>
-        /// <param name="cusConInfo">主联系人信息</param>
+        /// <param name="cusBase">客户信息</param>
+        /// <param name="cusCon">主联系人信息</param>
         /// <returns></returns>
-        public bool AddCustomer(ZCusInfo cusInfo, ZCusConInfo cusConInfo)
+        public bool AddCustomer(TCusBase cusBase, TCusCon cusCon)
         {
-            return CusInfoDao.AddCustomer(cusInfo, cusConInfo);
+            return CusBaseDao.AddCustomer(cusBase, cusCon);
         }
 
         #endregion
@@ -228,18 +229,37 @@ namespace teaCRM.Service.CRM.Impl
         /// <param name="pageSize">每页的数目</param>
         /// <param name="strWhere">筛选条件（字段名="值",字段名 in (值1,值2)）</param>
         /// <param name="filedOrder">排序字段（字段名）</param>
+        /// <param name="recordCount"></param>
         /// <returns>DataTable</returns>
-        public string GetContactLsit(string compNum, string[] selectFields, int pageIndex, int pageSize,
-            string strWhere, string filedOrder)
+        public DataTable GetContactLsit(string compNum, string[] selectFields, int pageIndex, int pageSize,
+            string strWhere, string filedOrder,out int recordCount)
         {
-            var count = 0;
-            DataTable table = ConInfoDao.GetContactLsit(compNum, selectFields, pageIndex, pageSize, strWhere,
-                filedOrder, out count);
-            string con_data = JSONHelper.DataTableToLigerUIList(table, count);
-            return con_data;
+               DataTable table = CusConDao.GetContactLsit(compNum, selectFields, pageIndex, pageSize, strWhere,
+                filedOrder, out recordCount);
+            return table;
         }
 
         #endregion
+
+        #region 获取一条联系人信息
+
+        /// <summary>
+        /// 获取一条联系人信息
+        /// </summary>
+        /// <param name="compNum"></param>
+        /// <param name="conId">联系人id</param>
+        /// <returns></returns>
+        public Dictionary<string, object> GetMainContact(string compNum, int conId)
+        {
+            var count = 0;
+            var conTable = CusConDao.GetContactLsit(compNum, new string[0], 1, 1,
+                String.Format("id={0}", conId),
+                "id", out count);
+
+            return DataTableHelper.DataTableToListDictory(conTable).FirstOrDefault();
+
+        }
+
 
         #region 获取客户联系人扩展字段信息 2014-08-29 14:58:50 By 唐有炜
 
@@ -262,6 +282,8 @@ namespace teaCRM.Service.CRM.Impl
             }
             return contactExpandFields;
         }
+
+        #endregion
 
         #endregion
 

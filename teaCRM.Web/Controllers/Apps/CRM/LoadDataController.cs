@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 using teaCRM.Common;
 using teaCRM.Entity;
 using teaCRM.Service;
@@ -21,9 +23,9 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         public ICustomerService CustomerService { set; get; }
 
         public IAccountService AccountService { set; get; }
-        
 
         #region 获取筛选器树形数据 2014-08-29 14:58:50 By 唐有炜
+
         // /Apps/CRM/LoadData/AsyncGetNodes/
         /// <summary>
         /// 得到指定ID的子节点列表，并序列化为JSON串
@@ -37,6 +39,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             var nodes = CustomerService.AsyncGetNodes(compNum, id);
             return Json(nodes, JsonRequestBehavior.AllowGet);
         }
+
         #endregion
 
         #region 获取客户信息列表 2014-08-29 14:58:50 By 唐有炜
@@ -50,7 +53,8 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             string customerJson = "";
             try
             {
-                string strWhere = String.Format("con_back=0 AND (user_id={0} OR con_is_pub=1)", int.Parse(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString()));
+                string strWhere = String.Format("con_back=0 AND (user_id={0} OR con_is_pub=1)",
+                    int.Parse(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString()));
                 if (!String.IsNullOrEmpty(Request.QueryString["con_back"]))
                 {
                     strWhere = String.Format("con_back={0}", Request.QueryString["con_back"]);
@@ -59,11 +63,18 @@ namespace teaCRM.Web.Controllers.Apps.CRM
                 {
                     strWhere = String.Format("con_is_pub={0}", Request.QueryString["con_is_pub"]);
                 }
-
-                customerJson =
+                //转换JSON
+                var count = 0;
+                var customerTable =
                     CustomerService.GetCustomerLsit(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(),
                         new string[0], int.Parse(fc["page"]),
-                        int.Parse(fc["pagesize"]), strWhere, "id");
+                        int.Parse(fc["pagesize"]), strWhere, "id", out count);
+                customerJson = JsonConvert.SerializeObject(new
+                {
+                    Rows = customerTable,
+                    Total = count
+                });
+
                 LogHelper.Info("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() + "的用户获取客户信息成功。");
                 return customerJson;
             }
@@ -87,12 +98,17 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             string customerJson = "";
             try
             {
-                string contactJson =
+                var count=0;
+                DataTable contactTable =
                     CustomerService.GetContactLsit(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(),
                         new string[0], 1,
-                        10, String.Format("cus_id={0}", cus_id), "id");
+                        10, String.Format("cus_id={0}", cus_id), "id",out count);
                 LogHelper.Info("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() + "的用户获取联系人信息成功。");
-                return contactJson;
+
+
+                return JSONHelper.DataTableToLigerUIList(contactTable, count);
+
+          
             }
             catch (Exception ex)
             {
@@ -102,44 +118,45 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             }
         }
 
+
+
+        //
+        // GET: /Apps/CRM/LoadData/GetBootContactList/?cus_id=44
+        [UserAuthorize]
+        public string GetBootContactList(int cus_id)
+        {
+
+            var current = 1;
+            var rowCount = 10;
+
+            try
+            {
+                var count = 0;
+               DataTable contactTable  =
+                    CustomerService.GetContactLsit(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(),
+                        new string[0], 1,
+                        10, String.Format("cus_id={0}", cus_id), "id", out count);
+               LogHelper.Info("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() + "的用户获取联系人信息成功。");
+
+
+               return JsonConvert.SerializeObject(new
+               {
+                   current = current,
+                   rowCount = rowCount,
+                   rows = contactTable,
+                   total = count
+               });
+
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() +
+                                "的用户获取联系人信息失败", ex);
+                return "{\"Rows\":[],\"Total\":\"0\"}";
+            }
+        }
         #endregion
 
-//        #region 获取客户工具栏
-//
-//        //
-//        // GET: /Apps/CRM/LoadData/GetCustomerMenu/
-//        public string GetCustomerMenu()
-//        {
-//            return CustomerService.GetCustomerMenu();
-//        }
-//
-//        #endregion
-
-//        #region 获取跟进记录列表
-//
-//        //
-//        // GET: /Apps/CRM/LoadData/GetFollowList/
-//        public string GetFollowList(string CustomerNo)
-//        {
-//            if (String.IsNullOrEmpty(CustomerNo))
-//            {
-//                return "{\"Rows\":[],\"Total\":\"0\"}";
-//            }
-//            return CustomerService.GetFollowList();
-//        }
-//
-//        #region 获取跟进记录工具栏
-//
-//        //
-//        // GET: /Apps/CRM/LoadData/GetFollowMenu/
-//        public string GetFollowMenu()
-//        {
-//            return CustomerService.GetFollowMenu();
-//        }
-//
-//        #endregion
-//
-//        #endregion
 
         #region 放入回收站 2014-09-05 14:58:50 By 唐有炜
 

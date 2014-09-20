@@ -29,6 +29,8 @@ namespace teaCRM.Entity
 		public Int32 ConIsMain { get;set; }
 		[Column("user_id")]
 		public Int32 UserId { get;set; }
+		[Column("con_fields")]
+		public String ConFields { get;set; }
  
 		[ManyToOne(ThisKey="CusId",OtherKey="Id")]
 		public TCusBase Cus { get;set; }

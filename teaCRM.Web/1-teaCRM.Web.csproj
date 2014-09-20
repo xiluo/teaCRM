@@ -175,6 +175,7 @@
     <Compile Include="Controllers\Apps\Settings\RoleController.cs" />
     <Compile Include="Controllers\Apps\Settings\UsersController.cs" />
     <Compile Include="Controllers\Base\DesktopController.cs" />
+    <Compile Include="Filters\ApiAuthorizeAttribute.cs" />
     <Compile Include="Filters\AutoLoginAttribute.cs" />
     <Compile Include="Filters\UserAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -207,6 +208,7 @@
     <Content Include="Themes\default\base\js\category.js" />
     <Content Include="Themes\default\base\js\city.js" />
     <Content Include="Themes\default\base\js\industry.js" />
+    <Content Include="Themes\default\crm\js\customer_show.js" />
     <Content Include="Themes\default\lib\artDialog\lib\require.js" />
     <Content Include="Themes\default\lib\artDialog\lib\sea.js" />
     <Content Include="Themes\default\lib\bootstrap\css\bootstrap-3.2.0.css" />
@@ -1391,9 +1393,6 @@
     <Content Include="Views\Apps\Sale\Index\SaleIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Apps\CRM\Index\CustomerAdd.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Apps\Index\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -1430,8 +1429,7 @@
     <None Include="Themes\default\lib\ligerUI\skins\icons\新建 Microsoft Office Excel 工作表.xlsx" />
     <Content Include="Views\Shared\_Error.cshtml" />
     <Content Include="Views\Apps\CRM\Index\CustomerShow.cshtml" />
-    <Content Include="Views\Apps\CRM\Index\CustomerEdit.cshtml" />
-    <Content Include="Views\Apps\CRM\Index\ContactEdit.cshtml" />
+    <Content Include="Views\Apps\CRM\Contact\ContactEdit.cshtml" />
     <Content Include="Views\Apps\CRM\Contact\ContactIndex.cshtml" />
     <Content Include="Views\Apps\CRM\Pub\CustomerPub.cshtml" />
     <Content Include="Views\Apps\CRM\ToolBar\FilterEdit.cshtml" />
@@ -1454,6 +1452,7 @@
     <Content Include="Views\Apps\Settings\AppMaker\Field\FieldEdit.cshtml" />
     <Content Include="Views\Apps\Settings\AppMaker\Toolbar\ToolbarEdit.cshtml" />
     <Content Include="Views\Apps\Settings\AppMaker\View\ViewEdit.cshtml" />
+    <Content Include="Views\Apps\CRM\Index\CustomerEdit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

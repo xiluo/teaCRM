@@ -7,6 +7,7 @@ using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 
 namespace teaCRM.Common
 {
@@ -25,23 +26,11 @@ namespace teaCRM.Common
         /// <returns></returns>
         public static string DataTableToLigerUIList(DataTable table, int count)
         {
-            string json = "{\"Rows\": [";
-            for (int i = 0; i < table.Rows.Count; i++)
+           return JsonConvert.SerializeObject(new
             {
-                json += "{";
-                for (int j = 0; j < table.Columns.Count; j++)
-                {
-                    var col = table.Columns[j];
-                    json += "\"" + col.ColumnName + "\":" + "\"" + table.Rows[i][j].ToString() + "\",";
-                }
-                json = json.TrimEnd(',');
-                json += "},";
-            }
-            json = json.TrimEnd(',');
-
-            json += "],\"Total\":" + count;
-            json += "}";
-            return json;
+                Rows = table,
+                Total = count
+            });
         }
 
         #endregion

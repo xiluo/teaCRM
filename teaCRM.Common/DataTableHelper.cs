@@ -256,7 +256,31 @@ namespace teaCRM.Common
             }
             dt3.TableName = DTName;
             return dt3;
-        } 
+        }
+
+
+
+
+
+       /// <summary>
+        /// Datatable 转 List<Dictionary<string, object>>
+       /// </summary>
+       /// <param name="table"></param>
+       /// <returns></returns>
+        public static List<Dictionary<string, object>> DataTableToListDictory(DataTable table)
+        {
+            List<Dictionary<string, object>> ld=new List<Dictionary<string, object>>();
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                Dictionary<string, object> dic = new Dictionary<string, object>();
+                for (int j = 0; j < table.Columns.Count; j++)
+                {
+                    dic.Add(table.Columns[j].ColumnName, table.Rows[i][j]);
+                }
+                ld.Add(dic);
+            }
+           return ld;
+        }
 
     }
 }

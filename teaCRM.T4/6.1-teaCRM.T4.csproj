@@ -62,18 +62,6 @@
     <Compile Include="Daos\Impl\TCusConDaoImpl.cs">
       <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
     </Compile>
-    <Compile Include="Daos\Impl\TCusConExpvalue10000DaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Daos\Impl\TCusConExpvalue99999DaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Daos\Impl\TCusExpvalue10000DaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Daos\Impl\TCusExpvalue99999DaoImpl.cs">
-      <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
-    </Compile>
     <Compile Include="Daos\Impl\TCusLogDaoImpl.cs">
       <DependentUpon>teaCRMDaoImpl.tt</DependentUpon>
     </Compile>
@@ -144,18 +132,6 @@
     <Compile Include="Daos\ITCusConDao.cs">
       <DependentUpon>teaCRMIDao.tt</DependentUpon>
     </Compile>
-    <Compile Include="Daos\ITCusConExpvalue10000Dao.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Daos\ITCusConExpvalue99999Dao.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Daos\ITCusExpvalue10000Dao.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Daos\ITCusExpvalue99999Dao.cs">
-      <DependentUpon>teaCRMIDao.tt</DependentUpon>
-    </Compile>
     <Compile Include="Daos\ITCusLogDao.cs">
       <DependentUpon>teaCRMIDao.tt</DependentUpon>
     </Compile>
@@ -224,18 +200,6 @@
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\TCusCon.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\TCusConExpvalue10000.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\TCusConExpvalue99999.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\TCusExpvalue10000.cs">
-      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\TCusExpvalue99999.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\TCusLog.cs">

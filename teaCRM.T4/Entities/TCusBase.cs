@@ -41,6 +41,8 @@ namespace teaCRM.Entity
 		public Int32 ConBack { get;set; }
 		[Column("cus_createTime")]
 		public DateTime? CusCreateTime { get;set; }
+		[Column("cus_fields")]
+		public String CusFields { get;set; }
  
  
 		[OneToMany(ThisKey="Id",OtherKey="CusId")]

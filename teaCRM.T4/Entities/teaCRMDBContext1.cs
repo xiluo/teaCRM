@@ -47,10 +47,6 @@ namespace teaCRM.DBContext
 		#region 数据集关联
 		public IDbSet<TCusBase> TCusBases { get; private set; }
 		public IDbSet<TCusCon> TCusCons { get; private set; }
-		public IDbSet<TCusConExpvalue10000> TCusConExpvalue10000s { get; private set; }
-		public IDbSet<TCusConExpvalue99999> TCusConExpvalue99999s { get; private set; }
-		public IDbSet<TCusExpvalue10000> TCusExpvalue10000s { get; private set; }
-		public IDbSet<TCusExpvalue99999> TCusExpvalue99999s { get; private set; }
 		public IDbSet<TCusLog> TCusLogs { get; private set; }
 		public IDbSet<TFunApp> TFunApps { get; private set; }
 		public IDbSet<TFunAppCompany> TFunAppCompanies { get; private set; }
