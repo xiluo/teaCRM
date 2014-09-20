@@ -14,7 +14,7 @@ $(function() {
     $("#loginForm").validate({
         rules: {
             userName: {
-                rangelength: [6, 20],
+                rangelength: [5, 20],
                 remote: {
                     url: '/Account/ValidateAccount/',
                     data: {
@@ -87,7 +87,7 @@ function auto_complete() {
                 }
             });
         } catch (e) {
-            console.log(e);
+            //console.log(e);
         }
     }
 //服务器返回结果
@@ -178,6 +178,7 @@ function do_login() {
 //}
 
 function login_ajax(userName, userPassword) {
+  
     var url = "/Account/Login/";
     var type = "normal";
     var accountType = get_account_type(userName);
@@ -190,6 +191,7 @@ function login_ajax(userName, userPassword) {
     var clientTime = get_client_time();
     var remember = $.trim($("#remember").prop("checked"));
     //alert(remember);
+    //alert("ok");
 
     //初始化消息提示框 
     var d = dialog({
@@ -215,7 +217,8 @@ function login_ajax(userName, userPassword) {
                 d.content("<div class=\"loading\">正在登录中，请稍后...</div>");
                 location.href = "/";
             } else {
-                d.close();
+                d.content("<div class=\"loading\">"+data.Msg+"</div>");
+                //d.close();
             }
         },
         error: function() {
@@ -244,7 +247,7 @@ function get_account_type(userName) {
     } else if (reg_phone.test(userName)) {
         return "phone";
     } else {
-        return "email";
+        return "username";
     }
 }
 

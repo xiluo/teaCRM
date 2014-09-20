@@ -135,6 +135,12 @@ namespace teaCRM.Service.Impl
                 case "username":
                     if (!userName.Contains("@"))
                     {
+                        var existsDefault =
+                            CompanyUserDao.ExistsViewEntity(cu => cu.UserLname == userName && cu.CompNum == "10000");
+                        if (existsDefault)
+                        {
+                            return true;
+                        }
                         return false;
                     }
                     string[] userComp = userName.Split('@').ToArray();
@@ -205,7 +211,17 @@ namespace teaCRM.Service.Impl
                 case "username":
                     if (!userName.Contains("@"))
                     {
-                        return false;
+                        var existsDefault =
+                            CompanyUserDao.ExistsViewEntity(cu => cu.UserLname == userName && cu.CompNum == "10000" && cu.UserPassword == userPassword);
+                        if (existsDefault)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                      
                     }
                     string[] userComp = userName.Split('@').ToArray();
                     if (!Utils.IsNum(userComp[1]))
@@ -306,7 +322,10 @@ namespace teaCRM.Service.Impl
 
                     if (!userName.Contains("@"))
                     {
-                        return null;
+                        //默认登陆
+                        model = CompanyUserDao.GetViewEntity(cu => cu.UserLname == userName && cu.CompNum == "10000");
+                        return model;
+                        //return null;
                     }
                     string[] userComp = userName.Split('@').ToArray();
                     if (!Utils.IsNum(userComp[1]))

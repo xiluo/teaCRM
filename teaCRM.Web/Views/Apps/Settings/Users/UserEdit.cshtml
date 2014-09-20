@@ -12,24 +12,71 @@
     @Styles.Render("~/Themes/default/css/cp.globle.min1.css")
     @Scripts.Render("~/Themes/default/js/cp.globle.min1.js")
     <script type="text/javascript">
-        $(document).ready(function() {
-            $("#UserLName").focus();
+        $(document).ready(function () {
+            //清空
+            $("#Usertname").val();
+            $("#UserLname").focus();
+            var id = "@ViewBag.Id";
+            if (id != "") {
+                console.log("开始修改");
+                load_form_data(id);
+            }
         });
         $(function() {
             validate_form();
         });
 
+
+
+
+        function load_form_data(id) {
+                            //alert(id);
+                            //提交数据
+            var url = "/api/settings/users/getUser/" + id;
+            $.ajax({
+                type: "get",
+                cache: false,
+                url: url,
+                data: { id: id },
+                dataType: "json",
+                beforeSend: function () {
+                    //showLoading();
+                },
+                complete: function () {
+                    //hideLoading();
+                },
+                success: function (result) {
+                    console.log(result);
+                    for (var key in result) {
+                        //alert(key + " " + result[key]);
+                        if ($("#" + key) != undefined) {
+                            $("#" + key).val(result[key]);
+                            //处理Checkbox
+                            //$("#" + key).next().val(result[key]);
+                        }
+                    }
+                    console.log("数据加载成功。");
+                },
+                error: function () {
+                    console.log("数据加载失败。");
+                    showMsg("服务器异常！");
+                }
+            });
+        }
+
+
+
         //表单验证
         function validate_form() {
             $("#form_user").validate({
                 rules: {
-                    UserLName: {
+                    UserLname: {
                         rangelength: [2, 30],
                         remote: { url: "/api/settings/users/existsUser/", data: { compNum: function() { return $("#CompNum").val(); } } }
                     }
                 },
                 messages: {
-                    UserLName: {
+                    UserLname: {
                         remote: "对不起,该用户名已存在！"
                     }
                 },
@@ -85,15 +132,18 @@
                 </dt>
                 <dd>
                     <div class="input-group wid515">
-                        <input type="text" class=" form-control  required"  id="UserLName" name="UserLName" placeholder="输入用户名称" >
+                        <input type="text" class=" form-control  required"  id="UserLname" name="UserLname" placeholder="输入用户名称" >
                         <span class="input-group-addon">@@@Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM]</span>
                     </div>
                 </dd>
-                <dt>
+               
+            </dl>
+            <dl>
+                 <dt>
                     显示名称：
                 </dt>
                 <dd>
-                    <input type="text" class="form-control" id="UserTName" name="UserName" />
+                    <input type="text" class="form-control" id="UserTname" name="UserTname" />
                 </dd>
             </dl>
             <dl>
@@ -107,7 +157,7 @@
                     <em class="imp">*</em>重复密码：
                 </dt>
                 <dd>
-                    <input type="password" class="form-control required" id="rePassword" name="rePassword" placeholder="再一次输入密码" />
+                    <input type="password" class="form-control" id="rePassword" name="rePassword" placeholder="再一次输入密码" />
                 </dd>
                
             </dl>
@@ -116,13 +166,13 @@
                     <em class="imp">*</em>    角色：
                 </dt>
                 <dd>
-                    <input type="text" class="form-control required" id="RoleId" name="RoleId"  readonly="true" value="0" placeholder="点击选择角色"/>
+                    <input type="text" class="form-control required" id="RoleId" name="RoleId"  readonly="true" value="1" placeholder="点击选择角色"/>
                 </dd>
                 <dt>
                     <em class="imp">*</em>    部门：
                 </dt>
                 <dd>
-                    <input type="text" class="form-control required" id="DepId" name="DepId"  readonly="true" value="0" placeholder="点击选择部门"/>
+                    <input type="text" class="form-control required" id="DepId" name="DepId"  readonly="true" value="1" placeholder="点击选择部门"/>
                 </dd>
             </dl>
             <dl>

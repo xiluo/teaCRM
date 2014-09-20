@@ -75,7 +75,7 @@ function createTree(treeId) {
             var json_data = eval('(' + data + ')');
             for (var index in json_data) {
                 var tnode = json_data[index];
-                console.log(tnode);
+                //console.log(tnode);
                 var node = zTree.getNodeByParam("id", tnode.id, null);
                 zTree.expandNode(node, true, true, true);
             }
@@ -179,7 +179,7 @@ function add() {
     var node = zTree.getSelectedNodes();
     var id = node[0].id;
     var name = node[0].name;
-    console.log(node);
+    //console.log(node);
     var url = "/Apps/Settings/Department/Add/"+id+"/?name="+encodeURI(name);
     showWindow("show_add", url, "添加部门", 800, 480, function() {
         var form_department = $(window.frames["frm_show_add"].document).find("#form_department");
@@ -226,7 +226,7 @@ function add() {
 function edit() {
     var node = zTree.getSelectedNodes();
     var id = node[0].id;
-    console.log(node);
+    //console.log(node);
     var url = "/Apps/Settings/Department/Edit/"+id+"/";
     showWindow("show_add", url, "修改部门", 800, 480, function () {
         var form_department = $(window.frames["frm_show_add"].document).find("#form_department");
@@ -235,7 +235,7 @@ function edit() {
             return false;
         }
         var data = $(form_department).serialize();
-        console.log(data);
+        //console.log(data);
         $.ajax({
             type: "post",
             cache: false,
@@ -275,7 +275,7 @@ function del() {
     showDialog("确认删除该部门吗？", function () {
         var node = zTree.getSelectedNodes();
         var id = node[0].id;
-        console.log(node);
+        //console.log(node);
         if (node[0].isParent) {
             dialog.list['show_dialog'].close();
             showMsg("该部门存在子部门，请先删除子部门！");

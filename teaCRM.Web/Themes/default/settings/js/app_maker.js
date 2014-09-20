@@ -133,7 +133,7 @@ function del(ids) {
             var del_tips = "确认批量卸载选中应用吗？";
         }
     } catch (e) {
-        console.warn(e.message);
+        //console.warn(e.message);
     }
 
     showMoreDialog("uninstall_dialog", del_tips, function() {

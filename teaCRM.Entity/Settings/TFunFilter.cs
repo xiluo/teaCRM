@@ -8,7 +8,7 @@ namespace teaCRM.Entity
     public partial class TFunFilter
     {
 
-        [Id("id", IsDbGenerated = false)]
+        [Id("id", IsDbGenerated = true)]
         public Int32 Id { get; set; }
 
         [Column("parent_id")]

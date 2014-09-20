@@ -318,5 +318,49 @@ namespace teaCRM.Dao.Impl
         }
 
         #endregion
+
+        #region 批量删除
+
+        public bool DeleteMoreEntity(string ids)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                if (db.Connection.State != ConnectionState.Open)
+                {
+                    db.Connection.Open();
+                }
+                var tran = db.Connection.BeginTransaction();
+                try
+                {
+                    int[] opIdArray = Utils.StringToIntArray(ids, ',');
+                    foreach (var opId in opIdArray)
+                    {
+                        var op = GetEntity(o => o.Id == opId);
+                        db.TFunOperatings.Delete(op);
+                    }
+                    LogHelper.Debug("删除操作事务执行成功！");
+                    tran.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    LogHelper.Error("删除操作事务执行失败：", ex);
+                    return false;
+                }
+                finally
+                {
+                    if (db.Connection.State != ConnectionState.Closed)
+                    {
+                        db.Connection.Close();
+                    }
+                }
+            }
+        }
+
+
+        #endregion
+
     }
+
 }

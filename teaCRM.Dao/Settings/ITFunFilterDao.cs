@@ -27,6 +27,13 @@ namespace teaCRM.Dao
             IDictionary<string, teaCRM.Entity.teaCRMEnums.OrderEmum> orders,
             Expression<Func<TFunFilter, bool>> predicate);
 
+
+
+
+
+
+
+        bool DeleteMoreEntity(string ids);
         #endregion
     }
 }

@@ -45,6 +45,14 @@ namespace teaCRM.Service.CRM
 
 
         /// <summary>
+        /// 获取一条客户信息
+        /// </summary>
+        /// <param name="compNum"></param>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
+        DataTable GetCustomer(string compNum, int customerId);
+
+        /// <summary>
         /// 获取联系人信息列表 2014-09-01 14:58:50 By 唐有炜
         /// </summary>
         /// <param name="compNum">企业编号</param>
@@ -73,6 +81,13 @@ namespace teaCRM.Service.CRM
 
 
         /// <summary>
+        /// 获取客户操作 2014-08-29 14:58:50 By 唐有炜
+        /// </summary>
+        /// <param name="compNum">公司编号</param>
+        /// <returns></returns>
+        List<TFunOperating> GetCustomerOperating(string compNum);
+
+        /// <summary>
         /// 添加客户信息 2014-08-30 14:58:50 By 唐有炜
         /// </summary>
         /// <param name="cusInfo">客户信息</param>
@@ -80,23 +95,23 @@ namespace teaCRM.Service.CRM
         /// <returns></returns>
         bool AddCustomer( ZCusInfo cusInfo, ZCusConInfo cusConInfo);
 
-        /// <summary>
-        /// 获取客户工具栏
-        /// </summary>
-        /// <returns></returns>
-        string GetCustomerMenu();
+//        /// <summary>
+//        /// 获取客户工具栏
+//        /// </summary>
+//        /// <returns></returns>
+//        string GetCustomerMenu();
 
-        /// <summary>
-        /// 获取跟进记录列表
-        /// </summary>
-        /// <returns></returns>
-        string GetFollowList();
-
-        /// <summary>
-        /// 获取跟进工具栏
-        /// </summary>
-        /// <returns></returns>
-        string GetFollowMenu();
+//        /// <summary>
+//        /// 获取跟进记录列表
+//        /// </summary>
+//        /// <returns></returns>
+//        string GetFollowList();
+//
+//        /// <summary>
+//        /// 获取跟进工具栏
+//        /// </summary>
+//        /// <returns></returns>
+//        string GetFollowMenu();
 
 
         /// <summary>

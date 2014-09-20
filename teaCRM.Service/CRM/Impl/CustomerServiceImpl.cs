@@ -38,20 +38,9 @@ namespace teaCRM.Service.CRM.Impl
         public ITFunExpandDao FunExpandDao { set; get; }
         public ITCusBaseDao CusBaseDao { set; get; }
         public ITFunFilterDao FunFilterDao { set; get; }
+      public  ITFunOperatingDao FunOperatingDao { set; get; }
 
         #region 获取筛选器树形列表
-//
-//        /// <summary>
-//        /// 获取筛选器树形列表
-//        /// </summary>
-//        /// <param name="compNum">客户编号</param>
-//        /// <returns></returns>
-//        public string GetFilterTreeData(string compNum)
-//        {
-//            var filterTreeData = CusInfoDao.GetFilterTreeData(compNum);
-//            return filterTreeData;
-//        }
-//
         /// <summary>
         /// 获取树形节点
         /// </summary>
@@ -106,6 +95,26 @@ namespace teaCRM.Service.CRM.Impl
         }
 
         #endregion
+
+
+
+        #region 获取一条客户信息
+
+        /// <summary>
+        /// 获取一条客户信息
+        /// </summary>
+        /// <param name="compNum"></param>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
+        public DataTable GetCustomer(string compNum, int customerId)
+        {
+            var count = 0;
+         return   CusInfoDao.GetCustomerLsit(compNum, new string[0], 1, 1, String.Format("id={0} AND comp_num={1}",customerId,compNum),
+               "id", out count);
+        }
+
+        #endregion
+
 
         #region 获取联系人信息列表 2014-08-29 14:58:50 By 唐有炜
 
@@ -179,6 +188,24 @@ namespace teaCRM.Service.CRM.Impl
 
         #endregion
 
+
+        #region 获取客户操作列表
+
+        /// <summary>
+        /// 获取客户操作列表 2014-08-29 14:58:50 By 唐有炜
+        /// </summary>
+        /// <param name="compNum">公司编号</param>
+        /// <returns></returns>
+        public List<TFunOperating> GetCustomerOperating(string compNum)
+        {
+            return FunOperatingDao.GetList(o=>o.CompNum==compNum&&o.MyappId==1);
+        }
+
+        #endregion
+
+
+
+
         #region 添加客户信息 2014-08-29 14:58:50 By 唐有炜
 
         /// <summary>
@@ -194,40 +221,40 @@ namespace teaCRM.Service.CRM.Impl
 
         #endregion
 
-        #region 获取客户工具栏
+//        #region 获取客户工具栏
+//
+//        public string GetCustomerMenu()
+//        {
+//            return
+//                @"{Items:[{type: 'button',text: '查看',icon: 'images/icon/75.png',disable: true,click: function () {view(4)}},{type: 'button',text: '新增',icon: 'images/icon/11.png',disable: true,click: function () {add(4)}},{type: 'button',text: '修改',icon: 'images/icon/33.png',disable: true,click: function () {edit(4)}},{type: 'button',text: '删除',icon: 'images/icon/12.png',disable: true,click: function () {del(4)}}]}";
+//        }
+//
+//        #endregion
 
-        public string GetCustomerMenu()
-        {
-            return
-                @"{Items:[{type: 'button',text: '查看',icon: 'images/icon/75.png',disable: true,click: function () {view(4)}},{type: 'button',text: '新增',icon: 'images/icon/11.png',disable: true,click: function () {add(4)}},{type: 'button',text: '修改',icon: 'images/icon/33.png',disable: true,click: function () {edit(4)}},{type: 'button',text: '删除',icon: 'images/icon/12.png',disable: true,click: function () {del(4)}}]}";
-        }
+//        #region 获取跟进记录列表
+//
+//        /// <summary>
+//        /// 获取跟进记录列表
+//        /// </summary>
+//        /// <returns></returns>
+//        public string GetFollowList()
+//        {
+//            return
+//                @"{'Rows':[{'id':4364,'Customer_id':61,'Customer_name':'长沙市雷立行电子科技有限公司','Follow':'直接挂电话了','Follow_date':'\/Date(1366871520000+0800)\/','Follow_Type_id':9,'Follow_Type':'电话跟进','department_id':2,'department_name':'优创科技','employee_id':2,'employee_name':'奇迹','isDelete':0,'Delete_time':null},{'id':4364,'Customer_id':61,'Customer_name':'长沙市雷立行电子科技有限公司','Follow':'约会去了','Follow_date':'\/Date(1366871520000+0800)\/','Follow_Type_id':9,'Follow_Type':'电话跟进','department_id':2,'department_name':'优创科技','employee_id':2,'employee_name':'奇迹','isDelete':0,'Delete_time':null},{'id':4364,'Customer_id':61,'Customer_name':'长沙市雷立行电子科技有限公司','Follow':'上厕所了','Follow_date':'\/Date(1366871520000+0800)\/','Follow_Type_id':9,'Follow_Type':'电话跟进','department_id':2,'department_name':'优创科技','employee_id':2,'employee_name':'奇迹','isDelete':0,'Delete_time':null},{'id':4364,'Customer_id':61,'Customer_name':'长沙市雷立行电子科技有限公司','Follow':'吃饭去了','Follow_date':'\/Date(1366871520000+0800)\/','Follow_Type_id':9,'Follow_Type':'电话跟进','department_id':2,'department_name':'优创科技','employee_id':2,'employee_name':'奇迹','isDelete':0,'Delete_time':null},{'id':4364,'Customer_id':61,'Customer_name':'长沙市雷立行电子科技有限公司','Follow':'吃饭去了','Follow_date':'\/Date(1366871520000+0800)\/','Follow_Type_id':9,'Follow_Type':'电话跟进','department_id':2,'department_name':'优创科技','employee_id':2,'employee_name':'奇迹','isDelete':0,'Delete_time':null},{'id':4364,'Customer_id':61,'Customer_name':'长沙市雷立行电子科技有限公司','Follow':'吃饭去了','Follow_date':'\/Date(1366871520000+0800)\/','Follow_Type_id':9,'Follow_Type':'电话跟进','department_id':2,'department_name':'优创科技','employee_id':2,'employee_name':'奇迹','isDelete':0,'Delete_time':null},{'id':4364,'Customer_id':61,'Customer_name':'长沙市雷立行电子科技有限公司','Follow':'吃饭去了','Follow_date':'\/Date(1366871520000+0800)\/','Follow_Type_id':9,'Follow_Type':'电话跟进','department_id':2,'department_name':'优创科技','employee_id':2,'employee_name':'奇迹','isDelete':0,'Delete_time':null}],'Total':'7'}"
+//                    .Replace("'", "\"");
+//        }
+//
+//        #endregion
 
-        #endregion
-
-        #region 获取跟进记录列表
-
-        /// <summary>
-        /// 获取跟进记录列表
-        /// </summary>
-        /// <returns></returns>
-        public string GetFollowList()
-        {
-            return
-                @"{'Rows':[{'id':4364,'Customer_id':61,'Customer_name':'长沙市雷立行电子科技有限公司','Follow':'直接挂电话了','Follow_date':'\/Date(1366871520000+0800)\/','Follow_Type_id':9,'Follow_Type':'电话跟进','department_id':2,'department_name':'优创科技','employee_id':2,'employee_name':'奇迹','isDelete':0,'Delete_time':null},{'id':4364,'Customer_id':61,'Customer_name':'长沙市雷立行电子科技有限公司','Follow':'约会去了','Follow_date':'\/Date(1366871520000+0800)\/','Follow_Type_id':9,'Follow_Type':'电话跟进','department_id':2,'department_name':'优创科技','employee_id':2,'employee_name':'奇迹','isDelete':0,'Delete_time':null},{'id':4364,'Customer_id':61,'Customer_name':'长沙市雷立行电子科技有限公司','Follow':'上厕所了','Follow_date':'\/Date(1366871520000+0800)\/','Follow_Type_id':9,'Follow_Type':'电话跟进','department_id':2,'department_name':'优创科技','employee_id':2,'employee_name':'奇迹','isDelete':0,'Delete_time':null},{'id':4364,'Customer_id':61,'Customer_name':'长沙市雷立行电子科技有限公司','Follow':'吃饭去了','Follow_date':'\/Date(1366871520000+0800)\/','Follow_Type_id':9,'Follow_Type':'电话跟进','department_id':2,'department_name':'优创科技','employee_id':2,'employee_name':'奇迹','isDelete':0,'Delete_time':null},{'id':4364,'Customer_id':61,'Customer_name':'长沙市雷立行电子科技有限公司','Follow':'吃饭去了','Follow_date':'\/Date(1366871520000+0800)\/','Follow_Type_id':9,'Follow_Type':'电话跟进','department_id':2,'department_name':'优创科技','employee_id':2,'employee_name':'奇迹','isDelete':0,'Delete_time':null},{'id':4364,'Customer_id':61,'Customer_name':'长沙市雷立行电子科技有限公司','Follow':'吃饭去了','Follow_date':'\/Date(1366871520000+0800)\/','Follow_Type_id':9,'Follow_Type':'电话跟进','department_id':2,'department_name':'优创科技','employee_id':2,'employee_name':'奇迹','isDelete':0,'Delete_time':null},{'id':4364,'Customer_id':61,'Customer_name':'长沙市雷立行电子科技有限公司','Follow':'吃饭去了','Follow_date':'\/Date(1366871520000+0800)\/','Follow_Type_id':9,'Follow_Type':'电话跟进','department_id':2,'department_name':'优创科技','employee_id':2,'employee_name':'奇迹','isDelete':0,'Delete_time':null}],'Total':'7'}"
-                    .Replace("'", "\"");
-        }
-
-        #endregion
-
-        #region 获取跟进工具栏
-
-        public string GetFollowMenu()
-        {
-            return
-                @"{Items:[{type: 'button',text: '新增跟进',icon: 'images/icon/11.png',disable: true,click: function () {addfollow(6)}},{type: 'button',text: '修改跟进',icon: 'images/icon/33.png',disable: true,click: function () {editfollow(6)}},{type: 'button',text: '删除跟进',icon: 'images/icon/12.png',disable: true,click: function () {delfollow(6)}}]}";
-        }
-
-        #endregion
+//        #region 获取跟进工具栏
+//
+//        public string GetFollowMenu()
+//        {
+//            return
+//                @"{Items:[{type: 'button',text: '新增跟进',icon: 'images/icon/11.png',disable: true,click: function () {addfollow(6)}},{type: 'button',text: '修改跟进',icon: 'images/icon/33.png',disable: true,click: function () {editfollow(6)}},{type: 'button',text: '删除跟进',icon: 'images/icon/12.png',disable: true,click: function () {delfollow(6)}}]}";
+//        }
+//
+//        #endregion
 
         #region 验证手机号是否存在 2014-09-01 14:58:50 By 唐有炜
 

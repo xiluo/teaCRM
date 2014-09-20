@@ -1,3 +1,4 @@
+@using System.Data
 @{
      //客户扩展字段信息
     var customerFields = (List
@@ -7,6 +8,8 @@
     var contactFields = (List
     <teaCRM.Entity.TFunExpand>
     ) ViewBag.ContactExpandFields;
+    //当前客户信息
+    var customer = (DataTable)ViewBag.Customer;
     Layout = null;
 }
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -134,7 +137,7 @@ table, td, tr, th {font-size: 9pt;}
 				<img style="margin-top: 17px;" src="/Themes/default/CRM/images/c_google.jpg"></a> 
 				
 				<span style="float: right;line-height:46px;"> 
-				<a href="javascript:void(0)" class="view_doedit" title="编辑">编辑</a> 
+				<a href="javascript:void(0)" class="view_doedit" title="编辑">编辑 @ViewBag.CustomerId</a> 
 				<a href="javascript:void(0)" class="view_dobelong" title="转移归属">归属</a> 
 				<a href="javascript:void(0)" class="view_doshare" title="共享">共享</a> 
 				<a href="javascript:void(0)" class="view_doputsea" title="放入公海">公海</a>
@@ -151,19 +154,23 @@ table, td, tr, th {font-size: 9pt;}
       <th width="60">客户分类</th>
       <td width="220">集团客户</td>
 	  </table>-->
-	  <ul class="">
-	  <li><b>客户编号：</b>100000023145</li>
-	  <li><b>助记名称：</b>郑州优创科技</li>
-	  <li><b>跟踪进度：</b> <font color="#0000FF">意向客户跟进中</font></li>
-	  <li><b>客户类别：</b>集团大公司客户</li>
-	  <li><b>办公电话/手机：</b>0371-5662 6969</li>
-	  <li><b>详细地址：</b>西三环建设路南300米西湖东岸1-3-301户</li>
-	  <li><b>所属城市：</b>河南省-郑州市</li>
-	  <li><b>负责人：</b><font color="red">黄栾</font></li>
-	  <li><b>共享成员：</b>唐有炜,黄栾,王亚娟,马腾军,董平原</li>
-	  <li><b>添加时间：</b>2014-09-01 10:33</li>
-	  <div class="clearfix"></div>
-	  </ul>
+	        <ul class="">
+	            
+                
+                
+             @for (int i = 0; i < customer.Rows.Count; i++)
+            {
+                for (int j = 0; j < customer.Columns.Count; j++)
+                {
+                    var col = customer.Columns[j];
+                     <li><b>@col.ColumnName：</b>@customer.Rows[i][j]</li>
+                }
+
+            }
+
+	         
+	            <div class="clearfix"></div>
+	        </ul>
 	  	  <ul class="">
 	  <li><b>主联系人：</b>周传雄</li>
 	  <li><b>联系邮箱：</b>郑州优创科技</li>

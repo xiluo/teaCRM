@@ -67,7 +67,7 @@ function createTree(treeId) {
             var json_data = eval('(' + data + ')');
             for (var index in json_data) {
                 var tnode = json_data[index];
-                console.log(tnode);
+                //console.log(tnode);
                 var node = zTree.getNodeByParam("id", tnode.id, null);
                 zTree.expandNode(node, true, true, true);
             }
@@ -153,7 +153,7 @@ function InitGrid() {
 }
 
 function  load_grid_data(id) {
-    console.log("dep_id:" + id);
+    //console.log("dep_id:" + id);
     grid.bootgrid("search","dep_id="+id);
 
 }
@@ -169,7 +169,7 @@ function add() {
         }
         //var data = $(form_user).serializeObject();
         var data = $(form_user).serialize();
-        console.log((data));
+        //console.log((data));
         $.ajax({
             type: "post",
             cache: false,
@@ -205,8 +205,9 @@ function add() {
 }
 
 
-function edit() {
-    showWindow("show_edit", "/Apps/Settings/Users/Edit", "修改用户", 750, 345, function() {
+function edit(id) {
+    //console.log(id);
+    showWindow("show_edit", "/Apps/Settings/Users/Edit/"+id, "修改用户", 750, 345, function() {
         var form_user = $(window.frames["frm_show_edit"].document).find("#form_user");
         //console.log(form_role);
         var flag = document.getElementById("frm_show_edit").contentWindow.form_valid();
@@ -215,7 +216,7 @@ function edit() {
         }
         //var data = $(form_user).serializeObject();
         var data = $(form_user).serialize();
-        console.log((data));
+        //console.log((data));
           $.ajax({
             type: "post",
             cache: false,
@@ -250,7 +251,7 @@ function edit() {
 
 
 function del(id) {
-    console.log(id);
+    //console.log(id);
     showDialog("确认删除该用户吗？", function () {
 //        $.ajax({
 //            type: "get",

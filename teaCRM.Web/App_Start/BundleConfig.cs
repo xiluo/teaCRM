@@ -71,12 +71,14 @@ namespace teaCRM.Web
                 .Include("~/Themes/default/lib/zTree/js/jquery.ztree.core-3.5.min.js")
                 .Include("~/Themes/default/lib/zTree/js/jquery.ztree.excheck-3.5.min.js")
                 .Include("~/Themes/default/lib/zTree/js/jquery.ztree.exedit-3.5.min.js")
+                     .Include("~/Themes/default/lib/bootstrap/js/bootstrap-3.2.0.js")
                 .Include("~/Themes/default/lib/function.js")
                 
                 );
 
             bundles.Add(
                 new StyleBundle("~/Themes/default/css/cp.globle.min3.css")
+                       .Include("~/Themes/default/lib/bootstrap/css/bootstrap-3.2.0.css")
                     .Include("~/Themes/default/base/css/globle.css")
                     .Include("~/Themes/default/base/css/head.css")
                     .Include("~/Themes/default/base/css/foot.css")

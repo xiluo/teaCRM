@@ -103,9 +103,9 @@ namespace teaCRM.Service.Settings
         #endregion
 
         #region 删除操作
-        bool DeleteField(int? ids);
-        bool DeleteFilter(int? ids);
-        bool DeleteOperating(int? ids);
+        bool DeleteField(string ids);
+        bool DeleteFilter(string ids);
+        bool DeleteOperating(string ids);
         #endregion
 
         /// <summary>

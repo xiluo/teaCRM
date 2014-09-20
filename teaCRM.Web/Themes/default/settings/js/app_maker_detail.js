@@ -187,8 +187,21 @@ function init_view_grid() {
                 infos: "从{{ctx.start}} 到 {{ctx.end}}，共{{ctx.total}} 条记录"
             },
             formatters: {
+            "FilIsShow": function(column, row) {
+                if (!row.FilIsShow) {
+                    return "否";
+                } else {
+                    return "是";
+                }
+            }, "FilIsSys": function(column, row) {
+                if (!row.FilIsSys) {
+                    return "否";
+                } else {
+                    return "是";
+                }
+            },
                 "commands": function(column, row) {
-                    return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"edit_view()\"  title=\"修改\"><span class=\"glyphicon glyphicon-pencil\"></span></button>" +
+                    return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"edit_view("+row.Id+")\"  title=\"修改\"><span class=\"glyphicon glyphicon-pencil\"></span></button>" +
                         "<button type=\"button\" class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"del_view(" + row.Id + ");\" title=\"删除\" ><span class=\"glyphicon glyphicon-remove\"></span></button>";
                 }
             },
@@ -320,7 +333,7 @@ function add_field() {
         }
         //var data = $(form_field).serializeObject();
         var data = $(form_field).serialize();
-        console.log((data));
+        //console.log((data));
         $.ajax({
             type: "post",
             cache: false,
@@ -356,7 +369,7 @@ function add_field() {
 }
 
 function add_view() {
-    showWindow("show_add", "/Apps/Settings/AppMaker/EditView", "添加筛选器", 700, 220, function() {
+    showWindow("show_add", "/Apps/Settings/AppMaker/EditView/?myappId=" + myappId, "添加筛选器", 700, 220, function() {
         var form_view = $(window.frames["frm_show_add"].document).find("#form_view");
         //console.log(form_role);
         var flag = document.getElementById("frm_show_add").contentWindow.form_valid();
@@ -364,7 +377,7 @@ function add_view() {
             return false;
         }
         var data = $(form_view).serialize();
-        console.log((data));
+        //console.log((data));
         $.ajax({
             type: "post",
             cache: false,
@@ -409,7 +422,7 @@ function add_toolbar() {
         }
         //var data = $(form_user).serializeObject();
         var data = $(form_toolbar).serialize();
-        console.log((data));
+        //console.log((data));
         $.ajax({
             type: "post",
             cache: false,
@@ -456,7 +469,7 @@ function edit_field() {
         }
         //var data = $(form_field).serializeObject();
         var data = $(form_field).serialize();
-        console.log((data));
+        //console.log((data));
         $.ajax({
             type: "post",
             cache: false,
@@ -491,8 +504,8 @@ function edit_field() {
     return false;
 }
 
-function edit_view() {
-    showWindow("show_add", "/Apps/Settings/AppMaker/EditView", "修改筛选器", 700, 220, function() {
+function edit_view(id) {
+    showWindow("show_add", "/Apps/Settings/AppMaker/EditView/"+ id + "?myappId=" + myappId, "修改筛选器", 700, 220, function() {
         var form_view = $(window.frames["frm_show_add"].document).find("#form_view");
         //console.log(form_role);
         var flag = document.getElementById("frm_show_add").contentWindow.form_valid();
@@ -545,7 +558,7 @@ function edit_toolbar(id) {
         //var data = $(form_user).serializeObject();
         var data = $(form_toolbar).serialize();
 
-        console.log((data));
+        //console.log((data));
         $.ajax({
             type: "post",
             cache: false,
@@ -620,15 +633,14 @@ function del_field() {
     return false;
 }
 
-function del_view() {
-    //console.log(id);
-    var id = 0;
+function del_view(ids) {
+    //console.log(ids);
     showDialog("确认删除该筛选器吗？", function() {
         $.ajax({
             type: "get",
             cache: false,
             url: "/api/settings/appMaker/deleteFilter/",
-            data: { id: id },
+            data: { ids: ids },
             dataType: "json",
             beforeSend: function() {
                 //showMsg("添加中，请稍后...");
@@ -658,15 +670,14 @@ function del_view() {
     return false;
 }
 
-function del_toolbar() {
-    //console.log(id);
-    var id = 0;
+function del_toolbar(ids) {
+    //console.log(ids);
     showDialog("确认删除该操作吗？", function() {
         $.ajax({
             type: "get",
             cache: false,
             url: "/api/settings/appMaker/deleteOperating/",
-            data: { id: id },
+            data: { ids: ids },
             dataType: "json",
             beforeSend: function() {
                 //showMsg("添加中，请稍后...");

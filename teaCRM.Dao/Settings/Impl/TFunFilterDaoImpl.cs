@@ -250,6 +250,57 @@ namespace teaCRM.Dao.Impl
             }
         }
 
+
+
+
+
+        #region 批量删除
+
+        public bool DeleteMoreEntity(string ids)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                if (db.Connection.State != ConnectionState.Open)
+                {
+                    db.Connection.Open();
+                }
+                var tran = db.Connection.BeginTransaction();
+                try
+                {
+                    int[] filIdArray = Utils.StringToIntArray(ids, ',');
+                    foreach (var filId in filIdArray)
+                    {
+                        var fil = GetEntity(o => o.Id == filId);
+                        db.TFunFilters.Delete(fil);
+                    }
+                    LogHelper.Debug("删除筛选器事务执行成功！");
+                    tran.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    LogHelper.Error("删除筛选器事务执行失败：", ex);
+                    return false;
+                }
+                finally
+                {
+                    if (db.Connection.State != ConnectionState.Closed)
+                    {
+                        db.Connection.Close();
+                    }
+                }
+            }
+        }
+
+
+        #endregion
+
+
+
+
+
+
         /// <summary>
         /// 修改实体
         /// </summary>

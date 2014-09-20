@@ -11,14 +11,13 @@ var view_auth = false;
 
 $(document).ready(function() {
     createTree();
+    //加载客户、联系人、跟进信息
+    InitDataGrid();
 });
 
 
 $(function() {
-    //加载树形数据
-    //loadTreeData();
-    //加载客户、联系人、跟进信息
-    InitDataGrid();
+  
 });
 
 //ZTree==========================================================================
@@ -45,7 +44,7 @@ function createTree() {
                 if (!treeNode.isAjaxing) {
                     return true;
                 } else {
-                    alert("zTree 正在下载数据中，请稍后展开节点。。。");
+                    //alert("zTree 正在下载数据中，请稍后展开节点。。。");
                     return false;
                 }
             },
@@ -54,7 +53,7 @@ function createTree() {
 
             },
             onAsyncError: function() {
-                alert(" 数据加载失败");
+                //alert(" 数据加载失败");
             },
             onClick: function(event, treeId, treeNode, clickFlag) {
                 alert("你选中的节点数据：" + treeNode.id + " " + treeNode.name);
@@ -72,7 +71,7 @@ function createTree() {
             var json_data = eval('(' + data + ')');
             for (var index in json_data) {
                 var tnode = json_data[index];
-                console.log(tnode);
+                //console.log(tnode);
                 var treeObj = $.fn.zTree.getZTreeObj("filter_tree");
                 var node = treeObj.getNodeByParam("id", tnode.id, null);
                 treeObj.expandNode(node, true, true, true);
@@ -161,21 +160,24 @@ function f_openWindow(url, title, width, height) {
 }
 
 //查看客户信息
-function view() {
-    //    if (view_auth) {
-    //        var manager = $("#maingrid4").ligerGetGridManager();
-    //        var row = manager.getSelectedRow();
-    //        if (row) {
-    //            parent.jQuery.ligerDialog.open({ width: 770, height: 490, title: "客户详情", url: "CRM/Customer/Customer_info.aspx?cid=" + row.id, buttons: [{ text: '关闭', onclick: function(item, dialog) { dialog.close(); } }] });
-    //        } else {
-    //            $.ligerDialog.warn('请选择行！');
-    //        }
-    //    } else {
-    //        $.ligerDialog.warn('权限不够！');
-    //    }
+function view(id) {
 
-    showContentWindow("show_add", "/Apps/CRM/Index/Show/", "查看客户", 800, 480);
+        showContentWindow("show_add", "/Apps/CRM/Index/Show/" + id, "查看客户", 800, 480);
+
+
+    }
+
+function context_view() {
+    var manager = $("#maingrid4").ligerGetGridManager();
+        var row = manager.getSelectedRow();
+    console.log(row);
+     if (row) {
+         showContentWindow("show_add", "/Apps/CRM/Index/Show/" + row.id, "查看客户", 800, 480);
+     } else {
+         showMsg("请先选中客户！","Error");
+     } 
 }
+
 
 //添加客户
 function add() {
@@ -190,7 +192,7 @@ function add() {
             return false;
         }
         var data = $(form_customer).serialize();
-        console.log(data);
+        //console.log(data);
         //提交数据
         var url = "/Apps/CRM/Index/Add/";
         $.ajax({

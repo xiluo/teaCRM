@@ -26,6 +26,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         //扩展字段信息
         private List<TFunExpand> customerExpandFields = null;
         private List<TFunExpand> contactExpandFields = null;
+        private List<TFunOperating> customerOperatings = null; 
 
         #endregion
 
@@ -42,6 +43,10 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             //获取客户联系人扩展字段信息
             contactExpandFields =
                 CustomerService.GetContactExpandFields(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString());
+            //获取操作
+            customerOperatings =
+                CustomerService.GetCustomerOperating(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString());
+
         }
 
         #endregion
@@ -64,6 +69,9 @@ namespace teaCRM.Web.Controllers.Apps.CRM
                 //扩展字段
                 ViewBag.CustomerExpandFields = customerExpandFields;
                 ViewBag.ContactExpandFields = contactExpandFields;
+
+                //操作
+                ViewBag.CustomerOperatings = customerOperatings;
 
                 ViewBag.ConBack = ConBack;
                 ViewBag.ConIsPub = ConIsPub;
@@ -204,7 +212,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         // GET: /Apps/CRM/Index/Show/
         [UserAuthorize]
         [HttpGet]
-        public ActionResult Show()
+        public ActionResult Show(int id)
         {
             //初始化扩展字段
             Init();
@@ -218,6 +226,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             {
                 ViewBag.CustomerExpandFields = customerExpandFields;
                 ViewBag.ContactExpandFields = contactExpandFields;
+                ViewBag.Customer = CustomerService.GetCustomer(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(), id);
                 return View("CustomerShow");
             }
         }

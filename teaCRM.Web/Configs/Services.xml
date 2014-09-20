@@ -18,6 +18,8 @@
     <property name="FunExpandDao" ref="funExpandDao" />
     <property name="CusBaseDao" ref="cusBaseDao" />
     <property name="FunFilterDao" ref="funFilterDao" />
+    <property name="FunOperatingDao" ref="funOperatingDao" />
+    
   </object>
   <!--客户逻辑结束-->
 

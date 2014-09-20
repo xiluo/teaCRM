@@ -154,7 +154,7 @@ namespace teaCRM.Service.Settings.Impl
 
         public bool AddFilter(TFunFilter filter)
         {
-            return false;
+            return FunFilterDao.InsertEntity(filter);
         }
 
         public bool AddOperating(TFunOperating operating)
@@ -175,7 +175,7 @@ namespace teaCRM.Service.Settings.Impl
 
         public bool EditFilter(TFunFilter filter)
         {
-            return false;
+            return FunFilterDao.UpadateEntity(filter);
         }
 
         public bool EditOperating(TFunOperating operating)
@@ -188,19 +188,20 @@ namespace teaCRM.Service.Settings.Impl
 
         #region 删除操作
 
-        public bool DeleteField(int? ids)
+        public bool DeleteField(string ids)
         {
             return false;
         }
 
-        public bool DeleteFilter(int? ids)
+        public bool DeleteFilter(string ids)
         {
-            return false;
+            return FunFilterDao.DeleteMoreEntity(ids);
         }
 
-        public bool DeleteOperating(int? ids)
+        public bool DeleteOperating(string ids)
         {
-            return false;
+
+            return FunOperatingDao.DeleteMoreEntity(ids);
         }
 
         #endregion

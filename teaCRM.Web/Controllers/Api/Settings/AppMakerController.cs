@@ -429,10 +429,10 @@ namespace teaCRM.Web.Controllers.Api.Settings
         // POST /api/settings/appMaker/deleteField/
         // TFunExpand field
         [HttpGet]
-        public ResponseMessage DeleteField(int? id)
+        public ResponseMessage DeleteField(string ids)
         {
             ResponseMessage rmsg = new ResponseMessage();
-            if (AppMakerService.DeleteField(id))
+            if (AppMakerService.DeleteField(ids))
             {
                 rmsg.Status = true;
             }
@@ -450,10 +450,13 @@ namespace teaCRM.Web.Controllers.Api.Settings
         // POST /api/settings/appMaker/deleteFilter/
         // TFunFilter filter
         [HttpGet]
-        public ResponseMessage DeleteFilter(int? id)
+        public ResponseMessage DeleteFilter()
         {
             ResponseMessage rmsg = new ResponseMessage();
-            if (AppMakerService.DeleteFilter(id))
+            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"]; //获取传统context
+            HttpRequestBase request = context.Request; //定义传统request对象
+            string ids = request.Params.Get("ids");
+            if (AppMakerService.DeleteFilter(ids))
             {
                 rmsg.Status = true;
             }
@@ -467,13 +470,16 @@ namespace teaCRM.Web.Controllers.Api.Settings
         }
 
         //
-        // POST /api/settings/appMaker/deleteOperating/
+        // POST /api/settings/appMaker/eeleteOperating/
         // TFunOperating operating
         [HttpGet]
-        public ResponseMessage DeleteOperating(int? id)
+        public ResponseMessage DeleteOperating()
         {
             ResponseMessage rmsg = new ResponseMessage();
-            if (AppMakerService.DeleteOperating(id))
+            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"]; //获取传统context
+            HttpRequestBase request = context.Request; //定义传统request对象
+            string ids = request.Params.Get("ids");
+             if (AppMakerService.DeleteOperating(ids))
             {
                 rmsg.Status = true;
             }
@@ -540,7 +546,7 @@ namespace teaCRM.Web.Controllers.Api.Settings
 
         #endregion
 
-        #region 安装应用
+        #region 卸载应用
 
         // /api/settings/appMaker/unIstall?id=2&compNum=10000
         [HttpGet]

@@ -51,10 +51,15 @@ namespace teaCRM.Web.Controllers.Apps.Settings
 
         //
         // GET: /Apps/Settings/Users/Edit/
-        public ActionResult Edit(FormCollection fc)
+        public ActionResult Edit(FormCollection fc,int?id)
         {
             if (fc.Count == 0) //默认返回页面
             {
+                if (null!=id)
+                {
+                    ViewBag.Id = id;
+                }
+                //ViewBag
                 return View("UserEdit");
             }
             else //数据修改

@@ -84,7 +84,7 @@ function add() {
          }
          //var data = $(form_role).serializeObject();
          var data = $(form_role).serialize();
-         console.log((data));
+         //console.log((data));
          $.ajax({
              type: "post",
              cache: false,
@@ -121,7 +121,7 @@ function add() {
 
 function edit(id) {
     var url = "/Apps/Settings/Role/Edit/"+id;
-    console.log(id);
+    //console.log(id);
     showWindow("show_edit", url, "修改角色", 700, 240,function() {
         var form_role = $(window.frames["frm_show_edit"].document).find("#form_role");
         //console.log(form_role);
@@ -131,7 +131,7 @@ function edit(id) {
         }
         //var data = $(form_role).serializeObject();
         var data = $(form_role).serialize();
-        console.log((data));
+        //console.log((data));
         $.ajax({
             type: "post",
             cache: false,
@@ -151,7 +151,7 @@ function edit(id) {
                 if (status == true || status == "true" || status == "True") {
                     //刷新数据
                     grid.bootgrid("reload");
-                    console.log(grid);
+                    //console.log(grid);
                  
                     showMsg("角色修改成功！", "Success");
                 } else {
@@ -172,7 +172,7 @@ function edit(id) {
 }
 
 function del(id) {
-     console.log(id);
+     //console.log(id);
     showDialog("确认删除该角色吗？", function() {
         $.ajax({
             type: "get",

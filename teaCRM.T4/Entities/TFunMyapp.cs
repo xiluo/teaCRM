@@ -36,9 +36,9 @@ namespace teaCRM.Entity
 		[OneToMany(ThisKey="Id",OtherKey="MyappId")]
 		public IList<TFunExpand> TFunExpands { get;set; }
 		[OneToMany(ThisKey="Id",OtherKey="MyappId")]
-		public IList<TFunFilter> TFunFilters { get;set; }
-		[OneToMany(ThisKey="Id",OtherKey="MyappId")]
 		public IList<TFunOperating> TFunOperatings { get;set; }
+		[OneToMany(ThisKey="Id",OtherKey="MyappId")]
+		public IList<TFunFilter> TFunFilters { get;set; }
  
 	}
   

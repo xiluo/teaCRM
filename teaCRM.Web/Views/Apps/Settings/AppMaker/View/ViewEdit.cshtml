@@ -27,36 +27,36 @@
             });
 
             function load_form_data(id) {
-//                //alert(id);
-//                //提交数据
-//                var url = "/api/settings/role/geRolte/" + id;
-//                $.ajax({
-//                    type: "get",
-//                    cache: false,
-//                    url: url,
-//                    data: { id: id },
-//                    dataType: "json",
-//                    beforeSend: function () {
-//                        //showLoading();
-//                    },
-//                    complete: function () {
-//                        //hideLoading();
-//                    },
-//                    success: function (result) {
-//                        console.log(result);
-//                        for (var key in result) {
-//                            //alert(key + " " + result[key]);
-//                            if ($("#" + key) != undefined) {
-//                                $("#" + key).val(result[key]);
-//                            }
-//                        }
-//                        console.log("数据加载成功。");
-//                    },
-//                    error: function () {
-//                        console.log("数据加载失败。");
-//                        showMsg("服务器异常！");
-//                    }
-//                });
+                //alert(id);
+                //提交数据
+                var url = "/api/settings/appMaker/getView/" + id;
+                $.ajax({
+                    type: "get",
+                    cache: false,
+                    url: url,
+                    data: { id: id },
+                    dataType: "json",
+                    beforeSend: function () {
+                        //showLoading();
+                    },
+                    complete: function () {
+                        //hideLoading();
+                    },
+                    success: function (result) {
+                        console.log(result);
+                        for (var key in result) {
+                            //alert(key + " " + result[key]);
+                            if ($("#" + key) != undefined) {
+                                $("#" + key).val(result[key]);
+                            }
+                        }
+                        console.log("数据加载成功。");
+                    },
+                    error: function () {
+                        console.log("数据加载失败。");
+                        showMsg("服务器异常！");
+                    }
+                });
             }
 
 
@@ -109,6 +109,7 @@
                     <div tabindex="-1" id="msgprint" class="warning" style="position: fixed; width: 90%; display: none;">您的表单包含错误，请检查！</div>
             <form id="form_view">
                 <input type="hidden" id="Id" name="Id" value="@ViewBag.Id"/>
+                  <input type="hidden" id="MyappId" name="MyappId" value="@ViewBag.MyappId"/>
                 <!--当前公司id-->
                 <input type="hidden" id="CompNum" name="CompNum" value="@Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM]" />
                 <dl>
@@ -149,14 +150,22 @@
                      是否显示：
                     </dt>
                     <dd>
-                        <input type="checkbox" class="" id="ExpIsShow" name="ExpIsShow" />
+                        <select id="FilIsShow" name="FilIsShow"  class="form-control wid120 required">   
+                            <option value="1">是</option>     
+                            <option value="0" selected="selected">否</option>            
+                        </select>
+                       @* <input type="checkbox" class="" id="ExpIsShow" name="ExpIsShow" />*@
                     </dd>
                     <dt>
                       是否内置：
                     </dt>
-                    <dd>
-                        <input type="checkbox" class="" id="ExpIsSys" name="ExpIsSys" />
-                    </dd>
+                     <dd>
+                           <select id="FilIsSys" name="FilIsSys"  class="form-control wid120 required">   
+                            <option value="1">是</option>     
+                            <option value="0" selected="selected">否</option>            
+                        </select>
+                       @*  <input type="checkbox" class="" id="ExpIsSys" name="ExpIsSys" />*@
+                     </dd>
                 </dl>
            
             </form>

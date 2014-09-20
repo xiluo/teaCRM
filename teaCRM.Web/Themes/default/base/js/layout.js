@@ -6,10 +6,19 @@ $(document).ready(function() {
     sayHello();
 });
 
-$(function() {
+$(function () {
+
+
+
+
+
     //加载菜单
     load_menu();
 });
+
+
+
+
 
 //显示更多
 function showMore() {
@@ -71,7 +80,8 @@ function load_menu() {
             //d.close().remove();
         },
         success: function(result) {
-            var json_data = JSON.parse(result);
+            //var json_data = JSON.parse(result);
+            var json_data =eval("("+result+")");
             //alert(json_data.rows.length);
             //console.log(result);
             if (json_data.rows.length == 0) {
@@ -97,7 +107,7 @@ function load_menu() {
                 $(head_menu).append(" <li id=\"head-nav-Index\"><a href=\"/Apps/Index/\">应用</a></li><li id=\"head-nav-Settings\"><a href=\"/Apps/Settings/Department/\">设置</a></li><li id=\"head-nav-More\"><a href=\"javascript:void(0);\">更多</a></li>");
                 //后面的几个应用
                 for (var i = 1; i < json_data.rows.length; i++) {
-                    menu = json_data.rows[i];
+                   var menu = json_data.rows[i];
                     //console.log(menu);
                     var li_id = menu.AppLink.split("/")[menu.AppLink.split("/").length - 1];
                     $(more_menu).append("<li id=\"head-nav-" + li_id + "\"><a href=\"" + menu.AppLink + "\">" + menu.AppName + "</a></li>");
@@ -130,7 +140,8 @@ function load_sub_nav(menu_id, appId) {
             //d.close().remove();
         },
         success: function(result) {
-            var sub_json_data = JSON.parse(result);
+            //var sub_json_data = JSON.parse(result);
+            var sub_json_data = eval("("+result+")");
             //console.log(result);
             var sub_nav = $("#main-menu");
             var my_sub_nav = " <div id=\"sub-nav-" + menu_id + "\" class=\"head-nav-header2 hide\"><ul class=\"head-head-nav2\">";

@@ -104,42 +104,42 @@ namespace teaCRM.Web.Controllers.Apps.CRM
 
         #endregion
 
-        #region 获取客户工具栏
+//        #region 获取客户工具栏
+//
+//        //
+//        // GET: /Apps/CRM/LoadData/GetCustomerMenu/
+//        public string GetCustomerMenu()
+//        {
+//            return CustomerService.GetCustomerMenu();
+//        }
+//
+//        #endregion
 
-        //
-        // GET: /Apps/CRM/LoadData/GetCustomerMenu/
-        public string GetCustomerMenu()
-        {
-            return CustomerService.GetCustomerMenu();
-        }
-
-        #endregion
-
-        #region 获取跟进记录列表
-
-        //
-        // GET: /Apps/CRM/LoadData/GetFollowList/
-        public string GetFollowList(string CustomerNo)
-        {
-            if (String.IsNullOrEmpty(CustomerNo))
-            {
-                return "{\"Rows\":[],\"Total\":\"0\"}";
-            }
-            return CustomerService.GetFollowList();
-        }
-
-        #region 获取跟进记录工具栏
-
-        //
-        // GET: /Apps/CRM/LoadData/GetFollowMenu/
-        public string GetFollowMenu()
-        {
-            return CustomerService.GetFollowMenu();
-        }
-
-        #endregion
-
-        #endregion
+//        #region 获取跟进记录列表
+//
+//        //
+//        // GET: /Apps/CRM/LoadData/GetFollowList/
+//        public string GetFollowList(string CustomerNo)
+//        {
+//            if (String.IsNullOrEmpty(CustomerNo))
+//            {
+//                return "{\"Rows\":[],\"Total\":\"0\"}";
+//            }
+//            return CustomerService.GetFollowList();
+//        }
+//
+//        #region 获取跟进记录工具栏
+//
+//        //
+//        // GET: /Apps/CRM/LoadData/GetFollowMenu/
+//        public string GetFollowMenu()
+//        {
+//            return CustomerService.GetFollowMenu();
+//        }
+//
+//        #endregion
+//
+//        #endregion
 
         #region 放入回收站 2014-09-05 14:58:50 By 唐有炜
 

@@ -89,8 +89,17 @@ namespace teaCRM.Web.Controllers.Apps.Settings
         #region 扩展字段
         // /Apps/Settings/AppMaker/EditField
 
-        public ActionResult EditField()
+        public ActionResult EditField(int? id)
         {
+
+            if (null != id)
+            {
+                ViewBag.Id = id;
+            }
+            if (null != Request.QueryString["myappId"])
+            {
+                ViewBag.MyappId = Request.QueryString["myappId"];
+            }
             return View("Field/FieldEdit");
         }
 
@@ -100,8 +109,17 @@ namespace teaCRM.Web.Controllers.Apps.Settings
 
         #region 系统视图
         // /Apps/Settings/AppMaker/EditView
-        public ActionResult EditView()
+        public ActionResult EditView(int? id)
         {
+
+            if (null != id)
+            {
+                ViewBag.Id = id;
+            }
+            if (null != Request.QueryString["myappId"])
+            {
+                ViewBag.MyappId = Request.QueryString["myappId"];
+            }
             return View("View/ViewEdit");
         }
 

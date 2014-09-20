@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Http;
 using Newtonsoft.Json;
 using Spring.Context.Support;
+using teaCRM.Common;
 using teaCRM.Entity;
 using teaCRM.Service.Settings;
 using teaCRM.Web.Helpers;
@@ -110,8 +111,7 @@ namespace teaCRM.Web.Controllers.Api.Settings
         //id 1
         public TSysUser GetUser(int id)
         {
-//            return UserService.GetUser(id);
-            return null;
+            return UserService.GetUser(id);
         }
 
         #endregion
@@ -123,6 +123,7 @@ namespace teaCRM.Web.Controllers.Api.Settings
         public ResponseMessage AddUser([FromBody] TSysUser user)
         {
             ResponseMessage rmsg = new ResponseMessage();
+            
             if (UserService.AddUser(user))
             {
                 rmsg.Status = true;
@@ -145,14 +146,16 @@ namespace teaCRM.Web.Controllers.Api.Settings
         public ResponseMessage EditUser([FromBody] TSysUser user)
         {
             ResponseMessage rmsg = new ResponseMessage();
-//            if (UserService.UpdateUser(user))
-//            {
-//                rmsg.Status = true;
-//            }
-//            else
-//            {
-//                rmsg.Status = false;
-//            }
+            //密码加密
+            user.UserPassword = DESEncrypt.Encrypt(user.UserPassword);
+            if (UserService.UpdateUser(user))
+            {
+                rmsg.Status = true;
+            }
+            else
+            {
+                rmsg.Status = false;
+            }
 
 
             return rmsg;

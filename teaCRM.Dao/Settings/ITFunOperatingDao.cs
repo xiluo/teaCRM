@@ -31,5 +31,14 @@ namespace teaCRM.Dao
 
         #endregion
 
-	   }
+
+
+
+        #region 批量删除，通过id集合
+
+        bool DeleteMoreEntity(string ids);
+
+        #endregion
+
+}
 	   }
