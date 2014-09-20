@@ -201,9 +201,13 @@ function init_view_grid() {
                 }
             },
                 "commands": function(column, row) {
+                if (row.FilIsSys) {
+                      return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" style=\"color:wheat;\"  title=\"系统视图不可修改\"><span class=\"glyphicon glyphicon-pencil\"></span></button>" +
+                        "<button type=\"button\" class=\"btn btn-link btn-sm btn-cmd tip\"  style=\"color:wheat;\"   title=\"系统视图不可删除\" ><span class=\"glyphicon glyphicon-remove\"></span></button>";
+                }else{
                     return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"edit_view("+row.Id+")\"  title=\"修改\"><span class=\"glyphicon glyphicon-pencil\"></span></button>" +
                         "<button type=\"button\" class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"del_view(" + row.Id + ");\" title=\"删除\" ><span class=\"glyphicon glyphicon-remove\"></span></button>";
-                }
+              }  }
             },
 
 
@@ -295,8 +299,14 @@ function init_toolbar_grid() {
                     }
                 },
                 "commands": function(column, row) {
-                    return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"edit_toolbar(" + row.Id + ")\" title=\"修改\"><span class=\"glyphicon glyphicon-pencil\"></span></button>" +
+                if (row.OpeIsSys) {
+                   
+                     return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\"  style = \"color:wheat;\"  title=\"系统内置操作不可修改\"><span class=\"glyphicon glyphicon-pencil\"></span></button>" +
+                        "<button type=\"button\" class=\"btn btn-link btn-sm btn-cmd tip\"  style = \"color:wheat;\"  title=\"系统内置操作不可删除\"><span class=\"glyphicon glyphicon-remove\"></span></button>";
+                } else {
+                     return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"edit_toolbar(" + row.Id + ")\" title=\"修改\"><span class=\"glyphicon glyphicon-pencil\"></span></button>" +
                         "<button type=\"button\" class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"del_toolbar(" + row.Id + ")\" title=\"删除\")><span class=\"glyphicon glyphicon-remove\"></span></button>";
+                }
                 }
             },
 

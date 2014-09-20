@@ -103,7 +103,7 @@ function view(id) {
 function context_view() {
     var manager = $("#maingrid4").ligerGetGridManager();
     var row = manager.getSelectedRow();
-    console.log(row);
+    //console.log(row);
     if (row) {
         showContentWindow("show_add", "/Apps/CRM/Index/Show/" + row.id, "查看客户", 800, 480);
     } else {
@@ -173,7 +173,7 @@ function del() {
 function context_del() {
     var manager = $("#maingrid4").ligerGetGridManager();
     var row = manager.getSelectedRow();
-    console.log(row);
+    //console.log(row);
     if (row) {
         showDialog("确认删除吗？（超级管理员可在回收站恢复）", function() {
             $.ajax({

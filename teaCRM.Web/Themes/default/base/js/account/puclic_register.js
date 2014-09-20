@@ -31,7 +31,7 @@ $(function() {
                 }
             },
             userPassword: {
-                rangelength: [6, 20]
+                rangelength: [5, 20]
             },
             rePassword: {
                 equalTo: "#userPassword"
@@ -40,7 +40,7 @@ $(function() {
         messages: {
             userName: {
                 required: "用户名不能为空！",
-                rangelength: "用户名长度必须在6-20之间",
+                rangelength: "用户名长度必须在5-20之间",
                 remote: "对不起，该用户名已存在！"
             },
             userPhone: {
@@ -60,6 +60,7 @@ $(function() {
             var errorMsg = error[0].innerHTML;
             var elementName = element[0].name;
             //$("#" + elementName).formtip(errorMsg);
+            $("#" + elementName).css("width","97.5%").css("height","74%");
             showTips(false, $("#tips-" + elementName + " span"), errorMsg);
         },
         success: function(label) {

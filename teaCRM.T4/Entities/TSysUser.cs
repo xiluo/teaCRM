@@ -31,6 +31,8 @@ namespace teaCRM.Entity
 		public String UserQq { get;set; }
 		[Column("dep_id")]
 		public Int32 DepId { get;set; }
+		[Column("role_id")]
+		public Int32 RoleId { get;set; }
 		[Column("data_ids")]
 		public String DataIds { get;set; }
 		[Column("data_type")]
@@ -39,10 +41,10 @@ namespace teaCRM.Entity
 		public String UserPosition { get;set; }
 		[Column("user_jobstatus")]
 		public Int32? UserJobstatus { get;set; }
-		[Column("role_id")]
-		public Int32 RoleId { get;set; }
 		[Column("user_enable")]
 		public Int32 UserEnable { get;set; }
+		[Column("user_regDate")]
+		public DateTime? UserRegDate { get;set; }
  
 		[ManyToOne(ThisKey="DepId",OtherKey="Id")]
 		public TSysDepartment Dep { get;set; }
