@@ -59,7 +59,7 @@ function InitGrid() {
 
             },
             "commands": function (column, row) {
-                return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"refresh('/Apps/Settings/Permission');\" title=\"管理【" + row.RoleName + "】的权限\"><span class=\"glyphicon glyphicon-user\"></span></button>" +
+                return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"refresh('/Apps/Settings/Permission/Function/" + row.Id + "');\" title=\"管理【" + row.RoleName + "】的权限\"><span class=\"glyphicon glyphicon-user\"></span></button>" +
                 "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"edit(" + row.Id + ");\" title=\"修改【" + row.RoleName + "】角色\"><span class=\"glyphicon glyphicon-pencil\"></span></button>" +
                       "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"del(" + row.Id + ");\" title=\"删除【" + row.RoleName + "】角色\"><span class=\"glyphicon glyphicon-remove\"></span></button>";
             }

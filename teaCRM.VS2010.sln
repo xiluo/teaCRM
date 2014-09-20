@@ -13,6 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.3-teaCRM.Console", "teaCR
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.1-teaCRM,Docs", "0.1-teaCRM,Docs", "{4A42847F-8E70-4E34-9502-3A81B2507207}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 		teaCRM.Docs\CRM客户关系网站整体定位_0714.doc = teaCRM.Docs\CRM客户关系网站整体定位_0714.doc
 		LICENSE = LICENSE
 		teaCRM.Docs\long_logo.psd = teaCRM.Docs\long_logo.psd

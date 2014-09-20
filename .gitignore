@@ -29,3 +29,4 @@ _ReSharper*/
 Thumbs.db
 #Ignore files build by Visual Studio
 [Tt]est[Rr]esult*
+*/Log/*.html
