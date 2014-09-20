@@ -32,3 +32,5 @@ Thumbs.db
 */Log/*.html
 *.rar
 *.Publish.xml
+*.Debug.config
+*.Release.config
