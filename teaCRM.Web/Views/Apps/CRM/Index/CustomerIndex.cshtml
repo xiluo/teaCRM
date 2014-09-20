@@ -214,35 +214,7 @@
                 }
             }
         },
-        //{ display: '�����Ա', name: 'con_team', width: 80, align: 'center' },
-        /* { display: '�Ƿ񹫺�', name: 'con_is_pub', width: 60, render: function (item) {
-                        if (item.con_is_pub == 0) {
-                            return "��";
-                        } else {
-                            return "��";
-                        }
-                    } 
-                    },
-                    { display: '�Ƿ����վ', name: 'con_back', width: 60, render: function (item) {
-                        if (item.con_back == 0) {
-                            return "��";
-                        } else {
-                            return "��";
-                        }
-                    } 
-                    },
-                    */
-        /* {
-                display: '������',
-                name: 'lastfollow',
-                width: 90,
-                render: function(item) {
-                var lastfollow = formatTimebytype(item.lastfollow, 'yyyy-MM-dd');
-                if (lastfollow == "1900-01-01")
-                lastfollow = "";
-                return lastfollow;
-                }
-                },*/
+    
 
         @*客户扩展字段*@
         @foreach (var customerField in customerFields)
@@ -255,45 +227,18 @@
             }
             var culmonString = String.Format(" {{ display: '{0}', name: '{1}', width: 100,{2}}},", customerField.ExpTitle, customerField.ExpName, render);
             @Html.Raw(culmonString)
-            ;
         }
 
-        //{
-//                        display: '��ע',
-//                        name: 'cus_note',
-//                        width: 60,
-//                        render: function(item) {
-//                            if (item.cus_note == "") {
-//                                return "��δ��д";
-//                            } else {
-//                                return item.cus_note;
-//                            }
-//                        }
-//                    },
         {
             display: '创建时间',
                 name:
             'cus_createTime',
-                width:
-            100
-            //                ,render: function(item) {
-            //                    var cus_createTime = formatTimebytype(item.cus_createTime, 'yyyy-MM-dd');
-            //                    return cus_createTime;
-            //                }
+                width:100
         }
         ],
         onBeforeShowData: function(grid, data) {
             startTime = new Date();
         },
-
-        //fixedCellHeight:false,
-//                onSelectRow: function(data, rowindex, rowobj) {
-//                    var manager = $("#maingrid5").ligerGetGridManager();
-//                    manager.showData({ Rows: [], Total: 0 });
-//                    //var url = "../../data/CRM_Follow.ashx?Action=grid&customer_id=" + data.id;
-//                    var url = "/Apps/CRM/LoadData/GetFollowList/?Action=grid&CustomerNo=cc4ff7e8-86ea-43e8-a618-786f6718ac44";
-//                    manager.GetDataByURL(url);
-//                },
         dataAction: 'server',
             pageSize:
         16,
@@ -313,20 +258,14 @@
             onContextmenu:
 
         function(parm, e) {
-            actionCustomerID = parm.data.id;
-            menu.show({ top: e.pageY, left: e.pageX });
+             menu.show({ top: e.pageY, left: e.pageX });
             return false;
         },
         onAfterShowData: function(grid) {
-            $("tr[rowtype='已成交']").addClass("l-treeleve1").removeClass("l-grid-row-alt");
-
             var nowTime = new Date();
-            //showMsg('加载数据耗时：' + (nowTime - startTime));
+            showMsg('数据加载成功，耗时：' + (nowTime - startTime)+"毫秒！","Success");
 
         },
-//        onDblClickRow: function(data, rowindex, rowobj) {
-//            view();
-//        },
         detail: {
             onShowDetail: function(r, p) {
                 for (var n in r) {
@@ -427,163 +366,36 @@
             }
         }
         });
-//            $("#maingrid5").ligerGrid({
-//                columns: [
-//                    { display: '���', width: 40, render: function(item, i) { return i + 1; } },
-//                    {
-//                        display: '��������',
-//                        name: 'Follow',
-//                        align: 'left',
-//                        width: 590,
-//                        render: function(item) {
-//                            var html = "<div class='abc'>";
-//                            if (item.Follow)
-//                                html += item.Follow;
-//                            html += "</div>";
-//                            return html;
-//                        }
-//                    },
-//                    {
-//                        display: '����ʱ��',
-//                        name: 'Follow_date',
-//                        width: 140,
-//                        render: function(item) {
-//                            return formatTimebytype(item.Follow_date, 'yyyy-MM-dd hh:mm');
-//                        }
-//                    },
-//                    { display: '������ʽ', name: 'Follow_Type', width: 60 },
-//                    {
-//                        display: '������',
-//                        name: '',
-//                        width: 100,
-//                        render: function(item) {
-//                            return item.department_name + "." + item.employee_name;
-//                        }
-//                    }
-//                ],
-//                onAfterShowData: function(grid) {
-//
-//                },
-//
-//                dataAction: 'server',
-//                pageSize: 30,
-//                pageSizeOptions: [20, 30, 50, 100],
-//                //checkbox:true,
-//                url: "/Apps/CRM/LoadData/GetFollowList/?Action=grid&CustomerNo=",
-//                width: '100%',
-//                height: '100%',
-//                //title: "������Ϣ",
-//                heightDiff: -1,
-//                onRClickToSelect: true,
-//                onContextmenu: function(parm, e) {
-//                    actionCustomerID = parm.data.id;
-//                    menu1.show({ top: e.pageY, left: e.pageX });
-//                    return false;
-//                }
-//            });
+
 
         $("#grid").height(document.documentElement.clientHeight - 172);
-
-        //$('form').ligerForm();
-        //initSerchForm();
-        toolbar();
-        //toolbar1();
+           toolbar();
 
     }
 
-        function toolbar() {
-//         
+      
+      
 
-                var cmenu = "{Items:[{type: 'button',text: '查看',icon: 'images/icon/75.png',disable: true,click: function () {context_view()}},{type: 'button',text: '新增',icon: 'images/icon/11.png',disable: true,click: function () {add()}},{type: 'button',text: '修改',icon: 'images/icon/33.png',disable: true,click: function () {context_view()}},{type: 'button',text: '删除',icon: 'images/icon/12.png',disable: true,click: function () {del()}}]}";
-                var data = eval("(" + cmenu + ")");
-                var items = [];
-                var arr = data.Items;
-                for (var i = 0; i < arr.length; i++) {
-                    if (arr[i].text == '查看' && arr[i].disable) view_auth = true;
-                    arr[i].icon = "../../" + arr[i].icon;
-                    items.push(arr[i]);
-                }
-                items.push({
-                    type: 'serchbtn',
-                    text: '高级搜索',
+function toolbar() {
 
-                    icon: '../../images/search.gif',
-                    disable: true,
-                    click: function() {
-                        serchpanel();
-                    }
-                });
-                $("#toolbar").ligerToolBar({
-                    items: items
+    var cmenu = "{Items:[{type: 'button',text: '查看',icon: 'images/icon/75.png',disable: true,click: function () {context_view()}},{type: 'button',text: '新增',icon: 'images/icon/11.png',disable: true,click: function () {add()}},{type: 'button',text: '修改',icon: 'images/icon/33.png',disable: true,click: function () {context_view()}},{type: 'button',text: '删除',icon: 'images/icon/12.png',disable: true,click: function () {context_del()}}]}";
+    var data = eval("(" + cmenu + ")");
+    var items = [];
+    var arr = data.Items;
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i].text == '查看' && arr[i].disable) view_auth = true;
+        arr[i].icon = "../../" + arr[i].icon;
+        items.push(arr[i]);
+    }
 
-                });
-                menu = $.ligerMenu({
-                    width: 120,
-                    items: getMenuItems(data)
-                });
+    menu = $.ligerMenu({
+        width: 120,
+        items: getMenuItems(data)
+    });
 
-            //});
-            $.get("/Apps/CRM/LoadData/GetFollowMenu/?Action=GetSys&mid=6&rnd=" + Math.random(), function(reault, textStatus) {
-                //alert(reault);
-                //return;
-                var data = eval("(" + reault + ")");
-                var items = [];
-                var arr = data.Items;
-                for (var i = 0; i < arr.length; i++) {
-                    arr[i].icon = "../../" + arr[i].icon;
-                    items.push(arr[i]);
-                }
-                $("#toolbar1").ligerToolBar({
-                    items: items
 
-                });
-                menu1 = $.ligerMenu({
-                    width: 120,
-                    items: getMenuItems(data)
-                });
+}
 
-                $("#maingrid4").ligerGetGridManager().onResize();
-                //$("#maingrid5").ligerGetGridManager().onResize();
-            });
-        }
-
-        //function initSerchForm() {
-//            var a = $('#T_City').ligerComboBox({ width: 96 });
-//            var b = $('#T_Provinces').ligerComboBox({
-//                width: 97,
-//                url: "../../data/Param_City.ashx?Action=combo1&rnd=" + Math.random(),
-//                onSelected: function(newvalue) {
-//                    $.get("../../data/Param_City.ashx?Action=combo2&pid=" + newvalue + "&rnd=" + Math.random(), function(data, textStatus) {
-//                        a.setData(eval(data));
-//                    });
-//                }
-//            });
-//            var c = $('#customertype').ligerComboBox({ width: 97, url: "../../data/Param_SysParam.ashx?Action=combo&parentid=1&rnd=" + Math.random() });
-//            var d = $('#customerlevel').ligerComboBox({ width: 96, url: "../../data/Param_SysParam.ashx?Action=combo&parentid=2&rnd=" + Math.random() });
-//
-//            var d = $('#industry').ligerComboBox({ width: 120, url: "../../data/Param_SysParam.ashx?Action=combo&parentid=8&rnd=" + Math.random() });
-//            var e = $('#employee').ligerComboBox({ width: 96 });
-//            var f = $('#department').ligerComboBox({
-//                width: 97,
-//                selectBoxWidth: 240,
-//                selectBoxHeight: 200,
-//                valueField: 'id',
-//                textField: 'text',
-//                treeLeafOnly: false,
-//                tree: {
-//                    url: '../../data/hr_department.ashx?Action=tree&rnd=' + Math.random(),
-//                    idFieldName: 'id',
-//                    parentIDFieldName: 'pid',
-//                    checkbox: false
-//                },
-//                onSelected: function(newvalue) {
-//                    $.get("../../data/hr_employee.ashx?Action=combo&did=" + newvalue + "&rnd=" + Math.random(), function(data, textStatus) {
-//                        e.setData(eval(data));
-//                    });
-//                }
-//            });
-        //}
-        //=========================================================================
     </script>
     <!--本页面js-->
 <script src="/Themes/default/CRM/js/customer_index.js" type="text/javascript"></script>

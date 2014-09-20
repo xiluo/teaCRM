@@ -213,13 +213,13 @@ function hideLoading() {
 
 
 //=================================
-//获取bootgrid选中id 14-09-18 By 唐有炜
+//获取bootgrid选中id(兼容LierUI自定义checkbox) 14-09-18 By 唐有炜
 function get_selected_ids(grid_id) {
     var c = document.getElementById(grid_id).getElementsByTagName("input");
     var ids = "";
     var rowIds = [];
     for (var i = 0; i < c.length; i++) {
-        if (c[i].type == "checkbox" && c[i].checked && c[i].value != "all") {
+        if (c[i].type == "checkbox" && c[i].checked && c[i].value != "all" && c[i].value != "on") {
             rowIds.push(c[i].value);
         }
     }

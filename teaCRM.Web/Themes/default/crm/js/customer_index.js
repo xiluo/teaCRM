@@ -13,6 +13,8 @@ $(document).ready(function() {
     createTree();
     //加载客户、联系人、跟进信息
     InitDataGrid();
+
+
 });
 
 
@@ -146,7 +148,7 @@ function add() {
                     //在iframe里面打开弹出框并自动关闭
                     showMsg(result.Msg, "Success");
                     //刷新数据
-                    customer_reload();
+                    customer_grid_reload();
                 } else {
                     showMsg("系统异常！", "Error");
                 }
@@ -168,40 +170,12 @@ function del() {
     to_trash();
 }
 
-//删除（放入回收站）
-function to_trash() {
+function context_del() {
     var manager = $("#maingrid4").ligerGetGridManager();
     var row = manager.getSelectedRow();
+    console.log(row);
     if (row) {
-        //                $.ligerDialog.confirm("确定删除？", function(yes) {
-        //                    if (yes) {
-        //                        $.ajax({
-        //                            url: "../../data/CRM_Customer.ashx",
-        //                            type: "POST",
-        //                            data: { Action: "AdvanceDelete", id: row.id, rnd: Math.random() },
-        //                            success: function(result) {
-        //                                if (result == "true") {
-        //                                    f_reload();
-        //                                    f_followreload();
-        //                                } else if (result == "delfalse") {
-        //                                    top.$.ligerDialog.error('权限不够，删除失败！');
-        //                                } else if (result == "false") {
-        //                                    top.$.ligerDialog.error('未知错误，删除失败！');
-        //                                } else {
-        //                                    top.$.ligerDialog.warn('此客户下含有 ' + result + '，删除失败！请先先将这些数据放入回收站。');
-        //                                }
-        //
-        //                            },
-        //                            error: function() {
-        //                                top.$.ligerDialog.error('删除失败！');
-        //                            }
-        //                   });
-        //                    }
-        //                });
-        //showDialog(row.id);
         showDialog("确认删除吗？（超级管理员可在回收站恢复）", function() {
-
-
             $.ajax({
                 url: "/Apps/CRM/LoadData/ToTrash/",
                 cache: false,
@@ -211,7 +185,7 @@ function to_trash() {
                     var status = result.Status;
                     if (status == true || status == "true" || status == "True") {
                         showMsg("删除成功！", "Success");
-                        f_reload();
+                        customer_grid_reload();
                     } else {
                         showMsg("删除失败！", "Error");
                     }
@@ -224,24 +198,61 @@ function to_trash() {
 
 
     } else {
-        //$.ligerDialog.warn("请选择客户");
         showMsg("请选择客户！");
     }
+}
 
+//删除（放入回收站）
+function to_trash() {
+
+    var ids = get_selected_ids("maingrid4");
+    //alert(ids);
+
+    if (ids == "") { //未选中复选框，启动右键菜单
+
+        showMsg("请选择客户！");
+
+    } else {
+        showDialog("确认批量删除选中客户吗？（超级管理员可在回收站恢复）", function() {
+            $.ajax({
+                url: "/Apps/CRM/LoadData/ToTrash/",
+                cache: false,
+                type: "POST",
+                data: { ids: ids, rnd: Math.random() },
+                success: function(result) {
+                    var status = result.Status;
+                    if (status == true || status == "true" || status == "True") {
+                        showMsg("删除成功！", "Success");
+                        customer_grid_reload();
+                    } else {
+                        showMsg("删除失败！", "Error");
+                    }
+                },
+                error: function() {
+                    showMsg("操作失败！", "Error");
+                }
+            });
+        });
+
+    }
 
 }
 
+
 //放入公海
 function to_pub() {
-    var manager = $("#maingrid4").ligerGetGridManager();
-    var row = manager.getSelectedRow();
-    if (row) {
-        showDialog("确认放入公海吗？", function() {
+    var ids = get_selected_ids("maingrid4");
+    //alert(ids);
+
+    if (ids == "") { //未选中复选框，启动右键菜单
+        showMsg("请选择客户！");
+    } else {
+        showDialog("确认将选中客户批量放入公海吗？", function() {
             $.ajax({
                 url: "/Apps/CRM/LoadData/ToPub/",
                 cache: false,
                 type: "POST",
-                data: { cus_id: row.id, rnd: Math.random() },
+                data: { ids: ids, rnd: Math.random() },
                 success: function(result) {
                     var status = result.Status;
                     if (status == true || status == "true" || status == "True") {
@@ -256,13 +267,11 @@ function to_pub() {
                 }
             });
         });
-    } else {
-        showMsg("请选择客户！");
     }
 }
 
 //重新加载客户数据
-function customer_reload() {
+function customer_grid_reload() {
     var manager = $("#maingrid4").ligerGetGridManager();
     manager.loadData(true);
 };
