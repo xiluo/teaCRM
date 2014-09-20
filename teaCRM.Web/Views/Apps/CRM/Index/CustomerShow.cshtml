@@ -1,13 +1,9 @@
 @using System.Data
 @{
      //客户扩展字段信息
-    var customerFields = (List
-    <teaCRM.Entity.TFunExpand>
-    ) ViewBag.CustomerExpandFields;
+    var customerFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.CustomerExpandFields;
     //联系人扩展字段信息
-    var contactFields = (List
-    <teaCRM.Entity.TFunExpand>
-    ) ViewBag.ContactExpandFields;
+    var contactFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.ContactExpandFields;
     //当前客户信息
     var customer = (DataTable)ViewBag.Customer;
     Layout = null;
