@@ -129,8 +129,8 @@ function init_field_grid() {
                         return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" title=\"内置字段不可更改\" style=\"color: wheat;\"><span class=\"glyphicon glyphicon-pencil\"></span></button>" +
                             "<button type=\"button\" class=\"btn btn-link btn-sm btn-cmd tip\" title=\"内置字段不可删除\"  style=\"color: wheat;\"><span class=\"glyphicon glyphicon-remove\"></span></button>";
                     } else {
-                        return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"edit_field("+row.id+");\" title=\"修改【" + row.exp_title + "】字段\"><span class=\"glyphicon glyphicon-pencil\"></span></button>" +
-                            "<button type=\"button\" class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"del_field("+row.id+")\" title=\"删除【" + row.exp_title + "】字段\"><span class=\"glyphicon glyphicon-remove\"></span></button>";
+                        return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"edit_field(" + row.id + ");\" title=\"修改【" + row.exp_title + "】字段\"><span class=\"glyphicon glyphicon-pencil\"></span></button>" +
+                            "<button type=\"button\" class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"del_field(" + row.id + ")\" title=\"删除【" + row.exp_title + "】字段\"><span class=\"glyphicon glyphicon-remove\"></span></button>";
                     }
                 }
             },
@@ -141,17 +141,17 @@ function init_field_grid() {
             //按钮气泡
             $('.pop').popover({ html: true, trigger: "hover" });
             //showMsg("字段加载成功！", "Success");
-             $("#field-muti-del").on("click", (function() {
-        var ids = get_selected_ids("field_grid");
-        //console.log(ids);
-        if (ids == '') {
-            showMsg("请先选择应用在卸载！");
-            return;
-        }
-        //alert(ids);
-        del_field(ids);
-    }));
-  
+            $("#field-muti-del").on("click", (function() {
+                var ids = get_selected_ids("field_grid");
+                //console.log(ids);
+                if (ids == '') {
+                    showMsg("请先选择应用在卸载！");
+                    return;
+                }
+                //alert(ids);
+                del_field(ids);
+            }));
+
         });
 }
 
@@ -189,7 +189,7 @@ function init_view_grid() {
             formatters: {
                 "commands": function(column, row) {
                     return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"edit_view()\"  title=\"修改\"><span class=\"glyphicon glyphicon-pencil\"></span></button>" +
-                        "<button type=\"button\" class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"del_view("+row.Id+");\" title=\"删除\" ><span class=\"glyphicon glyphicon-remove\"></span></button>";
+                        "<button type=\"button\" class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"del_view(" + row.Id + ");\" title=\"删除\" ><span class=\"glyphicon glyphicon-remove\"></span></button>";
                 }
             },
 
@@ -202,17 +202,17 @@ function init_view_grid() {
             $('.pop').popover({ html: true, trigger: "hover" });
             //alert("loaded");
             //showMsg("视图加载成功！", "Success");
-              $("#view-muti-del").on("click", (function() {
-        var ids = get_selected_ids("view_grid");
-        //console.log(ids);
-        if (ids == '') {
-            showMsg("请先选择应用在卸载！");
-            return;
-        }
-        //alert(ids);
-        del_view(ids);
-    }));
-   
+            $("#view-muti-del").on("click", (function() {
+                var ids = get_selected_ids("view_grid");
+                //console.log(ids);
+                if (ids == '') {
+                    showMsg("请先选择应用在卸载！");
+                    return;
+                }
+                //alert(ids);
+                del_view(ids);
+            }));
+
         });
 }
 
@@ -248,6 +248,18 @@ function init_toolbar_grid() {
                 infos: "从{{ctx.start}} 到 {{ctx.end}}，共{{ctx.total}} 条记录"
             },
             formatters: {
+                "OpeIcon": function(column, row) {
+                    return "<span class=\"" + row.OpeIcon + "\"></span>";
+                },
+                "OpeType": function(column, row) {
+                    if (row.OpeType == "0") {
+                        return "弹出框";
+                    } else if (row.OpeType == "1") {
+                        return "提示框";
+                    } else {
+                        return "链接";
+                    }
+                },
                 "OpeIsSys": function(column, row) {
                     if (!row.OpeIsSys) {
                         return "否";
@@ -271,7 +283,7 @@ function init_toolbar_grid() {
                 },
                 "commands": function(column, row) {
                     return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"edit_toolbar(" + row.Id + ")\" title=\"修改\"><span class=\"glyphicon glyphicon-pencil\"></span></button>" +
-                        "<button type=\"button\" class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"del_toolbar("+row.Id+")\" title=\"删除\")><span class=\"glyphicon glyphicon-remove\"></span></button>";
+                        "<button type=\"button\" class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"del_toolbar(" + row.Id + ")\" title=\"删除\")><span class=\"glyphicon glyphicon-remove\"></span></button>";
                 }
             },
 
@@ -282,17 +294,17 @@ function init_toolbar_grid() {
             $('.tip').tooltip();
             //按钮气泡
             $('.pop').popover({ html: true, trigger: "hover" });
-        
-    $("#toolbar-muti-del").on("click", (function() {
-        var ids = get_selected_ids("toolbar_grid");
-        //console.log(ids);
-        if (ids == '') {
-            showMsg("请先选择应用在卸载！");
-            return;
-        }
-        //alert(ids);
-        del_toolbar(ids);
-    }));
+
+            $("#toolbar-muti-del").on("click", (function() {
+                var ids = get_selected_ids("toolbar_grid");
+                //console.log(ids);
+                if (ids == '') {
+                    showMsg("请先选择应用在卸载！");
+                    return;
+                }
+                //alert(ids);
+                del_toolbar(ids);
+            }));
         });
 }
 
@@ -344,14 +356,14 @@ function add_field() {
 }
 
 function add_view() {
- showWindow("show_add", "/Apps/Settings/AppMaker/EditView", "添加筛选器", 700, 220, function() {
+    showWindow("show_add", "/Apps/Settings/AppMaker/EditView", "添加筛选器", 700, 220, function() {
         var form_view = $(window.frames["frm_show_add"].document).find("#form_view");
         //console.log(form_role);
         var flag = document.getElementById("frm_show_add").contentWindow.form_valid();
         if (!flag) {
             return false;
         }
-         var data = $(form_view).serialize();
+        var data = $(form_view).serialize();
         console.log((data));
         $.ajax({
             type: "post",
@@ -388,7 +400,7 @@ function add_view() {
 }
 
 function add_toolbar() {
- showWindow("show_add", "/Apps/Settings/AppMaker/EditToolbar", "添加操作", 700, 200, function() {
+    showWindow("show_add", "/Apps/Settings/AppMaker/EditToolbar/?myappId=" + myappId, "添加操作", 750, 280, function() {
         var form_toolbar = $(window.frames["frm_show_add"].document).find("#form_toolbar");
         //console.log(form_role);
         var flag = document.getElementById("frm_show_add").contentWindow.form_valid();
@@ -397,7 +409,7 @@ function add_toolbar() {
         }
         //var data = $(form_user).serializeObject();
         var data = $(form_toolbar).serialize();
-       console.log((data));
+        console.log((data));
         $.ajax({
             type: "post",
             cache: false,
@@ -435,7 +447,7 @@ function add_toolbar() {
 
 //修改========================================================
 function edit_field() {
- showWindow("show_add", "/Apps/Settings/AppMaker/EditField", "修改自定义字段", 750, 345, function() {
+    showWindow("show_add", "/Apps/Settings/AppMaker/EditField", "修改自定义字段", 750, 345, function() {
         var form_field = $(window.frames["frm_show_add"].document).find("#form_field");
         //console.log(form_role);
         var flag = document.getElementById("frm_show_add").contentWindow.form_valid();
@@ -480,14 +492,14 @@ function edit_field() {
 }
 
 function edit_view() {
-showWindow("show_add", "/Apps/Settings/AppMaker/EditView", "修改筛选器", 700, 220, function() {
+    showWindow("show_add", "/Apps/Settings/AppMaker/EditView", "修改筛选器", 700, 220, function() {
         var form_view = $(window.frames["frm_show_add"].document).find("#form_view");
         //console.log(form_role);
         var flag = document.getElementById("frm_show_add").contentWindow.form_valid();
         if (!flag) {
             return false;
         }
-         var data = $(form_view).serialize();
+        var data = $(form_view).serialize();
         $.ajax({
             type: "post",
             cache: false,
@@ -522,8 +534,8 @@ showWindow("show_add", "/Apps/Settings/AppMaker/EditView", "修改筛选器", 70
     return false;
 }
 
-function edit_toolbar() {
-showWindow("show_add", "/Apps/Settings/AppMaker/EditToolbar", "修改操作", 700, 200, function() {
+function edit_toolbar(id) {
+    showWindow("show_add", "/Apps/Settings/AppMaker/EditToolbar/" + id + "?myappId=" + myappId, "修改操作", 750, 280, function() {
         var form_toolbar = $(window.frames["frm_show_add"].document).find("#form_toolbar");
         //console.log(form_role);
         var flag = document.getElementById("frm_show_add").contentWindow.form_valid();
@@ -571,22 +583,22 @@ showWindow("show_add", "/Apps/Settings/AppMaker/EditToolbar", "修改操作", 70
 
 //删除==============================================================
 function del_field() {
-  //console.log(id);
+    //console.log(id);
     var id = 0;
-    showDialog("确认删除该字段吗？", function () {
+    showDialog("确认删除该字段吗？", function() {
         $.ajax({
             type: "get",
             cache: false,
             url: "/api/settings/appMaker/deleteField/",
             data: { id: id },
             dataType: "json",
-            beforeSend: function () {
+            beforeSend: function() {
                 //showMsg("添加中，请稍后...");
             },
-            complete: function () {
+            complete: function() {
                 //d.close().remove();
             },
-            success: function (result) {
+            success: function(result) {
                 //toLowerCase报错
                 //var status = result.Status.toLowerCase();
                 var status = result.Status;
@@ -598,10 +610,10 @@ function del_field() {
                     showMsg("系统异常，字段删除失败！", "Error");
                 }
             },
-            error: function () {
+            error: function() {
                 showMsg("网络连接错误", "Error");
             }
-                });
+        });
         showMsg("系统异常，字段删除失败！", "Error");
     });
     //必须有这个，阻止刷新
@@ -609,22 +621,22 @@ function del_field() {
 }
 
 function del_view() {
-  //console.log(id);
+    //console.log(id);
     var id = 0;
-    showDialog("确认删除该筛选器吗？", function () {
+    showDialog("确认删除该筛选器吗？", function() {
         $.ajax({
             type: "get",
             cache: false,
             url: "/api/settings/appMaker/deleteFilter/",
             data: { id: id },
             dataType: "json",
-            beforeSend: function () {
+            beforeSend: function() {
                 //showMsg("添加中，请稍后...");
             },
-            complete: function () {
+            complete: function() {
                 //d.close().remove();
             },
-            success: function (result) {
+            success: function(result) {
                 //toLowerCase报错
                 //var status = result.Status.toLowerCase();
                 var status = result.Status;
@@ -636,10 +648,10 @@ function del_view() {
                     showMsg("系统异常，筛选器删除失败！", "Error");
                 }
             },
-            error: function () {
+            error: function() {
                 showMsg("网络连接错误", "Error");
             }
-                });
+        });
         showMsg("系统异常，筛选器删除失败！", "Error");
     });
     //必须有这个，阻止刷新
@@ -647,22 +659,22 @@ function del_view() {
 }
 
 function del_toolbar() {
-  //console.log(id);
+    //console.log(id);
     var id = 0;
-    showDialog("确认删除该操作吗？", function () {
+    showDialog("确认删除该操作吗？", function() {
         $.ajax({
             type: "get",
             cache: false,
             url: "/api/settings/appMaker/deleteOperating/",
             data: { id: id },
             dataType: "json",
-            beforeSend: function () {
+            beforeSend: function() {
                 //showMsg("添加中，请稍后...");
             },
-            complete: function () {
+            complete: function() {
                 //d.close().remove();
             },
-            success: function (result) {
+            success: function(result) {
                 //toLowerCase报错
                 //var status = result.Status.toLowerCase();
                 var status = result.Status;
@@ -674,10 +686,10 @@ function del_toolbar() {
                     showMsg("系统异常，操作删除失败！", "Error");
                 }
             },
-            error: function () {
+            error: function() {
                 showMsg("网络连接错误", "Error");
             }
-                });
+        });
         showMsg("系统异常，操作删除失败！", "Error");
     });
     //必须有这个，阻止刷新

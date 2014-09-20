@@ -265,7 +265,32 @@ namespace teaCRM.Web.Controllers.Api.Settings
         #endregion
 
 
+        #region 获取操作
 
+        // GET /api/settings/appMaker/getField/1
+        //id 1
+        public TFunExpand GetField(int id)
+        {
+            return AppMakerService.GetField(id);
+        }
+
+
+        // GET /api/settings/appMaker/getView/1
+        //id 1
+        public TFunFilter GetView(int id)
+        {
+            return AppMakerService.GetView(id);
+        }
+
+
+        // GET /api/settings/appMaker/getOperating/1
+        //id 1
+        public TFunOperating GetOperating(int id)
+        {
+            return AppMakerService.GetOperating(id);
+        }
+
+        #endregion
 
 
         #region 添加操作 14-09-11 By 唐有炜

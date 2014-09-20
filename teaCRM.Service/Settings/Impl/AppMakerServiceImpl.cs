@@ -121,7 +121,27 @@ namespace teaCRM.Service.Settings.Impl
         #endregion
 
 
+        #region 获取操作
 
+        public TFunExpand GetField(int id)
+        {
+            return FunExpandDao.GetEntity(e => e.Id == id);
+        }
+
+        public TFunFilter GetView(int id)
+        {
+            return FunFilterDao.GetEntity(f => f.Id == id);
+        }
+
+
+
+        public TFunOperating GetOperating(int id)
+        {
+            return FunOperatingDao.GetEntity(o=> o.Id == id);  
+        }
+
+
+        #endregion
 
 
 
@@ -139,7 +159,7 @@ namespace teaCRM.Service.Settings.Impl
 
         public bool AddOperating(TFunOperating operating)
         {
-            return false;
+            return FunOperatingDao.InsertEntity(operating);
         }
 
         #endregion
@@ -160,7 +180,7 @@ namespace teaCRM.Service.Settings.Impl
 
         public bool EditOperating(TFunOperating operating)
         {
-            return false;
+            return FunOperatingDao.UpadateEntity(operating);
         }
 
         #endregion

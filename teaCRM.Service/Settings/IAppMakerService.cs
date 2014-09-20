@@ -75,7 +75,18 @@ namespace teaCRM.Service.Settings
         /// <returns></returns>
         List<VMyappCompany> GetAllMyApps(string compNum, int appId);
 
+        #region 获取操作
 
+          TFunExpand GetField(int id);
+
+        TFunFilter GetView(int id);
+
+
+
+        TFunOperating GetOperating(int id);
+ 
+
+        #endregion
      
 
         #region 添加操作

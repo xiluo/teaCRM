@@ -109,8 +109,17 @@ namespace teaCRM.Web.Controllers.Apps.Settings
 
         #region 操作
         // /Apps/Settings/AppMaker/EditToolbar
-        public ActionResult EditToolbar()
+        public ActionResult EditToolbar(int? id)
         {
+
+            if (null != id)
+            {
+                ViewBag.Id = id;
+            }
+            if (null != Request.QueryString["myappId"])
+            {
+                ViewBag.MyappId = Request.QueryString["myappId"];
+            }
             return View("Toolbar/ToolbarEdit");
         }
         #endregion

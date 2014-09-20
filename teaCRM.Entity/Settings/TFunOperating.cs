@@ -21,6 +21,8 @@ namespace teaCRM.Entity
         public Int32? OpeType { get; set; }
         [Column("ope_name")]
         public String OpeName { get; set; }
+        [Column("ope_icon")]
+        public String OpeIcon { get; set; }
         [Column("ope_function")]
         public String OpeFunction { get; set; }
         [Column("ope_is_sys")]
