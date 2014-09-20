@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using teaCRM.Entity;
+using teaCRM.Entity.Settings;
 
 namespace teaCRM.Service.Settings
 {
@@ -74,6 +75,8 @@ namespace teaCRM.Service.Settings
         /// <returns></returns>
         List<VMyappCompany> GetAllMyApps(string compNum, int appId);
 
+
+     
 
         #region 添加操作
 

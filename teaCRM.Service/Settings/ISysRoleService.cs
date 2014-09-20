@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using teaCRM.Entity;
+using teaCRM.Entity.Settings;
 
 namespace teaCRM.Service.Settings
 {
@@ -24,6 +25,15 @@ namespace teaCRM.Service.Settings
         IEnumerable<TSysRole> GetRoleLsit(string compNum, int pageIndex, int pageSize, out int rowCount,
             IDictionary<string, teaCRM.Entity.teaCRMEnums.OrderEmum> orders,
             Expression<Func<TSysRole, bool>> predicate);
+
+
+        /// <summary>
+        /// 获取权限列表
+        /// </summary>
+        /// <param name="compNum"></param>
+        /// <returns></returns>
+        List<ZSysPermission> GetAllPermissions(string compNum);
+
 
 
         /// <summary>
@@ -56,6 +66,8 @@ namespace teaCRM.Service.Settings
         /// <param name="id">角色id</param>
         /// <returns></returns>
         bool DeleteRole(int id);
+
+
 
     }
 }

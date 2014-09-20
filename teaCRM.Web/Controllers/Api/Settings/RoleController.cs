@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using Spring.Context;
 using Spring.Context.Support;
 using teaCRM.Entity;
+using teaCRM.Entity.Settings;
 using teaCRM.Service.Settings;
 using teaCRM.Web.Helpers;
 
@@ -58,7 +59,7 @@ namespace teaCRM.Web.Controllers.Api.Settings
             if (!String.IsNullOrEmpty(searchPhrase))
             {
                 roles = RoleService.GetRoleLsit(compNum, current, rowCount, out total, orders,
-                    r =>r.CompNum==compNum&& r.RoleName.Contains(searchPhrase));
+                    r => r.CompNum == compNum && r.RoleName.Contains(searchPhrase));
             }
             else
             {
@@ -151,6 +152,22 @@ namespace teaCRM.Web.Controllers.Api.Settings
 
 
             return rmsg;
+        }
+
+        #endregion
+
+        #region 获取所有权限列表
+
+        // Get /api/settings/role/getAllPermissions
+        [HttpGet]
+        public string GetAllPermissions()
+        {
+            HttpContextBase context = (HttpContextBase) Request.Properties["MS_HttpContext"]; //获取传统context
+            HttpRequestBase request = context.Request; //定义传统request对象
+            string compNum = request.Params.Get("compNum");
+
+            List<ZSysPermission> permissions = RoleService.GetAllPermissions(compNum);
+            return JsonConvert.SerializeObject(permissions);
         }
 
         #endregion

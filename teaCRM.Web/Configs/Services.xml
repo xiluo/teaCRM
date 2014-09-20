@@ -40,6 +40,9 @@
   <object id="sysRoleService" type="teaCRM.Service.Settings.Impl.SysRoleServiceImpl, teaCRM.Service"
           singleton="false">
     <property name="SysRoleDao" ref="sysRoleDao" />
+    <property name="AppCompany" ref="appCompany" />
+    <property name="MyAppCompany" ref="myAppCompany" />
+    <property name="FunOperatingDao" ref="funOperatingDao" />
   </object>
   <!--角色逻辑结束-->
   <!--用户逻辑开始-->

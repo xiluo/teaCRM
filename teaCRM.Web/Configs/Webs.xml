@@ -61,7 +61,9 @@
     <property name="UserService" ref="sysUserService" />
   </object>
   <object id="permissionController" type="teaCRM.Web.Controllers.Apps.Settings.PermissionController, teaCRM.Web"
-          singleton="false" />
+          singleton="false" >
+    <property name="RoleService" ref="sysRoleService" />
+  </object>
   <object id="appMakerController" type="teaCRM.Web.Controllers.Apps.Settings.AppMakerController, teaCRM.Web"
           singleton="false" >
   </object>

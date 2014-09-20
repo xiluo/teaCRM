@@ -69,9 +69,6 @@
     <Compile Include="Basic\VCompanyUser.cs" />
     <Compile Include="Common\IZtree.cs" />
     <Compile Include="Common\KeyValue.cs" />
-    <Compile Include="Common\LigerTree.cs" />
-    <Compile Include="Common\LigerTree\DepartmentTree.cs" />
-    <Compile Include="Common\LigerTree\FilterTree.cs" />
     <Compile Include="Common\Node.cs" />
     <Compile Include="Common\ResponseMessage.cs" />
     <Compile Include="Common\teaCRMEnums.cs" />
@@ -87,6 +84,7 @@
     <Compile Include="Settings\VAppCompany.cs" />
     <Compile Include="Settings\VMyappCompany.cs" />
     <Compile Include="Settings\VSysDepartment.cs" />
+    <Compile Include="Settings\ZSysPermission.cs" />
     <Compile Include="teaCRMDBContext.cs" />
   </ItemGroup>
   <ItemGroup>

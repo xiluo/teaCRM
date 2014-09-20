@@ -9,6 +9,7 @@ using teaCRM.Common;
 using teaCRM.Dao;
 using teaCRM.Entity;
 using System.Linq.Dynamic;
+using teaCRM.Entity.Settings;
 
 namespace teaCRM.Service.Settings.Impl
 {
@@ -16,6 +17,10 @@ namespace teaCRM.Service.Settings.Impl
     {
         //角色注入
         public ITSysRoleDao SysRoleDao { set; get; }
+        public IVAppCompanyDao AppCompany { set; get; }
+        public IVMyappCompanyDao MyAppCompany { set; get; }
+        public ITFunOperatingDao FunOperatingDao { set; get; }
+        public List<ZSysPermission> SysPermissions = new List<ZSysPermission>();
 
         #region 获取角色信息列表 2014-08-29 14:58:50 By 唐有炜
 
@@ -49,7 +54,6 @@ namespace teaCRM.Service.Settings.Impl
 
         #endregion
 
-
         #region 获取单个角色信息
 
         /// <summary>
@@ -63,8 +67,6 @@ namespace teaCRM.Service.Settings.Impl
         }
 
         #endregion
-
-
 
         #region  修改角色信息 2014-09-10 14:58:50 By 唐有炜
 
@@ -104,6 +106,59 @@ namespace teaCRM.Service.Settings.Impl
         public bool DeleteRole(int id)
         {
             return SysRoleDao.DeleteEntity(d => d.Id == id);
+        }
+
+        #endregion
+
+        #region  获取权限列表
+
+        /// <summary>
+        /// 获取权限列表
+        /// </summary>
+        /// <param name="compNum"></param>
+        /// <returns></returns>
+        public List<ZSysPermission> GetAllPermissions(string compNum)
+        {
+            var apps = AppCompany.GetViewList(a => a.CompNum == compNum);
+
+            //遍历应用
+            foreach (var app in apps)
+            {
+                var tempApp = new ZSysPermission();
+                tempApp.Id = app.Id;
+                tempApp.AppId = app.AppId;
+                tempApp.AppName = app.AppName;
+                tempApp.AppType = app.AppType;
+                tempApp.CompNum = app.CompNum;
+
+
+                //遍历模块
+                var myapps = MyAppCompany.GetViewList(a => a.CompNum == compNum && a.AppId == tempApp.AppId);
+
+
+                List<ZFunMyApp> tempMyApps = new List<ZFunMyApp>();
+                foreach (var myapp in myapps)
+                {
+                    var tempMyApp = new ZFunMyApp();
+                    tempMyApp.Id = myapp.Id;
+                    tempMyApp.MyappName = myapp.MyappName;
+                    tempMyApp.ParentId = myapp.AppId;
+                    tempMyApp.MyappNote = myapp.MyappNote;
+
+                    //操作
+                tempMyApp.FunOperating=    FunOperatingDao.GetList(o => o.CompNum == compNum && o.MyappId == tempMyApp.Id);
+
+
+
+                    tempMyApps.Add(tempMyApp);
+                }
+                tempApp.FunMyApp = tempMyApps;
+
+                SysPermissions.Add(tempApp);
+            }
+
+
+            return SysPermissions;
         }
 
         #endregion
