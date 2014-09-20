@@ -252,7 +252,7 @@
                     },
                 onAfterShowData: function(grid) {
                     var nowTime = new Date();
-                    showMsg('数据加载成功，耗时：' + (nowTime - startTime)/1000 + "秒！", "Success");
+                    showMsg('数据加载成功，耗时：' + (nowTime - startTime) / 1000 + "秒！", "Success");
 
                 },
                 detail: {
@@ -364,8 +364,7 @@
 
 
         function toolbar() {
-
-            var cmenu = "{Items:[{type: 'button',text: '查看',icon: 'images/icon/75.png',disable: true,click: function () {context_view()}},{type: 'button',text: '新增',icon: 'images/icon/11.png',disable: true,click: function () {add()}},{type: 'button',text: '修改',icon: 'images/icon/33.png',disable: true,click: function () {context_view()}},{type: 'button',text: '删除',icon: 'images/icon/12.png',disable: true,click: function () {context_del()}}]}";
+            var cmenu = "{Items:[{type: 'button',text: '查看',icon: 'images/icon/75.png',disable: true,click: function () {context_view()}},{type: 'button',text: '添加',icon: 'images/icon/11.png',disable: true,click: function () {add()}},{type: 'button',text: '修改',icon: 'images/icon/33.png',disable: true,click: function () {context_view()}},{type: 'button',text: '删除',icon: 'images/icon/12.png',disable: true,click: function () {context_del()}}]}";
             var data = eval("(" + cmenu + ")");
             var items = [];
             var arr = data.Items;
@@ -406,14 +405,16 @@
                         <option>@customerField.ExpTitle</option>
                     }
                 </select>
-                <div class="gaoji"> <a href="#" title="高级搜索">高级搜索</a></div>
+                <div class="gaoji"> <a href="javascript:;" onclick="showMsg('功能添加中...','Success')" title="高级搜索" class="tip">高级搜索</a></div>
                 <input name="txtKeywords" type="text" id="txtKeywords" class="keyword">
-                <a id="lbtnSearch" class="btn-search" href="javascript:__doPostBack('lbtnSearch','')">查询</a>
+                <a id="lbtnSearch" class="btn-search" href="javascript:;">查询</a>
             </div>
             <div class="clear"></div>
         </div>
         <div class="layout-left-filter">
-            <h2>数据视图&工具<a href="#">管理</a><a href="#">复选</a></h2>
+            <h2>数据视图&工具<a href="/Apps/Settings/AppMaker/Detail/1" target="_blank">管理</a>
+                @*<a href="#">复选</a>*@
+            </h2>
             <div id="nav-side" class="nav-side">
                 <div class="ns-item">
                     <ul id="filter_tree" class="ztree"></ul>
