@@ -18,7 +18,7 @@
             $("#UserLname").focus();
             var id = "@ViewBag.Id";
             if (id != "") {
-                console.log("开始修改");
+                ////console.log("开始修改");
                 load_form_data(id);
             }
         });
@@ -46,7 +46,7 @@
                     //hideLoading();
                 },
                 success: function (result) {
-                    console.log(result);
+                    ////console.log(result);
                     for (var key in result) {
                         //alert(key + " " + result[key]);
                         if ($("#" + key) != undefined) {
@@ -55,10 +55,10 @@
                             //$("#" + key).next().val(result[key]);
                         }
                     }
-                    console.log("数据加载成功。");
+                    ////console.log("数据加载成功。");
                 },
                 error: function () {
-                    console.log("数据加载失败。");
+                    ////console.log("数据加载失败。");
                     showMsg("服务器异常！");
                 }
             });

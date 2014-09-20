@@ -3,7 +3,7 @@
 //*时间：2014年09月19日
 //全局变量
 var field_grid; //字段表格
-var view_frid; //视图表格
+var view_grid; //视图表格
 var toolbar_grid; //操作表格
 var myapp_id; //当前模块id
 

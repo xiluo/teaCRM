@@ -109,22 +109,22 @@
                             }
                         },
                         onAsyncSuccess: function(event, treeId, treeNode, msg) {
-                            //console.log(treeNode);
+                            ////console.log(treeNode);
                         },
                         onAsyncError: function() {
-                            console.log(" 数据加载失败");
+                            //console.log(" 数据加载失败");
                         },
                         beforeCheck: function(treeId, treeNode) {
                             $("#ParentId").val(treeNode.name).focus();
                             $("#HiddenParentId").val(treeNode.id);
-                            console.log($("#ParentId").val() + $("#HiddenParentId").val());
+                            //console.log($("#ParentId").val() + $("#HiddenParentId").val());
                             hideMenu();
                             return true;
                         },
                         onClick: function(event, treeId, treeNode) {
                             $("#ParentId").val(treeNode.name).focus().removeClass("error").addClass("success");
                             $("#HiddenParentId").val(treeNode.id);
-                            console.log($("#ParentId").val() + $("#HiddenParentId").val());
+                            //console.log($("#ParentId").val() + $("#HiddenParentId").val());
                             hideMenu();
                         }
                     }
@@ -140,14 +140,14 @@
                         var json_data = eval('(' + data + ')');
                         for (var index in json_data) {
                             var tnode = json_data[index];
-                            console.log(tnode);
+                            //console.log(tnode);
                             var treeObj = $.fn.zTree.getZTreeObj("department_tree");
                             var node = treeObj.getNodeByParam("id", tnode.id, null);
                             treeObj.expandNode(node, true, true, true);
                         }
                     },
                     error: function(msg) {
-                        console.log(" 数据加载失败！" + msg);
+                        //console.log(" 数据加载失败！" + msg);
                     }
                 });
             }
