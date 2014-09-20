@@ -139,8 +139,8 @@ function InitGrid() {
 
             },
             "commands": function (column, row) {
-                return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"edit(" + row.id + ");\" title=\"修改【" + row.UserLname + "】用户\"><span class=\"glyphicon glyphicon-pencil\"></span></button>" +
-                            "<button type=\"button\" class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"del(" + row.id + ")\" title=\"删除【" + row.UserLname + "】用户\"><span class=\"glyphicon glyphicon-remove\"></span></button>";
+                return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"edit(" + row.Id + ");\" title=\"修改【" + row.UserLname + "】用户\"><span class=\"glyphicon glyphicon-pencil\"></span></button>" +
+                            "<button type=\"button\" class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"del(" + row.Id + ")\" title=\"删除【" + row.UserLname + "】用户\"><span class=\"glyphicon glyphicon-remove\"></span></button>";
             }
         }
     }).on("loaded.rs.jquery.bootgrid", function (e) {
@@ -216,6 +216,35 @@ function edit() {
         //var data = $(form_user).serializeObject();
         var data = $(form_user).serialize();
         console.log((data));
+          $.ajax({
+            type: "post",
+            cache: false,
+            url: "/api/settings/users/editUser",
+            data: data,
+            dataType: "json",
+            beforeSend: function () {
+                //showMsg("添加中，请稍后...");
+            },
+            complete: function () {
+                //d.close().remove();
+            },
+            success: function (result) {
+                //toLowerCase报错
+                //var status = result.Status.toLowerCase();
+                var status = result.Status;
+                if (status == true || status == "true" || status == "True") {
+                    //刷新数据
+                    grid.bootgrid("reload");
+                    showMsg("用户修改成功！", "Success");
+                } else {
+                    showMsg("系统异常，用户修改失败！", "Error");
+                }
+            },
+            error: function () {
+                showMsg("网络连接错误", "Error");
+            }
+        });
+
     });
 }
 

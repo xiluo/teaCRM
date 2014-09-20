@@ -53285,4 +53285,235 @@ Dialect :MsSql2005Dialect
 SELECT t0.[id], t0.[comp_num], t0.[app_id], t0.[myapp_name], t0.[myapp_link], t0.[myapp_note], t0.[myapp_action], t0.[myapp_date], t0.[myapp_is_nav], t0.[myapp_is_sys]
 FROM [V_myapp_company] AS t0
 WHERE ((t0.[comp_num] = @p0) AND ((t0.[app_id]=1))) <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:06,123 [21] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：ELinq Version :0.6.1.0
+Dialect :MsSql2005Dialect
+SELECT t0.[user_id], t0.[comp_id], t0.[comp_num], t0.[user_lname], t0.[user_password], t0.[user_tname], t0.[comp_tname], t0.[user_sex], t0.[user_phone], t0.[user_email], t0.[user_tel], t0.[user_qq], t0.[dep_id], t0.[user_position], t0.[user_jobstatus], t0.[role_id], t0.[user_enable]
+FROM [V_company_user] AS t0
+WHERE ((t0.[user_id]=3)) <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:06,131 [21] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：ELinq Version :0.6.1.0
+Dialect :MsSql2005Dialect
+SELECT t0.[user_id], t0.[comp_id], t0.[comp_num], t0.[user_lname], t0.[user_password], t0.[user_tname], t0.[comp_tname], t0.[user_sex], t0.[user_phone], t0.[user_email], t0.[user_tel], t0.[user_qq], t0.[dep_id], t0.[user_position], t0.[user_jobstatus], t0.[role_id], t0.[user_enable]
+FROM [V_company_user] AS t0
+WHERE ((t0.[user_id]=3)) <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:06,453 [66] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：ELinq Version :0.6.1.0
+Dialect :MsSql2005Dialect
+SELECT t0.[id], t0.[comp_num], t0.[app_id], t0.[myapp_name], t0.[myapp_link], t0.[myapp_note], t0.[myapp_action], t0.[myapp_date], t0.[myapp_is_nav], t0.[myapp_is_sys]
+FROM [V_myapp_company] AS t0
+WHERE ((t0.[comp_num] = @p0) AND ((t0.[app_id]=1))) <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:06,471 [55] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：ELINQ Paging:<br/>ELinq Version :0.6.1.0
+Dialect :MsSql2005Dialect
+SELECT t0.[id], t0.[app_id], t0.[app_type], t0.[comp_num], t0.[app_name], t0.[app_author], t0.[app_des], t0.[app_adddate], t0.[app_imgurl16], t0.[app_imgurl32], t0.[app_imgurl75], t0.[app_imgurl190], t0.[app_ver], t0.[app_link], t0.[app_high], t0.[app_upnote], t0.[app_ind], t0.[app_is_hot], t0.[app_is_red], t0.[app_is_sys], t0.[app_price], t0.[app_lastdate], t0.[app_is_menu]
+FROM (
+  SELECT t1.[app_adddate], t1.[app_author], t1.[app_des], t1.[app_high], t1.[app_id], t1.[app_imgurl16], t1.[app_imgurl190], t1.[app_imgurl32], t1.[app_imgurl75], t1.[app_ind], t1.[app_is_hot], t1.[app_is_menu], t1.[app_is_red], t1.[app_is_sys], t1.[app_lastdate], t1.[app_link], t1.[app_name], t1.[app_price], t1.[app_type], t1.[app_upnote], t1.[app_ver], t1.[comp_num], t1.[id]
+  FROM (
+    SELECT t2.[app_adddate], t2.[app_author], t2.[app_des], t2.[app_high], t2.[app_id], t2.[app_imgurl16], t2.[app_imgurl190], t2.[app_imgurl32], t2.[app_imgurl75], t2.[app_ind], t2.[app_is_hot], t2.[app_is_menu], t2.[app_is_red], t2.[app_is_sys], t2.[app_lastdate], t2.[app_link], t2.[app_name], t2.[app_price], t2.[app_type], t2.[app_upnote], t2.[app_ver], t2.[comp_num], t2.[id], ROW_NUMBER() OVER(ORDER BY t2.[id]) AS [ROWNUMBER]
+    FROM [V_app_company] AS t2
+    WHERE (t2.[comp_num] = @p0)
+    ) AS t1
+  WHERE t1.[ROWNUMBER] BETWEEN (0 + 1) AND (0 + 10)
+  ) AS t0
+ORDER BY t0.[app_name], t0.[id] <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:06,481 [55] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：公司id为的公司获取应用列表成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:06,602 [48] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：ELinq Version :0.6.1.0
+Dialect :MsSql2005Dialect
+SELECT t0.[id], t0.[myapp_id], t0.[comp_num], t0.[exp_name], t0.[exp_title], t0.[exp_ctype], t0.[exp_dtype], t0.[exp_length], t0.[exp_place], t0.[exp_option], t0.[exp_default], t0.[exp_is_null], t0.[exp_is_pw], t0.[exp_is_html], t0.[exp_etype], t0.[exp_tipmsg], t0.[exp_errmsg], t0.[exp_pattern], t0.[exp_sortid], t0.[exp_css], t0.[exp_is_sys]
+FROM [T_fun_expand] AS t0
+WHERE ((t0.[comp_num] = @p0) AND ((t0.[myapp_id]=1))) <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:06,610 [48] <BR>
+日志级别：INFO  <BR>
+日志标志：loginfo <BR> 
+日志信息：获取到的字段个数：21 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:06,674 [65] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：ELINQ Paging:<br/>ELinq Version :0.6.1.0
+Dialect :MsSql2005Dialect
+SELECT t0.[comp_num], t0.[fil_is_show], t0.[fil_is_sys], t0.[fil_name], t0.[fil_order], t0.[fil_where], t0.[id], t0.[myapp_id], t0.[parent_id]
+FROM (
+  SELECT t1.[comp_num], t1.[fil_is_show], t1.[fil_is_sys], t1.[fil_name], t1.[fil_order], t1.[fil_where], t1.[id], t1.[myapp_id], t1.[parent_id], ROW_NUMBER() OVER(ORDER BY t1.[fil_order]) AS [ROWNUMBER]
+  FROM [T_fun_filters] AS t1
+  WHERE ((t1.[comp_num] = @p0) AND ((t1.[myapp_id]=1)))
+  ) AS t0
+WHERE t0.[ROWNUMBER] BETWEEN (0 + 1) AND (0 + 10)
+ORDER BY t0.[fil_order] <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:06,769 [19] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：ELINQ Paging:<br/>ELinq Version :0.6.1.0
+Dialect :MsSql2005Dialect
+SELECT t0.[comp_num], t0.[id], t0.[myapp_id], t0.[ope_action], t0.[ope_function], t0.[ope_is_fast], t0.[ope_is_status], t0.[ope_is_sys], t0.[ope_type]
+FROM (
+  SELECT t1.[comp_num], t1.[id], t1.[myapp_id], t1.[ope_action], t1.[ope_function], t1.[ope_is_fast], t1.[ope_is_status], t1.[ope_is_sys], t1.[ope_type], ROW_NUMBER() OVER(ORDER BY t1.[ope_action]) AS [ROWNUMBER]
+  FROM [T_fun_operating] AS t1
+  WHERE ((t1.[comp_num] = @p0) AND ((t1.[myapp_id]=1)))
+  ) AS t0
+WHERE t0.[ROWNUMBER] BETWEEN (0 + 1) AND (0 + 10)
+ORDER BY t0.[ope_action] <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:06,783 [58] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：ELinq Version :0.6.1.0
+Dialect :MsSql2005Dialect
+SELECT t0.[id], t0.[comp_num], t0.[app_id], t0.[myapp_name], t0.[myapp_link], t0.[myapp_note], t0.[myapp_action], t0.[myapp_date], t0.[myapp_is_nav], t0.[myapp_is_sys]
+FROM [V_myapp_company] AS t0
+WHERE ((t0.[comp_num] = @p0) AND ((t0.[app_id]=1))) <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:19,149 [71] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：ELinq Version :0.6.1.0
+Dialect :MsSql2005Dialect
+SELECT t0.[user_id], t0.[comp_id], t0.[comp_num], t0.[user_lname], t0.[user_password], t0.[user_tname], t0.[comp_tname], t0.[user_sex], t0.[user_phone], t0.[user_email], t0.[user_tel], t0.[user_qq], t0.[dep_id], t0.[user_position], t0.[user_jobstatus], t0.[role_id], t0.[user_enable]
+FROM [V_company_user] AS t0
+WHERE ((t0.[user_id]=3)) <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:19,155 [71] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：ELinq Version :0.6.1.0
+Dialect :MsSql2005Dialect
+SELECT t0.[user_id], t0.[comp_id], t0.[comp_num], t0.[user_lname], t0.[user_password], t0.[user_tname], t0.[comp_tname], t0.[user_sex], t0.[user_phone], t0.[user_email], t0.[user_tel], t0.[user_qq], t0.[dep_id], t0.[user_position], t0.[user_jobstatus], t0.[role_id], t0.[user_enable]
+FROM [V_company_user] AS t0
+WHERE ((t0.[user_id]=3)) <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:19,325 [66] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：ELinq Version :0.6.1.0
+Dialect :MsSql2005Dialect
+SELECT t0.[id], t0.[parent_id], t0.[comp_num], t0.[dep_name], t0.[dep_num], t0.[create_date], t0.[dep_order], t0.[dep_goal], t0.[dep_respon], t0.[dep_skills], t0.[dep_course], t0.[dep_note]
+FROM [T_sys_department] AS t0
+WHERE ((t0.[comp_num] = @p0) AND ((t0.[parent_id]=0))) <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:19,427 [21] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：ELINQ Paging:<br/>ELinq Version :0.6.1.0
+Dialect :MsSql2005Dialect
+SELECT t0.[id], t0.[app_id], t0.[app_type], t0.[comp_num], t0.[app_name], t0.[app_author], t0.[app_des], t0.[app_adddate], t0.[app_imgurl16], t0.[app_imgurl32], t0.[app_imgurl75], t0.[app_imgurl190], t0.[app_ver], t0.[app_link], t0.[app_high], t0.[app_upnote], t0.[app_ind], t0.[app_is_hot], t0.[app_is_red], t0.[app_is_sys], t0.[app_price], t0.[app_lastdate], t0.[app_is_menu]
+FROM (
+  SELECT t1.[app_adddate], t1.[app_author], t1.[app_des], t1.[app_high], t1.[app_id], t1.[app_imgurl16], t1.[app_imgurl190], t1.[app_imgurl32], t1.[app_imgurl75], t1.[app_ind], t1.[app_is_hot], t1.[app_is_menu], t1.[app_is_red], t1.[app_is_sys], t1.[app_lastdate], t1.[app_link], t1.[app_name], t1.[app_price], t1.[app_type], t1.[app_upnote], t1.[app_ver], t1.[comp_num], t1.[id]
+  FROM (
+    SELECT t2.[app_adddate], t2.[app_author], t2.[app_des], t2.[app_high], t2.[app_id], t2.[app_imgurl16], t2.[app_imgurl190], t2.[app_imgurl32], t2.[app_imgurl75], t2.[app_ind], t2.[app_is_hot], t2.[app_is_menu], t2.[app_is_red], t2.[app_is_sys], t2.[app_lastdate], t2.[app_link], t2.[app_name], t2.[app_price], t2.[app_type], t2.[app_upnote], t2.[app_ver], t2.[comp_num], t2.[id], ROW_NUMBER() OVER(ORDER BY t2.[id]) AS [ROWNUMBER]
+    FROM [V_app_company] AS t2
+    WHERE (t2.[comp_num] = @p0)
+    ) AS t1
+  WHERE t1.[ROWNUMBER] BETWEEN (0 + 1) AND (0 + 10)
+  ) AS t0
+ORDER BY t0.[app_name], t0.[id] <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:19,439 [21] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：公司id为的公司获取应用列表成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:19,483 [55] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：ELINQ Paging:<br/>ELinq Version :0.6.1.0
+Dialect :MsSql2005Dialect
+SELECT t0.[comp_num], t0.[dep_id], t0.[id], t0.[role_id], t0.[user_email], t0.[user_enable], t0.[user_jobstatus], t0.[user_lname], t0.[user_password], t0.[user_phone], t0.[user_position], t0.[user_qq], t0.[user_sex], t0.[user_tel], t0.[user_tname]
+FROM (
+  SELECT t1.[comp_num], t1.[dep_id], t1.[id], t1.[role_id], ROW_NUMBER() OVER(ORDER BY t1.[user_lname]) AS [ROWNUMBER], t1.[user_email], t1.[user_enable], t1.[user_jobstatus], t1.[user_lname], t1.[user_password], t1.[user_phone], t1.[user_position], t1.[user_qq], t1.[user_sex], t1.[user_tel], t1.[user_tname]
+  FROM [T_sys_user] AS t1
+  WHERE (t1.[comp_num] = @p0)
+  ) AS t0
+WHERE t0.[ROWNUMBER] BETWEEN (0 + 1) AND (0 + 10)
+ORDER BY t0.[user_lname] <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:19,495 [55] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：获取用户列表成功。 <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:19,514 [71] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：ELinq Version :0.6.1.0
+Dialect :MsSql2005Dialect
+SELECT t0.[id], t0.[parent_id], t0.[comp_num], t0.[dep_name], t0.[dep_num], t0.[create_date], t0.[dep_order], t0.[dep_goal], t0.[dep_respon], t0.[dep_skills], t0.[dep_course], t0.[dep_note]
+FROM [T_sys_department] AS t0
+WHERE ((t0.[comp_num] = @p0) AND ((t0.[parent_id]=20))) <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:19,551 [58] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：ELinq Version :0.6.1.0
+Dialect :MsSql2005Dialect
+SELECT t0.[id], t0.[comp_num], t0.[app_id], t0.[myapp_name], t0.[myapp_link], t0.[myapp_note], t0.[myapp_action], t0.[myapp_date], t0.[myapp_is_nav], t0.[myapp_is_sys]
+FROM [V_myapp_company] AS t0
+WHERE ((t0.[comp_num] = @p0) AND ((t0.[app_id]=1))) <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:20,041 [19] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：ELinq Version :0.6.1.0
+Dialect :MsSql2005Dialect
+SELECT t0.[id], t0.[parent_id], t0.[comp_num], t0.[dep_name], t0.[dep_num], t0.[create_date], t0.[dep_order], t0.[dep_goal], t0.[dep_respon], t0.[dep_skills], t0.[dep_course], t0.[dep_note]
+FROM [T_sys_department] AS t0
+WHERE ((t0.[comp_num] = @p0) AND ((t0.[parent_id]=32))) <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:20,550 [21] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：ELinq Version :0.6.1.0
+Dialect :MsSql2005Dialect
+SELECT t0.[id], t0.[parent_id], t0.[comp_num], t0.[dep_name], t0.[dep_num], t0.[create_date], t0.[dep_order], t0.[dep_goal], t0.[dep_respon], t0.[dep_skills], t0.[dep_course], t0.[dep_note]
+FROM [T_sys_department] AS t0
+WHERE ((t0.[comp_num] = @p0) AND ((t0.[parent_id]=23))) <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:21,057 [19] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：ELinq Version :0.6.1.0
+Dialect :MsSql2005Dialect
+SELECT t0.[id], t0.[parent_id], t0.[comp_num], t0.[dep_name], t0.[dep_num], t0.[create_date], t0.[dep_order], t0.[dep_goal], t0.[dep_respon], t0.[dep_skills], t0.[dep_course], t0.[dep_note]
+FROM [T_sys_department] AS t0
+WHERE ((t0.[comp_num] = @p0) AND ((t0.[parent_id]=22))) <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:21,567 [65] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：ELinq Version :0.6.1.0
+Dialect :MsSql2005Dialect
+SELECT t0.[id], t0.[parent_id], t0.[comp_num], t0.[dep_name], t0.[dep_num], t0.[create_date], t0.[dep_order], t0.[dep_goal], t0.[dep_respon], t0.[dep_skills], t0.[dep_course], t0.[dep_note]
+FROM [T_sys_department] AS t0
+WHERE ((t0.[comp_num] = @p0) AND ((t0.[parent_id]=1))) <BR>
+ <HR Size=1><HR COLOR=green>
+日志时间：2014-09-19 23:59:22,070 [42] <BR>
+日志级别：DEBUG <BR>
+日志标志：logdebug <BR> 
+日志信息：ELinq Version :0.6.1.0
+Dialect :MsSql2005Dialect
+SELECT t0.[id], t0.[parent_id], t0.[comp_num], t0.[dep_name], t0.[dep_num], t0.[create_date], t0.[dep_order], t0.[dep_goal], t0.[dep_respon], t0.[dep_skills], t0.[dep_course], t0.[dep_note]
+FROM [T_sys_department] AS t0
+WHERE ((t0.[comp_num] = @p0) AND ((t0.[parent_id]=21))) <BR>
  <HR Size=1>
