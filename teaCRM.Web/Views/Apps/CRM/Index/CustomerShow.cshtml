@@ -1,235 +1,237 @@
-@using System.Data
+ï»¿@using System.Data
+@using teaCRM.Entity
 @{
-     //¿Í»§À©Õ¹×Ö¶ÎĞÅÏ¢
+    //æ¨¡å—ä¿¡æ¯
+    var myApps = (List<VMyappCompany>) ViewBag.MyApps;
+
+    //å®¢æˆ·æ‰©å±•å­—æ®µä¿¡æ¯
     var customerFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.CustomerExpandFields;
-    //ÁªÏµÈËÀ©Õ¹×Ö¶ÎĞÅÏ¢
+    //è”ç³»äººæ‰©å±•å­—æ®µä¿¡æ¯
     var contactFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.ContactExpandFields;
-    //µ±Ç°¿Í»§ĞÅÏ¢
-    var customer = (DataTable)ViewBag.Customer;
+    //å½“å‰å®¢æˆ·ä¿¡æ¯
+    var customer = (DataTable) ViewBag.Customer;
     Layout = null;
 }
-    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-    <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <script src="/Themes/default/lib/jquery/jquery-1.11.1.min.js" type="text/javascript"></script> 
-     <script type="text/javascript">
-        $(function() {
-            var $items = $('#view_left>ul>li');
-            $items.click(function() {
-                $items.removeClass('selected');
-                $(this).addClass('selected');
-                var index = $items.index($(this));
-                $('#view_right_main>div').hide().eq(index).show();
-            }).eq(0).click();
-        });
-    </script>
-    <style type="text/css">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+         <title>æŸ¥çœ‹å®¢æˆ·_C+ä¼ä¸šäº‘å¹³å°_æ‰“é€ ä¸­å›½åŠå…¬è½¯ä»¶ç¬¬ä¸€å“ç‰Œ</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <script src="/Themes/default/lib/jquery/jquery-1.11.1.min.js" type="text/javascript"></script> 
+        <script type="text/javascript">
+            $(function() {
+                var $items = $('#view_left > ul > li');
+                $items.click(function() {
+                    $items.removeClass('selected');
+                    $(this).addClass('selected');
+                    var index = $items.index($(this));
+                    $('#view_right_main > div').hide().eq(index).show();
+                }).eq(0).click();
+            });
+        </script>
+        <style type="text/css">
 
-body{ font-size:13px; line-height:1.5; font-variant:normal; font-style:normal; font-weight:normal; font:13px/1.5 Î¢ÈíÑÅºÚ; margin:0; padding:0; background:#fff;}
-div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,blockquote,p,img{margin:0; padding:0;}
-table,td,tr,th{ font-size:9pt;}
-ol,ul{ list-style:none;}
-li{ list-style-type:none;}
-img{vertical-align:top; border:0;} 
-h1,h2,h3,h4,h5,h6{ font-size:inherit; font-weight:normal;}
-.clearfix{display:block; overflow:hidden; clear:both; height:0;}
-.clearfix:after{ display:block; overflow:hidden; clear:both; height:0; visibility:hidden;}
-.left{ float:left;}
-.right{ float:right;}
-a{ color:#2D2D2D; text-decoration:none;}
-a:hover{ color:#00F;}
-a:focus{outline:none;}
+            body{ font-size:13px; line-height:1.5; font-variant:normal; font-style:normal; font-weight:normal; font:13px/1.5 å¾®è½¯é›…é»‘; margin:0; padding:0; background:#fff;}
+            div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,blockquote,p,img{margin:0; padding:0;}
+            table,td,tr,th{ font-size:9pt;}
+            ol,ul{ list-style:none;}
+            li{ list-style-type:none;}
+            img{vertical-align:top; border:0;} 
+            h1,h2,h3,h4,h5,h6{ font-size:inherit; font-weight:normal;}
+            .clearfix{display:block; overflow:hidden; clear:both; height:0;}
+            .clearfix:after{ display:block; overflow:hidden; clear:both; height:0; visibility:hidden;}
+            .left{ float:left;}
+            .right{ float:right;}
+            a{ color:#2D2D2D; text-decoration:none;}
+            a:hover{ color:#00F;}
+            a:focus{outline:none;}
 
 
-a.view_doedit,a.view_dobelong, a.view_doshare, a.view_doputsea, a.view_doalldel, a.view_doprint,a.view_prefix,a.view_next {background:url(/Themes/default/CRM/images/view_btn.png) no-repeat;float:left; height:28px; line-height:28px; margin-top:12px;}
-a.view_doedit {background-position:-6px -7px; padding:0px 13px;}
-a.view_dobelong { background-position:-56px -7px; padding:0px 13px;}
-a.view_doshare { background-position:-130px -7px;padding:0px 11px;}
-a.view_doputsea { background-position:-56px -7px; padding:0px 13px;}
-a.view_doalldel { background-position:-130px -7px;padding:0px 11px; color:red;}
-a.view_doprint { background-position:-320px -7px;padding:0px 13px;} 
-a.view_doedit:hover {background-position:-6px -36px; padding:0px 13px; color:#fff;}
-a.view_dobelong:hover { background-position:-56px -36px; padding:0px 13px; color:#fff;}
-a.view_doshare:hover { background-position:-130px -36px;padding:0px 11px; color:#fff;}
-a.view_doputsea:hover { background-position:-56px -36px; padding:0px 13px; color:#fff;}
-a.view_doalldel:hover { background-position:-130px -36px;padding:0px 11px; color:red;}
-a.view_doprint:hover { background-position:-320px -36px;padding:0px 13px; color:#fff;}
+            a.view_doedit,a.view_dobelong, a.view_doshare, a.view_doputsea, a.view_doalldel, a.view_doprint,a.view_prefix,a.view_next {background:url(/Themes/default/CRM/images/view_btn.png) no-repeat;float:left; height:28px; line-height:28px; margin-top:12px;}
+            a.view_doedit {background-position:-6px -7px; padding:0px 13px;}
+            a.view_dobelong { background-position:-56px -7px; padding:0px 13px;}
+            a.view_doshare { background-position:-130px -7px;padding:0px 11px;}
+            a.view_doputsea { background-position:-56px -7px; padding:0px 13px;}
+            a.view_doalldel { background-position:-130px -7px;padding:0px 11px; color:red;}
+            a.view_doprint { background-position:-320px -7px;padding:0px 13px;} 
+            a.view_doedit:hover {background-position:-6px -36px; padding:0px 13px; color:#fff;}
+            a.view_dobelong:hover { background-position:-56px -36px; padding:0px 13px; color:#fff;}
+            a.view_doshare:hover { background-position:-130px -36px;padding:0px 11px; color:#fff;}
+            a.view_doputsea:hover { background-position:-56px -36px; padding:0px 13px; color:#fff;}
+            a.view_doalldel:hover { background-position:-130px -36px;padding:0px 11px; color:red;}
+            a.view_doprint:hover { background-position:-320px -36px;padding:0px 13px; color:#fff;}
 
-.aui_inner { border:1px solid rgba(0, 0, 0, .7); border:1px solid #333\9; }
-.aui_content {color: black;}
-table, td, tr, th {font-size: 9pt;}
+            .aui_inner { border:1px solid rgba(0, 0, 0, .7); border:1px solid #333\9; }
+            .aui_content {color: black;}
+            table, td, tr, th {font-size: 9pt;}
 
-#view_left { padding-top:10px; padding-bottom:10px; border-right:1px solid #d2d2d2; float:left;width:120px;background-color:#edecec; min-height:460px;}
-#view_left ul { width:100%; height:100%; border-left:1px solid #d2d2d2;}
-#view_left ul li {width:100%; height:29px;}
-#view_left ul li.selected{background-color:#fff; border-top:1px solid #d2d2d2; border-bottom:1px solid #d2d2d2;border-right:none;} 
-#view_left ul li a {display:block; width:60px; height:29px; line-height:29px; margin-left:32px;}
-#view_right{ width:660px; float:left; margin-left:9px; min-height:460px;}
+            #view_left { padding-top:10px; padding-bottom:10px; border-right:1px solid #d2d2d2; float:left;width:120px;background-color:#edecec; min-height:460px;}
+            #view_left ul { width:100%; height:100%; border-left:1px solid #d2d2d2;}
+            #view_left ul li {width:100%; height:29px;}
+            #view_left ul li.selected{background-color:#fff; border-top:1px solid #d2d2d2; border-bottom:1px solid #d2d2d2;border-right:none;} 
+            #view_left ul li a {display:block; width:60px; height:29px; line-height:29px; margin-left:32px;}
+            #view_right{ width:660px; float:left; margin-left:9px; min-height:460px;}
 
-.addrightbg{height: 46px; line-height: 46px; border-bottom: 1px solid #d2d2d2;}
-.customerview ul{ margin:10px 0px;}
-.customerview li{ width:50%; float:left;height:30px; line-height:30px;}
-.customerview li b{ font-weight:normal; color:#8B8787;}
+            .addrightbg{height: 46px; line-height: 46px; border-bottom: 1px solid #d2d2d2;}
+            .customerview ul{ margin:10px 0px;}
+            .customerview li{ width:50%; float:left;height:30px; line-height:30px;}
+            .customerview li b{ font-weight:normal; color:#8B8787;}
 
-/***±í¸ñÁĞ±í***/
-.highlight{ background:yellow}
-.tableList{ background:#D2D2D2; font-family:Arial;}
-.tableList tr:hover{background:#FFFFCC;}
-.tableList tr td{ height:30px; line-height:30px; padding:0px 3px;color:#5C5C5C;word-break: break-all;white-space: nowrap;text-overflow: ellipsis;}
-.tableList tr td.green{ color:#06991e;}
-.tableList tr td.red{ color:#fb0101;}
-.tableList tr td a{color:#016b96;}
-.tableList tr td .add-on{ margin-top:3px;}
-.tableList .title{ height:35px; line-height:35px; background:url(/Content/Themes/Base/Images/tabTop_bg.jpg) repeat-x; text-align:left; font-weight:bold; padding-left:20px;font-size:14px;}
-.tableList tr.head{ font-weight:bold; height:30px; line-height:30px; color:#2D2D2D;}
-.tableList tr.head th{ background:url(/Content/Themes/Base/Images/table_head_bg.gif) repeat-x; color:#5C5C5C; height:30px;}
-.tableList tr.head td{ background:url(/Content/Themes/Base/Images/table_head_bg.gif) repeat-x; height:30px;}
-.tableList tr.minhead{ height:30px; line-height:30px; }
-.tableList tr.minhead td{ background:url(/Content/Themes/Base/Images/table_head_bg.gif) repeat-x;color:#2D2D2D;}
-.tableList tr.dobtn{height:35px; line-height:35px; background-color:rgb(255, 255, 255);}
-.tableList tr.dobtn td{background:url(/Content/Themes/Base/Images/dobtn_bg.jpg) repeat-x;}
-.tableList tr.dobtn td a{ margin-left:16px; color:#5C5C5C; float:left;}
-.tableList tr.dobtn td span{ float:right; margin-right:10px;}
-.tableList tr.dobody td { background-color:#FFF; text-align:center; }
-.tableList tr.old{ background-color: #F6F6F6;}
-.tableList tr.even{background-color: #FFFFFF;}
-.tableList tbody tr{background:#fff;}
-.tableList tr.hover,.tableList tbody tr.hover{background-color: #FFFFCC;}
-.tableList tr.permission_error{ background:#FBE2E2;}
-.tableList tr.permission_error td{ background:#FBE2E2;}
-.tableList .price { font-size:14px; font-family:Georgia; padding-right:4px;}
-.tableList .priceGreen { font-size:16px; font-family:Georgia; padding-right:4px; color:green;}
-.tableList .priceRed { font-size:16px; font-family:Georgia; padding-right:4px; color:red;}
-.tableList input { margin:3px 0;}
-.tableList select { margin:3px 0;}
-</style>
-    <title>²é¿´¿Í»§_C+ÆóÒµÔÆÆ½Ì¨_´òÔìÖĞ¹ú°ì¹«Èí¼şµÚÒ»Æ·ÅÆ</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-    <meta http-equiv="X-UA-Compatible" content="IE=7" />
+            /***è¡¨æ ¼åˆ—è¡¨***/
+            .highlight{ background:yellow}
+            .tableList{ background:#D2D2D2; font-family:Arial;}
+            .tableList tr:hover{background:#FFFFCC;}
+            .tableList tr td{ height:30px; line-height:30px; padding:0px 3px;color:#5C5C5C;word-break: break-all;white-space: nowrap;text-overflow: ellipsis;}
+            .tableList tr td.green{ color:#06991e;}
+            .tableList tr td.red{ color:#fb0101;}
+            .tableList tr td a{color:#016b96;}
+            .tableList tr td .add-on{ margin-top:3px;}
+            .tableList .title{ height:35px; line-height:35px; background:url(/Content/Themes/Base/Images/tabTop_bg.jpg) repeat-x; text-align:left; font-weight:bold; padding-left:20px;font-size:14px;}
+            .tableList tr.head{ font-weight:bold; height:30px; line-height:30px; color:#2D2D2D;}
+            .tableList tr.head th{ background:url(/Content/Themes/Base/Images/table_head_bg.gif) repeat-x; color:#5C5C5C; height:30px;}
+            .tableList tr.head td{ background:url(/Content/Themes/Base/Images/table_head_bg.gif) repeat-x; height:30px;}
+            .tableList tr.minhead{ height:30px; line-height:30px; }
+            .tableList tr.minhead td{ background:url(/Content/Themes/Base/Images/table_head_bg.gif) repeat-x;color:#2D2D2D;}
+            .tableList tr.dobtn{height:35px; line-height:35px; background-color:rgb(255, 255, 255);}
+            .tableList tr.dobtn td{background:url(/Content/Themes/Base/Images/dobtn_bg.jpg) repeat-x;}
+            .tableList tr.dobtn td a{ margin-left:16px; color:#5C5C5C; float:left;}
+            .tableList tr.dobtn td span{ float:right; margin-right:10px;}
+            .tableList tr.dobody td { background-color:#FFF; text-align:center; }
+            .tableList tr.old{ background-color: #F6F6F6;}
+            .tableList tr.even{background-color: #FFFFFF;}
+            .tableList tbody tr{background:#fff;}
+            .tableList tr.hover,.tableList tbody tr.hover{background-color: #FFFFCC;}
+            .tableList tr.permission_error{ background:#FBE2E2;}
+            .tableList tr.permission_error td{ background:#FBE2E2;}
+            .tableList .price { font-size:14px; font-family:Georgia; padding-right:4px;}
+            .tableList .priceGreen { font-size:16px; font-family:Georgia; padding-right:4px; color:green;}
+            .tableList .priceRed { font-size:16px; font-family:Georgia; padding-right:4px; color:red;}
+            .tableList input { margin:3px 0;}
+            .tableList select { margin:3px 0;}
+        </style>
+       
     </head>
-<body>
-    <div class="aui_main" style="width:800px; height: 260px; ">
-  <div class="aui_content" style="padding: 0px; margin-bottom: -5px; width:800px;">
+    <body>
+        <div class="aui_main" style="width: 800px; height: 260px;">
+            <div class="aui_content" style="padding: 0px; margin-bottom: -5px; width: 800px;">
 
-      <!--leftNav×ó²à°´Å¥-->
-      <div id="view_left">
-          <ul style="margin-top:36px;">
-                <li class=""><a href="javascript:void(0)" val="1683513575308086">¿Í»§ÏêÇé</a></li>
-                <li class=""><a href="javascript:void(0)" val="1683513575308086">ÁªÏµÈË</a></li>
-                <li class=""><a href="javascript:void(0)" val="1683513575308086">ÏúÊÛ»ú»á</a></li>
-                <li class=""><a href="javascript:void(0)" val="1683513575308086">¸úµ¥±¨¼Û</a></li>
-                <li><a href="javascript:void(0)" val="1683513575308086">ºÏÍ¬¶©µ¥</a></li>
-          </ul>
-		</div>
-      <!--End leftNav-->
+                <!--leftNavå·¦ä¾§æŒ‰é’®-->
+                <div id="view_left">
+                    <ul style="margin-top: 36px;">
+                        @* <li class=""><a href="javascript:void(0)" >å®¢æˆ·è¯¦æƒ…</a></li>
+                <li class=""><a href="javascript:void(0)" >è”ç³»äºº</a></li>
+                <li class=""><a href="javascript:void(0)" >é”€å”®æœºä¼š</a></li>
+                <li class=""><a href="javascript:void(0)" >è·Ÿå•æŠ¥ä»·</a></li>
+                <li><a href="javascript:void(0)" >åˆåŒè®¢å•</a></li>
+         *@
+                        @foreach (var myApp in myApps)
+                        {
+                            <li class=""><a href="javascript:void(0)" >@myApp.MyappName</a></li>
+                        }
+                    </ul>
+                </div>
+                <!--End leftNav-->
 	  
-      <div id="view_right">
+                <div id="view_right">
 	  
-      <div class="addrightbg">
-	  			<a style="color: #2D2D2D; font-weight: 300; font-size: 18px;font-family:Microsoft Yahei;">Ö£ÖİÓÅ´´¿Æ¼¼ÓĞÏŞÔğÈÎ¹«Ë¾</a> 
-				<a title="°Ù¶ÈËÑË÷" target="_blank" href="#"> 
-				<img style="margin-top: 17px;" src="/Themes/default/CRM/images/c_baidu.jpg"></a> 
-				<a title="¹È¸èËÑË÷" target="_blank" href="#"> 
-				<img style="margin-top: 17px;" src="/Themes/default/CRM/images/c_google.jpg"></a> 
+                    <div class="addrightbg">
+                        <a style="color: #2D2D2D; font-weight: 300; font-size: 18px; font-family: Microsoft Yahei;">éƒ‘å·ä¼˜åˆ›ç§‘æŠ€æœ‰é™è´£ä»»å…¬å¸</a> 
+                        <a title="ç™¾åº¦æœç´¢" target="_blank" href="#"> 
+                            <img style="margin-top: 17px;" src="/Themes/default/CRM/images/c_baidu.jpg"></a> 
+                        <a title="è°·æ­Œæœç´¢" target="_blank" href="#"> 
+                            <img style="margin-top: 17px;" src="/Themes/default/CRM/images/c_google.jpg"></a> 
 				
-				<span style="float: right;line-height:46px;"> 
-				<a href="javascript:void(0)" class="view_doedit" title="±à¼­">±à¼­ @ViewBag.CustomerId</a> 
-				<a href="javascript:void(0)" class="view_dobelong" title="×ªÒÆ¹éÊô">¹éÊô</a> 
-				<a href="javascript:void(0)" class="view_doshare" title="¹²Ïí">¹²Ïí</a> 
-				<a href="javascript:void(0)" class="view_doputsea" title="·ÅÈë¹«º£">¹«º£</a>
-				<a href="javascript:void(0)" class="view_doalldel" title="É¾³ı">É¾³ı</a>
-                  </span>  
-		</div>
+				
+                    </div>
 		
-	  <div id="view_right_main">	
+                    <div id="view_right_main">	
 	    
-  	  <div class="customerview">
-<!--	  <table>
-      <th width="60">¿Í»§±àºÅ</th>
-      <td width="220">100000023145</td>
-      <th width="60">¿Í»§·ÖÀà</th>
-      <td width="220">¼¯ÍÅ¿Í»§</td>
-	  </table>-->
-	        <ul class="">
-	            
+                        <div class="customerview">
+                            <div style="line-height: 46px;"> 
+                                <a href="javascript:void(0)" class="view_doedit" title="ç¼–è¾‘">ç¼–è¾‘ @ViewBag.CustomerId</a> 
+                                <a href="javascript:void(0)" class="view_dobelong" title="è½¬ç§»å½’å±">å½’å±</a> 
+                                <a href="javascript:void(0)" class="view_doshare" title="å…±äº«">å…±äº«</a> 
+                                <a href="javascript:void(0)" class="view_doputsea" title="æ”¾å…¥å…¬æµ·">å…¬æµ·</a>
+                                <a href="javascript:void(0)" class="view_doalldel" title="åˆ é™¤">åˆ é™¤</a>
+                            </div>
+                            <br/>
+                            <ul class="">
+                                <li>   </li>
                 
                 
-             @for (int i = 0; i < customer.Rows.Count; i++)
-            {
-                for (int j = 0; j < customer.Columns.Count; j++)
-                {
-                    var col = customer.Columns[j];
-                     <li><b>@col.ColumnName£º</b>@customer.Rows[i][j]</li>
-                }
-
-            }
+                                @for (int i = 0; i < customer.Rows.Count; i++)
+                                {
+                                    for (int j = 0; j < customer.Columns.Count; j++)
+                                    {
+                                        var col = customer.Columns[j];
+                                        <li><b>@col.ColumnNameï¼š</b>@customer.Rows[i][j]</li>
+                                    }
+                                }
 
 	         
-	            <div class="clearfix"></div>
-	        </ul>
-	  	  <ul class="">
-	  <li><b>Ö÷ÁªÏµÈË£º</b>ÖÜ´«ĞÛ</li>
-	  <li><b>ÁªÏµÓÊÏä£º</b>Ö£ÖİÓÅ´´¿Æ¼¼</li>
-	  <li><b>ÁªÏµ Q Q£º</b>ÒâÏò¿Í»§¸ú½øÖĞ</li>
-	  <li><b>ÁªÏµÓÊÏä£º</b><a href="#">2451568192@qq.com</a></li>
-	  <li><b>ÁªÏµÊÖ»ú£º</b><a href="#">132 9812 5901</a></li>
-	  <div class="clearfix"></div>
-	  </ul>
+                                <div class="clearfix"></div>
+                            </ul>
+                            <ul class="">
+                                <li><b>ä¸»è”ç³»äººï¼š</b>å‘¨ä¼ é›„</li>
+                                <li><b>è”ç³»é‚®ç®±ï¼š</b>éƒ‘å·ä¼˜åˆ›ç§‘æŠ€</li>
+                                <li><b>è”ç³» Q Qï¼š</b>æ„å‘å®¢æˆ·è·Ÿè¿›ä¸­</li>
+                                <li><b>è”ç³»é‚®ç®±ï¼š</b><a href="#">2451568192@qq.com</a></li>
+                                <li><b>è”ç³»æ‰‹æœºï¼š</b><a href="#">132 9812 5901</a></li>
+                                <div class="clearfix"></div>
+                            </ul>
 	  
-	  </div>
+                        </div>
 	  
-	  <div>
+                        <div class="contactview">
 	  
-	  <table width="100%" border="0" cellspacing="1" cellpadding="0" class="tableList" id="table1">
-                                    <thead>
-                                        <tr class="dobtn" style="background-color: rgb(255, 255, 255);">
-                                            <td colspan="9" bgcolor="#FFFFFF">
-                                                <a href="javascript:void(0)" class="doadd">ĞÂÔö</a>
-                                                <a href="javascript:void(0)" class="doalldel">ÅúÁ¿É¾³ı</a>
+                            <table width="100%" border="0" cellspacing="1" cellpadding="0" class="tableList" id="table1">
+                                <thead>
+                                    <tr class="dobtn" style="background-color: rgb(255, 255, 255);">
+                                        <td colspan="9" bgcolor="#FFFFFF">
+                                            <a href="javascript:void(0)" class="doadd">æ–°å¢</a>
+                                            <a href="javascript:void(0)" class="doalldel">æ‰¹é‡åˆ é™¤</a>
                                         </td></tr>
-                                        <tr class="head" style="background-color: rgb(250, 250, 250);">
-                                            <td width="3%" align="center" bgcolor="#FFFFFF">
-                                                <input type="checkbox">
-                                            </td>
-                                            <td width="8%" align="center" bgcolor="#FFFFFF">ĞÕÃû</td>
-                                            <td width="15%" align="center" bgcolor="#FFFFFF">ÊÖ»ú</td>
-                                            <td width="15%" align="center" bgcolor="#FFFFFF">µç»°</td>
-                                            <td width="15%" align="center" bgcolor="#FFFFFF">QQ</td>
-                                            <td width="15%" align="center" bgcolor="#FFFFFF">Email</td>
-                                            <td width="10%" align="center" bgcolor="#FFFFFF">²Ù×÷</td>
-                                        </tr>
-                                    </thead>
-                                    <!--ms-repeat-start--><tbody>
-                                        <tr class="hover">
-                                            <td align="center">
-                                                <input type="checkbox">
-                                            </td> 
-                                            <td><a href="javascript:void(0)">»Æ´ó´¸</a></td>
-                                            <td align="center">ÄĞ</td> 
-                                            <td align="center"></td> 
-                                            <td>13298125900</td>  
-                                            <td></td>                                          
-                                            <td align="center">
-                                                <a href="javascript:void(0)" class="doview" title="">²é¿´</a>
-                                                <a href="javascript:void(0)" class="doedit" title="" data-permission="EDIT">±à¼­</a>
-                                                <!--ms-if-->
-                                                <a href="javascript:void(0)" class="dodel" title="" data-permission="DELETE">É¾³ı</a>
-                                                <!--ms-if-->
-                                            </td>
-                                        </tr>
-                                    </tbody><!--ms-repeat-end-->
+                                    <tr class="head" style="background-color: rgb(250, 250, 250);">
+                                        <td width="3%" align="center" bgcolor="#FFFFFF">
+                                            <input type="checkbox">
+                                        </td>
+                                        <td width="8%" align="center" bgcolor="#FFFFFF">å§“å</td>
+                                        <td width="15%" align="center" bgcolor="#FFFFFF">æ‰‹æœº</td>
+                                        <td width="15%" align="center" bgcolor="#FFFFFF">ç”µè¯</td>
+                                        <td width="15%" align="center" bgcolor="#FFFFFF">QQ</td>
+                                        <td width="15%" align="center" bgcolor="#FFFFFF">Email</td>
+                                        <td width="10%" align="center" bgcolor="#FFFFFF">æ“ä½œ</td>
+                                    </tr>
+                                </thead>
+                                <!--ms-repeat-start--><tbody>
+                                                          <tr class="hover">
+                                                              <td align="center">
+                                                                  <input type="checkbox">
+                                                              </td> 
+                                                              <td><a href="javascript:void(0)">é»„å¤§é”¤</a></td>
+                                                              <td align="center">ç”·</td> 
+                                                              <td align="center"></td> 
+                                                              <td>13298125900</td>  
+                                                              <td></td>                                          
+                                                              <td align="center">
+                                                                  <a href="javascript:void(0)" class="doview" title="">æŸ¥çœ‹</a>
+                                                                  <a href="javascript:void(0)" class="doedit" title="" data-permission="EDIT">ç¼–è¾‘</a>
+                                                                  <!--ms-if-->
+                                                                  <a href="javascript:void(0)" class="dodel" title="" data-permission="DELETE">åˆ é™¤</a>
+                                                                  <!--ms-if-->
+                                                              </td>
+                                                          </tr>
+                                                      </tbody><!--ms-repeat-end-->
                                    
-                                </table>
+                            </table>
 
-	  </div>
-	  <div>ÏúÊÛ¼ÇÂ¼ĞÅÏ¢</div>
-	  <div>¸úµ¥±¨¼ÛĞÅÏ¢</div>
-	  <div>ºÏÍ¬¶©µ¥ĞÅÏ¢</div>
+                        </div>
 	  
-	  </div>
-	 </div>
-	 <div class="clearfix"></div>
-      </div>
-</div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
     </body>
 </html>

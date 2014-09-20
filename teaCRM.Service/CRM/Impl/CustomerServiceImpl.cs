@@ -38,8 +38,6 @@ namespace teaCRM.Service.CRM.Impl
         public ITFunFilterDao FunFilterDao { set; get; }
         public ITFunOperatingDao FunOperatingDao { set; get; }
 
-        //当前应用的类别id，（对应/Themes/default/base/js/category.js里面的code和T_fun_app表里面的app_id） 14-09-21 By 唐有炜
-        private int AppId = 1;
 
         #region 筛选器
 

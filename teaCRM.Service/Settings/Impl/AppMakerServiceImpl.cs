@@ -47,6 +47,7 @@ namespace teaCRM.Service.Settings.Impl
             }
         }
 
+        #region GetAllMyApps
 
         /// <summary>
         /// 获取当前公司某个应用的所有模块 14-09018 By 唐有炜
@@ -59,6 +60,9 @@ namespace teaCRM.Service.Settings.Impl
             var myapps = MyAppCompany.GetViewList(m => m.CompNum == compNum && m.AppId == appId);
             return myapps;
         }
+
+        #endregion
+
 
         #region  当前公司某个模块的扩展字段列表 14-09-18 By 唐有炜
 
