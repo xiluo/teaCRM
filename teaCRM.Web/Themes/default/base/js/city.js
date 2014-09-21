@@ -5344,3 +5344,29 @@ var city_data_2014 = [
         }
     }
 ];
+
+//将id集合转换成城市名称(13,03,22) 14-09-21 By 唐有炜
+function get_city_names(ids) {
+    var result = "";
+    var id_arr = ids.split(",");
+    console.log(id_arr);
+    $.each(city_data_2014, function(index, field) {
+        var state = field.region.state;
+        if ($.trim(id_arr[0]) == field.region.code) { //当前省份
+            result += field.region.name + "-";
+            $.each(state, function(index2, field2) {
+                var city = field2.city;
+                if ($.trim(id_arr[1]) == field2.code) {
+                    result += field2.name + "-";
+                    $.each(city, function(index3, field3) {
+                        if ($.trim(id_arr[2]) == field3.code) {
+                            result += field3.name;
+                        }
+
+                    });
+                }
+            });
+        }
+    });
+    return result;
+}

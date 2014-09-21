@@ -4,7 +4,6 @@
 
 $(document).ready(function() {
     //表单获取焦点
-    $("#con_name").focus();
     $("#cus_name").focus();
     //加载省市数据
     load_city_data();
@@ -13,6 +12,7 @@ $(document).ready(function() {
     if (cus_id != "") {
         load_form_data(cus_id);
     }
+
 });
 
 
@@ -41,40 +41,54 @@ function load_city_data() {
     //级联城市
     $("#cus_province").change(function() {
         var prov_code = $(this).val();
-        $.each(city_data_2014, function(index, field) {
-            var state = field.region.state;
-            if (prov_code == field.region.code) { //只添加当前省份下的城市
-                $("#cus_city option").remove();
-                $("#cus_city").prepend("<option value=\"0\">请选择城市</option>"); //为select插入一个option(第一个位置) 
-                $.each(state, function(index2, field2) {
-                    var city_name = field2.name;
-                    var city_code = field2.code;
-                    $("#cus_city").append("<option value=\"" + city_code + "\" >" + city_name + "</option>");
-                });
-            }
-        });
+        get_cities_by_prov_code(prov_code);
     });
+
+
     //级联地区
     $("#cus_city").change(function() {
         var prov_code = $("#cus_province").val();
         var city_code = $(this).val();
-        $.each(city_data_2014, function(index, field) {
-            var state = field.region.state;
-            if (prov_code == field.region.code) { //只添加当前省份下的城市
-                $.each(state, function(index2, field2) {
-                    var city = field2.city;
-                    if (city_code == field2.code) {
-                        $("#cus_region option").remove();
-                        $("#cus_region").prepend("<option value=\"0\">请选择地区</option>"); //为select插入一个option(第一个位置) 
-                        $.each(city, function(index3, field3) {
-                            var region_name = field3.name;
-                            var region_code = field3.code;
-                            $("#cus_region").append("<option value=\"" + region_code + "\" >" + region_name + "</option>");
-                        });
-                    }
-                });
-            }
-        });
+        get_regions_by_provcitycode(prov_code, city_code);
+    });
+}
+
+//获取当前省份下面的所有城市
+function get_cities_by_prov_code(prov_code) {
+    $.each(city_data_2014, function (index, field) {
+        var state = field.region.state;
+        if (prov_code == field.region.code) { //只添加当前省份下的城市
+            $("#cus_city option").remove();
+            $("#cus_city").prepend("<option value=\"0\">请选择城市</option>"); //为select插入一个option(第一个位置) 
+            $.each(state, function (index2, field2) {
+                var city_name = field2.name;
+                var city_code = field2.code;
+                $("#cus_city").append("<option value=\"" + city_code + "\" >" + city_name + "</option>");
+            });
+        }
+    });
+}
+
+
+
+
+function get_regions_by_provcitycode(prov_code,city_code) {
+     $.each(city_data_2014, function (index, field) {
+        var state = field.region.state;
+        if (prov_code == field.region.code) { //只添加当前省份下的城市
+            $.each(state, function (index2, field2) {
+                var city = field2.city;
+                if (city_code == field2.code) {
+                    $("#cus_region option").remove();
+                    $("#cus_region").prepend("<option value=\"0\">请选择地区</option>"); //为select插入一个option(第一个位置) 
+                    $.each(city, function (index3, field3) {
+                        var region_name = field3.name;
+                        var region_code = field3.code;
+                        $("#cus_region").append("<option value=\"" + region_code + "\" >" + region_name + "</option>");
+                    });
+                }
+            });
+        }
     });
 }
 
@@ -197,7 +211,20 @@ function validate_form() {
 
 //表单验证方法，供父窗口调用
 function form_valid() {
-    return $("#form_customer").valid();
+    if ($("#form_customer").valid()) {
+        $('#formTab li:eq(1) a').tab("show");
+        //修复验证bug
+        $("#con_name").focus();
+        if ($("#con_name").val() == "") {
+            $("#con_name").formtip("主联系人不能为空！");
+            return false;
+        } else {
+            return true;
+        }
+    } else {
+        return false;
+    }
+
 }
 
 
@@ -227,6 +254,17 @@ function load_form_data(cus_id) {
                     $("#" + key).val(obj[key]);
                     //处理Checkbox
                     //$("#" + key).next().val(result[key]);
+                    //特殊处理
+                    //省市处理
+                    if (key == "cus_city") {
+                        var city_arr = obj[key].split(",");
+                        $("#cus_province").val(city_arr[0]);
+                        get_cities_by_prov_code(city_arr[0]);
+                        $("#cus_city").val(city_arr[1]);
+                        get_regions_by_provcitycode(city_arr[0], city_arr[1]);
+                        $("#cus_region").val(city_arr[2]);
+                    }
+                   
                 }
             }
             //console.log("数据加载成功。");

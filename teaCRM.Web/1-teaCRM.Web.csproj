@@ -151,6 +151,7 @@
     <Compile Include="Controllers\Admin\AccountController.cs" />
     <Compile Include="Controllers\Admin\MainController.cs" />
     <Compile Include="Controllers\Api\AppController.cs" />
+    <Compile Include="Controllers\Api\CRM\ContactController.cs" />
     <Compile Include="Controllers\Api\CRM\CustomerController.cs" />
     <Compile Include="Controllers\Api\Settings\AppMakerController.cs" />
     <Compile Include="Controllers\Api\Settings\RoleController.cs" />
@@ -306,7 +307,7 @@
     <Content Include="Themes\default\crm\images\icon-light.gif" />
     <Content Include="Themes\default\crm\images\skin_icons.png" />
     <Content Include="Themes\default\crm\images\view_btn.png" />
-    <Content Include="Themes\default\crm\js\customer_add.js" />
+    <Content Include="Themes\default\crm\js\customer_edit.js" />
     <Content Include="Themes\default\crm\js\customer_index.js" />
     <Content Include="Themes\default\crm\js\TYW.js" />
     <Content Include="Themes\default\base\css\foot.css" />
@@ -1431,9 +1432,6 @@
     <Content Include="Views\Apps\CRM\Index\CustomerShow.cshtml" />
     <Content Include="Views\Apps\CRM\Contact\ContactEdit.cshtml" />
     <Content Include="Views\Apps\CRM\Contact\ContactIndex.cshtml" />
-    <Content Include="Views\Apps\CRM\Pub\CustomerPub.cshtml" />
-    <Content Include="Views\Apps\CRM\ToolBar\FilterEdit.cshtml" />
-    <Content Include="Views\Apps\CRM\Trash\CustomerTrash.cshtml" />
     <Content Include="Views\Apps\Settings\AppMaker\AppMakerIndex.cshtml" />
     <Content Include="Views\Apps\Settings\Department\DepartmentEdit.cshtml" />
     <Content Include="Views\Apps\Settings\Department\DepartmentIndex.cshtml" />
@@ -1453,6 +1451,7 @@
     <Content Include="Views\Apps\Settings\AppMaker\Toolbar\ToolbarEdit.cshtml" />
     <Content Include="Views\Apps\Settings\AppMaker\View\ViewEdit.cshtml" />
     <Content Include="Views\Apps\CRM\Index\CustomerEdit.cshtml" />
+    <Content Include="Views\Apps\CRM\Contact\_ContactPartial.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

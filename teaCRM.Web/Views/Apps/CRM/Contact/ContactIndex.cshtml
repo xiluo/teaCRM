@@ -1,25 +1,17 @@
 ﻿@using System.Web.Optimization
+@using teaCRM.Entity
 @{
-    //客户扩展字段信息
-    var customerFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.CustomerExpandFields;
-    //联系人扩展字段信息
-    var contactFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.ContactExpandFields;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section seo {
-    <title>我的人脉_C+企业云平台_打造中国办公软件第一品牌</title>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+   
 }
 @section head{
-@Styles.Render("~/Themes/default/css/cp.globle.min6.css")
-@Scripts.Render("~/Themes/default/js/cp.globle.min6.js")
-
+   
 
 }
-
-<h2>Contact</h2>
-
+ <!--用分布视图实现联系人页面重用-->
+      @Html.Partial("Contact/_ContactPartial")
 
 @section script
 {

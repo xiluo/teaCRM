@@ -27,6 +27,7 @@ namespace teaCRM.Web.Helpers
                  "~/Views/Admin/{1}/{0}.cshtml", //Admin视图
                 "~/Views/Apps/{1}/{0}.cshtml", //Apps视图
                 "~/Views/Apps/CRM/{1}/{0}.cshtml", //CRM视图
+                 "~/Views/Apps/CRM/{0}.cshtml", //CRM视图2
                 "~/Views/Apps/Sale/{1}/{0}.cshtml", //Sale视图
                 "~/Views/Apps/Product/{1}/{0}.cshtml", //产品视图
                 "~/Views/Apps/Service/{1}/{0}.cshtml", //服务视图

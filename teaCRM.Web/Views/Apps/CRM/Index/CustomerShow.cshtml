@@ -116,6 +116,8 @@
             .tableList input { margin:3px 0;}
             .tableList select { margin:3px 0;}
         </style>
+          <!--省市数据-->
+    <script src="/Themes/default/base/js/city.js" type="text/javascript"></script>
         <script src="/Themes/default/crm/js/customer_show.js" type="text/javascript"></script>
     </head>
     <body>
@@ -195,7 +197,7 @@
                                 <li><b>助记简称：</b>@cus_sname</li>
                                 <li><b>上级客户：</b>@cus_lastname</li>
                                 <li><b>电话号码：</b>@cus_tel</li>
-                                <li><b>所在城市：</b>@cus_city</li>
+                                <li><b>所在城市：</b><span id="cus_city">@cus_city</span></li>
                                 <li><b>详细地址：</b>@cus_address</li>
                                 <li><b>备注说明：</b>@cus_note</li>
                                 <li><b>主联系人：</b>@con_name</li>
@@ -259,24 +261,9 @@
                         </div>
 	  
                         <div class="contactview">
-	  
-      
-      
-                            <table id="grid-data" class="table table-condensed table-hover table-striped table-bordered" data-selection="true" data-multi-select="true">
-                                <thead>
-                                    <tr>
-                                        <th data-column-id="con_name" data-header-align="center" data-align="center"  data-order="desc">联系人名称</th>
-                                        <th data-column-id="con_tel" data-header-align="center" data-align="center"  data-order="desc">联系人电话</th>
-                                        <th data-column-id="con_qq" data-header-align="center" data-align="center"  data-order="desc">联系人QQ</th>
-                                        <th data-column-id="con_email" data-header-align="center" data-align="center"  data-order="desc">联系人邮箱</th>
-                                              <th data-column-id="con_is_main" data-formatter="con_is_main" data-header-align="center" data-align="center"  data-order="desc">是否主联系人</th>
-                                        <th data-column-id="id" data-type="numeric" data-identifier="true" data-formatter="commands" data-sortable="false">操作</th>
-                                    </tr>
-                                </thead>
-                            </table>
-      
-      
-      
+	  <!--用分布视图实现联系人页面重用-->
+      @Html.Partial("Contact/_ContactPartial")
+
       
 
                         </div>

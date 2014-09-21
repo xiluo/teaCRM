@@ -62,6 +62,15 @@
             $("#maingrid4").ligerGrid({
                 checkbox: false,
                 columns: [
+                       {
+                        display: '序号',
+                        width: 50,
+                        render:
+                            function(rowData, rowindex, value, column, rowid, page, pagesize) {
+                                return (page - 1) * pagesize + rowindex + 1;
+                            }
+                    },
+               
                     {
                         display: '选择',
                         name: 'id',
@@ -70,14 +79,6 @@
                             //alert(rowid);
                             return "<input type=\"checkbox\" value=\"" + item.id + "\">";
                         }
-                    },
-                    {
-                        display: '序号',
-                        width: 50,
-                        render:
-                            function(rowData, rowindex, value, column, rowid, page, pagesize) {
-                                return (page - 1) * pagesize + rowindex + 1;
-                            }
                     },
                     {
                         display: '助记简称',

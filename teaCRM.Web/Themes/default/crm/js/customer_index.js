@@ -176,7 +176,7 @@ function edit() {
                 return false;
             }
             var data = $(form_customer).serialize();
-            console.log(data);
+            //console.log(data);
             //提交数据
               $.ajax({
                 type: "post",

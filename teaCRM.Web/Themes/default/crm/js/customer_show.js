@@ -4,12 +4,25 @@
 //联系人列表
 var grid;
 
+$(document).ready(function() {
+    //格式化显示 14-09-21 By 唐有炜
+    format_content();
+});
+
 $(function() {
     var cus_id = $("#cus_id").val();
+  
     //load_main_contact(cus_id);
     //初始化联系人列表
-    InitGrid(cus_id);
+    //InitGrid(cus_id);
 });
+
+//格式化显示 14-09-21 By 唐有炜
+function format_content() {
+//格式化城市显示
+    $("#cus_city").html(get_city_names($("#cus_city").html()));
+    //alert("aaa");
+}
 
 
 function load_main_contact(cus_id) {
@@ -44,55 +57,55 @@ function load_main_contact(cus_id) {
 //        }
 //    });
 }
-
-
-function InitGrid(cus_id) {
-
-    grid = $("#grid-data").bootgrid({
-        ajax: true,
-        post: function() {
-            /* To accumulate custom parameter with the request object */
-            return {
-                compNum: $("#CompNum").val()
-            };
-        },
-        url: "/Apps/CRM/LoadData/GetBootContactList/?cus_id=" + cus_id,
-        selection: true,
-        multiSelect: true,
-        rowSelect: true,
-        keepSelection: true,
-        rowCount: [10, 30, 50],
-        templates: {
-            header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}}\"><div class=\"row\"><div class=\"col-sm-12 actionBar\"><div class=\"btn-group\" style=\"float:left;\"><button class=\"btn btn-default tip\" title=\"添加联系人\" onclick=\" add(); \"><span class=\"glyphicon glyphicon-plus\"></span>添加</button><button class=\"btn btn-default tip\" title=\"删除联系人\" onclick=\" del(); \"><span class=\"glyphicon glyphicon glyphicon glyphicon-trash\"></span>批量删除</button></div>" +
-                "<div class=\"search form-group\"><div class=\"input-group\"><span class=\"icon glyphicon input-group-addon glyphicon-search\"></span> <input type=\"text\" class=\"search-field form-control\" placeholder=\"输入关键字\"></div></div>" +
-                "<p class=\"{{css.actions}}\"></p></div></div></div>"
-        },
-        labels: {
-            all: "all", //checkbox全选的值
-            search: "请输入联系人名称",
-            loading: "加载中...",
-            noResults: "对不起，暂无符合条件的记录！",
-            refresh: "刷新",
-            infos: "从{{ctx.start}} 到 {{ctx.end}}，共{{ctx.total}} 条记录"
-        },
-        formatters: {
-        "con_is_main":function(column, row) {
-    if (!row.con_is_main) {
-        return "否";
-    } else {
-        return "是";
-    }
-    },
-            "commands": function(column, row) {
-                return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"edit(" + row.id + ");\" title=\"修改联系人【" + row.con_name + "】\"><span class=\"glyphicon glyphicon-pencil\"></span></button>" +
-                    "<button type=\"button\" class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"del(" + row.id + ")\" title=\"删除联系人【" + row.con_name + "】\"><span class=\"glyphicon glyphicon-remove\"></span></button>";
-            }
-        }
-    }).on("loaded.rs.jquery.bootgrid", function(e) {
-        //按钮提示
-        $('.tip').tooltip();
-        //按钮气泡
-        $('.pop').popover({ html: true, trigger: "hover" });
-        //showMsg("字段加载成功！", "Success");
-    });
-}
+//
+//
+//function InitGrid(cus_id) {
+//
+//    grid = $("#grid-data").bootgrid({
+//        ajax: true,
+//        post: function() {
+//            /* To accumulate custom parameter with the request object */
+//            return {
+//                compNum: $("#CompNum").val()
+//            };
+//        },
+//        url: "/Apps/CRM/LoadData/GetBootContactList/?cus_id=" + cus_id,
+//        selection: true,
+//        multiSelect: true,
+//        rowSelect: true,
+//        keepSelection: true,
+//        rowCount: [10, 30, 50],
+//        templates: {
+//            header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}}\"><div class=\"row\"><div class=\"col-sm-12 actionBar\"><div class=\"btn-group\" style=\"float:left;\"><button class=\"btn btn-default tip\" title=\"添加联系人\" onclick=\" add(); \"><span class=\"glyphicon glyphicon-plus\"></span>添加</button><button class=\"btn btn-default tip\" title=\"删除联系人\" onclick=\" del(); \"><span class=\"glyphicon glyphicon glyphicon glyphicon-trash\"></span>批量删除</button></div>" +
+//                "<div class=\"search form-group\"><div class=\"input-group\"><span class=\"icon glyphicon input-group-addon glyphicon-search\"></span> <input type=\"text\" class=\"search-field form-control\" placeholder=\"输入关键字\"></div></div>" +
+//                "<p class=\"{{css.actions}}\"></p></div></div></div>"
+//        },
+//        labels: {
+//            all: "all", //checkbox全选的值
+//            search: "请输入联系人名称",
+//            loading: "加载中...",
+//            noResults: "对不起，暂无符合条件的记录！",
+//            refresh: "刷新",
+//            infos: "从{{ctx.start}} 到 {{ctx.end}}，共{{ctx.total}} 条记录"
+//        },
+//        formatters: {
+//        "con_is_main":function(column, row) {
+//    if (!row.con_is_main) {
+//        return "否";
+//    } else {
+//        return "是";
+//    }
+//    },
+//            "commands": function(column, row) {
+//                return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"edit(" + row.id + ");\" title=\"修改联系人【" + row.con_name + "】\"><span class=\"glyphicon glyphicon-pencil\"></span></button>" +
+//                    "<button type=\"button\" class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"del(" + row.id + ")\" title=\"删除联系人【" + row.con_name + "】\"><span class=\"glyphicon glyphicon-remove\"></span></button>";
+//            }
+//        }
+//    }).on("loaded.rs.jquery.bootgrid", function(e) {
+//        //按钮提示
+//        $('.tip').tooltip();
+//        //按钮气泡
+//        $('.pop').popover({ html: true, trigger: "hover" });
+//        //showMsg("字段加载成功！", "Success");
+//    });
+//}

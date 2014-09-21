@@ -53,6 +53,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             string customerJson = "";
             try
             {
+                //筛选
                 string strWhere = String.Format("con_back=0 AND (user_id={0} OR con_is_pub=1)",
                     int.Parse(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString()));
                 if (!String.IsNullOrEmpty(Request.QueryString["con_back"]))
@@ -63,12 +64,19 @@ namespace teaCRM.Web.Controllers.Apps.CRM
                 {
                     strWhere = String.Format("con_is_pub={0}", Request.QueryString["con_is_pub"]);
                 }
-                //转换JSON
+                 //排序
+                var sort = "id DESC";
+                if (!String.IsNullOrEmpty(fc["sortname"])&&!String.IsNullOrEmpty(fc["sortorder"]))
+                {
+                    sort = String.Format("{0} {1}", fc["sortname"], fc["sortorder"]);
+                }
+                //总数
                 var count = 0;
+               
                 var customerTable =
                     CustomerService.GetCustomerLsit(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(),
                         new string[0], int.Parse(fc["page"]),
-                        int.Parse(fc["pagesize"]), strWhere, "id", out count);
+                        int.Parse(fc["pagesize"]), strWhere, sort, out count);
                 customerJson = JsonConvert.SerializeObject(new
                 {
                     Rows = customerTable,
@@ -107,18 +115,21 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         //
         // GET: /Apps/CRM/LoadData/GetContactList/
         [UserAuthorize]
-        public string GetContactList(int cus_id)
+        public string GetContactList(int? cus_id)
         {
             string customerJson = "";
-            try
+              try
             {
                 var count = 0;
-                DataTable contactTable =
-                    CustomerService.GetContactLsit(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(),
-                        new string[0], 1,
-                        10, String.Format("cus_id={0}", cus_id), "id", out count);
-                LogHelper.Info("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() + "的用户获取联系人信息成功。");
-
+                DataTable contactTable;
+            
+                    contactTable =
+                        CustomerService.GetContactLsit(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(),
+                            new string[0], 1,
+                            10, String.Format("cus_id={0}", cus_id), "id", out count);
+                    LogHelper.Info("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() +
+                                   "的用户获取联系人信息成功。");
+             
 
                 return JSONHelper.DataTableToLigerUIList(contactTable, count);
             }

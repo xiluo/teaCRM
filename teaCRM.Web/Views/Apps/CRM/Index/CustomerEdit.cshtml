@@ -22,9 +22,7 @@
      <script src="/Themes/default/lib/my97DatePicker/WdatePicker.js" type="text/javascript"></script>
   <!--省市数据-->
     <script src="/Themes/default/base/js/city.js" type="text/javascript"></script>
- 
-    
-    <script src="/Themes/default/crm/js/customer_add.js" type="text/javascript"></script>
+    <script src="/Themes/default/crm/js/customer_edit.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="tb-form-1">
@@ -37,23 +35,21 @@
             <div tabindex="-1" id="msgprint" class="warning" style="position: fixed; width: 90%; display: none;">您的表单包含错误，请检查！</div>
             <div class="tab-content" style="padding: 10px;">
             
-                <ul class="nav nav-tabs">
-                    <li class="active">
-                        <a href="#customer-info" data-toggle="tab">客户信息</a>
-                    </li>
+                <ul class="nav nav-tabs" id="formTab">
+                    <li class="active"><a href="#customer-info" data-toggle="tab">客户信息</a></li>
                     <li><a href="#contact-info" data-toggle="tab">主联系人信息</a></li>
                 </ul>
                 <div style="height: 20px;"></div>
                 <div class="tab-pane active" id="customer-info">
                     <dl>
                         <dt>
-                            <em class="imp">*</em>客户名称
+                            <em class="imp">*</em>客户名称 ：
                         </dt>
                         <dd>
                             <input type="text" class="form-control wid260 required" id="cus_name" name="cus_name" placeholder="输入单位名称，如为个人则输入姓名" />
                         </dd>
                         <dt>
-                            助记简称
+                            助记简称 ：
                         </dt>
                         <dd>
                             <input type="text"class="form-control wid200" id="cus_sname" name="cus_sname" placeholder="客户简称，方便查询" />
@@ -61,7 +57,7 @@
                     </dl>
                     <dl>
                         <dt>
-                            省份城市
+                            省份城市 ：
                         </dt>
                         <dd>
                             <div class="form-group">
@@ -80,13 +76,13 @@
                     </dl>
                     <dl>
                         <dt>
-                            <em class="imp">*</em>办公电话1
+                            <em class="imp">*</em>办公电话1 ：
                         </dt>
                         <dd>
                             <input type="text"class="form-control wid260 required mobileTelephome" name="cus_tel" id="cus_tel" />
                         </dd>
                         <dt>
-                            详细地址
+                            详细地址 ：
                         </dt>
                         <dd>
                             <input type="text"class="form-control wid200" id="cus_address" name="cus_address" />
@@ -94,7 +90,7 @@
                     </dl>
                     <dl>
                         <dt>
-                            备注
+                            备注 ：
                         </dt>
                         <dd>
                             <textarea class="form-control wid515" id="cus_note" name="cus_note" cols="50" rows="2"></textarea>
@@ -110,7 +106,7 @@
                                 <dl>
                                     <dt>
                                         @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                        @field.ExpTitle
+                                        @field.ExpTitle ：
                                     </dt>
                                     <dd>
                                         <input type="text" name="@field.ExpName" id="@field.ExpName"class="form-control comm-tbox-1 " />
@@ -121,7 +117,7 @@
                                 <dl>
                                     <dt>
                                         @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                        @field.ExpTitle
+                                        @field.ExpTitle ：
                                     </dt>
                                     <dd>
                                         <textarea class="form-control comm-abox-1 " id="@field.ExpName" name="@field.ExpName" cols="50" rows="5"></textarea>
@@ -132,7 +128,7 @@
                                 <dl>
                                     <dt>
                                         @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                        @field.ExpTitle
+                                        @field.ExpTitle ：
                                     </dt>
                                     <dd>
                                         <input type="text" id="@field.ExpName" name="@field.ExpName" class="form-control " />
@@ -143,7 +139,7 @@
                                 <dl>
                                     <dt>
                                         @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                        @field.ExpTitle
+                                        @field.ExpTitle ：
                                     </dt>
                                     <dd>
                                         <input type="text" id="@field.ExpName" class="form-control comm-tbox-1 " name="@field.ExpName" />
@@ -154,7 +150,7 @@
                                 <dl>
                                     <dt>
                                         @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                        @field.ExpTitle
+                                        @field.ExpTitle ：
                                     </dt>
                                     <dd>
                                         <select id="@field.ExpName" name="@field.ExpName" class="form-control ">
@@ -168,7 +164,7 @@
                                 <dl>
                                     <dt>
                                         @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                        @field.ExpTitle
+                                        @field.ExpTitle ：
                                     </dt>
                                     <dd>
                                         @Html.StringToCheckboxList(field.ExpOption, field.ExpName, field.ExpName, field.ExpTitle, field.ExpIsNull)
@@ -194,7 +190,7 @@
                                 <dl>
                                     <dt>
                                         @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                        @field.ExpTitle
+                                        @field.ExpTitle ：
                                     </dt>
                                     <dd>
                                         <input type="text" id="@field.ExpName" name="@field.ExpName" class="form-control Wdate " style="width: 90px;" onClick=" WdatePicker({ dateFmt: 'yyyy-MM-dd' }) " />
