@@ -8,6 +8,11 @@ $(document).ready(function() {
     $("#cus_name").focus();
     //加载省市数据
     load_city_data();
+    //加载表单数据
+    var cus_id = $("#cus_id").val();
+    if (cus_id != "") {
+        load_form_data(cus_id);
+    }
 });
 
 
@@ -80,10 +85,10 @@ function validate_form() {
     //表单验证
     $("#form_customer").validate({
         debug: true,
-        invalidHandler: function (e, validator) {
+        invalidHandler: function(e, validator) {
             var msg = "有 " + validator.numberOfInvalids() + " 项填写有误，请检查！";
             $("#msgprint").html(msg).show().focus();
-            setTimeout(function () {
+            setTimeout(function() {
                 $("#msgprint").fadeOut(500);
                 //如果动画结束则删除节点
                 if (!$("#msgprint").is(":animated")) {
@@ -193,4 +198,43 @@ function validate_form() {
 //表单验证方法，供父窗口调用
 function form_valid() {
     return $("#form_customer").valid();
+}
+
+
+function load_form_data(cus_id) {
+    //alert(cus_id);
+    ///Apps/CRM/LoadData/GetCustomer/44
+    //                //alert(id);
+    //                //提交数据
+    var url = "/Apps/CRM/LoadData/GetCustomer/" + cus_id;
+    $.ajax({
+        type: "get",
+        cache: false,
+        url: url,
+        dataType: "json",
+        beforeSend: function() {
+            //showLoading();
+        },
+        complete: function() {
+            //hideLoading();
+        },
+        success: function(result) {
+            //console.log(result);
+            var obj = result[0];
+            for (var key in obj) {
+                //alert(key + " " + result[key]);
+                if ($("#" + key) != undefined) {
+                    $("#" + key).val(obj[key]);
+                    //处理Checkbox
+                    //$("#" + key).next().val(result[key]);
+                }
+            }
+            //console.log("数据加载成功。");
+        },
+        error: function() {
+            //console.log("数据加载失败。");
+            showMsg("服务器异常！");
+        }
+    });
+
 }

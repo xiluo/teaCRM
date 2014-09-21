@@ -34,6 +34,18 @@ namespace teaCRM.Dao
 
 
         /// <summary>
+        /// 批量改状态
+        /// </summary>
+        /// <param name="cus_ids">id集合</param>
+        /// <param name="op">操作（0 1）</param>
+        /// <param name="field">字段</param>
+        /// <returns></returns>
+        bool UpdateStatusMoreCustomer(string cus_ids, int op, string field);
+ 
+
+
+
+        /// <summary>
         /// 获取客户信息列表
         /// </summary>
         /// <param name="compNum">企业编号</param>
@@ -56,6 +68,18 @@ namespace teaCRM.Dao
         /// <param name="cusCon">主联系人信息</param>
         /// <returns></returns>
         bool AddCustomer(TCusBase cusBase, TCusCon cusCon);
+
+
+
+        /// <summary>
+        /// 修改客户信息 2014-08-30 14:58:50 By 唐有炜
+        /// </summary>
+        /// <param name="customerId">客户id</param>
+        /// <param name="cusBase">客户信息</param>
+        /// <param name="cusCon">主联系人信息</param>
+        /// <returns></returns>
+        bool EditCustomer(int customerId, TCusBase cusBase, TCusCon cusCon);
+
         #endregion
     }
 }

@@ -176,13 +176,12 @@ function edit() {
                 return false;
             }
             var data = $(form_customer).serialize();
-            //console.log(data);
+            console.log(data);
             //提交数据
-            var url = "/Apps/CRM/Index/Add/";
-            $.ajax({
+              $.ajax({
                 type: "post",
                 cache: false,
-                url: url,
+                url: "/Apps/CRM/Index/Edit/" + row.id,
                 data: data,
                 dataType: "json",
                 beforeSend: function () {
@@ -196,10 +195,9 @@ function edit() {
                     //var status = result.Status.toLowerCase();
                     var status = result.Status;
                     if (status == true || status == "true" || status == "True") {
-                        //在iframe里面打开弹出框并自动关闭
                         showMsg(result.Msg, "Success");
                         //刷新数据
-                        //customer_grid_reload();
+                        customer_grid_reload();
                     } else {
                         showMsg("系统异常！", "Error");
                     }
@@ -227,7 +225,7 @@ function context_del() {
                 url: "/Apps/CRM/LoadData/ToTrash/",
                 cache: false,
                 type: "POST",
-                data: { cus_id: row.id, rnd: Math.random() },
+                data: { cus_ids: row.id, rnd: Math.random() },
                 success: function(result) {
                     var status = result.Status;
                     if (status == true || status == "true" || status == "True") {
@@ -265,7 +263,7 @@ function to_trash() {
                 url: "/Apps/CRM/LoadData/ToTrash/",
                 cache: false,
                 type: "POST",
-                data: { ids: ids, rnd: Math.random() },
+                data: { cus_ids: ids, rnd: Math.random() },
                 success: function(result) {
                     var status = result.Status;
                     if (status == true || status == "true" || status == "True") {
@@ -299,22 +297,28 @@ function to_pub() {
                 url: "/Apps/CRM/LoadData/ToPub/",
                 cache: false,
                 type: "POST",
-                data: { ids: ids, rnd: Math.random() },
+                data: { cus_ids: ids, rnd: Math.random() },
                 success: function(result) {
                     var status = result.Status;
                     if (status == true || status == "true" || status == "True") {
-                        showMsg("放入公海成功！");
+                        showMsg("放入公海成功！","Success");
                         f_reload();
                     } else {
-                        showMsg("放入公海失败！");
+                        showMsg("放入公海失败！","Error");
                     }
                 },
                 error: function() {
-                    showMsg("操作失败！");
+                    showMsg("操作失败！","Error");
                 }
             });
         });
     }
+}
+
+//转移
+function transfer()
+{
+    showMsg("转移客户！", "Success");   
 }
 
 //重新加载客户数据

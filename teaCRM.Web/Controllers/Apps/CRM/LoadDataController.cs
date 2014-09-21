@@ -88,6 +88,20 @@ namespace teaCRM.Web.Controllers.Apps.CRM
 
         #endregion
 
+        #region 获取一条客户数据
+
+        //
+        // GET: /Apps/CRM/LoadData/GetCustomer/
+        public string GetCustomer(int id)
+        {
+            var count = 0;
+            var customer = CustomerService.GetCustomerLsit(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(),
+                new string[0], 1, 1, String.Format("id={0}", id), "id", out count);
+            return JsonConvert.SerializeObject(customer);
+        }
+
+        #endregion
+
         #region 获取联系人信息列表 2014-09-01 14:58:50 By 唐有炜
 
         //
@@ -98,17 +112,15 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             string customerJson = "";
             try
             {
-                var count=0;
+                var count = 0;
                 DataTable contactTable =
                     CustomerService.GetContactLsit(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(),
                         new string[0], 1,
-                        10, String.Format("cus_id={0}", cus_id), "id",out count);
+                        10, String.Format("cus_id={0}", cus_id), "id", out count);
                 LogHelper.Info("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() + "的用户获取联系人信息成功。");
 
 
                 return JSONHelper.DataTableToLigerUIList(contactTable, count);
-
-          
             }
             catch (Exception ex)
             {
@@ -117,7 +129,6 @@ namespace teaCRM.Web.Controllers.Apps.CRM
                 return "{\"Rows\":[],\"Total\":\"0\"}";
             }
         }
-
 
 
         //
@@ -125,28 +136,26 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         [UserAuthorize]
         public string GetBootContactList(int cus_id)
         {
-
             var current = 1;
             var rowCount = 10;
 
             try
             {
                 var count = 0;
-               DataTable contactTable  =
+                DataTable contactTable =
                     CustomerService.GetContactLsit(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(),
                         new string[0], 1,
                         10, String.Format("cus_id={0}", cus_id), "id", out count);
-               LogHelper.Info("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() + "的用户获取联系人信息成功。");
+                LogHelper.Info("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() + "的用户获取联系人信息成功。");
 
 
-               return JsonConvert.SerializeObject(new
-               {
-                   current = current,
-                   rowCount = rowCount,
-                   rows = contactTable,
-                   total = count
-               });
-
+                return JsonConvert.SerializeObject(new
+                {
+                    current = current,
+                    rowCount = rowCount,
+                    rows = contactTable,
+                    total = count
+                });
             }
             catch (Exception ex)
             {
@@ -155,8 +164,8 @@ namespace teaCRM.Web.Controllers.Apps.CRM
                 return "{\"Rows\":[],\"Total\":\"0\"}";
             }
         }
-        #endregion
 
+        #endregion
 
         #region 放入回收站 2014-09-05 14:58:50 By 唐有炜
 
@@ -164,10 +173,11 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         // GET: /Apps/CRM/LoadData/ToTrash/
         [UserAuthorize]
         [HttpPost]
-        public ActionResult ToTrash(int cus_id)
+        // 1 在回收站 0正常
+        public ActionResult ToTrash(string cus_ids)
         {
             ResponseMessage rmsg = new ResponseMessage();
-            rmsg.Status = CustomerService.UpdateCustomerStatusByWhere("con_back=1", String.Format("id={0}", cus_id));
+            rmsg.Status = CustomerService.UpdateStatusMoreCustomer(cus_ids, 1, "con_back");
             return Json(rmsg);
         }
 
@@ -179,10 +189,11 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         // GET: /Apps/CRM/LoadData/ToPub/
         [UserAuthorize]
         [HttpPost]
-        public ActionResult ToPub(int cus_id)
+        // 1公海 0不是
+        public ActionResult ToPub(string cus_ids)
         {
             ResponseMessage rmsg = new ResponseMessage();
-            rmsg.Status = CustomerService.UpdateCustomerStatusByWhere("con_is_pub=1", String.Format("id={0}", cus_id));
+            rmsg.Status = CustomerService.UpdateStatusMoreCustomer(cus_ids, 1, "con_is_pub");
 
             return Json(rmsg);
         }

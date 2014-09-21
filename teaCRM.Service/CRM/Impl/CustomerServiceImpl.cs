@@ -181,6 +181,19 @@ namespace teaCRM.Service.CRM.Impl
             return CusBaseDao.UpdateCustomerStatusByWhere(strSet, strWhere);
         }
 
+
+        /// <summary>
+        /// 批量改状态
+        /// </summary>
+        /// <param name="cus_ids">id集合</param>
+        /// <param name="op">操作（0 1）</param>
+        /// <param name="field">字段</param>
+        /// <returns></returns>
+        public bool UpdateStatusMoreCustomer(string cus_ids, int op, string field)
+        {
+            return CusBaseDao.UpdateStatusMoreCustomer(cus_ids, op, field);
+        }
+
         /// <summary>
         /// 使用LINQ更改客户状态（只更改主表） 2014-09-05 14:58:50 By 唐有炜
         /// </summary>
@@ -213,6 +226,23 @@ namespace teaCRM.Service.CRM.Impl
         }
 
         #endregion
+
+        #region 修改客户信息 2014-09-21 14:58:50 By 唐有炜
+
+        /// <summary>
+        /// 修改客户信息 2014-09-21 14:58:50 By 唐有炜
+        /// </summary>
+        /// <param name="customerId">客户id</param>
+        /// <param name="cusBase">客户信息</param>
+        /// <param name="cusCon">主联系人信息</param>
+        /// <returns></returns>
+        public bool EditCustomer(int customerId, TCusBase cusBase, TCusCon cusCon)
+        {
+            return CusBaseDao.EditCustomer(customerId, cusBase, cusCon);
+        }
+
+        #endregion
+
 
         #endregion
 
