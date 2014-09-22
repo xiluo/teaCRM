@@ -277,6 +277,30 @@ namespace teaCRM.Web.Helpers
             }
 
         }
+
+        /// <summary>
+        /// 根据id获取制定下拉框的值
+        /// </summary>
+        /// <param name="htmlHelper"></param>
+        /// <param name="options">选项</param>
+        /// <param name="key"></param>
+        /// <param name="replaceValue"></param>
+        /// <returns></returns>
+        public static MvcHtmlString GetOptionValue(this HtmlHelper htmlHelper, string key, string options, string replaceValue = "default")
+        {
+            string[] str_arr = options.Split(',');
+            foreach (var str in str_arr)
+            {
+                var k = str.Split('|')[0];
+                var v = str.Split('|')[1];
+                if (key==k)
+                {
+                    return MvcHtmlString.Create(v);
+                }
+            }
+            return MvcHtmlString.Create(replaceValue);
+        }
+
         #endregion
 
         #region 文本复选框   2014-08-29 14:58:50 By 唐有炜

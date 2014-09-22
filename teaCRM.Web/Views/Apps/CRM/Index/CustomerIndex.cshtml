@@ -81,23 +81,6 @@
                         }
                     },
                     {
-                        display: '助记简称',
-                        name:
-                            'cus_sname',
-                        width:
-                            100,
-                        align:
-                            'left',
-                        render:
-                            function(item) {
-                                if (item.cus_sname == "") {
-                                    return "暂无名称";
-                                } else {
-                                    return item.cus_sname;
-                                }
-                            }
-                    },
-                    {
                         display: '客户名称',
                         "frozen":
                             true,
@@ -117,6 +100,24 @@
                             }
 
                     },
+                    {
+                        display: '助记简称',
+                        name:
+                            'cus_sname',
+                        width:
+                            100,
+                        align:
+                            'left',
+                        render:
+                            function(item) {
+                                if (item.cus_sname == "") {
+                                    return "暂无名称";
+                                } else {
+                                    return item.cus_sname;
+                                }
+                            }
+                    },
+                    
                     {
                         display: '办公电话',
                         name:

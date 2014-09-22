@@ -20,7 +20,7 @@ namespace teaCRM.Entity
 		[Column("exp_title")]
 		public String ExpTitle { get;set; }
 		[Column("exp_ctype")]
-		public String ExpCtype { get;set; }
+		public Int32 ExpCtype { get;set; }
 		[Column("exp_dtype")]
 		public String ExpDtype { get;set; }
 		[Column("exp_length")]

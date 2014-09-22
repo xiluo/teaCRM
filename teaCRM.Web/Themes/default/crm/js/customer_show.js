@@ -5,13 +5,13 @@
 var grid;
 
 $(document).ready(function() {
-    //格式化显示 14-09-21 By 唐有炜
-    format_content();
+   
 });
 
 $(function() {
     var cus_id = $("#cus_id").val();
-  
+    //格式化显示 14-09-21 By 唐有炜
+    format_content();
     //load_main_contact(cus_id);
     //初始化联系人列表
     //InitGrid(cus_id);

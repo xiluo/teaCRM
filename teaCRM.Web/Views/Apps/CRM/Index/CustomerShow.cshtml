@@ -1,5 +1,6 @@
 ﻿@using System.Data
 @using teaCRM.Entity
+@using teaCRM.Web.Helpers
 @{
     //模块信息
     var myApps = (List<VMyappCompany>) ViewBag.MyApps;
@@ -195,15 +196,15 @@
                                     customer.TryGetValue("cus_createTime", out cus_createTime);
                                 }
                                 <li><b>助记简称：</b>@cus_sname</li>
-                                <li><b>上级客户：</b>@cus_lastname</li>
+                                <li><b>上级客户：</b>@Html.LoadDefaultValue(cus_lastname.ToString(),"暂无上级客户")</li>
                                 <li><b>电话号码：</b>@cus_tel</li>
                                 <li><b>所在城市：</b><span id="cus_city">@cus_city</span></li>
                                 <li><b>详细地址：</b>@cus_address</li>
                                 <li><b>备注说明：</b>@cus_note</li>
                                 <li><b>主联系人：</b>@con_name</li>
                                 <li><b>共享成员：</b>@con_team</li>
-                                <li><b>是否公海：</b>@con_is_pub</li>
-                                <li><b>是否回收站：</b>@con_back</li>
+                                <li><b>是否公海：</b>@Html.BooleanParse(int.Parse(con_is_pub.ToString()),"是","否")</li>
+                                <li><b>是否回收站：</b>@Html.BooleanParse(int.Parse(con_back.ToString()), "是", "否")</li>
                                 <li><b>创建时间：</b>@cus_createTime</li>  
                                 @foreach (var customerField in customerFields)
                                 {
@@ -212,9 +213,17 @@
                                     customer.TryGetValue(customerField.ExpName, out tempField);
                                     if (null != tempField)
                                     {
-                                        <li><b>@customerField.ExpTitle：</b>@tempField</li>
+                                        if (customerField.ExpCtype == 5)//下拉框取值
+                                        {
+                                         <li><b>@customerField.ExpTitle：</b>@Html.GetOptionValue(tempField.ToString(), customerField.ExpOption,"暂未填写")</li>
+                                        }
+                                        else
+                                        {
+                                             <li><b>@customerField.ExpTitle：</b>@tempField</li>
+                                        }
                                     }
                                 }
+                                
                
 
 	         
@@ -231,8 +240,9 @@
                                     object con_tel = null;
                                     object con_bir = null;
                                     object con_note = null;
-                                    mainComtact.TryGetValue("con_qq", out con_qq);
+                                    mainComtact.TryGetValue("con_name", out con_name2);
                                     mainComtact.TryGetValue("con_email", out con_email);
+                                    mainComtact.TryGetValue("con_qq", out con_qq);
                                     mainComtact.TryGetValue("con_tel", out con_tel);
                                     mainComtact.TryGetValue("con_bir", out con_bir);
                                     mainComtact.TryGetValue("con_note", out con_note);

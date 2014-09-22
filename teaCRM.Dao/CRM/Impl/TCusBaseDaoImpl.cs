@@ -457,7 +457,8 @@ namespace teaCRM.Dao.Impl
                                        a.cus_no,
                                        a.cus_name,
                                        a.cus_sname,
-                                       a.cus_lastid AS cus_lastname,
+                                       a.cus_lastid,
+                                       (SELECT cus_name FROM T_cus_base WHERE id=a.cus_lastid) AS cus_lastname, 
                                        a.cus_tel,
                                        a.cus_city,
                                        a.cus_address,
@@ -521,7 +522,7 @@ namespace teaCRM.Dao.Impl
                 dynamic namedParameters = null;
                 string pagingSql = PagingHelper.CreatePagingSql(recordCount, pageSize, pageIndex, strSql.ToString(),
                     filedOrder);
-                //LogHelper.Debug("customer pagingSql," + pagingSql);
+                LogHelper.Debug("customer pagingSql," + pagingSql);
 
 
                 try
