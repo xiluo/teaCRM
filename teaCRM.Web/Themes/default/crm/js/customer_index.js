@@ -114,7 +114,7 @@ function context_view() {
 
 //添加客户
 function add() {
-    showWindow("show_add", "/Apps/CRM/Index/Add/", "新增客户", 800, 480, function() {
+    showWindow("show_add", "/Apps/CRM/Index/Add/", "新增客户", 800, 360, function() {
         var form_customer = $(window.frames["frm_show_add"].document).find("#form_customer");
         //var data = $(form_customer).serialize();
         //alert(data);
