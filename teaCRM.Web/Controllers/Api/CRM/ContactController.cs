@@ -13,6 +13,9 @@ using teaCRM.Service.CRM;
 
 namespace teaCRM.Web.Controllers.Api.CRM
 {
+    /// <summary>
+    /// 联系人APi
+    /// </summary>
     public class ContactController : ApiController
     {
         //spring 创建service依赖
