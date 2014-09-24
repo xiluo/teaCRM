@@ -1,0 +1,1040 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title="AccountController class">
+    <HelpKINode Title="AccountController Class" Url="html/564236311.htm" />
+    <HelpKINode Title="AccountController Class" Url="html/1545629106.htm" />
+    <HelpKINode Title="AccountController Members" Url="html/1238812878.htm" />
+    <HelpKINode Title="AccountController Members" Url="html/301131639.htm" />
+    <HelpKINode Title="about AccountController class" Url="html/1545629106.htm" />
+    <HelpKINode Title="about AccountController class" Url="html/564236311.htm" />
+    <HelpKINode Title="all members" Url="html/301131639.htm" />
+    <HelpKINode Title="all members" Url="html/1238812878.htm" />
+    <HelpKINode Title="methods" Url="html/1684506597.htm" />
+    <HelpKINode Title="methods" Url="html/1532524550.htm" />
+    <HelpKINode Title="properties" Url="html/1491330073.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AccountController.AccountService property" Url="html/1946957227.htm" />
+  <HelpKINode Title="AccountController.EmailRegister method" Url="html/1976061336.htm" />
+  <HelpKINode Title="AccountController.Login method">
+    <HelpKINode Title="Login Method " Url="html/1961750655.htm" />
+    <HelpKINode Title="Login Method " Url="html/1688853384.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AccountController.Logout method" Url="html/99253940.htm" />
+  <HelpKINode Title="AccountController.PhoneRegister method" Url="html/238671745.htm" />
+  <HelpKINode Title="AccountController.PublicRegister method" Url="html/1095652957.htm" />
+  <HelpKINode Title="AccountController.Register method" Url="html/545430526.htm" />
+  <HelpKINode Title="AccountController.UserNameAuto method" Url="html/1123079203.htm" />
+  <HelpKINode Title="AccountController.ValidateAccount method" Url="html/1915424173.htm" />
+  <HelpKINode Title="AccountController.ValidatePhone method" Url="html/1856181940.htm" />
+  <HelpKINode Title="AccountService property">
+    <HelpKINode Title="AccountService Property " Url="html/1909827750.htm" />
+    <HelpKINode Title="AccountService Property " Url="html/1333134693.htm" />
+    <HelpKINode Title="AccountService Property " Url="html/1922239139.htm" />
+    <HelpKINode Title="AccountService Property " Url="html/1946957227.htm" />
+    <HelpKINode Title="AccountService Property " Url="html/562421716.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ActionName property" Url="html/1345645776.htm" />
+  <HelpKINode Title="ActionSamples property" Url="html/727734909.htm" />
+  <HelpKINode Title="ActualHttpMessageTypes property" Url="html/1305001681.htm" />
+  <HelpKINode Title="Add method">
+    <HelpKINode Title="Add Method " Url="html/167376047.htm" />
+    <HelpKINode Title="Add Method " Url="html/452028862.htm" />
+    <HelpKINode Title="Add Method " Url="html/895770339.htm" />
+    <HelpKINode Title="Add Method " Url="html/1351409810.htm" />
+    <HelpKINode Title="Add Method " Url="html/833961628.htm" />
+    <HelpKINode Title="Add Method " Url="html/1125676122.htm" />
+    <HelpKINode Title="Add Method " Url="html/720657529.htm" />
+    <HelpKINode Title="Add Method " Url="html/9191524.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AddApp method" Url="html/863923316.htm" />
+  <HelpKINode Title="AddContact method" Url="html/926909419.htm" />
+  <HelpKINode Title="AddField method" Url="html/857563818.htm" />
+  <HelpKINode Title="AddFilter method" Url="html/841807703.htm" />
+  <HelpKINode Title="AddOperating method" Url="html/1734172434.htm" />
+  <HelpKINode Title="AddRole method" Url="html/1503852220.htm" />
+  <HelpKINode Title="AddUser method" Url="html/1005204495.htm" />
+  <HelpKINode Title="Api method" Url="html/363289254.htm" />
+  <HelpKINode Title="ApiAuthorizeAttribute class">
+    <HelpKINode Title="ApiAuthorizeAttribute Class" Url="html/1866095891.htm" />
+    <HelpKINode Title="ApiAuthorizeAttribute Members" Url="html/2052185797.htm" />
+    <HelpKINode Title="about ApiAuthorizeAttribute class" Url="html/1866095891.htm" />
+    <HelpKINode Title="all members" Url="html/2052185797.htm" />
+    <HelpKINode Title="methods" Url="html/1726806902.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ApiAuthorizeAttribute.ExecuteAuthorizationFilterAsync method" Url="html/65870304.htm" />
+  <HelpKINode Title="ApiDescription property" Url="html/1838394838.htm" />
+  <HelpKINode Title="ApiDescriptionExtensions class">
+    <HelpKINode Title="ApiDescriptionExtensions Class" Url="html/1826776294.htm" />
+    <HelpKINode Title="ApiDescriptionExtensions Members" Url="html/1146404428.htm" />
+    <HelpKINode Title="about ApiDescriptionExtensions class" Url="html/1826776294.htm" />
+    <HelpKINode Title="all members" Url="html/1146404428.htm" />
+    <HelpKINode Title="methods" Url="html/462573997.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ApiDescriptionExtensions.GetFriendlyId method" Url="html/1270594645.htm" />
+  <HelpKINode Title="AppController class">
+    <HelpKINode Title="AppController Class" Url="html/798383051.htm" />
+    <HelpKINode Title="AppController Class" Url="html/2044820678.htm" />
+    <HelpKINode Title="AppController Members" Url="html/1991013566.htm" />
+    <HelpKINode Title="AppController Members" Url="html/1050899956.htm" />
+    <HelpKINode Title="about AppController class" Url="html/798383051.htm" />
+    <HelpKINode Title="about AppController class" Url="html/2044820678.htm" />
+    <HelpKINode Title="all members" Url="html/1050899956.htm" />
+    <HelpKINode Title="all members" Url="html/1991013566.htm" />
+    <HelpKINode Title="methods" Url="html/1251251631.htm" />
+    <HelpKINode Title="methods" Url="html/1233215850.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AppController.Add method" Url="html/452028862.htm" />
+  <HelpKINode Title="AppController.AddApp method" Url="html/863923316.htm" />
+  <HelpKINode Title="AppController.GetAllApps method" Url="html/291338703.htm" />
+  <HelpKINode Title="AppMakerController class">
+    <HelpKINode Title="AppMakerController Class" Url="html/896655266.htm" />
+    <HelpKINode Title="AppMakerController Class" Url="html/971968401.htm" />
+    <HelpKINode Title="AppMakerController Members" Url="html/1707640308.htm" />
+    <HelpKINode Title="AppMakerController Members" Url="html/1118898914.htm" />
+    <HelpKINode Title="about AppMakerController class" Url="html/896655266.htm" />
+    <HelpKINode Title="about AppMakerController class" Url="html/971968401.htm" />
+    <HelpKINode Title="all members" Url="html/1707640308.htm" />
+    <HelpKINode Title="all members" Url="html/1118898914.htm" />
+    <HelpKINode Title="methods" Url="html/1858410307.htm" />
+    <HelpKINode Title="methods" Url="html/1499342922.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AppMakerController.Add method" Url="html/1351409810.htm" />
+  <HelpKINode Title="AppMakerController.AddField method" Url="html/857563818.htm" />
+  <HelpKINode Title="AppMakerController.AddFilter method" Url="html/841807703.htm" />
+  <HelpKINode Title="AppMakerController.AddOperating method" Url="html/1734172434.htm" />
+  <HelpKINode Title="AppMakerController.Delete method" Url="html/613702835.htm" />
+  <HelpKINode Title="AppMakerController.DeleteField method" Url="html/1581754423.htm" />
+  <HelpKINode Title="AppMakerController.DeleteFilter method" Url="html/1318412781.htm" />
+  <HelpKINode Title="AppMakerController.DeleteOperating method" Url="html/1726909715.htm" />
+  <HelpKINode Title="AppMakerController.Detail method" Url="html/1544968869.htm" />
+  <HelpKINode Title="AppMakerController.Edit method" Url="html/1612707374.htm" />
+  <HelpKINode Title="AppMakerController.EditField method">
+    <HelpKINode Title="EditField Method " Url="html/1827066018.htm" />
+    <HelpKINode Title="EditField Method " Url="html/1204127852.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AppMakerController.EditFilter method" Url="html/1779513650.htm" />
+  <HelpKINode Title="AppMakerController.EditOperating method" Url="html/1372470993.htm" />
+  <HelpKINode Title="AppMakerController.EditToolbar method" Url="html/1504044671.htm" />
+  <HelpKINode Title="AppMakerController.EditView method" Url="html/1668975066.htm" />
+  <HelpKINode Title="AppMakerController.GetAllApps method" Url="html/736016605.htm" />
+  <HelpKINode Title="AppMakerController.GetAllMyAppFields method" Url="html/1953673235.htm" />
+  <HelpKINode Title="AppMakerController.GetAllMyApps method" Url="html/811695939.htm" />
+  <HelpKINode Title="AppMakerController.GetAllMyAppToolBars method" Url="html/1036660159.htm" />
+  <HelpKINode Title="AppMakerController.GetAllMyAppViews method" Url="html/466702794.htm" />
+  <HelpKINode Title="AppMakerController.GetField method" Url="html/1318840194.htm" />
+  <HelpKINode Title="AppMakerController.GetOperating method" Url="html/1698270101.htm" />
+  <HelpKINode Title="AppMakerController.GetView method" Url="html/1637500668.htm" />
+  <HelpKINode Title="AppMakerController.Index method" Url="html/282756849.htm" />
+  <HelpKINode Title="AppMakerController.Install method" Url="html/126560058.htm" />
+  <HelpKINode Title="AppMakerController.IsInstalled method" Url="html/1283412045.htm" />
+  <HelpKINode Title="AppMakerController.UnInstall method" Url="html/970613209.htm" />
+  <HelpKINode Title="AppMakerService property" Url="html/174008866.htm" />
+  <HelpKINode Title="AreaName property" Url="html/1176710882.htm" />
+  <HelpKINode Title="AsyncGetNodes method">
+    <HelpKINode Title="AsyncGetNodes Method " Url="html/667480580.htm" />
+    <HelpKINode Title="AsyncGetNodes Method " Url="html/1022030858.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AuthConfig class">
+    <HelpKINode Title="AuthConfig Class" Url="html/242140538.htm" />
+    <HelpKINode Title="AuthConfig Members" Url="html/619147443.htm" />
+    <HelpKINode Title="about AuthConfig class" Url="html/242140538.htm" />
+    <HelpKINode Title="all members" Url="html/619147443.htm" />
+    <HelpKINode Title="methods" Url="html/2126510192.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AuthConfig.RegisterAuth method" Url="html/1463358036.htm" />
+  <HelpKINode Title="AutoLoginAttribute class">
+    <HelpKINode Title="AutoLoginAttribute Class" Url="html/591083939.htm" />
+    <HelpKINode Title="AutoLoginAttribute Members" Url="html/340975699.htm" />
+    <HelpKINode Title="about AutoLoginAttribute class" Url="html/591083939.htm" />
+    <HelpKINode Title="all members" Url="html/340975699.htm" />
+    <HelpKINode Title="methods" Url="html/2143963583.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AutoLoginAttribute.OnAuthorization method" Url="html/417951131.htm" />
+  <HelpKINode Title="BooleanParse method" Url="html/1493855011.htm" />
+  <HelpKINode Title="BundleConfig class">
+    <HelpKINode Title="BundleConfig Class" Url="html/1015321447.htm" />
+    <HelpKINode Title="BundleConfig Members" Url="html/2002805712.htm" />
+    <HelpKINode Title="about BundleConfig class" Url="html/1015321447.htm" />
+    <HelpKINode Title="all members" Url="html/2002805712.htm" />
+    <HelpKINode Title="methods" Url="html/1079024032.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BundleConfig.RegisterBundles method" Url="html/192801050.htm" />
+  <HelpKINode Title="Configuration property" Url="html/172046582.htm" />
+  <HelpKINode Title="ContactController class">
+    <HelpKINode Title="ContactController Class" Url="html/607966020.htm" />
+    <HelpKINode Title="ContactController Class" Url="html/903829130.htm" />
+    <HelpKINode Title="ContactController Members" Url="html/462736714.htm" />
+    <HelpKINode Title="ContactController Members" Url="html/671263695.htm" />
+    <HelpKINode Title="about ContactController class" Url="html/607966020.htm" />
+    <HelpKINode Title="about ContactController class" Url="html/903829130.htm" />
+    <HelpKINode Title="all members" Url="html/462736714.htm" />
+    <HelpKINode Title="all members" Url="html/671263695.htm" />
+    <HelpKINode Title="methods" Url="html/1176634440.htm" />
+    <HelpKINode Title="methods" Url="html/250904792.htm" />
+    <HelpKINode Title="properties" Url="html/66100652.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ContactController.AccountService property" Url="html/562421716.htm" />
+  <HelpKINode Title="ContactController.Add method" Url="html/895770339.htm" />
+  <HelpKINode Title="ContactController.AddContact method" Url="html/926909419.htm" />
+  <HelpKINode Title="ContactController.CustomerService property" Url="html/1610809490.htm" />
+  <HelpKINode Title="ContactController.DeleteContact method" Url="html/216294680.htm" />
+  <HelpKINode Title="ContactController.Edit method" Url="html/356522733.htm" />
+  <HelpKINode Title="ContactController.EditContact method" Url="html/1858777492.htm" />
+  <HelpKINode Title="ContactController.GetAllContacts method" Url="html/293412913.htm" />
+  <HelpKINode Title="ContactController.GetContact method" Url="html/889384809.htm" />
+  <HelpKINode Title="ContactController.Index method" Url="html/1408142451.htm" />
+  <HelpKINode Title="ContactController.Init method" Url="html/2052208947.htm" />
+  <HelpKINode Title="ControllerName property" Url="html/598559187.htm" />
+  <HelpKINode Title="CustomerController class">
+    <HelpKINode Title="CustomerController Class" Url="html/540283050.htm" />
+    <HelpKINode Title="CustomerController Members" Url="html/1503527546.htm" />
+    <HelpKINode Title="about CustomerController class" Url="html/540283050.htm" />
+    <HelpKINode Title="all members" Url="html/1503527546.htm" />
+    <HelpKINode Title="methods" Url="html/161018004.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CustomerController.GetCustomerLsit method" Url="html/2045980746.htm" />
+  <HelpKINode Title="CustomerService property">
+    <HelpKINode Title="CustomerService Property " Url="html/544981490.htm" />
+    <HelpKINode Title="CustomerService Property " Url="html/1610809490.htm" />
+    <HelpKINode Title="CustomerService Property " Url="html/1206256670.htm" />
+    <HelpKINode Title="CustomerService Property " Url="html/474084061.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DateTimeParse method" Url="html/1725510857.htm" />
+  <HelpKINode Title="Delete method">
+    <HelpKINode Title="Delete Method " Url="html/2005042551.htm" />
+    <HelpKINode Title="Delete Method " Url="html/613702835.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DeleteContact method" Url="html/216294680.htm" />
+  <HelpKINode Title="DeleteField method" Url="html/1581754423.htm" />
+  <HelpKINode Title="DeleteFilter method" Url="html/1318412781.htm" />
+  <HelpKINode Title="DeleteOperating method" Url="html/1726909715.htm" />
+  <HelpKINode Title="DeleteRole method" Url="html/1546390384.htm" />
+  <HelpKINode Title="DeleteUser method" Url="html/1048516531.htm" />
+  <HelpKINode Title="DepartmentController class">
+    <HelpKINode Title="DepartmentController Class" Url="html/1082786943.htm" />
+    <HelpKINode Title="DepartmentController Members" Url="html/1362603420.htm" />
+    <HelpKINode Title="about DepartmentController class" Url="html/1082786943.htm" />
+    <HelpKINode Title="all members" Url="html/1362603420.htm" />
+    <HelpKINode Title="methods" Url="html/1996120343.htm" />
+    <HelpKINode Title="properties" Url="html/17663340.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DepartmentController.Add method" Url="html/9191524.htm" />
+  <HelpKINode Title="DepartmentController.AsyncGetNodes method" Url="html/667480580.htm" />
+  <HelpKINode Title="DepartmentController.Delete method" Url="html/2005042551.htm" />
+  <HelpKINode Title="DepartmentController.Edit method" Url="html/328247698.htm" />
+  <HelpKINode Title="DepartmentController.GetDepartment method" Url="html/1832378506.htm" />
+  <HelpKINode Title="DepartmentController.Index method" Url="html/1370146001.htm" />
+  <HelpKINode Title="DepartmentController.SysDepartmentService property" Url="html/1187096137.htm" />
+  <HelpKINode Title="DesktopController class">
+    <HelpKINode Title="DesktopController Class" Url="html/145655940.htm" />
+    <HelpKINode Title="DesktopController Members" Url="html/1721707664.htm" />
+    <HelpKINode Title="about DesktopController class" Url="html/145655940.htm" />
+    <HelpKINode Title="all members" Url="html/1721707664.htm" />
+    <HelpKINode Title="methods" Url="html/580221287.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DesktopController.Index method" Url="html/1221092246.htm" />
+  <HelpKINode Title="Detail method" Url="html/1544968869.htm" />
+  <HelpKINode Title="Edit method">
+    <HelpKINode Title="Edit Method " Url="html/328247698.htm" />
+    <HelpKINode Title="Edit Method " Url="html/519477964.htm" />
+    <HelpKINode Title="Edit Method " Url="html/1448955250.htm" />
+    <HelpKINode Title="Edit Method " Url="html/1612707374.htm" />
+    <HelpKINode Title="Edit Method " Url="html/972979400.htm" />
+    <HelpKINode Title="Edit Method " Url="html/356522733.htm" />
+  </HelpKINode>
+  <HelpKINode Title="EditContact method" Url="html/1858777492.htm" />
+  <HelpKINode Title="EditField method">
+    <HelpKINode Title="EditField Method " Url="html/1827066018.htm" />
+    <HelpKINode Title="EditField Method " Url="html/1204127852.htm" />
+  </HelpKINode>
+  <HelpKINode Title="EditFilter method" Url="html/1779513650.htm" />
+  <HelpKINode Title="EditOperating method" Url="html/1372470993.htm" />
+  <HelpKINode Title="EditRole method" Url="html/1137459540.htm" />
+  <HelpKINode Title="EditToolbar method" Url="html/1504044671.htm" />
+  <HelpKINode Title="EditUser method" Url="html/465213247.htm" />
+  <HelpKINode Title="EditView method" Url="html/1668975066.htm" />
+  <HelpKINode Title="EmailRegister method" Url="html/1976061336.htm" />
+  <HelpKINode Title="Equals method">
+    <HelpKINode Title="Equals Method " Url="html/1426940980.htm" />
+    <HelpKINode Title="Equals Method " Url="html/706409769.htm" />
+    <HelpKINode Title="Equals Method " Url="html/1847197581.htm" />
+    <HelpKINode Title="Equals Method " Url="html/597785167.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ErrorMessage property" Url="html/1717939419.htm" />
+  <HelpKINode Title="ErrorMessages property" Url="html/1499304649.htm" />
+  <HelpKINode Title="ExecuteAsync method" Url="html/535554145.htm" />
+  <HelpKINode Title="ExecuteAuthorizationFilterAsync method" Url="html/65870304.htm" />
+  <HelpKINode Title="ExistsUser method" Url="html/1034597764.htm" />
+  <HelpKINode Title="FilterConfig class">
+    <HelpKINode Title="FilterConfig Class" Url="html/879254377.htm" />
+    <HelpKINode Title="FilterConfig Members" Url="html/1831718880.htm" />
+    <HelpKINode Title="about FilterConfig class" Url="html/879254377.htm" />
+    <HelpKINode Title="all members" Url="html/1831718880.htm" />
+    <HelpKINode Title="methods" Url="html/1301827024.htm" />
+  </HelpKINode>
+  <HelpKINode Title="FilterConfig.RegisterGlobalFilters method" Url="html/659762129.htm" />
+  <HelpKINode Title="FilterEdit method" Url="html/1068740142.htm" />
+  <HelpKINode Title="FormateDateTime method" Url="html/1014602372.htm" />
+  <HelpKINode Title="Function method" Url="html/1074030028.htm" />
+  <HelpKINode Title="GetActionSample method" Url="html/987420969.htm" />
+  <HelpKINode Title="GetAllApps method">
+    <HelpKINode Title="GetAllApps Method " Url="html/291338703.htm" />
+    <HelpKINode Title="GetAllApps Method " Url="html/736016605.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetAllContacts method" Url="html/293412913.htm" />
+  <HelpKINode Title="GetAllMyAppFields method" Url="html/1953673235.htm" />
+  <HelpKINode Title="GetAllMyApps method" Url="html/811695939.htm" />
+  <HelpKINode Title="GetAllMyAppToolBars method" Url="html/1036660159.htm" />
+  <HelpKINode Title="GetAllMyAppViews method" Url="html/466702794.htm" />
+  <HelpKINode Title="GetAllPermissions method" Url="html/2091780482.htm" />
+  <HelpKINode Title="GetAllRoles method" Url="html/930586039.htm" />
+  <HelpKINode Title="GetAllUsers method" Url="html/101668950.htm" />
+  <HelpKINode Title="GetBootContactList method" Url="html/289887616.htm" />
+  <HelpKINode Title="GetContact method" Url="html/889384809.htm" />
+  <HelpKINode Title="GetContactList method" Url="html/1549516173.htm" />
+  <HelpKINode Title="GetCurrentCompanyUser method" Url="html/1927505614.htm" />
+  <HelpKINode Title="GetCustomer method" Url="html/188049318.htm" />
+  <HelpKINode Title="GetCustomerLsit method">
+    <HelpKINode Title="GetCustomerLsit Method " Url="html/2045980746.htm" />
+    <HelpKINode Title="GetCustomerLsit Method " Url="html/1618478959.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetDepartment method" Url="html/1832378506.htm" />
+  <HelpKINode Title="GetDocumentation method" Url="html/1426489235.htm" />
+  <HelpKINode Title="GetField method" Url="html/1318840194.htm" />
+  <HelpKINode Title="GetFriendlyId method" Url="html/1270594645.htm" />
+  <HelpKINode Title="GetHashCode method">
+    <HelpKINode Title="GetHashCode Method " Url="html/1954156744.htm" />
+    <HelpKINode Title="GetHashCode Method " Url="html/417256133.htm" />
+    <HelpKINode Title="GetHashCode Method " Url="html/1965604240.htm" />
+    <HelpKINode Title="GetHashCode Method " Url="html/12719892.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetHelpPageApiModel method" Url="html/1412665377.htm" />
+  <HelpKINode Title="GetHelpPageSampleGenerator method" Url="html/2732155.htm" />
+  <HelpKINode Title="GetOperating method" Url="html/1698270101.htm" />
+  <HelpKINode Title="GetOptionValue method" Url="html/1794262278.htm" />
+  <HelpKINode Title="GetRole method" Url="html/2078291183.htm" />
+  <HelpKINode Title="GetSample method" Url="html/1903937410.htm" />
+  <HelpKINode Title="GetSampleObject method" Url="html/933583519.htm" />
+  <HelpKINode Title="GetSampleRequests method" Url="html/2064038054.htm" />
+  <HelpKINode Title="GetSampleResponses method" Url="html/1448630717.htm" />
+  <HelpKINode Title="GetUser method" Url="html/1456298583.htm" />
+  <HelpKINode Title="GetView method" Url="html/1637500668.htm" />
+  <HelpKINode Title="HelpController class">
+    <HelpKINode Title="HelpController Class" Url="html/1184532724.htm" />
+    <HelpKINode Title="HelpController Members" Url="html/798704508.htm" />
+    <HelpKINode Title="about HelpController class" Url="html/1184532724.htm" />
+    <HelpKINode Title="all members" Url="html/798704508.htm" />
+    <HelpKINode Title="constructor" Url="html/1271605251.htm" />
+    <HelpKINode Title="methods" Url="html/1919253048.htm" />
+    <HelpKINode Title="properties" Url="html/1123521855.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HelpController.Api method" Url="html/363289254.htm" />
+  <HelpKINode Title="HelpController.Configuration property" Url="html/172046582.htm" />
+  <HelpKINode Title="HelpController.HelpController constructor" Url="html/1271605251.htm" />
+  <HelpKINode Title="HelpController.Index method" Url="html/1552276555.htm" />
+  <HelpKINode Title="HelpPageApiModel class">
+    <HelpKINode Title="HelpPageApiModel Class" Url="html/722675687.htm" />
+    <HelpKINode Title="HelpPageApiModel Members" Url="html/1637207733.htm" />
+    <HelpKINode Title="about HelpPageApiModel class" Url="html/722675687.htm" />
+    <HelpKINode Title="all members" Url="html/1637207733.htm" />
+    <HelpKINode Title="constructor" Url="html/1239869770.htm" />
+    <HelpKINode Title="properties" Url="html/1600119275.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HelpPageApiModel.ApiDescription property" Url="html/1838394838.htm" />
+  <HelpKINode Title="HelpPageApiModel.ErrorMessages property" Url="html/1499304649.htm" />
+  <HelpKINode Title="HelpPageApiModel.HelpPageApiModel constructor" Url="html/1239869770.htm" />
+  <HelpKINode Title="HelpPageApiModel.SampleRequests property" Url="html/1970119715.htm" />
+  <HelpKINode Title="HelpPageApiModel.SampleResponses property" Url="html/1174089646.htm" />
+  <HelpKINode Title="HelpPageAreaRegistration class">
+    <HelpKINode Title="HelpPageAreaRegistration Class" Url="html/1256623495.htm" />
+    <HelpKINode Title="HelpPageAreaRegistration Members" Url="html/654272288.htm" />
+    <HelpKINode Title="about HelpPageAreaRegistration class" Url="html/1256623495.htm" />
+    <HelpKINode Title="all members" Url="html/654272288.htm" />
+    <HelpKINode Title="methods" Url="html/760236854.htm" />
+    <HelpKINode Title="properties" Url="html/1322639028.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HelpPageAreaRegistration.AreaName property" Url="html/1176710882.htm" />
+  <HelpKINode Title="HelpPageAreaRegistration.RegisterArea method" Url="html/91910401.htm" />
+  <HelpKINode Title="HelpPageConfig class">
+    <HelpKINode Title="HelpPageConfig Class" Url="html/1876845539.htm" />
+    <HelpKINode Title="HelpPageConfig Members" Url="html/156750670.htm" />
+    <HelpKINode Title="about HelpPageConfig class" Url="html/1876845539.htm" />
+    <HelpKINode Title="all members" Url="html/156750670.htm" />
+    <HelpKINode Title="methods" Url="html/538331110.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HelpPageConfig.Register method" Url="html/1576539513.htm" />
+  <HelpKINode Title="HelpPageConfigurationExtensions class">
+    <HelpKINode Title="HelpPageConfigurationExtensions Class" Url="html/670751481.htm" />
+    <HelpKINode Title="HelpPageConfigurationExtensions Members" Url="html/1960540979.htm" />
+    <HelpKINode Title="about HelpPageConfigurationExtensions class" Url="html/670751481.htm" />
+    <HelpKINode Title="all members" Url="html/1960540979.htm" />
+    <HelpKINode Title="methods" Url="html/182227116.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HelpPageConfigurationExtensions.GetHelpPageApiModel method" Url="html/1412665377.htm" />
+  <HelpKINode Title="HelpPageConfigurationExtensions.GetHelpPageSampleGenerator method" Url="html/2732155.htm" />
+  <HelpKINode Title="HelpPageConfigurationExtensions.SetActualRequestType method" Url="html/1884833689.htm" />
+  <HelpKINode Title="HelpPageConfigurationExtensions.SetActualResponseType method" Url="html/1384835232.htm" />
+  <HelpKINode Title="HelpPageConfigurationExtensions.SetDocumentationProvider method" Url="html/1022888464.htm" />
+  <HelpKINode Title="HelpPageConfigurationExtensions.SetHelpPageSampleGenerator method" Url="html/428632835.htm" />
+  <HelpKINode Title="HelpPageConfigurationExtensions.SetSampleForType method" Url="html/773663564.htm" />
+  <HelpKINode Title="HelpPageConfigurationExtensions.SetSampleObjects method" Url="html/490107928.htm" />
+  <HelpKINode Title="HelpPageConfigurationExtensions.SetSampleRequest method" Url="html/111435082.htm" />
+  <HelpKINode Title="HelpPageConfigurationExtensions.SetSampleResponse method" Url="html/1048069857.htm" />
+  <HelpKINode Title="HelpPageSampleGenerator class">
+    <HelpKINode Title="HelpPageSampleGenerator Class" Url="html/576849906.htm" />
+    <HelpKINode Title="HelpPageSampleGenerator Members" Url="html/480937388.htm" />
+    <HelpKINode Title="about HelpPageSampleGenerator class" Url="html/576849906.htm" />
+    <HelpKINode Title="all members" Url="html/480937388.htm" />
+    <HelpKINode Title="constructor" Url="html/1127652194.htm" />
+    <HelpKINode Title="methods" Url="html/499786632.htm" />
+    <HelpKINode Title="properties" Url="html/1850481684.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HelpPageSampleGenerator.ActionSamples property" Url="html/727734909.htm" />
+  <HelpKINode Title="HelpPageSampleGenerator.ActualHttpMessageTypes property" Url="html/1305001681.htm" />
+  <HelpKINode Title="HelpPageSampleGenerator.GetActionSample method" Url="html/987420969.htm" />
+  <HelpKINode Title="HelpPageSampleGenerator.GetSample method" Url="html/1903937410.htm" />
+  <HelpKINode Title="HelpPageSampleGenerator.GetSampleObject method" Url="html/933583519.htm" />
+  <HelpKINode Title="HelpPageSampleGenerator.GetSampleRequests method" Url="html/2064038054.htm" />
+  <HelpKINode Title="HelpPageSampleGenerator.GetSampleResponses method" Url="html/1448630717.htm" />
+  <HelpKINode Title="HelpPageSampleGenerator.HelpPageSampleGenerator constructor" Url="html/1127652194.htm" />
+  <HelpKINode Title="HelpPageSampleGenerator.ResolveType method" Url="html/1916084677.htm" />
+  <HelpKINode Title="HelpPageSampleGenerator.SampleObjects property" Url="html/1225224534.htm" />
+  <HelpKINode Title="HelpPageSampleGenerator.WriteSampleObjectUsingFormatter method" Url="html/1735650055.htm" />
+  <HelpKINode Title="HelpPageSampleKey class">
+    <HelpKINode Title="HelpPageSampleKey Class" Url="html/1229722796.htm" />
+    <HelpKINode Title="HelpPageSampleKey Members" Url="html/1628415692.htm" />
+    <HelpKINode Title="about HelpPageSampleKey class" Url="html/1229722796.htm" />
+    <HelpKINode Title="all members" Url="html/1628415692.htm" />
+    <HelpKINode Title="constructor" Url="html/743880982.htm" />
+    <HelpKINode Title="methods" Url="html/96245533.htm" />
+    <HelpKINode Title="properties" Url="html/831754862.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HelpPageSampleKey.ActionName property" Url="html/1345645776.htm" />
+  <HelpKINode Title="HelpPageSampleKey.ControllerName property" Url="html/598559187.htm" />
+  <HelpKINode Title="HelpPageSampleKey.Equals method" Url="html/597785167.htm" />
+  <HelpKINode Title="HelpPageSampleKey.GetHashCode method" Url="html/12719892.htm" />
+  <HelpKINode Title="HelpPageSampleKey.HelpPageSampleKey constructor" Url="html/743880982.htm" />
+  <HelpKINode Title="HelpPageSampleKey.MediaType property" Url="html/11412061.htm" />
+  <HelpKINode Title="HelpPageSampleKey.ParameterNames property" Url="html/227309440.htm" />
+  <HelpKINode Title="HelpPageSampleKey.ParameterType property" Url="html/1741129864.htm" />
+  <HelpKINode Title="HelpPageSampleKey.SampleDirection property" Url="html/449479011.htm" />
+  <HelpKINode Title="Image method" Url="html/168878898.htm" />
+  <HelpKINode Title="ImageSample class">
+    <HelpKINode Title="ImageSample Class" Url="html/719807226.htm" />
+    <HelpKINode Title="ImageSample Members" Url="html/111247981.htm" />
+    <HelpKINode Title="about ImageSample class" Url="html/719807226.htm" />
+    <HelpKINode Title="all members" Url="html/111247981.htm" />
+    <HelpKINode Title="constructor" Url="html/526753597.htm" />
+    <HelpKINode Title="methods" Url="html/201112081.htm" />
+    <HelpKINode Title="properties" Url="html/1399583600.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ImageSample.Equals method" Url="html/1426940980.htm" />
+  <HelpKINode Title="ImageSample.GetHashCode method" Url="html/417256133.htm" />
+  <HelpKINode Title="ImageSample.ImageSample constructor" Url="html/526753597.htm" />
+  <HelpKINode Title="ImageSample.Src property" Url="html/1781327150.htm" />
+  <HelpKINode Title="ImageSample.ToString method" Url="html/840175111.htm" />
+  <HelpKINode Title="Index method">
+    <HelpKINode Title="Index Method " Url="html/1911122736.htm" />
+    <HelpKINode Title="Index Method " Url="html/1307977955.htm" />
+    <HelpKINode Title="Index Method " Url="html/1793363826.htm" />
+    <HelpKINode Title="Index Method " Url="html/1370146001.htm" />
+    <HelpKINode Title="Index Method " Url="html/1557349789.htm" />
+    <HelpKINode Title="Index Method " Url="html/1932667455.htm" />
+    <HelpKINode Title="Index Method " Url="html/1552276555.htm" />
+    <HelpKINode Title="Index Method " Url="html/2129374814.htm" />
+    <HelpKINode Title="Index Method " Url="html/1221092246.htm" />
+    <HelpKINode Title="Index Method " Url="html/2136488911.htm" />
+    <HelpKINode Title="Index Method " Url="html/1907198620.htm" />
+    <HelpKINode Title="Index Method " Url="html/282756849.htm" />
+    <HelpKINode Title="Index Method " Url="html/1385877164.htm" />
+    <HelpKINode Title="Index Method " Url="html/1578872496.htm" />
+    <HelpKINode Title="Index Method " Url="html/1408142451.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IndexController class">
+    <HelpKINode Title="IndexController Class" Url="html/2083055230.htm" />
+    <HelpKINode Title="IndexController Class" Url="html/1566366862.htm" />
+    <HelpKINode Title="IndexController Class" Url="html/1616891515.htm" />
+    <HelpKINode Title="IndexController Class" Url="html/723008730.htm" />
+    <HelpKINode Title="IndexController Class" Url="html/687920704.htm" />
+    <HelpKINode Title="IndexController Members" Url="html/1169569814.htm" />
+    <HelpKINode Title="IndexController Members" Url="html/1035578788.htm" />
+    <HelpKINode Title="IndexController Members" Url="html/482388744.htm" />
+    <HelpKINode Title="IndexController Members" Url="html/1152375504.htm" />
+    <HelpKINode Title="IndexController Members" Url="html/987960937.htm" />
+    <HelpKINode Title="about IndexController class" Url="html/2083055230.htm" />
+    <HelpKINode Title="about IndexController class" Url="html/723008730.htm" />
+    <HelpKINode Title="about IndexController class" Url="html/1566366862.htm" />
+    <HelpKINode Title="about IndexController class" Url="html/1616891515.htm" />
+    <HelpKINode Title="about IndexController class" Url="html/687920704.htm" />
+    <HelpKINode Title="all members" Url="html/1152375504.htm" />
+    <HelpKINode Title="all members" Url="html/482388744.htm" />
+    <HelpKINode Title="all members" Url="html/1035578788.htm" />
+    <HelpKINode Title="all members" Url="html/987960937.htm" />
+    <HelpKINode Title="all members" Url="html/1169569814.htm" />
+    <HelpKINode Title="fields" Url="html/500583100.htm" />
+    <HelpKINode Title="methods" Url="html/1843568365.htm" />
+    <HelpKINode Title="methods" Url="html/602718596.htm" />
+    <HelpKINode Title="methods" Url="html/1844438512.htm" />
+    <HelpKINode Title="methods" Url="html/631265723.htm" />
+    <HelpKINode Title="methods" Url="html/10893217.htm" />
+    <HelpKINode Title="properties" Url="html/1688559065.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IndexController.AccountService property" Url="html/1333134693.htm" />
+  <HelpKINode Title="IndexController.Add method">
+    <HelpKINode Title="Add Method " Url="html/833961628.htm" />
+    <HelpKINode Title="Add Method " Url="html/1125676122.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IndexController.AppMakerService property" Url="html/174008866.htm" />
+  <HelpKINode Title="IndexController.CustomerService property" Url="html/544981490.htm" />
+  <HelpKINode Title="IndexController.Edit method" Url="html/1448955250.htm" />
+  <HelpKINode Title="IndexController.Index method">
+    <HelpKINode Title="Index Method " Url="html/1907198620.htm" />
+    <HelpKINode Title="Index Method " Url="html/1911122736.htm" />
+    <HelpKINode Title="Index Method " Url="html/1307977955.htm" />
+    <HelpKINode Title="Index Method " Url="html/1932667455.htm" />
+    <HelpKINode Title="Index Method " Url="html/1385877164.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IndexController.Init method" Url="html/436652293.htm" />
+  <HelpKINode Title="IndexController.myApps field" Url="html/472565068.htm" />
+  <HelpKINode Title="IndexController.Show method" Url="html/1322983770.htm" />
+  <HelpKINode Title="Init method">
+    <HelpKINode Title="Init Method " Url="html/2038399343.htm" />
+    <HelpKINode Title="Init Method " Url="html/2052208947.htm" />
+    <HelpKINode Title="Init Method " Url="html/436652293.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Install method" Url="html/126560058.htm" />
+  <HelpKINode Title="InvalidSample class">
+    <HelpKINode Title="InvalidSample Class" Url="html/2055949289.htm" />
+    <HelpKINode Title="InvalidSample Members" Url="html/1071109809.htm" />
+    <HelpKINode Title="about InvalidSample class" Url="html/2055949289.htm" />
+    <HelpKINode Title="all members" Url="html/1071109809.htm" />
+    <HelpKINode Title="constructor" Url="html/2034802464.htm" />
+    <HelpKINode Title="methods" Url="html/860593687.htm" />
+    <HelpKINode Title="properties" Url="html/1578898655.htm" />
+  </HelpKINode>
+  <HelpKINode Title="InvalidSample.Equals method" Url="html/706409769.htm" />
+  <HelpKINode Title="InvalidSample.ErrorMessage property" Url="html/1717939419.htm" />
+  <HelpKINode Title="InvalidSample.GetHashCode method" Url="html/1954156744.htm" />
+  <HelpKINode Title="InvalidSample.InvalidSample constructor" Url="html/2034802464.htm" />
+  <HelpKINode Title="InvalidSample.ToString method" Url="html/477345227.htm" />
+  <HelpKINode Title="IsInstalled method" Url="html/1283412045.htm" />
+  <HelpKINode Title="IsNull method" Url="html/398863309.htm" />
+  <HelpKINode Title="LoadDataController class">
+    <HelpKINode Title="LoadDataController Class" Url="html/765354768.htm" />
+    <HelpKINode Title="LoadDataController Members" Url="html/1146809408.htm" />
+    <HelpKINode Title="about LoadDataController class" Url="html/765354768.htm" />
+    <HelpKINode Title="all members" Url="html/1146809408.htm" />
+    <HelpKINode Title="methods" Url="html/634876903.htm" />
+    <HelpKINode Title="properties" Url="html/1317956924.htm" />
+  </HelpKINode>
+  <HelpKINode Title="LoadDataController.AccountService property" Url="html/1909827750.htm" />
+  <HelpKINode Title="LoadDataController.AsyncGetNodes method" Url="html/1022030858.htm" />
+  <HelpKINode Title="LoadDataController.CustomerService property" Url="html/474084061.htm" />
+  <HelpKINode Title="LoadDataController.GetBootContactList method" Url="html/289887616.htm" />
+  <HelpKINode Title="LoadDataController.GetContactList method" Url="html/1549516173.htm" />
+  <HelpKINode Title="LoadDataController.GetCustomer method" Url="html/188049318.htm" />
+  <HelpKINode Title="LoadDataController.GetCustomerLsit method" Url="html/1618478959.htm" />
+  <HelpKINode Title="LoadDataController.ToPub method" Url="html/2093193830.htm" />
+  <HelpKINode Title="LoadDataController.ToTrash method" Url="html/1031858587.htm" />
+  <HelpKINode Title="LoadDataController.ValidatePhone method" Url="html/280722901.htm" />
+  <HelpKINode Title="LoadDefaultPic method" Url="html/1460402351.htm" />
+  <HelpKINode Title="LoadDefaultValue method" Url="html/258842411.htm" />
+  <HelpKINode Title="LogController class">
+    <HelpKINode Title="LogController Class" Url="html/758019217.htm" />
+    <HelpKINode Title="LogController Members" Url="html/144836618.htm" />
+    <HelpKINode Title="about LogController class" Url="html/758019217.htm" />
+    <HelpKINode Title="all members" Url="html/144836618.htm" />
+    <HelpKINode Title="methods" Url="html/230309540.htm" />
+  </HelpKINode>
+  <HelpKINode Title="LogController.LogDelete method" Url="html/255554508.htm" />
+  <HelpKINode Title="LogController.LogView method" Url="html/1040460717.htm" />
+  <HelpKINode Title="LogDelete method" Url="html/255554508.htm" />
+  <HelpKINode Title="Login method">
+    <HelpKINode Title="Login Method " Url="html/1961750655.htm" />
+    <HelpKINode Title="Login Method " Url="html/1688853384.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Logout method" Url="html/99253940.htm" />
+  <HelpKINode Title="LogView method" Url="html/1040460717.htm" />
+  <HelpKINode Title="MainController class">
+    <HelpKINode Title="MainController Class" Url="html/1229842234.htm" />
+    <HelpKINode Title="MainController Members" Url="html/953254049.htm" />
+    <HelpKINode Title="about MainController class" Url="html/1229842234.htm" />
+    <HelpKINode Title="all members" Url="html/953254049.htm" />
+    <HelpKINode Title="methods" Url="html/1144074070.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MainController.Index method" Url="html/1578872496.htm" />
+  <HelpKINode Title="MediaType property" Url="html/11412061.htm" />
+  <HelpKINode Title="MvcApplication class">
+    <HelpKINode Title="MvcApplication Class" Url="html/752141743.htm" />
+    <HelpKINode Title="about MvcApplication class" Url="html/752141743.htm" />
+  </HelpKINode>
+  <HelpKINode Title="myApps field" Url="html/472565068.htm" />
+  <HelpKINode Title="MyHtmlHelper class">
+    <HelpKINode Title="MyHtmlHelper Class" Url="html/1007269143.htm" />
+    <HelpKINode Title="MyHtmlHelper Members" Url="html/11011567.htm" />
+    <HelpKINode Title="about MyHtmlHelper class" Url="html/1007269143.htm" />
+    <HelpKINode Title="all members" Url="html/11011567.htm" />
+    <HelpKINode Title="methods" Url="html/1484257880.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MyHtmlHelper.BooleanParse method" Url="html/1493855011.htm" />
+  <HelpKINode Title="MyHtmlHelper.DateTimeParse method" Url="html/1725510857.htm" />
+  <HelpKINode Title="MyHtmlHelper.FormateDateTime method" Url="html/1014602372.htm" />
+  <HelpKINode Title="MyHtmlHelper.GetCurrentCompanyUser method" Url="html/1927505614.htm" />
+  <HelpKINode Title="MyHtmlHelper.GetOptionValue method" Url="html/1794262278.htm" />
+  <HelpKINode Title="MyHtmlHelper.Image method" Url="html/168878898.htm" />
+  <HelpKINode Title="MyHtmlHelper.IsNull method" Url="html/398863309.htm" />
+  <HelpKINode Title="MyHtmlHelper.LoadDefaultPic method" Url="html/1460402351.htm" />
+  <HelpKINode Title="MyHtmlHelper.LoadDefaultValue method" Url="html/258842411.htm" />
+  <HelpKINode Title="MyHtmlHelper.NullPalse method" Url="html/716393161.htm" />
+  <HelpKINode Title="MyHtmlHelper.OptionsPalse method" Url="html/986405153.htm" />
+  <HelpKINode Title="MyHtmlHelper.StringParse method" Url="html/672831111.htm" />
+  <HelpKINode Title="MyHtmlHelper.StringToCheckboxList method" Url="html/938642418.htm" />
+  <HelpKINode Title="MyHtmlHelper.StringToOptions method" Url="html/1998772446.htm" />
+  <HelpKINode Title="MyHtmlHelper.Submit method" Url="html/1642057984.htm" />
+  <HelpKINode Title="MyViewEngine class">
+    <HelpKINode Title="MyViewEngine Class" Url="html/1480249814.htm" />
+    <HelpKINode Title="MyViewEngine Members" Url="html/1595074720.htm" />
+    <HelpKINode Title="about MyViewEngine class" Url="html/1480249814.htm" />
+    <HelpKINode Title="all members" Url="html/1595074720.htm" />
+    <HelpKINode Title="constructor" Url="html/1646594184.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MyViewEngine.MyViewEngine constructor" Url="html/1646594184.htm" />
+  <HelpKINode Title="MyWebApiController class">
+    <HelpKINode Title="MyWebApiController Class" Url="html/509598612.htm" />
+    <HelpKINode Title="MyWebApiController Members" Url="html/1069986825.htm" />
+    <HelpKINode Title="about MyWebApiController class" Url="html/509598612.htm" />
+    <HelpKINode Title="all members" Url="html/1069986825.htm" />
+    <HelpKINode Title="methods" Url="html/1550936418.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MyWebApiController.ExecuteAsync method" Url="html/535554145.htm" />
+  <HelpKINode Title="NullPalse method" Url="html/716393161.htm" />
+  <HelpKINode Title="ObjectGenerator class">
+    <HelpKINode Title="ObjectGenerator Class" Url="html/1116430516.htm" />
+    <HelpKINode Title="ObjectGenerator Members" Url="html/197388431.htm" />
+    <HelpKINode Title="about ObjectGenerator class" Url="html/1116430516.htm" />
+    <HelpKINode Title="all members" Url="html/197388431.htm" />
+    <HelpKINode Title="methods" Url="html/802040040.htm" />
+  </HelpKINode>
+  <HelpKINode Title="OnAuthorization method">
+    <HelpKINode Title="OnAuthorization Method " Url="html/417951131.htm" />
+    <HelpKINode Title="OnAuthorization Method " Url="html/304157009.htm" />
+  </HelpKINode>
+  <HelpKINode Title="OptionsPalse method" Url="html/986405153.htm" />
+  <HelpKINode Title="ParameterNames property" Url="html/227309440.htm" />
+  <HelpKINode Title="ParameterType property" Url="html/1741129864.htm" />
+  <HelpKINode Title="PermissionController class">
+    <HelpKINode Title="PermissionController Class" Url="html/698454988.htm" />
+    <HelpKINode Title="PermissionController Members" Url="html/844515380.htm" />
+    <HelpKINode Title="about PermissionController class" Url="html/698454988.htm" />
+    <HelpKINode Title="all members" Url="html/844515380.htm" />
+    <HelpKINode Title="methods" Url="html/1718283608.htm" />
+    <HelpKINode Title="properties" Url="html/1882418402.htm" />
+  </HelpKINode>
+  <HelpKINode Title="PermissionController.Function method" Url="html/1074030028.htm" />
+  <HelpKINode Title="PermissionController.RoleService property" Url="html/151415862.htm" />
+  <HelpKINode Title="PhoneRegister method" Url="html/238671745.htm" />
+  <HelpKINode Title="PubController class">
+    <HelpKINode Title="PubController Class" Url="html/235554275.htm" />
+    <HelpKINode Title="PubController Members" Url="html/93603348.htm" />
+    <HelpKINode Title="about PubController class" Url="html/235554275.htm" />
+    <HelpKINode Title="all members" Url="html/93603348.htm" />
+    <HelpKINode Title="methods" Url="html/1684561855.htm" />
+  </HelpKINode>
+  <HelpKINode Title="PubController.Index method" Url="html/1793363826.htm" />
+  <HelpKINode Title="PublicRegister method" Url="html/1095652957.htm" />
+  <HelpKINode Title="Register method">
+    <HelpKINode Title="Register Method " Url="html/1576539513.htm" />
+    <HelpKINode Title="Register Method " Url="html/1694702903.htm" />
+    <HelpKINode Title="Register Method " Url="html/545430526.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RegisterArea method" Url="html/91910401.htm" />
+  <HelpKINode Title="RegisterAuth method" Url="html/1463358036.htm" />
+  <HelpKINode Title="RegisterBundles method" Url="html/192801050.htm" />
+  <HelpKINode Title="RegisterGlobalFilters method" Url="html/659762129.htm" />
+  <HelpKINode Title="RegisterRoutes method" Url="html/724244284.htm" />
+  <HelpKINode Title="Request enumeration member" Url="html/582122729.htm" />
+  <HelpKINode Title="Request field" Url="html/569553004.htm" />
+  <HelpKINode Title="ResolveType method" Url="html/1916084677.htm" />
+  <HelpKINode Title="Response enumeration member" Url="html/582122729.htm" />
+  <HelpKINode Title="Response field" Url="html/1919375639.htm" />
+  <HelpKINode Title="RoleController class">
+    <HelpKINode Title="RoleController Class" Url="html/1896233390.htm" />
+    <HelpKINode Title="RoleController Class" Url="html/243340251.htm" />
+    <HelpKINode Title="RoleController Members" Url="html/2106014285.htm" />
+    <HelpKINode Title="RoleController Members" Url="html/1842032078.htm" />
+    <HelpKINode Title="about RoleController class" Url="html/1896233390.htm" />
+    <HelpKINode Title="about RoleController class" Url="html/243340251.htm" />
+    <HelpKINode Title="all members" Url="html/1842032078.htm" />
+    <HelpKINode Title="all members" Url="html/2106014285.htm" />
+    <HelpKINode Title="methods" Url="html/857632737.htm" />
+    <HelpKINode Title="methods" Url="html/1172028064.htm" />
+    <HelpKINode Title="properties" Url="html/1498185790.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RoleController.Add method" Url="html/720657529.htm" />
+  <HelpKINode Title="RoleController.AddRole method" Url="html/1503852220.htm" />
+  <HelpKINode Title="RoleController.DeleteRole method" Url="html/1546390384.htm" />
+  <HelpKINode Title="RoleController.Edit method" Url="html/519477964.htm" />
+  <HelpKINode Title="RoleController.EditRole method" Url="html/1137459540.htm" />
+  <HelpKINode Title="RoleController.GetAllPermissions method" Url="html/2091780482.htm" />
+  <HelpKINode Title="RoleController.GetAllRoles method" Url="html/930586039.htm" />
+  <HelpKINode Title="RoleController.GetRole method" Url="html/2078291183.htm" />
+  <HelpKINode Title="RoleController.Index method" Url="html/2136488911.htm" />
+  <HelpKINode Title="RoleController.RoleService property" Url="html/355968306.htm" />
+  <HelpKINode Title="RoleService property">
+    <HelpKINode Title="RoleService Property " Url="html/355968306.htm" />
+    <HelpKINode Title="RoleService Property " Url="html/151415862.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RouteConfig class">
+    <HelpKINode Title="RouteConfig Class" Url="html/1714367426.htm" />
+    <HelpKINode Title="RouteConfig Members" Url="html/1518928943.htm" />
+    <HelpKINode Title="about RouteConfig class" Url="html/1714367426.htm" />
+    <HelpKINode Title="all members" Url="html/1518928943.htm" />
+    <HelpKINode Title="methods" Url="html/545733137.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RouteConfig.RegisterRoutes method" Url="html/724244284.htm" />
+  <HelpKINode Title="SampleDirection enumeration" Url="html/582122729.htm" />
+  <HelpKINode Title="SampleDirection property" Url="html/449479011.htm" />
+  <HelpKINode Title="SampleDirection.Request field" Url="html/569553004.htm" />
+  <HelpKINode Title="SampleDirection.Response field" Url="html/1919375639.htm" />
+  <HelpKINode Title="SampleObjects property" Url="html/1225224534.htm" />
+  <HelpKINode Title="SampleRequests property" Url="html/1970119715.htm" />
+  <HelpKINode Title="SampleResponses property" Url="html/1174089646.htm" />
+  <HelpKINode Title="SetActualRequestType method" Url="html/1884833689.htm" />
+  <HelpKINode Title="SetActualResponseType method" Url="html/1384835232.htm" />
+  <HelpKINode Title="SetDocumentationProvider method" Url="html/1022888464.htm" />
+  <HelpKINode Title="SetHelpPageSampleGenerator method" Url="html/428632835.htm" />
+  <HelpKINode Title="SetSampleForType method" Url="html/773663564.htm" />
+  <HelpKINode Title="SetSampleObjects method" Url="html/490107928.htm" />
+  <HelpKINode Title="SetSampleRequest method" Url="html/111435082.htm" />
+  <HelpKINode Title="SetSampleResponse method" Url="html/1048069857.htm" />
+  <HelpKINode Title="Show method" Url="html/1322983770.htm" />
+  <HelpKINode Title="Src property" Url="html/1781327150.htm" />
+  <HelpKINode Title="StringParse method" Url="html/672831111.htm" />
+  <HelpKINode Title="StringToCheckboxList method" Url="html/938642418.htm" />
+  <HelpKINode Title="StringToOptions method" Url="html/1998772446.htm" />
+  <HelpKINode Title="Submit method" Url="html/1642057984.htm" />
+  <HelpKINode Title="SysDepartmentService property" Url="html/1187096137.htm" />
+  <HelpKINode Title="teaCRM.Web namespace" Url="html/1380014106.htm" />
+  <HelpKINode Title="teaCRM.Web.Areas.HelpPage namespace" Url="html/782796934.htm" />
+  <HelpKINode Title="teaCRM.Web.Areas.HelpPage.ApiDescriptionExtensions class">
+    <HelpKINode Title="ApiDescriptionExtensions Class" Url="html/1826776294.htm" />
+    <HelpKINode Title="ApiDescriptionExtensions Members" Url="html/1146404428.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Areas.HelpPage.Controllers namespace" Url="html/507616070.htm" />
+  <HelpKINode Title="teaCRM.Web.Areas.HelpPage.Controllers.HelpController class">
+    <HelpKINode Title="HelpController Class" Url="html/1184532724.htm" />
+    <HelpKINode Title="HelpController Members" Url="html/798704508.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Areas.HelpPage.HelpPageAreaRegistration class">
+    <HelpKINode Title="HelpPageAreaRegistration Class" Url="html/1256623495.htm" />
+    <HelpKINode Title="HelpPageAreaRegistration Members" Url="html/654272288.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Areas.HelpPage.HelpPageConfig class">
+    <HelpKINode Title="HelpPageConfig Class" Url="html/1876845539.htm" />
+    <HelpKINode Title="HelpPageConfig Members" Url="html/156750670.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions class">
+    <HelpKINode Title="HelpPageConfigurationExtensions Class" Url="html/670751481.htm" />
+    <HelpKINode Title="HelpPageConfigurationExtensions Members" Url="html/1960540979.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator class">
+    <HelpKINode Title="HelpPageSampleGenerator Class" Url="html/576849906.htm" />
+    <HelpKINode Title="HelpPageSampleGenerator Members" Url="html/480937388.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Areas.HelpPage.HelpPageSampleKey class">
+    <HelpKINode Title="HelpPageSampleKey Class" Url="html/1229722796.htm" />
+    <HelpKINode Title="HelpPageSampleKey Members" Url="html/1628415692.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Areas.HelpPage.ImageSample class">
+    <HelpKINode Title="ImageSample Class" Url="html/719807226.htm" />
+    <HelpKINode Title="ImageSample Members" Url="html/111247981.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Areas.HelpPage.InvalidSample class">
+    <HelpKINode Title="InvalidSample Class" Url="html/2055949289.htm" />
+    <HelpKINode Title="InvalidSample Members" Url="html/1071109809.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Areas.HelpPage.Models namespace" Url="html/996175315.htm" />
+  <HelpKINode Title="teaCRM.Web.Areas.HelpPage.Models.HelpPageApiModel class">
+    <HelpKINode Title="HelpPageApiModel Class" Url="html/722675687.htm" />
+    <HelpKINode Title="HelpPageApiModel Members" Url="html/1637207733.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Areas.HelpPage.ObjectGenerator class">
+    <HelpKINode Title="ObjectGenerator Class" Url="html/1116430516.htm" />
+    <HelpKINode Title="ObjectGenerator Members" Url="html/197388431.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Areas.HelpPage.SampleDirection enumeration" Url="html/582122729.htm" />
+  <HelpKINode Title="teaCRM.Web.Areas.HelpPage.TextSample class">
+    <HelpKINode Title="TextSample Class" Url="html/1718573888.htm" />
+    <HelpKINode Title="TextSample Members" Url="html/2007993840.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Areas.HelpPage.XmlDocumentationProvider class">
+    <HelpKINode Title="XmlDocumentationProvider Class" Url="html/1437586468.htm" />
+    <HelpKINode Title="XmlDocumentationProvider Members" Url="html/112461901.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.AuthConfig class">
+    <HelpKINode Title="AuthConfig Class" Url="html/242140538.htm" />
+    <HelpKINode Title="AuthConfig Members" Url="html/619147443.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.BundleConfig class">
+    <HelpKINode Title="BundleConfig Class" Url="html/1015321447.htm" />
+    <HelpKINode Title="BundleConfig Members" Url="html/2002805712.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers namespace" Url="html/1638297358.htm" />
+  <HelpKINode Title="teaCRM.Web.Controllers.AccountController class">
+    <HelpKINode Title="AccountController Class" Url="html/564236311.htm" />
+    <HelpKINode Title="AccountController Members" Url="html/1238812878.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Admin namespace" Url="html/1123036068.htm" />
+  <HelpKINode Title="teaCRM.Web.Controllers.Admin.AccountController class">
+    <HelpKINode Title="AccountController Class" Url="html/1545629106.htm" />
+    <HelpKINode Title="AccountController Members" Url="html/301131639.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Admin.AppController class">
+    <HelpKINode Title="AppController Class" Url="html/798383051.htm" />
+    <HelpKINode Title="AppController Members" Url="html/1050899956.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Admin.MainController class">
+    <HelpKINode Title="MainController Class" Url="html/1229842234.htm" />
+    <HelpKINode Title="MainController Members" Url="html/953254049.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Api namespace" Url="html/1024888911.htm" />
+  <HelpKINode Title="teaCRM.Web.Controllers.Api.AppController class">
+    <HelpKINode Title="AppController Class" Url="html/2044820678.htm" />
+    <HelpKINode Title="AppController Members" Url="html/1991013566.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Api.CRM namespace" Url="html/1053194089.htm" />
+  <HelpKINode Title="teaCRM.Web.Controllers.Api.CRM.ContactController class">
+    <HelpKINode Title="ContactController Class" Url="html/903829130.htm" />
+    <HelpKINode Title="ContactController Members" Url="html/462736714.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Api.CRM.CustomerController class">
+    <HelpKINode Title="CustomerController Class" Url="html/540283050.htm" />
+    <HelpKINode Title="CustomerController Members" Url="html/1503527546.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Api.Settings namespace" Url="html/1580050346.htm" />
+  <HelpKINode Title="teaCRM.Web.Controllers.Api.Settings.AppMakerController class">
+    <HelpKINode Title="AppMakerController Class" Url="html/896655266.htm" />
+    <HelpKINode Title="AppMakerController Members" Url="html/1118898914.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Api.Settings.RoleController class">
+    <HelpKINode Title="RoleController Class" Url="html/1896233390.htm" />
+    <HelpKINode Title="RoleController Members" Url="html/2106014285.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Api.Settings.UsersController class">
+    <HelpKINode Title="UsersController Class" Url="html/207534807.htm" />
+    <HelpKINode Title="UsersController Members" Url="html/1273263046.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Apps namespace" Url="html/1018425470.htm" />
+  <HelpKINode Title="teaCRM.Web.Controllers.Apps.CRM namespace" Url="html/898458792.htm" />
+  <HelpKINode Title="teaCRM.Web.Controllers.Apps.CRM.ContactController class">
+    <HelpKINode Title="ContactController Class" Url="html/607966020.htm" />
+    <HelpKINode Title="ContactController Members" Url="html/671263695.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Apps.CRM.IndexController class">
+    <HelpKINode Title="IndexController Class" Url="html/1566366862.htm" />
+    <HelpKINode Title="IndexController Members" Url="html/1035578788.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Apps.CRM.LoadDataController class">
+    <HelpKINode Title="LoadDataController Class" Url="html/765354768.htm" />
+    <HelpKINode Title="LoadDataController Members" Url="html/1146809408.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Apps.CRM.PubController class">
+    <HelpKINode Title="PubController Class" Url="html/235554275.htm" />
+    <HelpKINode Title="PubController Members" Url="html/93603348.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Apps.CRM.ToolbarController class">
+    <HelpKINode Title="ToolbarController Class" Url="html/1605007868.htm" />
+    <HelpKINode Title="ToolbarController Members" Url="html/764862417.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Apps.CRM.TrashController class">
+    <HelpKINode Title="TrashController Class" Url="html/490475353.htm" />
+    <HelpKINode Title="TrashController Members" Url="html/1943028823.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Apps.IndexController class">
+    <HelpKINode Title="IndexController Class" Url="html/687920704.htm" />
+    <HelpKINode Title="IndexController Members" Url="html/1169569814.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Apps.Product namespace" Url="html/481821922.htm" />
+  <HelpKINode Title="teaCRM.Web.Controllers.Apps.Product.IndexController class">
+    <HelpKINode Title="IndexController Class" Url="html/723008730.htm" />
+    <HelpKINode Title="IndexController Members" Url="html/482388744.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Apps.Sale namespace" Url="html/1267117623.htm" />
+  <HelpKINode Title="teaCRM.Web.Controllers.Apps.Sale.IndexController class">
+    <HelpKINode Title="IndexController Class" Url="html/1616891515.htm" />
+    <HelpKINode Title="IndexController Members" Url="html/987960937.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Apps.Service namespace" Url="html/1087150557.htm" />
+  <HelpKINode Title="teaCRM.Web.Controllers.Apps.Service.IndexController class">
+    <HelpKINode Title="IndexController Class" Url="html/2083055230.htm" />
+    <HelpKINode Title="IndexController Members" Url="html/1152375504.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Apps.Settings namespace" Url="html/101410671.htm" />
+  <HelpKINode Title="teaCRM.Web.Controllers.Apps.Settings.AppMakerController class">
+    <HelpKINode Title="AppMakerController Class" Url="html/971968401.htm" />
+    <HelpKINode Title="AppMakerController Members" Url="html/1707640308.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Apps.Settings.DepartmentController class">
+    <HelpKINode Title="DepartmentController Class" Url="html/1082786943.htm" />
+    <HelpKINode Title="DepartmentController Members" Url="html/1362603420.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Apps.Settings.PermissionController class">
+    <HelpKINode Title="PermissionController Class" Url="html/698454988.htm" />
+    <HelpKINode Title="PermissionController Members" Url="html/844515380.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Apps.Settings.RoleController class">
+    <HelpKINode Title="RoleController Class" Url="html/243340251.htm" />
+    <HelpKINode Title="RoleController Members" Url="html/1842032078.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.Apps.Settings.UsersController class">
+    <HelpKINode Title="UsersController Class" Url="html/2066775680.htm" />
+    <HelpKINode Title="UsersController Members" Url="html/734360409.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.DesktopController class">
+    <HelpKINode Title="DesktopController Class" Url="html/145655940.htm" />
+    <HelpKINode Title="DesktopController Members" Url="html/1721707664.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Controllers.LogController class">
+    <HelpKINode Title="LogController Class" Url="html/758019217.htm" />
+    <HelpKINode Title="LogController Members" Url="html/144836618.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.FilterConfig class">
+    <HelpKINode Title="FilterConfig Class" Url="html/879254377.htm" />
+    <HelpKINode Title="FilterConfig Members" Url="html/1831718880.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Filters namespace" Url="html/735283282.htm" />
+  <HelpKINode Title="teaCRM.Web.Filters.ApiAuthorizeAttribute class">
+    <HelpKINode Title="ApiAuthorizeAttribute Class" Url="html/1866095891.htm" />
+    <HelpKINode Title="ApiAuthorizeAttribute Members" Url="html/2052185797.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Filters.AutoLoginAttribute class">
+    <HelpKINode Title="AutoLoginAttribute Class" Url="html/591083939.htm" />
+    <HelpKINode Title="AutoLoginAttribute Members" Url="html/340975699.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Filters.UserAuthorizeAttribute class">
+    <HelpKINode Title="UserAuthorizeAttribute Class" Url="html/1861608103.htm" />
+    <HelpKINode Title="UserAuthorizeAttribute Members" Url="html/1737838947.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Helpers namespace" Url="html/395833266.htm" />
+  <HelpKINode Title="teaCRM.Web.Helpers.MyHtmlHelper class">
+    <HelpKINode Title="MyHtmlHelper Class" Url="html/1007269143.htm" />
+    <HelpKINode Title="MyHtmlHelper Members" Url="html/11011567.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Helpers.MyViewEngine class">
+    <HelpKINode Title="MyViewEngine Class" Url="html/1480249814.htm" />
+    <HelpKINode Title="MyViewEngine Members" Url="html/1595074720.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.Helpers.MyWebApiController class">
+    <HelpKINode Title="MyWebApiController Class" Url="html/509598612.htm" />
+    <HelpKINode Title="MyWebApiController Members" Url="html/1069986825.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.MvcApplication class" Url="html/752141743.htm" />
+  <HelpKINode Title="teaCRM.Web.RouteConfig class">
+    <HelpKINode Title="RouteConfig Class" Url="html/1714367426.htm" />
+    <HelpKINode Title="RouteConfig Members" Url="html/1518928943.htm" />
+  </HelpKINode>
+  <HelpKINode Title="teaCRM.Web.WebApiConfig class">
+    <HelpKINode Title="WebApiConfig Class" Url="html/1668173018.htm" />
+    <HelpKINode Title="WebApiConfig Members" Url="html/2093139699.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Text property" Url="html/360887776.htm" />
+  <HelpKINode Title="TextSample class">
+    <HelpKINode Title="TextSample Class" Url="html/1718573888.htm" />
+    <HelpKINode Title="TextSample Members" Url="html/2007993840.htm" />
+    <HelpKINode Title="about TextSample class" Url="html/1718573888.htm" />
+    <HelpKINode Title="all members" Url="html/2007993840.htm" />
+    <HelpKINode Title="constructor" Url="html/2072014026.htm" />
+    <HelpKINode Title="methods" Url="html/763161695.htm" />
+    <HelpKINode Title="properties" Url="html/840869617.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TextSample.Equals method" Url="html/1847197581.htm" />
+  <HelpKINode Title="TextSample.GetHashCode method" Url="html/1965604240.htm" />
+  <HelpKINode Title="TextSample.Text property" Url="html/360887776.htm" />
+  <HelpKINode Title="TextSample.TextSample constructor" Url="html/2072014026.htm" />
+  <HelpKINode Title="TextSample.ToString method" Url="html/244691793.htm" />
+  <HelpKINode Title="ToolbarController class">
+    <HelpKINode Title="ToolbarController Class" Url="html/1605007868.htm" />
+    <HelpKINode Title="ToolbarController Members" Url="html/764862417.htm" />
+    <HelpKINode Title="about ToolbarController class" Url="html/1605007868.htm" />
+    <HelpKINode Title="all members" Url="html/764862417.htm" />
+    <HelpKINode Title="methods" Url="html/1641763935.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ToolbarController.FilterEdit method" Url="html/1068740142.htm" />
+  <HelpKINode Title="ToPub method" Url="html/2093193830.htm" />
+  <HelpKINode Title="ToString method">
+    <HelpKINode Title="ToString Method " Url="html/477345227.htm" />
+    <HelpKINode Title="ToString Method " Url="html/840175111.htm" />
+    <HelpKINode Title="ToString Method " Url="html/244691793.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ToTrash method" Url="html/1031858587.htm" />
+  <HelpKINode Title="TrashController class">
+    <HelpKINode Title="TrashController Class" Url="html/490475353.htm" />
+    <HelpKINode Title="TrashController Members" Url="html/1943028823.htm" />
+    <HelpKINode Title="about TrashController class" Url="html/490475353.htm" />
+    <HelpKINode Title="all members" Url="html/1943028823.htm" />
+    <HelpKINode Title="methods" Url="html/699964939.htm" />
+    <HelpKINode Title="properties" Url="html/207826876.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TrashController.AccountService property" Url="html/1922239139.htm" />
+  <HelpKINode Title="TrashController.CustomerService property" Url="html/1206256670.htm" />
+  <HelpKINode Title="TrashController.Index method" Url="html/1557349789.htm" />
+  <HelpKINode Title="TrashController.Init method" Url="html/2038399343.htm" />
+  <HelpKINode Title="UnInstall method" Url="html/970613209.htm" />
+  <HelpKINode Title="UserAuthorizeAttribute class">
+    <HelpKINode Title="UserAuthorizeAttribute Class" Url="html/1861608103.htm" />
+    <HelpKINode Title="UserAuthorizeAttribute Members" Url="html/1737838947.htm" />
+    <HelpKINode Title="about UserAuthorizeAttribute class" Url="html/1861608103.htm" />
+    <HelpKINode Title="all members" Url="html/1737838947.htm" />
+    <HelpKINode Title="methods" Url="html/1514625154.htm" />
+  </HelpKINode>
+  <HelpKINode Title="UserAuthorizeAttribute.OnAuthorization method" Url="html/304157009.htm" />
+  <HelpKINode Title="UserNameAuto method" Url="html/1123079203.htm" />
+  <HelpKINode Title="UsersController class">
+    <HelpKINode Title="UsersController Class" Url="html/207534807.htm" />
+    <HelpKINode Title="UsersController Class" Url="html/2066775680.htm" />
+    <HelpKINode Title="UsersController Members" Url="html/734360409.htm" />
+    <HelpKINode Title="UsersController Members" Url="html/1273263046.htm" />
+    <HelpKINode Title="about UsersController class" Url="html/207534807.htm" />
+    <HelpKINode Title="about UsersController class" Url="html/2066775680.htm" />
+    <HelpKINode Title="all members" Url="html/734360409.htm" />
+    <HelpKINode Title="all members" Url="html/1273263046.htm" />
+    <HelpKINode Title="methods" Url="html/2053412616.htm" />
+    <HelpKINode Title="methods" Url="html/1726181563.htm" />
+    <HelpKINode Title="properties" Url="html/1912895288.htm" />
+  </HelpKINode>
+  <HelpKINode Title="UsersController.Add method" Url="html/167376047.htm" />
+  <HelpKINode Title="UsersController.AddUser method" Url="html/1005204495.htm" />
+  <HelpKINode Title="UsersController.DeleteUser method" Url="html/1048516531.htm" />
+  <HelpKINode Title="UsersController.Edit method" Url="html/972979400.htm" />
+  <HelpKINode Title="UsersController.EditUser method" Url="html/465213247.htm" />
+  <HelpKINode Title="UsersController.ExistsUser method" Url="html/1034597764.htm" />
+  <HelpKINode Title="UsersController.GetAllUsers method" Url="html/101668950.htm" />
+  <HelpKINode Title="UsersController.GetUser method" Url="html/1456298583.htm" />
+  <HelpKINode Title="UsersController.Index method" Url="html/2129374814.htm" />
+  <HelpKINode Title="UsersController.UserService property" Url="html/1206156332.htm" />
+  <HelpKINode Title="UserService property" Url="html/1206156332.htm" />
+  <HelpKINode Title="ValidateAccount method" Url="html/1915424173.htm" />
+  <HelpKINode Title="ValidatePhone method">
+    <HelpKINode Title="ValidatePhone Method " Url="html/1856181940.htm" />
+    <HelpKINode Title="ValidatePhone Method " Url="html/280722901.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WebApiConfig class">
+    <HelpKINode Title="WebApiConfig Class" Url="html/1668173018.htm" />
+    <HelpKINode Title="WebApiConfig Members" Url="html/2093139699.htm" />
+    <HelpKINode Title="about WebApiConfig class" Url="html/1668173018.htm" />
+    <HelpKINode Title="all members" Url="html/2093139699.htm" />
+    <HelpKINode Title="methods" Url="html/279929092.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WebApiConfig.Register method" Url="html/1694702903.htm" />
+  <HelpKINode Title="WriteSampleObjectUsingFormatter method" Url="html/1735650055.htm" />
+  <HelpKINode Title="XmlDocumentationProvider class">
+    <HelpKINode Title="XmlDocumentationProvider Class" Url="html/1437586468.htm" />
+    <HelpKINode Title="XmlDocumentationProvider Members" Url="html/112461901.htm" />
+    <HelpKINode Title="about XmlDocumentationProvider class" Url="html/1437586468.htm" />
+    <HelpKINode Title="all members" Url="html/112461901.htm" />
+    <HelpKINode Title="constructor" Url="html/1301092029.htm" />
+    <HelpKINode Title="methods" Url="html/2027325754.htm" />
+  </HelpKINode>
+  <HelpKINode Title="XmlDocumentationProvider.GetDocumentation method" Url="html/1426489235.htm" />
+  <HelpKINode Title="XmlDocumentationProvider.XmlDocumentationProvider constructor" Url="html/1301092029.htm" />
+</HelpKI>

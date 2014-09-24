@@ -127,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppMakerServiceImplTest.cs" />
+    <Compile Include="ContactControllerTest.cs" />
     <Compile Include="CustomerServiceImplTest.cs" />
     <Compile Include="FunAppServiceImplTest.cs" />
     <Compile Include="IndexControllerTest.cs" />

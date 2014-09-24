@@ -1414,6 +1414,30 @@ namespace teaCRM.Common
 
         #endregion
 
+        #region 将字符串分割成对象数组
+
+        /// <summary>
+        /// 将字符串分割成对象数组
+        /// </summary>
+        /// <param name="str">字符串</param>
+        /// <param name="split">分割符</param>
+        public static object[] StringToObjectArray(string str, char split)
+        {
+            var strs = new object[] {};
+            try
+            {
+                strs = str.Split(split);
+            }
+            catch
+            {
+                return strs;
+            }
+
+            return strs;
+        }
+
+        #endregion
+
         #region 将List<int>转换成字符串1,2,3,4
 
         /// <summary>

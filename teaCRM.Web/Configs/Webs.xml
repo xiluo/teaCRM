@@ -22,10 +22,16 @@
     <property name="AppMakerService" ref="appMakerService" />
     <property name="CustomerService" ref="customerService" />
   </object>
+  <object id="contactController" type="teaCRM.Web.Controllers.Apps.CRM.ContactController, teaCRM.Web" singleton="false">
+    <property name="AccountService" ref="accountService" />
+    <property name="CustomerService" ref="customerService" />
+  </object>
+  <!--
   <object id="crmTrashController" type="teaCRM.Web.Controllers.Apps.CRM.TrashController, teaCRM.Web" singleton="false">
     <property name="AccountService" ref="accountService" />
     <property name="CustomerService" ref="customerService" />
   </object>
+  -->
   <object id="loadDataController" type="teaCRM.Web.Controllers.Apps.CRM.LoadDataController, teaCRM.Web"
           singleton="false">
     <property name="AccountService" ref="accountService" />

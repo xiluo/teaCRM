@@ -364,6 +364,11 @@ con_fields
                 if (strWhere.Trim() != "")
                 {
                     strSql.Append(" WHERE " + strWhere);
+                    strSql.Append(String.Format(" AND comp_num='{0}'", compNum));
+                }
+                else
+                {
+                    strSql.Append(String.Format(" WHERE comp_num='{0}'", compNum));
                 }
 
                 //查询总数Sql
@@ -416,11 +421,75 @@ con_fields
 
                     return conTable;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     recordCount = 0;
-                    LogHelper.Error("联系人扩展失败：",ex);
+                    LogHelper.Error("联系人扩展失败：", ex);
                     return null;
+                }
+            }
+        }
+
+        #endregion
+
+        #region 使用LINQ批量更改TCusCon状态 2014-09-05 14:58:50 By 唐有炜
+
+        /// <summary>
+        /// 使用LINQ批量更改TCusCon字段 2014-09-05 14:58:50 By 唐有炜：注意，字段与条件要一一对应(要更新的字段名不能重复)
+        /// </summary>
+        /// <param name="fields">要更新的字段（支持批量更新）</param>
+        /// <param name="predicates">条件集合</param>
+        /// <returns><c>true</c>更新状态</returns>
+        public bool UpdateTCusConFieldsByLINQ(List<KeyValuePair<string,object>> fields,
+            List<Expression<Func<TCusCon, bool>>> predicates)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                if (db.Connection.State != ConnectionState.Open)
+                {
+                    db.Connection.Open();
+                }
+                var tran = db.Connection.BeginTransaction();
+                try
+                {
+   
+                    for (int i = 0; i < fields.Count; i++)
+                    {
+                        //当前字段
+                        var key = fields[i].Key;
+                        //当前字段要设置的值
+                        var value = fields[i].Value;
+                        //当前字段更新时的条件
+                        var predicate = predicates[i];
+
+                        var entity = db.TCusCons.SingleOrDefault(predicate);
+                        var propertyInfos = entity.GetType().GetProperties();
+                        foreach (var p in propertyInfos)
+                        {
+                            if (p.Name == key)
+                            {
+                                p.SetValue(entity, value, null); //给对应属性赋值
+                            }
+                        }
+                        db.TCusCons.Update(entity);
+                    }
+
+                    tran.Commit();
+                    LogHelper.Debug("TCusCon字段批量更新成功。");
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    LogHelper.Error("TCusCon字段批量更新异常：", ex);
+                    return false;
+                }
+                finally
+                {
+                    if (db.Connection.State != ConnectionState.Closed)
+                    {
+                        db.Connection.Close();
+                    }
                 }
             }
         }

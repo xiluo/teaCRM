@@ -1,0 +1,41 @@
+<GhostDoc>
+  <SpellChecker>
+    <IncludeExtensions>
+    </IncludeExtensions>
+    <IgnoreExtensions>
+      <IgnoreExtension>.cs</IgnoreExtension>
+      <IgnoreExtension>.js</IgnoreExtension>
+    </IgnoreExtensions>
+    <IgnoreFiles>
+    </IgnoreFiles>
+  </SpellChecker>
+<HelpConfigurations selected="HelpFile">
+  <HelpConfiguration name="HelpFile">
+    <OutputPath>.\teaCRM.Docs\srcDoc</OutputPath>
+    <HelpFileName>teaCRM.VS2010</HelpFileName>
+    <ImageFolderPath />
+    <HtmlFormats>
+      <HtmlHelp>false</HtmlHelp>
+      <MSHelpViewer>false</MSHelpViewer>
+      <MSHelp2>false</MSHelp2>
+      <Website>true</Website>
+    </HtmlFormats>
+    <IncludeScopes>
+      <Public>true</Public>
+      <Internal>false</Internal>
+      <Protected>false</Protected>
+      <Private>false</Private>
+      <Inherited>false</Inherited>
+      <InheritedFromReferences>false</InheritedFromReferences>
+      <EnableTags>false</EnableTags>
+      <TagList />
+    </IncludeScopes>
+    <ResolveCrefLinks>true</ResolveCrefLinks>
+    <HeaderText>aaa</HeaderText>
+    <FooterText>bbb</FooterText>
+    <SelectedProjects>
+      <SelectedProject>1-teaCRM.Web</SelectedProject>
+    </SelectedProjects>
+  </HelpConfiguration>
+</HelpConfigurations>
+</GhostDoc>

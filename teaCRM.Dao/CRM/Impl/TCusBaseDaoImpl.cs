@@ -338,31 +338,59 @@ namespace teaCRM.Dao.Impl
 
         #endregion
 
-        #region 使用LINQ更改客户状态（只更改主表） 2014-09-05 14:58:50 By 唐有炜
+        #region 使用LINQ批量更改客户状态 2014-09-05 14:58:50 By 唐有炜
 
         /// <summary>
-        /// 使用LINQ更改客户状态（只更改主表） 2014-09-05 14:58:50 By 唐有炜
+        /// 使用LINQ批量更改客户状态 2014-09-05 14:58:50 By 唐有炜
         /// </summary>
-        /// <param name="fields">要更新的字段</param>
+        /// <param name="fields">要更新的字段（支持批量更新）</param>
         /// <param name="predicate">条件</param>
         /// <returns></returns>
-        public bool UpdateCustomerStatusByLINQ(Dictionary<string, object> fields,
+        public bool UpdateTCusBaseStatusByLINQ(Dictionary<string, object> fields,
             Expression<Func<TCusBase, bool>> predicate)
         {
-            var entity = GetEntity(predicate);
-            foreach (var field in fields)
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                PropertyInfo[] propertyInfos = entity.GetType().GetProperties();
-                foreach (var p in propertyInfos)
+                if (db.Connection.State != ConnectionState.Open)
                 {
-                    if (p.Name == field.Key)
+                    db.Connection.Open();
+                }
+                var tran = db.Connection.BeginTransaction();
+                try
+                {
+                    foreach (var field in fields)
                     {
-                        p.SetValue(entity, field.Value, null); //给对应属性赋值
+                        var entity = db.TCusBases.SingleOrDefault(predicate);
+                        var propertyInfos = entity.GetType().GetProperties();
+                        foreach (var p in propertyInfos)
+                        {
+                            if (p.Name == field.Key)
+                            {
+                                p.SetValue(entity, field.Value, null); //给对应属性赋值
+                            }
+                        }
+                        db.TCusBases.Update(entity);
+                    }
+
+
+                    tran.Commit();
+                    LogHelper.Debug("TCusBase字段批量更新成功。");
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    LogHelper.Error("TCusBase字段批量更新异常：", ex);
+                    return false;
+                }
+                finally
+                {
+                    if (db.Connection.State != ConnectionState.Closed)
+                    {
+                        db.Connection.Close();
                     }
                 }
             }
-            UpadateEntity(entity);
-            return false;
         }
 
         #endregion
@@ -390,8 +418,6 @@ namespace teaCRM.Dao.Impl
                     int[] cusIdArray = Utils.StringToIntArray(cus_ids, ',');
                     foreach (var cusId in cusIdArray)
                     {
-
-
                         string strSet = String.Format("{0}={1}", field, op);
                         string strWhere = String.Format("id={0}", cusId);
 
@@ -405,16 +431,16 @@ namespace teaCRM.Dao.Impl
                         db.DbHelper.ExecuteNonQuery(strSql.ToString());
                     }
                     LogHelper.Debug("客户状态事务执行成功！");
-                        tran.Commit();
-                        return true;
-                    }
-                    catch(Exception ex)
-                    {
-                        tran.Rollback();
-                        LogHelper.Error("客户状态事务执行失败：", ex);
-                        return false;
-                    }
-                
+                    tran.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    LogHelper.Error("客户状态事务执行失败：", ex);
+                    return false;
+                }
+
                 finally
                 {
                     if (db.Connection.State != ConnectionState.Closed)
@@ -423,13 +449,9 @@ namespace teaCRM.Dao.Impl
                     }
                 }
             }
-            
         }
 
-
         #endregion
-
-
 
         #region 获取客户信息列表  2014-08-29 14:58:50 By 唐有炜
 
@@ -741,11 +763,9 @@ WHERE id=@id";
                     }
                 }
             }
-            
         }
 
         #endregion
-
 
         #region 修改客户信息 2014-09-21 14:58:50 By 唐有炜
 
@@ -758,8 +778,7 @@ WHERE id=@id";
         /// <returns></returns>
         public bool EditCustomer(int customerId, TCusBase CusBase, TCusCon CusCon)
         {
-
-             using (teaCRMDBContext db = new teaCRMDBContext())
+            using (teaCRMDBContext db = new teaCRMDBContext())
             {
                 if (db.Connection.State != ConnectionState.Open)
                 {
@@ -807,12 +826,9 @@ WHERE id=@id";
                     }
                 }
             }
-             
-
         }
 
         #endregion
-
 
         #endregion
     }

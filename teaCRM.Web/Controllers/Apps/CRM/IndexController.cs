@@ -241,7 +241,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
                 object con_id = null;
                 cus.TryGetValue("con_id", out con_id);
                 ViewBag.MainContact =
-                    CustomerService.GetMainContact(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(),
+                    CustomerService.GetContact(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(),
                         (int) con_id);
                 ViewBag.MyApps = myApps;
                 return View("CustomerShow");
@@ -373,30 +373,6 @@ namespace teaCRM.Web.Controllers.Apps.CRM
 
         #endregion
 
-        #region   修改联系人页面  2014-08-30 14:58:50 By 唐有炜
-
-        //
-        // GET: /Apps/CRM/Index/ContactEdit/
-        [UserAuthorize]
-        [HttpGet]
-        public ActionResult ContactEdit()
-        {
-            //初始化扩展字段
-            Init();
-
-            if (contactExpandFields == null || customerExpandFields == null)
-            {
-                ViewBag.ErrorMessage = "客户扩展字段信息或者联系人扩展字段信息失败。";
-                return View("_Error");
-            }
-            else
-            {
-                ViewBag.CustomerExpandFields = customerExpandFields;
-                ViewBag.ContactExpandFields = contactExpandFields;
-                return View("CustomerEdit");
-            }
-        }
-
-        #endregion
+     
     }
 }

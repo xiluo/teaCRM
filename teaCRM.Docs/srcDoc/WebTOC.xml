@@ -1,0 +1,574 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Id="c2aa2c45-aba2-4905-9500-d9068c8bc574" Title="teaCRM.Web Namespace" Url="html/1380014106.htm">
+    <HelpTOCNode Id="ef4530db-63d5-442b-81ea-09318da96e19" Title="AuthConfig Class" Url="html/242140538.htm">
+      <HelpTOCNode Title="AuthConfig Members" Url="html/619147443.htm" />
+      <HelpTOCNode Id="1d07d4cb-d0d3-46e4-bf74-7021a8a5d1b2" Title="AuthConfig Methods" Url="html/2126510192.htm">
+        <HelpTOCNode Title="RegisterAuth Method " Url="html/1463358036.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="99547bcd-ec47-4ca3-94eb-cc5b1d5df1a0" Title="BundleConfig Class" Url="html/1015321447.htm">
+      <HelpTOCNode Title="BundleConfig Members" Url="html/2002805712.htm" />
+      <HelpTOCNode Id="c6ce9918-3174-4d72-b4be-3f95a35e2e75" Title="BundleConfig Methods" Url="html/1079024032.htm">
+        <HelpTOCNode Title="RegisterBundles Method " Url="html/192801050.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="a77d97fd-bee0-4090-a6a0-ce3620cd36f5" Title="FilterConfig Class" Url="html/879254377.htm">
+      <HelpTOCNode Title="FilterConfig Members" Url="html/1831718880.htm" />
+      <HelpTOCNode Id="006234d0-d464-47a5-b50c-45ad0086f8e7" Title="FilterConfig Methods" Url="html/1301827024.htm">
+        <HelpTOCNode Title="RegisterGlobalFilters Method " Url="html/659762129.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="MvcApplication Class" Url="html/752141743.htm" />
+    <HelpTOCNode Id="9096f6cb-06b6-4f3d-987b-188268f0b6ec" Title="RouteConfig Class" Url="html/1714367426.htm">
+      <HelpTOCNode Title="RouteConfig Members" Url="html/1518928943.htm" />
+      <HelpTOCNode Id="1814b695-7f58-4ad8-9dce-5c5a7c5af8d3" Title="RouteConfig Methods" Url="html/545733137.htm">
+        <HelpTOCNode Title="RegisterRoutes Method " Url="html/724244284.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="f15d5fa9-a1af-4f55-9d57-07eecfd59a7f" Title="WebApiConfig Class" Url="html/1668173018.htm">
+      <HelpTOCNode Title="WebApiConfig Members" Url="html/2093139699.htm" />
+      <HelpTOCNode Id="23394cc8-9b89-476a-b339-972a49f27259" Title="WebApiConfig Methods" Url="html/279929092.htm">
+        <HelpTOCNode Title="Register Method " Url="html/1694702903.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="bafbc2b4-b612-4081-beb4-ab99fd5c8839" Title="teaCRM.Web.Areas.HelpPage Namespace" Url="html/782796934.htm">
+    <HelpTOCNode Id="b312ef83-6346-456f-a69c-2a79c1c65cfe" Title="ApiDescriptionExtensions Class" Url="html/1826776294.htm">
+      <HelpTOCNode Title="ApiDescriptionExtensions Members" Url="html/1146404428.htm" />
+      <HelpTOCNode Id="7c3d516c-e48d-4c38-9a76-14ed808ab3c9" Title="ApiDescriptionExtensions Methods" Url="html/462573997.htm">
+        <HelpTOCNode Title="GetFriendlyId Method " Url="html/1270594645.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="208ad4d0-6c45-4aec-b6ed-12a895e33f68" Title="HelpPageAreaRegistration Class" Url="html/1256623495.htm">
+      <HelpTOCNode Title="HelpPageAreaRegistration Members" Url="html/654272288.htm" />
+      <HelpTOCNode Id="484bd68b-48f5-442e-a7c0-82a98a726a65" Title="HelpPageAreaRegistration Methods" Url="html/760236854.htm">
+        <HelpTOCNode Title="RegisterArea Method " Url="html/91910401.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="7c0a6663-8ad9-43f2-b07a-b54f68d103cf" Title="HelpPageAreaRegistration Properties" Url="html/1322639028.htm">
+        <HelpTOCNode Title="AreaName Property " Url="html/1176710882.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="1dbe97c4-a06c-4a9e-ad20-2116e987fbb8" Title="HelpPageConfig Class" Url="html/1876845539.htm">
+      <HelpTOCNode Title="HelpPageConfig Members" Url="html/156750670.htm" />
+      <HelpTOCNode Id="dba223b7-c4a5-4b99-83fc-97ce389a051f" Title="HelpPageConfig Methods" Url="html/538331110.htm">
+        <HelpTOCNode Title="Register Method " Url="html/1576539513.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="6745eda0-4a5d-4e3a-99b6-e9fd819de6b0" Title="HelpPageConfigurationExtensions Class" Url="html/670751481.htm">
+      <HelpTOCNode Title="HelpPageConfigurationExtensions Members" Url="html/1960540979.htm" />
+      <HelpTOCNode Id="acb3e1fa-75ee-4988-8f84-c9f543fe7d9d" Title="HelpPageConfigurationExtensions Methods" Url="html/182227116.htm">
+        <HelpTOCNode Title="GetHelpPageApiModel Method " Url="html/1412665377.htm" />
+        <HelpTOCNode Title="GetHelpPageSampleGenerator Method " Url="html/2732155.htm" />
+        <HelpTOCNode Id="18f18bb1-7b6a-4ed1-adcf-2a55f5843dfb" Title="SetActualRequestType Method " Url="html/1884833689.htm">
+          <HelpTOCNode Title="SetActualRequestType Method (HttpConfiguration, Type, String, String)" Url="html/1972915401.htm" />
+          <HelpTOCNode Title="SetActualRequestType Method (HttpConfiguration, Type, String, String, String[])" Url="html/599373947.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="d77f1886-f194-4a2f-b59d-183c72ad8153" Title="SetActualResponseType Method " Url="html/1384835232.htm">
+          <HelpTOCNode Title="SetActualResponseType Method (HttpConfiguration, Type, String, String)" Url="html/53467252.htm" />
+          <HelpTOCNode Title="SetActualResponseType Method (HttpConfiguration, Type, String, String, String[])" Url="html/714048918.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="SetDocumentationProvider Method " Url="html/1022888464.htm" />
+        <HelpTOCNode Title="SetHelpPageSampleGenerator Method " Url="html/428632835.htm" />
+        <HelpTOCNode Title="SetSampleForType Method " Url="html/773663564.htm" />
+        <HelpTOCNode Title="SetSampleObjects Method " Url="html/490107928.htm" />
+        <HelpTOCNode Id="477859c7-cf01-456c-8b9e-6e01457ac1e6" Title="SetSampleRequest Method " Url="html/111435082.htm">
+          <HelpTOCNode Title="SetSampleRequest Method (HttpConfiguration, Object, MediaTypeHeaderValue, String, String)" Url="html/1024024540.htm" />
+          <HelpTOCNode Title="SetSampleRequest Method (HttpConfiguration, Object, MediaTypeHeaderValue, String, String, String[])" Url="html/1015816629.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="91fe73a2-9215-4ff8-8a64-8b89a4a85f92" Title="SetSampleResponse Method " Url="html/1048069857.htm">
+          <HelpTOCNode Title="SetSampleResponse Method (HttpConfiguration, Object, MediaTypeHeaderValue, String, String)" Url="html/753663023.htm" />
+          <HelpTOCNode Title="SetSampleResponse Method (HttpConfiguration, Object, MediaTypeHeaderValue, String, String, String[])" Url="html/13394604.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ab313bd5-153a-4020-9a39-de63afe60a2c" Title="HelpPageSampleGenerator Class" Url="html/576849906.htm">
+      <HelpTOCNode Title="HelpPageSampleGenerator Members" Url="html/480937388.htm" />
+      <HelpTOCNode Title="HelpPageSampleGenerator Constructor " Url="html/1127652194.htm" />
+      <HelpTOCNode Id="33b22ee0-82fc-447d-9bd1-57963e5ef9b0" Title="HelpPageSampleGenerator Methods" Url="html/499786632.htm">
+        <HelpTOCNode Title="GetActionSample Method " Url="html/987420969.htm" />
+        <HelpTOCNode Title="GetSample Method " Url="html/1903937410.htm" />
+        <HelpTOCNode Title="GetSampleObject Method " Url="html/933583519.htm" />
+        <HelpTOCNode Title="GetSampleRequests Method " Url="html/2064038054.htm" />
+        <HelpTOCNode Title="GetSampleResponses Method " Url="html/1448630717.htm" />
+        <HelpTOCNode Title="ResolveType Method " Url="html/1916084677.htm" />
+        <HelpTOCNode Title="WriteSampleObjectUsingFormatter Method " Url="html/1735650055.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="20d32dbb-586c-471f-b723-427386ddb3f7" Title="HelpPageSampleGenerator Properties" Url="html/1850481684.htm">
+        <HelpTOCNode Title="ActionSamples Property " Url="html/727734909.htm" />
+        <HelpTOCNode Title="ActualHttpMessageTypes Property " Url="html/1305001681.htm" />
+        <HelpTOCNode Title="SampleObjects Property " Url="html/1225224534.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ea4c7a7c-4ec7-41d2-a546-3aad6825c625" Title="HelpPageSampleKey Class" Url="html/1229722796.htm">
+      <HelpTOCNode Title="HelpPageSampleKey Members" Url="html/1628415692.htm" />
+      <HelpTOCNode Id="8c86ca6e-1294-4135-8855-d406385b0050" Title="HelpPageSampleKey Constructor " Url="html/743880982.htm">
+        <HelpTOCNode Title="HelpPageSampleKey Constructor (MediaTypeHeaderValue, Type)" Url="html/687874105.htm" />
+        <HelpTOCNode Title="HelpPageSampleKey Constructor (SampleDirection, String, String, IEnumerable(String))" Url="html/564297899.htm" />
+        <HelpTOCNode Title="HelpPageSampleKey Constructor (MediaTypeHeaderValue, SampleDirection, String, String, IEnumerable(String))" Url="html/328554924.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="c86d390e-49a5-481c-82e4-e7bc11835ab1" Title="HelpPageSampleKey Methods" Url="html/96245533.htm">
+        <HelpTOCNode Title="Equals Method " Url="html/597785167.htm" />
+        <HelpTOCNode Title="GetHashCode Method " Url="html/12719892.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="22313ca0-e3cf-46bd-8b27-385037f6163a" Title="HelpPageSampleKey Properties" Url="html/831754862.htm">
+        <HelpTOCNode Title="ActionName Property " Url="html/1345645776.htm" />
+        <HelpTOCNode Title="ControllerName Property " Url="html/598559187.htm" />
+        <HelpTOCNode Title="MediaType Property " Url="html/11412061.htm" />
+        <HelpTOCNode Title="ParameterNames Property " Url="html/227309440.htm" />
+        <HelpTOCNode Title="ParameterType Property " Url="html/1741129864.htm" />
+        <HelpTOCNode Title="SampleDirection Property " Url="html/449479011.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="171962e7-7a9d-4ddd-8465-582b932addbf" Title="ImageSample Class" Url="html/719807226.htm">
+      <HelpTOCNode Title="ImageSample Members" Url="html/111247981.htm" />
+      <HelpTOCNode Title="ImageSample Constructor " Url="html/526753597.htm" />
+      <HelpTOCNode Id="6c0f4cbb-e5a9-4e5b-8261-0746eea3d5b0" Title="ImageSample Methods" Url="html/201112081.htm">
+        <HelpTOCNode Title="Equals Method " Url="html/1426940980.htm" />
+        <HelpTOCNode Title="GetHashCode Method " Url="html/417256133.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/840175111.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="427261e9-53f1-4831-aa0f-4637b55a7659" Title="ImageSample Properties" Url="html/1399583600.htm">
+        <HelpTOCNode Title="Src Property " Url="html/1781327150.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="0e764817-7e1f-46a7-a349-21363f596976" Title="InvalidSample Class" Url="html/2055949289.htm">
+      <HelpTOCNode Title="InvalidSample Members" Url="html/1071109809.htm" />
+      <HelpTOCNode Title="InvalidSample Constructor " Url="html/2034802464.htm" />
+      <HelpTOCNode Id="d2c4c076-c736-4cae-b2e0-3a864e985e6f" Title="InvalidSample Methods" Url="html/860593687.htm">
+        <HelpTOCNode Title="Equals Method " Url="html/706409769.htm" />
+        <HelpTOCNode Title="GetHashCode Method " Url="html/1954156744.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/477345227.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="f1ecab2f-3951-4260-915e-d5224d43aa3f" Title="InvalidSample Properties" Url="html/1578898655.htm">
+        <HelpTOCNode Title="ErrorMessage Property " Url="html/1717939419.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="fe62f3c4-1a43-4600-9964-319c3de7cab3" Title="ObjectGenerator Class" Url="html/1116430516.htm">
+      <HelpTOCNode Title="ObjectGenerator Members" Url="html/197388431.htm" />
+      <HelpTOCNode Id="bd0484e6-1c90-4187-affe-64ec29a1fb95" Title="ObjectGenerator Methods" Url="html/802040040.htm">
+        <HelpTOCNode Title="GenerateObject Method (Type)" Url="html/1676274609.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="SampleDirection Enumeration" Url="html/582122729.htm" />
+    <HelpTOCNode Id="e7fea7db-9e95-452a-bc20-b57a273cef27" Title="TextSample Class" Url="html/1718573888.htm">
+      <HelpTOCNode Title="TextSample Members" Url="html/2007993840.htm" />
+      <HelpTOCNode Title="TextSample Constructor " Url="html/2072014026.htm" />
+      <HelpTOCNode Id="9f80c826-3569-4553-b422-2ce51e3ea6db" Title="TextSample Methods" Url="html/763161695.htm">
+        <HelpTOCNode Title="Equals Method " Url="html/1847197581.htm" />
+        <HelpTOCNode Title="GetHashCode Method " Url="html/1965604240.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/244691793.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="427a7fee-5649-4493-b87f-913ff4e5878f" Title="TextSample Properties" Url="html/840869617.htm">
+        <HelpTOCNode Title="Text Property " Url="html/360887776.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="53be18fc-59d4-4ffa-be76-fce7229a6961" Title="XmlDocumentationProvider Class" Url="html/1437586468.htm">
+      <HelpTOCNode Title="XmlDocumentationProvider Members" Url="html/112461901.htm" />
+      <HelpTOCNode Title="XmlDocumentationProvider Constructor " Url="html/1301092029.htm" />
+      <HelpTOCNode Id="2e8a51f2-4c21-4f1c-9e5d-970fd412fb5e" Title="XmlDocumentationProvider Methods" Url="html/2027325754.htm">
+        <HelpTOCNode Id="8262c6c5-9659-4868-940e-7dec37ba9c4e" Title="GetDocumentation Method " Url="html/1426489235.htm">
+          <HelpTOCNode Title="GetDocumentation Method (HttpActionDescriptor)" Url="html/1805821158.htm" />
+          <HelpTOCNode Title="GetDocumentation Method (HttpParameterDescriptor)" Url="html/507830774.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="c29df8d0-5028-4f07-8490-ef485b1e3d80" Title="teaCRM.Web.Areas.HelpPage.Controllers Namespace" Url="html/507616070.htm">
+    <HelpTOCNode Id="3cf2da2b-cdfe-48fa-8daf-91e1415bf4ed" Title="HelpController Class" Url="html/1184532724.htm">
+      <HelpTOCNode Title="HelpController Members" Url="html/798704508.htm" />
+      <HelpTOCNode Id="82e16ed6-b555-4bc4-a992-f3350e1ead88" Title="HelpController Constructor " Url="html/1271605251.htm">
+        <HelpTOCNode Title="HelpController Constructor " Url="html/1091117238.htm" />
+        <HelpTOCNode Title="HelpController Constructor (HttpConfiguration)" Url="html/26758284.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="19c6ced2-546f-4bb6-8f1c-b93ebdc3b8f5" Title="HelpController Methods" Url="html/1919253048.htm">
+        <HelpTOCNode Title="Api Method " Url="html/363289254.htm" />
+        <HelpTOCNode Title="Index Method " Url="html/1552276555.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="c9bb6406-34cc-4679-a631-720f80d43a3d" Title="HelpController Properties" Url="html/1123521855.htm">
+        <HelpTOCNode Title="Configuration Property " Url="html/172046582.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="2e10f7b5-3663-42c0-b874-4aede5e7f3b0" Title="teaCRM.Web.Areas.HelpPage.Models Namespace" Url="html/996175315.htm">
+    <HelpTOCNode Id="7555b3de-d9a6-43ef-9bcf-7e6e97af423c" Title="HelpPageApiModel Class" Url="html/722675687.htm">
+      <HelpTOCNode Title="HelpPageApiModel Members" Url="html/1637207733.htm" />
+      <HelpTOCNode Title="HelpPageApiModel Constructor " Url="html/1239869770.htm" />
+      <HelpTOCNode Id="acfd24fb-b23f-48c2-98b3-6121768032bb" Title="HelpPageApiModel Properties" Url="html/1600119275.htm">
+        <HelpTOCNode Title="ApiDescription Property " Url="html/1838394838.htm" />
+        <HelpTOCNode Title="ErrorMessages Property " Url="html/1499304649.htm" />
+        <HelpTOCNode Title="SampleRequests Property " Url="html/1970119715.htm" />
+        <HelpTOCNode Title="SampleResponses Property " Url="html/1174089646.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="72a5dd80-cc3c-414d-bff5-33aeee3001f1" Title="teaCRM.Web.Controllers Namespace" Url="html/1638297358.htm">
+    <HelpTOCNode Id="31235f59-ce7d-4704-b311-ecda99d71259" Title="AccountController Class" Url="html/564236311.htm">
+      <HelpTOCNode Title="AccountController Members" Url="html/1238812878.htm" />
+      <HelpTOCNode Id="077b5501-1759-487c-9023-4edbc6a8dab4" Title="AccountController Methods" Url="html/1684506597.htm">
+        <HelpTOCNode Title="EmailRegister Method " Url="html/1976061336.htm" />
+        <HelpTOCNode Id="042744f6-0e17-49e4-921d-516c3fbf06e5" Title="Login Method " Url="html/1688853384.htm">
+          <HelpTOCNode Title="Login Method " Url="html/1044302689.htm" />
+          <HelpTOCNode Title="Login Method (FormCollection)" Url="html/65901677.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Logout Method " Url="html/99253940.htm" />
+        <HelpTOCNode Title="PhoneRegister Method " Url="html/238671745.htm" />
+        <HelpTOCNode Id="64d32281-027e-4f39-9c01-a1a947d62359" Title="PublicRegister Method " Url="html/1095652957.htm">
+          <HelpTOCNode Title="PublicRegister Method " Url="html/1057641121.htm" />
+          <HelpTOCNode Title="PublicRegister Method (FormCollection)" Url="html/2109314093.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Register Method " Url="html/545430526.htm" />
+        <HelpTOCNode Title="UserNameAuto Method " Url="html/1123079203.htm" />
+        <HelpTOCNode Title="ValidateAccount Method " Url="html/1915424173.htm" />
+        <HelpTOCNode Title="ValidatePhone Method " Url="html/1856181940.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="b628de00-769e-41f3-bf33-640edcc5fe04" Title="AccountController Properties" Url="html/1491330073.htm">
+        <HelpTOCNode Title="AccountService Property " Url="html/1946957227.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="eafee30b-a62f-459a-bc57-35c669b22535" Title="DesktopController Class" Url="html/145655940.htm">
+      <HelpTOCNode Title="DesktopController Members" Url="html/1721707664.htm" />
+      <HelpTOCNode Id="415d8414-ee74-444f-8a98-a79396063d4f" Title="DesktopController Methods" Url="html/580221287.htm">
+        <HelpTOCNode Title="Index Method " Url="html/1221092246.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="7c8b2174-f85e-4955-96b4-3ce32ed3ccc2" Title="LogController Class" Url="html/758019217.htm">
+      <HelpTOCNode Title="LogController Members" Url="html/144836618.htm" />
+      <HelpTOCNode Id="f00447ab-867a-41b8-bfe5-8247cfb69eba" Title="LogController Methods" Url="html/230309540.htm">
+        <HelpTOCNode Title="LogDelete Method " Url="html/255554508.htm" />
+        <HelpTOCNode Title="LogView Method " Url="html/1040460717.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="930367b0-2a11-47ad-ac58-1d732b8b9597" Title="teaCRM.Web.Controllers.Admin Namespace" Url="html/1123036068.htm">
+    <HelpTOCNode Id="8056e7d9-aadd-4bc0-8cf6-d780b9976870" Title="AccountController Class" Url="html/1545629106.htm">
+      <HelpTOCNode Title="AccountController Members" Url="html/301131639.htm" />
+      <HelpTOCNode Id="a363377d-baca-4f54-a2ff-651847d74d9e" Title="AccountController Methods" Url="html/1532524550.htm">
+        <HelpTOCNode Title="Login Method " Url="html/1961750655.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="64b2a33c-7594-4e12-9a34-9187156d00d3" Title="AppController Class" Url="html/798383051.htm">
+      <HelpTOCNode Title="AppController Members" Url="html/1050899956.htm" />
+      <HelpTOCNode Id="9d712467-8f37-4680-99e1-3e608a3125a5" Title="AppController Methods" Url="html/1251251631.htm">
+        <HelpTOCNode Title="Add Method " Url="html/452028862.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5344d523-6902-410b-b275-356667bee2a3" Title="MainController Class" Url="html/1229842234.htm">
+      <HelpTOCNode Title="MainController Members" Url="html/953254049.htm" />
+      <HelpTOCNode Id="b58a15ca-5c7a-4d3c-ae6a-e408e8923222" Title="MainController Methods" Url="html/1144074070.htm">
+        <HelpTOCNode Title="Index Method " Url="html/1578872496.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="e888c33b-97b6-4f13-b015-094b097af15e" Title="teaCRM.Web.Controllers.Api Namespace" Url="html/1024888911.htm">
+    <HelpTOCNode Id="ffc515bb-8fea-42d7-9c5a-74eb1d18a4e1" Title="AppController Class" Url="html/2044820678.htm">
+      <HelpTOCNode Title="AppController Members" Url="html/1991013566.htm" />
+      <HelpTOCNode Id="9a915ae0-8df1-4bd9-808c-234cc9ff35b4" Title="AppController Methods" Url="html/1233215850.htm">
+        <HelpTOCNode Title="AddApp Method " Url="html/863923316.htm" />
+        <HelpTOCNode Title="GetAllApps Method " Url="html/291338703.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="9b7cbfcf-a75d-4e72-8262-d9fd045aebce" Title="teaCRM.Web.Controllers.Api.CRM Namespace" Url="html/1053194089.htm">
+    <HelpTOCNode Id="aca38dcd-d699-4cef-98bd-251ae4a94108" Title="ContactController Class" Url="html/903829130.htm">
+      <HelpTOCNode Title="ContactController Members" Url="html/462736714.htm" />
+      <HelpTOCNode Id="77f82c09-db7e-4263-b568-7ce9716a2570" Title="ContactController Methods" Url="html/1176634440.htm">
+        <HelpTOCNode Title="AddContact Method " Url="html/926909419.htm" />
+        <HelpTOCNode Title="DeleteContact Method " Url="html/216294680.htm" />
+        <HelpTOCNode Title="EditContact Method " Url="html/1858777492.htm" />
+        <HelpTOCNode Title="GetAllContacts Method " Url="html/293412913.htm" />
+        <HelpTOCNode Title="GetContact Method " Url="html/889384809.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="1f83d8df-e28d-4d1e-8275-f279be8b0107" Title="CustomerController Class" Url="html/540283050.htm">
+      <HelpTOCNode Title="CustomerController Members" Url="html/1503527546.htm" />
+      <HelpTOCNode Id="24349f56-ebe6-42bc-8538-30bcf3b58697" Title="CustomerController Methods" Url="html/161018004.htm">
+        <HelpTOCNode Title="GetCustomerLsit Method " Url="html/2045980746.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="d9a4c619-8a17-46bb-b0d8-a8cb0b2c4933" Title="teaCRM.Web.Controllers.Api.Settings Namespace" Url="html/1580050346.htm">
+    <HelpTOCNode Id="317de36e-0a5d-4c11-9098-2d8ddb487347" Title="AppMakerController Class" Url="html/896655266.htm">
+      <HelpTOCNode Title="AppMakerController Members" Url="html/1118898914.htm" />
+      <HelpTOCNode Id="06b9cfd4-0090-4fc6-b36e-182d513ee1d1" Title="AppMakerController Methods" Url="html/1858410307.htm">
+        <HelpTOCNode Title="AddField Method " Url="html/857563818.htm" />
+        <HelpTOCNode Title="AddFilter Method " Url="html/841807703.htm" />
+        <HelpTOCNode Title="AddOperating Method " Url="html/1734172434.htm" />
+        <HelpTOCNode Title="DeleteField Method " Url="html/1581754423.htm" />
+        <HelpTOCNode Title="DeleteFilter Method " Url="html/1318412781.htm" />
+        <HelpTOCNode Title="DeleteOperating Method " Url="html/1726909715.htm" />
+        <HelpTOCNode Title="EditField Method " Url="html/1204127852.htm" />
+        <HelpTOCNode Title="EditFilter Method " Url="html/1779513650.htm" />
+        <HelpTOCNode Title="EditOperating Method " Url="html/1372470993.htm" />
+        <HelpTOCNode Title="GetAllApps Method " Url="html/736016605.htm" />
+        <HelpTOCNode Title="GetAllMyAppFields Method " Url="html/1953673235.htm" />
+        <HelpTOCNode Title="GetAllMyApps Method " Url="html/811695939.htm" />
+        <HelpTOCNode Title="GetAllMyAppToolBars Method " Url="html/1036660159.htm" />
+        <HelpTOCNode Title="GetAllMyAppViews Method " Url="html/466702794.htm" />
+        <HelpTOCNode Title="GetField Method " Url="html/1318840194.htm" />
+        <HelpTOCNode Title="GetOperating Method " Url="html/1698270101.htm" />
+        <HelpTOCNode Title="GetView Method " Url="html/1637500668.htm" />
+        <HelpTOCNode Title="Install Method " Url="html/126560058.htm" />
+        <HelpTOCNode Title="IsInstalled Method " Url="html/1283412045.htm" />
+        <HelpTOCNode Title="UnInstall Method " Url="html/970613209.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="d29f00e2-e5b5-4efc-98b3-9e240be8544c" Title="RoleController Class" Url="html/1896233390.htm">
+      <HelpTOCNode Title="RoleController Members" Url="html/2106014285.htm" />
+      <HelpTOCNode Id="669d1eaa-902a-41fc-9d92-b02962785180" Title="RoleController Methods" Url="html/1172028064.htm">
+        <HelpTOCNode Title="AddRole Method " Url="html/1503852220.htm" />
+        <HelpTOCNode Title="DeleteRole Method " Url="html/1546390384.htm" />
+        <HelpTOCNode Title="EditRole Method " Url="html/1137459540.htm" />
+        <HelpTOCNode Title="GetAllPermissions Method " Url="html/2091780482.htm" />
+        <HelpTOCNode Title="GetAllRoles Method " Url="html/930586039.htm" />
+        <HelpTOCNode Title="GetRole Method " Url="html/2078291183.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5de09941-8f5b-4ce8-975e-d92001d376d0" Title="UsersController Class" Url="html/207534807.htm">
+      <HelpTOCNode Title="UsersController Members" Url="html/1273263046.htm" />
+      <HelpTOCNode Id="f4fd8732-5f24-4812-b81c-5727ae3a9c00" Title="UsersController Methods" Url="html/1726181563.htm">
+        <HelpTOCNode Title="AddUser Method " Url="html/1005204495.htm" />
+        <HelpTOCNode Title="DeleteUser Method " Url="html/1048516531.htm" />
+        <HelpTOCNode Title="EditUser Method " Url="html/465213247.htm" />
+        <HelpTOCNode Title="ExistsUser Method " Url="html/1034597764.htm" />
+        <HelpTOCNode Title="GetAllUsers Method " Url="html/101668950.htm" />
+        <HelpTOCNode Title="GetUser Method " Url="html/1456298583.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="1e965021-3db2-45e5-9dc9-21e61dee17bf" Title="teaCRM.Web.Controllers.Apps Namespace" Url="html/1018425470.htm">
+    <HelpTOCNode Id="3f762c2b-66d5-4eea-99be-c628d2da1417" Title="IndexController Class" Url="html/687920704.htm">
+      <HelpTOCNode Title="IndexController Members" Url="html/1169569814.htm" />
+      <HelpTOCNode Id="1ba2dac2-9bf4-4fd5-833e-940c47612d2e" Title="IndexController Methods" Url="html/602718596.htm">
+        <HelpTOCNode Title="Index Method " Url="html/1907198620.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="99985317-325f-475b-b183-cc8efb2f6f82" Title="teaCRM.Web.Controllers.Apps.CRM Namespace" Url="html/898458792.htm">
+    <HelpTOCNode Id="f7e93c4f-fcf6-46b6-81f6-13596776731d" Title="ContactController Class" Url="html/607966020.htm">
+      <HelpTOCNode Title="ContactController Members" Url="html/671263695.htm" />
+      <HelpTOCNode Id="ee0ea386-e9b3-4ffc-a576-b8e9858262e5" Title="ContactController Methods" Url="html/250904792.htm">
+        <HelpTOCNode Id="ad889ebe-1fba-4074-8150-4b872f95443f" Title="Add Method " Url="html/895770339.htm">
+          <HelpTOCNode Title="Add Method " Url="html/2017600678.htm" />
+          <HelpTOCNode Title="Add Method (FormCollection)" Url="html/832418092.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Edit Method " Url="html/356522733.htm" />
+        <HelpTOCNode Title="Index Method " Url="html/1408142451.htm" />
+        <HelpTOCNode Title="Init Method " Url="html/2052208947.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="362b0c6e-a6ef-46a8-b3e2-5ea5921f8391" Title="ContactController Properties" Url="html/66100652.htm">
+        <HelpTOCNode Title="AccountService Property " Url="html/562421716.htm" />
+        <HelpTOCNode Title="CustomerService Property " Url="html/1610809490.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="32a8b2f4-d864-4b11-a04a-91488a5ac060" Title="IndexController Class" Url="html/1566366862.htm">
+      <HelpTOCNode Title="IndexController Members" Url="html/1035578788.htm" />
+      <HelpTOCNode Id="c3a1e7a1-f4dc-4b3c-8897-8b737050dd69" Title="IndexController Fields" Url="html/500583100.htm">
+        <HelpTOCNode Title="myApps Field" Url="html/472565068.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="942ae6d4-6dc8-42cd-878b-19864008af2d" Title="IndexController Methods" Url="html/1844438512.htm">
+        <HelpTOCNode Id="2acc9492-82b9-4b66-a34a-34f6007c9ac1" Title="Add Method " Url="html/833961628.htm">
+          <HelpTOCNode Title="Add Method " Url="html/1065278406.htm" />
+          <HelpTOCNode Title="Add Method (FormCollection)" Url="html/1740985212.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Edit Method " Url="html/1448955250.htm" />
+        <HelpTOCNode Title="Index Method " Url="html/1932667455.htm" />
+        <HelpTOCNode Title="Init Method " Url="html/436652293.htm" />
+        <HelpTOCNode Title="Show Method " Url="html/1322983770.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="d0eafa72-095f-4a38-b9a5-177b669d9524" Title="IndexController Properties" Url="html/1688559065.htm">
+        <HelpTOCNode Title="AccountService Property " Url="html/1333134693.htm" />
+        <HelpTOCNode Title="AppMakerService Property " Url="html/174008866.htm" />
+        <HelpTOCNode Title="CustomerService Property " Url="html/544981490.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="66b09d76-8aa0-4670-a425-2edaf5d4a827" Title="LoadDataController Class" Url="html/765354768.htm">
+      <HelpTOCNode Title="LoadDataController Members" Url="html/1146809408.htm" />
+      <HelpTOCNode Id="2806a32d-b405-401b-8d9e-96a95197cfcb" Title="LoadDataController Methods" Url="html/634876903.htm">
+        <HelpTOCNode Title="AsyncGetNodes Method " Url="html/1022030858.htm" />
+        <HelpTOCNode Title="GetBootContactList Method " Url="html/289887616.htm" />
+        <HelpTOCNode Title="GetContactList Method " Url="html/1549516173.htm" />
+        <HelpTOCNode Title="GetCustomer Method " Url="html/188049318.htm" />
+        <HelpTOCNode Title="GetCustomerLsit Method " Url="html/1618478959.htm" />
+        <HelpTOCNode Title="ToPub Method " Url="html/2093193830.htm" />
+        <HelpTOCNode Title="ToTrash Method " Url="html/1031858587.htm" />
+        <HelpTOCNode Title="ValidatePhone Method " Url="html/280722901.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="30aa95cf-ff97-4fa8-8c82-1abed59a3cac" Title="LoadDataController Properties" Url="html/1317956924.htm">
+        <HelpTOCNode Title="AccountService Property " Url="html/1909827750.htm" />
+        <HelpTOCNode Title="CustomerService Property " Url="html/474084061.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="a1fb2104-bcf8-4165-a384-64dd6f04963b" Title="PubController Class" Url="html/235554275.htm">
+      <HelpTOCNode Title="PubController Members" Url="html/93603348.htm" />
+      <HelpTOCNode Id="e34c49a5-2d89-4266-8eb4-b85977efb893" Title="PubController Methods" Url="html/1684561855.htm">
+        <HelpTOCNode Title="Index Method " Url="html/1793363826.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="988c48d5-5ed5-45d9-a4bd-bbc70e93caf7" Title="ToolbarController Class" Url="html/1605007868.htm">
+      <HelpTOCNode Title="ToolbarController Members" Url="html/764862417.htm" />
+      <HelpTOCNode Id="ddbbb8aa-39db-4459-90fc-8494d8d00473" Title="ToolbarController Methods" Url="html/1641763935.htm">
+        <HelpTOCNode Title="FilterEdit Method " Url="html/1068740142.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="83ba8fc7-35fe-4516-9624-7c5e78ebc119" Title="TrashController Class" Url="html/490475353.htm">
+      <HelpTOCNode Title="TrashController Members" Url="html/1943028823.htm" />
+      <HelpTOCNode Id="afcc3c91-bf6d-4e4a-8626-9f3684fb1b23" Title="TrashController Methods" Url="html/699964939.htm">
+        <HelpTOCNode Title="Index Method " Url="html/1557349789.htm" />
+        <HelpTOCNode Title="Init Method " Url="html/2038399343.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="dbc0eafd-a346-476b-9995-dde789e0b2b2" Title="TrashController Properties" Url="html/207826876.htm">
+        <HelpTOCNode Title="AccountService Property " Url="html/1922239139.htm" />
+        <HelpTOCNode Title="CustomerService Property " Url="html/1206256670.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="99f77d0a-b0d3-4079-92a8-7882ca41da5f" Title="teaCRM.Web.Controllers.Apps.Product Namespace" Url="html/481821922.htm">
+    <HelpTOCNode Id="7ab54a39-e762-4f45-850d-9c0045eb5a1d" Title="IndexController Class" Url="html/723008730.htm">
+      <HelpTOCNode Title="IndexController Members" Url="html/482388744.htm" />
+      <HelpTOCNode Id="b13fde61-5e92-448f-98db-232f227bea05" Title="IndexController Methods" Url="html/10893217.htm">
+        <HelpTOCNode Title="Index Method " Url="html/1911122736.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="1d7efff5-51c8-4afc-a579-60bbf629945a" Title="teaCRM.Web.Controllers.Apps.Sale Namespace" Url="html/1267117623.htm">
+    <HelpTOCNode Id="5280ac2f-fd5f-4be2-b0ac-1f5d92464461" Title="IndexController Class" Url="html/1616891515.htm">
+      <HelpTOCNode Title="IndexController Members" Url="html/987960937.htm" />
+      <HelpTOCNode Id="ffb01eea-2681-446e-81af-f41867cf37ed" Title="IndexController Methods" Url="html/1843568365.htm">
+        <HelpTOCNode Title="Add Method " Url="html/1125676122.htm" />
+        <HelpTOCNode Title="Index Method " Url="html/1307977955.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="5a95f07d-fde6-4cd3-b924-9fe902801106" Title="teaCRM.Web.Controllers.Apps.Service Namespace" Url="html/1087150557.htm">
+    <HelpTOCNode Id="200a5d92-c56e-4ca2-9f56-506f548c44ea" Title="IndexController Class" Url="html/2083055230.htm">
+      <HelpTOCNode Title="IndexController Members" Url="html/1152375504.htm" />
+      <HelpTOCNode Id="677d331d-4756-455b-89c9-b159d60ca6bc" Title="IndexController Methods" Url="html/631265723.htm">
+        <HelpTOCNode Title="Index Method " Url="html/1385877164.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="4a89a020-c81b-4837-8d97-35f311a3aa94" Title="teaCRM.Web.Controllers.Apps.Settings Namespace" Url="html/101410671.htm">
+    <HelpTOCNode Id="6a47e92d-82fd-4786-8fd1-f8aa93e059ca" Title="AppMakerController Class" Url="html/971968401.htm">
+      <HelpTOCNode Title="AppMakerController Members" Url="html/1707640308.htm" />
+      <HelpTOCNode Id="10b4f24e-77f8-4fa1-8850-b88bc4dc539f" Title="AppMakerController Methods" Url="html/1499342922.htm">
+        <HelpTOCNode Title="Add Method " Url="html/1351409810.htm" />
+        <HelpTOCNode Title="Delete Method " Url="html/613702835.htm" />
+        <HelpTOCNode Title="Detail Method " Url="html/1544968869.htm" />
+        <HelpTOCNode Title="Edit Method " Url="html/1612707374.htm" />
+        <HelpTOCNode Title="EditField Method " Url="html/1827066018.htm" />
+        <HelpTOCNode Title="EditToolbar Method " Url="html/1504044671.htm" />
+        <HelpTOCNode Title="EditView Method " Url="html/1668975066.htm" />
+        <HelpTOCNode Title="Index Method " Url="html/282756849.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="22efa9bf-a817-4e3d-8474-24250337c602" Title="DepartmentController Class" Url="html/1082786943.htm">
+      <HelpTOCNode Title="DepartmentController Members" Url="html/1362603420.htm" />
+      <HelpTOCNode Id="a3713f9e-3376-45ec-9ec0-f9eab7d8f677" Title="DepartmentController Methods" Url="html/1996120343.htm">
+        <HelpTOCNode Title="Add Method " Url="html/9191524.htm" />
+        <HelpTOCNode Title="AsyncGetNodes Method " Url="html/667480580.htm" />
+        <HelpTOCNode Title="Delete Method " Url="html/2005042551.htm" />
+        <HelpTOCNode Title="Edit Method " Url="html/328247698.htm" />
+        <HelpTOCNode Title="GetDepartment Method " Url="html/1832378506.htm" />
+        <HelpTOCNode Title="Index Method " Url="html/1370146001.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="ac34f4a3-42be-4dba-99b7-f881b4d3ad65" Title="DepartmentController Properties" Url="html/17663340.htm">
+        <HelpTOCNode Title="SysDepartmentService Property " Url="html/1187096137.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="1f561101-129b-4726-8201-d99301bc8d9d" Title="PermissionController Class" Url="html/698454988.htm">
+      <HelpTOCNode Title="PermissionController Members" Url="html/844515380.htm" />
+      <HelpTOCNode Id="ead22fec-eeca-42b6-ba25-fe1c63e04cf1" Title="PermissionController Methods" Url="html/1718283608.htm">
+        <HelpTOCNode Title="Function Method " Url="html/1074030028.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="aeecefc0-1981-436b-a43b-371da031cb1b" Title="PermissionController Properties" Url="html/1882418402.htm">
+        <HelpTOCNode Title="RoleService Property " Url="html/151415862.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="9afb67d5-f5ad-4320-8d96-69d5be975bdd" Title="RoleController Class" Url="html/243340251.htm">
+      <HelpTOCNode Title="RoleController Members" Url="html/1842032078.htm" />
+      <HelpTOCNode Id="6bae7f89-11f6-4caa-9ce0-697faa3ad203" Title="RoleController Methods" Url="html/857632737.htm">
+        <HelpTOCNode Title="Add Method " Url="html/720657529.htm" />
+        <HelpTOCNode Title="Edit Method " Url="html/519477964.htm" />
+        <HelpTOCNode Title="Index Method " Url="html/2136488911.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="87dddb2c-d993-4c77-858b-b13f9de3b5bc" Title="RoleController Properties" Url="html/1498185790.htm">
+        <HelpTOCNode Title="RoleService Property " Url="html/355968306.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="9973475f-ac57-4c2b-a50e-ef42d320e1bc" Title="UsersController Class" Url="html/2066775680.htm">
+      <HelpTOCNode Title="UsersController Members" Url="html/734360409.htm" />
+      <HelpTOCNode Id="5971bd39-5039-4612-881e-acf0eb002963" Title="UsersController Methods" Url="html/2053412616.htm">
+        <HelpTOCNode Title="Add Method " Url="html/167376047.htm" />
+        <HelpTOCNode Title="Edit Method " Url="html/972979400.htm" />
+        <HelpTOCNode Title="Index Method " Url="html/2129374814.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="39fbcfe6-e294-48ff-b602-5780e61164e2" Title="UsersController Properties" Url="html/1912895288.htm">
+        <HelpTOCNode Title="UserService Property " Url="html/1206156332.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="3553d63f-e859-4020-8b68-67540ef3a375" Title="teaCRM.Web.Filters Namespace" Url="html/735283282.htm">
+    <HelpTOCNode Id="6ea6eebd-56f0-4e1c-b3e0-458f5e9f93d8" Title="ApiAuthorizeAttribute Class" Url="html/1866095891.htm">
+      <HelpTOCNode Title="ApiAuthorizeAttribute Members" Url="html/2052185797.htm" />
+      <HelpTOCNode Id="aa73218f-d2bf-404d-9d6a-5cf2d8dcba86" Title="ApiAuthorizeAttribute Methods" Url="html/1726806902.htm">
+        <HelpTOCNode Title="ExecuteAuthorizationFilterAsync Method " Url="html/65870304.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c764a93e-5b58-42ba-8f73-e9284b8848f5" Title="AutoLoginAttribute Class" Url="html/591083939.htm">
+      <HelpTOCNode Title="AutoLoginAttribute Members" Url="html/340975699.htm" />
+      <HelpTOCNode Id="1edc519e-2c2b-499c-9d01-d0422bfd8f0c" Title="AutoLoginAttribute Methods" Url="html/2143963583.htm">
+        <HelpTOCNode Title="OnAuthorization Method " Url="html/417951131.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="24025e71-d543-4dd0-b93e-4d6624b7577e" Title="UserAuthorizeAttribute Class" Url="html/1861608103.htm">
+      <HelpTOCNode Title="UserAuthorizeAttribute Members" Url="html/1737838947.htm" />
+      <HelpTOCNode Id="fe60a578-3165-4f17-afcb-cd213cb93369" Title="UserAuthorizeAttribute Methods" Url="html/1514625154.htm">
+        <HelpTOCNode Title="OnAuthorization Method " Url="html/304157009.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="d4426bf4-9a87-4b51-bd05-875cbc5175d2" Title="teaCRM.Web.Helpers Namespace" Url="html/395833266.htm">
+    <HelpTOCNode Id="136054b2-afae-46e6-b2b1-57d8089e8b9b" Title="MyHtmlHelper Class" Url="html/1007269143.htm">
+      <HelpTOCNode Title="MyHtmlHelper Members" Url="html/11011567.htm" />
+      <HelpTOCNode Id="4d7ae572-7127-4bbf-aeb7-e80fdb31ce3a" Title="MyHtmlHelper Methods" Url="html/1484257880.htm">
+        <HelpTOCNode Title="BooleanParse Method " Url="html/1493855011.htm" />
+        <HelpTOCNode Id="e3e24051-b983-4820-b42e-d2a7794bad6f" Title="DateTimeParse Method " Url="html/1725510857.htm">
+          <HelpTOCNode Title="DateTimeParse Method (HtmlHelper, Nullable(DateTime), String)" Url="html/1421228860.htm" />
+          <HelpTOCNode Title="DateTimeParse Method (HtmlHelper, Nullable(DateTime), String, String)" Url="html/2145335195.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="FormateDateTime Method " Url="html/1014602372.htm" />
+        <HelpTOCNode Title="GetCurrentCompanyUser Method " Url="html/1927505614.htm" />
+        <HelpTOCNode Title="GetOptionValue Method " Url="html/1794262278.htm" />
+        <HelpTOCNode Title="Image Method " Url="html/168878898.htm" />
+        <HelpTOCNode Title="IsNull Method " Url="html/398863309.htm" />
+        <HelpTOCNode Title="LoadDefaultPic Method " Url="html/1460402351.htm" />
+        <HelpTOCNode Id="5bcfefa9-6fdf-43b9-b371-c19884ae9e3f" Title="LoadDefaultValue Method " Url="html/258842411.htm">
+          <HelpTOCNode Title="LoadDefaultValue Method (HtmlHelper, String, String)" Url="html/1123268831.htm" />
+          <HelpTOCNode Title="LoadDefaultValue Method (HtmlHelper, Nullable(Int32), String)" Url="html/1570596752.htm" />
+          <HelpTOCNode Title="LoadDefaultValue Method (HtmlHelper, Object, Object, String)" Url="html/1807803399.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="NullPalse Method " Url="html/716393161.htm" />
+        <HelpTOCNode Title="OptionsPalse Method " Url="html/986405153.htm" />
+        <HelpTOCNode Id="e535914d-79f5-4731-8098-eca0f0201117" Title="StringParse Method " Url="html/672831111.htm">
+          <HelpTOCNode Title="StringParse Method (HtmlHelper, String, Int32)" Url="html/1387022697.htm" />
+          <HelpTOCNode Title="StringParse Method (HtmlHelper, String, Int32, String)" Url="html/1976095171.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="StringToCheckboxList Method " Url="html/938642418.htm" />
+        <HelpTOCNode Title="StringToOptions Method " Url="html/1998772446.htm" />
+        <HelpTOCNode Title="Submit Method " Url="html/1642057984.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="21495cf1-1a1a-467f-87f8-0f0e2409b6ef" Title="MyViewEngine Class" Url="html/1480249814.htm">
+      <HelpTOCNode Title="MyViewEngine Members" Url="html/1595074720.htm" />
+      <HelpTOCNode Title="MyViewEngine Constructor " Url="html/1646594184.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="62362b8d-c95b-425c-8712-9272052f69bd" Title="MyWebApiController Class" Url="html/509598612.htm">
+      <HelpTOCNode Title="MyWebApiController Members" Url="html/1069986825.htm" />
+      <HelpTOCNode Id="30bdfd73-dee2-4bee-a7a4-ac91f1cc126d" Title="MyWebApiController Methods" Url="html/1550936418.htm">
+        <HelpTOCNode Title="ExecuteAsync Method " Url="html/535554145.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>

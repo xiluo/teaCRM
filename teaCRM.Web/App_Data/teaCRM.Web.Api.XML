@@ -147,89 +147,61 @@
             <param name="field"></param>
             <returns></returns>
         </member>
-        <member name="T:teaCRM.Web.Filters.AutoLoginAttribute">
-             <summary>
-            自动登录过滤器 2014-08-22 14:58:50 By 唐有炜
-             </summary>
-        </member>
-        <member name="T:teaCRM.Web.Filters.UserAuthorizeAttribute">
-             <summary>
-            账户授权过滤器 2014-08-22 14:58:50 By 唐有炜
-             </summary>
-        </member>
-        <member name="T:teaCRM.Web.Filters.ApiAuthorizeAttribute">
-             <summary>
-            Api授权过滤器 2014-09-21 14:58:50 By 唐有炜
-             </summary>
-        </member>
-        <member name="T:teaCRM.Web.Helpers.MyWebApiController">
+        <member name="T:teaCRM.Web.Controllers.Apps.CRM.ContactController">
             <summary>
-            自定义的WebApi控制器 14-09-18 By 唐有炜
+            联系人控制器
             </summary>
         </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.Settings.RoleController.Index">
-            
-        </member>
-        <member name="T:teaCRM.Web.Controllers.Api.CRM.ContactController">
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.ContactController.contactExpandFields">
             <summary>
-            联系人APi
+            The contact expand fields
             </summary>
         </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.IndexController.Init">
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.ContactController.Init">
             <summary>
             初始化扩展字段
             </summary>
         </member>
-        <member name="P:teaCRM.Web.Controllers.AccountController.AccountService">
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.ContactController.Index(System.Nullable{System.Int32})">
             <summary>
-            Web层注入账户Service接口 2014-08-26 14:58:50 By 唐有炜
+            GET: /Apps/CRM/Contact/
+            /Apps/CRM/Contact/?cus_id=100
             </summary>
+            <param name="cus_id">客户id</param>
+            <returns>ActionResult.</returns>
         </member>
-        <member name="T:teaCRM.Web.Controllers.AccountController.AutoStruct">
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.ContactController.Add">
             <summary>
-            返回结果
+            Adds this instance.
             </summary>
+            <returns>ActionResult.</returns>
         </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.TrashController.Init">
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.ContactController.Add(System.Web.Mvc.FormCollection)">
             <summary>
-            初始化扩展字段
+            Adds the specified fc.
             </summary>
+            <param name="fc">The fc.</param>
+            <returns>ActionResult.</returns>
         </member>
-        <member name="P:teaCRM.Web.Controllers.Apps.CRM.TrashController.CustomerService">
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.ContactController.Edit(System.Web.Mvc.FormCollection,System.Int32)">
             <summary>
-            IndexController 注入Service依赖
+            Edits the specified fc.
             </summary>
+            <param name="fc">The fc.</param>
+            <param name="id">The identifier.</param>
+            <returns>ActionResult.</returns>
         </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.Settings.DepartmentController.AsyncGetNodes(System.Nullable{System.Int32},System.String)">
+        <member name="P:teaCRM.Web.Controllers.Apps.CRM.ContactController.CustomerService">
             <summary>
-            得到指定ID的子节点列表，并序列化为JSON串
+            Gets or sets the customer service.
             </summary>
-            <param name="id">节点父id</param>
-            <param name="type">类型（默认：show，select:添加一个根节点）</param>
-            <returns></returns>
+            <value>The customer service.</value>
         </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.Settings.DepartmentController.GetDepartment(System.Int32)">
+        <member name="P:teaCRM.Web.Controllers.Apps.CRM.ContactController.AccountService">
             <summary>
-            获取一条部门数据  2014-09-5 14:58:50 By 唐有炜
+            Gets or sets the account service.
             </summary>
-            <returns></returns>
-        </member>
-        <member name="P:teaCRM.Web.Controllers.Apps.Settings.DepartmentController.SysDepartmentService">
-            <summary>
-            依赖注入 2014-08-27 14:58:50 By 唐有炜
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.MvcApplication.RegisterView">
-            <summary>
-            注册自定义视图
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.MvcApplication.Application_Error(System.Object,System.EventArgs)">
-            <summary>
-            捕捉全局异常
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
+            <value>The account service.</value>
         </member>
         <member name="T:teaCRM.Web.Areas.HelpPage.ObjectGenerator">
             <summary>
@@ -341,10 +313,33 @@
             Gets the objects that are serialized as samples by the supported formatters.
             </summary>
         </member>
+        <member name="T:teaCRM.Web.Filters.AutoLoginAttribute">
+             <summary>
+            自动登录过滤器 2014-08-22 14:58:50 By 唐有炜
+             </summary>
+        </member>
+        <member name="T:teaCRM.Web.Filters.UserAuthorizeAttribute">
+             <summary>
+            账户授权过滤器 2014-08-22 14:58:50 By 唐有炜
+             </summary>
+        </member>
+        <member name="T:teaCRM.Web.Filters.ApiAuthorizeAttribute">
+             <summary>
+            Api授权过滤器 2014-09-21 14:58:50 By 唐有炜
+             </summary>
+        </member>
         <member name="T:teaCRM.Web.Areas.HelpPage.InvalidSample">
             <summary>
             This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
             </summary>
+        </member>
+        <member name="T:teaCRM.Web.Helpers.MyWebApiController">
+            <summary>
+            自定义的WebApi控制器 14-09-18 By 唐有炜
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.Settings.RoleController.Index">
+            
         </member>
         <member name="T:teaCRM.Web.Areas.HelpPage.XmlDocumentationProvider">
             <summary>
@@ -426,6 +421,39 @@
             <summary>
             Gets the <see cref="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
             </summary>
+        </member>
+        <member name="T:teaCRM.Web.Controllers.Api.CRM.ContactController">
+            <summary>
+            联系人APi
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Api.CRM.ContactController.CustomerService">
+            <summary>
+            The customer service
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Api.CRM.ContactController.GetAllContacts(System.String)">
+            <summary>
+            ghgh
+            </summary>
+            <param name="value">The value.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Api.CRM.ContactController.AddContact(teaCRM.Entity.TCusCon)">
+            <summary>
+            Adds the contact.
+            </summary>
+            <param name="Contact">The contact.</param>
+            <returns>ResponseMessage.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Api.CRM.ContactController.ToTrash(System.String)">
+            <summary>
+            删除联系人 
+            api/crm/contact/toTrash?ids=18
+            /api/crm/contact/toTrash?ids=18,19
+            </summary>
+            <param name="ids">联系人id集合</param>
+            <returns>ResponseMessage.</returns>
         </member>
         <member name="M:teaCRM.Web.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
             <summary>
@@ -588,6 +616,31 @@
             </summary>
             <param name="src">The URL of an image.</param>
         </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.IndexController.Init">
+            <summary>
+            初始化扩展字段
+            </summary>
+        </member>
+        <member name="P:teaCRM.Web.Controllers.AccountController.AccountService">
+            <summary>
+            Web层注入账户Service接口 2014-08-26 14:58:50 By 唐有炜
+            </summary>
+        </member>
+        <member name="T:teaCRM.Web.Controllers.AccountController.AutoStruct">
+            <summary>
+            返回结果
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.TrashController.Init">
+            <summary>
+            初始化扩展字段
+            </summary>
+        </member>
+        <member name="P:teaCRM.Web.Controllers.Apps.CRM.TrashController.CustomerService">
+            <summary>
+            IndexController 注入Service依赖
+            </summary>
+        </member>
         <member name="T:teaCRM.Web.Areas.HelpPage.Models.HelpPageApiModel">
             <summary>
             The model that represents an API displayed on the help page.
@@ -617,6 +670,37 @@
             <summary>
             Gets the error messages associated with this model.
             </summary>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.Settings.DepartmentController.AsyncGetNodes(System.Nullable{System.Int32},System.String)">
+            <summary>
+            得到指定ID的子节点列表，并序列化为JSON串
+            </summary>
+            <param name="id">节点父id</param>
+            <param name="type">类型（默认：show，select:添加一个根节点）</param>
+            <returns></returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.Settings.DepartmentController.GetDepartment(System.Int32)">
+            <summary>
+            获取一条部门数据  2014-09-5 14:58:50 By 唐有炜
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:teaCRM.Web.Controllers.Apps.Settings.DepartmentController.SysDepartmentService">
+            <summary>
+            依赖注入 2014-08-27 14:58:50 By 唐有炜
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.MvcApplication.RegisterView">
+            <summary>
+            注册自定义视图
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.MvcApplication.Application_Error(System.Object,System.EventArgs)">
+            <summary>
+            捕捉全局异常
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
         </member>
         <member name="T:teaCRM.Web.Areas.HelpPage.SampleDirection">
             <summary>

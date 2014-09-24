@@ -20,6 +20,8 @@ teaCRM
 >2、支持多数据库:使用 ELinq、NLite作为ORM框架，详见：http://elinq.codeplex.com/  
 >3、项目演示地址：http://crm.ucs123.com     
 >4、兼容IE6、7、8+、Firefox、Chrome、Safari
+>5、访问 /Help 查看Api文档    
+>6、访问 /Jsdoc 查看js文档                
 
 更新历史
 =======

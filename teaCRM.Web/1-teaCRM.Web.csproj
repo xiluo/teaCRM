@@ -225,6 +225,7 @@
     <Content Include="Themes\default\base\js\category.js" />
     <Content Include="Themes\default\base\js\city.js" />
     <Content Include="Themes\default\base\js\industry.js" />
+    <Content Include="Themes\default\crm\js\contact.js" />
     <Content Include="Themes\default\crm\js\customer_show.js" />
     <Content Include="Themes\default\lib\artDialog\lib\require.js" />
     <Content Include="Themes\default\lib\artDialog\lib\sea.js" />
@@ -1375,6 +1376,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Jsdoc\Apps\CRM\" />
     <Folder Include="Themes\default\lib\jquery.mobile\" />
     <Folder Include="Themes\default\sale\" />
     <Folder Include="Themes\default\service\" />
