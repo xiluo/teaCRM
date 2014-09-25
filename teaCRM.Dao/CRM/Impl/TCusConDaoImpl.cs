@@ -324,6 +324,7 @@ namespace teaCRM.Dao.Impl
                 strSql.Append("SELECT ");
                 string select = @"id
       ,cus_id
+      ,comp_num
       ,con_name
       ,con_tel
       ,con_qq
@@ -484,6 +485,70 @@ con_fields
                     LogHelper.Error("TCusCon字段批量更新异常：", ex);
                     return false;
                 }
+                finally
+                {
+                    if (db.Connection.State != ConnectionState.Closed)
+                    {
+                        db.Connection.Close();
+                    }
+                }
+            }
+        }
+
+
+
+
+        #endregion
+
+
+
+
+        #region 批量改状态
+
+        /// <summary>
+        /// 批量改状态
+        /// </summary>
+        /// <param name="con_ids">The con_ids.</param>
+        /// <param name="op">操作（0 1）</param>
+        /// <param name="field">字段</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        public bool UpdateStatusMoreContact(string con_ids, int op, string field)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                if (db.Connection.State != ConnectionState.Open)
+                {
+                    db.Connection.Open();
+                }
+                var tran = db.Connection.BeginTransaction();
+                try
+                {
+                    int[] conIdArray = Utils.StringToIntArray(con_ids, ',');
+                    foreach (var cusId in conIdArray)
+                    {
+                        string strSet = String.Format("{0}={1}", field, op);
+                        string strWhere = String.Format("id={0}", cusId);
+
+                        StringBuilder strSql = new StringBuilder();
+                        strSql.Append("UPDATE T_cus_con SET ");
+                        strSql.Append(strSet);
+                        strSql.Append(" WHERE ");
+                        strSql.Append(strWhere);
+                        LogHelper.Debug(strSql.ToString());
+
+                        db.DbHelper.ExecuteNonQuery(strSql.ToString());
+                    }
+                    LogHelper.Debug("联系人状态事务执行成功！");
+                    tran.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    LogHelper.Error("联系人状态事务执行失败：", ex);
+                    return false;
+                }
+
                 finally
                 {
                     if (db.Connection.State != ConnectionState.Closed)

@@ -171,6 +171,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             }
             TCusCon CusCon = new TCusCon()
             {
+                CompNum = compNum,
                 ConName = fc["con_name"],
                 ConTel = fc["con_tel"],
                 ConQq = fc["con_qq"],
@@ -328,6 +329,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
                 }
                 TCusCon CusCon = new TCusCon()
                 {
+                    CompNum = compNum,
                     ConName = fc["con_name"],
                     ConTel = fc["con_tel"],
                     ConQq = fc["con_qq"],

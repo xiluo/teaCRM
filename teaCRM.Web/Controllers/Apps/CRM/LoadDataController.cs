@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -28,6 +29,7 @@ using teaCRM.Web.Filters;
 /// <summary>
 /// The CRM namespace.
 /// </summary>
+
 namespace teaCRM.Web.Controllers.Apps.CRM
 {
     /// <summary>
@@ -93,15 +95,15 @@ namespace teaCRM.Web.Controllers.Apps.CRM
                 {
                     strWhere = String.Format("con_is_pub={0}", Request.QueryString["con_is_pub"]);
                 }
-                 //排序
+                //排序
                 var sort = "id DESC";
-                if (!String.IsNullOrEmpty(fc["sortname"])&&!String.IsNullOrEmpty(fc["sortorder"]))
+                if (!String.IsNullOrEmpty(fc["sortname"]) && !String.IsNullOrEmpty(fc["sortorder"]))
                 {
                     sort = String.Format("{0} {1}", fc["sortname"], fc["sortorder"]);
                 }
                 //总数
                 var count = 0;
-               
+
                 var customerTable =
                     CustomerService.GetCustomerLsit(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(),
                         new string[0], int.Parse(fc["page"]),
@@ -157,18 +159,18 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         public string GetContactList(int? cus_id)
         {
             string customerJson = "";
-              try
+            try
             {
                 var count = 0;
                 DataTable contactTable;
-            
-                    contactTable =
-                        CustomerService.GetContactLsit(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(),
-                            new string[0], 1,
-                            10, String.Format("cus_id={0} AND con_trash=0", cus_id), "id", out count);
-                    LogHelper.Info("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() +
-                                   "的用户获取联系人信息成功。");
-             
+
+                contactTable =
+                    CustomerService.GetContactLsit(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(),
+                        new string[0], 1,
+                        10, String.Format("cus_id={0} AND con_trash=0", cus_id), "id", out count);
+                LogHelper.Info("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() +
+                               "的用户获取联系人信息成功。");
+
 
                 return JSONHelper.DataTableToLigerUIList(contactTable, count);
             }
@@ -200,7 +202,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
                 DataTable contactTable =
                     CustomerService.GetContactLsit(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(),
                         new string[0], 1,
-                        10, String.Format("cus_id={0}", cus_id), "id", out count);
+                        10, String.Format("cus_id={0} AND con_trash=0", cus_id), "id DESC", out count);
                 LogHelper.Info("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() + "的用户获取联系人信息成功。");
 
 
@@ -222,8 +224,6 @@ namespace teaCRM.Web.Controllers.Apps.CRM
 
         #endregion
 
-       
-       
         #region 获取一条联系人数据
 
         //
@@ -242,10 +242,16 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             try
             {
                 var count = 0;
-               Dictionary<string,object> contact =
-                    CustomerService.GetContact(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(),con_id);
-              
-                return JsonConvert.SerializeObject(contact);
+                Dictionary<string, object> contact =
+                    CustomerService.GetContact(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(), con_id);
+
+                Newtonsoft.Json.Converters.IsoDateTimeConverter timeConverter =
+                    new Newtonsoft.Json.Converters.IsoDateTimeConverter();
+                //这里使用自定义日期格式，如果不使用的话，默认是ISO8601格式     
+                timeConverter.DateTimeFormat = "yyyy-MM-dd";
+                var contacts = JsonConvert.SerializeObject(contact, timeConverter); //quoOdrs 是对象集合
+                //利用IsoDateTimeConverter这个类设置日期格式就可以了。
+                return contacts;
             }
             catch (Exception ex)
             {
@@ -256,9 +262,6 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         }
 
         #endregion
-
-
- 
 
         #region 放入回收站 2014-09-05 14:58:50 By 唐有炜
 

@@ -39,6 +39,7 @@ function refresh(url) {
         location.href = "./";
     }
 }
+
 //====================================
 
 //弹出框封装结束开始
@@ -51,24 +52,24 @@ function showMsg(msg, msgcss, callback) {
     $("#msgprint").remove();
     var cssname = "";
     switch (msgcss) {
-        case "Success":
-            cssname = "pcent success";
-            break;
-        case "Error":
-            cssname = "pcent error";
-            break;
-        case "Warn":
-            cssname = "pcent error";
-            break;
-        default:
-            cssname = "pcent warning";
-            break;
+    case "Success":
+        cssname = "pcent success";
+        break;
+    case "Error":
+        cssname = "pcent error";
+        break;
+    case "Warn":
+        cssname = "pcent error";
+        break;
+    default:
+        cssname = "pcent warning";
+        break;
     }
     var str = "<div id=\"msgprint\" class=\"" + cssname + "\">" + msg + "</div>";
     $("body").append(str);
     $("#msgprint").show();
     //3秒后清除提示
-    setTimeout(function () {
+    setTimeout(function() {
         $("#msgprint").fadeOut(500);
         //如果动画结束则删除节点
         if (!$("#msgprint").is(":animated")) {
@@ -82,7 +83,7 @@ function showMsg(msg, msgcss, callback) {
 //弹出对话框，带阴影==============================================
 function showDialog(msg, okCallback) {
     var d = dialog({
-        id:"show_dialog",
+        id: "show_dialog",
         title: '温馨提示',
         content: msg,
         okValue: '确 定',
@@ -96,7 +97,7 @@ function showDialog(msg, okCallback) {
 }
 
 //通过id可以弹出多个框 14-09-17 By 唐有炜
-function showMoreDialog(id,msg, okCallback,cancelCallback) {
+function showMoreDialog(id, msg, okCallback, cancelCallback) {
     var d = dialog({
         id: id,
         title: '温馨提示',
@@ -113,18 +114,18 @@ function showMoreDialog(id,msg, okCallback,cancelCallback) {
 //弹出iframe窗口，带阴影，用作表单===============================================
 //2014-09-03 By 唐有炜
 //Dialod id:id Iframe id:frm_{id}
-function showWindow(id, url, title, w, h,okCallback) {
+function showWindow(id, url, title, w, h, okCallback) {
     var d = dialog({
         id: id,
         title: title,
         //url: url,//此方式不支持滚动条
-        content: '<iframe src="' + url + '" id="frm_'+id+'" name="frm_'+id+'" style="border-bottom: 1px solid #E5E5E5;" width="100%" height="100%" width="100%" frameborder="0"></iframe>',
+        content: '<iframe src="' + url + '" id="frm_' + id + '" name="frm_' + id + '" style="border-bottom: 1px solid #E5E5E5;" width="100%" height="100%" width="100%" frameborder="0" scrolling="auto"></iframe>',
         width: w,
         height: h,
         okValue: '确 定',
         ok: okCallback,
         cancelValue: '取消',
-        cancel: function () {
+        cancel: function() {
             d.close().remove();
         }
     });
@@ -132,14 +133,14 @@ function showWindow(id, url, title, w, h,okCallback) {
 }
 
 //============================================================================
-//弹出url方式加载的窗口，带阴影，不带添加按钮，用作表单===============================================
+//顶层弹出iframe窗口，带阴影，用作表单===============================================
 //2014-09-03 By 唐有炜
 function showContentWindow(id, url, title, w, h) {
     var d = dialog({
         id: id,
         title: title,
         //url: url,//此方式不支持滚动条
-        content: '<iframe src="' + url + '" id="frm" name="frm" style="border-bottom: 1px solid #E5E5E5;" width="100%" height="100%" width="100%" frameborder="0"></iframe>',
+        content: '<iframe src="' + url + '" id="frm_' + id + '" name="frm_' + id + '" style="border-bottom: 1px solid #E5E5E5;" width="100%" height="100%" width="100%" frameborder="0" scrolling="auto"></iframe>',
         width: w,
         height: h,
         left: 0,
@@ -154,17 +155,44 @@ function showContentWindow(id, url, title, w, h) {
 
 
 //iframe里面弹出对话框并自动关闭
-function showTopMsg(id, msg) {
+function showTopMsg(id, url, title, w, h) {
     //在iframe里面打开弹出框并自动关闭
     var d = top.dialog({
         id: id,
         title: '温馨提示',
-        content: msg,
+        content: '<iframe src="' + url + '" id="frm_' + id + '" name="frm_' + id + '" style="border-bottom: 1px solid #E5E5E5;" width="100%" height="100%" width="100%" frameborder="0" scrolling="auto"></iframe>',
         cancel: false
     }).show();
     setTimeout(function() {
         d.close().remove();
     }, 1000);
+}
+
+
+
+//iframe里面弹出对话框并自动关闭
+function showTopWindow(id, url, title, w, h, okCallback) {
+    //在iframe里面打开弹出框并自动关闭
+    var d=top.dialog({
+        id: id,
+        title: title,
+        //url: url,//此方式不支持滚动条
+        content: '<iframe src="' + url + '" id="frm_' + id + '" name="frm_' + id + '" style="border-bottom: 1px solid #E5E5E5;" width="100%" height="100%" width="100%" frameborder="0" scrolling="auto"></iframe>',
+        width: w,
+        height: h,
+        left: 0,
+        top: 0,
+        fixed: true,
+        resize: false,
+        drag: false,
+        lock: true,
+        okValue: '确 定',
+        ok: okCallback,
+        cancelValue: '取消',
+        cancel: function () {
+            d.close().remove();
+        }
+    }).showModal();
 }
 
 //===========================================================
@@ -209,6 +237,7 @@ function hideLoading() {
     var ajaxbg = $("#progressBar");
     ajaxbg.hide();
 }
+
 //===================================================
 
 
@@ -226,6 +255,7 @@ function get_selected_ids(grid_id) {
     ids = rowIds.join(",");
     return ids;
 }
+
 ///////////////////////////////////////////////////////////
 
 //====================================
@@ -237,4 +267,7 @@ function shortString(s, l, tag) {
         return s;
     }
 }
+
 //======================================
+
+

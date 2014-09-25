@@ -41,6 +41,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtUni = new System.Windows.Forms.TextBox();
             this.txtHz = new System.Windows.Forms.TextBox();
+            this.btnGenCompNum = new System.Windows.Forms.Button();
+            this.txtcompNum = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -170,14 +172,33 @@
             this.txtHz.Size = new System.Drawing.Size(276, 21);
             this.txtHz.TabIndex = 3;
             // 
-            // Form1
+            // btnGenCompNum
+            // 
+            this.btnGenCompNum.Location = new System.Drawing.Point(301, 138);
+            this.btnGenCompNum.Name = "btnGenCompNum";
+            this.btnGenCompNum.Size = new System.Drawing.Size(100, 23);
+            this.btnGenCompNum.TabIndex = 4;
+            this.btnGenCompNum.Text = "生成公司编号";
+            this.btnGenCompNum.UseVisualStyleBackColor = true;
+            this.btnGenCompNum.Click += new System.EventHandler(this.btnGenCompNum_Click);
+            // 
+            // txtcompNum
+            // 
+            this.txtcompNum.Location = new System.Drawing.Point(301, 178);
+            this.txtcompNum.Name = "txtcompNum";
+            this.txtcompNum.Size = new System.Drawing.Size(332, 21);
+            this.txtcompNum.TabIndex = 5;
+            // 
+            // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(691, 459);
+            this.Controls.Add(this.txtcompNum);
+            this.Controls.Add(this.btnGenCompNum);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Form1";
+            this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
@@ -185,6 +206,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -203,6 +225,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtUni;
         private System.Windows.Forms.TextBox txtHz;
+        private System.Windows.Forms.Button btnGenCompNum;
+        private System.Windows.Forms.TextBox txtcompNum;
     }
 }
 

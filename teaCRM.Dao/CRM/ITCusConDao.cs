@@ -37,6 +37,20 @@ namespace teaCRM.Dao
         bool UpdateTCusConFieldsByLINQ(List<KeyValuePair<string, object>> fields,
             List<Expression<Func<TCusCon, bool>>> predicates);
 
+
+
+
+        /// <summary>
+        /// 批量改状态
+        /// </summary>
+        /// <param name="con_ids">The con_ids.</param>
+        /// <param name="op">操作（0 1）</param>
+        /// <param name="field">字段</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        bool UpdateStatusMoreContact(string con_ids, int op, string field);
+
+
+
         #endregion
     }
 }

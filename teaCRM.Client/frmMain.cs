@@ -38,5 +38,11 @@ namespace UCsoft.Client
         {
             txtUni.Text = Utils.ChineseToUnicode16(txtHz.Text);
         }
+
+        private void btnGenCompNum_Click(object sender, EventArgs e)
+        {
+            var compNum = RandomHelper.GetComoanyNumber();
+            txtcompNum.Text = compNum;
+        }
     }
 }

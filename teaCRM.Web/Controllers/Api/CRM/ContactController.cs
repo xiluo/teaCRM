@@ -44,6 +44,9 @@ namespace teaCRM.Web.Controllers.Api.CRM
         private ICustomerService CustomerService =
             ContextRegistry.GetContext().GetObject("customerService") as ICustomerService;
 
+        //联系人扩展字段信息
+        private List<TFunExpand> contactExpandFields = null;
+
         #region 所有联系人列表 14-09-11 By 唐有炜
 
         /// <summary>
@@ -70,17 +73,42 @@ namespace teaCRM.Web.Controllers.Api.CRM
             DataTable contactTable;
             if (String.IsNullOrEmpty(cus_id)) //全部联系人,LigerUI分页
             {
-                contactTable =
+                if (!String.IsNullOrEmpty(searchPhrase))
+                {
+                    contactTable =
                     CustomerService.GetContactLsit(compNum,
                         new string[0], current,
-                        rowCount, "", "id", out count);
+                        rowCount, String.Format("con_trash=0 AND con_name like '%{0}%'",searchPhrase.Trim()), "id DESC", out count);
+                }
+                else
+                {
+                    contactTable =
+                    CustomerService.GetContactLsit(compNum,
+                        new string[0], current,
+                        rowCount, "con_trash=0", "id DESC", out count);
+                }
             }
             else
             {
-                contactTable =
+                if (!String.IsNullOrEmpty(searchPhrase))
+                {
+                    contactTable =
                     CustomerService.GetContactLsit(compNum,
                         new string[0], current,
-                        rowCount, String.Format("cus_id={0}", cus_id), "id", out count);
+                        rowCount, String.Format("cus_id={0} AND con_trash=0 AND con_name like '%{1}%'", cus_id, searchPhrase.Trim()), "id DESC", out count);
+                }
+                else
+                {
+
+                    contactTable =
+                        CustomerService.GetContactLsit(compNum,
+                            new string[0], current,
+                            rowCount, String.Format("cus_id={0} AND con_trash=0", cus_id), "id DESC", out count);
+                }
+
+
+
+
             }
             return JsonConvert.SerializeObject(new
             {
@@ -114,23 +142,75 @@ namespace teaCRM.Web.Controllers.Api.CRM
 
         // POST api/crm/contact/addContact
         /// <summary>
-        /// Adds the contact.
+        /// 添加联系人 14-09-25 By 唐有炜
         /// </summary>
-        /// <param name="Contact">The contact.</param>
-        /// <returns>ResponseMessage.</returns>
+        /// <param name="value">参数</param>
+        /// <returns>添加状态</returns>
         [HttpPost]
-        public ResponseMessage AddContact([FromBody] TCusCon Contact)
+        //public ResponseMessage AddContact([FromBody] TCusCon contact)
+        public ResponseMessage AddContact([FromBody] string value)
         {
             ResponseMessage rmsg = new ResponseMessage();
-            if (CustomerService.AddContact(Contact))
+
+            HttpContextBase context = (HttpContextBase) Request.Properties["MS_HttpContext"]; //获取传统context
+            HttpRequestBase request = context.Request; //定义传统request对象
+
+            //联系人赋值 
+            var compNum = request.Params.Get("CompNum");
+            var cusId = request.Params.Get("cus_id");
+            var conBir = request.Params.Get("con_bir");
+            if (String.IsNullOrEmpty(conBir))
+            {
+                conBir = DateTime.Now.ToString();
+            }
+            if (String.IsNullOrEmpty(cusId))
+            {
+                cusId = "0";
+            }
+            TCusCon CusCon = new TCusCon
+            {
+                CusId = int.Parse(cusId),
+                CompNum = compNum,
+                ConName = request.Params.Get("con_name"),
+                ConTel = request.Params.Get("con_tel"),
+                ConQq = request.Params.Get("con_qq"),
+                ConEmail = request.Params.Get("con_email"),
+                ConBir = DateTime.Parse(conBir),
+                ConNote = request.Params.Get("con_note"),
+                ConIsMain = 1,
+                UserId = int.Parse(request.Params.Get("user_id")),
+                ConTrash = 0
+            };
+
+            //联系人扩展字段
+            contactExpandFields =
+                CustomerService.GetContactExpandFields(compNum);
+            Dictionary<string, object> conFields = new Dictionary<string, object>();
+            for (int i = 0; i < request.Params.Count; i++)
+            {
+                var field_con = request.Params.GetKey(i);
+                var value_con = request.Params.Get(field_con);
+                foreach (var field_con2 in contactExpandFields)
+                {
+                    if (field_con == field_con2.ExpName)
+                    {
+                        conFields.Add(field_con, value_con);
+                    }
+                }
+            }
+            //存储扩展字段的值
+            CusCon.ConFields = JsonConvert.SerializeObject(conFields);
+
+            if (CustomerService.AddContact(CusCon))
             {
                 rmsg.Status = true;
+                rmsg.Msg = "联系人添加成功！";
             }
             else
             {
                 rmsg.Status = false;
+                rmsg.Msg = "联系人添加失败！";
             }
-
 
             return rmsg;
         }
@@ -145,20 +225,74 @@ namespace teaCRM.Web.Controllers.Api.CRM
         /// <summary>
         /// Edits the contact.
         /// </summary>
-        /// <param name="Contact">The contact.</param>
+        /// <param name="value">The value.</param>
         /// <returns>ResponseMessage.</returns>
         [HttpPost]
-        public ResponseMessage EditContact([FromBody] TCusCon Contact)
+        public ResponseMessage EditContact([FromBody] string value)
         {
             ResponseMessage rmsg = new ResponseMessage();
-//            if (ContactService.UpdateContact(Contact))
-//            {
-//                rmsg.Status = true;
-//            }
-//            else
-//            {
-//                rmsg.Status = false;
-//            }
+
+            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"]; //获取传统context
+            HttpRequestBase request = context.Request; //定义传统request对象
+
+            //联系人赋值 
+
+            var compNum = request.Params.Get("CompNum");
+            var cusId = request.Params.Get("cus_id");
+            var conBir = request.Params.Get("con_bir");
+            if (String.IsNullOrEmpty(conBir))
+            {
+                conBir = DateTime.Now.ToString();
+            }
+            if (String.IsNullOrEmpty(cusId))
+            {
+                cusId = "0";
+            }
+            TCusCon CusCon = new TCusCon
+            {
+                Id = int.Parse(request.Params.Get("id")),
+                CusId = int.Parse(cusId),
+                CompNum = compNum,
+                ConName = request.Params.Get("con_name"),
+                ConTel = request.Params.Get("con_tel"),
+                ConQq = request.Params.Get("con_qq"),
+                ConEmail = request.Params.Get("con_email"),
+                ConBir = DateTime.Parse(conBir),
+                ConNote = request.Params.Get("con_note"),
+                ConIsMain = 1,
+                UserId = int.Parse(request.Params.Get("user_id")),
+                ConTrash = 0
+            };
+
+            //联系人扩展字段
+            contactExpandFields =
+                CustomerService.GetContactExpandFields(compNum);
+            Dictionary<string, object> conFields = new Dictionary<string, object>();
+            for (int i = 0; i < request.Params.Count; i++)
+            {
+                var field_con = request.Params.GetKey(i);
+                var value_con = request.Params.Get(field_con);
+                foreach (var field_con2 in contactExpandFields)
+                {
+                    if (field_con == field_con2.ExpName)
+                    {
+                        conFields.Add(field_con, value_con);
+                    }
+                }
+            }
+            //存储扩展字段的值
+            CusCon.ConFields = JsonConvert.SerializeObject(conFields);
+
+            if (CustomerService.EditContact(CusCon))
+            {
+                rmsg.Status = true;
+                rmsg.Msg = "联系人修改成功！";
+            }
+            else
+            {
+                rmsg.Status = false;
+                rmsg.Msg = "联系人修改失败！";
+            }
 
 
             return rmsg;
@@ -167,6 +301,7 @@ namespace teaCRM.Web.Controllers.Api.CRM
         #endregion
 
         #region 删除联系人 14-09-11 By 唐有炜
+
         /// <summary>
         /// 删除联系人
         /// /api/crm/contact/toTrash?ids=18
@@ -178,7 +313,7 @@ namespace teaCRM.Web.Controllers.Api.CRM
         public ResponseMessage ToTrash(string ids)
         {
             ResponseMessage rmsg = new ResponseMessage();
-            if (CustomerService.UpdateContactStatus(ids, 1, "ConTrash"))
+            if (CustomerService.UpdateContactStatus(ids, 1, "con_trash"))
             {
                 rmsg.Status = true;
             }

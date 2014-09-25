@@ -111,66 +111,70 @@
         </script>
     </head>
     <body> <form id="form_contact">
+               <!--联系人id-->
+               <input type="hidden" id="id" name="id" value="@ViewBag.Id"/>
                <!--客户id-->
                <input type="hidden" id="cus_id" name="cus_id" value="@ViewBag.CustomerId"/>
-                <!--当前公司id-->
+               <!--当前公司id-->
                <input type="hidden" id="CompNum" name="CompNum" value="@Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM]" />
+               <!--客户id-->
+               <input type="hidden" id="user_id" name="user_id" value="@Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID]"/>
                <!--表单错误提示区-->
                <div tabindex="-1" id="msgprint" class="warning" style="position: fixed; width: 90%; display: none;">您的表单包含错误，请检查！</div>
                <div class="tab-content" style="padding: 10px;">
                 
-                       <dl>
-                           <dt>  <em class="imp">*</em>联系人名称 ：</dt>
-                           <dd>
-                               <input type="text" name="con_name" id="con_name" class="form-control required" />
-                           </dd>
-                           <dt>电话/手机 ：</dt>
-                           <dd>
-                               <input type="text" name="con_tel" id="con_tel" class="form-control number" />
-                           </dd>
-                       </dl>
-                       <dl>
-                           <dt>Q&nbsp;&nbsp;Q ：</dt>
-                           <dd>
-                               <input type="text" name="con_qq" id="con_qq" class="form-control number" />
-                           </dd>
-                           <dt>邮箱 ：</dt>
-                           <dd>
-                               <input type="text" name="con_email" id="con_email" class="form-control email" />
-                           </dd>
-                       </dl>
-                       <dl>
-                           <dt>出生年月 ：</dt>
-                           <dd>
-                               <input type="text" name="con_bir" id="con_bir" class="form-control Wdate dateISO" onClick=" WdatePicker({ dateFmt: 'yyyy-MM-dd' }) " />
-                           </dd>
-                       </dl>
-                       <dl>
-                           <dt>备注 ：</dt>
-                           <dd>
-                               <textarea class="form-control comm-abox-1" rows="5" cols="50" name="con_note" id="con_note"></textarea>
-                           </dd>
-                       </dl>
+                   <dl>
+                       <dt>  <em class="imp">*</em>联系人名称 ：</dt>
+                       <dd>
+                           <input type="text" name="con_name" id="con_name" class="form-control required" />
+                       </dd>
+                       <dt>电话/手机 ：</dt>
+                       <dd>
+                           <input type="text" name="con_tel" id="con_tel" class="form-control number" />
+                       </dd>
+                   </dl>
+                   <dl>
+                       <dt>Q&nbsp;&nbsp;Q ：</dt>
+                       <dd>
+                           <input type="text" name="con_qq" id="con_qq" class="form-control number" />
+                       </dd>
+                       <dt>邮箱 ：</dt>
+                       <dd>
+                           <input type="text" name="con_email" id="con_email" class="form-control email" />
+                       </dd>
+                   </dl>
+                   <dl>
+                       <dt>出生年月 ：</dt>
+                       <dd>
+                           <input type="text" name="con_bir" id="con_bir" class="form-control Wdate dateISO" onClick=" WdatePicker({ dateFmt: 'yyyy-MM-dd' }) " />
+                       </dd>
+                   </dl>
+                   <dl>
+                       <dt>备注 ：</dt>
+                       <dd>
+                           <textarea class="form-control comm-abox-1" rows="5" cols="50" name="con_note" id="con_note"></textarea>
+                       </dd>
+                   </dl>
 
-                       <!--联系人扩展字段开始-->
-                       @foreach (var field in contactFields)
+                   <!--联系人扩展字段开始-->
+                   @foreach (var field in contactFields)
+                   {
+                       switch (field.ExpCtype)
                        {
-                           switch (field.ExpCtype)
-                           {
-                               case 2:
-                                   <dl>
-                                       <dt>
-                                           @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                           @field.ExpTitle
-                                       </dt>
-                                       <dt>
-                                           <textarea class="form-control comm-abox-1 " id="@field.ExpName" name="@field.ExpName" cols="50" rows="5"></textarea>
-                                       </dt>
-                                   </dl>
-                                   break;
-                           }
-                       } 
-                   </div>
+                           case 2:
+                               <dl>
+                                   <dt>
+                                       @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
+                                       @field.ExpTitle ：
+                                   </dt>
+                                   <dt>
+                                       <textarea class="form-control comm-abox-1 " id="@field.ExpName" name="@field.ExpName" cols="50" rows="5"></textarea>
+                                   </dt>
+                               </dl>
+                               break;
+                       }
+                   } 
+               </div>
                
            </form>
     </body>

@@ -180,7 +180,7 @@ function get_city_by_ids(ids) {
 
 //查看客户信息
 function view(id) {
-    showContentWindow("show_add", "/Apps/CRM/Index/Show/" + id, "查看客户", 800, 480);
+    showContentWindow("show_view", "/Apps/CRM/Index/Show/" + id, "查看客户", 800, 480);
 }
 
 function context_view() {

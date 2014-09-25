@@ -239,6 +239,21 @@ namespace teaCRM.Service.CRM.Impl
             return CusBaseDao.UpdateStatusMoreCustomer(cus_ids, op, field);
         }
 
+
+
+        /// <summary>
+        /// 批量改状态
+        /// </summary>
+        /// <param name="cus_ids">id集合</param>
+        /// <param name="op">操作（0 1）</param>
+        /// <param name="field">字段</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        public bool UpdateStatusMoreContact(string cus_ids, int op, string field)
+        {
+            return CusConDao.UpdateStatusMoreContact(cus_ids, op, field);
+        }
+
+
         /// <summary>
         /// 使用LINQ更改客户状态（只更改主表） 2014-09-05 14:58:50 By 唐有炜
         /// </summary>
@@ -391,18 +406,19 @@ namespace teaCRM.Service.CRM.Impl
         public bool UpdateContactStatus(string ids, int status, string field)
 
         {
-            var fields = new List<KeyValuePair<string, object>>();
-            var predicates = new List<Expression<Func<TCusCon, bool>>>();
-
-            var idValues = Utils.StringToIntArray(ids, ',');
-            foreach (var idValue in idValues)
-            {
-                fields.Add(new KeyValuePair<string, object>(field, status));
-                Expression<Func<TCusCon, bool>> predicate = c => c.Id == idValue;
-                predicates.Add(predicate);
-            }
-            var uodataStatus = CusConDao.UpdateTCusConFieldsByLINQ(fields, predicates);
-            return uodataStatus;
+//            var fields = new List<KeyValuePair<string, object>>();
+//            var predicates = new List<Expression<Func<TCusCon, bool>>>();
+//
+//            var idValues = Utils.StringToIntArray(ids, ',');
+//            foreach (var idValue in idValues)
+//            {
+//                fields.Add(new KeyValuePair<string, object>(field, status));
+//                Expression<Func<TCusCon, bool>> predicate = c => c.Id == idValue;
+//                predicates.Add(predicate);
+//            }
+//            var uodataStatus = CusConDao.UpdateTCusConFieldsByLINQ(fields, predicates);
+//            return uodataStatus;
+            return CusConDao.UpdateStatusMoreContact(ids, status, field);
         }
 
         #endregion

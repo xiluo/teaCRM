@@ -243,24 +243,16 @@
             <param name="cus_id">客户id</param>
             <returns>ActionResult.</returns>
         </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.ContactController.Add">
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.ContactController.Add(System.Nullable{System.Int32})">
             <summary>
             Adds this instance.
             </summary>
             <returns>ActionResult.</returns>
         </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.ContactController.Add(System.Web.Mvc.FormCollection)">
-            <summary>
-            Adds the specified fc.
-            </summary>
-            <param name="fc">The fc.</param>
-            <returns>ActionResult.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.ContactController.Edit(System.Web.Mvc.FormCollection,System.Int32)">
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.ContactController.Edit(System.Int32)">
             <summary>
             Edits the specified fc.
             </summary>
-            <param name="fc">The fc.</param>
             <param name="id">The identifier.</param>
             <returns>ActionResult.</returns>
         </member>
@@ -519,18 +511,18 @@
             <param name="id">The identifier.</param>
             <returns>TCusCon.</returns>
         </member>
-        <member name="M:teaCRM.Web.Controllers.Api.CRM.ContactController.AddContact(teaCRM.Entity.TCusCon)">
+        <member name="M:teaCRM.Web.Controllers.Api.CRM.ContactController.AddContact(System.String)">
             <summary>
-            Adds the contact.
+            添加联系人 14-09-25 By 唐有炜
             </summary>
-            <param name="Contact">The contact.</param>
-            <returns>ResponseMessage.</returns>
+            <param name="value">参数</param>
+            <returns>添加状态</returns>
         </member>
-        <member name="M:teaCRM.Web.Controllers.Api.CRM.ContactController.EditContact(teaCRM.Entity.TCusCon)">
+        <member name="M:teaCRM.Web.Controllers.Api.CRM.ContactController.EditContact(System.String)">
             <summary>
             Edits the contact.
             </summary>
-            <param name="Contact">The contact.</param>
+            <param name="value">The value.</param>
             <returns>ResponseMessage.</returns>
         </member>
         <member name="M:teaCRM.Web.Controllers.Api.CRM.ContactController.ToTrash(System.String)">

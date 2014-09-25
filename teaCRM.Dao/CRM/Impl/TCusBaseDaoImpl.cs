@@ -685,6 +685,7 @@ VALUES
                     string strSqlCon = @"
 INSERT INTO teacrm.dbo.t_cus_con
            (cus_id
+           ,comp_num
            ,con_name
            ,con_tel
            ,con_qq
@@ -698,6 +699,7 @@ INSERT INTO teacrm.dbo.t_cus_con
      VALUES
            (
             @cus_id
+           ,@comp_num
            ,@con_name
            ,@con_tel
            ,@con_qq
@@ -714,6 +716,7 @@ INSERT INTO teacrm.dbo.t_cus_con
                     //添加参数
                     IDictionary<string, object> namedParametersCon = new Dictionary<string, object>();
                     namedParametersCon.Add("@cus_id", indentity);
+                    namedParametersCon.Add(new KeyValuePair<string, object>("@comp_num", CusCon.CompNum));
                     namedParametersCon.Add(new KeyValuePair<string, object>("@con_name", CusCon.ConName));
                     namedParametersCon.Add(new KeyValuePair<string, object>("@con_tel", CusCon.ConTel));
                     namedParametersCon.Add(new KeyValuePair<string, object>("@con_qq", CusCon.ConQq));
