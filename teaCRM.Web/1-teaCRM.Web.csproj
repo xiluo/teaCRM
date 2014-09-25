@@ -1460,7 +1460,6 @@
     <None Include="Themes\default\lib\ligerUI\skins\icons\新建 Microsoft Office Excel 工作表.xlsx" />
     <Content Include="Views\Shared\_Error.cshtml" />
     <Content Include="Views\Apps\CRM\Index\CustomerShow.cshtml" />
-    <Content Include="Views\Apps\CRM\Contact\ContactEdit.cshtml" />
     <Content Include="Views\Apps\CRM\Contact\ContactIndex.cshtml" />
     <Content Include="Views\Apps\Settings\AppMaker\AppMakerIndex.cshtml" />
     <Content Include="Views\Apps\Settings\Department\DepartmentEdit.cshtml" />
@@ -1482,6 +1481,7 @@
     <Content Include="Views\Apps\Settings\AppMaker\View\ViewEdit.cshtml" />
     <Content Include="Views\Apps\CRM\Index\CustomerEdit.cshtml" />
     <Content Include="Views\Apps\CRM\Contact\_ContactPartial.cshtml" />
+    <Content Include="Views\Apps\CRM\Contact\ContactEdit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

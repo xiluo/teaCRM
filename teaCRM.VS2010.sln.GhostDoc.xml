@@ -4,6 +4,7 @@
     </IncludeExtensions>
     <IgnoreExtensions>
       <IgnoreExtension>.cs</IgnoreExtension>
+      <IgnoreExtension>.cshtml</IgnoreExtension>
       <IgnoreExtension>.js</IgnoreExtension>
     </IgnoreExtensions>
     <IgnoreFiles>

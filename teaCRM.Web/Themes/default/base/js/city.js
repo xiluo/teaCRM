@@ -5349,7 +5349,7 @@ var city_data_2014 = [
 function get_city_names(ids) {
     var result = "";
     var id_arr = ids.split(",");
-    console.log(id_arr);
+    //console.log(id_arr);
     $.each(city_data_2014, function(index, field) {
         var state = field.region.state;
         if ($.trim(id_arr[0]) == field.region.code) { //当前省份

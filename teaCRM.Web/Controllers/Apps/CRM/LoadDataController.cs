@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// 程序集         : teaCRM.Web
+// 作者作者           : Tangyouwei
+// 创建时间          : 09-13-2014
+//
+// 最后修改人: Tangyouwei
+// 最后修改时间 : 09-21-2014
+// ***********************************************************************
+// <copyright file="LoadDataController.cs" company="优创科技">
+//     Copyright (c) 优创科技. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -12,16 +25,27 @@ using teaCRM.Service.CRM;
 using teaCRM.Service.CRM.Impl;
 using teaCRM.Web.Filters;
 
+/// <summary>
+/// The CRM namespace.
+/// </summary>
 namespace teaCRM.Web.Controllers.Apps.CRM
 {
+    /// <summary>
+    /// Class LoadDataController.
+    /// </summary>
     public class LoadDataController : Controller
     {
         //ICustomerService CustomerService = new CustomerServiceImpl();
         /// <summary>
         /// LoadDataController 注入Service依赖
         /// </summary>
+        /// <value>The customer service.</value>
         public ICustomerService CustomerService { set; get; }
 
+        /// <summary>
+        /// Gets or sets the account service.
+        /// </summary>
+        /// <value>The account service.</value>
         public IAccountService AccountService { set; get; }
 
         #region 获取筛选器树形数据 2014-08-29 14:58:50 By 唐有炜
@@ -30,8 +54,8 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         /// <summary>
         /// 得到指定ID的子节点列表，并序列化为JSON串
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">The identifier.</param>
+        /// <returns>ActionResult.</returns>
         [UserAuthorize]
         public ActionResult AsyncGetNodes(int? id)
         {
@@ -46,6 +70,11 @@ namespace teaCRM.Web.Controllers.Apps.CRM
 
         //
         // GET: /Apps/CRM/LoadData/GetCustomerLsit/
+        /// <summary>
+        /// Gets the customer lsit.
+        /// </summary>
+        /// <param name="fc">The fc.</param>
+        /// <returns>System.String.</returns>
         [UserAuthorize]
         [HttpPost]
         public string GetCustomerLsit(FormCollection fc)
@@ -100,6 +129,11 @@ namespace teaCRM.Web.Controllers.Apps.CRM
 
         //
         // GET: /Apps/CRM/LoadData/GetCustomer/
+        /// <summary>
+        /// Gets the customer.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>System.String.</returns>
         public string GetCustomer(int id)
         {
             var count = 0;
@@ -114,6 +148,11 @@ namespace teaCRM.Web.Controllers.Apps.CRM
 
         //
         // GET: /Apps/CRM/LoadData/GetContactList/
+        /// <summary>
+        /// Gets the contact list.
+        /// </summary>
+        /// <param name="cus_id">The cus_id.</param>
+        /// <returns>System.String.</returns>
         [UserAuthorize]
         public string GetContactList(int? cus_id)
         {
@@ -126,7 +165,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
                     contactTable =
                         CustomerService.GetContactLsit(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(),
                             new string[0], 1,
-                            10, String.Format("cus_id={0}", cus_id), "id", out count);
+                            10, String.Format("cus_id={0} AND con_trash=0", cus_id), "id", out count);
                     LogHelper.Info("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() +
                                    "的用户获取联系人信息成功。");
              
@@ -144,6 +183,11 @@ namespace teaCRM.Web.Controllers.Apps.CRM
 
         //
         // GET: /Apps/CRM/LoadData/GetBootContactList/?cus_id=44
+        /// <summary>
+        /// Gets the boot contact list.
+        /// </summary>
+        /// <param name="cus_id">The cus_id.</param>
+        /// <returns>System.String.</returns>
         [UserAuthorize]
         public string GetBootContactList(int cus_id)
         {
@@ -178,10 +222,53 @@ namespace teaCRM.Web.Controllers.Apps.CRM
 
         #endregion
 
+       
+       
+        #region 获取一条联系人数据
+
+        //
+        // GET: /Apps/CRM/LoadData/GetContact/?con_id=18
+        /// <summary>
+        /// Gets the contact.
+        /// </summary>
+        /// <param name="con_id">The con_id.</param>
+        /// <returns>System.String.</returns>
+        [UserAuthorize]
+        public string GetContact(int con_id)
+        {
+            var current = 1;
+            var rowCount = 10;
+
+            try
+            {
+                var count = 0;
+               Dictionary<string,object> contact =
+                    CustomerService.GetContact(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(),con_id);
+              
+                return JsonConvert.SerializeObject(contact);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error("用户id为" + Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString() +
+                                "的用户获取联系人信息失败", ex);
+                return "{\"Rows\":[],\"Total\":\"0\"}";
+            }
+        }
+
+        #endregion
+
+
+ 
+
         #region 放入回收站 2014-09-05 14:58:50 By 唐有炜
 
         //
         // GET: /Apps/CRM/LoadData/ToTrash/
+        /// <summary>
+        /// To the trash.
+        /// </summary>
+        /// <param name="cus_ids">The cus_ids.</param>
+        /// <returns>ActionResult.</returns>
         [UserAuthorize]
         [HttpPost]
         // 1 在回收站 0正常
@@ -198,6 +285,11 @@ namespace teaCRM.Web.Controllers.Apps.CRM
 
         //
         // GET: /Apps/CRM/LoadData/ToPub/
+        /// <summary>
+        /// To the pub.
+        /// </summary>
+        /// <param name="cus_ids">The cus_ids.</param>
+        /// <returns>ActionResult.</returns>
         [UserAuthorize]
         [HttpPost]
         // 1公海 0不是
@@ -215,6 +307,11 @@ namespace teaCRM.Web.Controllers.Apps.CRM
 
         //
         // GET: /Apps/CRM/LoadData/ValidatePhone/
+        /// <summary>
+        /// Validates the phone.
+        /// </summary>
+        /// <param name="cus_tel">The cus_tel.</param>
+        /// <returns>System.String.</returns>
         public string ValidatePhone(string cus_tel)
         {
             bool IsExist = CustomerService.ValidatePhone(cus_tel);

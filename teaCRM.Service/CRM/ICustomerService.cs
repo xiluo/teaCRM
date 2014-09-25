@@ -164,12 +164,11 @@ namespace teaCRM.Service.CRM
 
 
         /// <summary>
-        /// 添加联系人 14-09-24 By 唐有炜
+        /// Adds the contact.
         /// </summary>
-        /// <param name="cusId">客户id（可为空）</param>
         /// <param name="cusCon">The cus con.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        bool AddContact(int? cusId,TCusCon cusCon);
+        bool AddContact(TCusCon cusCon);
 
         /// <summary>
         /// 修改联系人  14-09-24 By 唐有炜
@@ -178,12 +177,6 @@ namespace teaCRM.Service.CRM
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         bool EditContact(TCusCon cusCon);
 
-//        /// <summary>
-//        /// 删除联系人  14-09-24 By 唐有炜
-//        /// </summary>
-//        /// <param name="ids">The ids.</param>
-//        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-//        bool DeleteContact(int ids);
 
         /// <summary>
         /// 更改联系人状态 2014-09-24 14:58:50 By 唐有炜

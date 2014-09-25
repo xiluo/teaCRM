@@ -359,20 +359,25 @@ namespace teaCRM.Service.CRM.Impl
 
         #endregion
 
-        public bool AddContact(int? cusId, TCusCon cusCon)
+        #region 添加联系人
+
+        public bool AddContact(TCusCon cusCon)
         {
-            throw new NotImplementedException();
+            return CusConDao.InsertEntity(cusCon);
         }
+
+        #endregion
+
+
+        #region 修改联系人
 
         public bool EditContact(TCusCon cusCon)
         {
-            throw new NotImplementedException();
+            return CusConDao.UpadateEntity(cusCon);
         }
 
-//        public bool DeleteContact(int ids)
-//        {
-//            throw new NotImplementedException();
-        //        }
+        #endregion
+
 
         #region 更改联系人状态 2014-09-24 14:58:50 By 唐有炜
 

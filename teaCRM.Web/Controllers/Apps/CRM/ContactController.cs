@@ -1,12 +1,12 @@
 ﻿// ***********************************************************************
-// Assembly         : teaCRM.Web
-// Author           : Tangyouwei
-// Created          : 09-13-2014
+// 程序集         : teaCRM.Web
+// 作者作者           : Tangyouwei
+// 创建时间          : 09-13-2014
 //
-// Last Modified By : Tangyouwei
-// Last Modified On : 09-24-2014
+// 最后修改人: Tangyouwei
+// 最后修改时间 : 09-24-2014
 // ***********************************************************************
-// <copyright file="ContactController.cs" company="Microsoft">
+// <copyright file="ContactController.cs" company="优创科技">
 //     Copyright (c) Microsoft. All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -54,6 +54,9 @@ namespace teaCRM.Web.Controllers.Apps.CRM
 
 
         //当前应用的类别id，（对应/Themes/default/base/js/category.js里面的code和T_fun_app表里面的app_id） 14-09-21 By 唐有炜
+        /// <summary>
+        /// The application identifier
+        /// </summary>
         private int AppId = 2;
 
 
@@ -97,7 +100,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         #region 添加联系人页面  2014-08-29 14:58:50 By 唐有炜
 
         //
-        // GET: /Apps/CRM/Index/Add/
+        // GET: /Apps/CRM/Contact/Add/
         /// <summary>
         /// Adds this instance.
         /// </summary>
@@ -248,8 +251,11 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         {
             //初始化扩展字段
             Init();
-//            if (fc.Count == 0) //访问页面
-//            {
+            ViewBag.Id = id;
+            ViewBag.ContactExpandFields = contactExpandFields;
+
+            if (fc.Count == 0) //访问页面
+            {
 //
 //
 //                if (contactExpandFields == null || customerExpandFields == null)
@@ -262,12 +268,12 @@ namespace teaCRM.Web.Controllers.Apps.CRM
 //                    ViewBag.CustomerExpandFields = customerExpandFields;
 //                    ViewBag.ContactExpandFields = contactExpandFields;
 //                    ViewBag.CustomerId = id;
-//                    return View("CustomerEdit");
+                   return View("ContactEdit");
 //                }
-//            }
-//            else //提交修改
-//            {
-//                ResponseMessage rmsg = new ResponseMessage();
+            }
+            else //提交修改
+            {
+               ResponseMessage rmsg = new ResponseMessage();
 //                //客户赋值==============================================
 //                var compNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
 //                var userId = int.Parse(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString());
@@ -356,9 +362,9 @@ namespace teaCRM.Web.Controllers.Apps.CRM
 //                    rmsg.Status = add_status;
 //                    rmsg.Msg = "客户修改失败！";
 //                }
-//                return Json(rmsg);
-//            }
-            return null;
+               return Json(rmsg);
+            }
+          
         }
 
         #endregion

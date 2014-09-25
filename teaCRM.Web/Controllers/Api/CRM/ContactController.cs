@@ -1,12 +1,12 @@
 ﻿// ***********************************************************************
-// Assembly         : teaCRM.Web
-// Author           : Tangyouwei
-// Created          : 09-21-2014
+// 程序集         : teaCRM.Web
+// 作者作者           : Tangyouwei
+// 创建时间          : 09-21-2014
 //
-// Last Modified By : Tangyouwei
-// Last Modified On : 09-24-2014
+// 最后修改人: Tangyouwei
+// 最后修改时间 : 09-24-2014
 // ***********************************************************************
-// <copyright file="ContactController.cs" company="Microsoft">
+// <copyright file="ContactController.cs" company="优创科技">
 //     Copyright (c) Microsoft. All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -97,6 +97,11 @@ namespace teaCRM.Web.Controllers.Api.CRM
 
         // GET /api/settings/Contact/getContact/1
         //id 1
+        /// <summary>
+        /// Gets the contact.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>TCusCon.</returns>
         public TCusCon GetContact(int id)
         {
             return null;
@@ -107,7 +112,7 @@ namespace teaCRM.Web.Controllers.Api.CRM
 
         #region 添加联系人 14-09-11 By 唐有炜
 
-        // POST //api/settings/Contact/addContact
+        // POST api/crm/contact/addContact
         /// <summary>
         /// Adds the contact.
         /// </summary>
@@ -117,14 +122,14 @@ namespace teaCRM.Web.Controllers.Api.CRM
         public ResponseMessage AddContact([FromBody] TCusCon Contact)
         {
             ResponseMessage rmsg = new ResponseMessage();
-//            if (ContactService.AddContact(Contact))
-//            {
-//                rmsg.Status = true;
-//            }
-//            else
-//            {
-//                rmsg.Status = false;
-//            }
+            if (CustomerService.AddContact(Contact))
+            {
+                rmsg.Status = true;
+            }
+            else
+            {
+                rmsg.Status = false;
+            }
 
 
             return rmsg;
@@ -137,6 +142,11 @@ namespace teaCRM.Web.Controllers.Api.CRM
         //
         // POST /api/settings/Contact/editContact/
         // TSysContact Contact
+        /// <summary>
+        /// Edits the contact.
+        /// </summary>
+        /// <param name="Contact">The contact.</param>
+        /// <returns>ResponseMessage.</returns>
         [HttpPost]
         public ResponseMessage EditContact([FromBody] TCusCon Contact)
         {
@@ -158,12 +168,12 @@ namespace teaCRM.Web.Controllers.Api.CRM
 
         #region 删除联系人 14-09-11 By 唐有炜
         /// <summary>
-        /// 删除联系人 
-        /// api/crm/contact/toTrash?ids=18
+        /// 删除联系人
+        /// /api/crm/contact/toTrash?ids=18
         /// /api/crm/contact/toTrash?ids=18,19
         /// </summary>
         /// <param name="ids">联系人id集合</param>
-        /// <returns>ResponseMessage.</returns>
+        /// <returns>删除状态</returns>
         [HttpGet]
         public ResponseMessage ToTrash(string ids)
         {

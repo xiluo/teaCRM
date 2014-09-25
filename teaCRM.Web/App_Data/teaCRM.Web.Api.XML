@@ -4,17 +4,85 @@
         <name>teaCRM.Web</name>
     </assembly>
     <members>
+        <member name="T:teaCRM.Web.Controllers.Apps.CRM.LoadDataController">
+            <summary>
+            Class LoadDataController.
+            </summary>
+        </member>
         <member name="M:teaCRM.Web.Controllers.Apps.CRM.LoadDataController.AsyncGetNodes(System.Nullable{System.Int32})">
             <summary>
             得到指定ID的子节点列表，并序列化为JSON串
             </summary>
-            <param name="id"></param>
-            <returns></returns>
+            <param name="id">The identifier.</param>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.LoadDataController.GetCustomerLsit(System.Web.Mvc.FormCollection)">
+            <summary>
+            Gets the customer lsit.
+            </summary>
+            <param name="fc">The fc.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.LoadDataController.GetCustomer(System.Int32)">
+            <summary>
+            Gets the customer.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.LoadDataController.GetContactList(System.Nullable{System.Int32})">
+            <summary>
+            Gets the contact list.
+            </summary>
+            <param name="cus_id">The cus_id.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.LoadDataController.GetBootContactList(System.Int32)">
+            <summary>
+            Gets the boot contact list.
+            </summary>
+            <param name="cus_id">The cus_id.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.LoadDataController.GetContact(System.Int32)">
+            <summary>
+            Gets the contact.
+            </summary>
+            <param name="con_id">The con_id.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.LoadDataController.ToTrash(System.String)">
+            <summary>
+            To the trash.
+            </summary>
+            <param name="cus_ids">The cus_ids.</param>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.LoadDataController.ToPub(System.String)">
+            <summary>
+            To the pub.
+            </summary>
+            <param name="cus_ids">The cus_ids.</param>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.LoadDataController.ValidatePhone(System.String)">
+            <summary>
+            Validates the phone.
+            </summary>
+            <param name="cus_tel">The cus_tel.</param>
+            <returns>System.String.</returns>
         </member>
         <member name="P:teaCRM.Web.Controllers.Apps.CRM.LoadDataController.CustomerService">
             <summary>
             LoadDataController 注入Service依赖
             </summary>
+            <value>The customer service.</value>
+        </member>
+        <member name="P:teaCRM.Web.Controllers.Apps.CRM.LoadDataController.AccountService">
+            <summary>
+            Gets or sets the account service.
+            </summary>
+            <value>The account service.</value>
         </member>
         <member name="T:teaCRM.Web.Helpers.MyHtmlHelper">
             <summary>
@@ -155,6 +223,11 @@
         <member name="F:teaCRM.Web.Controllers.Apps.CRM.ContactController.contactExpandFields">
             <summary>
             The contact expand fields
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.ContactController.AppId">
+            <summary>
+            The application identifier
             </summary>
         </member>
         <member name="M:teaCRM.Web.Controllers.Apps.CRM.ContactController.Init">
@@ -439,6 +512,13 @@
             <param name="value">The value.</param>
             <returns>System.String.</returns>
         </member>
+        <member name="M:teaCRM.Web.Controllers.Api.CRM.ContactController.GetContact(System.Int32)">
+            <summary>
+            Gets the contact.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>TCusCon.</returns>
+        </member>
         <member name="M:teaCRM.Web.Controllers.Api.CRM.ContactController.AddContact(teaCRM.Entity.TCusCon)">
             <summary>
             Adds the contact.
@@ -446,14 +526,21 @@
             <param name="Contact">The contact.</param>
             <returns>ResponseMessage.</returns>
         </member>
+        <member name="M:teaCRM.Web.Controllers.Api.CRM.ContactController.EditContact(teaCRM.Entity.TCusCon)">
+            <summary>
+            Edits the contact.
+            </summary>
+            <param name="Contact">The contact.</param>
+            <returns>ResponseMessage.</returns>
+        </member>
         <member name="M:teaCRM.Web.Controllers.Api.CRM.ContactController.ToTrash(System.String)">
             <summary>
-            删除联系人 
-            api/crm/contact/toTrash?ids=18
+            删除联系人
+            /api/crm/contact/toTrash?ids=18
             /api/crm/contact/toTrash?ids=18,19
             </summary>
             <param name="ids">联系人id集合</param>
-            <returns>ResponseMessage.</returns>
+            <returns>删除状态</returns>
         </member>
         <member name="M:teaCRM.Web.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
             <summary>

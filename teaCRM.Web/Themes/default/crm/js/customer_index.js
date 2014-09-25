@@ -4,6 +4,7 @@
 
 //====================================================================
 //全局变量
+var grid_customer;
 var manager;
 var manager1;
 var view_auth = false;
@@ -57,8 +58,12 @@ function createTree() {
             onAsyncError: function() {
                 //alert(" 数据加载失败");
             },
-            onClick: function(event, treeId, treeNode, clickFlag) {
-                alert("你选中的节点数据：" + treeNode.id + " " + treeNode.name);
+            onClick: function (event, treeId, treeNode, clickFlag) {
+                var manager = $("#maingrid4").ligerGetGridManager();
+
+                manager.setURL("/Apps/CRM/LoadData/GetCustomerLsit/?fid=" + treeNode.id + "&rnd=" + Math.random());
+                manager.loadData(true);
+                //alert("你选中的节点数据：" + treeNode.id + " " + treeNode.name);
             }
         }
     };
@@ -84,6 +89,84 @@ function createTree() {
         }
     });
 }
+
+
+
+
+function ckeckAll() {
+    var setting1 = {
+        check: {
+            enable: true,
+            chkStyle: "chackbox",
+            radioType: "all"
+        },
+        data: {
+            simpleData: {
+                enable: true,
+                idKey: "id",
+                pIdKey: "pId",
+                rootPId: 0
+            }
+        },
+        async: {
+            //异步加载
+            enable: true,
+            url: "/Apps/CRM/LoadData/AsyncGetNodes/",
+            autoParam: ["id", "name", "pId"]
+        },
+        callback: {
+            beforeExpand: function (treeId, treeNode) {
+                if (!treeNode.isAjaxing) {
+                    return true;
+                } else {
+                    //alert("zTree 正在下载数据中，请稍后展开节点。。。");
+                    return false;
+                }
+            },
+            onAsyncSuccess: function (event, treeId, treeNode, msg) {
+
+
+            },
+            onAsyncError: function () {
+                //alert(" 数据加载失败");
+            },
+            onClick: function (event, treeId, treeNode, clickFlag) {
+                var manager = $("#maingrid4").ligerGetGridManager();
+
+                manager.setURL("/Apps/CRM/LoadData/GetCustomerLsit/?fid=" + treeNode.id + "&rnd=" + Math.random());
+                manager.loadData(true);
+                //alert("你选中的节点数据：" + treeNode.id + " " + treeNode.name);
+            }
+        }
+    };
+    $.ajax({
+        url: '/Apps/CRM/LoadData/AsyncGetNodes/', //url  action是方法的名称
+        data: { id: 0 },
+        type: 'Get',
+        dataType: "text", //可以是text，如果用text，返回的结果为字符串；如果需要json格式的，可是设置为json
+        success: function (data) {
+            $.fn.zTree.init($("#filter_tree"), setting1, eval('(' + data + ')'));
+            //展开一级
+            var json_data = eval('(' + data + ')');
+            for (var index in json_data) {
+                var tnode = json_data[index];
+                //console.log(tnode);
+                var treeObj = $.fn.zTree.getZTreeObj("filter_tree");
+                var node = treeObj.getNodeByParam("id", tnode.id, null);
+                treeObj.expandNode(node, true, true, true);
+            }
+        },
+        error: function (msg) {
+            alert(" 数据加载失败！" + msg);
+        }
+    });
+    //alert("ca");
+}
+
+
+function unckeckAll() {
+    createTree();
+} 
 
 //=============================================================================================
 
