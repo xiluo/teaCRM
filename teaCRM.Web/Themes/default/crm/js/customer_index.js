@@ -59,10 +59,9 @@ function createTree() {
                 //alert(" 数据加载失败");
             },
             onClick: function (event, treeId, treeNode, clickFlag) {
-                var manager = $("#maingrid4").ligerGetGridManager();
-
-                manager.setURL("/Apps/CRM/LoadData/GetCustomerLsit/?fid=" + treeNode.id + "&rnd=" + Math.random());
-                manager.loadData(true);
+                //console.log(treeNode);
+                var seatch_url = "/Apps/CRM/LoadData/GetCustomerLsit/?" + treeNode.content + "&rnd=" + Math.random();
+                do_search(seatch_url);
                 //alert("你选中的节点数据：" + treeNode.id + " " + treeNode.name);
             }
         }
@@ -131,11 +130,10 @@ function ckeckAll() {
                 //alert(" 数据加载失败");
             },
             onClick: function (event, treeId, treeNode, clickFlag) {
-                var manager = $("#maingrid4").ligerGetGridManager();
-
-                manager.setURL("/Apps/CRM/LoadData/GetCustomerLsit/?fid=" + treeNode.id + "&rnd=" + Math.random());
-                manager.loadData(true);
-                //alert("你选中的节点数据：" + treeNode.id + " " + treeNode.name);
+                console.log(treeNode);
+                //var seatch_url = "/Apps/CRM/LoadData/GetCustomerLsit/?fid=" + treeNode.id + "&rnd=" + Math.random();
+                //do_search(seatch_url);
+                alert("你选中的节点数据：" + treeNode.id + " " + treeNode.name);
             }
         }
     };
@@ -178,6 +176,11 @@ function get_city_by_ids(ids) {
     return "省市信息";
 }
 
+//加载操作
+function load_fil_ops() {
+    
+}
+
 //查看客户信息
 function view(id) {
     showContentWindow("show_view", "/Apps/CRM/Index/Show/" + id, "查看客户", 800, 480);
@@ -194,6 +197,29 @@ function context_view() {
     }
 }
 
+//搜索（只需要传入url即可）
+function do_search(url) {
+    var manager = $("#maingrid4").ligerGetGridManager();
+    manager.setURL(url);
+    manager.loadData(true);
+}
+
+//快速搜索
+function quick_Search() {
+    var search_type = $("#sel-search").val();
+    var search_keyword = $("#txtKeywords").val();
+    //alert(search_type);
+    if (search_type == "") {
+        showMsg("请先选择搜索类型", "Error");
+        return;
+    }
+    if (search_keyword == "") {
+        showMsg("请先选择搜索关键字", "Error");
+        return;
+    }
+    var seatch_url = "/Apps/CRM/LoadData/GetCustomerLsit/?" + search_type + "="+search_keyword+"&rnd=" + Math.random();
+    do_search(seatch_url);
+}
 
 //添加客户
 function add() {
@@ -218,7 +244,7 @@ function add() {
             data: data,
             dataType: "json",
             beforeSend: function() {
-                //showMsg("添加中，请稍后...");
+                showMsg("添加中，请稍后...");
             },
             complete: function() {
                 //d.close().remove();
@@ -268,7 +294,7 @@ function edit() {
                 data: data,
                 dataType: "json",
                 beforeSend: function () {
-                    //showMsg("添加中，请稍后...");
+                    showMsg("修改中，请稍后...");
                 },
                 complete: function () {
                     //d.close().remove();

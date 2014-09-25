@@ -169,11 +169,10 @@ function showTopMsg(id, url, title, w, h) {
 }
 
 
-
 //iframe里面弹出对话框并自动关闭
 function showTopWindow(id, url, title, w, h, okCallback) {
     //在iframe里面打开弹出框并自动关闭
-    var d=top.dialog({
+    var d = top.dialog({
         id: id,
         title: title,
         //url: url,//此方式不支持滚动条
@@ -189,7 +188,7 @@ function showTopWindow(id, url, title, w, h, okCallback) {
         okValue: '确 定',
         ok: okCallback,
         cancelValue: '取消',
-        cancel: function () {
+        cancel: function() {
             d.close().remove();
         }
     }).showModal();
@@ -271,3 +270,29 @@ function shortString(s, l, tag) {
 //======================================
 
 
+//MyHtmlhelper.js======================================================================================
+//用于页面展示使用====================================================================================
+//14-09- 25 By 唐有炜
+/// <summary>
+/// 根据id获取制定下拉框的值
+/// </summary>
+/// <param name="htmlHelper"></param>
+/// <param name="options">选项</param>
+/// <param name="key"></param>
+/// <param name="replaceValue"></param>
+/// <returns></returns>
+function GetOptionValue(key, options) {
+    var str_arr = options.split(',');
+    for (var i = 0; i < str_arr.length; i++) {
+        var str = str_arr[i];
+        var k = str.split('|')[0];
+        var v = str.split('|')[1];
+        if (key == k) {
+            return v;
+        }
+    }
+    return "暂未填写";
+
+}
+//========================================================================================
+//=====================================================================================

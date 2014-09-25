@@ -45,8 +45,6 @@ namespace teaCRM.Entity
 		public String CusFields { get;set; }
  
  
-		[OneToMany(ThisKey="Id",OtherKey="CusId")]
-		public IList<TCusCon> TCusCons { get;set; }
  
 	}
   

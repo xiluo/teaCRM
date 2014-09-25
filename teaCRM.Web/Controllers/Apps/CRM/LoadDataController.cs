@@ -85,16 +85,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             try
             {
                 //筛选
-                string strWhere = String.Format("con_back=0 AND (user_id={0} OR con_is_pub=1)",
-                    int.Parse(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString()));
-                if (!String.IsNullOrEmpty(Request.QueryString["con_back"]))
-                {
-                    strWhere = String.Format("con_back={0}", Request.QueryString["con_back"]);
-                }
-                if (!String.IsNullOrEmpty(Request.QueryString["con_is_pub"]))
-                {
-                    strWhere = String.Format("con_is_pub={0}", Request.QueryString["con_is_pub"]);
-                }
+                string strWhere = BuildSingleWhere();
                 //排序
                 var sort = "id DESC";
                 if (!String.IsNullOrEmpty(fc["sortname"]) && !String.IsNullOrEmpty(fc["sortorder"]))
@@ -123,6 +114,38 @@ namespace teaCRM.Web.Controllers.Apps.CRM
                                 "的用户获取客户信息失败", ex);
                 return "{\"Rows\":[],\"Total\":\"0\"}";
             }
+        }
+
+
+        /// <summary>
+        ///构造筛选条件（单选） 14-09-25 by 唐有炜
+        /// </summary>
+        /// <returns>筛选条件</returns>
+        private string BuildSingleWhere()
+        {
+            //默认只能看自己公司自己并且不再回收站的客户
+            var compNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
+            var userId = int.Parse(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString());
+            string strWhere = String.Format("comp_num='{0}' AND user_id={1} AND con_back=0 ", compNum,
+                userId);
+            //回收站
+            if (!String.IsNullOrEmpty(Request.QueryString["con_back"]))
+            {
+                strWhere = String.Format("comp_num='{0}' AND user_id={1} AND con_back={2} ", compNum, userId,
+                    Request.QueryString["con_back"]);
+            }
+            //公海
+            if (!String.IsNullOrEmpty(Request.QueryString["con_is_pub"]))
+            {
+                strWhere = String.Format("comp_num='{0}' AND user_id={1}  AND con_is_pub={2} ", compNum, userId,
+                    Request.QueryString["con_is_pub"]);
+            }
+            //负责人
+            if (!String.IsNullOrEmpty(Request.QueryString["user_id"]))
+            {
+                strWhere = String.Format("comp_num='{0}' AND user_id={1} AND con_back=0 ", compNum, Request.QueryString["user_id"]);
+            }
+            return strWhere;
         }
 
         #endregion

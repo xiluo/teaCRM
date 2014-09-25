@@ -97,7 +97,7 @@ namespace teaCRM.Service.CRM.Impl
         public List<Node> AsyncGetNodes(string compNum, int? id)
         {
             var filters =
-                FunFilterDao.GetList(f => f.MyappId == 1 && f.CompNum == compNum && f.ParentId == (id ?? 0))
+                FunFilterDao.GetList(f => f.MyappId == 1 && (f.CompNum == compNum||f.FilIsSys == 1) && f.ParentId == (id ?? 0))
                     .OrderBy(f => f.FilOrder);
             var nodes = new List<Node>();
             //将filters转换为nodes
@@ -107,9 +107,10 @@ namespace teaCRM.Service.CRM.Impl
                 node.id = filter.Id;
                 node.pId = (int) filter.ParentId;
                 node.name = filter.FilName;
+                node.content = filter.FilWhere;
 
                 bool isHasChild =
-                    FunFilterDao.ExistsEntity(f => f.MyappId == 1 && f.ParentId == node.id && f.CompNum == compNum);
+                    FunFilterDao.ExistsEntity(f => f.MyappId == 1 && f.ParentId == node.id && (f.CompNum == compNum || f.FilIsSys == 1));
                 if (isHasChild)
                 {
                     node.isParent = true;
@@ -203,7 +204,7 @@ namespace teaCRM.Service.CRM.Impl
         /// <returns>List&lt;TFunOperating&gt;.</returns>
         public List<TFunOperating> GetCustomerOperating(string compNum)
         {
-            return FunOperatingDao.GetList(o => o.CompNum == compNum && o.MyappId == 1);
+            return FunOperatingDao.GetList(o => o.OpeIsSys==1);
         }
 
         #endregion

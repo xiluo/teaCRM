@@ -212,15 +212,16 @@ function validate_form() {
 //表单验证方法，供父窗口调用
 function form_valid() {
     if ($("#form_customer").valid()) {
-        $('#formTab li:eq(1) a').tab("show");
-        //修复验证bug
-        $("#con_name").focus();
-        if ($("#con_name").val() == "") {
-            $("#con_name").formtip("主联系人不能为空！");
-            return false;
-        } else {
-            return true;
-        }
+//        $('#formTab li:eq(1) a').tab("show");
+//        //修复验证bug
+//        $("#con_name").focus();
+//        if ($("#con_name").val() == "") {
+//            $("#con_name").formtip("主联系人不能为空！");
+//            return false;
+//        } else {
+//            return true;
+        //  }
+        return true;
     } else {
         return false;
     }

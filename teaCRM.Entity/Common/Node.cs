@@ -24,7 +24,11 @@ namespace teaCRM.Entity
         /// 是否有子节点
         /// </summary>
         public bool isParent { get; set; }
-
+        /// <summary>
+        /// Gets or sets the content.
+        /// </summary>
+        /// <value>The content.</value>
+        public string content { get; set; }
         #endregion
     }
 }

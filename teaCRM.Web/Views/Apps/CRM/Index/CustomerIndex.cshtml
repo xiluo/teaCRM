@@ -1,5 +1,6 @@
 ﻿@using System.Web.Optimization
 @using teaCRM.Entity
+@using teaCRM.Web.Helpers
 @{
     //初始化客户扩展字段
     var customerFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.CustomerExpandFields;
@@ -119,7 +120,7 @@
                     },
                     
                     {
-                        display: '办公电话',
+                        display: '电话',
                         name:
                             'cus_tel',
                         width:
@@ -211,7 +212,16 @@
                     @*客户扩展字段*@
                     @foreach (var customerField in customerFields)
                     {
-                        var render = @" render: function(item) {if (item." + customerField.ExpName + "=='') {return '暂未填写';} else {return item." + customerField.ExpName + ";}}";
+                        var displayValue="";
+                       //下拉框
+                        if (customerField.ExpCtype==5)
+                        {
+                     displayValue = Html.GetOptionValue("0", customerField.ExpOption).ToString();
+                        }
+
+
+
+                        var render = @" render: function(item) {var cType='" + customerField.ExpCtype + "';if (item." + customerField.ExpName + "=='') {return '暂未填写';} else {if (cType == 5) {return GetOptionValue(item." +customerField.ExpName+",'"+ customerField.ExpOption + "') ;} else {return 'bbb'}}}";
                         //行业
                         if (customerField.ExpName == "exp_pro")
                         {
@@ -403,25 +413,25 @@
     <div class="layout-left">
         <div class="l-top">
             <div class="s-list">
-                <select class="xiala form-control wid110">
-                    <option selected="selected">请选择</option>
-                    <option selected="selected">客户名称</option>
+                <select id="sel-search" class="xiala form-control wid110">
+                    <option selected="selected" value>请选择</option>
+                    <option  value="cus_name">客户名称</option>
 
                     @foreach (var customerField in customerFields)
                     {
-                        <option>@customerField.ExpTitle</option>
+                        <option value="@customerField.ExpName">@customerField.ExpTitle</option>
                     }
                 </select>
-                <div class="gaoji"> <a href="javascript:;" onclick="showMsg('功能添加中...','Success')" title="高级搜索" class="tip">高级搜索</a></div>
+                <div class="gaoji"> <a href="javascript:;" onclick="showMsg('功能添加中，敬请关注...','Success')" title="高级搜索" class="tip">高级搜索</a></div>
                 <input name="txtKeywords" type="text" id="txtKeywords" class="keyword">
-                <a id="lbtnSearch" class="btn-search" href="javascript:;">查询</a>
+                <a id="lbtnSearch" class="btn-search" onclick="quick_Search();" href="javascript:;">查询</a>
             </div>
             <div class="clear"></div>
         </div>
         <div class="layout-left-filter">
             <h2>视图&工具
-               <a href="javascript:void(0)" onclick="ckeckAll()">复选</a>
-                <a href="javascript:void(0)" onclick="unckeckAll()">单选</a>
+              @* <a href="javascript:void(0)" onclick="ckeckAll()">复选</a>
+                <a href="javascript:void(0)" onclick="unckeckAll()">单选</a>*@
                 <a href="/Apps/Settings/AppMaker/Detail/1" target="_blank">管理</a>
              
             </h2>
@@ -479,14 +489,14 @@
                             *@
                         </ul>
                     </div>
-					
-                    <div class="r-list">
+					<!--条件-->
+                   @* <div class="r-list">
                         <ul class="l-top-list">
                             <li>当前显示结果：</li>
                             <li><a href="#" rel="nofollow" title="意向客户"><strong>意向客户</strong></a></li>
                             <li><a href="#" rel="nofollow" title="30天未联系"><strong>集团客户</strong></a></li>
                         </ul>
-                    </div>
+                    </div>*@
                 </div>
             </div>
 

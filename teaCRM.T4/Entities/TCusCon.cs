@@ -12,7 +12,7 @@ namespace teaCRM.Entity
 		public Int32 Id { get;set; }
  
 		[Column("cus_id")]
-		public Int32? CusId { get;set; }
+		public Int32 CusId { get;set; }
 		[Column("comp_num")]
 		public String CompNum { get;set; }
 		[Column("con_name")]
@@ -36,8 +36,6 @@ namespace teaCRM.Entity
 		[Column("con_trash")]
 		public Int32? ConTrash { get;set; }
  
-		[ManyToOne(ThisKey="CusId",OtherKey="Id")]
-		public TCusBase Cus { get;set; }
  
  
 	}

@@ -129,7 +129,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             {
                 CusNo = RandomHelper.GetCustomerNumber(),
                 CompNum = compNum,
-                CusName = fc["cus_name"].TrimEnd(','),
+                CusName = fc["cus_name"],
                 CusSname = fc["cus_sname"],
                 CusLastid = 0, //默认无上级客户
                 CusTel = fc["cus_tel"],
@@ -164,15 +164,21 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             //========================================================================
 
             //主联系人赋值 
+            var conName = fc["con_name"];
+            if (String.IsNullOrEmpty(conName))
+            {
+                conName = fc["cus_name"];
+            }
             var conBir = fc["con_bir"];
             if (String.IsNullOrEmpty(fc["con_bir"]))
             {
                 conBir = DateTime.Now.ToString();
             }
+
             TCusCon CusCon = new TCusCon()
             {
                 CompNum = compNum,
-                ConName = fc["con_name"],
+                ConName = conName,
                 ConTel = fc["con_tel"],
                 ConQq = fc["con_qq"],
                 ConEmail = fc["con_email"],
