@@ -82,6 +82,20 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         #region 联系人首页 14-09-24 By 唐有炜
 
         /// <summary>
+        /// GET: /Apps/CRM/Contact/PartialIndex
+        /// /Apps/CRM/Contact/?cus_id=100
+        /// </summary>
+        /// <param name="cus_id">客户id</param>
+        /// <returns>ActionResult.</returns>
+        [UserAuthorize]
+        public ActionResult PartialIndex (int? cus_id)
+        {
+            //客户id
+            ViewBag.CustomerId = cus_id;
+            return PartialView("_ContactPartial");
+        }
+
+        /// <summary>
         /// GET: /Apps/CRM/Contact/
         /// /Apps/CRM/Contact/?cus_id=100
         /// </summary>

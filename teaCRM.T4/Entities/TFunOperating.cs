@@ -31,8 +31,6 @@ namespace teaCRM.Entity
 		public Int32 OpeIsStatus { get;set; }
 		[Column("ope_is_fast")]
 		public Int32 OpeIsFast { get;set; }
-		[Column("fil_id")]
-		public Int32? FilId { get;set; }
  
 		[ManyToOne(ThisKey="MyappId",OtherKey="Id")]
 		public TFunMyapp Myapp { get;set; }

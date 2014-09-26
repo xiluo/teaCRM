@@ -227,6 +227,7 @@
     <Content Include="Themes\default\base\js\industry.js" />
     <Content Include="Themes\default\crm\js\contact.js" />
     <Content Include="Themes\default\crm\js\customer_show.js" />
+    <Content Include="Themes\default\crm\js\trash.js" />
     <Content Include="Themes\default\lib\artDialog\lib\require.js" />
     <Content Include="Themes\default\lib\artDialog\lib\sea.js" />
     <Content Include="Themes\default\lib\bootstrap\css\bootstrap-3.2.0.css" />
@@ -1381,7 +1382,6 @@
     <Folder Include="Themes\default\sale\" />
     <Folder Include="Themes\default\service\" />
     <Folder Include="Themes\default\settings\images\" />
-    <Folder Include="Views\Apps\CRM\Trash\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -1485,6 +1485,9 @@
     <Content Include="Views\Apps\CRM\Contact\ContactEdit.cshtml" />
     <Content Include="Views\Apps\CRM\Pub\_PubPartial.cshtml" />
     <Content Include="Views\Apps\CRM\Pub\PubIndex.cshtml" />
+    <Content Include="Views\Shared\_Msg.cshtml" />
+    <Content Include="Views\Apps\CRM\Trash\_TrashPartial.cshtml" />
+    <Content Include="Views\Apps\CRM\Trash\TrashIndex.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

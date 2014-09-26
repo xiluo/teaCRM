@@ -427,6 +427,38 @@ namespace teaCRM.Service.CRM.Impl
 
         #endregion
 
+
+
+        #region 回收站
+
+        /// <summary>
+        /// 获取回收站模块操作   
+        /// </summary>
+        /// <param name="compNum">公司编号</param>
+        /// <param name="myappId">模块id</param>
+        /// <returns>操作列表</returns>
+        public List<TFunOperating> GetTrashOperating(string compNum, int myappId)
+        {
+            var ops = FunOperatingDao.GetList(o => o.CompNum == compNum && o.MyappId == myappId);
+            return ops;
+        }
+
+
+        /// <summary>
+        /// 彻底删除客户
+        /// </summary>
+        /// <param name="ids">客户id集合</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+         public  bool Delete(int ids)
+        {
+            return false;
+        }
+
+        #endregion
+
+
+
+
         #region 验证
 
         #region 验证手机号是否存在 2014-09-01 14:58:50 By 唐有炜

@@ -201,6 +201,31 @@ namespace teaCRM.Service.CRM
 
         #endregion
 
+
+
+        #region 回收站接口
+
+        /// <summary>
+        /// 获取回收站模块操作   
+        /// </summary>
+        /// <param name="compNum">公司编号</param>
+        /// <param name="myappId">模块id</param>
+        /// <returns>操作列表</returns>
+        List<TFunOperating> GetTrashOperating(string compNum,int myappId);
+
+
+        /// <summary>
+        /// 彻底删除客户
+        /// </summary>
+        /// <param name="ids">客户id集合</param>
+        /// <returns>删除状态</returns>
+        bool Delete(int ids);
+
+        #endregion
+
+
+
+
         #region 验证接口
 
         /// <summary>

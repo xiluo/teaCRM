@@ -264,6 +264,14 @@
             初始化扩展字段
             </summary>
         </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.ContactController.PartialIndex(System.Nullable{System.Int32})">
+            <summary>
+            GET: /Apps/CRM/Contact/PartialIndex
+            /Apps/CRM/Contact/?cus_id=100
+            </summary>
+            <param name="cus_id">客户id</param>
+            <returns>ActionResult.</returns>
+        </member>
         <member name="M:teaCRM.Web.Controllers.Apps.CRM.ContactController.Index(System.Nullable{System.Int32})">
             <summary>
             GET: /Apps/CRM/Contact/
@@ -725,6 +733,22 @@
             </summary>
             <param name="src">The URL of an image.</param>
         </member>
+        <member name="T:teaCRM.Web.Controllers.Api.CRM.CustomerController">
+            <summary>
+            Class CustomerController.
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Api.CRM.CustomerController.CustomerService">
+            <summary>
+            The customer service
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Api.CRM.CustomerController.GetAllCustomers">
+            <summary>
+            Gets the customer lsit.
+            </summary>
+            <returns>System.String.</returns>
+        </member>
         <member name="P:teaCRM.Web.Controllers.AccountController.AccountService">
             <summary>
             Web层注入账户Service接口 2014-08-26 14:58:50 By 唐有炜
@@ -750,14 +774,9 @@
             当前登录用户id
             </summary>
         </member>
-        <member name="F:teaCRM.Web.Controllers.Apps.CRM.TrashController.AppId">
-            <summary>
-            当前应用的类别id，（对应/Themes/default/base/js/category.js里面的code和T_fun_app表里面的app_id） 14-09-21 By 唐有炜
-            </summary>
-        </member>
         <member name="F:teaCRM.Web.Controllers.Apps.CRM.TrashController.MyAppId">
             <summary>
-            当前模块
+            当前模块id
             </summary>
         </member>
         <member name="F:teaCRM.Web.Controllers.Apps.CRM.TrashController.trashOperatings">
@@ -765,15 +784,16 @@
             回收站操作
             </summary>
         </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.TrashController.Init">
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.TrashController.Init(System.Int32)">
             <summary>
             初始化扩展字段
             </summary>
         </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.TrashController.Index">
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.TrashController.Index(System.Int32)">
             <summary>
             Indexes this instance.
             </summary>
+            <param name="id">模块id</param>
             <returns>ActionResult.</returns>
         </member>
         <member name="P:teaCRM.Web.Controllers.Apps.CRM.TrashController.CustomerService">

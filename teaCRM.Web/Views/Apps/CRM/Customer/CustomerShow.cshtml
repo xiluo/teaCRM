@@ -27,9 +27,9 @@
         <script src="/Themes/default/lib/bootstrap/js/bootstrap-3.2.0.js"></script>
         <script src="/Themes/default/lib/jquery.bootgrid/jquery.bootgrid.js"></script>
         <script type="text/javascript">
-            $(function () {
+            $(function() {
                 var $items = $('#view_left > ul > li');
-                $items.click(function () {
+                $items.click(function() {
                     $items.removeClass('selected');
                     $(this).addClass('selected');
                     var index = $items.index($(this));
@@ -117,8 +117,8 @@
             .tableList input { margin:3px 0;}
             .tableList select { margin:3px 0;}
         </style>
-          <!--省市数据-->
-    <script src="/Themes/default/base/js/city.js" type="text/javascript"></script>
+        <!--省市数据-->
+        <script src="/Themes/default/base/js/city.js" type="text/javascript"></script>
         <script src="/Themes/default/crm/js/customer_show.js" type="text/javascript"></script>
     </head>
     <body>
@@ -135,7 +135,11 @@
                     <ul style="margin-top: 36px;">
                         @foreach (var myApp in myApps)
                         {
-                            <li class=""><a href="javascript:void(0)" >@myApp.MyappName</a></li>
+                            if (myApp.MyappIsShow==1)
+                            {
+    <li class=""><a href="javascript:void(0)" >@myApp.MyappName</a></li>
+                            }
+
                         }
                     </ul>
                 </div>
@@ -198,14 +202,14 @@
                                     customer.TryGetValue("cus_createTime", out cus_createTime);
                                 }
                                 <li><b>助记简称：</b>@cus_sname</li>
-                                <li><b>上级客户：</b>@Html.LoadDefaultValue(cus_lastname.ToString(),"暂无上级客户")</li>
+                                <li><b>上级客户：</b>@Html.LoadDefaultValue(cus_lastname.ToString(), "暂无上级客户")</li>
                                 <li><b>电话号码：</b>@cus_tel</li>
                                 <li><b>所在城市：</b><span id="cus_city">@cus_city</span></li>
                                 <li><b>详细地址：</b>@cus_address</li>
                                 <li><b>备注说明：</b>@cus_note</li>
                                 <li><b>主联系人：</b>@con_name</li>
                                 <li><b>共享成员：</b>@con_team</li>
-                                <li><b>是否公海：</b>@Html.BooleanParse(int.Parse(con_is_pub.ToString()),"是","否")</li>
+                                <li><b>是否公海：</b>@Html.BooleanParse(int.Parse(con_is_pub.ToString()), "是", "否")</li>
                                 <li><b>是否回收站：</b>@Html.BooleanParse(int.Parse(con_back.ToString()), "是", "否")</li>
                                 <li><b>创建时间：</b>@cus_createTime</li>  
                                 @foreach (var customerField in customerFields)
@@ -215,13 +219,13 @@
                                     customer.TryGetValue(customerField.ExpName, out tempField);
                                     if (null != tempField)
                                     {
-                                        if (customerField.ExpCtype == 5)//下拉框取值
+                                        if (customerField.ExpCtype == 5) //下拉框取值
                                         {
-                                         <li><b>@customerField.ExpTitle：</b>@Html.GetOptionValue(tempField.ToString(), customerField.ExpOption,"暂未填写")</li>
+                                            <li><b>@customerField.ExpTitle：</b>@Html.GetOptionValue(tempField.ToString(), customerField.ExpOption, "暂未填写")</li>
                                         }
                                         else
                                         {
-                                             <li><b>@customerField.ExpTitle：</b>@tempField</li>
+                                            <li><b>@customerField.ExpTitle：</b>@tempField</li>
                                         }
                                     }
                                 }
@@ -273,13 +277,37 @@
                         </div>
 	  
                         <div class="contactview">
-	  <!--用分布视图实现联系人页面重用-->
-      @Html.Partial("Contact/_ContactPartial")
-
-      
-
+                            <!--用分布视图实现联系人页面重用(后期不用这个)-->
+                          @Html.Partial("Contact/_ContactPartial")  
+                            @*@Html.Partial("Contact/_ContactPartial")*@
+@*                    
+<iframe src="/Apps/CRM/Contact/PartialIndex/11" onload="SetCwinHeight(this);" width="100%" scrolling="no"></iframe>
+                            <script type="text/javascript">
+                                function SetCwinHeight(obj) {
+                                    var cwin = obj;
+                                    if (document.getElementById) {
+                                        if (cwin && !window.opera) {
+                                            if (cwin.contentDocument && cwin.contentDocument.body.offsetHeight)
+                                                cwin.height = cwin.contentDocument.body.offsetHeight + 20; //FF NS 
+                                            else if (cwin.Document && cwin.Document.body.scrollHeight)
+                                                cwin.height = cwin.Document.body.scrollHeight + 10; //IE 
+                                        }
+                                        else {
+                                            if (cwin.contentWindow.document && cwin.contentWindow.document.body.scrollHeight)
+                                                cwin.height = cwin.contentWindow.document.body.scrollHeight; //Opera 
+                                        }
+                                    }
+                                } 
+                            </script>
+                            *@
                         </div>
 	  
+                        <div>
+                   
+                        </div>
+                        <div>
+                        
+                        </div>
                     </div>
                 </div>
                 <div class="clearfix"></div>

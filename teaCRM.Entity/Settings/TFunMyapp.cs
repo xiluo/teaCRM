@@ -29,6 +29,8 @@ namespace teaCRM.Entity
         public Int32 MyappIsSys { get; set; }
         [Column("myapp_base_table")]
         public String MyappBaseTable { get; set; }
+        [Column("myapp_is_show")]
+        public Int32? MyappIsShow { get; set; }
 
 
         [OneToMany(ThisKey = "Id", OtherKey = "MyappId")]
@@ -36,9 +38,9 @@ namespace teaCRM.Entity
         [OneToMany(ThisKey = "Id", OtherKey = "MyappId")]
         public IList<TFunOperating> TFunOperatings { get; set; }
         [OneToMany(ThisKey = "Id", OtherKey = "MyappId")]
-        public IList<TFunExpand> TFunExpands { get; set; }
-        [OneToMany(ThisKey = "Id", OtherKey = "MyappId")]
         public IList<TFunFilter> TFunFilters { get; set; }
+        [OneToMany(ThisKey = "Id", OtherKey = "MyappId")]
+        public IList<TFunExpand> TFunExpands { get; set; }
 
     }
 

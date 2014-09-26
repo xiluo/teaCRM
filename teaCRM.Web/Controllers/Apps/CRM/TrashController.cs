@@ -5,6 +5,8 @@
 //
 // 最后修改人: Tangyouwei
 // 最后修改时间 : 09-11-2014
+
+using teaCRM.Common;
 // ReSharper disable All 禁止ReSharper显示警告
 // ***********************************************************************
 // <copyright file="TrashController.cs" company="优创科技">
@@ -12,7 +14,6 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-
 using teaCRM.Web.Helpers;
 // ReSharper disable All 禁止ReSharper显示警告
 // ***********************************************************************
@@ -34,6 +35,7 @@ using teaCRM.Web.Filters;
 /// <summary>
 /// 回收站模块
 /// </summary>
+
 namespace teaCRM.Web.Controllers.Apps.CRM
 {
     /// <summary>
@@ -57,24 +59,20 @@ namespace teaCRM.Web.Controllers.Apps.CRM
 
         #endregion
 
-
         #region 全局字段定义 2014-08-29 14:58:50 By 唐有炜
 
         /// <summary>
         /// 当前公司编号
         /// </summary>
         private string CompNum;
+
         /// <summary>
         /// 当前登录用户id
         /// </summary>
         private string UserId;
-        /// <summary>
-        /// 当前应用的类别id，（对应/Themes/default/base/js/category.js里面的code和T_fun_app表里面的app_id） 14-09-21 By 唐有炜
-        /// </summary>
-        private  int AppId;
 
         /// <summary>
-        /// 当前模块
+        /// 当前模块id
         /// </summary>
         private int MyAppId;
 
@@ -82,7 +80,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         /// 回收站操作
         /// </summary>
         private List<TFunOperating> trashOperatings = null;
-     
+
         //权限
 
         #endregion
@@ -93,13 +91,12 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         /// 初始化扩展字段
         /// </summary>
         [UserAuthorize]
-        public void Init()
+        public void Init(int MyAppId)
         {
             CompNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
-            UserId = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
-            AppId = MyConfigHelper.GetAppId("crm");
-          
-            }
+            UserId = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString();
+            trashOperatings = CustomerService.GetTrashOperating(CompNum, MyAppId);
+        }
 
         #endregion
 
@@ -110,25 +107,23 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         /// <summary>
         /// Indexes this instance.
         /// </summary>
+        /// <param name="id">模块id</param>
         /// <returns>ActionResult.</returns>
         [UserAuthorize]
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            Init();
-//            if ( customerExpandFields == null)
-//            {
-//                ViewBag.ErrorMessage = "客户扩展字段信息或者联系人扩展字段信息失败。";
-//                return View("_Error");
-//            }
-//            else
-//            {
-//                //扩展字段
-//                ViewBag.CustomerExpandFields = customerExpandFields;
-//                ViewBag.ContactExpandFields = contactExpandFields;
-//
-//                return View("CustomerTrash");
-//            }
-            return null;
+            try
+            {
+                Init(id);
+                ViewBag.TrashOperatings = trashOperatings;
+                return View("TrashIndex");
+            }
+            catch (Exception ex)
+            {
+                ViewData["Msg"] = "回收站页面初始化失败";
+                LogHelper.Error("页面初始化失败：", ex);
+                return View("_Msg", ViewData);
+            }
         }
 
         #endregion

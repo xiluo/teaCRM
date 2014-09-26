@@ -1,117 +1,44 @@
-﻿@model IEnumerable<teaCRM.Entity.TCusBase>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CusNo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CompNum)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CusName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CusSname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CusLastid)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CusTel)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CusCity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CusAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CusNote)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConTeam)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConIsPub)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConBack)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CusCreateTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CusFields)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CusNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CompNum)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CusName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CusSname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CusLastid)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CusTel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CusCity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CusAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CusNote)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConTeam)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConIsPub)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConBack)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CusCreateTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CusFields)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+﻿@using System.Web.Optimization
+@using teaCRM.Entity
+@{
+     //联系人扩展字段信息
+    var contactFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.ContactExpandFields;
+    Layout = null;
 }
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>公海_C+企业云平台_打造中国办公软件第一品牌</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 
-</table>
+        @Styles.Render("~/Themes/default/css/cp.globle.min6.css")
+        @Scripts.Render("~/Themes/default/js/cp.globle.min6.js")
+       
+       
+          <!--js区域-->
+        <script src="/Themes/default/crm/js/contact.js" type="text/javascript"></script>
+           <!--js区域-->
+
+    </head>
+    <body>
+        <!--客户id-->
+        <input type="hidden" id="cus_id" name="cus_id" value="@ViewBag.CustomerId" />
+        <input type="hidden" id="CompNum" name="CompNum" value="@Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM]" />
+
+        <table id="grid-data" class="table table-condensed table-hover table-striped table-bordered" data-selection="true" data-multi-select="true">
+            <thead>
+                <tr>
+                    <th data-column-id="cus_id" data-header-align="center" data-align="center"  data-order="desc">所属客户</th>
+                    <th data-column-id="con_name" data-header-align="center" data-align="center"  data-order="desc">联系人名称</th>
+                    <th data-column-id="con_tel" data-header-align="center" data-align="center"  data-order="desc">联系人电话</th>
+                    <th data-column-id="con_qq" data-header-align="center" data-align="center"  data-order="desc">联系人QQ</th>
+                    <th data-column-id="con_email" data-header-align="center" data-align="center"  data-order="desc">联系人邮箱</th>
+                    <th data-column-id="con_is_main" data-formatter="con_is_main" data-header-align="center" data-align="center"  data-order="desc">是否主联系人</th>
+                    <th data-column-id="id" data-type="numeric" data-identifier="true" data-formatter="commands" data-sortable="false">操作</th>
+                </tr>
+            </thead>
+        </table>
+     
+    </body>
+</html>

@@ -1,0 +1,20 @@
+﻿@using System.Web.Optimization
+@model dynamic
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section seo {
+}
+@section head {
+    @Styles.Render("~/Themes/default/css/cp.globle.min5.css")
+    @Scripts.Render("~/Themes/default/js/cp.globle.min5.js")
+} 
+
+@Html.Partial("_Error", this.ViewData)
+
+@section script
+{
+    
+}

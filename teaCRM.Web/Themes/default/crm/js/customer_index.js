@@ -183,7 +183,7 @@ function load_fil_ops() {
 
 //查看客户信息
 function view(id) {
-    showContentWindow("show_view", "/Apps/CRM/Index/Show/" + id, "查看客户", 800, 480);
+    showContentWindow("show_view", "/Apps/CRM/Customer/Show/" + id, "查看客户", 800, 480);
 }
 
 function context_view() {
@@ -191,7 +191,7 @@ function context_view() {
     var row = manager.getSelectedRow();
     //console.log(row);
     if (row) {
-        showContentWindow("show_add", "/Apps/CRM/Index/Show/" + row.id, "查看客户", 800, 480);
+        showContentWindow("show_add", "/Apps/CRM/Customer/Show/" + row.id, "查看客户", 800, 480);
     } else {
         showMsg("请先选中客户！", "Error");
     }
@@ -223,7 +223,7 @@ function quick_Search() {
 
 //添加客户
 function add() {
-    showWindow("show_add", "/Apps/CRM/Index/Add/", "新增客户", 800, 360, function() {
+    showWindow("show_add", "/Apps/CRM/Customer/Add/", "新增客户", 800, 360, function() {
         var form_customer = $(window.frames["frm_show_add"].document).find("#form_customer");
         //var data = $(form_customer).serialize();
         //alert(data);
@@ -236,7 +236,7 @@ function add() {
         var data = $(form_customer).serialize();
         //console.log(data);
         //提交数据
-        var url = "/Apps/CRM/Index/Add/";
+        var url = "/Apps/CRM/Customer/Add/";
         $.ajax({
             type: "post",
             cache: false,
@@ -274,7 +274,7 @@ function add() {
 function edit() {
     var manager = $("#maingrid4").ligerGetGridManager();
     var row = manager.getSelectedRow();
-        showWindow("show_add", "/Apps/CRM/Index/Edit/"+row.id, "修改客户", 800, 480, function () {
+        showWindow("show_add", "/Apps/CRM/Customer/Edit/"+row.id, "修改客户", 800, 480, function () {
             var form_customer = $(window.frames["frm_show_add"].document).find("#form_customer");
             //var data = $(form_customer).serialize();
             //alert(data);
@@ -290,7 +290,7 @@ function edit() {
               $.ajax({
                 type: "post",
                 cache: false,
-                url: "/Apps/CRM/Index/Edit/" + row.id,
+                url: "/Apps/CRM/Customer/Edit/" + row.id,
                 data: data,
                 dataType: "json",
                 beforeSend: function () {

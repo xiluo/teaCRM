@@ -139,6 +139,7 @@
     <Compile Include="TCusConDaoImplTest.cs" />
     <Compile Include="TFunAppDaoImplTest.cs" />
     <Compile Include="TFunOperatingDaoImplTest.cs" />
+    <Compile Include="TrashControllerTest.cs" />
     <Compile Include="TSysUserDaoImplTest.cs" />
     <Compile Include="UsersControllerApiTest.cs" />
     <Compile Include="UsersControllerTest.cs" />
