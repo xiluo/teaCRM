@@ -7,7 +7,7 @@
 // 最后修改时间 : 09-26-2014
 // ReSharper disable All 禁止ReSharper显示警告
 // ***********************************************************************
-// <copyright file="PubController.cs" company="优创科技">
+// <copyright file="MarketController.cs" company="优创科技">
 //     Copyright (c) 优创科技. All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -19,40 +19,19 @@ using System.Web;
 using System.Web.Mvc;
 
 /// <summary>
-/// The CRM namespace.
+/// The Apps namespace.
 /// </summary>
-using teaCRM.Service;
-using teaCRM.Service.CRM;
-using teaCRM.Service.Settings;
-
-namespace teaCRM.Web.Controllers.Apps.CRM
+namespace teaCRM.Web.Controllers.Apps
 {
     /// <summary>
-    /// Class PubController.
+    /// Class MarketController.
     /// </summary>
-    public class PubController : Controller
+    public class MarketController : Controller
     {
-        #region  Service注入  14-09-26 By 唐有炜
-
-        /// <summary>
-        /// Gets or sets the customer service.
-        /// </summary>
-        /// <value>The customer service.</value>
-        public ICustomerService CustomerService { set; get; }
-
-        /// <summary>
-        /// Gets or sets the account service.
-        /// </summary>
-        /// <value>The account service.</value>
-        public IAccountService AccountService { set; get; }
-
-        #endregion
-
-
-        #region 公海客户首页
+        #region 应用市场首页
 
         //
-        // GET: /Apps/CRM/Pub/
+        // GET: /Apps/
 
         /// <summary>
         /// Indexes this instance.
@@ -60,10 +39,11 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         /// <returns>ActionResult.</returns>
         public ActionResult Index()
         {
-            return View("PubIndex");
+            return View("MarketIndex");
         }
 
         #endregion
+
 
     }
 }

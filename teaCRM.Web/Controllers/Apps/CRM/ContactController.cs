@@ -4,7 +4,8 @@
 // 创建时间          : 09-13-2014
 //
 // 最后修改人: Tangyouwei
-// 最后修改时间 : 09-24-2014
+// 最后修改时间 : 09-26-2014
+// ReSharper disable All 禁止ReSharper显示警告
 // ***********************************************************************
 // <copyright file="ContactController.cs" company="优创科技">
 //     Copyright (c) Microsoft. All rights reserved.
@@ -23,7 +24,7 @@ using teaCRM.Service.CRM;
 using teaCRM.Web.Filters;
 
 /// <summary>
-/// The CRM namespace.
+/// 联系人模块
 /// </summary>
 
 namespace teaCRM.Web.Controllers.Apps.CRM
@@ -33,7 +34,8 @@ namespace teaCRM.Web.Controllers.Apps.CRM
     /// </summary>
     public class ContactController : Controller
     {
-        //客户IndexController 注入Service依赖
+        #region  Service注入  14-09-26 By 唐有炜
+
         /// <summary>
         /// Gets or sets the customer service.
         /// </summary>
@@ -46,25 +48,28 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         /// <value>The account service.</value>
         public IAccountService AccountService { set; get; }
 
+        #endregion
 
-        //联系人扩展字段信息
+        #region 全局字段定义 14-09-26 By 唐有炜
+
         /// <summary>
-        /// The contact expand fields
+        ///联系人扩展字段信息
         /// </summary>
         private List<TFunExpand> contactExpandFields = null;
 
-
-        //当前应用的类别id，（对应/Themes/default/base/js/category.js里面的code和T_fun_app表里面的app_id） 14-09-21 By 唐有炜
         /// <summary>
-        /// The application identifier
+        /// 当前应用的类别id，（对应/Themes/default/base/js/category.js里面的code和T_fun_app表里面的app_id） 14-09-21 By 唐有炜
         /// </summary>
         private int AppId = 2;
 
-        #region 初始化扩展字段、操作和模块
+        #endregion
+
+        #region 初始化扩展字段、操作和权限
 
         /// <summary>
         /// 初始化扩展字段
         /// </summary>
+        [UserAuthorize]
         public void Init()
         {
             //获取客户联系人扩展字段信息
@@ -99,12 +104,13 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         /// <summary>
         /// Adds this instance.
         /// </summary>
+        /// <param name="cus_id">The cus_id.</param>
         /// <returns>ActionResult.</returns>
         [UserAuthorize]
         [HttpGet]
         public ActionResult Add(int? cus_id)
         {
-            //初始化扩展字段
+            //初始化
             Init();
 
             if (contactExpandFields == null)
@@ -135,7 +141,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         [UserAuthorize]
         public ActionResult Edit(int id)
         {
-            //初始化扩展字段
+            //初始化
             Init();
             ViewBag.Id = id;
             ViewBag.ContactExpandFields = contactExpandFields;

@@ -1,0 +1,117 @@
+﻿@model IEnumerable<teaCRM.Entity.TCusBase>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CusNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CusName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CusSname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CusLastid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CusTel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CusCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CusAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CusNote)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConTeam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConIsPub)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConBack)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CusCreateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CusFields)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CusNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CusName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CusSname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CusLastid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CusTel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CusCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CusAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CusNote)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConTeam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConIsPub)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConBack)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CusCreateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CusFields)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

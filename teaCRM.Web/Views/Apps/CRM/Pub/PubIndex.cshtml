@@ -1,0 +1,19 @@
+﻿@using System.Web.Optimization
+@using teaCRM.Entity
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seo {
+    ViewBag.Title = "PubIndex";
+}
+@section head{
+   
+
+}
+<!--用分布视图实现公海页面重用-->
+@Html.Partial("Pub/_PubPartial")
+
+@section script
+{
+    
+}

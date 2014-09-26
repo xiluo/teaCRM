@@ -13,16 +13,16 @@
   <!---工作台控制器结束-->
 
   <!---应用市场控制器开始-->
-  <object id="appsIndexController" type="teaCRM.Web.Controllers.Apps.IndexController, teaCRM.Web" singleton="false" />
+  <object id="appsIndexController" type="teaCRM.Web.Controllers.Apps.MarketController, teaCRM.Web" singleton="false" />
   <!---应用市场控制器结束-->
 
   <!--CRM模块控制器开始-->
-  <object id="crmIndexController" type="teaCRM.Web.Controllers.Apps.CRM.IndexController, teaCRM.Web" singleton="false">
+  <object id="crmCustomerController" type="teaCRM.Web.Controllers.Apps.CRM.CustomerController, teaCRM.Web" singleton="false">
     <property name="AccountService" ref="accountService" />
     <property name="AppMakerService" ref="appMakerService" />
     <property name="CustomerService" ref="customerService" />
   </object>
-  <object id="contactController" type="teaCRM.Web.Controllers.Apps.CRM.ContactController, teaCRM.Web" singleton="false">
+  <object id="crmContactController" type="teaCRM.Web.Controllers.Apps.CRM.ContactController, teaCRM.Web" singleton="false">
     <property name="AccountService" ref="accountService" />
     <property name="CustomerService" ref="customerService" />
   </object>
@@ -32,9 +32,15 @@
     <property name="CustomerService" ref="customerService" />
   </object>
   -->
+  <object id="crmPubController" type="teaCRM.Web.Controllers.Apps.CRM.PubController, teaCRM.Web" singleton="false">
+    <property name="AccountService" ref="accountService" />
+    <property name="AppMakerService" ref="appMakerService" />
+    <property name="CustomerService" ref="customerService" />
+  </object>
   <object id="loadDataController" type="teaCRM.Web.Controllers.Apps.CRM.LoadDataController, teaCRM.Web"
           singleton="false">
     <property name="AccountService" ref="accountService" />
+    
     <property name="CustomerService" ref="customerService" />
   </object>
   <!--CRM模块控制器结束-->

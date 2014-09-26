@@ -87,7 +87,7 @@ function load_menu() {
             if (json_data.rows.length == 0) {
                 if (location.href.indexOf("Desktop") > 0) {
                     showDialog("该公司暂未安装应用，是否立即前往应用市场？", function() {
-                        refresh("/Apps/Index");
+                        refresh("/Apps/Market/");
                     });
                 }
             } else {
@@ -104,7 +104,7 @@ function load_menu() {
                 //加载二级菜单
                 load_sub_nav(li_id1, json_data.rows[0].AppId);
 
-                $(head_menu).append(" <li id=\"head-nav-Index\"><a href=\"/Apps/Index/\">应用</a></li><li id=\"head-nav-Settings\"><a href=\"/Apps/Settings/Department/\">设置</a></li><li id=\"head-nav-More\"><a href=\"javascript:void(0);\">更多</a></li>");
+                $(head_menu).append(" <li id=\"head-nav-Market\"><a href=\"/Apps/Market/\">应用</a></li><li id=\"head-nav-Settings\"><a href=\"/Apps/Settings/Department/\">设置</a></li><li id=\"head-nav-More\"><a href=\"javascript:void(0);\">更多</a></li>");
                 //后面的几个应用
                 for (var i = 1; i < json_data.rows.length; i++) {
                    var menu = json_data.rows[i];
@@ -150,9 +150,13 @@ function load_sub_nav(menu_id, appId) {
 //                my_sub_nav += "<li class=\"selected\"><a href=\"" + sub_nav_data.MyappLink + "\" >" + sub_nav_data.MyappName + "</a></li>";
 //
             //            }
+
+            //导航默认显示第一个模块
+            $("#head-nav-" + menu_id + " a").attr("href", sub_json_data[0].MyappLink + sub_json_data[0].Id);
+
             for (var i = 0; i < sub_json_data.length; i++) {
                 var sub_nav_data = sub_json_data[i];
-                                my_sub_nav += "<li class=\"selected\"><a href=\"" + sub_nav_data.MyappLink + "\" >" + sub_nav_data.MyappName + "</a></li>";
+                my_sub_nav += "<li class=\"selected\"><a href=\"" + sub_nav_data.MyappLink + sub_nav_data.Id + "\" >" + sub_nav_data.MyappName + "</a></li>";
                 
 }
             my_sub_nav += "</ul></div>";
@@ -175,7 +179,7 @@ function load_sub_nav(menu_id, appId) {
 //菜单切换
 function changeTab() {
     var url = location.href;
-//    //alert(url);
+    //alert(url);
 
     var flag = false;
     $("#head-nav li").each(function() {

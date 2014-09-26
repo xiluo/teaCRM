@@ -173,15 +173,14 @@
     <Compile Include="Controllers\Api\Settings\UsersController.cs" />
     <Compile Include="Controllers\Apps\CRM\ContactController.cs" />
     <Compile Include="Controllers\Apps\CRM\PubController.cs" />
-    <Compile Include="Controllers\Apps\CRM\ToolbarController.cs" />
     <Compile Include="Controllers\Apps\CRM\TrashController.cs" />
     <Compile Include="Controllers\Apps\Settings\AppMakerController.cs" />
     <Compile Include="Controllers\Apps\Settings\PermissionController.cs" />
     <Compile Include="Controllers\Admin\LogController.cs" />
     <Compile Include="Controllers\Base\AccountController.cs" />
-    <Compile Include="Controllers\Apps\CRM\IndexController.cs" />
+    <Compile Include="Controllers\Apps\CRM\CustomerController.cs" />
     <Compile Include="Controllers\Apps\CRM\LoadDataController.cs" />
-    <Compile Include="Controllers\Apps\IndexController.cs" />
+    <Compile Include="Controllers\Apps\MarketController.cs" />
     <Compile Include="Controllers\Apps\Product\IndexController.cs" />
     <Compile Include="Controllers\Apps\Sale\IndexController.cs" />
     <Compile Include="Controllers\Apps\Service\IndexController.cs" />
@@ -197,6 +196,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\MyConfigHelper.cs" />
     <Compile Include="Helpers\MyHtmlHelper.cs" />
     <Compile Include="Helpers\MyViewEngine.cs" />
     <Compile Include="Helpers\MyWebApiController.cs" />
@@ -1361,7 +1361,7 @@
     <Content Include="Themes\default\settings\js\department.js" />
     <Content Include="Themes\default\base\js\layout.js" />
     <Content Include="Themes\default\lib\validate\messages_cn.js" />
-    <Content Include="Views\Apps\CRM\Index\CustomerIndex.cshtml" />
+    <Content Include="Views\Apps\CRM\Customer\CustomerIndex.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1381,6 +1381,7 @@
     <Folder Include="Themes\default\sale\" />
     <Folder Include="Themes\default\service\" />
     <Folder Include="Themes\default\settings\images\" />
+    <Folder Include="Views\Apps\CRM\Trash\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -1412,7 +1413,7 @@
     <Content Include="Views\Apps\Sale\Index\SaleIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Apps\Index\Index.cshtml" />
+    <Content Include="Views\Apps\Market\MarketIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Apps\Product\Index\ProductIndex.cshtml" />
@@ -1459,7 +1460,7 @@
     <None Include="Themes\default\lib\ligerUI\skins\icons\1.bat" />
     <None Include="Themes\default\lib\ligerUI\skins\icons\新建 Microsoft Office Excel 工作表.xlsx" />
     <Content Include="Views\Shared\_Error.cshtml" />
-    <Content Include="Views\Apps\CRM\Index\CustomerShow.cshtml" />
+    <Content Include="Views\Apps\CRM\Customer\CustomerShow.cshtml" />
     <Content Include="Views\Apps\CRM\Contact\ContactIndex.cshtml" />
     <Content Include="Views\Apps\Settings\AppMaker\AppMakerIndex.cshtml" />
     <Content Include="Views\Apps\Settings\Department\DepartmentEdit.cshtml" />
@@ -1479,9 +1480,11 @@
     <Content Include="Views\Apps\Settings\AppMaker\Field\FieldEdit.cshtml" />
     <Content Include="Views\Apps\Settings\AppMaker\Toolbar\ToolbarEdit.cshtml" />
     <Content Include="Views\Apps\Settings\AppMaker\View\ViewEdit.cshtml" />
-    <Content Include="Views\Apps\CRM\Index\CustomerEdit.cshtml" />
+    <Content Include="Views\Apps\CRM\Customer\CustomerEdit.cshtml" />
     <Content Include="Views\Apps\CRM\Contact\_ContactPartial.cshtml" />
     <Content Include="Views\Apps\CRM\Contact\ContactEdit.cshtml" />
+    <Content Include="Views\Apps\CRM\Pub\_PubPartial.cshtml" />
+    <Content Include="Views\Apps\CRM\Pub\PubIndex.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

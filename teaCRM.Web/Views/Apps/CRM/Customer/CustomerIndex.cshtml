@@ -1,0 +1,525 @@
+﻿@using System.Web.Optimization
+@using teaCRM.Entity
+@using teaCRM.Web.Helpers
+@{
+    //初始化客户扩展字段
+    var customerFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.CustomerExpandFields;
+    //初始化联系人扩展字段
+    var contactFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.ContactExpandFields;
+    //操作
+    var customerOps = (List<TFunOperating>) ViewBag.CustomerOperatings;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seo {
+    <title>全部客户_C+企业云平台_打造中国办公软件第一品牌</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+}
+@section head{
+    
+    
+    @Styles.Render("~/Themes/default/css/cp.globle.min3.css")
+    @Scripts.Render("~/Themes/default/js/cp.globle.min3.js")
+    
+
+    <!--客户模块布局及左侧css-->
+
+    <link href="/Themes/default/CRM/css/crm.layout.css" rel="stylesheet" type="text/css" />
+    <!--ZTree-->
+    <link href="/Themes/default/lib/zTree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
+    <script src="/Themes/default/lib/zTree/js/jquery.ztree.all-3.5.min.js"></script>
+    <!--客户列表css-->
+
+    <link href="/Themes/default/CRM/css/crm.list.css" rel="stylesheet" type="text/css" />
+    <!--LigerUI-->
+    <link href="/Themes/default/lib/ligerUI/skins/Tea/css/ligerui-all.css" rel="stylesheet" type="text/css" />
+    <script src="/Themes/default/lib/ligerUI/js/plugins/ligerLayout.js" type="text/javascript"></script>
+    <script src="/Themes/default/lib/ligerUI/js/plugins/ligerGrid.js" type="text/javascript"></script>
+    <script src="/Themes/default/lib/ligerUI/js/plugins/ligerMenu.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="/Themes/default/CRM/js/TYW.js"></script>
+    <!--省市数据-->
+    <script src="/Themes/default/base/js/city.js" type="text/javascript"></script>
+    <!--客户js，由于动态读取，必须放在页面上-->
+
+    <script type="text/javascript">
+        //首次打开页面时对左侧分类进行高度设定
+        $(function() {
+            $(".layout-left").height($(window).height() - 100);
+            $('.tip').tooltip();
+            //按钮气泡
+            $('.pop').popover({ html: true, trigger: "hover" });
+        });
+
+        //初始化客户列表==============================================================
+
+        var customer_url = "/Apps/CRM/LoadData/GetCustomerLsit/?&rnd=" + Math.random();
+
+        function InitDataGrid() {
+            initLayout();
+            $(window).resize(function() {
+                initLayout();
+            });
+        grid_customer=    $("#maingrid4").ligerGrid({
+                checkbox: false,
+                columns: [
+                       {
+                        display: '序号',
+                        width: 50,
+                        render:
+                            function(rowData, rowindex, value, column, rowid, page, pagesize) {
+                                return (page - 1) * pagesize + rowindex + 1;
+                            }
+                    },
+               
+                    {
+                        display: '选择',
+                        name: 'id',
+                        width: 50,
+                        render: function(item) {
+                            //alert(rowid);
+                            return "<input type=\"checkbox\" value=\"" + item.id + "\">";
+                        }
+                    },
+                    {
+                        display: '客户名称',
+                        "frozen":
+                            true,
+                        name:
+                            'cus_name',
+                        width:
+                            240,
+                        align:
+                            'left',
+                        render:
+                            function(item) {
+                                if (item.cus_name == "") {
+                                    return "暂无名称";
+                                } else {
+                                    return "<a href='javascript:;' onclick='view(" + item.id + ");'>" + item.cus_name + "</a>";
+                                }
+                            }
+
+                    },
+                    {
+                        display: '助记简称',
+                        name:
+                            'cus_sname',
+                        width:
+                            100,
+                        align:
+                            'left',
+                        render:
+                            function(item) {
+                                if (item.cus_sname == "") {
+                                    return "暂无名称";
+                                } else {
+                                    return item.cus_sname;
+                                }
+                            }
+                    },
+                    
+                    {
+                        display: '电话',
+                        name:
+                            'cus_tel',
+                        width:
+                            120,
+                        align:
+                            'left',
+                        render:
+                            function(item) {
+                                if (item.cus_tel == "") {
+                                    return "null";
+                                } else {
+                                    return "<a href=''>" + item.cus_tel + "</a>";
+                                }
+                            }
+                    },
+                    {
+                        display: '省市地址',
+                        name:
+                            'cus_city',
+                        width:
+                            100,
+                        align:
+                            'left',
+                        render:
+                            function(item) {
+                                if (item.cus_city == "0,0,0") {
+                                    return "暂未填写";
+                                } else {
+                                    var city_detail = get_city_by_ids(item.cus_city);
+                                    return city_detail;
+                                }
+                            }
+
+                    },
+                    {
+                        display: '详细地址',
+                        name:
+                            'cus_address',
+                        width:
+                            180,
+                        align:
+                            'left',
+                        render:
+                            function(item) {
+                                if (item.cus_address == "") {
+                                    return "无";
+                                } else {
+                                    return item.cus_address;
+                                }
+                            }
+
+                    },
+                    {
+                        display: '主联系人',
+                        name:
+                            'con_name',
+                        width:
+                            100,
+                        align:
+                            'left',
+                        render:
+                            function(item) {
+                                if (item.con_name == "") {
+                                    return "null";
+                                } else {
+                                    return "<a href=''>" + item.con_name + "</a>";
+                                }
+                            }
+                    },
+                    {
+                        display: '负责人',
+                        name:
+                            'user_name',
+                        width:
+                            100,
+                        align:
+                            'left',
+                        render:
+                            function(item) {
+                                if (item.user_name == "") {
+                                    return "null";
+                                } else {
+                                    return "<a href=''>" + item.user_name + "</a>";
+                                }
+                            }
+                    },
+    
+
+                    @*客户扩展字段*@
+                    @foreach (var customerField in customerFields)
+                    {
+                        var displayValue="";
+                       //下拉框
+                        if (customerField.ExpCtype==5)
+                        {
+                     displayValue = Html.GetOptionValue("0", customerField.ExpOption).ToString();
+                        }
+
+
+
+                        var render = @" render: function(item) {var cType='" + customerField.ExpCtype + "';if (item." + customerField.ExpName + "=='') {return '暂未填写';} else {if (cType == 5) {return GetOptionValue(item." +customerField.ExpName+",'"+ customerField.ExpOption + "') ;} else {return 'bbb'}}}";
+                        //行业
+                        if (customerField.ExpName == "exp_pro")
+                        {
+                            render = @" render: function(item) {if (item." + customerField.ExpName + "=='') {return '暂未填写';} if (item." + customerField.ExpName + "=='0') {return '暂未填写';}if (item." + customerField.ExpName + "=='1') {return '暂未填写';} if (item." + customerField.ExpName + "=='2') {return '暂未填写';}if (item." + customerField.ExpName + "=='3') {return '暂未填写';}if (item." + customerField.ExpName + "=='4') {return '暂未填写';}if (item." + customerField.ExpName + "=='5') {return '暂未填写';}if (item." + customerField.ExpName + "=='6') {return '暂未填写';}else {return item." + customerField.ExpName + ";}}";
+                        }
+                        var culmonString = String.Format(" {{ display: '{0}', name: '{1}', width: 100,{2}}},", customerField.ExpTitle, customerField.ExpName, render);
+                        @Html.Raw(culmonString)
+                    }
+
+                    {
+                        display: '创建时间',
+                        name:
+                            'cus_createTime',
+                        width: 100
+                    }
+                ],
+                onBeforeShowData: function(grid, data) {
+                    startTime = new Date();
+                },
+                dataAction: 'server',
+                pageSize:
+                    16,
+                pageSizeOptions:
+                [10, 30, 50, 100],
+                url:
+                    customer_url,
+                method:
+                    "post",
+                width:
+                    '100%',
+                height:
+                    '95%',
+                    where:function() {
+                        alert("aaaa");
+                    },
+                heightDiff:
+                    -1,
+                onRClickToSelect: true,
+                onContextmenu:
+                    function(parm, e) {
+                        menu.show({ top: e.pageY, left: e.pageX });
+                        return false;
+                    },
+                onAfterShowData: function(grid) {
+                    var nowTime = new Date();
+                    showMsg('数据加载成功，耗时：' + (nowTime - startTime) / 1000 + "秒！", "Success");
+
+                },
+                detail: {
+                    onShowDetail: function(r, p) {
+                        for (var n in r) {
+                            if (r[n] == null) r[n] = "";
+                        }
+                        var grid = document.createElement('div');
+                        $(p).append(grid);
+                        $(grid).css('margin', 3).ligerGrid({
+                            columns: [
+                                { display: '行号', width: 50, render: function(item, i) { return i + 1; } },
+                                { display: '联系人', name: 'con_name', width: 100 },
+                                {
+                                    display: '电话/手机号码',
+                                    name: 'con_tel',
+                                    width: 100,
+                                    render: function(item) {
+                                        if (item.con_tel == "") {
+                                            return "暂未填写";
+                                        } else {
+                                            return item.con_tel;
+                                        }
+                                    }
+
+                                },
+                                {
+                                    display: 'QQ号',
+                                    name: 'con_qq',
+                                    width: 100,
+                                    render: function(item) {
+                                        if (item.con_qq == "") {
+                                            return "暂未填写";
+                                        } else {
+                                            return item.con_qq;
+                                        }
+                                    }
+
+                                },
+                                {
+                                    display: '邮箱',
+                                    name: 'con_email',
+                                    width: 80,
+                                    render: function(item) {
+                                        if (item.con_email == "") {
+                                            return "暂未填写";
+                                        } else {
+                                            return item.con_email;
+                                        }
+                                    }
+
+                                },
+                                { display: '生日', name: 'con_bir', width: 80 },
+
+                                @foreach (var contactField in contactFields)
+                                {
+                                    var render = @" render: function(item) {if (item." + contactField.ExpName + "=='') {return '暂未填写';} else {return item." + contactField.ExpName + ";}}";
+                                    var culmonString = String.Format(" {{ display: '{0}', name: '{1}', width: 60,{2} }},", contactField.ExpTitle, contactField.ExpName, render);
+                                    @Html.Raw(culmonString)
+                                    ;
+                                }
+
+                   
+                                {
+                                    display: '备注',
+                                    name: 'con_note',
+                                    width: 80,
+                                    render: function(item) {
+                                        if (item.con_note == "") {
+                                            return "暂未填写";
+                                        } else {
+                                            return item.con_note;
+                                        }
+                                    }
+
+                                },
+                                {
+                                    display: '是否主联系人',
+                                    name: 'con_is_main',
+                                    width: 80,
+                                    render: function(item) {
+                                        if (item.con_is_main == 0) {
+                                            return "否";
+                                        } else {
+                                            return "是";
+                                        }
+                                    }
+
+                                },
+                                { display: '录入人', name: 'user_name', width: 80 }
+                            ],
+
+                            usePager: false,
+                            checkbox: false,
+                            url: "/Apps/CRM/LoadData/GetContactList/?cus_id=" + r.id,
+                            width: '1022px',
+                            height: '100px',
+                            heightDiff: 0
+                        });
+                    }
+                }
+
+               
+            });
+
+
+            $("#grid").height(document.documentElement.clientHeight - 172);
+            toolbar();
+
+        }
+
+
+        function toolbar() {
+            var cmenu = "{Items:[{type: 'button',text: '查看',icon: 'images/icon/75.png',disable: true,click: function () {context_view()}},{type: 'button',text: '添加',icon: 'images/icon/11.png',disable: true,click: function () {add()}},{type: 'button',text: '修改',icon: 'images/icon/33.png',disable: true,click: function () {edit()}},{type: 'button',text: '删除',icon: 'images/icon/12.png',disable: true,click: function () {context_del()}}]}";
+            var data = eval("(" + cmenu + ")");
+            var items = [];
+            var arr = data.Items;
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i].text == '查看' && arr[i].disable) view_auth = true;
+                arr[i].icon = "../../" + arr[i].icon;
+                items.push(arr[i]);
+            }
+
+            menu = $.ligerMenu({
+                width: 120,
+                items: getMenuItems(data)
+            });
+
+
+        }
+
+    </script>
+    <!--本页面js-->
+    <script src="/Themes/default/CRM/js/customer_index.js" type="text/javascript"></script>
+
+
+}
+
+
+<div id="customer">
+
+    <!--左侧筛选开始-->
+    <div class="layout-left">
+        <div class="l-top">
+            <div class="s-list">
+                <select id="sel-search" class="xiala form-control wid110">
+                    <option selected="selected" value>请选择</option>
+                    <option  value="cus_name">客户名称</option>
+
+                    @foreach (var customerField in customerFields)
+                    {
+                        <option value="@customerField.ExpName">@customerField.ExpTitle</option>
+                    }
+                </select>
+                <div class="gaoji"> <a href="javascript:;" onclick="showMsg('功能添加中，敬请关注...','Success')" title="高级搜索" class="tip">高级搜索</a></div>
+                <input name="txtKeywords" type="text" id="txtKeywords" class="keyword">
+                <a id="lbtnSearch" class="btn-search" onclick="quick_Search();" href="javascript:;">查询</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="layout-left-filter">
+            <h2>视图&工具
+              @* <a href="javascript:void(0)" onclick="ckeckAll()">复选</a>
+                <a href="javascript:void(0)" onclick="unckeckAll()">单选</a>*@
+                <a href="/Apps/Settings/AppMaker/Detail/1" target="_blank">管理</a>
+             
+            </h2>
+            <div id="nav-side" class="nav-side">
+                <div class="ns-item">
+                    <ul id="filter_tree" class="ztree"></ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--右侧列表开始-->
+
+    <div class="layout-right">
+        <div class="layout-content">
+
+            <div class="toolbar-wrap">
+                <div id="floatHead" class="toolbar">
+                    <div class="l-list">
+                        <ul class="icon-list">
+                            <div class="btn-group" style="float: left;">
+                                @foreach (var ops in customerOps)
+                                {
+                                    switch (ops.OpeType)
+                                    {
+                                        case 0: //弹出框
+                                            <button data-toggle="tooltip" class="btn btn-default tip"  onclick="@ops.OpeFunction" title="@ops.OpeName"><span class="@ops.OpeIcon"></span>@ops.OpeName</button>
+                                            break;
+                                        case 1: //提示框
+                                            <button data-toggle="tooltip" class="btn btn-default tip"  onclick="@ops.OpeFunction " title="@ops.OpeName"><span class="@ops.OpeIcon"></span>@ops.OpeName</button>
+                                            break;
+                                        case 2: //链接
+                                            <button data-toggle="tooltip" class="btn btn-default tip"  onclick=" refresh('@ops.OpeFunction'); " title="@ops.OpeName"><span class="@ops.OpeIcon"></span>@ops.OpeName</button>
+                                            break;
+                                    }
+                                }
+                            </div>
+                           
+                          
+                            @*
+                          
+                            <li><a class="add" href="javascript:void(0);" onclick=" add(); "><i></i><span>新增</span></a></li>
+                            <li><a class="del" id="btnDelete" href="javascript:void(0);" onclick=" del(); "><i></i><span>删除至回收站</span></a></li>
+                            <li><a class="chi" id="btnSave" href="javascript:void(0);" onclick=" to_pub(); "><i></i><span>放入客户池</span></a></li>
+                            <li><a class="all" href="#" onclick=""><i></i><span>全选</span></a></li>
+                            <li><a class="zhuan" id="btnAudit" href="#"><i></i><span>转移</span></a></li>
+                            <li><a class="biao" id="btnAudit" href="#"><i></i><span>更多</span></a></li>
+                            <!--                            <li><a class="biao" id="btnAudit" href="#"><i></i><span>标签</span></a></li>
+                            <li><a class="inport" id="btnAudit" href="#"><i></i><span>导入</span></a></li>
+                            <li><a class="import" id="btnAudit" href="#"><i></i><span>导出</span></a></li>
+                            <li><a class="sms" id="btnAudit" href="#"><i></i><span>短信</span></a></li>
+                            <li><a class="email" id="btnAudit" href="#"><i></i><span>邮件</span></a></li>
+                            <li><a class="hebing" id="btnAudit" href="#"><i></i><span>合并</span></a></li>
+                            <li><a class="shuxing" id="btnAudit" href="#"><i></i><span>属性</span></a></li>-->
+                            *@
+                        </ul>
+                    </div>
+					<!--条件-->
+                   @* <div class="r-list">
+                        <ul class="l-top-list">
+                            <li>当前显示结果：</li>
+                            <li><a href="#" rel="nofollow" title="意向客户"><strong>意向客户</strong></a></li>
+                            <li><a href="#" rel="nofollow" title="30天未联系"><strong>集团客户</strong></a></li>
+                        </ul>
+                    </div>*@
+                </div>
+            </div>
+
+
+
+            <!--客户列表开始-->
+
+            <form id="form1">
+                <div id="grid">
+                    <div id="maingrid4" style="margin: -1px; min-width: 600px;"></div>
+                    @*<div id="toolbar1"></div>*@
+                    @*                    <div id="Div1" style="position: relative;">*@
+                    @*                        <div id="maingrid5" style="margin: -1px -1px;"></div>*@
+                    @*                    </div>*@
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <!--右侧列表结束-->
+
+    <div class="clear" style="clear: both;"></div>
+</div>
+@section script{
+    
+}

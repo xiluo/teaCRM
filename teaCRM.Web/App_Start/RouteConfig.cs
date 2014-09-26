@@ -60,7 +60,7 @@ namespace teaCRM.Web
             routes.MapRoute(
                 name: "Apps",
                 url: "Apps/{controller}/{action}/{id}",
-                defaults: new { controller = "Index", action = "Index", id = UrlParameter.Optional },
+                defaults: new { controller = "Market", action = "Index", id = UrlParameter.Optional },
                 namespaces: new string[] { "teaCRM.Web.Controllers.Apps" }
                 );
 
