@@ -7,6 +7,8 @@
 //全局变量==============================================================
 //客户表格
 var grid_customer;
+//筛选树
+var filter_tree;
 //公司编号
 var compNum;
 //当前模块id
@@ -27,7 +29,7 @@ $(document).ready(function() {
 
 $(function() {
     //首次打开页面时对左侧分类进行高度设定
-    $(".layout-left").height($(window).height() - 100);
+    $(".layout-left").height($(window).height() -82);
     //按钮提示
     $('.tip').tooltip();
     //按钮气泡
@@ -91,9 +93,9 @@ function init_single_filter_tree() {
             for (var index in json_data) {
                 var tnode = json_data[index];
                 //console.log(tnode);
-                var treeObj = $.fn.zTree.getZTreeObj("filter_tree");
-                var node = treeObj.getNodeByParam("id", tnode.id, null);
-                treeObj.expandNode(node, true, true, true);
+                filter_tree = $.fn.zTree.getZTreeObj("filter_tree");
+                var node = filter_tree.getNodeByParam("id", tnode.id, null);
+                filter_tree.expandNode(node, true, true, true);
             }
         },
         error: function(e) {
@@ -107,9 +109,6 @@ function init_multi_filter_tree() {
     var setting1 = {
         check: {
             enable: true
-//            ,
-//            chkStyle: "chackbox",
-//            radioType: "all"
         },
         data: {
             simpleData: {
@@ -145,10 +144,10 @@ function init_multi_filter_tree() {
                 return (treeNode.click != false);
             }
 //            ,
-//            onClick: function (event, treeId, treeNode, clickFlag) {
-//                console.log(treeNode);
-//                 showMsg("你选中的节点数据：" + treeNode.id + " " + treeNode.name,"Success");
-//            }
+//            onCheck: function (e, treeId, treeNode) {
+//                showMsg("你选中的节点数据：" + treeNode.id + " " + treeNode.name, "Success");
+//		}	
+
         }
     };
     $.ajax({
@@ -163,9 +162,9 @@ function init_multi_filter_tree() {
             for (var index in json_data) {
                 var tnode = json_data[index];
                 //console.log(tnode);
-                var treeObj = $.fn.zTree.getZTreeObj("filter_tree");
-                var node = treeObj.getNodeByParam("id", tnode.id, null);
-                treeObj.expandNode(node, true, true, true);
+                filter_tree = $.fn.zTree.getZTreeObj("filter_tree");
+                var node = filter_tree.getNodeByParam("id", tnode.id, null);
+                filter_tree.expandNode(node, true, true, true);
             }
         },
         error: function(msg) {
@@ -179,6 +178,7 @@ function init_multi_filter_tree() {
 function ckeckAll() {
     $("#mselect").hide();
     $("#sselect").show();
+    $("#btn-filter").show();
     init_multi_filter_tree();
 }
 
@@ -186,8 +186,23 @@ function ckeckAll() {
 function unckeckAll() {
     $("#sselect").hide();
     $("#mselect").show();
+    $("#btn-filter").hide();
     init_single_filter_tree();
 }
+
+//筛选客户信息
+function filter_now() {
+    var nodes = filter_tree.getCheckedNodes(true);
+    //console.log(nodes);
+    var ids = [];
+    for (var i = 0; i < nodes.length; i++) {
+        var node = nodes[i];
+        ids.push(node.id);
+    }
+    var cids = ids.join(",");
+    showMsg("筛选" + cids, "Success");
+}
+
 
 //=============================================================================================
 
@@ -201,10 +216,10 @@ function init_customer_grid() {
                 compNum: $("#CompNum").val()
             };
         },
-        url: "/api/settings/role/getAllRoles",
+        url: "/api/crm/customer/getAllCustomers",
         selection: true,
         multiSelect: true,
-        rowSelect: true,
+        rowSelect: false,
         keepSelection: true,
         rowCount: [10, 30, 50],
         navigation: 3,
@@ -220,28 +235,12 @@ function init_customer_grid() {
             infos: "从{{ctx.start}} 到 {{ctx.end}}，共{{ctx.total}} 条记录"
         },
         formatters: {
-            "RoleType": function(column, row) {
-                if (row.RoleType == 0) {
-                    return "超级管理员";
-                } else if (row.RoleIssys == 1) {
-                    return "系统管理员";
-                } else {
-                    return "普通员工";
-                }
-
-            },
-            "RoleIsSys": function(column, row) {
-                if (row.RoleIsSys == 0) {
-                    return "否";
-                } else {
-                    return "是";
-                }
-
+            "CusName": function(column, row) {
+                return "<a href=\"javascript:;\" onclick=\"view(" + row.Id + ");\" >" + row.CusName + "</a>";
             },
             "commands": function(column, row) {
-                return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"refresh('/Apps/Settings/Permission/Function/" + row.Id + "');\" title=\"管理【" + row.RoleName + "】的权限\"><span class=\"glyphicon glyphicon-user\"></span></button>" +
-                    "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"edit(" + row.Id + ");\" title=\"修改【" + row.RoleName + "】客户\"><span class=\"glyphicon glyphicon-pencil\"></span></button>" +
-                    "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"del(" + row.Id + ");\" title=\"删除【" + row.RoleName + "】客户\"><span class=\"glyphicon glyphicon-remove\"></span></button>";
+                return "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"edit(" + row.Id + ");\" title=\"修改【" + row.CusName + "】客户\"><span class=\"glyphicon glyphicon-pencil\"></span></button>" +
+                    "<button type=\"button\"  class=\"btn btn-link btn-sm btn-cmd tip\" onclick=\"del(" + row.Id + ");\" title=\"删除【" + row.CusName + "】客户\"><span class=\"glyphicon glyphicon-remove\"></span></button>";
             }
         }
     }).on("loaded.rs.jquery.bootgrid", function(e) {
@@ -254,14 +253,6 @@ function init_customer_grid() {
 }
 
 
-//根据id集合获取省市信息=========================================================================
-//需要引用 <script src="/Themes/default/base/js/city.js" type="text/javascript"></script>
-// 2014-09-04 By 唐有炜
-function get_city_by_ids(ids) {
-    return "省市信息";
-}
-
-
 //查看客户信息
 function view(id) {
     showContentWindow("show_view", "/Apps/CRM/Customer/Show/" + id, "查看客户", 800, 480);
@@ -270,20 +261,7 @@ function view(id) {
 
 //高级搜索
 function high_search() {
-//    var search_type = $("#sel-search").val();
-//    var search_keyword = $("#txtKeywords").val();
-//    //showMsg(search_type);
-//    if (search_type == "") {
-//        showMsg("请先选择搜索类型", "Error");
-//        return;
-//    }
-//    if (search_keyword == "") {
-//        showMsg("请先选择搜索关键字", "Error");
-//        return;
-//    }
-//    var seatch_url = "/Apps/CRM/LoadData/GetCustomerLsit/?" + search_type + "=" + search_keyword + "&rnd=" + Math.random();
-    //    do_search(seatch_url);
-    showDialog("高级搜索",function (){});
+    showDialog("高级搜索", function() {});
 }
 
 //添加客户
@@ -301,7 +279,7 @@ function add() {
         var data = $(form_customer).serialize();
         //console.log(data);
         //提交数据
-        var url = "/Apps/CRM/Customer/Add/";
+        var url = "/api/crm/customer/addCustomer";
         $.ajax({
             type: "post",
             cache: false,
@@ -309,7 +287,7 @@ function add() {
             data: data,
             dataType: "json",
             beforeSend: function() {
-                showMsg("添加中，请稍后...");
+                showMsg("添加中，请稍后...","Success");
             },
             complete: function() {
                 //d.close().remove();
@@ -322,7 +300,7 @@ function add() {
                     //在iframe里面打开弹出框并自动关闭
                     showMsg(result.Msg, "Success");
                     //刷新数据
-                    customer_grid_reload();
+                    grid_customer.bootgrid("reload");
                 } else {
                     showMsg("系统异常！", "Error");
                 }
@@ -336,30 +314,29 @@ function add() {
 }
 
 
-function edit() {
-    var manager = $("#maingrid4").ligerGetGridManager();
-    var row = manager.getSelectedRow();
-    showWindow("show_add", "/Apps/CRM/Customer/Edit/" + row.id, "修改客户", 800, 480, function() {
-        var form_customer = $(window.frames["frm_show_add"].document).find("#form_customer");
+function edit(id) {
+    showWindow("show_edit", "/Apps/CRM/Customer/Edit/" + id, "修改客户", 800, 480, function () {
+        var form_customer = $(window.frames["frm_show_edit"].document).find("#form_customer");
         //var data = $(form_customer).serialize();
         //showMsg(data);
         //表单验证
         //validate_form();
-        var flag = document.getElementById("frm_show_add").contentWindow.form_valid();
+        var flag = document.getElementById("frm_show_edit").contentWindow.form_valid();
         if (!flag) {
             return false;
         }
         var data = $(form_customer).serialize();
         //console.log(data);
+        // return 
         //提交数据
         $.ajax({
             type: "post",
             cache: false,
-            url: "/Apps/CRM/Customer/Edit/" + row.id,
+            url: "/api/crm/customer/editCustomer",
             data: data,
             dataType: "json",
             beforeSend: function() {
-                showMsg("修改中，请稍后...");
+                showMsg("修改中，请稍后...","Success");
             },
             complete: function() {
                 //d.close().remove();
@@ -371,9 +348,9 @@ function edit() {
                 if (status == true || status == "true" || status == "True") {
                     showMsg(result.Msg, "Success");
                     //刷新数据
-                    customer_grid_reload();
+                    grid_customer.bootgrid("reload");
                 } else {
-                    showMsg("系统异常！", "Error");
+                    showMsg("系统异常，客户修改失败！", "Error");
                 }
             },
             error: function() {
@@ -389,37 +366,6 @@ function del() {
     to_trash();
 }
 
-function context_del() {
-    var manager = $("#maingrid4").ligerGetGridManager();
-    var row = manager.getSelectedRow();
-    //console.log(row);
-    if (row) {
-        showDialog("确认删除吗？（超级管理员可在回收站恢复）", function() {
-            $.ajax({
-                url: "/Apps/CRM/LoadData/ToTrash/",
-                cache: false,
-                type: "POST",
-                data: { cus_ids: row.id, rnd: Math.random() },
-                success: function(result) {
-                    var status = result.Status;
-                    if (status == true || status == "true" || status == "True") {
-                        showMsg("删除成功！", "Success");
-                        customer_grid_reload();
-                    } else {
-                        showMsg("删除失败！", "Error");
-                    }
-                },
-                error: function() {
-                    showMsg("操作失败！", "Error");
-                }
-            });
-        });
-
-
-    } else {
-        showMsg("请选择客户！");
-    }
-}
 
 //删除（放入回收站）
 function to_trash() {
@@ -493,9 +439,3 @@ function to_pub() {
 function transfer() {
     showMsg("转移客户！", "Success");
 }
-
-//重新加载客户数据
-function customer_grid_reload() {
-    var manager = $("#maingrid4").ligerGetGridManager();
-    manager.loadData(true);
-};

@@ -616,15 +616,29 @@ namespace teaCRM.Dao.Impl
             {
                 //获取查询结果
                 //加上扩展字段值
-                var customers = db.TCusBases;
+                var customers = db.VCustomerContacts;
                 recordCount = customers.Count();
                 var prevCount = (pageIndex - 1)*pageSize;
-                var models = (IQueryable<object>) (customers
-                    .Skip(prevCount)
-                    .Take(pageSize)
-                    .Where(predicate, values)
-                    .Select(selector, values)
-                    .OrderBy(ordering));
+
+                IQueryable<object> models = null;
+                if (!String.IsNullOrEmpty(selector))
+                {
+                    models = (IQueryable<object>) (customers
+                        .Skip(prevCount)
+                        .Take(pageSize)
+                        .Where(predicate, values)
+                        .Select(selector, values)
+                        .OrderBy(ordering));
+                }
+                else
+                {
+                    models = (IQueryable<object>)(customers
+                        .Skip(prevCount)
+                        .Take(pageSize)
+                        .Where(predicate, values)
+                        .OrderBy(ordering));
+                }
+               
 
                 var sqlText = models.GetProperty("SqlText");
                 LogHelper.Debug("ELINQ Dynamic Paging:<br/>" + sqlText.ToString());
@@ -685,7 +699,17 @@ namespace teaCRM.Dao.Impl
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
-                var model = ((IQueryable<object>) db.TCusBases.Where(predicate, values).Select(selector, values));
+                IQueryable<object> model=null;
+                if (!String.IsNullOrEmpty(selector))
+                {
+                    model =
+                        ((IQueryable<object>) db.VCustomerContacts.Where(predicate, values).Select(selector, values));
+                }
+                else
+                {
+                    model = ((IQueryable<object>)db.VCustomerContacts.Where(predicate, values));
+                }
+              
                 object customer = model.FirstOrDefault();
                 var sqlText = model.GetProperty("SqlText");
                  LogHelper.Debug("ELINQ Paging:<br/>" + sqlText.ToString());

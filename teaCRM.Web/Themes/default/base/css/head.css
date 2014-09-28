@@ -103,8 +103,9 @@ width: 140px;
 .exit {
     float: right;
     margin-top: 20px;
-    font-size: 14px;
-	color:#f2efef;
+    font-size: 13px;
+	color:#FAFF7C;
+	margin-right:20px;
 }
 
 .exit a {

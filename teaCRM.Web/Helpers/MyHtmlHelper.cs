@@ -62,10 +62,10 @@ namespace teaCRM.Web.Helpers
             {
                 case 1: //短文本框
                     FieldHtmlString.Append(String.Format("<div class=\"{0}\">", expCss));
-                    FieldHtmlString.Append("<b>");
+                    FieldHtmlString.Append("<div class=\"tit\">");
                     FieldHtmlString.Append(BooleanParse(htmlHelper, expIsNull, "<em class=\"imp\">*</em>", "", ""));
-                    FieldHtmlString.Append(string.Format("{0}:", expTitle));
-                    FieldHtmlString.Append("</b>");
+                    FieldHtmlString.Append(string.Format("{0}：", expTitle));
+                    FieldHtmlString.Append("</div>");
                     FieldHtmlString.Append(
                         string.Format(
                             "<input type=\"text\" name=\"{0}\" id=\"{0}\" class=\"form-control comm-tbox-1\" />",
@@ -168,6 +168,7 @@ namespace teaCRM.Web.Helpers
 //                            </dl>
 //                            break;
                 default:
+                    FieldHtmlString.Append(String.Format("<div class='span6'><div class=\"tit\"><em class='imp'></em>默认字段：</div> <input type='text' id=\"{0}\" name=\"{0}\" class='form-control ' placeholder=''/></div>",expName));
                     break;
             }
 

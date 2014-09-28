@@ -76,7 +76,9 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         /// <summary>
         /// 当前模块对应的id（应用发布时确定）
         /// </summary>
-        private readonly int MyappId = MyConfigHelper.GetAppId("customer");
+        private readonly int CustomerMyappId = MyConfigHelper.GetMyAppId("customer");
+
+        private readonly int ContactMyappId = MyConfigHelper.GetMyAppId("contact");
 
         /// <summary>
         /// 客户扩展字段信息
@@ -110,16 +112,15 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             CompNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
             UserId = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString();
             //获取客户扩展字段信息
-            customerExpandFields = CustomerService.GetCustomerExpandFields(CompNum, MyappId);
-
-            //获取客户联系人扩展字段信息
+            customerExpandFields = CustomerService.GetCustomerExpandFields(CompNum, CustomerMyappId);
+            //获取联系人扩展字段信息
             contactExpandFields =
-                CustomerService.GetContactExpandFields(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString());
+                CustomerService.GetContactExpandFields(CompNum, ContactMyappId);
             //获取操作
             customerOperatings =
-                CustomerService.GetCustomerOperating(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString());
+                CustomerService.GetCustomerOperating(CompNum, CustomerMyappId);
             //获取模块
-            myApps = AppMakerService.GetAllMyApps(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(), AppId);
+            myApps = AppMakerService.GetAllMyApps(CompNum, AppId);
         }
 
         #endregion
@@ -140,8 +141,8 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             Init();
             if (contactExpandFields == null || customerExpandFields == null)
             {
-                ViewBag.ErrorMessage = "客户扩展字段信息或者联系人扩展字段信息失败。";
-                return View("_Error");
+                ViewData["Msg"] = "客户扩展字段信息或者联系人扩展字段信息失败。";
+                return View("_Msg");
             }
             else
             {
@@ -154,7 +155,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
 
                 //字段
                 ViewBag.CompNum = CompNum;
-                ViewBag.MyappId = MyappId;
+                ViewBag.CustomerMyappId = CustomerMyappId;
                 ViewBag.ConBack = ConBack;
                 ViewBag.ConIsPub = ConIsPub;
                 return View("CustomerIndex");
@@ -362,15 +363,10 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         [UserAuthorize]
         public ActionResult Edit(int id)
         {
-//            //初始化扩展字段
-//            Init();
-//            if (fc.Count == 0) //访问页面
-//            {
-//               
-
+            Init();
             if (contactExpandFields == null || customerExpandFields == null)
             {
-                ViewBag.ErrorMessage = "客户扩展字段信息或者联系人扩展字段信息失败。";
+                ViewData["Msg"] = "客户扩展字段信息或者联系人扩展字段信息失败。";
                 return View("_Error");
             }
             else
@@ -380,101 +376,6 @@ namespace teaCRM.Web.Controllers.Apps.CRM
                 ViewBag.CustomerId = id;
                 return View("CustomerEdit");
             }
-//            }
-//            else //提交修改
-//            {
-//                ResponseMessage rmsg = new ResponseMessage();
-//                //客户赋值==============================================
-//                var compNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
-//                var userId = int.Parse(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString());
-//
-//                //基本字段
-//                TCusBase CusBase = new TCusBase();
-//                CusBase.Id = int.Parse(Request.Params.Get("cus_id"));
-//                CusBase.CusNo = RandomHelper.GetCustomerNumber();
-//                CusBase.CompNum = compNum;
-//                CusBase.CusName = fc["cus_name"].TrimEnd(',');
-//                CusBase.CusSname = fc["cus_sname"];
-//                CusBase.CusLastid = 0;
-//                CusBase.CusTel = fc["cus_tel"];
-//                CusBase.CusCity = String.Format("{0},{1},{2}", fc["cus_province"].ToString(), fc["cus_city"], fc["cus_region"]);
-//                CusBase.CusAddress = fc["cus_address"];
-//                CusBase.CusNote = fc["cus_note"];
-//                CusBase.ConId = int.Parse(fc["con_id"]);
-//                CusBase.UserId = userId;
-//                CusBase.ConTeam = "17,21";
-//                CusBase.ConIsPub = 0;
-//                CusBase.ConBack = 0;
-//                //扩展字段
-//                Dictionary<string, object> cusFields = new Dictionary<string, object>();
-//                for (int i = 0; i < fc.Count; i++)
-//                {
-//                    var field = fc.GetKey(i);
-//                    var value = fc.Get(field);
-//                    foreach (var field2 in customerExpandFields)
-//                    {
-//                        if (field == field2.ExpName)
-//                        {
-//                            cusFields.Add(field, value);
-//                        }
-//                    }
-//                }
-//                //存储扩展字段的值
-//                CusBase.CusFields = JsonConvert.SerializeObject(cusFields);
-//
-//
-//                //========================================================================
-//
-//                //主联系人赋值 
-//                var conBir = fc["con_bir"];
-//                if (String.IsNullOrEmpty(fc["con_bir"]))
-//                {
-//                    conBir = DateTime.Now.ToString();
-//                }
-//                TCusCon CusCon = new TCusCon()
-//                {
-//                    CompNum = compNum,
-//                    ConName = fc["con_name"],
-//                    ConTel = fc["con_tel"],
-//                    ConQq = fc["con_qq"],
-//                    ConEmail = fc["con_email"],
-//                    ConBir = DateTime.Parse(conBir),
-//                    ConNote = fc["con_note"],
-//                    ConIsMain = 1,
-//                    UserId = userId
-//                };
-//                Dictionary<string, object> conFields = new Dictionary<string, object>();
-//                for (int i = 0; i < fc.Count; i++)
-//                {
-//                    var field_con = fc.GetKey(i);
-//                    var value_con = fc.Get(field_con);
-//                    foreach (var field_con2 in contactExpandFields)
-//                    {
-//                        if (field_con == field_con2.ExpName)
-//                        {
-//                            //LogHelper.Debug("联系人扩展字段："+field_con);
-//                            conFields.Add(field_con, value_con);
-//                        }
-//                    }
-//                }
-//                //存储扩展字段的值
-//                CusCon.ConFields = JsonConvert.SerializeObject(conFields);
-//                //==============================================================
-//                //
-//                //            //添加提交
-//                bool add_status = CustomerService.EditCustomer(id, CusBase, CusCon);
-//                if (add_status)
-//                {
-//                    rmsg.Status = add_status;
-//                    rmsg.Msg = "客户修改成功！";
-//                }
-//                else
-//                {
-//                    rmsg.Status = add_status;
-//                    rmsg.Msg = "客户修改失败！";
-//                }
-//                return Json(rmsg);
-//            }
         }
 
         #endregion

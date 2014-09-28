@@ -4,7 +4,7 @@
 @{
     //客户扩展字段信息
     var customerFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.CustomerExpandFields;
-    
+
     //联系人扩展字段信息
     var contactFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.ContactExpandFields;
     Layout = null;
@@ -26,298 +26,64 @@
     <script src="/Themes/default/crm/js/customer_edit.js" type="text/javascript"></script>
 </head>
 <body>
-    <form id="form_customer" name="form_customer" action="" method="post">
-        <input type="hidden" id="cus_id" name="cus_id" value="@ViewBag.CustomerId"/>
-        <input type="hidden" id="con_id" name="con_id" />
+    <form id="form_customer" name="form_customer">
+        <!--客户id-->
+        <input type="hidden" id="CustomerId" name="CustomerId" value="@ViewBag.CustomerId"/>
+          <input type="hidden" id="CusNo" name="CusNo" />
+        <input type="hidden" id="ConId" name="ConId" />
         <!--当前公司id-->
         <input type="hidden" id="CompNum" name="CompNum" value="@Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM]" />
+         <!--当前用户id-->
+        <input type="hidden" id="UserId" name="UserId" value="@Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID]" />
         <!--表单错误提示区-->
         <div tabindex="-1" id="msgprint" class="warning" style="position: fixed; width: 90%; display: none;">您的表单包含错误，请检查！</div>
-        <div class="tab-content" style="padding: 10px;">
-            
-            
-             <ul class="nav nav-tabs" id="formTab">
-                <li class="active"><a href="#customer-info" data-toggle="tab">客户信息</a></li>
-                <li><a href="#contact-info" data-toggle="tab">主联系人信息</a></li>
-            </ul>
-            <div style="height: 20px;"></div>
-            <div class="tab-pane active" id="customer-info">
-             <div class="container">
-                <div  class="row">
-                    <div class="span6">
-                        <b><em class="imp">*</em>客户名称：</b> <input type="text" id="" name="" class="form-control " placeholder="输入单位名称，如为个人则输入姓名" />
-                    </div>
-                    <div class="span6">
-                        <b>客户名称：</b><input type="text" id="" name="" class="form-control " />
-                    </div>
-                    <div class="span6">
- 
-                        <b>客户名称：</b><input type="text" id="" name="" class="form-control " />
-                    </div>
-                    <div class="span6">
-                        <b>客户名称：</b> <input type="text" id="" name="" class="form-control " />
-                    </div>
-                    <div class="span12">
-                        <b>客户名称：</b> <input type="text" id="" name="" class="form-control wid515" />
-                    </div>
-                    <div class="span12">
-                        <b>客户名称：</b> <input type="text" id="" name="" class="form-control wid515" />
-                    </div>
-                    <div class="span6">
-                        <b>客户名称：</b><input type="text" id="" name="" class="form-control " />
-                    </div>
-                    <div class="span6">
- 
-                        <b>客户名称：</b><input type="text" id="" name="" class="form-control " />
-                    </div>
-                </div>
-            </div>
-              </div>
-            <div class="tab-pane" id="contact-info">
-            
-             </div>
-            
-
-            @*
+        <div class="tab-content">
             <ul class="nav nav-tabs" id="formTab">
                 <li class="active"><a href="#customer-info" data-toggle="tab">客户信息</a></li>
                 <li><a href="#contact-info" data-toggle="tab">主联系人信息</a></li>
             </ul>
             <div style="height: 20px;"></div>
             <div class="tab-pane active" id="customer-info">
-                  <dl>
-                    <dt>
-                        <em class="imp">*</em>客户名称 ：
-                    </dt>
-                    <dd>
-                        <input type="text" class="form-control wid260 required" id="cus_name" name="cus_name" placeholder="输入单位名称，如为个人则输入姓名" />
-                    </dd>
-                    <dt>
-                        助记简称 ：
-                    </dt>
-                    <dd>
-                        <input type="text"class="form-control wid200" id="cus_sname" name="cus_sname" placeholder="客户简称，方便查询" />
-                    </dd>
-                </dl>
-                <dl>
-                    <dt>
-                        省份城市 ：
-                    </dt>
-                    <dd>
-                        <div class="form-group">
-                            <select id="cus_province" name="cus_province" field_required="0"  class="form-control wid120" field_cname="省份">
-                                <option value="0" selected="selected">--请选择--</option>
-                            </select>
-
-                            <select id="cus_city" name="cus_city" field_required="0" class="form-control wid120" style="margin: -30px 0 0 130px"  field_cname="城市">
-                                <option value="0" selected="selected">--请选择--</option>
-                            </select>
-                            <select id="cus_region" name="cus_region" field_required="0" class="form-control wid120" style="margin: -30px 0 0 260px" field_cname="城市">
-                                <option value="0" selected="selected">--请选择--</option>
-                            </select>
-                        </div>
-                    </dd>
-                </dl>
-                <dl>
-                    <dt>
-                        电话 ：
-                    </dt>
-                    <dd>
-                        <input type="text"class="form-control wid260 mobileTelephome" name="cus_tel" id="cus_tel" />
-                    </dd>
-                    <dt>
-                        详细地址 ：
-                    </dt>
-                    <dd>
-                        <input type="text"class="form-control wid200" id="cus_address" name="cus_address" />
-                    </dd>
-                </dl>
-                <dl>
-                    <dt>
-                        备注 ：
-                    </dt>
-                    <dd>
-                        <textarea class="form-control wid515" id="cus_note" name="cus_note" cols="50" rows="2"></textarea>
-                    </dd>
-                </dl>
-                *@
-                
-                
-                
-           
-                
-                
-            @*
-                <!--客户扩展字段开始-->
-                @foreach (var field in customerFields)
-                {
-                    switch (field.ExpCtype)
-                    {
-                        case 1: //短文本框
-                            <dl>
-                                <dt>
-                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                    @field.ExpTitle ：
-                                </dt>
-                                <dd>
-                                    <input type="text" name="@field.ExpName" id="@field.ExpName"class="form-control comm-tbox-1 " />
-                                </dd>
-                            </dl>
-                            break;
-                        case 2: //长文本框
-                            <dl>
-                                <dt>
-                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                    @field.ExpTitle ：
-                                </dt>
-                                <dd>
-                                    <textarea class="form-control comm-abox-1 " id="@field.ExpName" name="@field.ExpName" cols="50" rows="5"></textarea>
-                                </dd>
-                            </dl>
-                            break;
-                        case 3: //短文本框(链接)
-                            <dl>
-                                <dt>
-                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                    @field.ExpTitle ：
-                                </dt>
-                                <dd>
-                                    <input type="text" id="@field.ExpName" name="@field.ExpName" class="form-control " />
-                                </dd>
-                            </dl>
-                            break;
-                        case 4: //短文本框(年龄)
-                            <dl>
-                                <dt>
-                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                    @field.ExpTitle ：
-                                </dt>
-                                <dd>
-                                    <input type="text" id="@field.ExpName" class="form-control comm-tbox-1 " name="@field.ExpName" />
-                                </dd>
-                            </dl>
-                            break;
-                        case 5: //下拉框
-                            <dl>
-                                <dt>
-                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                    @field.ExpTitle ：
-                                </dt>
-                                <dd>
-                                    <select id="@field.ExpName" name="@field.ExpName" class="form-control ">
-                                        <option selected="selected" value="">--请选择--</option>
-                                        @Html.StringToOptions(field.ExpOption)
-                                    </select>
-                                </dd>
-                            </dl>
-                            break;
-                        case 6: //复选框
-                            <dl>
-                                <dt>
-                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                    @field.ExpTitle ：
-                                </dt>
-                                <dd>
-                                    @Html.StringToCheckboxList(field.ExpOption, field.ExpName, field.ExpName, field.ExpTitle, field.ExpIsNull)
-                                </dd>
-                            </dl>
-                            break;
-                        case 7: //附件上传
-                            <dl>
-                                <dt>
-                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                    @field.ExpTitle
-                                </dt>
-                                <dd>
-                                    <div class="box">
-                                        <input type="text" name="copyFile" class="form-control textbox" />
-                                        <a href="javascript:void(0);" class="link">浏览</a>
-                                        <input type="file" class="form-control uploadFile" name="upload" onChange=" getFile(this, 'copyFile') " />
-                                    </div>
-                                </dd>
-                            </dl>
-                            break;
-                        case 8: //时间日期
-                            <dl>
-                                <dt>
-                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                    @field.ExpTitle ：
-                                </dt>
-                                <dd>
-                                    <input type="text" id="@field.ExpName" name="@field.ExpName" class="form-control Wdate " style="width: 90px;" onClick=" WdatePicker({ dateFmt: 'yyyy-MM-dd' }) " />
-                                </dd>
-                            </dl>
-                            break;
-                        case 9: //复选框
-                            <dl>
-                                <dt>
-                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                    @field.ExpTitle
-                                </dt>
-                                <dd>
-                                    @Html.StringToCheckboxList(field.ExpOption, field.ExpName, field.ExpName, field.ExpTitle, field.ExpIsNull)
-                                </dd>
-                            </dl>
-                            break;
-                        default:
-                            break;
-                    }
-                }
+                <div class="container">
+                    <div  class="row">
+                    
+                        <div class="span6">
+                         <div class="tit"><em class="imp">*</em>客户名称：</div> <input type="text" id="CusName" name="CusName" class="form-control required" placeholder="输入单位名称，如为个人则输入姓名" /></div>
+                        <!--输出扩展字段-->
+                        @foreach (var customerField in customerFields)
+                        {
+                            if (customerField.ExpIsShow == 1)
+                            {
+                                @Html.GetFormFieldHtmlString(@customerField.ExpCtype, customerField.ExpName, customerField.ExpTitle, customerField.ExpCss, customerField.ExpIsNull, customerField.ExpOption)
+                            }
+                        }
+                         
+                    </div>
+                </div>
             </div>
             <div class="tab-pane" id="contact-info">
+                <div class="container">
+                    <div  class="row">
+                    <div class="span6">
+                         <div class="tit"><em class="imp">*</em>主联系人名称：</div> <input type="text" id="ConName" name="ConName" class="form-control " /></div>
+                        <div class="span6">
+                            <div class="tit"><em class="imp">*</em>主联系人电话：</div> <input type="text" id="ConTel" name="ConTel" class="form-control " />
+                        </div>
+                        @foreach (var contactField in contactFields)
+                        {
+                            if (contactField.ExpIsShow == 1)
+                            {
+                                @Html.GetFormFieldHtmlString(@contactField.ExpCtype, contactField.ExpName, contactField.ExpTitle, contactField.ExpCss, contactField.ExpIsNull, contactField.ExpOption)
+                            }
+                        }
+                    </div>
+            
+                </div>
+            
+            </div>
+            
 
-                <dl>
-                    <dt> 联系人名称 ：</dt>
-                    <dd>
-                        <input type="text" name="con_name" id="con_name" class="form-control" />
-                    </dd>
-                    <dt>电话/手机 ：</dt>
-                    <dd>
-                        <input type="text" name="con_tel" id="con_tel" class="form-control number" />
-                    </dd>
-                </dl>
-                <dl>
-                    <dt>Q&nbsp;&nbsp;Q ：</dt>
-                    <dd>
-                        <input type="text" name="con_qq" id="con_qq" class="form-control number" />
-                    </dd>
-                    <dt>邮箱 ：</dt>
-                    <dd>
-                        <input type="text" name="con_email" id="con_email" class="form-control email" />
-                    </dd>
-                </dl>
-                <dl>
-                    <dt>出生年月 ：</dt>
-                    <dd>
-                        <input type="text" name="con_bir" id="con_bir" class="form-control Wdate dateISO" onClick=" WdatePicker({ dateFmt: 'yyyy-MM-dd' }) " />
-                    </dd>
-                </dl>
-                <dl>
-                    <dt>备注 ：</dt>
-                    <dd>
-                        <textarea class="form-control comm-abox-1" rows="5" cols="50" name="con_note" id="con_note"></textarea>
-                    </dd>
-                </dl>
-
-                <!--联系人扩展字段开始-->
-                @foreach (var field in contactFields)
-                {
-                    switch (field.ExpCtype)
-                    {
-                        case 2:
-                            <dl>
-                                <dt>
-                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
-                                    @field.ExpTitle ：
-                                </dt>
-                                <dt>
-                                    <textarea class="form-control comm-abox-1 " id="@field.ExpName" name="@field.ExpName" cols="50" rows="5"></textarea>
-                                </dt>
-                            </dl>
-                            break;
-                    }
-                }
-            </div> *@
+         
         </div>
 
     </form>

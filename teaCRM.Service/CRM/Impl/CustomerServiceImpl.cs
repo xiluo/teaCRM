@@ -191,9 +191,9 @@ namespace teaCRM.Service.CRM.Impl
         /// </summary>
         /// <param name="compNum">公司编号</param>
         /// <returns>List&lt;TFunOperating&gt;.</returns>
-        public List<TFunOperating> GetCustomerOperating(string compNum)
+        public List<TFunOperating> GetCustomerOperating(string compNum,int myappId)
         {
-            return FunOperatingDao.GetList(o => o.OpeIsSys == 1);
+            return FunOperatingDao.GetList(o => o.OpeIsStatus == 1 && o.MyappId == myappId);
         }
 
         #endregion
@@ -344,10 +344,10 @@ namespace teaCRM.Service.CRM.Impl
         /// </summary>
         /// <param name="compNum">公司编号</param>
         /// <returns>List&lt;TFunExpand&gt;.</returns>
-        public List<TFunExpand> GetContactExpandFields(string compNum)
+        public List<TFunExpand> GetContactExpandFields(string compNum,int myappId)
         {
             //MyappId==2代表联系人扩展字段
-            var contactExpandFields = FunExpandDao.GetList(e => e.CompNum == compNum && e.MyappId == 2);
+            var contactExpandFields = FunExpandDao.GetList(e => e.CompNum == compNum && e.MyappId == myappId);
             if (contactExpandFields.Count > 0)
             {
                 LogHelper.Info("联系人扩展字段获取成功,共" + contactExpandFields.Count + "个字段。");

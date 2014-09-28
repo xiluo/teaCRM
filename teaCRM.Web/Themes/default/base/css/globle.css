@@ -23,7 +23,7 @@ body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, texta
 select{ height:30px; line-height:30px;border: 1px solid #CCC;background-color: white; width:100px;padding: 3px 6px; border-bottom:none;}
 input2{background-color: white;border: 1px solid #CCC;height: 20px;padding: 3px 6px;font-size: 12px;line-height:20px;}
 /*部分表单布局样式--针对添加页面*/
-.tab-content{color:#666; overflow:hidden; margin:20px;}
+.tab-content{color:#666; overflow:hidden; margin:15px;}
 .tab-content dl,.div-content dl{ clear:both; display:block;line-height:30px; margin-bottom:8px;}
 .tab-content dl:after,.div-content dl:after{clear:both;content:".";display:block;height:0;visibility:hidden;}
 .tab-content dl:first-child{ border-top:none; }

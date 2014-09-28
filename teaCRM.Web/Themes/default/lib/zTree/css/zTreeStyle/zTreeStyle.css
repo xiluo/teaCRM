@@ -8,16 +8,16 @@ website:	http://code.google.com/p/jquerytree/
 
 -------------------------------------*/
 
-.ztree * {padding:0; margin:0; font-size:13px;}
+.ztree * {padding:0; margin:0; font-size:12px;}
 .ztree {margin:0; padding:5px; color:#333}
 .ztree li{padding:0; margin:0; list-style:none; line-height:14px; text-align:left; white-space:nowrap; outline:0}
 .ztree li ul{ margin:0; padding:0 0 0 18px}
 .ztree li ul.line{ background:url(./img/line_conn.gif) 0 0 repeat-y;}
 
-.ztree li a {padding:1px 3px 0 0; margin:0; cursor:pointer; height:24px; color:#333; background-color: transparent;
-	text-decoration:none; vertical-align:top; display: inline-block; line-height:24px;}
+.ztree li a {padding:1px 3px 0 0; margin:0; cursor:pointer; height:28px; color:#333; background-color: transparent;
+	text-decoration:none; vertical-align:top; display: inline-block; line-height:28px;}
 .ztree li a:hover {text-decoration:underline}
-.ztree li a.curSelectedNode {padding-top:0px; background-color:#FFE6B0; color:black; height:22px; border:1px #FFB951 solid; opacity:0.8; line-height:22px;}
+.ztree li a.curSelectedNode {padding:0px 10px; background-color:#FFE6B0; color:black; height:28px; border:1px #FFB951 solid; opacity:0.8; line-height:28px;}
 .ztree li a.curSelectedNode_Edit {padding-top:0px; background-color:#FFE6B0; color:black; height:22px; border:1px #FFB951 solid; opacity:0.8;line-height:22px;}
 .ztree li a.tmpTargetNode_inner {padding-top:0px; background-color:#316AC5; color:white; height:16px; border:1px #316AC5 solid;
 	opacity:0.8; filter:alpha(opacity=80)}
@@ -29,9 +29,9 @@ website:	http://code.google.com/p/jquerytree/
 .ztree li span.button {line-height:0; margin:0; width:16px; height:16px; display: inline-block; vertical-align:middle;
 	border:0 none; cursor: pointer;outline:none;
 	background-color:transparent; background-repeat:no-repeat; background-attachment: scroll;
-	background-image:url("./img/zTreeStandard.png"); *background-image:url("./img/zTreeStandard.gif")}
+	background-image:url("./img/zTreeStandard.png"); *background-image:url("./img/zTreeStandard.gif"); margin-top:6px;}
 
-.ztree li span.button.chk {width:13px; height:13px; margin:0 3px 0 0; cursor: auto}
+.ztree li span.button.chk {width:13px; height:13px; margin:6px 3px 0 0; cursor: auto}
 .ztree li span.button.chk.checkbox_false_full {background-position:0 0}
 .ztree li span.button.chk.checkbox_false_full_focus {background-position:0 -14px}
 .ztree li span.button.chk.checkbox_false_part {background-position:0 -28px}

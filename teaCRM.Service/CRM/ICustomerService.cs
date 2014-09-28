@@ -93,7 +93,7 @@ namespace teaCRM.Service.CRM
         /// </summary>
         /// <param name="compNum">公司编号</param>
         /// <returns>List&lt;TFunOperating&gt;.</returns>
-        List<TFunOperating> GetCustomerOperating(string compNum);
+        List<TFunOperating> GetCustomerOperating(string compNum,int myappId);
 
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace teaCRM.Service.CRM
         /// </summary>
         /// <param name="compNum">公司编号</param>
         /// <returns>联系人扩展字段</returns>
-        List<TFunExpand> GetContactExpandFields(string compNum);
+        List<TFunExpand> GetContactExpandFields(string compNum,int myappId);
 
         /// <summary>
         /// 获取一条联系人信息

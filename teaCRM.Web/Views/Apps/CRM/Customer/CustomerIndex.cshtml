@@ -1,4 +1,5 @@
 ﻿@using System.Web.Optimization
+@using NLite.Data.CodeGeneration
 @using teaCRM.Entity
 @using teaCRM.Web.Helpers
 @{
@@ -29,7 +30,7 @@
 
 }
 <!--当前模块id-->
-<input type="hidden" id="myappId" name="myappId"  value="@ViewBag.MyappId"/>
+<input type="hidden" id="myappId" name="myappId"  value="@ViewBag.CustomerMyappId"/>
 <!--当前公司id 布局页面已经定义
     <input type="hidden" id="compNum" name="compNum" value="@ViewBag.CompNum" />
     -->
@@ -47,6 +48,7 @@
             <div id="nav-side" class="nav-side">
                 <div class="ns-item">
                     <ul id="filter_tree" class="ztree"></ul>
+                    <button data-toggle="tooltip" id="btn-filter" style="display: none; margin-left: 5px;" class="btn btn-default tip" onclick=" filter_now() " title="" data-original-title="筛选客户信息，选中的筛选条件可以累加。"><span class="glyphicon glyphicon-plus"></span><b>立即筛选客户信息</b></button>                                  
                 </div>
             </div>
         </div>
@@ -67,24 +69,17 @@
                                                  switch (ops.OpeType)
                                                  {
                                                      case 0: //弹出框
-                                                         <button data-toggle="tooltip" class="btn btn-default tip"  onclick="@ops.OpeFunction" title="@ops.OpeName"><span class="@ops.OpeIcon"></span>@ops.OpeName</button>
+                                                         <button data-toggle="tooltip" class="btn btn-default tip"  onclick="@ops.OpeFunction" title="@ops.OpeName"><span class="@ops.OpeIcon"></span><b>@ops.OpeName</b></button>
                                                          break;
                                                      case 1: //提示框
-                                                         <button data-toggle="tooltip" class="btn btn-default tip"  onclick="@ops.OpeFunction " title="@ops.OpeName"><span class="@ops.OpeIcon"></span>@ops.OpeName</button>
+                                                         <button data-toggle="tooltip" class="btn btn-default tip"  onclick="@ops.OpeFunction " title="@ops.OpeName"><span class="@ops.OpeIcon"></span><b>@ops.OpeName</b></button>
                                                          break;
                                                      case 2: //链接
-                                                         <button data-toggle="tooltip" class="btn btn-default tip"  onclick=" refresh('@ops.OpeFunction'); " title="@ops.OpeName"><span class="@ops.OpeIcon"></span>@ops.OpeName</button>
+                                                         <button data-toggle="tooltip" class="btn btn-default tip"  onclick=" refresh('@ops.OpeFunction'); " title="@ops.OpeName"><span class="@ops.OpeIcon"></span><b>@ops.OpeName</b></button>
                                                          break;
                                                  }
                                              }   
        
-                                         </div>
-                                         <div class="r-list">
-                                             <ul class="l-top-list">
-                                                 <li style="margin-left: 20px;">当前显示结果：</li>
-                                                 <li><a href="#" rel="nofollow" title="意向客户"><strong>意向客户</strong></a></li>
-                                                 <li><a href="#" rel="nofollow" title="30天未联系"><strong>集团客户</strong></a></li>
-                                             </ul>
                                          </div>
                                          <div style="float: left; margin-left: 20px; padding-top: 10px;">
                                              <a href="javascript:void:(0);" onclick=" high_search(); ">高级搜索</a>  
@@ -108,12 +103,25 @@
             <table id="grid-customer" class="table table-condensed table-hover table-striped table-bordered" data-selection="true" data-multi-select="true" >
                 <thead>
                     <tr>
-                        <th data-column-id="RoleOrder" data-header-align="center" data-align="center"  data-order="asc">显示顺序</th>
-                        <th data-column-id="RoleName" data-header-align="center" data-align="center"  data-order="desc">角色名称</th>
-                        <th data-column-id="RoleType" data-header-align="center" data-align="center"  data-formatter="RoleType" data-order="desc">角色类型</th>
-                        <th data-column-id="RoleDesc" data-header-align="center" data-align="center"  data-order="desc">角色描述</th>
-                        <th data-column-id="RoleIssys" data-header-align="center" data-align="center"  data-formatter="RoleIsSys" data-sortable="false">是否内置</th>
-                        <th data-column-id="Id" data-type="numeric" data-identifier="true" data-formatter="commands" data-sortable="false">操作</th>
+                        <th data-column-id="CusName" data-header-align="center" data-align="center"  data-formatter="CusName" data-order="asc" style="width:300px;">客户名称</th>
+                        <!--输出扩展字段-->
+                        @foreach (var customerField in customerFields)
+                        {
+                            if (customerField.ExpIsShow == 1)
+                            {
+                                <th data-column-id="@NamingConversion.Default.PropertyName(customerField.ExpName)" data-header-align="center" data-align="center"  data-order="asc">@customerField.ExpTitle</th>
+                            }
+                        }
+                        <th data-column-id="ConName" data-header-align="center" data-align="center"  data-order="asc">联系人名称</th>
+                          <th data-column-id="ConTel" data-header-align="center" data-align="center"  data-order="asc">联系人电话</th>
+                         @foreach (var contactField in contactFields)
+                        {
+                            if (contactField.ExpIsShow == 1)
+                            {
+                                <th data-column-id="@NamingConversion.Default.PropertyName(contactField.ExpName)" data-header-align="center" data-align="center"  data-order="asc">@contactField.ExpTitle</th>
+                            }
+                        }
+                        <th data-column-id="Id" data-type="numeric" data-header-align="center" data-align="center" data-identifier="true" data-formatter="commands" data-sortable="false">操作</th>
                     </tr>
                 </thead>
             </table>

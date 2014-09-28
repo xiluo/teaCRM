@@ -259,6 +259,9 @@
     <Compile Include="Entities\VCompanyUser.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\VCustomerContact.cs">
+      <DependentUpon>teaCRMDBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\VMyappCompany.cs">
       <DependentUpon>teaCRMDBContext.tt</DependentUpon>
     </Compile>

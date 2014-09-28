@@ -1,16 +1,25 @@
 ﻿//*添加客户JS函数
 //*作者：唐有炜
 //*时间：2014年09月01日
+//公司编号
+var compNum;
+//当前模块id
+var myappId;
+
 
 $(document).ready(function() {
     //表单获取焦点
-    $("#cus_name").focus();
+    $("#CusName").focus();
     //加载省市数据
     load_city_data();
+
+    //初始化全局变量
+    var CustomerId = $("#CustomerId").val();
+    compNum = $("#CompNum").val();
+    myappId = $("#myappId").val();
     //加载表单数据
-    var cus_id = $("#cus_id").val();
-    if (cus_id != "") {
-        load_form_data(cus_id);
+    if (CustomerId != "") {
+        load_form_data(CustomerId);
     }
 
 });
@@ -156,40 +165,6 @@ function validate_form() {
             }
         },
 
-//       onkeyup: false,
-//        success: function (element) {
-//            var elem = $(element);
-//            elem.poshytip('disable');
-//            elem.poshytip('destroy');
-//        },
-//        errorPlacement: function (error, element) {
-//            var elem = $(element);
-//            if (!error.is(':empty')) {
-//                //右：x=right;y=center
-//                //左：x=left;y=center
-//                //上：x=inner-left
-//                //下：x=center;y=bottom
-//                var aX = "center";
-//                if (elem.attr("positionX") != null) {
-//                    aX = elem.attr("positionX");
-//                }
-//                var aY = "bottom";
-//                if (elem.attr("positionY") != null) {
-//                    aY = elem.attr("positionY");
-//                }
-//                elem.filter(':not(.valid)').poshytip({
-//                    content: error,
-//                    alignTo: 'target',
-//                    alignX: aX,
-//                    alignY: aY,
-//                    offsetX: 0,
-//                    offsetY: 5
-//                });
-//            } else {
-//                elem.poshytip('disable');
-//                elem.poshytip('destroy');
-//            }
-//        }
         errorPlacement: function(error, element) {
             var errorMsg = error[0].innerHTML;
             var elementName = element[0].name;
@@ -229,12 +204,9 @@ function form_valid() {
 }
 
 
-function load_form_data(cus_id) {
-    //alert(cus_id);
-    ///Apps/CRM/LoadData/GetCustomer/44
-    //                //alert(id);
-    //                //提交数据
-    var url = "/Apps/CRM/LoadData/GetCustomer/" + cus_id;
+function load_form_data(CustomerId) {
+    //alert(CustomerId);
+    var url = "/api/crm/customer/getCustomer?compNum=" + compNum + "&id=" + CustomerId;
     $.ajax({
         type: "get",
         cache: false,
@@ -248,23 +220,23 @@ function load_form_data(cus_id) {
         },
         success: function(result) {
             //console.log(result);
-            var obj = result[0];
+            var obj = JSON.parse(result);
             for (var key in obj) {
-                //alert(key + " " + result[key]);
+                //console.log(key +" "+obj[key]);
                 if ($("#" + key) != undefined) {
                     $("#" + key).val(obj[key]);
                     //处理Checkbox
                     //$("#" + key).next().val(result[key]);
                     //特殊处理
                     //省市处理
-                    if (key == "cus_city") {
-                        var city_arr = obj[key].split(",");
-                        $("#cus_province").val(city_arr[0]);
-                        get_cities_by_prov_code(city_arr[0]);
-                        $("#cus_city").val(city_arr[1]);
-                        get_regions_by_provcitycode(city_arr[0], city_arr[1]);
-                        $("#cus_region").val(city_arr[2]);
-                    }
+//                    if (key == "cus_city") {
+//                        var city_arr = obj[key].split(",");
+//                        $("#cus_province").val(city_arr[0]);
+//                        get_cities_by_prov_code(city_arr[0]);
+//                        $("#cus_city").val(city_arr[1]);
+//                        get_regions_by_provcitycode(city_arr[0], city_arr[1]);
+//                        $("#cus_region").val(city_arr[2]);
+//                    }
                    
                 }
             }

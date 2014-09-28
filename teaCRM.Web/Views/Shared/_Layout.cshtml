@@ -36,7 +36,7 @@
                 </div>
                 <!--更多结束-->
                 <!--欢迎开始-->
-                <div class="exit"><span id="sayHello">欢迎您，</span>@Html.LoadDefaultValue(Html.GetCurrentCompanyUser(int.Parse(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString())).UserTname, Html.GetCurrentCompanyUser(int.Parse(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString())).UserLname)。<a href="/Account/Logout/">安全退出</a></div>
+                <div class="exit"><span id="sayHello">欢迎您，</span>@Html.LoadDefaultValue(Html.GetCurrentCompanyUser(int.Parse(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString())).UserTname, Html.GetCurrentCompanyUser(int.Parse(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString())).UserLname) &nbsp;&nbsp;&nbsp;<a href="/Account/Logout/">安全退出</a></div>
                 <!--欢迎结束-->
             </div>
             

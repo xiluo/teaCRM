@@ -3,7 +3,7 @@
 /*作者：唐有炜
 /*时间：2014年08月25日*/
 
-.layout-left{display:inline;float:left;width:189px;position:relative;z-index:102;*zoom:1;_height:705px;border-right:1px solid #d8dce5;}
+.layout-left{display:inline;float:left;width:189px;position:relative;z-index:102;*zoom:1;_height:705px;border-right:1px solid #d8dce5;background-color: whiteSmoke;}
 .layout-right{display:inline;float:right;width:100%;margin-left:-190px;position:relative;z-index:101;*zoom:1;_height:705px;background: #fff;}
 .layout-content{margin:0px 15px 0px 205px;position:relative;z-index:102;*zoom:1}
 
@@ -15,9 +15,9 @@
 .l-top .s-list .keyword{ display:block; float:left; margin:0;padding:0 5px; width:125px; height:30px; line-height:28px; font-size:12px; border:1px solid #dbdbdb; color:#444;}
 .l-top .s-list .btn-search{ display:block; float:left; margin:0 0 0 -1px; padding:0; width:30px; height:30px; line-height:30px; border:1px solid #dbdbdb; background:url(../images/skin_icons.png) -160px -20px no-repeat #fafafa; cursor:pointer; text-indent:-9999px; }
 
-.layout-left-filter{margin:10px 0px; width:100%;}
-.layout-left-filter h2{line-height:36px; color:#FFFFFF; background-color:#3083EB; font-size:14px; width:170px; padding:0px 10px;}
-.layout-left-filter h2 a{line-height:20px; font-size:11px; margin-top:16px; float:right; margin-right:5px; font-weight:normal; color:#F2F2F2;}
+.layout-left-filter{ }
+.layout-left-filter h2{line-height:30px;font-size:14px; width:170px; margin:10px auto; border-bottom:2px solid #666;}
+.layout-left-filter h2 a{line-height:20px; font-size:11px; margin-top:6px; float:right; margin-right:5px;}
 
 
 .toolbar .r-list{  float:left;}

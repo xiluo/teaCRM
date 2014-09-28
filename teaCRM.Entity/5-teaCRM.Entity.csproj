@@ -57,6 +57,7 @@
     <Compile Include="Common\KeyValue.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CRM\VCustomerContact.cs" />
     <Compile Include="Settings\TFunApp.cs" />
     <Compile Include="Settings\TFunAppCompany.cs" />
     <Compile Include="Settings\TFunAppMyapp.cs" />

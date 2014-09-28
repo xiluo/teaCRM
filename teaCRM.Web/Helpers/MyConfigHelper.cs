@@ -59,6 +59,8 @@ namespace teaCRM.Web.Helpers
             {
                 case "customer":
                     return 1;
+                case "contact":
+                    return 2;
                 default:
                     return 1;     
             }

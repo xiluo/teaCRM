@@ -5,6 +5,8 @@
 //
 // 最后修改人: Tangyouwei
 // 最后修改时间 : 09-26-2014
+
+using teaCRM.Web.Helpers;
 // ReSharper disable All 禁止ReSharper显示警告
 // ***********************************************************************
 // <copyright file="ContactController.cs" company="优创科技">
@@ -12,7 +14,6 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,6 +54,12 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         #region 全局字段定义 14-09-26 By 唐有炜
 
         /// <summary>
+        /// 当前公司编号
+        /// </summary>
+        private string CompNum;
+
+
+        /// <summary>
         ///联系人扩展字段信息
         /// </summary>
         private List<TFunExpand> contactExpandFields = null;
@@ -61,6 +68,8 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         /// 当前应用的类别id，（对应/Themes/default/base/js/category.js里面的code和T_fun_app表里面的app_id） 14-09-21 By 唐有炜
         /// </summary>
         private int AppId = 2;
+
+        private readonly int MyappId = MyConfigHelper.GetMyAppId("contact");
 
         #endregion
 
@@ -72,9 +81,10 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         [UserAuthorize]
         public void Init()
         {
+            CompNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
             //获取客户联系人扩展字段信息
             contactExpandFields =
-                CustomerService.GetContactExpandFields(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString());
+                CustomerService.GetContactExpandFields(CompNum, MyappId);
         }
 
         #endregion

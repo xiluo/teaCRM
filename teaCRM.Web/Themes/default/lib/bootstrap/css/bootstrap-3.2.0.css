@@ -1391,14 +1391,11 @@ pre code {
   overflow-y: scroll;
 }
 .container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+
 }
 @media (min-width: 768px) {
   .container {
-    width: 750px;
+   
   }
 }
 @media (min-width: 992px) {
@@ -1412,14 +1409,13 @@ pre code {
   }
 }
 .container-fluid {
-  padding-right: 15px;
-  padding-left: 15px;
+/*  padding-right: 15px;
+  padding-left: 15px;*/
   margin-right: auto;
   margin-left: auto;
 }
 .row {
-  margin-right: -15px;
-  margin-left: -15px;
+
 }
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
@@ -2351,7 +2347,6 @@ output {
 }
 .form-control {
   display: block;
-  /*width: 100%;*/
   height: 30px;
   padding: 3px 12px;
   font-size: 12px;
@@ -2722,9 +2717,9 @@ select[multiple].input-lg {
   display: inline-block;
   padding: 4px 12px;
   margin-bottom: 0;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: normal;
-  line-height: 1.42857143;
+  line-height:20px;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -2736,6 +2731,7 @@ select[multiple].input-lg {
 		  background-color:#eee;
 		  border:1px solid #ccc;
 }
+.btn b{ margin-left:6px;_margin-left:6px; font-weight:normal;}
 .btn:focus,
 .btn:active:focus,
 .btn.active:focus {
@@ -6206,12 +6202,12 @@ button.close {
 }
 
 
-.container .row { margin-left: -20px; }
-.container .row:before, .row:after { content: ""; display: table; line-height: 0; }
-.container .row:after { clear: both; }
-.container b{ display: block;float: left;}
-.span6 { width: 260px;float: left;height: 30px;}
-.span12 { width: 720px;float: left;height: 30px;}
-.container .row { margin-left: -20px; }
-.container .row:before, .row:after { content: ""; display: table; line-height: 0; }
+
+.span6 { width: 375px;float: left;height: 30px; display:block; margin-bottom:10px;}
+.span12 { width: 750px;float: left;height: 30px;display:block; margin-bottom:10px;}
+.span12h2{width: 750px;float: left;height: 70px;display:block; margin-bottom:10px;}
+.span6 input{ width:240px;}
+.span12 input{ width:615px;}
+.span12h2 input{ width:615px;}
+.span6 .tit,.span12 .tit,.span12h2 .tit{display:block; float:left; width:110px; text-align:right; line-height:30px; font-weight:bold;}
 .container .row:after { clear: both; }

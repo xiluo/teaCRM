@@ -230,6 +230,11 @@
             联系人控制器
             </summary>
         </member>
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.ContactController.CompNum">
+            <summary>
+            当前公司编号
+            </summary>
+        </member>
         <member name="F:teaCRM.Web.Controllers.Apps.CRM.ContactController.contactExpandFields">
              <summary>
             联系人扩展字段信息
@@ -754,21 +759,36 @@
             创建service依赖
              </summary>
         </member>
+        <member name="F:teaCRM.Web.Controllers.Api.CRM.CustomerController.CustomerMyappId">
+            <summary>
+            当前模块对应的id（应用发布时确定）
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Api.CRM.CustomerController.customerExpandFields">
+            <summary>
+            客户扩展字段信息
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Api.CRM.CustomerController.contactExpandFields">
+            <summary>
+            联系人扩展字段信息
+            </summary>
+        </member>
         <!-- Badly formed XML comment ignored for member "M:teaCRM.Web.Controllers.Api.CRM.CustomerController.GetAllCustomers" -->
         <!-- Badly formed XML comment ignored for member "M:teaCRM.Web.Controllers.Api.CRM.CustomerController.GetCustomer(System.String,System.Int32)" -->
-        <member name="M:teaCRM.Web.Controllers.Api.CRM.CustomerController.AddCustomer(teaCRM.Entity.TCusBase)">
+        <member name="M:teaCRM.Web.Controllers.Api.CRM.CustomerController.AddCustomer(System.String)">
             <summary>
             添加客户
-            
+            /api/crm/customer/addCustomer
             </summary>
             <param name="customer">The customer.</param>
             <returns>ResponseMessage.</returns>
         </member>
-        <member name="M:teaCRM.Web.Controllers.Api.CRM.CustomerController.EditCustomer(teaCRM.Entity.TCusBase)">
+        <member name="M:teaCRM.Web.Controllers.Api.CRM.CustomerController.EditCustomer(System.String)">
             <summary>
-            Edits the role.
+            Edits the customer.
             </summary>
-            <param name="customer">The customer.</param>
+            <param name="value">The value.</param>
             <returns>ResponseMessage.</returns>
         </member>
         <member name="M:teaCRM.Web.Controllers.Api.CRM.CustomerController.UpdateCustomerStatus(System.Int32)">
@@ -942,7 +962,7 @@
             当前应用的类别id，（对应/Themes/default/base/js/category.js里面的code和T_fun_app表里面的app_id） 14-09-21 By 唐有炜
             </summary>
         </member>
-        <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.MyappId">
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.CustomerMyappId">
             <summary>
             当前模块对应的id（应用发布时确定）
             </summary>

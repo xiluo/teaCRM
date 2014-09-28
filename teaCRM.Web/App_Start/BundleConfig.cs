@@ -34,11 +34,12 @@ namespace teaCRM.Web
         /// <param name="bundles">The bundles.</param>
         public static void RegisterBundles(BundleCollection bundles)
         {
-            #region jquery、bootstrap、jquery.cookie、artDialog、jquery.validate、jquery.poshytip、function、globle 类库1（适用于弹出框里面的表单）
+            #region jquery、json2、bootstrap、jquery.cookie、artDialog、jquery.validate、jquery.poshytip、function、globle 类库1（适用于弹出框里面的表单）
 
             bundles.Add(new ScriptBundle("~/Themes/default/js/cp.globle.min1.js")
                 .Include(
                     "~/Themes/default/lib/jquery/jquery-1.*")
+                       .Include("~/Themes/default/lib/json/json2.js")
                 .Include("~/Themes/default/lib/bootstrap/js/bootstrap-3.2.0.js")
                 .Include("~/Themes/default/lib/cookie/jquery.cookie.js")
                 .Include("~/Themes/default/lib/artDialog/dist/dialog-plus-min.js")
