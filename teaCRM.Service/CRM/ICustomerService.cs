@@ -1,12 +1,13 @@
 ﻿// ***********************************************************************
-// Assembly         : teaCRM.Service
-// Author           : Tangyouwei
-// Created          : 09-13-2014
+// 程序集         : teaCRM.Service
+// 作者作者           : Tangyouwei
+// 创建时间          : 09-13-2014
 //
-// Last Modified By : Tangyouwei
-// Last Modified On : 09-24-2014
+// 最后修改人: Tangyouwei
+// 最后修改时间 : 09-26-2014
+// ReSharper disable All 禁止ReSharper显示警告
 // ***********************************************************************
-// <copyright file="ICustomerService.cs" company="Microsoft">
+// <copyright file="ICustomerService.cs" company="优创科技">
 //     Copyright (c) Microsoft. All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -27,21 +28,11 @@ using teaCRM.Entity;
 namespace teaCRM.Service.CRM
 {
     /// <summary>
-    /// 客户操作接口
+    /// Interface ICustomerService
     /// </summary>
     public interface ICustomerService
     {
-        #region 筛选器接口
 
-        /// <summary>
-        /// 获取树形节点
-        /// </summary>
-        /// <param name="compNum">The comp number.</param>
-        /// <param name="id">The identifier.</param>
-        /// <returns>List&lt;Node&gt;.</returns>
-        List<Node> AsyncGetNodes(string compNum, int? id);
-
-        #endregion
 
         #region 客户接口
 
@@ -60,20 +51,41 @@ namespace teaCRM.Service.CRM
             string strWhere, string filedOrder, out int recordCount);
 
 
+
+        /// <summary>
+        /// 获取客户信息列表 2014-08-29 14:58:50 By 唐有炜
+        /// </summary>
+        /// <param name="pageIndex">页码</param>
+        /// <param name="pageSize">每页的数目</param>
+        /// <param name="selector">要查询的字段</param>
+        /// <param name="expFields">存储扩展字段值的字段</param>
+        /// <param name="expSelector">要查询的扩展字段</param>
+        /// <param name="predicate">查询条件</param>
+        /// <param name="ordering">排序</param>
+        /// <param name="recordCount">记录结果数</param>
+        /// <param name="values">参数</param>
+        /// <returns>客户信息列表</returns>
+        List<Dictionary<string, object>> GetCustomerLsit(int pageIndex, int pageSize, string selector, string expFields, string expSelector,
+            string predicate, string ordering,
+            out int recordCount, params object[] values);
+
+
         /// <summary>
         /// 获取一条客户信息
         /// </summary>
-        /// <param name="compNum">The comp number.</param>
-        /// <param name="customerId">The customer identifier.</param>
-        /// <returns>Dictionary&lt;System.String, System.Object&gt;.</returns>
-        Dictionary<string, object> GetCustomer(string compNum, int customerId);
+        /// <param name="compNum">企业编号</param>
+        /// <param name="customerId">客户id</param>
+        /// <returns>Dictionary</returns>
+        Dictionary<string, object> GetCustomer(string selector, string expFields, string expSelector, string predicate,
+            params object[] values);
 
         /// <summary>
-        /// 获取客户扩展字段信息 2014-08-29 14:58:50 By 唐有炜
+        /// 获取客户扩展字段信息(MyappId==1代表客户扩展字段) 2014-08-29 14:58:50 By 唐有炜
         /// </summary>
         /// <param name="compNum">公司编号</param>
-        /// <returns>List&lt;TFunExpand&gt;.</returns>
-        List<TFunExpand> GetCustomerExpandFields(string compNum);
+        /// <param name="myAppId">模块id</param>
+        /// <returns>客户模块扩展字段列表</returns>
+        List<TFunExpand> GetCustomerExpandFields(string compNum, int myAppId);
 
 
         /// <summary>
@@ -206,7 +218,7 @@ namespace teaCRM.Service.CRM
         #region 回收站接口
 
         /// <summary>
-        /// 获取回收站模块操作   
+        /// 获取回收站模块操作
         /// </summary>
         /// <param name="compNum">公司编号</param>
         /// <param name="myappId">模块id</param>

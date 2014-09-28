@@ -156,9 +156,14 @@ function load_sub_nav(menu_id, appId) {
 
             for (var i = 0; i < sub_json_data.length; i++) {
                 var sub_nav_data = sub_json_data[i];
-                my_sub_nav += "<li class=\"selected\"><a href=\"" + sub_nav_data.MyappLink + sub_nav_data.Id + "\" >" + sub_nav_data.MyappName + "</a></li>";
-                
-}
+                if (sub_nav_data.MyappIsShow==1){//回收站、公海不显示（固定）
+                    my_sub_nav += "<li class=\"selected\"><a href=\"" + sub_nav_data.MyappLink + sub_nav_data.Id + "\" >" + sub_nav_data.MyappName + "</a></li>";
+                }
+
+            }
+            //
+            my_sub_nav += "<li class=\"selected\"><a href=\"/Apps/CRM/Trash/Index/" + sub_json_data[0].Id + "\" >回收站</a></li>";
+            my_sub_nav += "<li class=\"selected\"><a href=\"/Apps/CRM/Pub/Index/" + sub_json_data[0].Id + "\" >公海</a></li>";
             my_sub_nav += "</ul></div>";
             $(sub_nav).append(my_sub_nav);
             // alert("二级菜单加载完毕！");

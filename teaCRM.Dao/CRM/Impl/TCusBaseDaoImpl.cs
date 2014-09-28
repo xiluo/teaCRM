@@ -9,6 +9,7 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NLite.Data;
+using NLite.Data.CodeGeneration;
 using NLite.Reflection;
 using teaCRM.Common;
 using teaCRM.DBContext;
@@ -591,6 +592,142 @@ namespace teaCRM.Dao.Impl
 
         #endregion
 
+        #region  获取客户信息列表(用动态LINQ) 2014-08-29 14:58:50 By 唐有炜
+
+        /// <summary>
+        /// 获取客户信息列表 2014-08-29 14:58:50 By 唐有炜
+        /// </summary>
+        /// <param name="pageIndex">页码</param>
+        /// <param name="pageSize">每页的数目</param>
+        /// <param name="selector">要查询的字段</param>
+        /// <param name="expFields">存储扩展字段值的字段</param>
+        /// <param name="expSelector">要查询的扩展字段里面的字段</param>
+        /// <param name="predicate">查询条件</param>
+        /// <param name="ordering">排序</param>
+        /// <param name="recordCount">记录结果数</param>
+        /// <param name="values">参数</param>
+        /// <returns>客户信息列表</returns>
+        public List<Dictionary<string, object>> GetCustomerLsit(int pageIndex, int pageSize, string selector,
+            string expFields, string expSelector,
+            string predicate, string ordering,
+            out int recordCount, params object[] values)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                //获取查询结果
+                //加上扩展字段值
+                var customers = db.TCusBases;
+                recordCount = customers.Count();
+                var prevCount = (pageIndex - 1)*pageSize;
+                var models = (IQueryable<object>) (customers
+                    .Skip(prevCount)
+                    .Take(pageSize)
+                    .Where(predicate, values)
+                    .Select(selector, values)
+                    .OrderBy(ordering));
+
+                var sqlText = models.GetProperty("SqlText");
+                LogHelper.Debug("ELINQ Dynamic Paging:<br/>" + sqlText.ToString());
+
+                //转换为分页
+                var pages = models.ToPagination(pageIndex, pageSize, recordCount);
+
+                //组装输出
+                List<Dictionary<string, object>> results = new List<Dictionary<string, object>>();
+                foreach (var page in pages)
+                {
+                    Dictionary<string, object> result = new Dictionary<string, object>();
+                    PropertyInfo[] propertyInfos = page.GetType().GetProperties();
+                    foreach (var propertyInfo in propertyInfos)
+                    {
+                        var name = propertyInfo.Name; //输入的selector中的字段名
+                        var value = propertyInfo.GetValue(page, null); //输入的selector中的字段值
+                        if (name == expFields)
+                        {
+                            IDictionary<string, JToken> cusFields =
+                                (JObject) JsonConvert.DeserializeObject(value.ToString());
+                            //循环添加新字段
+                            foreach (var field in cusFields)
+                            {
+                                //只输出已选择的扩展字段(不输出直接留空)
+                                if (!String.IsNullOrEmpty(expSelector))
+                                {
+                                    object[] exps = Utils.StringToObjectArray(expSelector, ',');
+                                    var fieldKey = NamingConversion.Default.PropertyName(field.Key);
+                                    var fieldvalue = field.Value;
+                                    if (exps.Contains(fieldKey)) //只查询选择的扩展字段
+                                    {
+                                        result.Add(fieldKey, fieldvalue);
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            result.Add(name, value);
+                        }
+                    }
+                    results.Add(result);
+                }
+
+
+                return results;
+            }
+        }
+
+        #endregion
+
+        #region 获取一条客户信息（用动态LINQ)
+
+        public Dictionary<string, object> GetCustomer(string selector, string expFields, string expSelector,
+            string predicate,
+            params object[] values)
+        {
+            using (teaCRMDBContext db = new teaCRMDBContext())
+            {
+                var model = ((IQueryable<object>) db.TCusBases.Where(predicate, values).Select(selector, values));
+                object customer = model.FirstOrDefault();
+                var sqlText = model.GetProperty("SqlText");
+                 LogHelper.Debug("ELINQ Paging:<br/>" + sqlText.ToString());
+
+                Dictionary<string, object> result = new Dictionary<string, object>();
+                PropertyInfo[] propertyInfos = customer.GetType().GetProperties();
+                foreach (var propertyInfo in propertyInfos)
+                {
+                    var name = propertyInfo.Name; //输入的selector中的字段名
+                    var value = propertyInfo.GetValue(customer, null); //输入的selector中的字段值
+                    if (name == expFields)
+                    {
+                        IDictionary<string, JToken> cusFields =
+                            (JObject) JsonConvert.DeserializeObject(value.ToString());
+                        //循环添加新字段
+                        foreach (var field in cusFields)
+                        {
+                            //只输出已选择的扩展字段(不输出直接留空)
+                            if (!String.IsNullOrEmpty(expSelector))
+                            {
+                                object[] exps = Utils.StringToObjectArray(expSelector, ',');
+                                var fieldKey = NamingConversion.Default.PropertyName(field.Key);
+                                var fieldvalue = field.Value;
+                                if (exps.Contains(fieldKey)) //只查询选择的扩展字段
+                                {
+                                    result.Add(fieldKey, fieldvalue);
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        result.Add(name, value);
+                    }
+                }
+
+                return result;
+            }
+        }
+
+        #endregion
+
         #region   添加客户信息 2014-08-29 14:58:50 By 唐有炜
 
         /// <summary>
@@ -599,7 +736,8 @@ namespace teaCRM.Dao.Impl
         /// <param name="CusBase">客户信息</param>
         /// <param name="CusCon">主联系人信息</param>
         /// <returns></returns>
-        public bool AddCustomer(TCusBase CusBase, TCusCon CusCon)
+        public bool AddCustomer
+            (TCusBase CusBase, TCusCon CusCon)
         {
             using (teaCRMDBContext db = new teaCRMDBContext())
             {
@@ -766,6 +904,20 @@ WHERE id=@id";
                     }
                 }
             }
+        }
+
+
+        /// <summary>
+        /// 删除客户信息 2014-08-30 14:58:50 By 唐有炜
+        /// </summary>
+        /// <param name="customerId">客户id</param>
+        /// <returns>删除状态</returns>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public bool DeleteCustomer
+            (int
+                customerId)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

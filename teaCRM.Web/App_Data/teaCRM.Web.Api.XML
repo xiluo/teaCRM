@@ -4,222 +4,203 @@
         <name>teaCRM.Web</name>
     </assembly>
     <members>
-        <member name="T:teaCRM.Web.Controllers.Apps.CRM.LoadDataController">
-            <summary>
-            Class LoadDataController.
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.LoadDataController.AsyncGetNodes(System.Nullable{System.Int32})">
-            <summary>
-            得到指定ID的子节点列表，并序列化为JSON串
-            </summary>
-            <param name="id">The identifier.</param>
-            <returns>ActionResult.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.LoadDataController.GetCustomerLsit(System.Web.Mvc.FormCollection)">
-            <summary>
-            Gets the customer lsit.
-            </summary>
-            <param name="fc">The fc.</param>
-            <returns>System.String.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.LoadDataController.BuildSingleWhere">
-             <summary>
-            构造筛选条件（单选） 14-09-25 by 唐有炜
-             </summary>
-             <returns>筛选条件</returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.LoadDataController.GetCustomer(System.Int32)">
-            <summary>
-            Gets the customer.
-            </summary>
-            <param name="id">The identifier.</param>
-            <returns>System.String.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.LoadDataController.GetContactList(System.Nullable{System.Int32})">
-            <summary>
-            Gets the contact list.
-            </summary>
-            <param name="cus_id">The cus_id.</param>
-            <returns>System.String.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.LoadDataController.GetBootContactList(System.Int32)">
-            <summary>
-            Gets the boot contact list.
-            </summary>
-            <param name="cus_id">The cus_id.</param>
-            <returns>System.String.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.LoadDataController.GetContact(System.Int32)">
-            <summary>
-            Gets the contact.
-            </summary>
-            <param name="con_id">The con_id.</param>
-            <returns>System.String.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.LoadDataController.ToTrash(System.String)">
-            <summary>
-            To the trash.
-            </summary>
-            <param name="cus_ids">The cus_ids.</param>
-            <returns>ActionResult.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.LoadDataController.ToPub(System.String)">
-            <summary>
-            To the pub.
-            </summary>
-            <param name="cus_ids">The cus_ids.</param>
-            <returns>ActionResult.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.LoadDataController.ValidatePhone(System.String)">
-            <summary>
-            Validates the phone.
-            </summary>
-            <param name="cus_tel">The cus_tel.</param>
-            <returns>System.String.</returns>
-        </member>
-        <member name="P:teaCRM.Web.Controllers.Apps.CRM.LoadDataController.CustomerService">
-            <summary>
-            LoadDataController 注入Service依赖
-            </summary>
-            <value>The customer service.</value>
-        </member>
-        <member name="P:teaCRM.Web.Controllers.Apps.CRM.LoadDataController.AccountService">
-            <summary>
-            Gets or sets the account service.
-            </summary>
-            <value>The account service.</value>
-        </member>
         <member name="T:teaCRM.Web.Helpers.MyHtmlHelper">
             <summary>
             Html格式化输出辅助类
             2014-06-07 修改 By 唐有炜
             </summary>
         </member>
+        <member name="M:teaCRM.Web.Helpers.MyHtmlHelper.GetFormFieldHtmlString(System.Web.Mvc.HtmlHelper,System.Int32,System.String,System.String,System.String,System.Int32,System.String)">
+            <summary>
+            获取表单字段html 14-09-26 By 唐有炜
+            </summary>
+            <param name="htmlHelper">The HTML helper.</param>
+            <param name="expCtype">字段类型（1 字符 2 长字符 3 连接 4 数字 5下拉框 6复选框 7单选框 8 附件 9日期 10时间 11手机 12QQ 13 微信号 14邮箱）</param>
+            <param name="expName">属性名称</param>
+            <param name="expTitle">The exp_title.</param>
+            <param name="expOpton">The exp opton.</param>
+            <param name="expIsNull">The exp is null.</param>
+            <returns>MvcHtmlString.</returns>
+        </member>
         <member name="M:teaCRM.Web.Helpers.MyHtmlHelper.DateTimeParse(System.Web.Mvc.HtmlHelper,System.Nullable{System.DateTime},System.String)">
             <summary>
             自定义日期格式化 2014-05-25 By 唐有炜
             </summary>
+            <param name="htmlHelper">The HTML helper.</param>
             <param name="datatime">日期</param>
             <param name="formateStr">格式化字符串</param>
-            <param name="htmlHelper"></param>
-            <returns></returns>
+            <returns>MvcHtmlString.</returns>
         </member>
         <member name="M:teaCRM.Web.Helpers.MyHtmlHelper.DateTimeParse(System.Web.Mvc.HtmlHelper,System.Nullable{System.DateTime},System.String,System.String)">
             <summary>
             自定义日期格式化 2014-05-25 By 唐有炜
             </summary>
+            <param name="htmlHelper">The HTML helper.</param>
             <param name="datatime">日期</param>
             <param name="formateStr">格式化字符串</param>
-            <param name="htmlHelper"></param>
-            <param name="replaceValue"></param>
-            <returns></returns>
+            <param name="replaceValue">The replace value.</param>
+            <returns>MvcHtmlString.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Helpers.MyHtmlHelper.FormateDateTime(System.Nullable{System.DateTime},System.String)">
+            <summary>
+            Formates the date time.
+            </summary>
+            <param name="datatime">The datatime.</param>
+            <param name="formateStr">The formate string.</param>
+            <returns>System.String.</returns>
         </member>
         <member name="M:teaCRM.Web.Helpers.MyHtmlHelper.StringParse(System.Web.Mvc.HtmlHelper,System.String,System.Int32)">
             <summary>
             自定义字符串长度 2014-05-25 By 唐有炜
             </summary>
-            <param name="htmlHelper"></param>
-            <param name="str"></param>
-            <param name="length"></param>
-            <returns></returns>
+            <param name="htmlHelper">The HTML helper.</param>
+            <param name="str">The string.</param>
+            <param name="length">The length.</param>
+            <returns>MvcHtmlString.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Helpers.MyHtmlHelper.StringParse(System.Web.Mvc.HtmlHelper,System.String,System.Int32,System.String)">
+            <summary>
+            Strings the parse.
+            </summary>
+            <param name="htmlHelper">The HTML helper.</param>
+            <param name="str">The string.</param>
+            <param name="length">The length.</param>
+            <param name="endStr">The end string.</param>
+            <returns>MvcHtmlString.</returns>
         </member>
         <member name="M:teaCRM.Web.Helpers.MyHtmlHelper.IsNull(System.Web.Mvc.HtmlHelper,System.String,System.String)">
             <summary>
             自定义字符串长度 2014-05-25 By 唐有炜
             </summary>
-            <param name="htmlHelper"></param>
-            <param name="value"></param>
-            <param name="replaceValue"></param>
-            <returns></returns>
+            <param name="htmlHelper">The HTML helper.</param>
+            <param name="value">The value.</param>
+            <param name="replaceValue">The replace value.</param>
+            <returns>MvcHtmlString.</returns>
         </member>
         <member name="M:teaCRM.Web.Helpers.MyHtmlHelper.Image(System.Web.Mvc.HtmlHelper,System.String,System.String,System.String,System.Object)">
             <summary>
             自定义Image输出
             </summary>
-            <param name="helper"></param>
+            <param name="helper">The helper.</param>
             <param name="name">id</param>
             <param name="url">图片地址</param>
             <param name="altText">说明文字</param>
             <param name="htmlAttributes">html属性</param>
-            <returns></returns>
+            <returns>MvcHtmlString.</returns>
         </member>
         <member name="M:teaCRM.Web.Helpers.MyHtmlHelper.Submit(System.Web.Mvc.HtmlHelper,System.String,System.Object,System.Object)">
             <summary>
             自定义Submit输出
             </summary>
-            <param name="htmlHelper"></param>
-            <param name="name"></param>
-            <param name="value"></param>
-            <param name="htmlAttributes"></param>
-            <returns></returns>
+            <param name="htmlHelper">The HTML helper.</param>
+            <param name="name">The name.</param>
+            <param name="value">The value.</param>
+            <param name="htmlAttributes">The HTML attributes.</param>
+            <returns>MvcHtmlString.</returns>
         </member>
         <member name="M:teaCRM.Web.Helpers.MyHtmlHelper.BooleanParse(System.Web.Mvc.HtmlHelper,System.Nullable{System.Int32},System.String,System.String,System.String)">
             <summary>
             Boolean格式化输出 2014-05-25 By 唐有炜
             </summary>
-            <param name="htmlHelper"></param>
-            <param name="b"></param>
-            <param name="displayNameTrue"></param>
-            <param name="displayNameFalse"></param>
-            <param name="replaceValue"></param>
-            <returns></returns>
+            <param name="htmlHelper">The HTML helper.</param>
+            <param name="b">The b.</param>
+            <param name="displayNameTrue">The display name true.</param>
+            <param name="displayNameFalse">The display name false.</param>
+            <param name="replaceValue">The replace value.</param>
+            <returns>MvcHtmlString.</returns>
         </member>
         <member name="M:teaCRM.Web.Helpers.MyHtmlHelper.OptionsPalse(System.Web.Mvc.HtmlHelper,System.Nullable{System.Int32},System.String,System.String)">
             <summary>
             整型多选项输出 2014-07-29 By 唐有炜
             </summary>
-            <param name="htmlHelper"></param>
+            <param name="htmlHelper">The HTML helper.</param>
             <param name="value">当前值</param>
             <param name="options">选项1|a,2|b</param>
-            <param name="replaceValue"></param>
-            <returns></returns>
+            <param name="replaceValue">The replace value.</param>
+            <returns>MvcHtmlString.</returns>
         </member>
         <member name="M:teaCRM.Web.Helpers.MyHtmlHelper.StringToOptions(System.Web.Mvc.HtmlHelper,System.String)">
             <summary>
             下拉框输出
             </summary>
-            <param name="htmlHelper"></param>
+            <param name="htmlHelper">The HTML helper.</param>
             <param name="value">v1|t1,v2|t2</param>
-            <returns></returns>
-            //<option>aaaa</option>
+            <returns>MvcHtmlString.</returns>
         </member>
         <member name="M:teaCRM.Web.Helpers.MyHtmlHelper.GetOptionValue(System.Web.Mvc.HtmlHelper,System.String,System.String,System.String)">
             <summary>
             根据id获取制定下拉框的值
             </summary>
-            <param name="htmlHelper"></param>
+            <param name="htmlHelper">The HTML helper.</param>
+            <param name="key">The key.</param>
             <param name="options">选项</param>
-            <param name="key"></param>
-            <param name="replaceValue"></param>
-            <returns></returns>
+            <param name="replaceValue">The replace value.</param>
+            <returns>MvcHtmlString.</returns>
         </member>
         <member name="M:teaCRM.Web.Helpers.MyHtmlHelper.StringToCheckboxList(System.Web.Mvc.HtmlHelper,System.String,System.String,System.String,System.String,System.Int32)">
             <summary>
             复选框
             </summary>
-            <param name="htmlHelper"></param>
+            <param name="htmlHelper">The HTML helper.</param>
             <param name="value">v1|t1,v2|t2</param>
-            <returns></returns>
+            <param name="id">The identifier.</param>
+            <param name="name">The name.</param>
+            <param name="field_cname">The field_cname.</param>
+            <param name="field_required">The field_required.</param>
+            <returns>MvcHtmlString.</returns>
         </member>
         <member name="M:teaCRM.Web.Helpers.MyHtmlHelper.LoadDefaultPic(System.Web.Mvc.HtmlHelper,System.String,System.String)">
             <summary>
             加载默认图片 2014-05-25 By 唐有炜
-            
             </summary>
-            <param name="htmlHelper"></param>
-            <param name="src"></param>
-            <param name="imgUrl"></param>
-            <returns></returns>
+            <param name="htmlHelper">The HTML helper.</param>
+            <param name="src">The source.</param>
+            <param name="imgUrl">The img URL.</param>
+            <returns>MvcHtmlString.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Helpers.MyHtmlHelper.LoadDefaultValue(System.Web.Mvc.HtmlHelper,System.String,System.String)">
+            <summary>
+            Loads the default value.
+            </summary>
+            <param name="htmlHelper">The HTML helper.</param>
+            <param name="value">The value.</param>
+            <param name="replaceValue">The replace value.</param>
+            <returns>MvcHtmlString.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Helpers.MyHtmlHelper.LoadDefaultValue(System.Web.Mvc.HtmlHelper,System.Nullable{System.Int32},System.String)">
+            <summary>
+            Loads the default value.
+            </summary>
+            <param name="htmlHelper">The HTML helper.</param>
+            <param name="value">The value.</param>
+            <param name="replaceValue">The replace value.</param>
+            <returns>MvcHtmlString.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Helpers.MyHtmlHelper.LoadDefaultValue(System.Web.Mvc.HtmlHelper,System.Object,System.Object,System.String)">
+            <summary>
+            Loads the default value.
+            </summary>
+            <param name="htmlHelper">The HTML helper.</param>
+            <param name="obj">The object.</param>
+            <param name="value">The value.</param>
+            <param name="replaceValue">The replace value.</param>
+            <returns>MvcHtmlString.</returns>
         </member>
         <member name="M:teaCRM.Web.Helpers.MyHtmlHelper.NullPalse(System.Web.Mvc.HtmlHelper,System.Object)">
             <summary>
             加载默认图片 2014-05-25 By 唐有炜
-            
             </summary>
-            <param name="htmlHelper"></param>
-            <param name="field"></param>
-            <returns></returns>
+            <param name="htmlHelper">The HTML helper.</param>
+            <param name="field">The field.</param>
+            <returns>MvcHtmlString.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Helpers.MyHtmlHelper.GetCurrentCompanyUser(System.Web.Mvc.HtmlHelper,System.Int32)">
+            <summary>
+            Gets the current company user.
+            </summary>
+            <param name="htmlHelper">The HTML helper.</param>
+            <param name="userId">The user identifier.</param>
+            <returns>VCompanyUser.</returns>
         </member>
         <member name="T:teaCRM.Web.Controllers.Apps.CRM.PubController">
             <summary>
@@ -421,6 +402,25 @@
             自动登录过滤器 2014-08-22 14:58:50 By 唐有炜
              </summary>
         </member>
+        <member name="T:teaCRM.Web.Helpers.MyConfigHelper">
+            <summary>
+            获取系统配置信息
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Helpers.MyConfigHelper.GetAppId(System.String)">
+            <summary>
+            根据App名称获取AppId
+            </summary>
+            <param name="appName">Name of the application.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Helpers.MyConfigHelper.GetMyAppId(System.String)">
+            <summary>
+            根据MyApp名称获取myappName
+            </summary>
+            <param name="myappName">Name of the myapp.</param>
+            <returns>System.Int32.</returns>
+        </member>
         <member name="T:teaCRM.Web.Filters.UserAuthorizeAttribute">
              <summary>
             账户授权过滤器 2014-08-22 14:58:50 By 唐有炜
@@ -435,6 +435,17 @@
             <summary>
             This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
             </summary>
+        </member>
+        <member name="T:teaCRM.Web.BundleConfig">
+            <summary>
+            Class BundleConfig.
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.BundleConfig.RegisterBundles(System.Web.Optimization.BundleCollection)">
+            <summary>
+            Registers the bundles.
+            </summary>
+            <param name="bundles">The bundles.</param>
         </member>
         <member name="T:teaCRM.Web.Helpers.MyWebApiController">
             <summary>
@@ -735,20 +746,46 @@
         </member>
         <member name="T:teaCRM.Web.Controllers.Api.CRM.CustomerController">
             <summary>
-            Class CustomerController.
+            CRM客户模块Api接口 14-09-28 By 唐有炜   
             </summary>
         </member>
         <member name="F:teaCRM.Web.Controllers.Api.CRM.CustomerController.CustomerService">
-            <summary>
-            The customer service
-            </summary>
+             <summary>
+            创建service依赖
+             </summary>
         </member>
-        <member name="M:teaCRM.Web.Controllers.Api.CRM.CustomerController.GetAllCustomers">
+        <!-- Badly formed XML comment ignored for member "M:teaCRM.Web.Controllers.Api.CRM.CustomerController.GetAllCustomers" -->
+        <!-- Badly formed XML comment ignored for member "M:teaCRM.Web.Controllers.Api.CRM.CustomerController.GetCustomer(System.String,System.Int32)" -->
+        <member name="M:teaCRM.Web.Controllers.Api.CRM.CustomerController.AddCustomer(teaCRM.Entity.TCusBase)">
             <summary>
-            Gets the customer lsit.
+            添加客户
+            
             </summary>
-            <returns>System.String.</returns>
+            <param name="customer">The customer.</param>
+            <returns>ResponseMessage.</returns>
         </member>
+        <member name="M:teaCRM.Web.Controllers.Api.CRM.CustomerController.EditCustomer(teaCRM.Entity.TCusBase)">
+            <summary>
+            Edits the role.
+            </summary>
+            <param name="customer">The customer.</param>
+            <returns>ResponseMessage.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Api.CRM.CustomerController.UpdateCustomerStatus(System.Int32)">
+            <summary>
+            Deletes the role.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>ResponseMessage.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Api.CRM.CustomerController.DeleteCustomer(System.Int32)">
+            <summary>
+            Deletes the role.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>ResponseMessage.</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:teaCRM.Web.Controllers.Api.CRM.CustomerController.AsyncGetNodes" -->
         <member name="P:teaCRM.Web.Controllers.AccountController.AccountService">
             <summary>
             Web层注入账户Service接口 2014-08-26 14:58:50 By 唐有炜
@@ -758,6 +795,17 @@
             <summary>
             返回结果
             </summary>
+        </member>
+        <member name="T:teaCRM.Web.Controllers.Apps.MarketController">
+            <summary>
+            Class MarketController.
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.MarketController.Index">
+            <summary>
+            Indexes this instance.
+            </summary>
+            <returns>ActionResult.</returns>
         </member>
         <member name="T:teaCRM.Web.Controllers.Apps.CRM.TrashController">
             <summary>
@@ -776,7 +824,12 @@
         </member>
         <member name="F:teaCRM.Web.Controllers.Apps.CRM.TrashController.MyAppId">
             <summary>
-            当前模块id
+            模块id(回收站使用客户的模块id)
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.TrashController.customerExpandFields">
+            <summary>
+            客户扩展字段
             </summary>
         </member>
         <member name="F:teaCRM.Web.Controllers.Apps.CRM.TrashController.trashOperatings">
@@ -869,37 +922,19 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="T:teaCRM.Web.Areas.HelpPage.SampleDirection">
-            <summary>
-            Indicates whether the sample is used for request or response
-            </summary>
-        </member>
-        <member name="T:teaCRM.Web.Helpers.MyConfigHelper">
-            <summary>
-            获取系统配置信息
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.Helpers.MyConfigHelper.GetAppId(System.String)">
-            <summary>
-            根据App名称获取AppId
-            </summary>
-            <param name="appName">Name of the application.</param>
-            <returns>System.Int32.</returns>
-        </member>
-        <member name="T:teaCRM.Web.Controllers.Apps.MarketController">
-            <summary>
-            Class MarketController.
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.MarketController.Index">
-            <summary>
-            Indexes this instance.
-            </summary>
-            <returns>ActionResult.</returns>
-        </member>
         <member name="T:teaCRM.Web.Controllers.Apps.CRM.CustomerController">
             <summary>
             Class IndexController.
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.CompNum">
+            <summary>
+            当前公司编号
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.UserId">
+            <summary>
+            当前登录用户id
             </summary>
         </member>
         <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.AppId">
@@ -907,24 +942,29 @@
             当前应用的类别id，（对应/Themes/default/base/js/category.js里面的code和T_fun_app表里面的app_id） 14-09-21 By 唐有炜
             </summary>
         </member>
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.MyappId">
+            <summary>
+            当前模块对应的id（应用发布时确定）
+            </summary>
+        </member>
         <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.customerExpandFields">
             <summary>
-            The customer expand fields
+            客户扩展字段信息
             </summary>
         </member>
         <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.contactExpandFields">
             <summary>
-            The contact expand fields
+            联系人扩展字段信息
             </summary>
         </member>
         <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.customerOperatings">
             <summary>
-            The customer operatings
+            客户操作
             </summary>
         </member>
         <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.myApps">
             <summary>
-            My apps
+            应用列表
             </summary>
         </member>
         <member name="M:teaCRM.Web.Controllers.Apps.CRM.CustomerController.Init">
@@ -946,13 +986,6 @@
             </summary>
             <returns>ActionResult.</returns>
         </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.CustomerController.Add(System.Web.Mvc.FormCollection)">
-            <summary>
-            Adds the specified fc.
-            </summary>
-            <param name="fc">The fc.</param>
-            <returns>ActionResult.</returns>
-        </member>
         <member name="M:teaCRM.Web.Controllers.Apps.CRM.CustomerController.Show(System.Int32)">
             <summary>
             Shows the specified identifier.
@@ -960,7 +993,7 @@
             <param name="id">The identifier.</param>
             <returns>ActionResult.</returns>
         </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.CustomerController.Edit(System.Web.Mvc.FormCollection,System.Int32)">
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.CustomerController.Edit(System.Int32)">
             <summary>
             Edits the specified fc.
             </summary>
@@ -985,6 +1018,11 @@
             Gets or sets the application maker service.
             </summary>
             <value>The application maker service.</value>
+        </member>
+        <member name="T:teaCRM.Web.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
         </member>
     </members>
 </doc>

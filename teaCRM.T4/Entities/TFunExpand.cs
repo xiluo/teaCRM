@@ -53,6 +53,8 @@ namespace teaCRM.Entity
 		public String ExpCss { get;set; }
 		[Column("exp_is_sys")]
 		public Int32 ExpIsSys { get;set; }
+		[Column("exp_order")]
+		public Int32? ExpOrder { get;set; }
  
 		[ManyToOne(ThisKey="MyappId",OtherKey="Id")]
 		public TFunMyapp Myapp { get;set; }

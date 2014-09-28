@@ -53,6 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\BootGrid.cs" />
+    <Compile Include="Common\KeyValue.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Settings\TFunApp.cs" />
     <Compile Include="Settings\TFunAppCompany.cs" />
     <Compile Include="Settings\TFunAppMyapp.cs" />
@@ -67,8 +71,6 @@
     <Compile Include="Settings\TSysPower.cs" />
     <Compile Include="Settings\TSysUser.cs" />
     <Compile Include="Basic\VCompanyUser.cs" />
-    <Compile Include="Common\IZtree.cs" />
-    <Compile Include="Common\KeyValue.cs" />
     <Compile Include="Common\Node.cs" />
     <Compile Include="Common\ResponseMessage.cs" />
     <Compile Include="Common\teaCRMEnums.cs" />

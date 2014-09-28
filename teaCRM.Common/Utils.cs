@@ -1570,6 +1570,7 @@ namespace teaCRM.Common
         }
 
 
+     
         /// <summary> 
         ///删除list中所有为空的元素 
         ///删除为空的操作方式非常复杂，因为你每一次删除一个元素之后， 

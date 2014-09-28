@@ -46,5 +46,25 @@ namespace teaCRM.Web.Helpers
                     return 1;
             }
         }
+
+
+        /// <summary>
+        /// 根据MyApp名称获取myappName
+        /// </summary>
+        /// <param name="myappName">Name of the myapp.</param>
+        /// <returns>System.Int32.</returns>
+        public static int GetMyAppId(string myappName)
+        {
+            switch (myappName)
+            {
+                case "customer":
+                    return 1;
+                default:
+                    return 1;     
+            }
+        }
+
+
+
     }
 }

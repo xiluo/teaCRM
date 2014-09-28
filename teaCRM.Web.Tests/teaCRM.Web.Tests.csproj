@@ -130,12 +130,14 @@
     <Compile Include="ContactControllerTest.cs" />
     <Compile Include="CustomerServiceImplTest.cs" />
     <Compile Include="FunAppServiceImplTest.cs" />
+    <Compile Include="FunFilterServiceImplTest.cs" />
     <Compile Include="IndexControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PubControllerTest.cs" />
     <Compile Include="RoleControllerTest.cs" />
     <Compile Include="SysRoleServiceImplTest.cs" />
     <Compile Include="SysUserServiceImplTest.cs" />
+    <Compile Include="TCusBaseDaoImplTest.cs" />
     <Compile Include="TCusConDaoImplTest.cs" />
     <Compile Include="TFunAppDaoImplTest.cs" />
     <Compile Include="TFunOperatingDaoImplTest.cs" />

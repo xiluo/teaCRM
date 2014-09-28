@@ -178,8 +178,7 @@ namespace teaCRM.Web.Controllers.Api.CRM
                 ConBir = DateTime.Parse(conBir),
                 ConNote = request.Params.Get("con_note"),
                 ConIsMain = 1,
-                UserId = int.Parse(request.Params.Get("user_id")),
-                ConTrash = 0
+                UserId = int.Parse(request.Params.Get("user_id"))
             };
 
             //联系人扩展字段
@@ -261,7 +260,6 @@ namespace teaCRM.Web.Controllers.Api.CRM
                 ConNote = request.Params.Get("con_note"),
                 ConIsMain = 1,
                 UserId = int.Parse(request.Params.Get("user_id")),
-                ConTrash = 0
             };
 
             //联系人扩展字段

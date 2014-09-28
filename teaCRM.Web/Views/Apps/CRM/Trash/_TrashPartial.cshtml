@@ -1,8 +1,8 @@
 ﻿@using System.Web.Optimization
 @using teaCRM.Entity
 @{
-     //联系人扩展字段信息
-    var contactFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.ContactExpandFields;
+    //联系人扩展字段信息
+    var customerExpandFields = (List<teaCRM.Entity.TFunExpand>) ViewBag.CustomerExpandFields;
     Layout = null;
 }
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -16,20 +16,20 @@
         @Scripts.Render("~/Themes/default/js/cp.globle.min6.js")
        
        
-          <!--js区域-->
+        <!--js区域-->
         <script src="/Themes/default/crm/js/trash.js" type="text/javascript"></script>
-           <!--js区域-->
+        <!--js区域-->
 
     </head>
     <body>
-        <!--客户id-->
-        <input type="hidden" id="CompNum" name="CompNum" value="@Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM]" />
-
+     
         <table id="trash-grid-data" class="table table-condensed table-hover table-striped table-bordered" data-selection="true" data-multi-select="true">
             <thead>
                 <tr>
-                    <th data-column-id="cus_name" data-header-align="center" data-align="center"  data-order="desc">客户名称</th>
-                    <th data-column-id="cus_sname" data-header-align="center" data-align="center"  data-order="desc">助记简称</th>
+                    @foreach (var customerExpandField in customerExpandFields)
+                    {
+                        <th data-column-id="@customerExpandField.ExpName" data-header-align="center" data-align="center"  data-order="desc">@customerExpandField.ExpTitle</th>
+                    }
                     <th data-column-id="id" data-type="numeric" data-identifier="true" data-formatter="commands" data-sortable="false">操作</th>
                   
                 </tr>

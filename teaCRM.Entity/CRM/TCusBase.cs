@@ -25,6 +25,8 @@ namespace teaCRM.Entity
         public String CusTel { get; set; }
         [Column("cus_city")]
         public String CusCity { get; set; }
+        [Column("cus_industry")]
+        public String CusIndustry { get; set; }
         [Column("cus_address")]
         public String CusAddress { get; set; }
         [Column("cus_note")]
@@ -45,8 +47,6 @@ namespace teaCRM.Entity
         public String CusFields { get; set; }
 
 
-        [OneToMany(ThisKey = "Id", OtherKey = "CusId")]
-        public IList<TCusCon> TCusCons { get; set; }
 
     }
 

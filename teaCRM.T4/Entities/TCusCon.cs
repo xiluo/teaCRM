@@ -33,8 +33,6 @@ namespace teaCRM.Entity
 		public Int32 UserId { get;set; }
 		[Column("con_fields")]
 		public String ConFields { get;set; }
-		[Column("con_trash")]
-		public Int32? ConTrash { get;set; }
  
  
  

@@ -11,6 +11,13 @@
   </object>
   <!--账户逻辑结束-->
 
+
+  <!--筛选器-->
+  <object id="funFilterService" type="teaCRM.Service.Impl.FunFilterServiceImpl, teaCRM.Service" singleton="false">
+    <property name="FunFilterDao" ref="funFilterDao" />
+  </object>
+  <!--筛选器-->
+
   <!--客户逻辑开始-->
   <object id="customerService" type="teaCRM.Service.CRM.Impl.CustomerServiceImpl, teaCRM.Service" singleton="false">
     <property name="FunExpandDao" ref="funExpandDao" />
@@ -22,6 +29,9 @@
   </object>
   <!--客户逻辑结束-->
 
+  
+  
+  
   <!--应用市场逻辑开始-->
   <object id="funAppService" type="teaCRM.Service.Settings.Impl.FunAppServiceImpl, teaCRM.Service"
           singleton="false">

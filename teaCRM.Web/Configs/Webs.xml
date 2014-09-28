@@ -34,12 +34,12 @@
     <property name="AccountService" ref="accountService" />
     <property name="CustomerService" ref="customerService" />
   </object>
-  <object id="loadDataController" type="teaCRM.Web.Controllers.Apps.CRM.LoadDataController, teaCRM.Web"
+  <!--<object id="loadDataController" type="teaCRM.Web.Controllers.Apps.CRM.LoadDataController, teaCRM.Web"
           singleton="false">
     <property name="AccountService" ref="accountService" />
     
     <property name="CustomerService" ref="customerService" />
-  </object>
+  </object>-->
   <!--CRM模块控制器结束-->
 
   <!--产品模块控制器开始-->

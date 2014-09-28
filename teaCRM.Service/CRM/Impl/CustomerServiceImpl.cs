@@ -4,7 +4,8 @@
 // 创建时间          : 09-13-2014
 //
 // 最后修改人: Tangyouwei
-// 最后修改时间 : 09-24-2014
+// 最后修改时间 : 09-26-2014
+// ReSharper disable All 禁止ReSharper显示警告
 // ***********************************************************************
 // <copyright file="CustomerServiceImpl.cs" company="优创科技">
 //     Copyright (c) 优创科技. All rights reserved.
@@ -84,46 +85,7 @@ namespace teaCRM.Service.CRM.Impl
 
         #endregion
 
-        #region 筛选器
 
-        #region 获取筛选器树形列表
-
-        /// <summary>
-        /// 获取树形节点
-        /// </summary>
-        /// <param name="compNum">The comp number.</param>
-        /// <param name="id">The identifier.</param>
-        /// <returns>List&lt;Node&gt;.</returns>
-        public List<Node> AsyncGetNodes(string compNum, int? id)
-        {
-            var filters =
-                FunFilterDao.GetList(f => f.MyappId == 1 && (f.CompNum == compNum||f.FilIsSys == 1) && f.ParentId == (id ?? 0))
-                    .OrderBy(f => f.FilOrder);
-            var nodes = new List<Node>();
-            //将filters转换为nodes
-            foreach (var filter in filters)
-            {
-                var node = new Node();
-                node.id = filter.Id;
-                node.pId = (int) filter.ParentId;
-                node.name = filter.FilName;
-                node.content = filter.FilWhere;
-
-                bool isHasChild =
-                    FunFilterDao.ExistsEntity(f => f.MyappId == 1 && f.ParentId == node.id && (f.CompNum == compNum || f.FilIsSys == 1));
-                if (isHasChild)
-                {
-                    node.isParent = true;
-                }
-
-                nodes.Add(node);
-            }
-            return nodes;
-        }
-
-        #endregion
-
-        #endregion
 
         #region 客户
 
@@ -149,6 +111,30 @@ namespace teaCRM.Service.CRM.Impl
             return table;
         }
 
+        /// <summary>
+        /// 获取客户信息列表 2014-08-29 14:58:50 By 唐有炜
+        /// </summary>
+        /// <param name="pageIndex">页码</param>
+        /// <param name="pageSize">每页的数目</param>
+        /// <param name="selector">要查询的字段</param>
+        /// <param name="expFields">存储扩展字段值的字段</param>
+        /// <param name="expSelector">要查询的扩展字段</param>
+        /// <param name="predicate">查询条件</param>
+        /// <param name="ordering">排序</param>
+        /// <param name="recordCount">记录结果数</param>
+        /// <param name="values">参数</param>
+        /// <returns>客户信息列表</returns>
+        public List<Dictionary<string, object>> GetCustomerLsit(int pageIndex, int pageSize, string selector,
+            string expFields, string expSelector,
+            string predicate, string ordering,
+            out int recordCount, params object[] values)
+        {
+            var customers = CusBaseDao.GetCustomerLsit(pageIndex, pageSize, selector, expFields, expSelector, predicate,
+                ordering,
+                out recordCount, values);
+            return customers;
+        }
+
         #endregion
 
         #region 获取一条客户信息
@@ -159,14 +145,13 @@ namespace teaCRM.Service.CRM.Impl
         /// <param name="compNum">The comp number.</param>
         /// <param name="customerId">The customer identifier.</param>
         /// <returns>Dictionary&lt;System.String, System.Object&gt;.</returns>
-        public Dictionary<string, object> GetCustomer(string compNum, int customerId)
+        public Dictionary<string, object> GetCustomer(string selector, string expFields, string expSelector,
+            string predicate,
+            params object[] values)
         {
-            var count = 0;
-            var cusTable = CusBaseDao.GetCustomerLsit(compNum, new string[0], 1, 1,
-                String.Format("id={0} AND comp_num={1}", customerId, compNum),
-                "id", out count);
+            var customer = CusBaseDao.GetCustomer(selector, expFields, expSelector, predicate, values);
 
-            return DataTableHelper.DataTableToListDictory(cusTable).FirstOrDefault();
+            return customer;
         }
 
         #endregion
@@ -177,12 +162,16 @@ namespace teaCRM.Service.CRM.Impl
         /// 获取客户扩展字段信息(MyappId==1代表客户扩展字段) 2014-08-29 14:58:50 By 唐有炜
         /// </summary>
         /// <param name="compNum">公司编号</param>
-        /// <returns>List&lt;TFunExpand&gt;.</returns>
-        public List<TFunExpand> GetCustomerExpandFields(string compNum)
+        /// <param name="myAppId">模块id</param>
+        /// <returns>客户模块扩展字段列表</returns>
+        public List<TFunExpand> GetCustomerExpandFields(string compNum, int myAppId)
         {
-            //MyappId==1代表客户扩展字段
-            var customerExpandFields = FunExpandDao.GetList(e => e.CompNum == compNum && e.MyappId == 1);
-            if (customerExpandFields.Count > 0)
+            var customerExpandFields =
+                FunExpandDao.GetList(
+                    e => (e.CompNum == compNum || e.ExpIsSys == 1) && e.MyappId == myAppId && e.ExpIsShow == 1)
+                    .OrderBy(e => e.ExpOrder)
+                    .ToList();
+            if (customerExpandFields.Count() > 0)
             {
                 LogHelper.Info("客户扩展字段获取成功，共" + customerExpandFields.Count + "个字段。");
             }
@@ -204,7 +193,7 @@ namespace teaCRM.Service.CRM.Impl
         /// <returns>List&lt;TFunOperating&gt;.</returns>
         public List<TFunOperating> GetCustomerOperating(string compNum)
         {
-            return FunOperatingDao.GetList(o => o.OpeIsSys==1);
+            return FunOperatingDao.GetList(o => o.OpeIsSys == 1);
         }
 
         #endregion
@@ -239,7 +228,6 @@ namespace teaCRM.Service.CRM.Impl
         {
             return CusBaseDao.UpdateStatusMoreCustomer(cus_ids, op, field);
         }
-
 
 
         /// <summary>
@@ -377,6 +365,11 @@ namespace teaCRM.Service.CRM.Impl
 
         #region 添加联系人
 
+        /// <summary>
+        /// Adds the contact.
+        /// </summary>
+        /// <param name="cusCon">The cus con.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool AddContact(TCusCon cusCon)
         {
             return CusConDao.InsertEntity(cusCon);
@@ -384,16 +377,19 @@ namespace teaCRM.Service.CRM.Impl
 
         #endregion
 
-
         #region 修改联系人
 
+        /// <summary>
+        /// 修改联系人  14-09-24 By 唐有炜
+        /// </summary>
+        /// <param name="cusCon">The cus con.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool EditContact(TCusCon cusCon)
         {
             return CusConDao.UpadateEntity(cusCon);
         }
 
         #endregion
-
 
         #region 更改联系人状态 2014-09-24 14:58:50 By 唐有炜
 
@@ -424,15 +420,12 @@ namespace teaCRM.Service.CRM.Impl
 
         #endregion
 
-
         #endregion
-
-
 
         #region 回收站
 
         /// <summary>
-        /// 获取回收站模块操作   
+        /// 获取回收站模块操作
         /// </summary>
         /// <param name="compNum">公司编号</param>
         /// <param name="myappId">模块id</param>
@@ -449,15 +442,12 @@ namespace teaCRM.Service.CRM.Impl
         /// </summary>
         /// <param name="ids">客户id集合</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-         public  bool Delete(int ids)
+        public bool Delete(int ids)
         {
             return false;
         }
 
         #endregion
-
-
-
 
         #region 验证
 

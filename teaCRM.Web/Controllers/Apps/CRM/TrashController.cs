@@ -72,9 +72,14 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         private string UserId;
 
         /// <summary>
-        /// 当前模块id
+        /// 模块id(回收站使用客户的模块id)
         /// </summary>
         private int MyAppId;
+      
+        /// <summary>
+        /// 客户扩展字段
+        /// </summary>
+        private List<TFunExpand> customerExpandFields = null;
 
         /// <summary>
         /// 回收站操作
@@ -95,6 +100,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         {
             CompNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
             UserId = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString();
+            customerExpandFields = CustomerService.GetCustomerExpandFields(CompNum, MyAppId);
             trashOperatings = CustomerService.GetTrashOperating(CompNum, MyAppId);
         }
 
@@ -115,6 +121,7 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             try
             {
                 Init(id);
+                ViewBag.CustomerExpandFields = customerExpandFields;
                 ViewBag.TrashOperatings = trashOperatings;
                 return View("TrashIndex");
             }

@@ -20,7 +20,7 @@
 .layout-left-filter h2 a{line-height:20px; font-size:11px; margin-top:16px; float:right; margin-right:5px; font-weight:normal; color:#F2F2F2;}
 
 
-.toolbar .r-list{ margin-left:10px; float:left;}
+.toolbar .r-list{  float:left;}
 .l-top-list li{float: left;height:26px;padding: 0px 10px;border: 1px solid #E6E6E6;line-height:26px; background-color:#fff; margin-top:4px; border-left:none;}
 .l-top-list li:first-child{border: 1px solid #E6E6E6;}
 .l-top-list li a{color:#333; line-height:26px;}

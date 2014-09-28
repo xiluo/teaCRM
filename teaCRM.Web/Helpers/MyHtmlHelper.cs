@@ -1,4 +1,21 @@
-﻿using System;
+﻿// ***********************************************************************
+// 程序集         : teaCRM.Web
+// 作者作者           : Tangyouwei
+// 创建时间          : 09-18-2014
+//
+// 最后修改人: Tangyouwei
+// 最后修改时间 : 09-21-2014
+
+using System.Text;
+using NLite.Data.CodeGeneration;
+// ReSharper disable All 禁止ReSharper显示警告
+// ***********************************************************************
+// <copyright file="MyHtmlHelper.cs" company="优创科技">
+//     Copyright (c) 优创科技. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Spring.Context;
@@ -6,6 +23,10 @@ using Spring.Context.Support;
 using teaCRM.Common;
 using teaCRM.Entity;
 using teaCRM.Service;
+
+/// <summary>
+/// The Helpers namespace.
+/// </summary>
 
 namespace teaCRM.Web.Helpers
 {
@@ -15,18 +36,156 @@ namespace teaCRM.Web.Helpers
     /// </summary>
     public static class MyHtmlHelper
     {
-        //===============================================
-        //输出相关===================================
+        #region 根据字段属性输出对应的表单元素 14-09-26 By 唐有炜
+
+        /// <summary>
+        /// 获取表单字段html 14-09-26 By 唐有炜
+        /// </summary>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="expCtype">字段类型（1 字符 2 长字符 3 连接 4 数字 5下拉框 6复选框 7单选框 8 附件 9日期 10时间 11手机 12QQ 13 微信号 14邮箱）</param>
+        /// <param name="expName">属性名称</param>
+        /// <param name="expTitle">The exp_title.</param>
+        /// <param name="expOpton">The exp opton.</param>
+        /// <param name="expIsNull">The exp is null.</param>
+        /// <returns>MvcHtmlString.</returns>
+        public static MvcHtmlString GetFormFieldHtmlString(this HtmlHelper htmlHelper, int expCtype, string expName,
+            string expTitle, string expCss, int expIsNull, string expOpton)
+        {
+            if (expName.Contains("_"))
+            {
+                expName = NamingConversion.Default.PropertyName(expName);
+            }
+
+            StringBuilder FieldHtmlString = new StringBuilder();
+
+            switch (expCtype)
+            {
+                case 1: //短文本框
+                    FieldHtmlString.Append(String.Format("<div class=\"{0}\">", expCss));
+                    FieldHtmlString.Append("<b>");
+                    FieldHtmlString.Append(BooleanParse(htmlHelper, expIsNull, "<em class=\"imp\">*</em>", "", ""));
+                    FieldHtmlString.Append(string.Format("{0}:", expTitle));
+                    FieldHtmlString.Append("</b>");
+                    FieldHtmlString.Append(
+                        string.Format(
+                            "<input type=\"text\" name=\"{0}\" id=\"{0}\" class=\"form-control comm-tbox-1\" />",
+                            expName));
+                    FieldHtmlString.Append("</div>");
+                    break;
+//                        case 2: //长文本框
+//                            <dl>
+//                                <dt>
+//                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
+//                                    @field.ExpTitle ：
+//                                </dt>
+//                                <dd>
+//                                    <textarea class="form-control comm-abox-1 " id="@field.ExpName" name="@field.ExpName" cols="50" rows="5"></textarea>
+//                                </dd>
+//                            </dl>
+//                            break;
+//                        case 3: //短文本框(链接)
+//                            <dl>
+//                                <dt>
+//                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
+//                                    @field.ExpTitle ：
+//                                </dt>
+//                                <dd>
+//                                    <input type="text" id="@field.ExpName" name="@field.ExpName" class="form-control " />
+//                                </dd>
+//                            </dl>
+//                            break;
+//                        case 4: //短文本框(年龄)
+//                            <dl>
+//                                <dt>
+//                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
+//                                    @field.ExpTitle ：
+//                                </dt>
+//                                <dd>
+//                                    <input type="text" id="@field.ExpName" class="form-control comm-tbox-1 " name="@field.ExpName" />
+//                                </dd>
+//                            </dl>
+//                            break;
+//                        case 5: //下拉框
+//                            <dl>
+//                                <dt>
+//                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
+//                                    @field.ExpTitle ：
+//                                </dt>
+//                                <dd>
+//                                    <select id="@field.ExpName" name="@field.ExpName" class="form-control ">
+//                                        <option selected="selected" value="">--请选择--</option>
+//                                        @Html.StringToOptions(field.ExpOption)
+//                                    </select>
+//                                </dd>
+//                            </dl>
+//                            break;
+//                        case 6: //复选框
+//                            <dl>
+//                                <dt>
+//                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
+//                                    @field.ExpTitle ：
+//                                </dt>
+//                                <dd>
+//                                    @Html.StringToCheckboxList(field.ExpOption, field.ExpName, field.ExpName, field.ExpTitle, field.ExpIsNull)
+//                                </dd>
+//                            </dl>
+//                            break;
+//                        case 7: //附件上传
+//                            <dl>
+//                                <dt>
+//                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
+//                                    @field.ExpTitle
+//                                </dt>
+//                                <dd>
+//                                    <div class="box">
+//                                        <input type="text" name="copyFile" class="form-control textbox" />
+//                                        <a href="javascript:void(0);" class="link">浏览</a>
+//                                        <input type="file" class="form-control uploadFile" name="upload" onChange=" getFile(this, 'copyFile') " />
+//                                    </div>
+//                                </dd>
+//                            </dl>
+//                            break;
+//                        case 8: //时间日期
+//                            <dl>
+//                                <dt>
+//                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
+//                                    @field.ExpTitle ：
+//                                </dt>
+//                                <dd>
+//                                    <input type="text" id="@field.ExpName" name="@field.ExpName" class="form-control Wdate " style="width: 90px;" onClick=" WdatePicker({ dateFmt: 'yyyy-MM-dd' }) " />
+//                                </dd>
+//                            </dl>
+//                            break;
+//                        case 9: //复选框
+//                            <dl>
+//                                <dt>
+//                                    @Html.BooleanParse(field.ExpIsNull, "<em class=\"imp\">*</em>", "", "")
+//                                    @field.ExpTitle
+//                                </dt>
+//                                <dd>
+//                                    @Html.StringToCheckboxList(field.ExpOption, field.ExpName, field.ExpName, field.ExpTitle, field.ExpIsNull)
+//                                </dd>
+//                            </dl>
+//                            break;
+                default:
+                    break;
+            }
+
+
+            return MvcHtmlString.Create(FieldHtmlString.ToString());
+        }
+
+        #endregion
 
         #region 自定义日期格式化
 
         /// <summary>
         /// 自定义日期格式化 2014-05-25 By 唐有炜
         /// </summary>
+        /// <param name="htmlHelper">The HTML helper.</param>
         /// <param name="datatime">日期</param>
         /// <param name="formateStr">格式化字符串</param>
-        /// <param name="htmlHelper"></param>
-        /// <returns></returns>
+        /// <returns>MvcHtmlString.</returns>
         public static MvcHtmlString DateTimeParse(this HtmlHelper htmlHelper, DateTime? datatime, string formateStr)
         {
             if (datatime == null)
@@ -41,11 +200,11 @@ namespace teaCRM.Web.Helpers
         /// <summary>
         /// 自定义日期格式化 2014-05-25 By 唐有炜
         /// </summary>
+        /// <param name="htmlHelper">The HTML helper.</param>
         /// <param name="datatime">日期</param>
         /// <param name="formateStr">格式化字符串</param>
-        /// <param name="htmlHelper"></param>
-        /// <param name="replaceValue"></param>
-        /// <returns></returns>
+        /// <param name="replaceValue">The replace value.</param>
+        /// <returns>MvcHtmlString.</returns>
         public static MvcHtmlString DateTimeParse(this HtmlHelper htmlHelper, DateTime? datatime, string formateStr,
             string replaceValue = "")
         {
@@ -67,6 +226,12 @@ namespace teaCRM.Web.Helpers
         }
 
 
+        /// <summary>
+        /// Formates the date time.
+        /// </summary>
+        /// <param name="datatime">The datatime.</param>
+        /// <param name="formateStr">The formate string.</param>
+        /// <returns>System.String.</returns>
         public static string FormateDateTime(DateTime? datatime, string formateStr)
         {
             if (datatime == null)
@@ -85,10 +250,10 @@ namespace teaCRM.Web.Helpers
         /// <summary>
         /// 自定义字符串长度 2014-05-25 By 唐有炜
         /// </summary>
-        /// <param name="htmlHelper"></param>
-        /// <param name="str"></param>
-        /// <param name="length"></param>
-        /// <returns></returns>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="str">The string.</param>
+        /// <param name="length">The length.</param>
+        /// <returns>MvcHtmlString.</returns>
         public static MvcHtmlString StringParse(this HtmlHelper htmlHelper, string str, int length)
         {
             //清楚Html标记
@@ -102,6 +267,14 @@ namespace teaCRM.Web.Helpers
             return MvcHtmlString.Create(str.Substring(0, length) + "...");
         }
 
+        /// <summary>
+        /// Strings the parse.
+        /// </summary>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="str">The string.</param>
+        /// <param name="length">The length.</param>
+        /// <param name="endStr">The end string.</param>
+        /// <returns>MvcHtmlString.</returns>
         public static MvcHtmlString StringParse(this HtmlHelper htmlHelper, string str, int length, string endStr)
         {
             //清楚Html标记
@@ -122,10 +295,10 @@ namespace teaCRM.Web.Helpers
         /// <summary>
         /// 自定义字符串长度 2014-05-25 By 唐有炜
         /// </summary>
-        /// <param name="htmlHelper"></param>
-        /// <param name="value"></param>
-        /// <param name="replaceValue"></param>
-        /// <returns></returns>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="replaceValue">The replace value.</param>
+        /// <returns>MvcHtmlString.</returns>
         public static MvcHtmlString IsNull(this HtmlHelper htmlHelper, string value, string replaceValue)
         {
             if (String.IsNullOrEmpty(value))
@@ -145,12 +318,12 @@ namespace teaCRM.Web.Helpers
         /// <summary>
         /// 自定义Image输出
         /// </summary>
-        /// <param name="helper"></param>
+        /// <param name="helper">The helper.</param>
         /// <param name="name">id</param>
         /// <param name="url">图片地址</param>
         /// <param name="altText">说明文字</param>
         /// <param name="htmlAttributes">html属性</param>
-        /// <returns></returns>
+        /// <returns>MvcHtmlString.</returns>
         public static MvcHtmlString Image(this HtmlHelper helper, string name, string url, string altText,
             object htmlAttributes)
         {
@@ -170,11 +343,11 @@ namespace teaCRM.Web.Helpers
         /// <summary>
         /// 自定义Submit输出
         /// </summary>
-        /// <param name="htmlHelper"></param>
-        /// <param name="name"></param>
-        /// <param name="value"></param>
-        /// <param name="htmlAttributes"></param>
-        /// <returns></returns>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="htmlAttributes">The HTML attributes.</param>
+        /// <returns>MvcHtmlString.</returns>
         public static MvcHtmlString Submit(this HtmlHelper htmlHelper, string name, object value, object htmlAttributes)
         {
             TagBuilder builder = new TagBuilder("input");
@@ -193,12 +366,12 @@ namespace teaCRM.Web.Helpers
         /// <summary>
         /// Boolean格式化输出 2014-05-25 By 唐有炜
         /// </summary>
-        /// <param name="htmlHelper"></param>
-        /// <param name="b"></param>
-        /// <param name="displayNameTrue"></param>
-        /// <param name="displayNameFalse"></param>
-        /// <param name="replaceValue"></param>
-        /// <returns></returns>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="b">The b.</param>
+        /// <param name="displayNameTrue">The display name true.</param>
+        /// <param name="displayNameFalse">The display name false.</param>
+        /// <param name="replaceValue">The replace value.</param>
+        /// <returns>MvcHtmlString.</returns>
         public static MvcHtmlString BooleanParse(this HtmlHelper htmlHelper, int? b, string displayNameTrue,
             string displayNameFalse, string replaceValue = "default")
         {
@@ -220,11 +393,11 @@ namespace teaCRM.Web.Helpers
         /// <summary>
         /// 整型多选项输出 2014-07-29 By 唐有炜
         /// </summary>
-        /// <param name="htmlHelper"></param>
+        /// <param name="htmlHelper">The HTML helper.</param>
         /// <param name="value">当前值</param>
         /// <param name="options">选项1|a,2|b</param>
-        /// <param name="replaceValue"></param>
-        /// <returns></returns>
+        /// <param name="replaceValue">The replace value.</param>
+        /// <returns>MvcHtmlString.</returns>
         public static MvcHtmlString OptionsPalse(this HtmlHelper htmlHelper, int? value, string options,
             string replaceValue = "default")
         {
@@ -254,10 +427,10 @@ namespace teaCRM.Web.Helpers
         /// <summary>
         /// 下拉框输出
         /// </summary>
-        /// <param name="htmlHelper"></param>
+        /// <param name="htmlHelper">The HTML helper.</param>
         /// <param name="value">v1|t1,v2|t2</param>
-        /// <returns></returns>
-        /// //<option>aaaa</option>
+        /// <returns>MvcHtmlString.</returns>
+        //<option>aaaa</option>
         //<option>aaaa</option>
         public static MvcHtmlString StringToOptions(this HtmlHelper htmlHelper, string value)
         {
@@ -275,25 +448,25 @@ namespace teaCRM.Web.Helpers
             {
                 return MvcHtmlString.Create("<option>default</option>");
             }
-
         }
 
         /// <summary>
         /// 根据id获取制定下拉框的值
         /// </summary>
-        /// <param name="htmlHelper"></param>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="key">The key.</param>
         /// <param name="options">选项</param>
-        /// <param name="key"></param>
-        /// <param name="replaceValue"></param>
-        /// <returns></returns>
-        public static MvcHtmlString GetOptionValue(this HtmlHelper htmlHelper, string key, string options, string replaceValue = "default")
+        /// <param name="replaceValue">The replace value.</param>
+        /// <returns>MvcHtmlString.</returns>
+        public static MvcHtmlString GetOptionValue(this HtmlHelper htmlHelper, string key, string options,
+            string replaceValue = "default")
         {
             string[] str_arr = options.Split(',');
             foreach (var str in str_arr)
             {
                 var k = str.Split('|')[0];
                 var v = str.Split('|')[1];
-                if (key==k)
+                if (key == k)
                 {
                     return MvcHtmlString.Create(v);
                 }
@@ -304,13 +477,19 @@ namespace teaCRM.Web.Helpers
         #endregion
 
         #region 文本复选框   2014-08-29 14:58:50 By 唐有炜
+
         /// <summary>
         /// 复选框
         /// </summary>
-        /// <param name="htmlHelper"></param>
+        /// <param name="htmlHelper">The HTML helper.</param>
         /// <param name="value">v1|t1,v2|t2</param>
-        /// <returns></returns>
-        public static MvcHtmlString StringToCheckboxList(this HtmlHelper htmlHelper, string value, string id, string name, string field_cname, int field_required)
+        /// <param name="id">The identifier.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="field_cname">The field_cname.</param>
+        /// <param name="field_required">The field_required.</param>
+        /// <returns>MvcHtmlString.</returns>
+        public static MvcHtmlString StringToCheckboxList(this HtmlHelper htmlHelper, string value, string id,
+            string name, string field_cname, int field_required)
         {
             if (!String.IsNullOrEmpty(value))
             {
@@ -319,11 +498,13 @@ namespace teaCRM.Web.Helpers
 
                 foreach (var str in str_arr)
                 {
-                    result += String.Format("<input type=\"checkbox\" field_type=\"radio\" style=\"padding-right: 10px; padding-left: 10px;value=\"{0}\" id=\"{1}\" name=\"{2}\" field_cname=\"{3}\" field_required=\"{4}\" />{5}", str.Split('|')[0], id, name, field_cname, field_required, str.Split('|')[1]);
+                    result +=
+                        String.Format(
+                            "<input type=\"checkbox\" field_type=\"radio\" style=\"padding-right: 10px; padding-left: 10px;value=\"{0}\" id=\"{1}\" name=\"{2}\" field_cname=\"{3}\" field_required=\"{4}\" />{5}",
+                            str.Split('|')[0], id, name, field_cname, field_required, str.Split('|')[1]);
                     //result += String.Format("{0},{1},{2}", 1,2,3);
                     //result += "<input type=\"checkbox\" field_type=\"checkbox\" style=\"padding-right: 10px; padding-left: 10px;\" value=\"" + str.Split('|')[0] +
                     //          "\"/>" + str.Split('|')[1];
-
                 }
                 return MvcHtmlString.Create(result);
             }
@@ -339,12 +520,11 @@ namespace teaCRM.Web.Helpers
 
         /// <summary>
         /// 加载默认图片 2014-05-25 By 唐有炜
-        /// 
         /// </summary>
-        /// <param name="htmlHelper"></param>
-        /// <param name="src"></param>
-        /// <param name="imgUrl"></param>
-        /// <returns></returns>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="src">The source.</param>
+        /// <param name="imgUrl">The img URL.</param>
+        /// <returns>MvcHtmlString.</returns>
         public static MvcHtmlString LoadDefaultPic(this HtmlHelper htmlHelper, string src, string imgUrl)
         {
             if (String.IsNullOrEmpty(src))
@@ -354,6 +534,13 @@ namespace teaCRM.Web.Helpers
             return MvcHtmlString.Create(src);
         }
 
+        /// <summary>
+        /// Loads the default value.
+        /// </summary>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="replaceValue">The replace value.</param>
+        /// <returns>MvcHtmlString.</returns>
         public static MvcHtmlString LoadDefaultValue(this HtmlHelper htmlHelper, string value, string replaceValue)
         {
             if (String.IsNullOrEmpty(value) || value == "0000-00-00")
@@ -363,6 +550,13 @@ namespace teaCRM.Web.Helpers
             return MvcHtmlString.Create(value);
         }
 
+        /// <summary>
+        /// Loads the default value.
+        /// </summary>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="replaceValue">The replace value.</param>
+        /// <returns>MvcHtmlString.</returns>
         public static MvcHtmlString LoadDefaultValue(this HtmlHelper htmlHelper, int? value, string replaceValue)
         {
             if (null == value || value == 0)
@@ -373,15 +567,23 @@ namespace teaCRM.Web.Helpers
         }
 
 
-        public static MvcHtmlString LoadDefaultValue(this HtmlHelper htmlHelper,dynamic obj, object value, string replaceValue)
+        /// <summary>
+        /// Loads the default value.
+        /// </summary>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="obj">The object.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="replaceValue">The replace value.</param>
+        /// <returns>MvcHtmlString.</returns>
+        public static MvcHtmlString LoadDefaultValue(this HtmlHelper htmlHelper, dynamic obj, object value,
+            string replaceValue)
         {
-            if (null==obj||null == value )
+            if (null == obj || null == value)
             {
                 return MvcHtmlString.Create(replaceValue);
             }
             return MvcHtmlString.Create(value.ToString());
         }
-
 
         #endregion
 
@@ -389,11 +591,10 @@ namespace teaCRM.Web.Helpers
 
         /// <summary>
         /// 加载默认图片 2014-05-25 By 唐有炜
-        /// 
         /// </summary>
-        /// <param name="htmlHelper"></param>
-        /// <param name="field"></param>
-        /// <returns></returns>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="field">The field.</param>
+        /// <returns>MvcHtmlString.</returns>
         public static MvcHtmlString NullPalse(this HtmlHelper htmlHelper, object field)
         {
             if (null == field)
@@ -410,7 +611,13 @@ namespace teaCRM.Web.Helpers
 
         #region 获取企业用户
 
-        public static VCompanyUser GetCurrentCompanyUser(this HtmlHelper htmlHelper,int userId)
+        /// <summary>
+        /// Gets the current company user.
+        /// </summary>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="userId">The user identifier.</param>
+        /// <returns>VCompanyUser.</returns>
+        public static VCompanyUser GetCurrentCompanyUser(this HtmlHelper htmlHelper, int userId)
         {
             //IAccountService accountService = new teaCRM.Service.Impl.AccountServiceImpl();
             //使用Spring接管对象的创建

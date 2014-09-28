@@ -6204,3 +6204,14 @@ button.close {
 .btn-cmd {
     color:#000000;
 }
+
+
+.container .row { margin-left: -20px; }
+.container .row:before, .row:after { content: ""; display: table; line-height: 0; }
+.container .row:after { clear: both; }
+.container b{ display: block;float: left;}
+.span6 { width: 260px;float: left;height: 30px;}
+.span12 { width: 720px;float: left;height: 30px;}
+.container .row { margin-left: -20px; }
+.container .row:before, .row:after { content: ""; display: table; line-height: 0; }
+.container .row:after { clear: both; }
