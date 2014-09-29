@@ -202,15 +202,15 @@
                                     customer.TryGetValue("cus_createTime", out cus_createTime);
                                 }
                                 <li><b>助记简称：</b>@cus_sname</li>
-                                <li><b>上级客户：</b>@Html.LoadDefaultValue(cus_lastname.ToString(), "暂无上级客户")</li>
+                                <li><b>上级客户：</b>@*@Html.LoadDefaultValue(cus_lastname.ToString(), "暂无上级客户")*@</li>
                                 <li><b>电话号码：</b>@cus_tel</li>
                                 <li><b>所在城市：</b><span id="cus_city">@cus_city</span></li>
                                 <li><b>详细地址：</b>@cus_address</li>
                                 <li><b>备注说明：</b>@cus_note</li>
                                 <li><b>主联系人：</b>@con_name</li>
                                 <li><b>共享成员：</b>@con_team</li>
-                                <li><b>是否公海：</b>@Html.BooleanParse(int.Parse(con_is_pub.ToString()), "是", "否")</li>
-                                <li><b>是否回收站：</b>@Html.BooleanParse(int.Parse(con_back.ToString()), "是", "否")</li>
+                              @*  <li><b>是否公海：</b>@Html.BooleanParse(int.Parse(con_is_pub.ToString()), "是", "否")</li>
+                                <li><b>是否回收站：</b>@Html.BooleanParse(int.Parse(con_back.ToString()), "是", "否")</li>*@
                                 <li><b>创建时间：</b>@cus_createTime</li>  
                                 @foreach (var customerField in customerFields)
                                 {

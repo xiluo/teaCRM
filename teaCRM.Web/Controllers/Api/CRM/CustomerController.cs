@@ -302,6 +302,7 @@ namespace teaCRM.Web.Controllers.Api.CRM
             TCusBase CusBase = new TCusBase();
             CusBase.Id = customerId;
             CusBase.CusNo = request.Params.Get("CusNo");
+            CusBase.CompNum = compNum;
             CusBase.CusName = request.Params.Get("CusName");
             CusBase.CusSname = request.Params.Get("CusSname") ?? "";
             CusBase.CusLastid = 0;
@@ -310,7 +311,7 @@ namespace teaCRM.Web.Controllers.Api.CRM
                 request.Params.Get("cus_city") ?? "0", request.Params.Get("cus_region") ?? "0");
             CusBase.CusAddress = request.Params.Get("CusAddress") ?? "";
             CusBase.CusNote = request.Params.Get("CusNote") ?? "";
-            CusBase.ConId = int.Parse(request.Params.Get("con_id") ?? "0");
+            CusBase.ConId = int.Parse(request.Params.Get("ConId") ?? "0");
             CusBase.UserId = userId;
             CusBase.ConTeam = "17,21";
             CusBase.ConIsPub = 0;

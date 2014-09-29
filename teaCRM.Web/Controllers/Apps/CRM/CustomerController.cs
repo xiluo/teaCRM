@@ -193,121 +193,6 @@ namespace teaCRM.Web.Controllers.Apps.CRM
         }
 
 
-//        //
-//        // GET: /Apps/CRM/Index/Add/ 2014-08-29 14:58:50 By 唐有炜
-//        /// <summary>
-//        /// Adds the specified fc.
-//        /// </summary>
-//        /// <param name="fc">The fc.</param>
-//        /// <returns>ActionResult.</returns>
-//        [UserAuthorize]
-//        [HttpPost]
-//        public ActionResult Add(FormCollection fc)
-//        {
-//            //初始化扩展字段
-//            Init();
-//
-//            ResponseMessage rmsg = new ResponseMessage();
-//            //客户赋值==============================================
-//            var compNum = Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString();
-//            var userId = int.Parse(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_ID].ToString());
-//
-//            //基本字段
-//            TCusBase CusBase = new TCusBase()
-//            {
-//                CusNo = RandomHelper.GetCustomerNumber(),
-//                CompNum = compNum,
-//                CusName = fc["cus_name"],
-//                CusSname = fc["cus_sname"],
-//                CusLastid = 0, //默认无上级客户
-//                CusTel = fc["cus_tel"],
-//                CusCity = String.Format("{0},{1},{2}", fc["cus_province"].ToString(), fc["cus_city"], fc["cus_region"]),
-//                CusAddress = fc["cus_address"],
-//                CusNote = fc["cus_note"],
-//                //ConId = 1,//在Dao层处理
-//                UserId = userId, //负责人
-//                ConTeam = "17,21",
-//                ConIsPub = 0,
-//                ConBack = 0
-//                //创建时间有数据库默认指定
-//            };
-//            //扩展字段
-//            Dictionary<string, object> cusFields = new Dictionary<string, object>();
-//            for (int i = 0; i < fc.Count; i++)
-//            {
-//                var field = fc.GetKey(i);
-//                var value = fc.Get(field);
-//                foreach (var field2 in customerExpandFields)
-//                {
-//                    if (field == field2.ExpName)
-//                    {
-//                        cusFields.Add(field, value);
-//                    }
-//                }
-//            }
-//            //存储扩展字段的值
-//            CusBase.CusFields = JsonConvert.SerializeObject(cusFields);
-//
-//
-//            //========================================================================
-//
-//            //主联系人赋值 
-//            var conName = fc["con_name"];
-//            if (String.IsNullOrEmpty(conName))
-//            {
-//                conName = fc["cus_name"];
-//            }
-//            var conBir = fc["con_bir"];
-//            if (String.IsNullOrEmpty(fc["con_bir"]))
-//            {
-//                conBir = DateTime.Now.ToString();
-//            }
-//
-//            TCusCon CusCon = new TCusCon()
-//            {
-//                CompNum = compNum,
-//                ConName = conName,
-//                ConTel = fc["con_tel"],
-//                ConQq = fc["con_qq"],
-//                ConEmail = fc["con_email"],
-//                ConBir = DateTime.Parse(conBir),
-//                ConNote = fc["con_note"],
-//                ConIsMain = 1,
-//                UserId = userId
-//            };
-//            Dictionary<string, object> conFields = new Dictionary<string, object>();
-//            for (int i = 0; i < fc.Count; i++)
-//            {
-//                var field_con = fc.GetKey(i);
-//                var value_con = fc.Get(field_con);
-//                foreach (var field_con2 in contactExpandFields)
-//                {
-//                    if (field_con == field_con2.ExpName)
-//                    {
-//                        //LogHelper.Debug("联系人扩展字段："+field_con);
-//                        conFields.Add(field_con, value_con);
-//                    }
-//                }
-//            }
-//            //存储扩展字段的值
-//            CusCon.ConFields = JsonConvert.SerializeObject(conFields);
-//            //==============================================================
-////
-////            //添加提交
-//            bool add_status = CustomerService.AddCustomer(CusBase, CusCon);
-//            if (add_status)
-//            {
-//                rmsg.Status = add_status;
-//                rmsg.Msg = "客户添加成功！";
-//            }
-//            else
-//            {
-//                rmsg.Status = add_status;
-//                rmsg.Msg = "客户添加失败！";
-//            }
-//            return Json(rmsg);
-//        }
-
         #endregion
 
         #region   查看客户页面  2014-08-30 14:58:50 By 唐有炜
@@ -335,14 +220,14 @@ namespace teaCRM.Web.Controllers.Apps.CRM
             {
                 ViewBag.CustomerExpandFields = customerExpandFields;
                 ViewBag.ContactExpandFields = contactExpandFields;
-                Dictionary<string, object> cus = null;
-                // CustomerService.GetCustomer(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(), id);
+                Dictionary<string, object> cus = new Dictionary<string, object>(); 
+                //CustomerService.GetCustomer(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(), id);
                 ViewBag.Customer = cus;
                 object con_id = null;
                 cus.TryGetValue("con_id", out con_id);
-                ViewBag.MainContact =
-                    CustomerService.GetContact(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(),
-                        (int) con_id);
+                ViewBag.MainContact =new Dictionary<string, object>(); 
+                    //CustomerService.GetContact(Session[teaCRMKeys.SESSION_USER_COMPANY_INFO_NUM].ToString(),
+                     //   (int) con_id);
                 ViewBag.MyApps = myApps;
                 return View("CustomerShow");
             }
