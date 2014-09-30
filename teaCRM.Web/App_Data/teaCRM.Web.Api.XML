@@ -4,6 +4,848 @@
         <name>teaCRM.Web</name>
     </assembly>
     <members>
+        <member name="T:teaCRM.Web.BundleConfig">
+            <summary>
+            Class BundleConfig.
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.BundleConfig.RegisterBundles(System.Web.Optimization.BundleCollection)">
+            <summary>
+            Registers the bundles.
+            </summary>
+            <param name="bundles">The bundles.</param>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:teaCRM.Web.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:teaCRM.Web.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:teaCRM.Web.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:teaCRM.Web.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:teaCRM.Web.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:teaCRM.Web.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:teaCRM.Web.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:teaCRM.Web.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:teaCRM.Web.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:teaCRM.Web.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,teaCRM.Web.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,teaCRM.Web.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create one using <see cref="T:teaCRM.Web.Areas.HelpPage.ObjectGenerator"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},teaCRM.Web.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="T:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.#ctor(teaCRM.Web.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,teaCRM.Web.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:teaCRM.Web.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:teaCRM.Web.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:teaCRM.Web.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:teaCRM.Web.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:teaCRM.Web.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:teaCRM.Web.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:teaCRM.Web.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:teaCRM.Web.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="T:teaCRM.Web.Controllers.Api.CRM.ContactController">
+            <summary>
+            联系人APi
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Api.CRM.ContactController.CustomerService">
+            <summary>
+            The customer service
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Api.CRM.ContactController.GetAllContacts(System.String)">
+            <summary>
+            ghgh
+            </summary>
+            <param name="value">The value.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Api.CRM.ContactController.GetContact(System.Int32)">
+            <summary>
+            Gets the contact.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>TCusCon.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Api.CRM.ContactController.AddContact(System.String)">
+            <summary>
+            添加联系人 14-09-25 By 唐有炜
+            </summary>
+            <param name="value">参数</param>
+            <returns>添加状态</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Api.CRM.ContactController.EditContact(System.String)">
+            <summary>
+            Edits the contact.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>ResponseMessage.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Api.CRM.ContactController.ToTrash(System.String)">
+            <summary>
+            删除联系人
+            /api/crm/contact/toTrash?ids=18
+            /api/crm/contact/toTrash?ids=18,19
+            </summary>
+            <param name="ids">联系人id集合</param>
+            <returns>删除状态</returns>
+        </member>
+        <member name="T:teaCRM.Web.Controllers.Api.CRM.CustomerController">
+            <summary>
+            CRM客户模块Api接口 14-09-28 By 唐有炜   
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Api.CRM.CustomerController.CustomerService">
+             <summary>
+            创建service依赖
+             </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Api.CRM.CustomerController.CustomerMyappId">
+            <summary>
+            当前模块对应的id（应用发布时确定）
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Api.CRM.CustomerController.customerExpandFields">
+            <summary>
+            客户扩展字段信息
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Api.CRM.CustomerController.contactExpandFields">
+            <summary>
+            联系人扩展字段信息
+            </summary>
+        </member>
+        <!-- 对于成员“M:teaCRM.Web.Controllers.Api.CRM.CustomerController.GetAllCustomers”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:teaCRM.Web.Controllers.Api.CRM.CustomerController.GetCustomer(System.String,System.Int32)”忽略有格式错误的 XML 注释 -->
+        <member name="M:teaCRM.Web.Controllers.Api.CRM.CustomerController.AddCustomer(System.String)">
+            <summary>
+            添加客户
+            /api/crm/customer/addCustomer
+            </summary>
+            <param name="customer">The customer.</param>
+            <returns>ResponseMessage.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Api.CRM.CustomerController.EditCustomer(System.String)">
+            <summary>
+            Edits the customer.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>ResponseMessage.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Api.CRM.CustomerController.UpdateCustomerStatus(System.Int32)">
+            <summary>
+            Deletes the role.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>ResponseMessage.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Api.CRM.CustomerController.DeleteCustomer(System.Int32)">
+            <summary>
+            Deletes the role.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>ResponseMessage.</returns>
+        </member>
+        <!-- 对于成员“M:teaCRM.Web.Controllers.Api.CRM.CustomerController.AsyncGetNodes”忽略有格式错误的 XML 注释 -->
+        <member name="T:teaCRM.Web.Helpers.MyWebApiController">
+            <summary>
+            自定义的WebApi控制器 14-09-18 By 唐有炜
+            </summary>
+        </member>
+        <member name="T:teaCRM.Web.Controllers.Apps.CRM.ContactController">
+            <summary>
+            联系人控制器
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.ContactController.CompNum">
+            <summary>
+            当前公司编号
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.ContactController.contactExpandFields">
+             <summary>
+            联系人扩展字段信息
+             </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.ContactController.AppId">
+            <summary>
+            当前应用的类别id，（对应/Themes/default/base/js/category.js里面的code和T_fun_app表里面的app_id） 14-09-21 By 唐有炜
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.ContactController.Init">
+            <summary>
+            初始化扩展字段
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.ContactController.PartialIndex(System.Nullable{System.Int32})">
+            <summary>
+            GET: /Apps/CRM/Contact/PartialIndex
+            /Apps/CRM/Contact/?cus_id=100
+            </summary>
+            <param name="cus_id">客户id</param>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.ContactController.Index(System.Nullable{System.Int32})">
+            <summary>
+            GET: /Apps/CRM/Contact/
+            /Apps/CRM/Contact/?cus_id=100
+            </summary>
+            <param name="cus_id">客户id</param>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.ContactController.Add(System.Nullable{System.Int32})">
+            <summary>
+            Adds this instance.
+            </summary>
+            <param name="cus_id">The cus_id.</param>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.ContactController.Edit(System.Int32)">
+            <summary>
+            Edits the specified fc.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="P:teaCRM.Web.Controllers.Apps.CRM.ContactController.CustomerService">
+            <summary>
+            Gets or sets the customer service.
+            </summary>
+            <value>The customer service.</value>
+        </member>
+        <member name="P:teaCRM.Web.Controllers.Apps.CRM.ContactController.AccountService">
+            <summary>
+            Gets or sets the account service.
+            </summary>
+            <value>The account service.</value>
+        </member>
+        <member name="T:teaCRM.Web.Controllers.Apps.CRM.PubController">
+            <summary>
+            Class PubController.
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.PubController.Index">
+            <summary>
+            Indexes this instance.
+            </summary>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="P:teaCRM.Web.Controllers.Apps.CRM.PubController.CustomerService">
+            <summary>
+            Gets or sets the customer service.
+            </summary>
+            <value>The customer service.</value>
+        </member>
+        <member name="P:teaCRM.Web.Controllers.Apps.CRM.PubController.AccountService">
+            <summary>
+            Gets or sets the account service.
+            </summary>
+            <value>The account service.</value>
+        </member>
+        <member name="T:teaCRM.Web.Controllers.Apps.CRM.TrashController">
+            <summary>
+            回收站模块
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.TrashController.CompNum">
+            <summary>
+            当前公司编号
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.TrashController.UserId">
+            <summary>
+            当前登录用户id
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.TrashController.MyAppId">
+            <summary>
+            模块id(回收站使用客户的模块id)
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.TrashController.customerExpandFields">
+            <summary>
+            客户扩展字段
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.TrashController.trashOperatings">
+            <summary>
+            回收站操作
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.TrashController.Init(System.Int32)">
+            <summary>
+            初始化扩展字段
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.TrashController.Index(System.Int32)">
+            <summary>
+            Indexes this instance.
+            </summary>
+            <param name="id">模块id</param>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="P:teaCRM.Web.Controllers.Apps.CRM.TrashController.CustomerService">
+            <summary>
+            CustomerService
+            </summary>
+            <value>CustomerService</value>
+        </member>
+        <member name="P:teaCRM.Web.Controllers.Apps.CRM.TrashController.AccountService">
+             <summary>
+            AccountService
+             </summary>
+             <value>AccountService</value>
+        </member>
+        <member name="P:teaCRM.Web.Controllers.AccountController.AccountService">
+            <summary>
+            Web层注入账户Service接口 2014-08-26 14:58:50 By 唐有炜
+            </summary>
+        </member>
+        <member name="T:teaCRM.Web.Controllers.AccountController.AutoStruct">
+            <summary>
+            返回结果
+            </summary>
+        </member>
+        <member name="T:teaCRM.Web.Controllers.Apps.CRM.CustomerController">
+            <summary>
+            Class IndexController.
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.CompNum">
+            <summary>
+            当前公司编号
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.UserId">
+            <summary>
+            当前登录用户id
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.AppId">
+            <summary>
+            当前应用的类别id，（对应/Themes/default/base/js/category.js里面的code和T_fun_app表里面的app_id） 14-09-21 By 唐有炜
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.CustomerMyappId">
+            <summary>
+            当前模块对应的id（应用发布时确定）
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.customerExpandFields">
+            <summary>
+            客户扩展字段信息
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.contactExpandFields">
+            <summary>
+            联系人扩展字段信息
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.customerOperatings">
+            <summary>
+            客户操作
+            </summary>
+        </member>
+        <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.myApps">
+            <summary>
+            应用列表
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.CustomerController.Init">
+            <summary>
+            初始化扩展字段
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.CustomerController.Index(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Indexes the specified con back.
+            </summary>
+            <param name="ConBack">The con back.</param>
+            <param name="ConIsPub">The con is pub.</param>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.CustomerController.Add">
+            <summary>
+            Adds this instance.
+            </summary>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.CustomerController.Show(System.Int32)">
+            <summary>
+            Shows the specified identifier.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.CRM.CustomerController.Edit(System.Int32)">
+            <summary>
+            Edits the specified fc.
+            </summary>
+            <param name="fc">The fc.</param>
+            <param name="id">The identifier.</param>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="P:teaCRM.Web.Controllers.Apps.CRM.CustomerController.CustomerService">
+            <summary>
+            Gets or sets the customer service.
+            </summary>
+            <value>The customer service.</value>
+        </member>
+        <member name="P:teaCRM.Web.Controllers.Apps.CRM.CustomerController.AccountService">
+            <summary>
+            Gets or sets the account service.
+            </summary>
+            <value>The account service.</value>
+        </member>
+        <member name="P:teaCRM.Web.Controllers.Apps.CRM.CustomerController.AppMakerService">
+            <summary>
+            Gets or sets the application maker service.
+            </summary>
+            <value>The application maker service.</value>
+        </member>
+        <member name="T:teaCRM.Web.Controllers.Apps.MarketController">
+            <summary>
+            Class MarketController.
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.MarketController.Index">
+            <summary>
+            Indexes this instance.
+            </summary>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.Settings.DepartmentController.AsyncGetNodes(System.Nullable{System.Int32},System.String)">
+            <summary>
+            得到指定ID的子节点列表，并序列化为JSON串
+            </summary>
+            <param name="id">节点父id</param>
+            <param name="type">类型（默认：show，select:添加一个根节点）</param>
+            <returns></returns>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.Settings.DepartmentController.GetDepartment(System.Int32)">
+            <summary>
+            获取一条部门数据  2014-09-5 14:58:50 By 唐有炜
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:teaCRM.Web.Controllers.Apps.Settings.DepartmentController.SysDepartmentService">
+            <summary>
+            依赖注入 2014-08-27 14:58:50 By 唐有炜
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Controllers.Apps.Settings.RoleController.Index">
+            
+        </member>
+        <member name="T:teaCRM.Web.Filters.ApiAuthorizeAttribute">
+             <summary>
+            Api授权过滤器 2014-09-21 14:58:50 By 唐有炜
+             </summary>
+        </member>
+        <member name="T:teaCRM.Web.Filters.AutoLoginAttribute">
+             <summary>
+            自动登录过滤器 2014-08-22 14:58:50 By 唐有炜
+             </summary>
+        </member>
+        <member name="T:teaCRM.Web.Filters.UserAuthorizeAttribute">
+             <summary>
+            账户授权过滤器 2014-08-22 14:58:50 By 唐有炜
+             </summary>
+        </member>
+        <member name="M:teaCRM.Web.MvcApplication.RegisterView">
+            <summary>
+            注册自定义视图
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.MvcApplication.Application_Error(System.Object,System.EventArgs)">
+            <summary>
+            捕捉全局异常
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:teaCRM.Web.Helpers.MyConfigHelper">
+            <summary>
+            获取系统配置信息
+            </summary>
+        </member>
+        <member name="M:teaCRM.Web.Helpers.MyConfigHelper.GetAppId(System.String)">
+            <summary>
+            根据App名称获取AppId
+            </summary>
+            <param name="appName">Name of the application.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="M:teaCRM.Web.Helpers.MyConfigHelper.GetMyAppId(System.String)">
+            <summary>
+            根据MyApp名称获取myappName
+            </summary>
+            <param name="myappName">Name of the myapp.</param>
+            <returns>System.Int32.</returns>
+        </member>
         <member name="T:teaCRM.Web.Helpers.MyHtmlHelper">
             <summary>
             Html格式化输出辅助类
@@ -201,848 +1043,6 @@
             <param name="htmlHelper">The HTML helper.</param>
             <param name="userId">The user identifier.</param>
             <returns>VCompanyUser.</returns>
-        </member>
-        <member name="T:teaCRM.Web.Controllers.Apps.CRM.PubController">
-            <summary>
-            Class PubController.
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.PubController.Index">
-            <summary>
-            Indexes this instance.
-            </summary>
-            <returns>ActionResult.</returns>
-        </member>
-        <member name="P:teaCRM.Web.Controllers.Apps.CRM.PubController.CustomerService">
-            <summary>
-            Gets or sets the customer service.
-            </summary>
-            <value>The customer service.</value>
-        </member>
-        <member name="P:teaCRM.Web.Controllers.Apps.CRM.PubController.AccountService">
-            <summary>
-            Gets or sets the account service.
-            </summary>
-            <value>The account service.</value>
-        </member>
-        <member name="T:teaCRM.Web.Controllers.Apps.CRM.ContactController">
-            <summary>
-            联系人控制器
-            </summary>
-        </member>
-        <member name="F:teaCRM.Web.Controllers.Apps.CRM.ContactController.CompNum">
-            <summary>
-            当前公司编号
-            </summary>
-        </member>
-        <member name="F:teaCRM.Web.Controllers.Apps.CRM.ContactController.contactExpandFields">
-             <summary>
-            联系人扩展字段信息
-             </summary>
-        </member>
-        <member name="F:teaCRM.Web.Controllers.Apps.CRM.ContactController.AppId">
-            <summary>
-            当前应用的类别id，（对应/Themes/default/base/js/category.js里面的code和T_fun_app表里面的app_id） 14-09-21 By 唐有炜
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.ContactController.Init">
-            <summary>
-            初始化扩展字段
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.ContactController.PartialIndex(System.Nullable{System.Int32})">
-            <summary>
-            GET: /Apps/CRM/Contact/PartialIndex
-            /Apps/CRM/Contact/?cus_id=100
-            </summary>
-            <param name="cus_id">客户id</param>
-            <returns>ActionResult.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.ContactController.Index(System.Nullable{System.Int32})">
-            <summary>
-            GET: /Apps/CRM/Contact/
-            /Apps/CRM/Contact/?cus_id=100
-            </summary>
-            <param name="cus_id">客户id</param>
-            <returns>ActionResult.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.ContactController.Add(System.Nullable{System.Int32})">
-            <summary>
-            Adds this instance.
-            </summary>
-            <param name="cus_id">The cus_id.</param>
-            <returns>ActionResult.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.ContactController.Edit(System.Int32)">
-            <summary>
-            Edits the specified fc.
-            </summary>
-            <param name="id">The identifier.</param>
-            <returns>ActionResult.</returns>
-        </member>
-        <member name="P:teaCRM.Web.Controllers.Apps.CRM.ContactController.CustomerService">
-            <summary>
-            Gets or sets the customer service.
-            </summary>
-            <value>The customer service.</value>
-        </member>
-        <member name="P:teaCRM.Web.Controllers.Apps.CRM.ContactController.AccountService">
-            <summary>
-            Gets or sets the account service.
-            </summary>
-            <value>The account service.</value>
-        </member>
-        <member name="T:teaCRM.Web.Areas.HelpPage.ObjectGenerator">
-            <summary>
-            This class will create an object of a given type and populate it with sample data.
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
-            <summary>
-            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
-            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
-            Complex types: POCO types.
-            Nullables: <see cref="T:System.Nullable`1"/>.
-            Arrays: arrays of simple types or complex types.
-            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
-            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
-            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
-            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
-            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
-            </summary>
-            <param name="type">The type.</param>
-            <returns>An object of the given type.</returns>
-        </member>
-        <member name="T:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator">
-            <summary>
-            This class will generate the samples for the help page.
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator"/> class.
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
-            <summary>
-            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
-            </summary>
-            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
-            <returns>The samples keyed by media type.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
-            <summary>
-            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
-            </summary>
-            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
-            <returns>The samples keyed by media type.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,teaCRM.Web.Areas.HelpPage.SampleDirection)">
-            <summary>
-            Gets the request or response body samples.
-            </summary>
-            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
-            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
-            <returns>The samples keyed by media type.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,teaCRM.Web.Areas.HelpPage.SampleDirection)">
-            <summary>
-            Search for samples that are provided directly through <see cref="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
-            </summary>
-            <param name="controllerName">Name of the controller.</param>
-            <param name="actionName">Name of the action.</param>
-            <param name="parameterNames">The parameter names.</param>
-            <param name="type">The CLR type.</param>
-            <param name="formatter">The formatter.</param>
-            <param name="mediaType">The media type.</param>
-            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
-            <returns>The sample that matches the parameters.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
-            <summary>
-            Gets the sample object that will be serialized by the formatters. 
-            First, it will look at the <see cref="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create one using <see cref="T:teaCRM.Web.Areas.HelpPage.ObjectGenerator"/>.
-            </summary>
-            <param name="type">The type.</param>
-            <returns>The sample object.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},teaCRM.Web.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
-            <summary>
-            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
-            </summary>
-            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
-            <param name="controllerName">Name of the controller.</param>
-            <param name="actionName">Name of the action.</param>
-            <param name="parameterNames">The parameter names.</param>
-            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
-            <param name="formatters">The formatters.</param>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
-            <summary>
-            Writes the sample object using formatter.
-            </summary>
-            <param name="formatter">The formatter.</param>
-            <param name="value">The value.</param>
-            <param name="type">The type.</param>
-            <param name="mediaType">Type of the media.</param>
-            <returns></returns>
-        </member>
-        <member name="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
-            <summary>
-            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
-            </summary>
-        </member>
-        <member name="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
-            <summary>
-            Gets the objects that are used directly as samples for certain actions.
-            </summary>
-        </member>
-        <member name="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
-            <summary>
-            Gets the objects that are serialized as samples by the supported formatters.
-            </summary>
-        </member>
-        <member name="T:teaCRM.Web.Filters.AutoLoginAttribute">
-             <summary>
-            自动登录过滤器 2014-08-22 14:58:50 By 唐有炜
-             </summary>
-        </member>
-        <member name="T:teaCRM.Web.Helpers.MyConfigHelper">
-            <summary>
-            获取系统配置信息
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.Helpers.MyConfigHelper.GetAppId(System.String)">
-            <summary>
-            根据App名称获取AppId
-            </summary>
-            <param name="appName">Name of the application.</param>
-            <returns>System.Int32.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Helpers.MyConfigHelper.GetMyAppId(System.String)">
-            <summary>
-            根据MyApp名称获取myappName
-            </summary>
-            <param name="myappName">Name of the myapp.</param>
-            <returns>System.Int32.</returns>
-        </member>
-        <member name="T:teaCRM.Web.Filters.UserAuthorizeAttribute">
-             <summary>
-            账户授权过滤器 2014-08-22 14:58:50 By 唐有炜
-             </summary>
-        </member>
-        <member name="T:teaCRM.Web.Filters.ApiAuthorizeAttribute">
-             <summary>
-            Api授权过滤器 2014-09-21 14:58:50 By 唐有炜
-             </summary>
-        </member>
-        <member name="T:teaCRM.Web.Areas.HelpPage.InvalidSample">
-            <summary>
-            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
-            </summary>
-        </member>
-        <member name="T:teaCRM.Web.BundleConfig">
-            <summary>
-            Class BundleConfig.
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.BundleConfig.RegisterBundles(System.Web.Optimization.BundleCollection)">
-            <summary>
-            Registers the bundles.
-            </summary>
-            <param name="bundles">The bundles.</param>
-        </member>
-        <member name="T:teaCRM.Web.Helpers.MyWebApiController">
-            <summary>
-            自定义的WebApi控制器 14-09-18 By 唐有炜
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.Settings.RoleController.Index">
-            
-        </member>
-        <member name="T:teaCRM.Web.Areas.HelpPage.XmlDocumentationProvider">
-            <summary>
-            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:teaCRM.Web.Areas.HelpPage.XmlDocumentationProvider"/> class.
-            </summary>
-            <param name="documentPath">The physical path to XML document.</param>
-        </member>
-        <member name="T:teaCRM.Web.Areas.HelpPage.TextSample">
-            <summary>
-            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
-            </summary>
-        </member>
-        <member name="T:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey">
-            <summary>
-            This is used to identify the place where the sample should be applied.
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
-            <summary>
-            Creates a new <see cref="T:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
-            </summary>
-            <param name="mediaType">The media type.</param>
-            <param name="type">The CLR type.</param>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.#ctor(teaCRM.Web.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
-            <summary>
-            Creates a new <see cref="T:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
-            </summary>
-            <param name="sampleDirection">The <see cref="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
-            <param name="controllerName">Name of the controller.</param>
-            <param name="actionName">Name of the action.</param>
-            <param name="parameterNames">The parameter names.</param>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,teaCRM.Web.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
-            <summary>
-            Creates a new <see cref="T:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
-            </summary>
-            <param name="mediaType">The media type.</param>
-            <param name="sampleDirection">The <see cref="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
-            <param name="controllerName">Name of the controller.</param>
-            <param name="actionName">Name of the action.</param>
-            <param name="parameterNames">The parameter names.</param>
-        </member>
-        <member name="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.ControllerName">
-            <summary>
-            Gets the name of the controller.
-            </summary>
-            <value>
-            The name of the controller.
-            </value>
-        </member>
-        <member name="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.ActionName">
-            <summary>
-            Gets the name of the action.
-            </summary>
-            <value>
-            The name of the action.
-            </value>
-        </member>
-        <member name="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.MediaType">
-            <summary>
-            Gets the media type.
-            </summary>
-            <value>
-            The media type.
-            </value>
-        </member>
-        <member name="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
-            <summary>
-            Gets the parameter names.
-            </summary>
-        </member>
-        <member name="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
-            <summary>
-            Gets the <see cref="P:teaCRM.Web.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
-            </summary>
-        </member>
-        <member name="T:teaCRM.Web.Controllers.Api.CRM.ContactController">
-            <summary>
-            联系人APi
-            </summary>
-        </member>
-        <member name="F:teaCRM.Web.Controllers.Api.CRM.ContactController.CustomerService">
-            <summary>
-            The customer service
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Api.CRM.ContactController.GetAllContacts(System.String)">
-            <summary>
-            ghgh
-            </summary>
-            <param name="value">The value.</param>
-            <returns>System.String.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Api.CRM.ContactController.GetContact(System.Int32)">
-            <summary>
-            Gets the contact.
-            </summary>
-            <param name="id">The identifier.</param>
-            <returns>TCusCon.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Api.CRM.ContactController.AddContact(System.String)">
-            <summary>
-            添加联系人 14-09-25 By 唐有炜
-            </summary>
-            <param name="value">参数</param>
-            <returns>添加状态</returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Api.CRM.ContactController.EditContact(System.String)">
-            <summary>
-            Edits the contact.
-            </summary>
-            <param name="value">The value.</param>
-            <returns>ResponseMessage.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Api.CRM.ContactController.ToTrash(System.String)">
-            <summary>
-            删除联系人
-            /api/crm/contact/toTrash?ids=18
-            /api/crm/contact/toTrash?ids=18,19
-            </summary>
-            <param name="ids">联系人id集合</param>
-            <returns>删除状态</returns>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
-            <summary>
-            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
-            </summary>
-            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
-            <returns>The ID as a string.</returns>
-        </member>
-        <member name="T:teaCRM.Web.Areas.HelpPage.Controllers.HelpController">
-            <summary>
-            The controller that will handle requests for the help page.
-            </summary>
-        </member>
-        <member name="T:teaCRM.Web.Areas.HelpPage.HelpPageConfig">
-            <summary>
-            Use this class to customize the Help Page.
-            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
-            or you can provide the samples for the requests/responses.
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
-            <summary>
-            Sets the documentation provider for help page.
-            </summary>
-            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
-            <param name="documentationProvider">The documentation provider.</param>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
-            <summary>
-            Sets the objects that will be used by the formatters to produce sample requests/responses.
-            </summary>
-            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
-            <param name="sampleObjects">The sample objects.</param>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
-            <summary>
-            Sets the sample request directly for the specified media type and action.
-            </summary>
-            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
-            <param name="sample">The sample request.</param>
-            <param name="mediaType">The media type.</param>
-            <param name="controllerName">Name of the controller.</param>
-            <param name="actionName">Name of the action.</param>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
-            <summary>
-            Sets the sample request directly for the specified media type and action with parameters.
-            </summary>
-            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
-            <param name="sample">The sample request.</param>
-            <param name="mediaType">The media type.</param>
-            <param name="controllerName">Name of the controller.</param>
-            <param name="actionName">Name of the action.</param>
-            <param name="parameterNames">The parameter names.</param>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
-            <summary>
-            Sets the sample request directly for the specified media type of the action.
-            </summary>
-            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
-            <param name="sample">The sample response.</param>
-            <param name="mediaType">The media type.</param>
-            <param name="controllerName">Name of the controller.</param>
-            <param name="actionName">Name of the action.</param>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
-            <summary>
-            Sets the sample response directly for the specified media type of the action with specific parameters.
-            </summary>
-            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
-            <param name="sample">The sample response.</param>
-            <param name="mediaType">The media type.</param>
-            <param name="controllerName">Name of the controller.</param>
-            <param name="actionName">Name of the action.</param>
-            <param name="parameterNames">The parameter names.</param>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
-            <summary>
-            Sets the sample directly for all actions with the specified type and media type.
-            </summary>
-            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
-            <param name="sample">The sample.</param>
-            <param name="mediaType">The media type.</param>
-            <param name="type">The parameter type or return type of an action.</param>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
-            <summary>
-            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
-            The help page will use this information to produce more accurate request samples.
-            </summary>
-            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
-            <param name="type">The type.</param>
-            <param name="controllerName">Name of the controller.</param>
-            <param name="actionName">Name of the action.</param>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
-            <summary>
-            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
-            The help page will use this information to produce more accurate request samples.
-            </summary>
-            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
-            <param name="type">The type.</param>
-            <param name="controllerName">Name of the controller.</param>
-            <param name="actionName">Name of the action.</param>
-            <param name="parameterNames">The parameter names.</param>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
-            <summary>
-            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
-            The help page will use this information to produce more accurate response samples.
-            </summary>
-            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
-            <param name="type">The type.</param>
-            <param name="controllerName">Name of the controller.</param>
-            <param name="actionName">Name of the action.</param>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
-            <summary>
-            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
-            The help page will use this information to produce more accurate response samples.
-            </summary>
-            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
-            <param name="type">The type.</param>
-            <param name="controllerName">Name of the controller.</param>
-            <param name="actionName">Name of the action.</param>
-            <param name="parameterNames">The parameter names.</param>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
-            <summary>
-            Gets the help page sample generator.
-            </summary>
-            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
-            <returns>The help page sample generator.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,teaCRM.Web.Areas.HelpPage.HelpPageSampleGenerator)">
-            <summary>
-            Sets the help page sample generator.
-            </summary>
-            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
-            <param name="sampleGenerator">The help page sample generator.</param>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
-            <summary>
-            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
-            </summary>
-            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
-            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
-            <returns>
-            An <see cref="T:teaCRM.Web.Areas.HelpPage.Models.HelpPageApiModel"/>
-            </returns>
-        </member>
-        <member name="T:teaCRM.Web.Areas.HelpPage.ImageSample">
-            <summary>
-            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.ImageSample.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:teaCRM.Web.Areas.HelpPage.ImageSample"/> class.
-            </summary>
-            <param name="src">The URL of an image.</param>
-        </member>
-        <member name="T:teaCRM.Web.Controllers.Api.CRM.CustomerController">
-            <summary>
-            CRM客户模块Api接口 14-09-28 By 唐有炜   
-            </summary>
-        </member>
-        <member name="F:teaCRM.Web.Controllers.Api.CRM.CustomerController.CustomerService">
-             <summary>
-            创建service依赖
-             </summary>
-        </member>
-        <member name="F:teaCRM.Web.Controllers.Api.CRM.CustomerController.CustomerMyappId">
-            <summary>
-            当前模块对应的id（应用发布时确定）
-            </summary>
-        </member>
-        <member name="F:teaCRM.Web.Controllers.Api.CRM.CustomerController.customerExpandFields">
-            <summary>
-            客户扩展字段信息
-            </summary>
-        </member>
-        <member name="F:teaCRM.Web.Controllers.Api.CRM.CustomerController.contactExpandFields">
-            <summary>
-            联系人扩展字段信息
-            </summary>
-        </member>
-        <!-- Badly formed XML comment ignored for member "M:teaCRM.Web.Controllers.Api.CRM.CustomerController.GetAllCustomers" -->
-        <!-- Badly formed XML comment ignored for member "M:teaCRM.Web.Controllers.Api.CRM.CustomerController.GetCustomer(System.String,System.Int32)" -->
-        <member name="M:teaCRM.Web.Controllers.Api.CRM.CustomerController.AddCustomer(System.String)">
-            <summary>
-            添加客户
-            /api/crm/customer/addCustomer
-            </summary>
-            <param name="customer">The customer.</param>
-            <returns>ResponseMessage.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Api.CRM.CustomerController.EditCustomer(System.String)">
-            <summary>
-            Edits the customer.
-            </summary>
-            <param name="value">The value.</param>
-            <returns>ResponseMessage.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Api.CRM.CustomerController.UpdateCustomerStatus(System.Int32)">
-            <summary>
-            Deletes the role.
-            </summary>
-            <param name="id">The identifier.</param>
-            <returns>ResponseMessage.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Api.CRM.CustomerController.DeleteCustomer(System.Int32)">
-            <summary>
-            Deletes the role.
-            </summary>
-            <param name="id">The identifier.</param>
-            <returns>ResponseMessage.</returns>
-        </member>
-        <!-- Badly formed XML comment ignored for member "M:teaCRM.Web.Controllers.Api.CRM.CustomerController.AsyncGetNodes" -->
-        <member name="P:teaCRM.Web.Controllers.AccountController.AccountService">
-            <summary>
-            Web层注入账户Service接口 2014-08-26 14:58:50 By 唐有炜
-            </summary>
-        </member>
-        <member name="T:teaCRM.Web.Controllers.AccountController.AutoStruct">
-            <summary>
-            返回结果
-            </summary>
-        </member>
-        <member name="T:teaCRM.Web.Controllers.Apps.MarketController">
-            <summary>
-            Class MarketController.
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.MarketController.Index">
-            <summary>
-            Indexes this instance.
-            </summary>
-            <returns>ActionResult.</returns>
-        </member>
-        <member name="T:teaCRM.Web.Controllers.Apps.CRM.TrashController">
-            <summary>
-            回收站模块
-            </summary>
-        </member>
-        <member name="F:teaCRM.Web.Controllers.Apps.CRM.TrashController.CompNum">
-            <summary>
-            当前公司编号
-            </summary>
-        </member>
-        <member name="F:teaCRM.Web.Controllers.Apps.CRM.TrashController.UserId">
-            <summary>
-            当前登录用户id
-            </summary>
-        </member>
-        <member name="F:teaCRM.Web.Controllers.Apps.CRM.TrashController.MyAppId">
-            <summary>
-            模块id(回收站使用客户的模块id)
-            </summary>
-        </member>
-        <member name="F:teaCRM.Web.Controllers.Apps.CRM.TrashController.customerExpandFields">
-            <summary>
-            客户扩展字段
-            </summary>
-        </member>
-        <member name="F:teaCRM.Web.Controllers.Apps.CRM.TrashController.trashOperatings">
-            <summary>
-            回收站操作
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.TrashController.Init(System.Int32)">
-            <summary>
-            初始化扩展字段
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.TrashController.Index(System.Int32)">
-            <summary>
-            Indexes this instance.
-            </summary>
-            <param name="id">模块id</param>
-            <returns>ActionResult.</returns>
-        </member>
-        <member name="P:teaCRM.Web.Controllers.Apps.CRM.TrashController.CustomerService">
-            <summary>
-            CustomerService
-            </summary>
-            <value>CustomerService</value>
-        </member>
-        <member name="P:teaCRM.Web.Controllers.Apps.CRM.TrashController.AccountService">
-             <summary>
-            AccountService
-             </summary>
-             <value>AccountService</value>
-        </member>
-        <member name="T:teaCRM.Web.Areas.HelpPage.Models.HelpPageApiModel">
-            <summary>
-            The model that represents an API displayed on the help page.
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:teaCRM.Web.Areas.HelpPage.Models.HelpPageApiModel"/> class.
-            </summary>
-        </member>
-        <member name="P:teaCRM.Web.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
-            <summary>
-            Gets or sets the <see cref="P:teaCRM.Web.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
-            </summary>
-        </member>
-        <member name="P:teaCRM.Web.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
-            <summary>
-            Gets the sample requests associated with the API.
-            </summary>
-        </member>
-        <member name="P:teaCRM.Web.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
-            <summary>
-            Gets the sample responses associated with the API.
-            </summary>
-        </member>
-        <member name="P:teaCRM.Web.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
-            <summary>
-            Gets the error messages associated with this model.
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.Settings.DepartmentController.AsyncGetNodes(System.Nullable{System.Int32},System.String)">
-            <summary>
-            得到指定ID的子节点列表，并序列化为JSON串
-            </summary>
-            <param name="id">节点父id</param>
-            <param name="type">类型（默认：show，select:添加一个根节点）</param>
-            <returns></returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.Settings.DepartmentController.GetDepartment(System.Int32)">
-            <summary>
-            获取一条部门数据  2014-09-5 14:58:50 By 唐有炜
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:teaCRM.Web.Controllers.Apps.Settings.DepartmentController.SysDepartmentService">
-            <summary>
-            依赖注入 2014-08-27 14:58:50 By 唐有炜
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.MvcApplication.RegisterView">
-            <summary>
-            注册自定义视图
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.MvcApplication.Application_Error(System.Object,System.EventArgs)">
-            <summary>
-            捕捉全局异常
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
-        <member name="T:teaCRM.Web.Controllers.Apps.CRM.CustomerController">
-            <summary>
-            Class IndexController.
-            </summary>
-        </member>
-        <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.CompNum">
-            <summary>
-            当前公司编号
-            </summary>
-        </member>
-        <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.UserId">
-            <summary>
-            当前登录用户id
-            </summary>
-        </member>
-        <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.AppId">
-            <summary>
-            当前应用的类别id，（对应/Themes/default/base/js/category.js里面的code和T_fun_app表里面的app_id） 14-09-21 By 唐有炜
-            </summary>
-        </member>
-        <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.CustomerMyappId">
-            <summary>
-            当前模块对应的id（应用发布时确定）
-            </summary>
-        </member>
-        <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.customerExpandFields">
-            <summary>
-            客户扩展字段信息
-            </summary>
-        </member>
-        <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.contactExpandFields">
-            <summary>
-            联系人扩展字段信息
-            </summary>
-        </member>
-        <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.customerOperatings">
-            <summary>
-            客户操作
-            </summary>
-        </member>
-        <member name="F:teaCRM.Web.Controllers.Apps.CRM.CustomerController.myApps">
-            <summary>
-            应用列表
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.CustomerController.Init">
-            <summary>
-            初始化扩展字段
-            </summary>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.CustomerController.Index(System.Nullable{System.Int32},System.Nullable{System.Int32})">
-            <summary>
-            Indexes the specified con back.
-            </summary>
-            <param name="ConBack">The con back.</param>
-            <param name="ConIsPub">The con is pub.</param>
-            <returns>ActionResult.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.CustomerController.Add">
-            <summary>
-            Adds this instance.
-            </summary>
-            <returns>ActionResult.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.CustomerController.Show(System.Int32)">
-            <summary>
-            Shows the specified identifier.
-            </summary>
-            <param name="id">The identifier.</param>
-            <returns>ActionResult.</returns>
-        </member>
-        <member name="M:teaCRM.Web.Controllers.Apps.CRM.CustomerController.Edit(System.Int32)">
-            <summary>
-            Edits the specified fc.
-            </summary>
-            <param name="fc">The fc.</param>
-            <param name="id">The identifier.</param>
-            <returns>ActionResult.</returns>
-        </member>
-        <member name="P:teaCRM.Web.Controllers.Apps.CRM.CustomerController.CustomerService">
-            <summary>
-            Gets or sets the customer service.
-            </summary>
-            <value>The customer service.</value>
-        </member>
-        <member name="P:teaCRM.Web.Controllers.Apps.CRM.CustomerController.AccountService">
-            <summary>
-            Gets or sets the account service.
-            </summary>
-            <value>The account service.</value>
-        </member>
-        <member name="P:teaCRM.Web.Controllers.Apps.CRM.CustomerController.AppMakerService">
-            <summary>
-            Gets or sets the application maker service.
-            </summary>
-            <value>The application maker service.</value>
-        </member>
-        <member name="T:teaCRM.Web.Areas.HelpPage.SampleDirection">
-            <summary>
-            Indicates whether the sample is used for request or response
-            </summary>
         </member>
     </members>
 </doc>
